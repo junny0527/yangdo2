@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3 class="guest-h3">
+						[선택 기입 정보] <span>- 내용이 없으면 작성하지 않으셔도 되지만, 보다 많은 정보를 제공하여 매출 증대에 도움이 될수 있는 메뉴입니다.</span>
+					</h3>
+					<table class="table table-bordered">
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>한줄평</th>
+								<td class="bd_r_none">
+									<div class="form-layer">
+										<input type="text" class="form-control" style="width: 714px; height: 55px;" name="summary" maxlength="32" placeholder="숙소의 장점을 부각시켜 게스트에게 어필할 수 있는 한 줄을 기재해주세요. [32자 내외]" value="">
+									</div>
+
+								</td>
+								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img src="/img/asset/icn_tooltip.png"></a>
+									<div class="hide">
+										<span><img src="/img/tooltips/intro/img_tooltip04.png"></span>
+									</div></td>
+							</tr>
+							<tr>
+								<th>이벤트 정보</th>
+								<td colspan="2">
+									<div class="form-layer mb_24">
+										<input type="text" class="form-control" name="promo_title" placeholder="업체 이미지에 표시되는 대표적인 이벤트 한줄을 남겨주세요." value=""> <br>
+										<textarea class="form-control textarea-layer" rows="6" id="event" name="promo_content" placeholder="게스트하우스 주관의 이벤트 정보를 기재해주세요."></textarea>
+									</div> <!-- <div class="form-layer-text">
+                            <button type="button" class="btn btn-default btn_add" data-role="add-line">+ 이벤트 추가</button>
+                        </div> --> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
+									<div class="exam-layer-guide5">
+										<div class="exam-detail-layer">
+											<span class="guide-text"> 옥상 바베큐 파티 외 2건 <br> <br>
+											</span> <span class="guide-text2"> [옥상 삼겹살 파티]<br> 일시 : 매주 금, 토 / 21:00~<br> 내용 : 1인 10,000원 (삼겹살+무한맥주) <br> <br> [비누 만들기 체험]<br> 일시 : 매주 월 / 14:00~15:00<br>
+												내용 : 1인 1,000원 (게스트하우스 로비) <br> <br> [서울 야경 투어]<br> 일시 : 매주 화, 목 / 오후 20시~22시<br> 내용 : 1인 3,000원 / 3인 이상시 출발 / (게스트하우스 로비) <br> <br>
+											</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>현장 요금<br>추가 정보
+								</th>
+								<td colspan="2">
+									<div class="form-layer">
+										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="숙소에서 제공되는 숙박비 외의 유료 서비스가 있을 경우 가격정보와 함께 항목을 기재해주세요."></textarea>
+									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
+									<div class="exam-layer-guide6">
+										<div class="exam-detail-layer">
+											<span class="guide-text"> [키보증금]<br> 50,000원 (퇴실시 체크 후 반환) <br> <br> [와이파이 에그 렌탈서비스]<br> 1일당 5,000원<br> 현장 결제 및 추가비용 게스트하우스 문의 <br> <br>
+											</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>주차장 정보</th>
+								<td colspan="2">
+									<div class="form-layer">
+										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="주차장 유/무료 정보 및 시간당 요금을 기재해주세요."></textarea>
+									</div> <span class="exam-buttoxn"> <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+									<div class="exam-layer-guide7">
+										<div class="exam-detail-layer">
+											<span class="guide-text"> 숙소 앞 공용 유료 주차장<br> (시간당 2,000원 / 22시 이후 무료) <br> <br>
+											</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" style="display: none"><textarea class="form-control textarea-layer" rows="6" name="detail[]">체크인일 기준 7일 전 : 100% 환불
+체크인일 기준 6 ~ 4일 전 : 50% 환불
+체크인일 기준 3일 전 ~ No-Show : 환불불가
+취소, 환불시 수수료가 발생할 수 있습니다.</textarea></td>
+							</tr>
+							<tr>
+								<th>확인 사항<br>및 기타
+								</th>
+								<td colspan="2">
+									<div class="form-layer">
+										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="기재된 숙소 정보 외에 게스트 숙지 사항을 기재해주세요." style="min-height: 120px !important; height: 120px !important"></textarea>
+									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
+									<div class="exam-layer-guide8">
+										<div class="exam-detail-layer">
+											<span class="guide-text"> 3박이상 숙박시 20% 할인<br> 시즌별 객실 가격 상이하오니 확인바랍니다.<br> 위의 정보는 게스트하우스 사정에 따라 변경될 수 있습니다.<br> 해당 이미지는 실제와 상이 할 수 있습니다.<br> 예약 확정 이후의 취소는 취소환불규정에
+												의거하여 적용됩니다. <br> <br>
+											</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+</body>
+</html>

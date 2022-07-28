@@ -250,7 +250,9 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #content > .caution-field > #police {
 	margin: 40px 0px 0px 0px;
 }
-
+#content > .caution-field > #dongi{
+	width: 760px;
+}
 
 #content > .caution-field > #dongi > .agree {
 	width: 760px;
@@ -264,8 +266,18 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	line-height: 22px; 
 	margin: 15px 0px 0px 0px;
 }
+label.dong {
+	display: inline;  
+    color: #000000;
+    text-align: left;
+    font-size : 12px;
+    white-space: pre-line;
+	  
+}
 
-
+.checkbox {
+	display: inline-block;
+}
 .font-size-25 {
     font-size: 25px;
 }
@@ -277,6 +289,9 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 .color-dan {
 	color: #F7323F;
+}
+.backcolor-dan{
+	background-color: #F7323F;
 }
 /**************컨텐츠(가격및 양도버튼) ***************/
 #content > #pay  {
@@ -362,6 +377,11 @@ button#btn_transfer {
     border: 0px;
     border-radius: 4px;
     background-color: #F7323F;
+}
+/********ㅁ달 ******/
+.con{
+	text-align: center;
+	font-size: 20px;
 }
 
 /* ******************푸터************************** */

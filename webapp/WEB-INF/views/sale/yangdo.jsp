@@ -16,18 +16,7 @@
 <body>
    <div id="wrap">
          <!-- 펜션어때 헤더 -->
-         <div id="header" class="clearfix">
-            <div id="section">
-               <h1><a href="">양도어때</a></h1>
-               <ul class="clearfix"> 
-                  <li><a href=""  class="bi bi-search">검색</a></li>
-                  <li><a href="">내주변</a></li>
-                  <li><a href="">예약내역</a></li>
-                  <li><a href="">더보기</a></li>
-                  <li><a href="">회원로고</a></li>
-               </ul>
-            </div>
-         </div>
+         <c:import url="/WEB-INF/views/includes/header(user).jsp"></c:import>
          <!-- 펜션어때 헤더 -->
          
           <div id="content" class="clearfix">
@@ -121,7 +110,7 @@
 					</div>
 					<input type="text" id="pay_confirm_transfer" name="" value="" placeholder="양도후 받을 금액을 입력하세요">원
 				</div>
-				<button id="btn_transfer" type="button">양도 하기</button>
+				<button id="btn_transfer" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">양도 하기</button>
              </div>
              <!-- 컨텐츠(페이) -->
              
@@ -142,22 +131,22 @@
                   <div id="police" class="font-size-12 font-bold">
                       약관 및 정책
                   </div>
-                  <div id="dongi" class="terms input-group label" style="flex-direction: column;">
-                      <div class="agree" >
+                  <div id="dongi" class="terms input-group" >
+                      <div class="agree text-left" >
                           <input type="checkbox" id="all" class="checkbox" autocomplete="off">
-                          <label for="all"><span class="check-btn"></span> 전체 동의 <span class="blue">(필수)</span></label>
+                          <label for="all" class="dong"><span class="check-btn"></span> 전체 동의 <span class="blue">(필수)</span></label>
                       </div>
-                      <div class="agreed"  >
+                      <div class="agreed text-left" >
                           <input type="checkbox" id="first_term" name="second_term" class="checkbox chk" data-important="" autocomplete="off">
-                          <label for="first_term"><span class="check-btn"></span> 취소 환불규정을 확인하였습니다.</label>
+                          <label for="first_term" class="dong"><span class="check-btn"></span> 취소 환불규정을 확인하였습니다.</label>
                       </div>
-                      <div class="agreed"  >
+                      <div class="agreed text-left" >
                           <input type="checkbox" id="second_term" name="second_term" class="checkbox chk" data-important="" autocomplete="off">
-                          <label for="second_term"><span class="check-btn"></span> 양도어때에 등록하신 상품을 다른 곳에서 이중판매 하실 경우 발생한 불이익에 대해서 자사는 책임지지않으며 이미 판매된 예약권에 대한 소유권은 양도어때 고객에게 우선적으로 있음을 동의합니다.</label>
+                          <label for="second_term" class="dong"><span class="check-btn"></span> 양도어때에 등록하신 상품을 다른 곳에서 이중판매 하실 경우 발생한 불이익에 대해서 자사는 책임지지않으며 이미 판매된 예약권에 대한 소유권은 양도어때 고객에게 우선적으로 있음을 동의합니다.</label>
                       </div>
-                      <div class="agreed" >
+                      <div class="agreed text-left" >
                           <input type="checkbox" id="third_term" name="third_term" class="checkbox chk" data-important="" autocomplete="off">
-                          <label for="third_term"><span class="check-btn"></span> 판매등록 후 상품 검수, 양도 시 발생하는 확인절차와 양도절차에 대한 업무는 전적으로 양도어때에 위임함에 동의합니다.</label>
+                          <label for="third_term" class="dong"><span class="check-btn"></span> 판매등록 후 상품 검수, 양도 시 발생하는 확인절차와 양도절차에 대한 업무는 전적으로 양도어때에 위임함에 동의합니다.</label>
                       </div>
                   </div>
               </div>
@@ -167,62 +156,7 @@
          <!-- 컨텐츠 -->
          
       <!-- //footer -->
-      <footer>
-         <div class="align">
-            <ul class="link">
-               <li>
-                  <a href="">회사소개</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">이용약관</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">개인정보처리방침</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">소비자 분쟁해결 기준</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">사업자 정보확인</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">양도어때 마케팅센터</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">액티비티 호스트센터</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">펜션 양도어때</a>
-                  <span>|</span>
-               </li>
-               <li>
-                  <a href="">콘텐츠산업진흥법에의한 표시</a>
-               </li>
-            </ul>
-            
-            <p>
-               <b>양도어때 고객센터 1670-4215</b>
-               <span>오전 9시 - 새벽 3시</span>
-            </p>
-            
-            <address>
-               <span>(주) 양도어때컴퍼니</span>
-               주소 : 서울특별시 봉천동 봉천사로 611, 648타워 14층 | 대표이사 : 최종빈 | 사업자등록번호: 741-64-88541
-               <br>
-               통신판매번호 : 2011-서울봉천-75441 | 관광사업자 등록번호: 제2011-74호 | 전화번호 : 1670-4215 | 전자우편주소 : yangdo@goodchoice.kr
-               <br>
-               Copyright GC COMPANY Corp. All rights reserved.
-            </address>	
-            
-         </div>
-      </footer>
+      <c:import url="/WEB-INF/views/includes/footer(user).jsp"></c:import>
       
   </div>
 	<!-- wrap -->
@@ -230,18 +164,41 @@
 
 <!-- Modal -->
 <div class="modal fade" id="Modal-yang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">양도 확인</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="con">양도 하시겠습니까? 
+       		<div class="con color-dan">
+       			가격: 10,000,000,000원
+       		</div> 
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
+        <button type="button" class="btn btn-danger">양도합니다</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="agree-Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">동의 체크</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="con">동의체크 미체크 되어있습니다
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-danger">확인</button>
       </div>
     </div>
   </div>
@@ -251,10 +208,10 @@
 
 <script type="text/javascript">
 	
-	$("#btn_transfer").on("click",function(){
-		console.log("버튼클릭");
-		$("#Modal-yang").show();
-	})
+$("#btn_transfer").on("click",function(){
+	console.log("버튼클릭");
+	$("#Modal-yang").modal("show");
+});
 	
 	
 </script>
