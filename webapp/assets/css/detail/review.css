@@ -1,0 +1,628 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'TTCrownMychewR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+/* ***************초기화*************************** */
+/* 여백초기화 */
+body, div, ul, li, dl, dt, ol, 
+h1, h2, h3, h4, h5, h6, input, 
+fieldset, legend, p, select, 
+table, th, td, tr, textarea, 
+button, form {
+    margin: 0; padding: 0;
+}
+
+body {
+   font-size: 12px;
+   font-family: "맑은 고딕", 돋움, 굴림;
+   
+}
+
+
+/* 리스트 초기화 */
+#header > #section > ul, ol {list-style-type: none;}
+
+/* 링크 초기화 */
+a:link    {color: #ffffff; text-decoration: none;}     /* 방문전 링크일때 자홍색 선없음 */
+a:visited {color: #ffffff; text-decoration: none;}      /* 방문했던 링크일때 회색 위에선*/
+a:hover   {color: #ffffff; text-decoration: none;}   /* 마우스오버일때 파란색 아래선 */
+a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간색 중앙선*/ 
+
+
+/* clearfix */
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
+.clearfix:after {clear: both;}
+
+.bold {font-weight: bold;}
+
+
+/* ******************레이아웃************************** */
+
+
+#wrap {
+    position:relative;
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+}
+
+#wrap > #header {
+   padding: 10px 0px 10px 0px;
+   background-color: #f7323f;
+}
+
+
+#wrap > #area {
+   padding: 10px 0px 10px 0px;
+   background-color:   #f7323f;
+   
+}
+
+/* ******************해더(로고  로그인,회원가입)************************** */
+/* 헤더 제목 */
+
+#header > #section > h1> a {
+    font-family: 'TTCrownMychewR';
+}
+
+#header > #section > ul {
+    font-family: 'TTCrownMychewR';
+}
+
+#header > #section {
+    position: relative;
+    width: 1024px;
+    height: 64px;
+    background: none;
+    margin: auto;
+}
+
+#header > #section > h1:hover {
+    cursor:pointer;
+}
+
+#header > #section > h1 {
+   float: left;
+   color: #FFFFFF;
+   font-size: 35px;
+   font-weight: bold;
+   
+}
+/* 헤더 ul */
+#header ul {
+   margin: 15px 0px 0px 0px;
+   float: right;
+   
+}
+/* 헤더 li */
+#header ul>li {
+   margin: 0px 0px 0px 20px;
+   float: left;
+   font-size: 20px;
+}
+
+/* 헤더 펜션글자 */
+#area h2{
+    display: block;
+    margin-left: 246px;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    color: #fff;
+}
+
+/* 헤더 지역선택 */
+#area span{
+    border: 1px solid white;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 10px 0px 5px 246px;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    color: #fff;
+}
+
+ /* ******************메인************************** */
+
+#main {
+    width:1024px;
+    margin:auto;
+    margin-top:30px;
+}
+
+#main > #content {
+    width: 525px;
+    height:50px;
+}
+
+#main > #content > button:hover {
+    cursor:pointer;
+}
+
+#main > #content > #area {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#main > #content > #pensionName {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#main > #content > #address {
+    font-size:12px;
+}
+
+#main > #content > img {
+    width:14px;
+    margin-left:19.5px;
+}
+
+#main > #content > #map {
+    border-style: none;
+    font-size:12px;
+    background-color: #FFFFFF;
+    color:rgb(52, 152, 219);
+}
+
+#main > #content > #star > #pensionReview {
+    border-style: none;
+    font-size:14px;
+    background-color: #FFFFFF;
+}
+
+#main > #content #star {
+    display: flex;
+    align-items: center;
+    height:20px;
+}
+
+#content > #star > .starCount > img {
+    width:16px;
+    padding-right:1px;
+}
+
+#content > #star > #starScore {
+    padding-left:5px;
+    font-size:14px;
+    font-weight: bold;
+    height:100%;
+}
+
+#content > #star > #pensionReview {
+    padding-left:5px;
+    font-size:14px;
+    padding-right:5px;
+    background-color: #ffffff;
+}
+
+#content > #star > #pensionReview:hover {
+    cursor:pointer;
+}
+
+#main > #gallery {
+    display:flex;
+    position:relative;
+}
+
+#main > #gallery > #mainImg {
+    display: flex;
+    width:545px;
+    height:330px;
+    padding-top:10px;
+}
+
+#main > #gallery > #imgCount {
+    display: flex;
+    position:absolute;
+    top:90.2%;
+    left:41%;
+    width:100px;
+    height:20px;
+    font-size:11px;
+    font-weight: bold;
+    color:#FFFFFF;
+    background-color: rgb(52, 152, 219);
+    padding:3px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+
+#main > #gallery > #subImg {
+    display: flex;
+    width:100%;
+    margin-left:25px
+}
+
+#main > #gallery > #subImg > ul {
+    display: flex;
+    width:343px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin:0px 10px;
+    list-style-type:none;
+    padding:0;
+}
+
+#main > #gallery > #subImg > ul > li {
+    margin:0px 10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    width: 150px;
+    height:96px;
+}
+
+#main > #gallery > #subImg > ul > li > img {
+    width:150px;
+    height:100%;
+    overflow: hidden;
+}
+
+#main > #gallery > div > button {
+    margin:0px 10px;
+    text-align: center;
+    border-style: none;
+    background-color: #ffffff;
+}
+
+#main > #gallery > div > button:hover {
+    cursor:pointer;
+}
+
+#main > #gallery > div > button > img {
+    width:40px;
+}
+
+/* ************** 편의시설 및 서비스 기능************** */
+
+#iconBox {
+    width:1024px;
+    height:185px;
+    margin:auto;
+    margin-top:20px;
+    padding-top:30px;
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#iconBox > h4 {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#iconBox > #container {
+    font-size:20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around; 
+}
+
+#iconBox > #container > div > span > img {
+    padding-top:10px;
+    width: 35px;
+    display: flex;
+}
+
+
+#iconBox > #container > div {
+    margin-right:6px;
+    
+}
+
+#iconBox > #container > div > .icon {
+    display: flex;
+    justify-content: center;
+}
+
+#iconBox > #container > div > .iconName {
+    font-size:10px;
+    display: flex;
+    justify-content: center;
+}
+
+#iconBox > #container > #moreIcon:hover {
+    cursor:pointer;
+}
+
+/* ********* 메뉴바 ********* */
+#iconBox > #menu {
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+#iconBox > #menu > button {
+    margin-right:30px;
+    border-style:none;
+    background-color: #FFFFFF;
+    font-size:16px;
+    font-weight: bold;
+}
+
+#var2 {
+    color:rgb(230,28,81);
+}
+
+.icon {
+    width:45px;
+    text-align: center;
+}
+
+.fontName {
+    font-size:16px;
+    text-align: center;
+}
+
+
+
+/* ******************리뷰************************** */
+
+#review {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:1024px;
+    margin:0 auto;
+    padding:30px 0px;
+    border-bottom:1px solid black;
+    margin-bottom:30px;
+}
+
+#review > #ment {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#review > #star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:10px 0px;
+}
+
+#review > #star > .starCount > img{
+    width:30px;
+    padding-right:5px;
+}
+
+#review > #star > #starScore {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#review > #reviewCount {
+    font-size:16px;
+}
+
+#review > #reviewCount > #allReview {
+    margin-right:18px;
+}
+
+#reviewBox {
+    display: flex;
+    flex-direction: column;
+    width:1024px;
+    margin:auto;
+    margin-bottom:30px;
+}
+
+#reviewBox > #guestContainer {
+    display: flex;
+}
+
+#reviewBox > #guestContainer > .box {
+    width:50px;
+    height:50px;
+    border-radius: 70%;
+    background-color: rgb(162, 162, 162);
+    margin-right:30px;
+}
+
+.box > img {
+    width:100%;
+    height:100%;
+}
+
+#reviewBox > #guestContainer > #guestBox {
+    display: flex;
+    flex-direction: column;    
+    
+}
+
+#reviewBox > #guestContainer > #guestBox > #guestReview {
+    font-weight: bold;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #reviewStar {
+    display: flex;
+    margin-bottom:10px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #reviewStar > #starScore {
+    padding-left:10px;
+    font-size:14px;
+    font-weight: bold;
+}
+
+#reviewBox > #guestContainer > #guestBox > #guestInfo {
+    margin-bottom:20px;
+    font-size:13px;
+    font-weight: bold;
+} 
+
+#reviewBox > #guestContainer > #guestBox > #reviewContent {
+    font-size:13px;
+    margin-bottom:20px;
+    width:945px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg {
+    display: flex;
+}
+
+#reviewBox > #guestContainer > #guestBox > #reviewStar > .starCount > img {
+    width:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg > ul {
+    display: flex;
+    list-style-type: none;
+    padding:0;
+    
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg > ul > li > img{
+    width:463px;
+    height:250px;
+    padding-right:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg > ul > li:last-child > img {
+    padding-right:0;    
+}
+
+#reviewBox > #guestContainer > #guestBox > #guestRegDate {
+    font-size:13px;
+    margin-bottom:30px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer {
+    display: flex;
+    width:926px;
+    background-color:rgba(0,0,0,0.08);
+    padding:10px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoReview {
+    font-size:16px;
+    font-weight: bold;
+    margin-bottom:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoContent {
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoRegDate {
+    margin-bottom:10px;
+    font-size:13px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > .box {
+    width:150px;
+    height:50px;
+    border-radius: 70%;
+    background-color: rgb(233, 109, 73);
+    margin-right:30px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > .box > img {
+    width:100%;
+    height:100%;
+}
+
+
+/* ******************푸터************************** */
+footer {
+    overflow: hidden;
+    clear: both;
+    position: relative;
+    margin-top: 120px;
+    padding: 63px 31px 40px 31px !important;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    background: rgb(245,245,245);
+    font-size: 13px;
+    line-height: 20px;
+    color: rgba(0,0,0,0.38);
+    
+}
+
+footer .align {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+footer .link {
+    overflow: hidden;
+}
+
+ ul{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+footer > .align > ul > li {
+    list-style: none;
+}
+
+footer .link li {
+    float: left;
+    margin-bottom: 5px;
+    line-height: normal;
+}
+
+footer .link li:nth-child(6) {
+    clear: both;
+}
+
+footer .link li:nth-child(5), footer .link li:nth-child(8) {
+    clear: none;
+}
+
+footer .link li:last-child {
+    margin-bottom: 0;
+}
+
+footer .link li span {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    width: 24px;
+    font-size: 11px;
+    text-align: center;
+}
+
+footer .link li a {
+    display: inline-block;
+    color: gray;
+}
+
+footer p {
+    clear: both;
+    padding: 37px 0 24px 0;
+    margin-left: 39px;
+}
+
+footer address {
+    line-height: 22px;
+    display: inline-block;
+    margin-left: 39px;
+}
+
+address, caption, em, var {
+    font-style: normal;
+    font-weight: normal;
+}
