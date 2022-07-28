@@ -10,6 +10,6 @@ public class MingyuController {
 	@RequestMapping(value="/yangdo",method = {RequestMethod.GET,RequestMethod.POST})
 	public String yangdo() {
 		
-		return "/yangdo/yangdo";
+		return "/sale/yangdo";
 	}
 }
