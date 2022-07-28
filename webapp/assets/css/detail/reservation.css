@@ -16,6 +16,10 @@ button, form {
     margin: 0; padding: 0;
 }
 
+
+
+
+
 body {
    font-size: 12px;
    font-family: "맑은 고딕", 돋움, 굴림;
@@ -136,6 +140,12 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
  /* ******************메인************************** */
+
+#map1 {
+	width:500px;
+	height:400px;
+}
+
 
 #main {
     width:1024px;

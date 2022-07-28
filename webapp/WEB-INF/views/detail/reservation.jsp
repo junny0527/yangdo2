@@ -8,9 +8,10 @@
     <title>Document</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
-    
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/bootstrap/css/bootstrap.css">
+    
     
 </head>
 <body>
@@ -353,5 +354,57 @@
             </div>
         </footer> 
     </div>
+    
 </body>
+
+
+
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body" id="map1">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+	
+	<script type="text/javascript">
+	
+	
+		$("#map").on("click", function(){
+			$(".modal").show();
+			
+		});
+		
+		$(".btn-secondary").on("click", function() {
+			$(".modal").hide();
+		});
+		
+		//지도 기본 값 숨기기
+		
+		
+		var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
+		var options = { //지도를 생성할 때 필요한 기본 옵션
+			center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+			level: 3 //지도의 레벨(확대, 축소 정도)
+		};
+
+		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		
+		
+	</script>
+
+
 </html>
