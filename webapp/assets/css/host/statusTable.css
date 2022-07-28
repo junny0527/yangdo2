@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+#nav{
+	height: 80px;
+}
+
+#status{
+	width: 830px;
+	background-color : #FFFFFF;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	border-radius : 5px;
+	box-shadow: -1px 1px 2px #aaa;
+}
+
+#status p{
+	margin-top : 10px;
+	font-size : 24px;
+}
+
+#statustable{
+	min-width : 830px;
+	margin : auto;
+	margin-bottom : 40px;
+	font-size : 18px;
+}
+
+#statustable thead tr th{
+	padding-top : 10px;
+	padding-bottom : 10px;
+}
+
+#statustable tbody tr td{
+	padding-top : 10px;
+	padding-bottom : 10px;
+}
