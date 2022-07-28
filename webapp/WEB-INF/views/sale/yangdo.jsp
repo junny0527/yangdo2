@@ -229,7 +229,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="btn-yang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="Modal-yang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -253,7 +253,7 @@
 	
 	$("#btn_transfer").on("click",function(){
 		console.log("버튼클릭");
-		$("#btn-yang").show();
+		$("#Modal-yang").show();
 	})
 	
 	
