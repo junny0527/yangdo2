@@ -7,12 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sale/yand.css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sale/yand.css">
+
+
 <body>
    <div id="wrap">
          <!-- 펜션어때 헤더 -->
@@ -91,6 +93,79 @@
              			</tr>
              		</table>
              	</div> 
+             	<!-- <div id="pay_refund">	
+             		<table>
+             			<tr>
+             				<td>6일전:100%</td>
+             			</tr>
+             			<tr>
+             				<td>5일전:90%</td>
+             			</tr>
+             			<tr>
+             				<td>4일전:80%</td>
+             			</tr>
+             			<tr>
+             				<td>3일전:70%</td>
+             			</tr>
+             			<tr>
+             				<td>2일전:60%</td>
+             			</tr>
+             			<tr>
+             				<td>1일전:50%</td>
+             			</tr>
+             			<tr>
+             				<td>숙박일 당일 및 No-show: 불가</td>
+             			</tr>
+             			<tr rowspan="5">
+             				<td colspan="2">취소, 환불 시 수수료가 발생할 수 있습니다.</td>
+             			</tr>
+             			<tr>
+             			</tr>
+             			<tr>
+             			</tr>
+             			<tr>
+             			</tr>
+             			<tr>
+             			</tr>
+             		</table>
+             	</div>  -->
+             <!-- 	<div id="pay_refund">	
+             		<table>
+             			<tr>
+             				<td>7일전:100%</td>
+             			</tr>
+             			<tr>
+             				<td>6일전:90%</td>
+             			</tr>
+             			<tr>
+             				<td>5일전:80%</td>
+             			</tr>
+             			<tr>
+             				<td>4일전:70%</td>
+             			</tr>
+             			<tr>
+             				<td>3일전:60%</td>
+             			</tr>
+             			<tr>
+             				<td>2일전:50%</td>
+             			</tr>
+             			<tr>
+             				<td>1일전:40%</td>
+             			</tr>
+             			<tr>
+             				<td>숙박일 당일 및 No-show: 불가</td>
+             			</tr>
+             			<tr rowspan="4">
+             				<td colspan="2">취소, 환불 시 수수료가 발생할 수 있습니다.</td>
+             			</tr>
+             			<tr>
+             			</tr>
+             			<tr>
+             			</tr>
+             			<tr>
+             			</tr>
+             		</table>
+             	</div>  -->
 				<div id="pay_addPerson">
 					추가인원
 					<div>
@@ -110,7 +185,7 @@
 					</div>
 					<input type="text" id="pay_confirm_transfer" name="" value="" placeholder="양도후 받을 금액을 입력하세요">원
 				</div>
-				<button id="btn_transfer" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">양도 하기</button>
+				<button id="btn_transfer" type="button">양도 하기</button>
              </div>
              <!-- 컨텐츠(페이) -->
              
@@ -154,7 +229,6 @@
            
           </div>
          <!-- 컨텐츠 -->
-         
       <!-- //footer -->
       <c:import url="/WEB-INF/views/includes/footer(user).jsp"></c:import>
       
@@ -162,57 +236,42 @@
 	<!-- wrap -->
 
 
+
+</body>
+
 <!-- Modal -->
-<div class="modal fade" id="Modal-yang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+<div id="yangdo-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">양도 확인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">양도 확인</h4>
       </div>
       <div class="modal-body">
-        <div class="con">양도 하시겠습니까? 
+       	<div class="con">양도 하시겠습니까? 
        		<div class="con color-dan">
-       			가격: 10,000,000,000원
+       			가격: 100,000원
        		</div> 
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
-        <button type="button" class="btn btn-danger">양도합니다</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="yang" type="button" class="btn btn-danger" >양도합니다</button>
       </div>
-    </div>
-  </div>
-</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-<div class="modal fade" id="agree-Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">동의 체크</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="con">동의체크 미체크 되어있습니다
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-danger">확인</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-</body>
 
 <script type="text/javascript">
 	
 $("#btn_transfer").on("click",function(){
 	console.log("버튼클릭");
-	$("#Modal-yang").modal("show");
-});
+	$("#yangdo-modal").modal("show");
 	
+});
+
 	
 </script>
 </html>
