@@ -65,7 +65,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /* ******************해더(로고  로그인,회원가입)************************** */
 /* 헤더 제목 */
 
-#header > #section > h1> a {
+#header > #section > h1 > a {
     font-family: 'TTCrownMychewR';
 }
 
@@ -90,12 +90,13 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
    color: #FFFFFF;
    font-size: 35px;
    font-weight: bold;
-   margin-top: 10px ;
+   margin-top: 10px;
    
 }
 /* 헤더 ul */
 #header ul {
    margin: 15px 0px 0px 0px;
+   padding: 0px;
    float: right;
    
 }
