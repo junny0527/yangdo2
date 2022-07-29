@@ -342,17 +342,21 @@
 
 
 <!-- 객실 이용안내 모달 -->
-<div class="modal fade" id="infomationUse">
+<div class="modal fade infomationUse">
 	<div class="modal-dialog">
-		<div class="modal-content" id="modalInfo">
+		<div class="modal-content modalContent">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
 				<h4 class="modal-title">객실 이용안내</h4>
 			</div>
-			<div class="modal-body">
-				
+			<div class="modal-body modalInfo">
+				<div>
+					<div class="facTitle">편의시설</div>
+					<span class="facilities">침구류, 120인치 스크린빔, 오디오, 에어컨, 냉장고, 전자레인지, 취사도구, 기타,컴퓨터, 텐트</span>
+				</div>
+				<div>
+					<div class="facTitle">추가정보</div>
+					<span class="facilities">스파 20,000원 현장결제</span>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -364,15 +368,44 @@
 </div>
 <!-- /.modal -->
 
-<!-- 
-<button id="picktureLeft">
-					<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
-				</button>
-				<button id="picktureRight">
-					<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-				</button>
 
- -->
+
+<!-- 객실 사진보기 모달 -->
+<div class="modal fade roomPhoto">
+	<div class="modal-dialog">
+		<div class="modal-content roomContent">
+			<div class="modal-body imgList">
+				<button class="imgLeft">
+                  <img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+                </button>
+                <ul>
+                   <li><img src="${pageContext.request.contextPath}/assets/image/detail/back.jfif"></li>
+                </ul>
+                <button class="imgRight">
+                   <img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+                </button>
+			</div>
+			<div class="modal-footer footer">
+				<button type="button" class="btn btn-default btnClose" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script type="text/javascript">
@@ -416,13 +449,41 @@
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	
 	$(".information_Use").on("click", function() {
-		$("#infomationUse").modal("show");
+		$(".infomationUse").modal("show");
 		//입력한 객실정보로 사진 열기.
 		var $this = $(this);  
 		console.log($this);
 	});
 	
 	///////////////////////// 객실 이용안내 끝 ///////////////////////////
+	
+	
+	///////////////////////// 객실 사진보기  ///////////////////////////
+	
+	$(".roomImgList").on("click", function() { 
+		$(".roomPhoto").modal("show");
+	});
+	
+	///////////////////////// 객실 사진보기 끝 ///////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </script>
 
 

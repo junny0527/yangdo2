@@ -628,8 +628,130 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 /* ******************모달 (객실 이용안내)************************** */
-#modalInfo {
-	background-color:grey;
+
+.modalContent {
+	width:530px;
+	position:absolute;
+	left:10%;
+}
+
+.modalInfo {
+	padding:0px !important;
+	width:530px !important;
+	height:250px !important;
+}
+
+.modalInfo > div {
+	padding:15px !important;
+	padding-bottom:35px !important;
+	margin-top:20px;
+	border-bottom:1px solid #e5e5e5;
+}
+
+.modalInfo > div:last-child {
+	border-bottom:none;
+}
+
+.facTitle {
+	font-weight:bold;
+	font-size: 16px;
+	margin-bottom:3px;
+}
+
+.facilities {
+	font-size:13px;
+}
+
+
+/* ******************모달 (객실 사진보기)************************** */
+
+.roomContent {
+	width:700px;
+	height:400px;
+	position:relative;
+}
+
+.imgList {
+	position:relative;
+}
+
+.imgList > button {
+	background-color:#FFFFFF;
+	border-style:none;
+	position:absolute;
+}
+
+.imgList > button > img {
+	width:40px;
+}
+
+.imgList > .imgRight {
+	top:50%;
+	right:-13.2%;
+	padding-top:15px;
+	padding-bottom:15px;
+	padding-left:5px;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	background-color:#eeeeee;
+	transition: all 0.3s ease;
+}
+
+.imgList > .imgRight:hover {
+   box-shadow:
+   -1px -1px 20px 0px #fff9,
+   -1px -1px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+
+.imgList > .imgLeft {
+	top:50%;
+	left:4.2%;
+	padding-top:15px;
+	padding-bottom:15px;
+	padding-right:5px;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	background-color:#eeeeee;
+	transition: all 0.3s ease;
+}
+
+.imgList > .imgLeft:hover {
+   box-shadow:
+   -1px -1px 20px 0px #fff9,
+   -1px -1px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+
+
+.imgList > ul {
+	list-style:none;
+}
+
+.imgList > ul > li > img {
+	width:652px;
+	height:335px;
+	margin-top:15px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.footer {
+	padding:10px 15px !important;
+	border:none !important;
+	position:absolute;
+	top:-0.5%;
+	right:1%;
+}
+
+.btnClose {
+	padding-top:4px !important;
+	padding-bottom:4px !important;
+	background-color: rgb(52, 152, 219) !important;
+	color:white !important;
+	font-size:14px !important;
 }
 
 /* ******************푸터************************** */
