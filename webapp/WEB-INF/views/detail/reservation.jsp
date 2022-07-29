@@ -12,13 +12,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7&libraries=LIBRARY"></script>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/bootstrap/css/bootstrap.css">
 
 
 </head>
 <body>
-
+	
    <div id="wrap">
       <c:import url="/WEB-INF/views/includes/header(user).jsp"></c:import>
       <!-- //header -->
@@ -27,10 +28,22 @@
             <span id="area">양평</span> <span id="pensionName">우노하우스 풀빌라</span> <span id="address">경기 양평군 서종면 명달리 443-13</span> <img src="${pageContext.request.contextPath}/assets/image/detail/location.png">
             <button id="map">숙소 위치확인</button>
             <div id="star">
-               <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span> <span class="starCount"><img
-                  src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span> <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span> <span
-                  class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span> <span class="starCount"><img
-                  src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span> <span id="starScore">5.0</span>
+                <span class="starCount">
+					<img src="${pageContext.request.contextPath}/assets/image/detail/star.png">
+                </span> 
+                <span class="starCount">
+                	<img src="${pageContext.request.contextPath}/assets/image/detail/star.png">
+            	</span> 
+            	<span class="starCount">
+            		<img src="${pageContext.request.contextPath}/assets/image/detail/star.png">
+            	</span> 
+            	<span class="starCount">
+            		<img src="${pageContext.request.contextPath}/assets/image/detail/star.png">
+            	</span> 
+            	<span class="starCount">
+            		<img src="${pageContext.request.contextPath}/assets/image/detail/star.png">
+            	</span> 
+            	<span id="starScore">5.0</span>
                <button id="pensionReview">(60) ></button>
             </div>
          </div>
@@ -121,11 +134,13 @@
                <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
             </div>
          </div>
+         
          <div id="menu">
-            <button id="var">객실안내</button>
-            <button id="var1">숙소정보</button>
-            <button id="var2">리뷰</button>
+            <a href="${pageContext.request.contextPath}/reservation"><button id="var">객실안내</button></a>
+            <a href="${pageContext.request.contextPath}/infomation"><button id="var1">숙소정보</button></a>
+            <a href="${pageContext.request.contextPath}/review"><button id="var2">리뷰</button></a>
          </div>
+         
       </div>
       <div id="roomList">
          <div id="calendar">
@@ -142,7 +157,7 @@
                <span class="roomName">찌찌웅</span>
                <div class="infoBtn">
                   <span>객실 이용안내</span>
-                  <button>보기</button>
+                  <button class="information_Use">보기</button>
                </div>
                <div class="settingPeople">기준 2인 / 최대 4인</div>
                <div class="defaultForm">
@@ -197,7 +212,7 @@
                <span class="roomName">범주니</span>
                <div class="infoBtn">
                   <span>객실 이용안내</span>
-                  <button>보기</button>
+                  <button class="information_Use">보기</button>
                </div>
                <div class="settingPeople">기준 2인 / 최대 4인</div>
                <div class="defaultForm">
@@ -251,7 +266,7 @@
                <span class="roomName">민조장</span>
                <div class="infoBtn">
                   <span>객실 이용안내</span>
-                  <button>보기</button>
+                  <button class="information_Use">보기</button>
                </div>
                <div class="settingPeople">기준 2인 / 최대 4인</div>
                <div class="defaultForm">
@@ -307,50 +322,107 @@
 </body>
 
 
-
-<div id="local" class="modal" tabindex="-1">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header"></div>
-         <div class="modal-body">
-            <div id="map1" style="width: 100%; height: 100%;"></div>
-         </div>
-         <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-         </div>
+<!-- 지도 모달 -->
+ <div class="modal" id="local">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">        
       </div>
-   </div>
+      <div class="modal-body">
+        <div id="map1" style="width: 100%; height: 100%;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<!-- 객실 이용안내 모달 -->
+<div class="modal fade" id="infomationUse">
+	<div class="modal-dialog">
+		<div class="modal-content" id="modalInfo">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">객실 이용안내</h4>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
 </div>
+<!-- /.modal -->
 
+<!-- 
+<button id="picktureLeft">
+					<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+				</button>
+				<button id="picktureRight">
+					<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+				</button>
 
-
-
+ -->
 
 
 <script type="text/javascript">
-		
+	///////////////////////// 숙소위치보기 (지도) ///////////////////////////
+	
 	var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 	   center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
 	   level: 3 //지도의 레벨(확대, 축소 정도)
 	};
 	var map = new kakao.maps.Map(container, options);
+	const center = map.getCenter();
 	
-	   $("#map").on("click", function() {
-	      
-	
-	      $("#local").modal("show");
-	      map.relayout();
-	   });
-	
-	   $(".btn-secondary").on("click", function() {
-	      $(".modal").hide();
-	   });
-   
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
 
-   
-   
-   
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+
+	$("#map").on("click", function() {
+
+		$("#local").modal("show");
+		//지도 사이즈 변경 후 재 출력
+		map.relayout();
+		//지도 사이즈 변경 후 위치 재 출력
+		map.setCenter(center);
+	});
+
+	$(".btn-secondary").on("click", function() {
+		$(".modal").hide();
+	});
+	
+	///////////////////////// 숙소위치보기 (지도)끝 ///////////////////////////
+	
+	
+	///////////////////////// 객실 이용안내  ///////////////////////////
+	
+	$(".information_Use").on("click", function() {
+		$("#infomationUse").modal("show");
+		//입력한 객실정보로 사진 열기.
+		var $this = $(this);  
+		console.log($this);
+	});
+	
+	///////////////////////// 객실 이용안내 끝 ///////////////////////////
 </script>
 
 

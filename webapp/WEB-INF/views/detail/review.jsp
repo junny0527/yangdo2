@@ -143,10 +143,10 @@
                 </div>
             </div>
             <div id="menu">
-                <button id="var">객실안내</button>
-                <button id="var1">숙소정보</button>
-                <button id="var2">리뷰</button>
-            </div>
+	            <a href="${pageContext.request.contextPath}/reservation"><button id="var">객실안내</button></a>
+	            <a href="${pageContext.request.contextPath}/infomation"><button id="var1">숙소정보</button></a>
+	            <a href="${pageContext.request.contextPath}/review"><button id="var2">리뷰</button></a>
+         </div>
         </div>
         
         <div id="review">

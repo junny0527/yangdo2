@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 @font-face {
     font-family: 'TTCrownMychewR';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
@@ -15,6 +16,10 @@ table, th, td, tr, textarea,
 button, form {
     margin: 0; padding: 0;
 }
+
+
+
+
 
 body {
    font-size: 12px;
@@ -66,12 +71,14 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /* ******************해더(로고  로그인,회원가입)************************** */
 /* 헤더 제목 */
 
+
 #header > #section > h1> a {
     font-family: 'TTCrownMychewR';
 }
 
 #header > #section > ul {
     font-family: 'TTCrownMychewR';
+    height:20px;
 }
 
 #header > #section {
@@ -91,8 +98,9 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
    color: #FFFFFF;
    font-size: 35px;
    font-weight: bold;
-   
+   margin-top: 10px;
 }
+
 /* 헤더 ul */
 #header ul {
    margin: 15px 0px 0px 0px;
@@ -127,13 +135,17 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     letter-spacing: -1px;
     color: #fff;
 }
-
  /* ******************메인************************** */
+
+#map1 {
+	width:100%;
+	height:400px;
+}
 
 #main {
     width:1024px;
     margin:auto;
-    margin-top:30px;
+    margin-top:29.5px;
 }
 
 #main > #content {
@@ -161,7 +173,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #main > #content > img {
     width:14px;
-    margin-left:19.5px;
+    margin-left:15.5px;
 }
 
 #main > #content > #map {
@@ -184,7 +196,8 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #content > #star > .starCount > img {
-    width:16px;
+    width:17px !important;
+    height:16px;
     padding-right:1px;
 }
 
@@ -209,22 +222,23 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #main > #gallery {
     display:flex;
     position:relative;
+    margin-top:1px;
 }
 
 #main > #gallery > #mainImg {
     display: flex;
-    width:545px;
-    height:330px;
+    width:519px;
+    height:339px;
     padding-top:10px;
 }
 
 #main > #gallery > #imgCount {
     display: flex;
     position:absolute;
-    top:90.2%;
-    left:41%;
-    width:100px;
-    height:20px;
+    top:88.7%;
+    left:40.3%;
+    width:106px;
+    height:31px !important;
     font-size:11px;
     font-weight: bold;
     color:#FFFFFF;
@@ -238,8 +252,8 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #main > #gallery > #subImg {
     display: flex;
-    width:100%;
-    margin-left:25px
+    width:488.95px !important;
+    margin-left:25px;
 }
 
 #main > #gallery > #subImg > ul {
@@ -282,14 +296,15 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     width:40px;
 }
 
+
 /* ************** 편의시설 및 서비스 기능************** */
 
 #iconBox {
     width:1024px;
-    height:185px;
+    height:218px;
     margin:auto;
     margin-top:20px;
-    padding-top:30px;
+    padding-top:31px;
     border-top:1px solid black;
     border-bottom:1px solid black;
     display: flex;
@@ -297,6 +312,9 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #iconBox > h4 {
+	
+	margin-top:10px;
+	margin-bottom:10px;
     font-size:20px;
     font-weight: bold;
 }
@@ -304,12 +322,13 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #iconBox > #container {
     font-size:20px;
     font-weight: bold;
+    height:58.6px;
     display: flex;
     justify-content: space-around; 
 }
 
 #iconBox > #container > div > span > img {
-    padding-top:10px;
+    padding-top:9.5px;
     width: 35px;
     display: flex;
 }
@@ -337,11 +356,11 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 /* ********* 메뉴바 ********* */
 #iconBox > #menu {
-    margin-top:30px;
+    margin-top:29px;
     margin-bottom:30px;
 }
 
-#iconBox > #menu > button {
+#iconBox > #menu > a > button {
     margin-right:30px;
     border-style:none;
     background-color: #FFFFFF;
@@ -349,8 +368,16 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     font-weight: bold;
 }
 
+#var {
+    color:black;
+}
+
 #var1 {
     color:rgb(230,28,81);
+}
+
+#var2 {
+    color:black;
 }
 
 .icon {
@@ -469,10 +496,9 @@ footer .link {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-inline-start: 40px;
 }
 
- footer > .align > ul > li {
+footer > .align > ul > li {
     list-style: none;
 }
 
@@ -511,13 +537,11 @@ footer .link li a {
 footer p {
     clear: both;
     padding: 37px 0 24px 0;
-    margin-left: 39px;
 }
 
 footer address {
     line-height: 22px;
     display: inline-block;
-    margin-left: 39px;
 }
 
 address, caption, em, var {

@@ -97,12 +97,12 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
    color: #FFFFFF;
    font-size: 35px;
    font-weight: bold;
-   margin-top: 10px !important;
+   margin-top: 10px;
 }
 
 /* 헤더 ul */
 #header ul {
-   margin: 15px 0px 0px 0px;
+   margin: 19px 0px 0px 0px;
    float: right;
    
 }
@@ -186,12 +186,14 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     border-style: none;
     font-size:14px;
     background-color: #FFFFFF;
+    margin-top:1.5px;
 }
 
 #main > #content #star {
     display: flex;
     align-items: center;
     height:20px;
+    margin-top:1.5px;
 }
 
 #content > #star > .starCount > img {
@@ -201,6 +203,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #content > #star > #starScore {
     padding-left:5px;
+    margin-top:2px;
     font-size:14px;
     font-weight: bold;
     height:100%;
@@ -224,18 +227,18 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #main > #gallery > #mainImg {
     display: flex;
-    width:545px;
-    height:330px;
+    width:519px;
+    height:329px;
     padding-top:10px;
 }
 
 #main > #gallery > #imgCount {
     display: flex;
     position:absolute;
-    top:86.6%;
-    left:40%;
+    top:88.7%;
+    left:40.3%;
     width:100px;
-    height:30px !important;
+    height:25px !important;
     font-size:11px;
     font-weight: bold;
     color:#FFFFFF;
@@ -250,7 +253,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #main > #gallery > #subImg {
     display: flex;
     width:100%;
-    margin-left:25px
+    margin-left:25px;
 }
 
 #main > #gallery > #subImg > ul {
@@ -299,7 +302,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     width:1024px;
     height:185px;
     margin:auto;
-    margin-top:20px;
+    margin-top:21px;
     padding-top:30px;
     border-top:1px solid black;
     border-bottom:1px solid black;
@@ -352,7 +355,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     margin-bottom:30px;
 }
 
-#iconBox > #menu > button {
+#iconBox > #menu > a > button {
     margin-right:30px;
     border-style:none;
     background-color: #FFFFFF;
@@ -363,6 +366,15 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #var {
     color:rgb(230,28,81);
 }
+
+#var1 {
+    color:black;
+}
+
+#var2 {
+    color:black;
+}
+
 
 .icon {
     width:45px;
@@ -615,12 +627,10 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     border-style: none;
 }
 
-
-/* ******************숙소정보************************** */
-
-
-
-
+/* ******************모달 (객실 이용안내)************************** */
+#modalInfo {
+	background-color:grey;
+}
 
 /* ******************푸터************************** */
 footer {
@@ -652,7 +662,6 @@ footer .link {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-inline-start: 40px;
 }
 
 footer > .align > ul > li {
@@ -694,13 +703,11 @@ footer .link li a {
 footer p {
     clear: both;
     padding: 37px 0 24px 0;
-    margin-left: 39px;
 }
 
 footer address {
     line-height: 22px;
     display: inline-block;
-    margin-left: 39px;
 }
 
 address, caption, em, var {
