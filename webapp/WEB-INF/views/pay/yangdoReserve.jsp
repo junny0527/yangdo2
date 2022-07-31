@@ -31,6 +31,9 @@
 					<div class="right" data-v-33033856="" data-v-f785cca6="">
 						<section class="info" data-v-33033856="">
 							<p class="name" data-v-33033856="">
+								<strong data-v-33033856="">예약번호</strong>NO.1234567
+							</p>
+							<p data-v-33033856="">
 								<strong data-v-33033856="">숙소이름</strong>양평 스마일카라반펜션
 							</p>
 							<p data-v-33033856="">
@@ -172,6 +175,12 @@
 							</p>
 							<p data-v-d63b628c="">
 								<input type="checkbox" name="checkOne" class="inp_chk_02"
+									data-v-d63b628c=""> <span onclick="pop_agree_01();"
+									data-v-d63b628c=""><i data-v-d63b628c="">숙소이용규칙 및
+										양도/환불규정 동의</i><b data-v-d63b628c=""> (필수)</b></span>
+							</p>
+							<p data-v-d63b628c="">
+								<input type="checkbox" name="checkOne" class="inp_chk_02"
 									data-v-d63b628c=""> <span onclick="pop_agree_02();"
 									data-v-d63b628c=""><i data-v-d63b628c="">개인정보 수집 및
 										이용 동의</i><b data-v-d63b628c=""> (필수)</b></span>
@@ -182,12 +191,7 @@
 									data-v-d63b628c=""><i data-v-d63b628c="">개인정보 제 3자
 										제공 동의</i><b data-v-d63b628c=""> (필수)</b></span>
 							</p>
-							<p class="guest_chk_area" data-v-d63b628c="">
-								<input type="checkbox" name="checkOne" class="inp_chk_02"
-									data-v-d63b628c=""> <span onclick="pop_agree_04();"
-									data-v-d63b628c=""><i data-v-d63b628c="">만 14세 이상 확인</i><b
-									data-v-d63b628c=""> (필수)</b></span>
-							</p>
+							
 						</section>
 					</div>
 				</div>
@@ -196,7 +200,7 @@
 			<!---->
 			<!---->
 		</div>
-	</div>
+	
 	<!-- 왼쪽끝 -->
 	<!-- //footer -->
 	<footer>
@@ -227,7 +231,7 @@
 
 		</div>
 	</footer>
-	
+</div>
 
 
 </body>

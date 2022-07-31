@@ -260,7 +260,7 @@ label {
 .reserve {
 	width: 1024px;
 	margin: 0 auto;
-	padding-top: 72px;
+	padding-top: 50px;
 	font-size: 16px;
 	color: rgba(0, 0, 0, 0.87);
 }
@@ -368,7 +368,7 @@ label {
 .reserve .left {
 	float: left;
 	width: 564px;
-	margin: 40px 88px 90px 0;
+	margin: 40px 88px 200px 0;
 }
 
 info_chkin {
