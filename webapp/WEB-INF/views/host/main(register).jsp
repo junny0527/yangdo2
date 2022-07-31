@@ -35,7 +35,7 @@
 <!-- 펜션어때 헤더 -->
 
 <!-- nav -->
-<div id = "nav">
+<div id = "nav" class = "center-block">
 	<ul>
 		<li><a href="">예약관리</a>
 			<!-- 
@@ -109,8 +109,8 @@
 	</div>
 	
 	
-	<div id = "salary">
-		<div id = "roomsalary">
+	<div id = "salary" class = "center-block clearfix">
+		<div id = "roomsalary" class = "pull-left">
 			<a href = ""><span>예약 객실 판매></span></a>
 			<span>
 				<ul>
@@ -126,7 +126,7 @@
 			</span>
 		</div>
 		
-		<div id = "reviews">
+		<div id = "reviews" class = "pull-right">
 			<a href = ""><span>등록된 리뷰 수(총 N개)</span></a>
 			<span>
 				<ul>

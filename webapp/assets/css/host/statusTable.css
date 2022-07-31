@@ -5,7 +5,7 @@
 }
 
 #status{
-	width: 830px;
+	width: 1024px;
 	background-color : #FFFFFF;
 	margin-top: 20px;
 	margin-left: auto;
@@ -21,7 +21,7 @@
 }
 
 #statustable{
-	min-width : 830px;
+	min-width : 916px;
 	margin : auto;
 	margin-bottom : 40px;
 	font-size : 18px;
@@ -30,6 +30,7 @@
 #statustable thead tr th{
 	padding-top : 10px;
 	padding-bottom : 10px;
+	text-align: center;
 }
 
 #statustable tbody tr td{

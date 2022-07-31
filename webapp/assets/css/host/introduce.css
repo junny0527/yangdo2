@@ -1,41 +1,36 @@
 @charset "UTF-8";
 
-.form-horizontal{
-	width: 833px;
-	background-color:#FFFFFF;
-	margin-top: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 20px;
-	border-radius: 5px;
-	box-shadow: -1px 1px 2px #aaa;
-}
 #detail{
 	text-align: left;
 	font-size:15px;
 	font-weight: bold;
 }
+
 .backgrou{
 	background-color: #EAEAEA;
 	border-radius: 6px;
 }
+
 .btn-deleete{
 	float: right;
 	color: #fff;
 	background-color: #F2114C;
 }
-#room-images> li{
+
+#house-images> li{
 	float:left;
 	width: 200px;
 	margin:10px
 }
 
 
-#room-images > li > div >img{
+#house-images > li > div >img{
 	width: 200px;
 }
+
 #tooltip{
-	text-align: center;
+	width: 20px;
+	height: 20px;
 }
 #intro{
 	border : 1px solid #ddd;
@@ -49,25 +44,21 @@
 }
 
 .guest-title-layer{
-	margin: 0px 10px 20px 24px;
 	text-align: left;
-	font-size:15px;
+	font-size: 14px;
 	font-weight: bold;
+	margin-left: 20px;
+	padding-bottom : 15px;
+}
+
+.guest-title-layer > ul > li{
+	margin-top: 10px;
+	margin-bottom: 5px;
 }
 
 .guest-h3{
 	text-align: left;
-	margin: 0px 0px 0px 24px;
-}
-
-.table{
-	width: 810px;
-	display: inline-block;
-	margin-top: 24px;
-	margin-left: 24px;
-	margin-right: 24px;
-	background-color: #fff;
-	border: 0;
+	margin: 10px 0px 0px 24px;
 }
 
 .table tbody tr td div.form-layer{
@@ -185,7 +176,7 @@ div.select-style.small-size{
 
 .form-control{
 	display: block;
-	width: 714px;
+	width: 750px;
 	padding: 6px 12px;
 	font-size: 14px;
 	line-height: 1.42857143;
@@ -231,25 +222,10 @@ div.select-style.small-size{
 	margin-right: -97px;
 }
 
-.btn{
-	display: inline-block;
-	padding: 6px 12px;
-	margin-bottom: 0;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	touch-action: manipulation;
-	cursor: pointer;
-	user-select: none;
-	background-image: none;
-	border: 1px solid transparent;
-	border-radius: 4px;
-}
-
 .submit-layer .btn-submit{
 	width: 177px;
-	height: 48px;
-	font-size: 18px;
+	height: 60px;
+	font-size: 16px;
 	line-height: 0;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -272,4 +248,68 @@ div.select-style.small-size{
 .icon-label{
 	width: 120px;
 	font-size: 13px;
+}
+
+#choice{
+	margin-top: 5px;
+	margin-left : 15px;
+}
+
+#addimage{
+	margin-left : 10px;
+}
+
+.instruction{
+	list-style-type : disc;
+	margin-left : 20px;
+}
+
+textarea::placeholder {
+	padding-top: 50px;	
+}
+
+.order{
+	text-align: left;
+	margin-top: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+}
+
+.writeform{
+	width: 750px;
+}
+
+textarea{
+	width: 750px;
+	resize: none;
+}
+
+#design{
+	margin-left: 20px;
+}
+
+#visitpath{
+	margin-top: 10px;
+}
+
+#legalname>input{
+	pointer-events: none;
+	border: none;
+	text-align: center;
+}
+
+#legalname>input:first-of-type{
+	width: 60px;
+}
+
+#legalname>input:last-of-type{
+	width: 150px;
+}
+
+#firstline{
+	border-top: 0px;
+}
+
+.resize{
+	margin-left: 40px;
 }

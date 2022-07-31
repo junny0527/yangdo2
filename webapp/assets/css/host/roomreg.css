@@ -1,0 +1,441 @@
+@charset "UTF-8";
+/* 객실추가 버튼 */
+#moreroom{
+	background-color: #f2114c;
+	color : white;
+	text-align: center;
+}
+
+.nav-tabs{
+	padding-top: 20px;
+	margin-left: 20px;
+}
+
+.nav-tabs>li>a{
+	width: 125px;
+    height: 48px;
+    background-color: #fff;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.56);
+    font-size: 14px;
+    border: 1px solid #ddd;
+    margin-right: 12px;
+    padding-top: 15px;
+    padding-left: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	text-align: center;
+}
+
+.guest-title-layer{
+	border-left : 1px solid #ddd;
+	border-right : 1px solid #ddd;
+	border-bottom : 1px solid #ddd;
+	box-shadow: rgb(170, 170, 170) -1px 1px 5px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	height: 180px;
+	text-align: left;
+	font-size: 14px;
+	margin-top: -20px;
+	margin-left: 20px;
+	padding-bottom : 15px;
+	background-color: #ffffff;
+}
+
+.guest-title-layer > ul{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.guest-title-layer > ul > li:first-of-type{
+	padding-top: 20px;
+}
+
+.guest-title-layer > ul > li{
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+
+
+/* 객실정보 테이블 */
+.form-control {
+    display: block;
+    width: 328px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-horizontal .checkbox, .form-horizontal .checkbox-inline, .form-horizontal .radio, .form-horizontal .radio-inline {
+    padding-top: 7px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.input-sm {
+	width: 150px;
+    height: 32px !important;
+    padding: 9px !important;
+    font-size: 14px !important;
+    line-height: 32px !important;
+    border-radius: 3px !important;
+}
+
+.radio-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-right: 10px;
+    font-weight: 400;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.select-style{
+	border : 1px solid #ccc;
+	border-radius: 3px;
+	overflow: hidden;
+	background: #fff no-repeat 100% 50%;
+}
+
+.select-style select{
+    width: 100%;
+    padding: 10px 5px 10px 5px;
+    font-size: 14px;
+    border: none;
+    background-color: transparent;
+    background-image: none;
+}
+
+td>div>span>div .room_type{
+	height: 32px;
+	padding-left: 10px;
+	font-size: 14px;
+	border: none;
+	background-color:transparent;
+	background-image: none;
+}
+
+.room-copy-layer{
+	text-align: right;
+	padding-top: 10px;
+	margin-bottom: 20px;
+}
+
+.room-price{
+	background-color: #e2e2e2;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	padding-bottom: 15px;
+	width: 97%;
+}
+
+.room-price-wrap{
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 20px;
+	padding: 20px 0;
+	border: 1px solid #eee;
+	border-radius: 5px;
+}
+
+
+.table tbody tr td div.form-layer{
+	width: auto;
+	display: table;
+	margin: 0px 0px 12px 0px;	
+}
+
+.table tbody tr td div.form-layer-text{
+	width: auto;
+	display: table;
+	height: 20px;
+}
+
+.table tbody tr th{
+	width: 136px;
+	background-color: #eaeaea;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: 500;
+	line-height: 1.57;
+	color: #000000;
+	min-height: 10px;
+	vertical-align: middle;
+}
+
+.table tbody tr td{
+	padding-top: 20px;
+}
+
+.table table-bordered tbody tr td{
+	vertical-align: middle;
+	border: 1px solid #ddd;
+	height: auto;
+}
+
+.table tbody tr td span.form-title{
+	clear: both;
+	width: 95px;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.57;
+	color: rbga(0,0,0,0.87);
+	display: table-cell;
+	margin-top: 10px;
+	margin-right: 24px;
+	padding-left: 20px;
+	text-align: left;
+}
+
+.table tbody tr td span.form-body{
+	width: auto;
+	height: 48px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.57;
+	color: rbga(0,0,0,0.87);
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.table .label-layer label:first-of-type{
+	margin-right: 20px;
+	font-weight: normal;
+	color: rgba(0,0,0,0.87);
+	width: 80px;
+	font-size: 14px;
+}
+
+.table .label-layer label:last-of-type{
+	margin-right: 20px;
+	font-weight: normal;
+	color: rgba(0,0,0,0.87);
+	width: 80px;
+	font-size: 14px;
+}
+
+
+.bd_r_none{
+	border-left: 0px;
+}
+
+/* 삭제 저장버튼 */
+.submit-layer {
+    width: 980px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 8px 0 32px 0;
+}
+
+.submit-layer .btn-submit {
+    width: 177px;
+    margin-left: 20px;
+  
+}
+
+/* 저장버튼 */
+.btn-guest-room {
+    height: 60px!important;
+    font-size: 16px!important;
+    border-radius: 8px!important;
+    line-height: 1.2!important;
+}
+
+.btn-yeogi {
+    background-color: #f2114c;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* 삭제버튼 */
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.instruction {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+#design{
+	margin-left : 20px;
+}
+
+#addroom{
+	width: 1024px;
+    height: 300px;
+    background-color: #ebebeb;
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    box-shadow: -1px 1px 2px #aaa;
+}
+
+.description{
+	width: 100%;
+	padding-left : 10px;
+	margin-bottom: 10px;
+	height: 12px;
+	font-size : 13px;
+	text-align: left;
+	line-height: 1.4;
+	color: rbga(0,0,0,0.56);
+}
+
+#tooltip{
+	width: 20px;
+	height: 20px;
+}
+
+.border_right{
+	border-right: 1px solid #ddd;
+}
+
+.border_bottom{
+	border-bottom: 1px solid #ddd;
+}
+
+#detail{
+	text-align: left;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left : 20px;
+}
+
+.backgrou{
+	background-color: #EAEAEA;
+	border-radius: 6px;
+}
+
+#room-images> li{
+	float:left;
+	width: 200px;
+	margin:10px
+}
+
+
+#room-images > li > div >img{
+	width: 200px;
+}
+
+.btn-deleete{
+	float: right;
+	color: #fff;
+	background-color: #F2114C;
+}
+
+#changeimage{
+	float: left;
+}
+
+#addimage{
+	margin-left: 10px;
+}
+
+.order{
+    text-align: left;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+.re-size{
+	width: 450px;
+}
+
+.btn_th_link{
+	display: inline-block;
+    margin-top: 10px;
+    padding: 7px 9px;
+    background: rgba(0, 0, 0, 0.54);
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: normal;
+    color: #fff;
+}
+
+#priceinfo{
+	margin-left : 10px;
+}
+
+#pricewidth{
+	width: 700px;
+}
+
+.chk_date{
+	text-align: center;
+}
+
+.checkbox-inline{
+	margin-right: 5px;
+}
+
+.form-inline{
+	margin-left: 30px;
+}
+
+.empty_holiday{
+	margin-left: 20px;
+}
+
+#datespace{
+	width: 150px;
+	font-size : 10px;
+}
+
+.addprice{
+	color: #f2114c;
+}
+
+.addpricestyle{
+	float: right;
+	margin-right: -2px;
+	margin-bottom: 15px;
+	
+}
+
+#additionalpeople{
+	margin-top: 10px;
+}
+
+#additionalpeopledivide{
+	width: 150px;
+	margin-left: 20px;
+	float: left;
+}
+
+#additionalpeopleprice{
+	float: right;
+}
+
+#additionalpeopleprice > input{
+	margin-left : 10px;
+	height: 40px;
+	width: 200px;
+}
+
+.resize{
+	margin-left: 40px;
+}
+

@@ -33,7 +33,7 @@
 <!-- 펜션어때 헤더 -->
 
 <!-- nav -->
-<div id = "nav">
+<div id = "nav" class = "center-block">
 	<ul>
 		<li><a href="">예약관리</a>
 			<!-- 
@@ -72,19 +72,21 @@
 	<div id = "register">
 		<p>아래의 정보를 모두 입력하고 숙소 등록을 완료하세요.</p>
 		<br>
-		<a href=""><span>업체 정보 등록 ></span></a>
+		<a href="${pageContext.request.contextPath}/host/mypagereg"><span>업체 정보 등록 ></span></a>
 	</div>
 	
-	<div id = "process">
+	<div id = "process" class = "center-block">
 		<ul>
 			<li class = "imgs">
-				<a href="">
+				<a href="${pageContext.request.contextPath}/host/mypagereg">
 					<span><img src="${pageContext.request.contextPath}/assets/img/mypage.png" class = "active"></span>
 					<span>마이페이지 입력</span>
 				</a>
 			</li>
 			<li class = "prog">
 				<br>
+				<span class = "do">&nbsp;</span>
+				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -110,6 +112,8 @@
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
+				<span class = "do">&nbsp;</span>
+				<span>&nbsp;</span>
 			</li>
 			<li class = "imgs">
 				<a href="">
@@ -127,6 +131,8 @@
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
+				<span class = "do">&nbsp;</span>
+				<span>&nbsp;</span>
 			</li>
 			<li class = "imgs">
 				<a href="">
@@ -136,9 +142,8 @@
 			</li>
 		</ul>
 	</div>
-	
-	<div id = "salary">
-		<div id = "roomsalary">
+	<div id = "salary" class = "center-block clearfix">
+		<div id = "roomsalary" class = "pull-left">
 			<a href = ""><span>예약 객실 판매></span></a>
 			<span>
 				<ul>
@@ -154,7 +159,7 @@
 			</span>
 		</div>
 		
-		<div id = "reviews">
+		<div id = "reviews" class = "pull-right">
 			<a href = ""><span>등록된 리뷰 수(총 N개)</span></a>
 			<span>
 				<ul>
@@ -170,7 +175,6 @@
 			</span>
 		</div>
 	</div>
-	
 	<div id = "notice">
 		<div id = "notice-header" class = "clearfix">
 			<a href="">

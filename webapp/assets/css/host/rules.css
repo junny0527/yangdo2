@@ -1,24 +1,5 @@
 @charset "UTF-8";
 
-.form-horizontal{
-	width: 833px;
-	background-color:#FFFFFF;
-	margin-top: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 5px;
-	box-shadow: -1px 1px 2px #aaa;
-}
-
-.table{
-	width: 810px;
-	display: inline-block;
-	margin-top: 24px;
-	margin-left: 24px;
-	margin-right: 24px;
-	background-color: #fff;
-	border: 0;
-}
 
 .table tbody tr td div.form-layer{
 	width: auto;
@@ -182,8 +163,8 @@ div.select-style.small-size{
 
 .submit-layer .btn-submit{
 	width: 177px;
-	height: 48px;
-	font-size: 18px;
+	height: 60px;
+	font-size: 16px;
 	line-height: 0;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -298,7 +279,25 @@ hr{
 }
 
 #rules{
-	width: 600px;
+	width: 650px;
 	margin-left: 15px;
 	margin-bottom: 10px;
+	text-align: center;
+}
+
+#rateguide{
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.order{
+	margin-left: 20px;
+}
+
+.form-horizontal > div > ul > li{
+	font-weight: bold;
+}
+
+.resize{
+	margin-left: 40px;
 }

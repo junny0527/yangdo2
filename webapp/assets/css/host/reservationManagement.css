@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+#nav{
+	height:100%;
+}
+
+#nav >#aside{
+	width:230px;
+	height: 100%;
+	padding-top: 30px;
+	margin: 0px 7px 0px 0px;
+}
+
+#nav >#aside > ul{
+	display:inline-block;
+	width:230px;
+	margin-top:30px;
+	padding: auto;
+	border: 1px solid #AAA;
+	border-radius: 10px;
+}
+
+#nav>#aside>ul >li{
+	display: block;
+	padding-top: 0px;
+	margin: 10px;
+	width : 210px;
+	height : 34px;
+	font-size: 18px;
+	font-weight: normal;
+	text-align : center;
+	color : rgba(0,0,0,0.56);
+}
+
+#nav >#aside> ul >li > button{
+	width: 200px;
+	color: #FFF;
+	background-color: #00bfa5;;
+}
+
+#nav > #content {
+	
+}
+#nav > #content> #month {
+	margin-top: 100px;
+	width: 780px;
+}
+#nav > #content >#tCalendar{
+	width: 780px;
+}
