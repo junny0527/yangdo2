@@ -60,12 +60,12 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 
 						<section class="top_area">
 							<strong>내 정보 수정</strong>
-							<div class="login_info">
+							<%-- <div class="login_info">
 								<div>
 									<img src="${pageContext.request.contextPath}/assets/image/mypage/ico_22.png" alt="">
 								</div>
 								<p>Naver 회원으로 로그인</p>
-							</div>
+							</div> --%>
 
 							<div class="pw_input">
 								<div class="pw_input__title">

@@ -155,17 +155,19 @@ header section h1 {
 	font-size: 25px; font-weight: bold; margin: 0;
 }
 
-/* header section h1 a {
+header section h1 a {
 	font-family: "TTCrownMychewR";
-} */
+}
+
 header section .btn_menu {
 	display: none;
 }
 
 /* ***************네비게이션 (NAV BAR) //*************** */
-/* header section ul {
+header section ul {
 	font-family: "TTCrownMychewR";
-} */
+}
+
 .pc .gnb_pc {
 	display: inline-block; position: absolute; top: 27px; right: 31px;
 }
@@ -184,9 +186,8 @@ header section .btn_menu {
 }
 
 .gnb_pc li button {
-	/* font-family: "TTCrownMychewR"; */
-	border: none; padding: 0; background: none; font-size: 20px; line-height: 1;
-	color: rgb(255, 255, 255); letter-spacing: 0;
+	font-family: "TTCrownMychewR"; border: none; padding: 0; background: none; font-size: 20px;
+	line-height: 1; color: rgb(255, 255, 255); letter-spacing: 0;
 }
 
 .gnb_pc li ul {
@@ -300,7 +301,7 @@ header section .btn_menu {
 }
 /* ***************sub_wrap navigation//*************** */
 .sub_wrap nav {
-	display: block; float: left; width: 238px; border: 2px solid rgb(180, 180, 180);
+	display: block; float: left; width: 238px; border: solid 1px #ccc;
 }
 
 .sub_wrap nav ul li {
@@ -312,15 +313,28 @@ header section .btn_menu {
 }
 
 .sub_wrap nav ul li a.active {
-	font-size: 16px; font-weight: bold; color: #f7323f;
+	font-size: 16px; font-weight: bold; color: rgb(230, 28, 81);
 }
+
+.sub_wrap .sub_title {
+	position: relative; height: 44px; background: #fff; font-size: 18px; line-height: 44px;
+	text-align: center
+}
+
+.sub_wrap .sub_title button {
+	position: absolute; top: 0; right: 16px; height: 44px; padding: 0; border: none; background: none;
+	font-size: 14px; font-weight: bold
+}
+
+
+
 /* ***************sidenav top // 내용 정리 필요!! //*************** */
 .sidenav-top, .sidenav-bot {
 	margin: 0 auto; width: 100%; padding: 10px; display: block;
 }
 
 .sidenav-top-info {
-	line-height: 2.2em; font-weight: bold; border: 2px solid rgb(180, 180, 180); text-align: center;
+	line-height: 2.2em; font-weight: bold; display: block; border: solid 1px #ccc; text-align: center;
 }
 
 .sidenav-top-point {
@@ -329,8 +343,7 @@ header section .btn_menu {
 
 .sidenav-top-point, .sidenav-top-ing {
 	position: fixed; width: 100px; line-height: 1.75em; float: left; background-color: #f7323f;
-	border: 2px solid rgb(180, 180, 180); text-align: center; font-weight: bold;
-	color: #fff !important;
+	border: solid 1px #ccc; text-align: center; font-weight: bold; color: #fff !important;
 }
 
 /* ***************sub_wrap contents area//*************** */

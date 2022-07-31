@@ -29,4 +29,11 @@ public class HeewonController {
 
 		return "mypage/myreservation";
 	}
+
+	@RequestMapping(value = "/reserved", method = { RequestMethod.GET, RequestMethod.POST })
+	public String reserved() {
+		System.out.println("MyPageController>reserved()");
+
+		return "mypage/reservedList";
+	}
 }
