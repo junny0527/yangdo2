@@ -64,13 +64,20 @@ a:active {
 
 /* ******************레이아웃************************** */
 #wrap {
+	position: relative;
 	margin: 0px auto;
 	width: 100%;
 	height: 100%;
 }
 
 #wrap>#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	padding: 10px 0px 10px 0px;
+	margin-bottom: 30px;
+	z-index: 11;
 	background-color: #00bfa5;
 }
 
@@ -82,6 +89,8 @@ a:active {
 
 /********************* 헤더 (nav)*********************/
 #nav{
+	padding-top: 80px;
+	margin-bottom: 100px;
     width: 1024px;
     height: 100px;
 }

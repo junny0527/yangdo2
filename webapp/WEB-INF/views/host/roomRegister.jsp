@@ -85,6 +85,8 @@
 				<span>&nbsp;</span>
 				<span class="do">&nbsp;</span>
 				<span>&nbsp;</span>
+				<span class="do">&nbsp;</span>
+				<span>&nbsp;</span>
 			</li>
 			<li class="imgs">
 				<a href="${pageContext.request.contextPath}/host/introreg"><span><img src="${pageContext.request.contextPath}/assets/img/introduce.png"></span>
@@ -100,6 +102,8 @@
 				<span>&nbsp;</span>
 				<span class="do">&nbsp;</span>
 				<span>&nbsp;</span>
+				<span class="do">&nbsp;</span>
+				<span>&nbsp;</span>
 			</li>
 			<li class="imgs">
 				<a href="${pageContext.request.contextPath}/host/rules"><span><img src="${pageContext.request.contextPath}/assets/img/rules.png"></span>
@@ -107,6 +111,8 @@
 			</li>
 			<li class="prog">
 				<br>
+				<span class="do">&nbsp;</span>
+				<span>&nbsp;</span>
 				<span class="do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class="do">&nbsp;</span>
