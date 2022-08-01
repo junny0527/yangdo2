@@ -10,41 +10,41 @@ public class JaehwanController {
 	
 	@RequestMapping(value="mypagereg", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mypage() {
-		return "/mypageRegister";
+		return "/host/mypageRegister";
 	}
 	
 	@RequestMapping(value="newhost", method = {RequestMethod.GET, RequestMethod.POST})
 	public String newhost() {
-		return "/mainNoRegister";
+		return "/host/mainNoRegister";
 	}
 	
 	@RequestMapping(value="main", method= {RequestMethod.GET, RequestMethod.POST})
 	public String main() {
-		return "/mainRegister";
+		return "/host/mainRegister";
 	}
 	
 	@RequestMapping(value="introreg", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introreg() {
-		return "/introduce";
+		return "/host/introduce";
 	}
 	
 	@RequestMapping(value="introregopt", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introregopt(){
-		return "/introduce2";
+		return "/host/introduce2";
 	}
 	
 	@RequestMapping(value="rules", method= {RequestMethod.GET, RequestMethod.POST})
 	public String rules() {
-		return "/rules";
+		return "/host/rules";
 	}
 	
 	@RequestMapping(value="roomreg", method={RequestMethod.GET, RequestMethod.POST})
 	public String roomreg() {
-		return "/roomRegister";
+		return "/host/roomRegister";
 	}
 	
 	@RequestMapping(value="reservemanage", method= {RequestMethod.GET, RequestMethod.POST})
 	public String reservationManagement() {
-		return "/reservationManagement";
+		return "/host/reservationManagement";
 	}
 }
