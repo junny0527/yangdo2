@@ -12,15 +12,15 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mypageRegister.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/mypageRegister.css">
 
 
 
 <body>
 <!-- header -->
-<c:import url="/WEB-INF/views/includes/header(host).jsp"></c:import>
+<c:import url="${pageContext.request.contextPath}/views/includes/hostHeader.jsp"></c:import>
 <!-- header -->
 
 <div id = "container">
@@ -28,7 +28,7 @@
 		<ul>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/mypagereg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/mypage.png" class = "active"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png" class = "active"></span>
 					<span>마이페이지 입력</span>
 				</a>
 			</li>
@@ -47,7 +47,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/introreg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/introduce.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png"></span>
 					<span>소개작성</span>
 				</a>
 			</li>
@@ -66,7 +66,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/rules">
-					<span><img src="${pageContext.request.contextPath}/assets/img/rules.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/rules.png"></span>
 					<span>이용규칙 관리</span>
 				</a>
 			</li>
@@ -85,7 +85,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/roomreg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/room.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/room.png"></span>
 					<span>객실 관리</span>
 				</a>
 			</li>
@@ -369,7 +369,7 @@
 	</div>
 
 <!-- footer -->
-<c:import url="/WEB-INF/views/includes/footer(host).jsp"></c:import>
+<c:import url="${pageContext.request.contextPath}/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
 
 </body>

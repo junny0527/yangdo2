@@ -12,9 +12,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/roomreg.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/roomreg.css">
 
 <body>
 <!-- 펜션어때 헤더 -->
@@ -24,8 +24,8 @@
 		<div id="section">
 			<h1><a href="">양도어때HOST</a></h1>
 			<ul class="clearfix">
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/mypageIcon.png"> 마이페이지</a></li>
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/logout.png"> 로그아웃</a></li>
+				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/mypageIcon.png"> 마이페이지</a></li>
+				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/logout.png"> 로그아웃</a></li>
 			</ul>
 		</div>
 	</div>
@@ -72,7 +72,7 @@
 	<div id = "process" class = "center-block">
 		<ul>
 			<li class="imgs">
-				<a href="${pageContext.request.contextPath}/host/mypagereg"><span><img src="${pageContext.request.contextPath}/assets/img/mypage.png"></span>
+				<a href="${pageContext.request.contextPath}/host/mypagereg"><span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png"></span>
 				<span>마이페이지 입력</span></a>
 			</li>
 			<li class="prog">
@@ -89,7 +89,7 @@
 				<span>&nbsp;</span>
 			</li>
 			<li class="imgs">
-				<a href="${pageContext.request.contextPath}/host/introreg"><span><img src="${pageContext.request.contextPath}/assets/img/introduce.png"></span>
+				<a href="${pageContext.request.contextPath}/host/introreg"><span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png"></span>
 				<span>소개작성</span></a>
 			</li>
 			<li class="prog">
@@ -106,7 +106,7 @@
 				<span>&nbsp;</span>
 			</li>
 			<li class="imgs">
-				<a href="${pageContext.request.contextPath}/host/rules"><span><img src="${pageContext.request.contextPath}/assets/img/rules.png"></span>
+				<a href="${pageContext.request.contextPath}/host/rules"><span><img src="${pageContext.request.contextPath}/assets/image/host/rules.png"></span>
 				<span>이용규칙 관리</span></a>
 			</li>
 			<li class="prog">
@@ -123,7 +123,7 @@
 				<span>&nbsp;</span>
 			</li>
 			<li class="imgs">
-				<a href="${pageContext.request.contextPath}/host/roomreg"><span><img src="${pageContext.request.contextPath}/assets/img/room.png" class="active"></span>
+				<a href="${pageContext.request.contextPath}/host/roomreg"><span><img src="${pageContext.request.contextPath}/assets/image/host/room.png" class="active"></span>
 				<span>객실 관리</span></a>
 			</li>
 		</ul>
@@ -228,7 +228,7 @@
 									<li class="backgrou">
 										<input type="hidden" name="adino[]" value="235381">
 										<div>
-											<img data-adino="235381" src="${pageContext.request.contextPath}/assets/img/logout.png" class="img-rounded">
+											<img data-adino="235381" src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
 										</div>
 										<button id = "changeimage" data-role="img-changer" data-adino="235381" data-ano="3309" data-armgno="0" data-type="8" type="button" class="btn btn-xs btn-success">변경</button>
 										<button id = "deleteimage" data-role="img-delete" data-adino="235381" type="button" class="btn btn-xs btn-deleete">삭제</button>
@@ -243,7 +243,7 @@
 						</td>
 						<td class = "border_right">
 							<a href="javascript:void(0)" data-toggle="popover" data-original-title="" title="">
-								<img id="tooltip" src="${pageContext.request.contextPath}/assets/img/tooltip.png">
+								<img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png">
 							</a>
 						</td>
 					</tr>

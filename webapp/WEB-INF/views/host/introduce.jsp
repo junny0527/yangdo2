@@ -12,13 +12,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/introduce.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/introduce.css">
 
 <body>
 <!-- header -->
-<c:import url="/WEB-INF/views/includes/header(host).jsp"></c:import>
+<c:import url="${pageContext.request.contextPath}/views/includes/hostHeader.jsp"></c:import>
 <!-- header -->
 
 <div id = "container">
@@ -27,7 +27,7 @@
 		<ul>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/mypagereg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/mypage.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png"></span>
 					<span>마이페이지 입력</span>
 				</a>
 			</li>
@@ -46,7 +46,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/introreg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/introduce.png" class = "active"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png" class = "active"></span>
 					<span>소개작성</span>
 				</a>
 			</li>
@@ -65,7 +65,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/rules">
-					<span><img src="${pageContext.request.contextPath}/assets/img/rules.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/rules.png"></span>
 					<span>이용규칙 관리</span>
 				</a>
 			</li>
@@ -84,7 +84,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/roomreg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/room.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/room.png"></span>
 					<span>객실 관리</span>
 				</a>
 			</li>
@@ -143,7 +143,7 @@
 								</td>
 								<td id = "firstline">
 									<a href="javascript:void(0)" data-toggle="popover" data-original-title="" title="">
-										<img id="tooltip" src="${pageContext.request.contextPath}/assets/img/tooltip.png">
+										<img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png">
 									</a>
 								</td>
 							</tr>
@@ -166,7 +166,7 @@
 											<li class="backgrou">
 												<input type="hidden" name="adino[]" value="235381">
 												<div>
-													<img data-adino="235381" src="${pageContext.request.contextPath}/assets/img/logout.png" class="img-rounded">
+													<img data-adino="235381" src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
 												</div>
 												<button id = "changeimage" data-role="img-changer" data-adino="235381" data-ano="3309" data-armgno="0" data-type="8" type="button" class="btn btn-xs btn-success">변경</button>
 												<button id = "deleteimage" data-role="img-delete" data-adino="235381" type="button" class="btn btn-xs btn-deleete">삭제</button>
@@ -179,9 +179,9 @@
 									</div>
 								</td>
 								
-								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/img/tooltip.png"></a>
+								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
 									<div class="hide">
-										<span><img src="${pageContext.request.contextPath}/assets/img/tooltip.png"></span>
+										<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
 									</div>
 								</td>
 							</tr>
@@ -204,9 +204,9 @@
 										<label for="theme8" class="checkbox-inline icon-label"> <input type="checkbox" id="theme8" name="ad_theme[]" value="8">흡연부스</label>
 									</div>
 								</td>
-								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/img/tooltip.png"></a>
+								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
 									<div class="hide">
-										<span><img src="${pageContext.request.contextPath}/assets/img/tooltip.png"></span>
+										<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
 									</div></td>
 							</tr>
 							<tr id="target_host1">
@@ -227,9 +227,9 @@
 										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="ad_theme[]" value="19">취사가능</label>
 									</div>
 								</td>
-								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/img/tooltip.png"></a>
+								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
 									<div class="hide">
-										<span><img src="${pageContext.request.contextPath}/assets/img/tooltip.png"></span>
+										<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
 									</div></td>
 							</tr>
 							<!--// 편의시설/서비스 안내 -->
@@ -316,7 +316,7 @@
 	</div>
 
 <!-- footer -->
-<c:import url="/WEB-INF/views/includes/footer(host).jsp"></c:import>
+<c:import url="${pageContext.request.contextPath}/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
 	
 <!-- 이미지 업로드 modal -->

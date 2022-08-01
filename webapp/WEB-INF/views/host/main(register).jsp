@@ -11,9 +11,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/statusTable.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/statusTable.css">
 
 
 
@@ -26,8 +26,8 @@
 			<h1><a href="">양도어때HOST</a></h1>
 			<a href=""><img alt="" src=""></a>
 			<ul class="clearfix">
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/mypageIcon.png"> 마이페이지</a></li>
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/logout.png"> 로그아웃</a></li>
+				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/host/mypageIcon.png"> 마이페이지</a></li>
+				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/logout.png"> 로그아웃</a></li>
 			</ul>
 		</div>
 	</div>

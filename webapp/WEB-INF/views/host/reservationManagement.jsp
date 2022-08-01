@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/reservationManagement.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/reservationManagement.css">
 <body>
 	<div id="wrap">
 		<div id="header" class="clearfix">
@@ -18,8 +18,8 @@
 					<a href="">양도어때HOST</a>
 				</h1>
 				<ul class="clearfix">
-					<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/mypageIcon.png"> 마이페이지</a></li>
-					<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/logout.png"> 로그아웃</a></li>
+					<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/mypageIcon.png"> 마이페이지</a></li>
+					<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/logout.png"> 로그아웃</a></li>
 				</ul>
 			</div>
 		</div>

@@ -12,8 +12,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
 
 
 <body>
@@ -24,8 +24,8 @@
 		<div id="section">
 			<h1><a href="">양도어때HOST</a></h1>
 			<ul class="clearfix">
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/mypageIcon.png"> 마이페이지</a></li>
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/img/logout.png"> 로그아웃</a></li>
+				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/mypageIcon.png"> 마이페이지</a></li>
+				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/logout.png"> 로그아웃</a></li>
 			</ul>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
 		<ul>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/mypagereg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/mypage.png" class = "active"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png" class = "active"></span>
 					<span>마이페이지 입력</span>
 				</a>
 			</li>
@@ -98,7 +98,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="">
-					<span><img src="${pageContext.request.contextPath}/assets/img/introduce.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png"></span>
 					<span>소개작성</span>
 				</a>
 			</li>
@@ -117,7 +117,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="">
-					<span><img src="${pageContext.request.contextPath}/assets/img/rules.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/rules.png"></span>
 					<span>이용규칙 관리</span>
 				</a>
 			</li>
@@ -136,7 +136,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="">
-					<span><img src="${pageContext.request.contextPath}/assets/img/room.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/room.png"></span>
 					<span>객실 관리</span>
 				</a>
 			</li>

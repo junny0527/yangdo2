@@ -12,15 +12,15 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/rules.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/rules.css">
 
 
 <body>
 
 <!-- header -->
-<c:import url="/WEB-INF/views/includes/header(host).jsp"></c:import>
+<c:import url="${pageContext.request.contextPath}/views/includes/hostHeader.jsp"></c:import>
 <!-- header -->
 
 <div id = "container">
@@ -29,7 +29,7 @@
 		<ul>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/mypagereg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/mypage.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png"></span>
 					<span>마이페이지 입력</span>
 				</a>
 			</li>
@@ -48,7 +48,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/introreg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/introduce.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png"></span>
 					<span>소개작성</span>
 				</a>
 			</li>
@@ -67,7 +67,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/rules">
-					<span><img src="${pageContext.request.contextPath}/assets/img/rules.png" class = "active"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/rules.png" class = "active"></span>
 					<span>이용규칙 관리</span>
 				</a>
 			</li>
@@ -86,7 +86,7 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/roomreg">
-					<span><img src="${pageContext.request.contextPath}/assets/img/room.png"></span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/room.png"></span>
 					<span>객실 관리</span>
 				</a>
 			</li>
@@ -145,9 +145,9 @@
        				</td>
        				<td class="help-tooltip popover-container">
                             <!-- BOD-1441
-                            <a href="javascript:void(0)" data-toggle="popover"><img src="/img/asset/icn_tooltip_16x16.png" /></a>
+                            <a href="javascript:void(0)" data-toggle="popover"><img src="/image/host/asset/icn_tooltip_16x16.png" /></a>
                             <div class="hide">
-                                <span><img src="/img/tooltips/detail/img_tooltip05.png" /></span>
+                                <span><img src="/image/host/tooltips/detail/img_tooltip05.png" /></span>
                             </div>
                             -->
                     </td>
@@ -214,9 +214,9 @@
                    	</td>
                    	
                     <td id = "qmark" class="help-tooltip popover-container">
-                    	<a href="javascript:void(0)" data-toggle="popover" data-original-title="" title=""><img src="${pageContext.request.contextPath}/assets/img/tooltip.png"></a>
+                    	<a href="javascript:void(0)" data-toggle="popover" data-original-title="" title=""><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
                     	<div class="hide">
-                    		<span><img src="${pageContext.request.contextPath}/assets/img/tooltip.png"></span>
+                    		<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
                    		</div>
                		</td>
                	</tr>
@@ -331,7 +331,7 @@
 </div>
 
 <!-- footer -->
-<c:import url="/WEB-INF/views/includes/footer(host).jsp"></c:import>
+<c:import url="${pageContext.request.contextPath}/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
 </body>
 </html>
