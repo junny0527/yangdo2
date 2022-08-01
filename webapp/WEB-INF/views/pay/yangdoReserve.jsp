@@ -16,17 +16,19 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/pay/a.css">
 <body>
 	<div id="wrap">
 		<!-- 펜션어때 헤더 -->
-		<c:import url="/WEB-INF/views/includes/header(user).jsp"></c:import>
+		<c:import url="/WEB-INF/views/includes/userHeaderFooter.jsp"></c:import>
 		<!-- 펜션어때 헤더 -->
 
 		<div data-v-f785cca6="" data-v-924c7d26="">
 			<!---->
-			<div id="content" data-v-f785cca6="">
+			<div id="content" class="clearfix" data-v-f785cca6="">
 				<div class="reserve" data-v-f785cca6="">
 					<div class="right" data-v-33033856="" data-v-f785cca6="">
 						<section class="info" data-v-33033856="">
@@ -199,7 +201,7 @@
 
 			<!---->
 			<!---->
-		</div>
+		
 	
 	<!-- 왼쪽끝 -->
 	<!-- //footer -->

@@ -1,233 +1,13 @@
 @charset "UTF-8";
 
-@font-face {
-	font-family: 'TTCrownMychewR';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2')
-		format('woff2');
-	font-weight: normal;
-	font-style: normal;
-}
-/* ***************초기화*************************** */
-/* 여백초기화 */
-body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset,
-	legend, p, select, table, th, td, tr, textarea, button, form {
-	margin: 0;
-	padding: 0;
-}
 
-body {
-	font-size: 12px;
-	font-family: "맑은 고딕", 돋움, 굴림;
-}
-
-/* 리스트 초기화 */
-ul, ol {
-	list-style-type: none;
-}
-
-/* 링크 초기화 */
-a:link {
-	color: #ffffff;
-	text-decoration: none;
-} /* 방문전 링크일때 자홍색 선없음 */
-a:visited {
-	color: #ffffff;
-	text-decoration: none;
-} /* 방문했던 링크일때 회색 위에선*/
-a:hover {
-	color: #ffffff;
-	text-decoration: none;
-} /* 마우스오버일때 파란색 아래선 */
-a:active {
-	color: #ffffff;
-	text-decoration: none;
-} /* 클릭했을때 빨간색 중앙선*/
-
-/* clearfix */
-.clearfix {
-	*zoom: 1;
-}
-
-.clearfix:before, .clearfix:after {
-	display: block;
-	content: "";
-	line-height: 0;
-}
-
-.clearfix:after {
-	clear: both;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-/* ******************레이아웃************************** */
-#wrap {
-	position: relative;
-	margin: 0px auto;
-	width: 100%;
-	height: 100%;
-}
-
-#wrap>#header {
-	padding: 10px 0px 10px 0px;
-	background-color: #f7323f;
-}
-
-#wrap>#area {
-	padding: 10px 0px 10px 0px;
-	background-color: #f7323f;
-}
-
-/* ******************해더(로고  로그인,회원가입)************************** */
-/* 헤더 제목 */
-#header>#section>h1>a {
-	font-family: 'TTCrownMychewR';
-}
-
-#header>#section>ul {
-	font-family: 'TTCrownMychewR';
-}
-
-#header>#section {
-	position: relative;
-	width: 1024px;
-	height: 64px;
-	background: none;
-	margin: auto;
-}
-
-#header>#section>h1:hover {
-	cursor: pointer;
-}
-
-#header>#section>h1 {
-	float: left;
-	color: #FFFFFF;
-	font-size: 35px;
-	font-weight: bold;
-	margin-top: 10px;
-}
-/* 헤더 ul */
-#header ul {
-	margin: 15px 0px 0px 0px;
-	padding: 0px;
-	float: right;
-}
-/* 헤더 li */
-#header ul>li {
-	margin: 0px 0px 0px 20px;
-	float: left;
-	font-size: 20px;
-}
-
-/* 헤더 펜션글자 */
-#area h2 {
-	display: block;
-	margin-left: 246px;
-	font-size: 30px;
-	font-weight: normal;
-	letter-spacing: -1px;
-	color: #fff;
-}
-
-/* 헤더 지역선택 */
-#area span {
-	border: 1px solid white;
-	border-radius: 4px;
-	display: inline-block;
-	margin: 10px 0px 5px 246px;
-	font-size: 18px;
-	font-weight: normal;
-	letter-spacing: -1px;
-	color: #fff;
-}
-
-/* ******************푸터************************** */
-footer {
-	overflow: hidden;
-	clear: both;
-	position: relative;
-	margin-top: 120px;
-	padding: 63px 31px 40px 31px !important;
-	border-top: 1px solid rgba(0, 0, 0, 0.08);
-	background: rgb(245, 245, 245);
-	font-size: 13px;
-	line-height: 20px;
-	color: rgba(0, 0, 0, 0.38);
-}
-
-footer .align {
-	width: 1024px;
-	margin: 0 auto;
-}
-
-footer .link {
-	overflow: hidden;
-}
-
-footer ul {
-	display: block;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-}
-
-ul, ol, li {
-	list-style: none;
-}
-
-footer .link li {
-	float: left;
-	margin-bottom: 5px;
-	line-height: normal;
-}
-
-footer .link li:nth-child(6) {
-	clear: both;
-}
-
-footer .link li:nth-child(5), footer .link li:nth-child(8) {
-	clear: none;
-}
-
-footer .link li:last-child {
-	margin-bottom: 0;
-}
-
-footer .link li span {
-	display: inline-block;
-	position: relative;
-	top: -2px;
-	width: 24px;
-	font-size: 11px;
-	text-align: center;
-}
-
-footer .link li a {
-	display: inline-block;
-	color: gray;
-}
-
-footer p {
-	clear: both;
-	padding: 37px 0 24px 0;
-}
-
-footer address {
-	line-height: 22px;
-	display: inline-block;
-}
-
-address, caption, em, var {
-	font-style: normal;
-	font-weight: normal;
-}
 
 /* ******************컨텐츠************************** */
+#content{
+	margin: 500px 0px 0px 0px;
+	
+	
+}
 .btn_pay {
 	display: block;
 	width: 100%;
@@ -268,7 +48,7 @@ label {
 .reserve .right {
 	float: right;
 	width: 310px;
-	margin: 40px 31px 0 0;
+	margin: 125px 31px 0 0;
 	background: rgb(250, 250, 250);
 }
 
@@ -368,10 +148,10 @@ label {
 .reserve .left {
 	float: left;
 	width: 564px;
-	margin: 40px 88px 200px 0;
+	margin: 60px 88px 200px 0;
 }
 
-info_chkin {
+.info_chkin {
 	padding: 0 0 10px 0 !important;
 }
 
