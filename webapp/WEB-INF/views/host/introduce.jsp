@@ -18,7 +18,7 @@
 
 <body>
 <!-- header -->
-<c:import url="${pageContext.request.contextPath}/views/includes/hostHeader.jsp"></c:import>
+<c:import url="/WEB-INF/views/includes/hostHeader.jsp"></c:import>
 <!-- header -->
 
 <div id = "container">
@@ -316,7 +316,7 @@
 	</div>
 
 <!-- footer -->
-<c:import url="${pageContext.request.contextPath}/views/includes/hostFooter.jsp"></c:import>
+<c:import url="/WEB-INF/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
 	
 <!-- 이미지 업로드 modal -->
