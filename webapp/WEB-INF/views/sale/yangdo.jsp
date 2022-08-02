@@ -178,7 +178,7 @@
 				</div>
 
 				<div id="pay_confirm" class="clearfix">
-					<div id="pay_confirm_payment">결제가격: 1,000,000,000원</div>
+					<div id="pay_confirm_payment">결제액: 1,000,000,000원</div>
 					<div id="refund" class="clearfix">
 						<div id="pay_confirm_refund">환불액:</div>
 						<div id="refund_pay">800,000원</div>
