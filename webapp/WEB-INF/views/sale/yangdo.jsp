@@ -17,156 +17,155 @@
 
 
 <body>
-   <div id="wrap">
-         <!-- 펜션어때 헤더 -->
-         <c:import url="/WEB-INF/views/includes/header(user).jsp"></c:import>
-         <!-- 펜션어때 헤더 -->
-         
-          <div id="content" class="clearfix">
-             <h1>양도 하기</h1>
-             
-             <div id="Reservation_num" >예약번호 12831293128390</div>
-             
-             <div id="pension" class="clearfix">
-	             <img id="pension_image" src="${pageContext.request.contextPath}/assets/image/sale/wow.png" >
-	             
-	             <div id="pension_pName" class="font-bold">대성리해오름</div>
-             
-	             <div id="flex">
-	             	<div class="flex-s">
-                        <div class="font-size-13 color-dan">체크-인</div>
-                        <div class="font-size-17">
-                            2022-09-18  15:00                      </div>
-                    </div>
-                    <div class="flex-e font-size-17">
-                        <div class="font-size-13 color-dan">체크-아웃</div>
-                        <div class="font-size-17">
-                            2022-09-19  11:00                      </div>
-                    </div>
-	             </div>
-	             
-	             <div id="pension_rName" class="font-bold">해오름</div>
-	             
-	             <div id="pension_people" class="font-bold">기준 15인/ 최대 30인</div>
-             </div>
-             <!-- 컨텐츠(숙소) -->
-             
-             <div id="pay">
-             	<div id="pay_refund">	
-             		<table>
-             			<tr>
-             				<td>10일전:100%</td>
-             			</tr>
-             			<tr>
-             				<td>9일전:90%</td>
-             			</tr>
-             			<tr>
-             				<td>8일전:80%</td>
-             			</tr>
-             			<tr>
-             				<td>7일전:70%</td>
-             			</tr>
-             			<tr>
-             				<td>6일전:60%</td>
-             			</tr>
-             			<tr>
-             				<td>5일전:50%</td>
-             			</tr>
-             			<tr>
-             				<td>4일전:40%</td>
-             			</tr>
-             			<tr>
-             				<td>3일전:30%</td>
-             			</tr>
-             			<tr>
-             				<td>2일전:20%</td>
-             			</tr>
-             			<tr>
-             				<td>1일전:10%</td>
-             			</tr>
-             			
-             			<tr>
-             				<td>숙박일 당일 및 No-show: 불가</td>
-             			</tr>
-             			<tr>
-             				<td colspan="2">취소, 환불 시 수수료가 발생할 수 있습니다.</td>
-             				<td></td>
-             			</tr>
-             		</table>
-             	</div> 
-             	<!-- <div id="pay_refund">	
-             		<table>
-             			<tr>
-             				<td>6일전:100%</td>
-             			</tr>
-             			<tr>
-             				<td>5일전:90%</td>
-             			</tr>
-             			<tr>
-             				<td>4일전:80%</td>
-             			</tr>
-             			<tr>
-             				<td>3일전:70%</td>
-             			</tr>
-             			<tr>
-             				<td>2일전:60%</td>
-             			</tr>
-             			<tr>
-             				<td>1일전:50%</td>
-             			</tr>
-             			<tr>
-             				<td>숙박일 당일 및 No-show: 불가</td>
-             			</tr>
-             			<tr rowspan="5">
-             				<td colspan="2">취소, 환불 시 수수료가 발생할 수 있습니다.</td>
-             			</tr>
-             			<tr>
-             			</tr>
-             			<tr>
-             			</tr>
-             			<tr>
-             			</tr>
-             			<tr>
-             			</tr>
-             		</table>
-             	</div>  -->
-             <!-- 	<div id="pay_refund">	
-             		<table>
-             			<tr>
-             				<td>7일전:100%</td>
-             			</tr>
-             			<tr>
-             				<td>6일전:90%</td>
-             			</tr>
-             			<tr>
-             				<td>5일전:80%</td>
-             			</tr>
-             			<tr>
-             				<td>4일전:70%</td>
-             			</tr>
-             			<tr>
-             				<td>3일전:60%</td>
-             			</tr>
-             			<tr>
-             				<td>2일전:50%</td>
-             			</tr>
-             			<tr>
-             				<td>1일전:40%</td>
-             			</tr>
-             			<tr>
-             				<td>숙박일 당일 및 No-show: 불가</td>
-             			</tr>
-             			<tr rowspan="4">
-             				<td colspan="2">취소, 환불 시 수수료가 발생할 수 있습니다.</td>
-             			</tr>
-             			<tr>
-             			</tr>
-             			<tr>
-             			</tr>
-             			<tr>
-             			</tr>
-             		</table>
-             	</div>  -->
+	<div id="wrap">
+		<!-- 펜션어때 헤더 -->
+		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
+		<!-- 펜션어때 헤더 -->
+
+		<div id="content" class="clearfix">
+			<h1>양도 하기</h1>
+
+			<div id="Reservation_num">예약번호 12831293128390</div>
+
+			<div id="pension" class="clearfix">
+				<img id="pension_image" src="${pageContext.request.contextPath}/assets/image/sale/wow.png">
+
+				<div id="pension_pName" class="font-bold">대성리해오름</div>
+
+				<div id="flex">
+					<div class="flex-s">
+						<div class="font-size-13 color-dan">체크-인</div>
+						<div class="font-size-17">2022-09-18 15:00</div>
+					</div>
+					<div class="flex-e font-size-17">
+						<div class="font-size-13 color-dan">체크-아웃</div>
+						<div class="font-size-17">2022-09-19 11:00</div>
+					</div>
+				</div>
+
+				<div id="pension_rName" class="font-bold">해오름</div>
+
+				<div id="pension_people" class="font-bold">기준 15인/ 최대 30인</div>
+			</div>
+			<!-- 컨텐츠(숙소) -->
+
+			<div id="pay" class="clearfix">
+				<div id="refund_table">
+					<table id = "pay_refund" border = '1'>
+                        		<thead>
+                        			<tr>
+                        				<th class="text-center">기준날짜</th>
+                        				<th class="text-center">10일 전</th>
+                        			</tr>
+                        		</thead>
+                        		<tbody class="text-center">
+                        			<tr>
+                        				<td id = "rateguide" rowspan = '11'>예약 취소 시 <br> 환불액 비율</td>
+                        				<td>10일 전 : 100%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>9일 전 : 90%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>8일 전 : 80%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>7일 전 : 70%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>6일 전 : 60%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>5일 전 : 50%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>4일 전 : 40%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>3일 전 : 30%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>2일 전 : 20%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>1일 전 : 10%</td>
+                        			</tr>
+                        			<tr>
+                        				<td>숙박일 당일, no-show 환불 불가</td>
+                        			</tr>
+                        		</tbody>
+                        	</table>
+					<!-- <table id="pay_refund"  border='1'>
+						<thead>
+							<tr>
+								<th class="text-center">기준날짜</th>
+								<th class="text-center">7일 전</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							<tr>
+								<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불액 비율
+								</td>
+								<td>7일 전 : 100%</td>
+							</tr>
+							<tr>
+								<td>6일 전 : 90%</td>
+							</tr>
+							<tr>
+								<td>5일 전 : 85%</td>
+							</tr>
+							<tr>
+								<td>4일 전 : 80%</td>
+							</tr>
+							<tr>
+								<td>3일 전 : 70%</td>
+							</tr>
+							<tr>
+								<td>2일 전 : 50%</td>
+							</tr>
+							<tr>
+								<td>1일 전 : 30%</td>
+							</tr>
+							<tr>
+								<td>숙박일 당일, no-show 환불 불가</td>
+							</tr>
+						</tbody>
+					</table> -->
+					
+					<!-- <table id="pay_refund" border='1'>
+						<thead>
+							<tr>
+								<th class="text-center">기준날짜</th>
+								<th class="text-center">6일 전</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							<tr>
+								<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불액 비율
+								</td>
+								<td>6일 전 : 100%</td>
+							</tr>
+							<tr>
+								<td>5일 전 : 90%</td>
+							</tr>
+							<tr>
+								<td>4일 전 : 80%</td>
+							</tr>
+							<tr>
+								<td>3일 전 : 70%</td>
+							</tr>
+							<tr>
+								<td>2일 전 : 50%</td>
+							</tr>
+							<tr>
+								<td>1일 전 : 30%</td>
+							</tr>
+							<tr>
+								<td>숙박일 당일, no-show 환불 불가</td>
+							</tr>
+						</tbody>
+					</table>  -->
+				</div> 
 				<div id="pay_addPerson">
 					추가인원
 					<div>
@@ -177,63 +176,58 @@
 						</ul>
 					</div>
 				</div>
-				
+
 				<div id="pay_confirm" class="clearfix">
 					<div id="pay_confirm_payment">결제가격: 1,000,000,000원</div>
-					<div id="refund">	
-						<div id="pay_confirm_refund">환불할시 받을 가격: </div>
-						<div id="refund_pay" class="text-right">10,000,000원</div>
+					<div id="refund" class="clearfix">
+						<div id="pay_confirm_refund">환불액:</div>
+						<div id="refund_pay">800,000원</div>
 					</div>
 					<input type="text" id="pay_confirm_transfer" name="" value="" placeholder="양도후 받을 금액을 입력하세요">원
 				</div>
 				<button id="btn_transfer" type="button">양도 하기</button>
-             </div>
-             <!-- 컨텐츠(페이) -->
-             
-             
-             
-             
-             <div id="person">
-             	<div id="person_Info">양도자 정보</div>
-             	<div id="person_name" class="personInfo">이름 : 김민규</div>
-             	<div id="person_hp" class="personInfo">연락처 : 010-1234-1234</div>
-             </div>
-              <!-- 컨텐츠(사람) -->
-           	<div class="caution-field">
-                  <h3 class="font-size-25 color-dan font-bold">
-                      약관 및 정책에 동의해주세요.
-                  </h3>
-                  <div class="height-30"></div>
-                  <div id="police" class="font-size-12 font-bold">
-                      약관 및 정책
-                  </div>
-                  <div id="dongi" class="terms input-group" >
-                      <div class="agree text-left" >
-                          <input type="checkbox" id="all" class="checkbox" autocomplete="off">
-                          <label for="all" class="dong"><span class="check-btn"></span> 전체 동의 <span class="blue">(필수)</span></label>
-                      </div>
-                      <div class="agreed text-left" >
-                          <input type="checkbox" id="first_term" name="second_term" class="checkbox chk" data-important="" autocomplete="off">
-                          <label for="first_term" class="dong"><span class="check-btn"></span> 취소 환불규정을 확인하였습니다.</label>
-                      </div>
-                      <div class="agreed text-left" >
-                          <input type="checkbox" id="second_term" name="second_term" class="checkbox chk" data-important="" autocomplete="off">
-                          <label for="second_term" class="dong"><span class="check-btn"></span> 양도어때에 등록하신 상품을 다른 곳에서 이중판매 하실 경우 발생한 불이익에 대해서 자사는 책임지지않으며 이미 판매된 예약권에 대한 소유권은 양도어때 고객에게 우선적으로 있음을 동의합니다.</label>
-                      </div>
-                      <div class="agreed text-left" >
-                          <input type="checkbox" id="third_term" name="third_term" class="checkbox chk" data-important="" autocomplete="off">
-                          <label for="third_term" class="dong"><span class="check-btn"></span> 판매등록 후 상품 검수, 양도 시 발생하는 확인절차와 양도절차에 대한 업무는 전적으로 양도어때에 위임함에 동의합니다.</label>
-                      </div>
-                  </div>
-              </div>
-             <!-- 컨텐츠(동의) -->
-           
-          </div>
-         <!-- 컨텐츠 -->
-      <!-- //footer -->
-      <c:import url="/WEB-INF/views/includes/footer(user).jsp"></c:import>
-      
-  </div>
+			</div>
+			<!-- 컨텐츠(페이) -->
+
+
+
+
+			<div id="person">
+				<div id="person_Info">양도자 정보</div>
+				<div id="person_name" class="personInfo">이름 : 김민규</div>
+				<div id="person_hp" class="personInfo">연락처 : 010-1234-1234</div>
+			</div>
+			<!-- 컨텐츠(사람) -->
+			<div class="caution-field">
+				<h3 class="font-size-25 color-dan font-bold">약관 및 정책에 동의해주세요.</h3>
+				<div class="height-30"></div>
+				<div id="police" class="font-size-12 font-bold">약관 및 정책</div>
+				<div id="dongi" class="terms input-group">
+					<div class="agree text-left">
+						<input type="checkbox" id="all" class="checkbox" autocomplete="off"> <label for="all" class="dong"><span class="check-btn"></span> 전체 동의 <span class="blue">(필수)</span></label>
+					</div>
+					<div class="agreed text-left">
+						<input type="checkbox" id="first_term" name="second_term" class="checkbox chk" data-important="" autocomplete="off"> <label for="first_term" class="dong"><span class="check-btn"></span>
+							취소 환불규정을 확인하였습니다.</label>
+					</div>
+					<div class="agreed text-left">
+						<input type="checkbox" id="second_term" name="second_term" class="checkbox chk" data-important="" autocomplete="off"> <label for="second_term" class="dong"><span
+							class="check-btn"></span> 양도어때에 등록하신 상품을 다른 곳에서 이중판매 하실 경우 발생한 불이익에 대해서 자사는 책임지지않으며 이미 판매된 예약권에 대한 소유권은 양도어때 고객에게 우선적으로 있음을 동의합니다.</label>
+					</div>
+					<div class="agreed text-left">
+						<input type="checkbox" id="third_term" name="third_term" class="checkbox chk" data-important="" autocomplete="off"> <label for="third_term" class="dong"><span class="check-btn"></span>
+							판매등록 후 상품 검수, 양도 시 발생하는 확인절차와 양도절차에 대한 업무는 전적으로 양도어때에 위임함에 동의합니다.</label>
+					</div>
+				</div>
+			</div>
+			<!-- 컨텐츠(동의) -->
+
+		</div>
+		<!-- 컨텐츠 -->
+		<!-- //footer -->
+		<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
+
+	</div>
 	<!-- wrap -->
 
 
@@ -242,80 +236,88 @@
 
 <!-- Modal -->
 <div id="yangdo-modal" class="modal fade">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">양도 확인</h4>
-      </div>
-      <div class="modal-body">
-       	<div class="con">양도 하시겠습니까? 
-       		<div class="con color-dan">
-       			가격: 100,000원
-       		</div> 
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="yang" type="button" class="btn btn-danger" >양도합니다</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">양도 확인</h4>
+			</div>
+			<div class="modal-body">
+				<div class="con">
+					양도 하시겠습니까?
+					<div class="con color-dan">가격: 100,000원</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button id="yang" type="button" class="btn btn-danger">양도합니다</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 
 <div id="agree-modal" class="modal fade">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-       	<div>동의 해주세요 
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" >확인</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<div>동의 해주세요</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger">확인</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 
 <div id="money-modal" class="modal fade">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">금액 확인</h4>
-      </div>
-      <div class="modal-body">
-       		<div class="con color-dan">
-       			금액을 입력해 주세요
-       		</div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" >확인</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">금액 확인</h4>
+			</div>
+			<div class="modal-body">
+				<div class="con color-dan">금액을 입력해 주세요</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger">확인</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 
 <script type="text/javascript">
-	
-$("#btn_transfer").on("click",function(){
-	console.log("버튼클릭");
-	$("#yangdo-modal").modal("show");
-	
-});
+	$("#btn_transfer").on("click", function() {
+		console.log("버튼클릭");
+		$("#yangdo-modal").modal("show");
 
-	
+	});
 </script>
 </html>

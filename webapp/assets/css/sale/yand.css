@@ -11,7 +11,7 @@
 #content {
 	width: 1024px;
 	margin: auto;
-	padding-top: 86px;
+	padding-top: 96px;
 } 
 
 /****************컨텐츠(숙소) ***************/
@@ -32,6 +32,8 @@
 	border-radius: 4px;
 	background-color: #F7323F;
 }
+
+
 
 #content > #pension {
 	height: 180px;
@@ -87,6 +89,7 @@
 
 .flex-s{
 	float: left;
+	margin-left: 30px;
 	width: 240px;
 	border-right: 1px dotted #AAAAAA;
 }
@@ -107,7 +110,7 @@
 /**************컨텐츠(양도자) ***************/
 #content > #person {
 	width : 600px;
-	height :220px;
+	height :260px;
 }
 
 #content > #person > #person_Info{
@@ -131,41 +134,41 @@
 	margin: 40px 0px 0px 0px;
 }
 #content > .caution-field > #dongi{
-	width: 760px;
+	display:inline-block;
+	width: 720px;
 }
 
 #content > .caution-field > #dongi > .agree {
-	width: 760px;
+	width: 720px;
 	height:auto;
 	line-height: 22px; 
 	margin: 20px 0px 0px 0px;
 }
 #content > .caution-field > #dongi > .agreed {
-	width: 760px;
+	width: 720px;
 	height:auto;
 	line-height: 22px; 
 	margin: 15px 0px 0px 0px;
 }
 label.dong {
-	display: inline;  
+	display: inline;
     color: #000000;
     text-align: left;
-    font-size : 12px;
-    white-space: pre-line;
-	  
+    font-size: 12px;
+    font-weight: normal;
+    white-space: normal;
 }
+
 
 .checkbox {
 	display: inline-block;
 }
 input[type="checkbox"]{
+	position:relative;
+	top: 3px;
 	width:16px;
 	height:16px;
 	accent-color: #F7323F;
-}
-label.dong{
-	font-size:13px;
-	padding-bottom: 10px;
 }
 .font-size-25 {
     font-size: 25px;
@@ -184,21 +187,29 @@ label.dong{
 }
 /**************컨텐츠(가격및 양도버튼) ***************/
 #content > #pay  {
+	display:block;
 	float: right;
 	margin: 20px 0px 0px 0px;
 	padding: 5px;
+	width: 280px;
+	height: 1000px;
 	background-color: #FAFAFA;
 }
 
-
+#refund_table{
+	width: 270px;
+	height:230px;
+}
 /* 취소가격 */
 #content > #pay > #pay_refund{
+	display:block;
 	padding:5px;
 }
 
 /* 인원추가 */
-#content > #pay > #pay_addPerson{
-	margin: 20px 0px 0px 0px;
+#pay_addPerson{
+	display:inline-block;
+	margin: 50px 0px 0px 0px;
 	font-size: 18px;
 }
 /* 어른추가 */
@@ -214,52 +225,55 @@ label.dong{
 	margin: 10px 0px 0px 0px;
 }
 /* 가격확인 */
-#content > #pay > #pay_confirm {
+#pay_confirm {
 	margin: 10px 0px 0px 0px;
+	font-size: 20px;
 }
 
 /* 결제가격확인 */
-#content > #pay > #pay_confirm >#pay_confirm_payment {
+#pay_confirm_payment {
 	margin: 10px 0px 0px 0px;
-	font-size: 15px;
+	font-size: 20px;
 }
 
 /* 취소하면 나오는 금액: */
-#content > #pay > #pay_confirm >#refund {
-	font-size: 15px;
+#pay_confirm >#refund {
+	width:270px;
 	color: #F7323F;
+	font-size: 20px;
 } 
 
 /* 취소하면 나오는금액 */
-#content > #pay > #pay_confirm >#refund> #pay_confirm_refund {
+#pay_confirm_refund {
+	display:block;
 	float: left;
-	width: 140px;
-	color: #F7323F;
+		color: #F7323F;
 	margin: 10px 0px 0px 0px;
+	font-size: 20px;
 	
 }
 /* 취소하면 나오는금액 10000원찍찍이 */
-#content > #pay > #pay_confirm >#refund>#refund_pay {
-	float: right;
+#refund_pay {
+	float: left;
 	margin: 10px 0px 0px 0px;
 	color: #F7323F;
 	text-decoration: line-through;
 }
 
 /* 양도금액 넣기 */
-#content > #pay > #pay_confirm >#pay_confirm_transfer {
-	width: 233px;
-	height: 25px;
-	font-size:14px;
-	margin: 10px 0px 10px 0px;
-	padding-right:15px;
-	text-align:right; 	
+#pay_confirm_transfer {
+    width: 250px;
+    height: 30px;
+    font-size: 16px;
+    margin: 10px 0px 10px 0px;
+    padding-right: 10px;
+    text-align: right;	
 	
 }
 /* 양도하기 버튼 */
 button#btn_transfer {
-	width:245px;
-	font-size: 26px;
+	width:270px;
+	font-size: 35px;
     color: #FFFFFF;
     text-align: center;
     line-height: 2em;
