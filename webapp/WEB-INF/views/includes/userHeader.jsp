@@ -9,7 +9,7 @@
          <li><a href="">더보기</a></li>
          <li><a href="">로그인</a></li>
       </ul>
-      <button type="button" class="btn btn_srch srch_open" style="right: 396px;">
+      <button id="btn_search"type="button" class="btn btn_srch srch_open" style="right: 396px;">
 				<span id="search-icon" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 	  </button>
     </div>

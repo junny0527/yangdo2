@@ -102,17 +102,21 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /*헤더 검색*/
 #header > #section > button {
     float: right;
-    margin: 15px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
     padding: 0px;
     width: 30px;
     height: 30px;
     color: #FFF;
     background-color: #F7323F;
 }
-
-#search-icon {
+#btn_search{
 	width: 30px;
 	height: 30px;
+}
+#search-icon {
+	width: 25px;
+	height: 25px;
+	padding: 5px;
 	background-color:#F7323F;
 }
 
