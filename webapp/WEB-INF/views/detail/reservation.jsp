@@ -13,15 +13,15 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7&libraries=LIBRARY"></script>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/bootstrap/css/bootstrap.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
 
 </head>
 <body>
 	
    <div id="wrap">
-      <c:import url="/WEB-INF/views/includes/header(user).jsp"></c:import>
+      <c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
       <!-- //header -->
       <div id="main">
          <div id="content" class="clearfix">
@@ -316,7 +316,7 @@
       </div>
 
       <!-- //footer -->
-      <c:import url="/WEB-INF/views/includes/footer(user).jsp"></c:import>
+      <c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
    </div>
 
 </body>
