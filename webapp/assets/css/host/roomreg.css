@@ -1,4 +1,20 @@
 @charset "UTF-8";
+
+.form-horizontal > ul{
+	padding-bottom: -10px;
+}
+
+.form-horizontal > div > ul > li{
+	margin-top: 10px;
+	margin-left: 20px;
+	font-size: 14px;
+	list-style-type: disc;
+}
+
+.form-horizontal > div > ul > li > a{
+	width: 136px;
+}
+
 /* 객실추가 버튼 */
 #moreroom{
 	background-color: #f2114c;
@@ -6,22 +22,27 @@
 	text-align: center;
 }
 
+#copyroom{
+	background-color: #0d6efd;
+	color: white;
+	text-align: center;
+	float: right;
+}
+
+
 .nav-tabs{
 	padding-top: 20px;
-	margin-left: 20px;
+	border-bottom: 0px;
 }
 
 .nav-tabs>li>a{
-	width: 125px;
     height: 48px;
     background-color: #fff;
     line-height: 1.2;
     color: rgba(0, 0, 0, 0.56);
     font-size: 14px;
     border: 1px solid #ddd;
-    margin-right: 12px;
     padding-top: 15px;
-    padding-left: 18px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -31,10 +52,13 @@
 	text-align: center;
 }
 
+.room-tabs{
+	margin-left : 20px;
+}
+
 .guest-title-layer{
 	border-left : 1px solid #ddd;
 	border-right : 1px solid #ddd;
-	border-bottom : 1px solid #ddd;
 	box-shadow: rgb(170, 170, 170) -1px 1px 5px;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
@@ -272,19 +296,15 @@ td>div>span>div .room_type{
     border-color: #ccc;
 }
 
-.instruction {
-    list-style-type: disc;
-    margin-left: 20px;
-}
 
 #design{
-	margin-left : 20px;
+	font-weight: bold;
+	margin-left : 40px;
 }
 
 #addroom{
 	width: 1024px;
     height: 300px;
-    background-color: #ebebeb;
     margin-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
@@ -408,34 +428,34 @@ td>div>span>div .room_type{
 	color: #f2114c;
 }
 
+
+.resize{
+	margin-top: 0px;
+	margin-left: 40px;
+}
+
+#reservation{
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.form-switch{
+	margin-top: 5px;
+	margin-left: 15px;
+}
+
+.form-switch label{
+	margin-left: 5px;
+	font-size : 14px;
+}
+
+#checkinfo{
+	margin-left : 5px;
+	margin-bottom: 10px;
+}
+
 .addpricestyle{
 	float: right;
 	margin-right: -2px;
 	margin-bottom: 15px;
-	
 }
-
-#additionalpeople{
-	margin-top: 10px;
-}
-
-#additionalpeopledivide{
-	width: 150px;
-	margin-left: 20px;
-	float: left;
-}
-
-#additionalpeopleprice{
-	float: right;
-}
-
-#additionalpeopleprice > input{
-	margin-left : 10px;
-	height: 40px;
-	width: 200px;
-}
-
-.resize{
-	margin-left: 40px;
-}
-

@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>소개 작성(선택)</title>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
@@ -26,17 +26,13 @@
 	<div id = "process" class = "center-block">
 		<ul>
 			<li class = "imgs">
-				<a href="${pageContext.request.contextPath}/host/mypagereg">
+				<a href="${pageContext.request.contextPath}/host/companyreg">
 					<span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png"></span>
-					<span>마이페이지 입력</span>
+					<span>업체 등록</span>
 				</a>
 			</li>
 			<li class = "prog">
 				<br>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -46,8 +42,8 @@
 			</li>
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/introreg">
-					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png" class = "active"></span>
-					<span>소개작성</span>
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png"></span>
+					<span>소개작성(필수)</span>
 				</a>
 			</li>
 			<li class = "prog">
@@ -56,6 +52,17 @@
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
+				<span class = "do">&nbsp;</span>
+				<span>&nbsp;</span>
+			</li>
+			<li class = "imgs">
+				<a href="${pageContext.request.contextPath}/host/introregopt">
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png" class = "active"></span>
+					<span>소개작성(선택)</span>
+				</a>
+			</li>
+			<li class = "prog">
+				<br>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -71,10 +78,6 @@
 			</li>
 			<li class = "prog">
 				<br>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -132,13 +135,14 @@
 									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
 									<div class="exam-layer-guide4">
 										<div id="detail" class="exam-detail-layer">
-											<span class="guide-text"> 확인사항 및 기타 예시 문구<br><br>
-											3박 이상 숙박 시 20%할인<br>
-											시즌별 객실 가격이 상이하오니 확인바랍니다.<br>
-											위의 정보는 펜션 사정에 따라 변경될 수 있습니다.<br>
-											해당 이미지는 실제와 상이할 수 있습니다.<br>
-											예약 확정 이후의 취소는 취소환불규정에 의거하여 적용됩니다.<br>
-											</span>
+											<ul>
+												<li>확인사항 및 기타 예시 문구</li>
+												<li>3박 이상 숙박 시 20% 할인</li>
+												<li>시즌별 객실 가격이 상이하오니 확인바랍니다.</li>		
+												<li>위의 정보는 펜션 사정에 따라 변경될 수 있습니다.</li>	
+												<li>해당 이미지는 실제와 상이할 수 있습니다.</li>
+												<li>예약 확정 이후의 취소는 취소환불규정에 의거하여 적용됩니다.</li>									
+											</ul>
 										</div>
 									</div>
 								</td>
@@ -147,7 +151,7 @@
 					</table>
 
 					<div class="submit-layer center-block">
-						<button class="btn btn-yeogi btn-submit" type="submit">저장 후 다음 단계</button>
+						<button class="btn btn-yeogi btn-submit" type="submit">저장하기</button>
 					</div>
 				</form>
 			</div>
