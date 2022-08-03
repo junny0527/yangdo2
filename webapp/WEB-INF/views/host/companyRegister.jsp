@@ -104,10 +104,12 @@
 						<th>업주 정보</th>
 						<td>
 							<div class="form-layer mb_24">
-								<span class="form-title">이메일</span> <span class="form-body">bootstrapSonofabitch@gmail.com</span>
+								<span class="form-title">이메일</span>
+								<span class="form-body">bootstrapSonofabitch@gmail.com</span>
 							</div>
 							<div class="form-layer mb_24">
-								<span class="form-title">휴대폰 번호</span> <span class="form-body">
+								<span class="form-title">휴대폰 번호</span>
+								<span class="form-body">
 									<div class="select-style small-size">
 										<select name="phone1">
 											<option value="010" selected>010</option>
@@ -117,11 +119,13 @@
 											<option value="018">018</option>
 											<option value="019">019</option>
 										</select>
-									</div> <input class="form-control small-size" type="text" name="phone2"> <input class="form-control small-size" type="text" name="phone3">
+									</div>
+									<input class="form-control small-size" type="text" name="phone2" placeholder="숫자만 입력하세요.">
 								</span>
 							</div>
 							<div class="form-layer mb_24">
-								<span class="form-title">대표 번호</span> <span class="form-body">
+								<span class="form-title">대표 번호</span>
+								<span class="form-body">
 									<div class="select-style small-size">
 										<select name="tell">
 											<option value="02" selected>02</option>
@@ -147,7 +151,8 @@
 											<option value="018">018</option>
 											<option value="019">019</option>
 										</select>
-									</div> <input class="form-control small-size" type="text" name="tel2"> <input class="form-control small-size" type="text" name="tel3">
+									</div>
+									<input class="form-control small-size" type="text" name="tel2" placeholder="숫자만 입력하세요.">
 								</span>
 							</div>
 						</td>
@@ -207,13 +212,6 @@
                                 <span class="form-title">계좌 번호</span>
                                 <span class="form-body">
                                     <input class="form-control normal-size" type="text" disabled="" placeholder="숫자만 입력하세요." value="">
-                                </span>
-                            </div>
-                            
-                            <div class="form-layer mb_08">
-                                <span class="form-title">계좌 변경일</span>
-                                <span class="form-body">
-                                    &nbsp;&nbsp;
                                 </span>
                             </div>
                             

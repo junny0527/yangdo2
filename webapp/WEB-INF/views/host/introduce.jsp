@@ -139,6 +139,7 @@
 									</div>
 									<div class="form-layer-text">
 										<input type="hidden" id = "delivername" value = "">
+										<input type="hidden" id = "postalcode" value = "">
 										<div id = "legalname" class = "order">
 											<input type = "text" readonly value = "법정동 코드: ">
 											<input id = "lawcode" type="text" readonly value = "">
@@ -428,8 +429,10 @@
 	                document.getElementById("lawcode").value = data.bcode;
 	                document.getElementById("fullname").value = data.sido + ' ' + data.sigungu + ' ' + data.bname;
 	                document.getElementById("delivername").value = fullname;
+	                document.getElementById("postalcode").value = data.zonecode;
 	                
 	                console.log(fullname);
+	                console.log(data.zonecode);
 	            }
 	        }).open();
 	}

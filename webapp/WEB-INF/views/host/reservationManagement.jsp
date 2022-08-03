@@ -14,8 +14,9 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/reservationManagement.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/fullcalendar-5.11.2/lib/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/reservationManagement.css">
+
 
 <body>
 
@@ -25,26 +26,13 @@
 
 <!-- table -->
 <div id="content">	
-	<div id="month" class="center-block">
-	    <table>
-	    	<thead></thead>
-			<tbody>
-				<tr>
-					<td>
-						<img src="img/t_rev_a.gif" align="absmiddle"> 예약가능 &nbsp; 
-						<img src="img/t_rev_c.gif" align="absmiddle"> 예약완료 &nbsp; 
-						<img src="img/t_rev_c.gif" align="absmiddle"> 이용중 &nbsp; 
-						<img src="img/t_rev_b.gif" align="absmiddle"> 양도완료  &nbsp; 
-						<img src="img/t_rev_b.gif" align="absmiddle"> 양도대기  &nbsp; 
-					</td>
-					<td class="center">
-				
-					</td>
-				</tr>
-			</tbody>
-		</table>
+	<div id="roomstatus" class = "center-block">
+		<img src=""> 예약완료 &nbsp; 
+		<img src=""> 이용중 &nbsp; 
+		<img src=""> 양도완료  &nbsp; 
+		<img src=""> 양도대기  &nbsp; 
 	</div>
-	
+	<br><br>
 	<div id = "calendar"></div>
 	
 </div>

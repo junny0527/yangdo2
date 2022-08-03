@@ -226,27 +226,40 @@
 				<tr>
 					<th>추가인원<br>추가비용</th>
 					<td class="bd_r_none">
-						<div class="form-layer mb_24">
-							<span class="form-body">
-								<div id = "additionalpeople">
-									<div id = "additionalpeopledivide" class = "select-style normal-size">
-										<select>
-											<option value = "adult">성인</option>
-											<option value = "kid">아동</option>
-											<option value = "baby">유아</option>
-										</select>
-									</div>
-									<div id = "additionalpeopleprice">
-										<input class = "form-control normal-size" type = "text" placeholder = "금액(숫자만)을 입력해주세요.">
-									</div>
-								</div>
-							</span>
-                        </div>
-                        <div class="form-layer-text addpeoplestyle">
-							<button type="button" class="btn btn-default btn_add_02">+ 인원 추가비용 추가</button>
+						<div id = "additionalpeople">
+							<div class = "decrease">
+								<span class="form-title">성인</span>
+								<span class="form-body">
+									<input class="form-control normal-size" type="text" value="">
+								</span>
+								<span class="form-body">
+									 원
+								</span>
+							</div>
+							
+							<div class = "decrease">
+								<span class="form-title">아동</span>
+								<span class="form-body">
+									<input class="form-control normal-size" type="text" value="">
+								</span>
+								<span class="form-body">
+									 원
+								</span>
+							</div>
+							
+							
+							
+							<div class = "decrease">
+								<span class="form-title">유아</span>
+								<span class="form-body">
+									<input class="form-control normal-size" type="text" value="">
+								</span>
+								<span class="form-body">
+									 원
+								</span>
+							</div>
 						</div>
-						
-						<br><br><br>
+						<br>
 						
 						<p class = "description">* 성인(만 19세 이상), 아동(만 5세 이상, 만 19세 미만), 유아 (만 5세 미만).</p>
                    		<p class = "description">* 성인, 아동, 유아의 연령 기준은 사측의 규정을 따릅니다.</p>
