@@ -51,43 +51,42 @@
 			<c:import url="/WEB-INF/views/mypage/includes/mynav.jsp"></c:import>
 			<!-- Nav -->
 
-
 			<div class="align_rt">
-				<input type="hidden" name="page" value="1">
-				<div>
-					<div class="point_show gra_red">
-						<span>사용 가능 포인트</span> <strong id="point-page-show">500 P</strong>
-					</div>
-					<ul class="point_list">
-						<li>"삼산 도브(90P)"<span>2022.07.28</span>
-							<p class="col_mint">-190</p></li>
-					</ul>
-					<ul class="point_list">
-						<li>"도전룰렛 이벤트(100P)"<span>2022.07.20</span>
-							<p class="col_red">+100</p></li>
-					</ul>
-					<ul class="point_list">
-						<li>"스마일카라반펜션(590P)"<span>2022.07.17</span>
-							<p class="col_red">+590</p></li>
-					</ul>
-
-				</div>
-
-				<!-- 리스트 없을시 -->
-				<div class="list_none">
-					적립한 포인트가 없습니다.<br />
+				<div class="reserve_list">
+					<section>
+						<h3>양도대기 내역</h3>
+						<ul class="list_wrap">
+							<li class="reservation-detail"><div>
+									<p class="pic">
+										<img
+											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+											alt="삼산 도브" class="align"
+										>
+									</p>
+									<a href="" class="product-title"><i class="">양도대기</i> <strong>삼산 도브</strong> <span>
+											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
+								</div></li>
+							<li class="reservation-detail"><div>
+									<p class="pic">
+										<img
+											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+											alt="삼산 도브" class="align"
+										>
+									</p>
+									<a href="" class="product-title"><i class="">양도대기</i> <strong>삼산 도브</strong> <span>
+											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
+								</div></li>
+						</ul>
+						<!---->
+					</section>
 				</div>
 			</div>
-
 		</div>
-		<!-- //Content  -->
-
 		<!-- Footer -->
 		<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
 		<!-- Footer -->
 	</div>
-
-	<!-- //Wrap -->
-
 </body>
+
+
 </html>
