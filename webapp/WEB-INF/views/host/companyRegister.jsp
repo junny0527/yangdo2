@@ -227,8 +227,8 @@
                             <div class="form-layer mb_08">
                                 <span class="form-title">정산 주기</span>
                                 <span class="form-body label-layer">
-                                    <label for="W"><input id="W" type="radio" disabled="" value="W"> 주정산</label>
-                                    <label for="M"><input id="M" type="radio" disabled="" value="M"> 월정산</label>
+                                    <label for="W"><input id="W" type="radio" disabled="" value="week"> 주정산</label>
+                                    <label for="M"><input id="M" type="radio" disabled="" value="month"> 월정산</label>
                                 </span>
                             </div>
                             

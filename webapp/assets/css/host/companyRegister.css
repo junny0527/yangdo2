@@ -44,7 +44,7 @@
 }
 
 .table tbody tr td span.form-body{
-	width: auto;
+	width: 400px;
 	height: 48px;
 	font-size: 14px;
 	font-weight: normal;
@@ -71,6 +71,7 @@
 }
 
 .select-style{
+	width: 328px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	overflow: hidden;
@@ -96,7 +97,7 @@
 }
 
 .table input.small-size{
-	width: 102px;
+	width: 218px;
 	float: left;
 	margin-right: 10px;
 }
@@ -106,8 +107,6 @@ div.select-style.small-size{
 	float: left;
 	margin-right: 10px;
 }
-
-
 
 .form-title{
 	padding-left : 10px;
@@ -253,3 +252,4 @@ div.select-style.small-size{
 #bizEtcText{
 	height: 20px;
 }
+

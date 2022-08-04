@@ -1,12 +1,102 @@
 @charset "UTF-8";
 
-/*
-#nav > #content> #month {
-	margin-top: 100px;
-	width: 780px;
+#roomstatus{
+	width: 1024px;
+	height : 200px;
+	background-color: #FFFFFF;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius : 5px;
+	border: 1px solid #aaa;
+	box-shadow: -1px 1px 2px #aaa;
 }
-#nav > #content >#tCalendar{
-	width: 780px;
-}
-*/
 
+#roomstatus ul{ 
+	display: block;
+}
+
+#roomstatus ul:first-of-type{
+	height: 20px;
+}
+
+#roomstatus ul li{
+	width: 200px;
+	height: 120px;
+	display: table-cell;
+	font-size: 16px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.subject{
+	font-size: 24px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.box{
+	height: 20px;
+	min-width: 20px;
+	line-height: 21px;
+	border-radius: 2px;
+	background-color: #f2114c;
+	color: #fff;
+}
+
+#one{
+	background-color: #5eb917;
+}
+
+#two{
+	background-color: #337ab7;
+}
+
+#four{
+	background-color: #2c3e50;
+	
+}
+
+#five{
+	background-color: #ad01d2;
+}
+
+#six{
+	background-color: #ed5f19;
+}
+
+#yangdo{
+	font-size: 12px;
+}
+
+#calendar{
+	width: 1024px;
+	height: 1500px;
+}
+
+#calendar > div > div > h2{
+	font-size: 24px;
+}
+
+.fc-col-header-cell-cushion{
+	color: #000;
+}
+
+.fc-day-sun > div > .fc-col-header-cell-cushion{
+	color: #f2114c;
+}
+
+.fc-day > div > div > a{
+	color: #000;
+}
+
+.fc-day-sat > div > div > a{
+	color: #337ab7;
+}
+
+.fc-day-sun > div > div > a{
+	color: #f2114c;
+}
+
+.fc-day-sat  > div > .fc-col-header-cell-cushion{
+	color: #337ab7;
+}

@@ -95,7 +95,8 @@
 }
 
 .table input.normal-size{
-	width: 328px;
+	width: 100px;
+	text-align: center;
 }
 
 .table input.small-size{
@@ -298,22 +299,11 @@ hr{
 
 #additionalpeople{
 	margin-top: 10px;
+	margin-left: 20px;
 }
 
-#additionalpeopledivide{
-	width: 150px;
-	margin-left: 10px;
-	float: left;
-}
-
-#additionalpeopleprice{
-	float: right;
-}
-
-#additionalpeopleprice > input{
-	margin-left : 10px;
-	height: 40px;
-	width: 200px;
+#additionalpeople > div > .form-title{
+	width: 50px;
 }
 
 .addpeoplestyle{
@@ -322,6 +312,11 @@ hr{
 	margin-bottom: 15px;
 }
 
-#additionalpeopledivide > select{
-	height: 38px;
+.decrease{
+	width: 300px;
+	overflow: hidden;
+}
+
+.price{
+	display: inline-block;
 }
