@@ -8,7 +8,10 @@
 <link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/mainList/mainLists.css">
-<link>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+
 <body>
 	<!-- wrap -->
 	<div id="wrap" class="wrap show">
@@ -36,7 +39,7 @@
 			<div class="filter_wrap">
 				<section class="date_wrap">
 					<h3>날짜</h3>
-					<div class="btn_date">
+					<div class="btn_date" id="">
 						<img id="calendar" src="./assets/image/mainList/ico_cal_2.png">
 						<span class="date_view">
 							<b>8.2 ~ 8.3</b>
@@ -324,6 +327,7 @@
 	</div>
 	<!-- wrap -->
 	
+	
 	<!-- 날짜선택 달력 -->
 	<div class="comiseo-daterangepicker comiseo-daterangepicker-right ui-widget ui-widget-content ui-corner-all ui-front" style="left: 456px; top: 0px;">
 		<div class="comiseo-daterangepicker-main ui-widget-content">
@@ -526,7 +530,10 @@
 	</div>
 	<!--달력 -->
 	
-	
-	
 </body>
+	<script type="text/javascript">
+		$(".btn_date").on("click",function(){
+					
+		});
+	</script>
 </html>
