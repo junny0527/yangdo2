@@ -383,7 +383,6 @@ input[type="checkbox"].inp_chk_02 {
 }
 .product-total-service[data-v-3ce5aaac]{
 	margin-bottom: 20px;
-    
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -413,5 +412,25 @@ input[type="checkbox"].inp_chk_02 {
     color:black;
 }
 .total{
-	font-weight: bold;
+	display: flex;
+}
+.addprice{
+	display: block;
+    padding-bottom: 14px;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.56);
+    margin-right: 20px;
+}
+
+
+.input-box .cancel-icn-touch[data-v-2c1e3bcc] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
 }

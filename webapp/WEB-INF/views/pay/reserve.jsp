@@ -83,33 +83,11 @@
 									<strong class="mt_09" data-v-2c1e3bcc="">휴대폰 번호</strong> <span
 										class="safety_txt" data-v-2c1e3bcc="">개인 정보 보호를 위해
 										안심번호로 숙소에 전송됩니다.</span>
-									<div class="phone_confirm guest-phone" data-v-2c1e3bcc="">
-										<div class="input-box" data-v-2c1e3bcc="">
-											<input type="tel" name="userPhone"
-												placeholder="체크인시 필요한 정보입니다." maxlength="13" value=""
-												class="input validation-required-input" data-v-2c1e3bcc="">
-											<!---->
-										</div>
-										<button type="button"
-											class="btn_send btn_confirm phone-auth-btn"
-											data-v-2c1e3bcc="">인증번호 전송</button>
-										<p data-show="tel" class="alert_txt error-message" style=""
-											data-v-2c1e3bcc="">휴대폰 번호를 확인해 주세요.</p>
-										<div id="verificationCode" style="display: none; height: 48px"
-											data-v-2c1e3bcc="">
-											<b data-v-2c1e3bcc="">인증 번호</b>
-											<section data-v-2c1e3bcc="">
-												<div class="input-box" data-v-2c1e3bcc="">
-													<input id="digit" type="tel" name="userPhone" minlength="4"
-														maxlength="4" value=""
-														class="input validation-required-input" data-v-2c1e3bcc="">
-												</div>
-												<button type="button"
-													class="btn_ok btn_confirm phone-auth-btn"
-													data-v-2c1e3bcc="">확인</button>
-											</section>
-										</div>
-									</div>
+									<p class="inp_wrap remove" data-v-35b6e85e="">
+									<input type="text" name="ph"
+										placeholder="체크인시 필요한 정보입니다." maxlength="20"
+										data-v-35b6e85e="">
+								</p>
 								</div>
 								<!---->
 								<hr>
@@ -122,7 +100,22 @@
 									<hr>
 									<div class="product-total-service" data-v-3ce5aaac="">
 										<strong data-v-3ce5aaac="">상세 결제 내역</strong>
-										<div>성인2명+유아0명+영유아0명 - 1000p = 결제금액 </div>
+										<br>
+										<div class="product-amount" data-v-3ce5aaac="">
+										<span class="addprice" data-v-2c1e3bcc="">성인0명</span><b data-v-3ce5aaac="">0원</b>
+									</div>
+									<div class="product-amount" data-v-3ce5aaac="">
+										<span class="addprice" data-v-2c1e3bcc="">유아0명</span><b data-v-3ce5aaac="">0원</b>
+									</div>
+									<div class="product-amount" data-v-3ce5aaac="">
+										<span class="addprice" data-v-2c1e3bcc="">영유아0명</span><b data-v-3ce5aaac="">0원</b>
+									</div>
+									<div class="product-amount" data-v-3ce5aaac="">
+										<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b data-v-3ce5aaac="">0P</b>
+									</div>
+									<div class="product-amount" data-v-3ce5aaac="">
+										<span class="addprice" data-v-2c1e3bcc="">합계</span><b data-v-3ce5aaac="">0원</b>
+									</div>
 									</div>
 										<hr>
 									<div class="product-point" data-v-3ce5aaac="">
