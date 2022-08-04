@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+#reviewstatus{
+	width: 1024px;
+	height : 100px;
+	background-color: #FFFFFF;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius : 5px;
+	border: 1px solid #aaa;
+	box-shadow: -1px 1px 2px #aaa;
+}
+
+.subject{
+	font-size: 24px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* ******************리뷰************************** */
+
+#review {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:1024px;
+    margin:0 auto;
+    padding:30px 0px;
+    border-bottom:1px solid black;
+    margin-bottom:30px;
+}
+
+#review > #ment {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#review > #star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:10px 0px;
+}
+
+#review > #star > .starCount > img{
+    width:30px;
+    padding-right:5px;
+}
+
+#review > #star > #starScore {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#review > #reviewCount {
+    font-size:16px;
+}
+
+#review > #reviewCount > #allReview {
+    margin-right:18px;
+}
+
+#reviewBox {
+    display: flex;
+    flex-direction: column;
+    width:1024px;
+    margin:auto;
+    margin-bottom:30px;
+}
+
+#reviewBox > #guestContainer {
+    display: flex;
+}
+
+#reviewBox > #guestContainer > .box {
+    width:50px;
+    height:50px;
+    border-radius: 70%;
+    background-color: rgb(162, 162, 162);
+    margin-right:30px;
+}
+
+.box > img {
+    width:100%;
+    height:100%;
+}
+
+#reviewBox > #guestContainer > #guestBox {
+    display: flex;
+    flex-direction: column;    
+    
+}
+
+#reviewBox > #guestContainer > #guestBox > #guestReview {
+    font-weight: bold;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #reviewStar {
+    display: flex;
+    margin-bottom:10px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #reviewStar > #starScore {
+    padding-left:10px;
+    font-size:14px;
+    font-weight: bold;
+}
+
+#reviewBox > #guestContainer > #guestBox > #guestInfo {
+    margin-bottom:20px;
+    font-size:13px;
+    font-weight: bold;
+} 
+
+#reviewBox > #guestContainer > #guestBox > #reviewContent {
+    font-size:13px;
+    margin-bottom:20px;
+    width:945px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg {
+    display: flex;
+}
+
+#reviewBox > #guestContainer > #guestBox > #reviewStar > .starCount > img {
+    width:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg > ul {
+    display: flex;
+    list-style-type: none;
+    padding:0;
+    
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg > ul > li > img{
+    width:463px;
+    height:250px;
+    padding-right:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #roomImg > ul > li:last-child > img {
+    padding-right:0;    
+}
+
+#reviewBox > #guestContainer > #guestBox > #guestRegDate {
+    font-size:13px;
+    margin-bottom:30px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer {
+    display: flex;
+    width:926px;
+    background-color:rgba(0,0,0,0.08);
+    padding:10px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoReview {
+    font-size:16px;
+    font-weight: bold;
+    margin-bottom:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoContent {
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoRegDate {
+    margin-bottom:10px;
+    font-size:13px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > .box {
+    width:150px;
+    height:50px;
+    border-radius: 70%;
+    background-color: rgb(233, 109, 73);
+    margin-right:30px;
+}
+
+#reviewBox > #guestContainer > #guestBox > #ceoContainer > .box > img {
+    width:100%;
+    height:100%;
+}
+
+#addreply{
+	width: 200px;
+	height: 50px;
+	background-color: #f2114c;
+	color: white;
+}
+
+.pagination > li > a{
+	color: #00bfa5;
+}
+
+.pagination > .active > a{
+	color: #00bfa5;
+	background-color: #ddd;
+	border: 1px solid #ddd;
+}
+
+.pagination > .active > a:hover{
+	color: #00bfa5;
+	background-color: #ddd;
+	border: 1px solid #ddd;
+}
+
+.justify-content-center{
+	text-align: center;
+}
+
+#reply{
+	display: none;
+}
+
+#reply > textarea{
+	width: 926px;
+	height: 150px;
+	resize: none;
+}
+
+#reply > button:first-of-type{
+	margin-right: 20px;
+	width: 80px;
+	float: right;
+}
+
+#reply > button:last-of-type{
+	margin-right: 5px;
+	width: 80px;
+	float: right;
+}
+
+.editreply{
+	width: 80px;
+	background-color: #f2114c;
+	color: white;
+}

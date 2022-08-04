@@ -27,12 +27,28 @@
 <!-- table -->
 <div id="content">	
 	<div id="roomstatus" class = "center-block">
-		<img src=""> 예약완료 &nbsp; 
-		<img src=""> 이용중 &nbsp; 
-		<img src=""> 양도완료  &nbsp; 
-		<img src=""> 양도대기  &nbsp; 
+		<p class = "subject">예약현황</p>
+		<div class = "center-block">
+			<ul>
+				<li><span id = "one" class = "box">예</span></li>
+				<li><span id = "two" class = "box">이</span></li>
+				<li><span id = "three" class = "box">완</span></li>
+				<li><span id = "four" class = "box">취</span></li>
+				<li><span id = "five" class = "box">양</span></li>
+				<li><span id = "six" class = "box">변</span></li>
+			</ul>
+			<ul>
+				<li>예약완료</li>
+				<li>이용중</li>
+				<li>이용완료</li>
+				<li>일반 취소</li>
+				<li>양도대기</li>
+				<li id = "yangdo"><br>예약자 변경<br>(양도에 의한 취소)</li>
+			</ul>
+		</div>
 	</div>
 	<br><br>
+	
 	<div id = "calendar"></div>
 	
 </div>

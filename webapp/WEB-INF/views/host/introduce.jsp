@@ -454,7 +454,6 @@ $("#deleteimage").on("click", function(){
 	$("#cancel").on("click", function(){
 		$("#img-delete").modal("hide");
 	})
-	
 })
 
 

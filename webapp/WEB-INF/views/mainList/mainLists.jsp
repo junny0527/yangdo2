@@ -1,31 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/userHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/mainLists.css">
+<link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/includes/userHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/mainList/mainLists.css">
 <link>
 <body>
 	<!-- wrap -->
 	<div id="wrap" class="wrap show">
 		<!-- header -->
-		<div id="header" class="clearfix recommend_header">
-		    <div id="section" class="clearfix">
-		      <h1><a href="">양도어때</a></h1>
-		      <ul class="clearfix"> 
-		         <li><a href="">내주변</a></li>
-		         <li><a href="">예약내역</a></li>
-		         <li><a href="">더보기</a></li>
-		         <li><a href="">로그인</a></li>
-		      </ul>
-		      <button type="button" class="btn btn_srch srch_open" style="right: 396px;">
-						<span id="search-icon" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			  </button>
-		    </div>
-   		</div>
+		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
 		<!-- header -->
 		
 		<!-- header 지역선택 -->
@@ -34,8 +22,8 @@
 				<h2>펜션</h2>
 				<div class="area">
 					<div class="btn_area align_vertical">
-						<span class="center-block">경기/인천  > 양평/용문</span>
-						<img id="ico_arr_down_2" src="../assets/image/ico_arr_down_2.png">
+						<span class="center-block">경기/인천</span>
+						양평/용문
 					</div>
 				</div>
 			</div>
@@ -49,11 +37,11 @@
 				<section class="date_wrap">
 					<h3>날짜</h3>
 					<div class="btn_date">
-						<img id="calendar" src="../assets/image/ico_cal_2.png">
+						<img id="calendar" src="./assets/image/mainList/ico_cal_2.png">
 						<span class="date_view">
 							<b>8.2 ~ 8.3</b>
 							<em><em>·1박</em></em>
-							<img id="check"src="../assets/image/ico_arr_down.png">
+							
 						</span>
 					</div>
 				</section>
@@ -190,7 +178,7 @@
 							</button>
 						</div>
 						<button type="button" class="btn_map text-center" onclick="pop_map_pc();">
-						<img id="ico_map" src="../assets/image/ico_map.png">지도
+						지도
 						</button>
 					</div>
 				</div>
@@ -203,14 +191,14 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="../assets/image/ㅋㅋ.jpg" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="./assets/image/mainList/62e1e83e21944.jpg" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<span>양도중!</span>
+										<span>양도중</span>
 									</div>
 									<div class="name">
-										<strong>양평 그린하우스펜션</strong>
+										<strong>그린하우스펜션</strong>
 										<p class="score">
 											<em>4.5</em>
 											<span>좋아요 (13)</span>
@@ -237,14 +225,14 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="../assets/image/ㅋㅋ.jpg" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="./assets/image/mainList/62e1e83e21944.jpg" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical">
 									<div class="evt_info">
-										<span>양도중!</span>
+										<span>양도중</span>
 									</div>
 									<div class="name">
-										<strong>양평 그린하우스펜션</strong>
+										<strong>그린하우스펜션</strong>
 										<p class="score">
 											<em>4.5</em>
 											<span>좋아요 (13)</span>
@@ -271,12 +259,12 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="../assets/image/ㅋㅋ.jpg" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="./assets/image/mainList/62e1e83e21944.jpg" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical">
 									
 									<div class="name">
-										<strong>양평 그린하우스펜션</strong>
+										<strong>그린하우스펜션</strong>
 										<p class="score">
 											<em>4.5</em>
 											<span>좋아요 (13)</span>
