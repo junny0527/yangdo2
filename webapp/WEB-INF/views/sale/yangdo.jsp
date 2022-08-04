@@ -167,10 +167,10 @@
 					</table>  -->
 				</div> 
 				<div id="pay_addPerson">
-					추가인원
+					인원정보
 					<div>
 						<ul>
-							<li id="pay_addPerson_adult">성인 : 4명</li>
+							<li id="pay_addPerson_adult">성인 : 15명</li>
 							<li id="pay_addPerson_kid">아동 : 0명</li>
 							<li id="pay_addPerson_baby">영유아 : 0명</li>
 						</ul>
