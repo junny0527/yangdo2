@@ -6,14 +6,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>객실 관리</title>
+<title> 결제정보 결제</title>
 </head>
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
-
+	
+<!-- css -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css"
@@ -114,13 +115,19 @@
 									</div>
 								</div>
 								<!---->
-								<hr>
+								<hr class="hr-solid">
 								<section class="price_wrap" data-v-3ce5aaac=""
 									data-v-f785cca6="">
 									<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
 									<div class="product-amount" data-v-3ce5aaac="">
 										<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">89,000원</b>
 									</div>
+									<hr>
+									<div class="product-total-service" data-v-3ce5aaac="">
+										<strong data-v-3ce5aaac="">상세 결제 내역</strong>
+										<div class="total">성인2명+유아0명+영유아0명 - point = 결제금액 </div>
+									</div>
+										<hr>
 									<div class="product-point" data-v-3ce5aaac="">
 										<span
 										class="save-point" data-v-2c1e3bcc="">보유포인트</span>
@@ -147,7 +154,7 @@
 							<!---->
 						</div>
 						<!---->
-						<hr>
+						<hr class="hr-solid">
 						<section class="pay_select" data-v-f785cca6="">
 							<h3 data-v-f785cca6="">결제수단 선택</h3>
 							<select id="payment-select" class="select_type_1"
@@ -198,7 +205,7 @@
 					</div>
 				</div>
 			</div>
-
+		</div>
 			<!---->
 			<!---->
 		

@@ -11,6 +11,10 @@
 	
 	
 }
+.hr-solid {
+  border : 0px;
+  border-top: 3px solid #eee;
+}
 .btn_pay {
 	display: block;
 	width: 100%;
@@ -377,6 +381,15 @@ input[type="checkbox"].inp_chk_02 {
     font-size: 18px;
     color: rgba(0,0,0,.56);
 }
+.product-total-service[data-v-3ce5aaac]{
+	margin-bottom: 20px;
+    
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 18px;
+    color: rgba(0,0,0,.56);
+}
 .product-point[data-v-3ce5aaac] {
     margin-top: 20px;
     display: flex;
@@ -398,4 +411,7 @@ input[type="checkbox"].inp_chk_02 {
     font-size: 14px;
     font-weight: bold;
     color:black;
+}
+.total{
+	font-weight: bold;
 }

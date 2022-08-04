@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>객실 관리</title>
+<title>결제정보 결제</title>
 </head>
 
 <script type="text/javascript"
@@ -119,6 +119,12 @@
 									<div class="product-amount" data-v-3ce5aaac="">
 										<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">89,000원</b>
 									</div>
+									<hr>
+									<div class="product-total-service" data-v-3ce5aaac="">
+										<strong data-v-3ce5aaac="">상세 결제 내역</strong>
+										<div>성인2명+유아0명+영유아0명 - 1000p = 결제금액 </div>
+									</div>
+										<hr>
 									<div class="product-point" data-v-3ce5aaac="">
 										<span
 										class="save-point" data-v-2c1e3bcc="">보유포인트</span>
