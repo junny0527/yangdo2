@@ -9,6 +9,7 @@ public class SaleController {
 	
 	@RequestMapping(value="/sale",method = {RequestMethod.GET,RequestMethod.POST})
 	public String sale() {
+		
 		System.out.println("sale");
 		return "/sale/yangdo";
 	}
