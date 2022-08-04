@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
+#header ul {
+    margin: 10.5px 0px 0px 0px;
+}
 
 
 /* ******************컨텐츠************************** */
 #content{
-	margin: 500px 0px 0px 0px;
+	margin: 80px 0px 0px 0px;
 	
 	
 }
