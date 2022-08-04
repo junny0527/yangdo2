@@ -1,5 +1,8 @@
 package com.javaex.controller;
 
-public class JiwoongController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class JiwoongController {
+	
 }

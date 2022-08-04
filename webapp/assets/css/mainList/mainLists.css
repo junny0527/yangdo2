@@ -1,0 +1,478 @@
+@charset "UTF-8";
+
+/*******************body*************************/
+html, body {
+	font-family: 'Pretendard', 'Apple SD Gothic Neo', '맑은 고딕', '맑은고딕',
+		'Malgun Gothic', sans-serif;
+	font-size: 14px;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.87);
+	-webkit-text-size-adjust: none;
+}
+
+/* show wrap  */
+.wrap.show, footer.show {
+	opacity: 1;
+	visibility: visible;
+	width: 100%;
+	background: #fff;
+}
+
+.show {
+	display: block !important;
+}
+
+
+#search-icon {
+	width: 30px;
+	height: 30px;
+	background-color: #F7323F;
+}
+
+#check{
+	float: right;
+	margin: 2.5px 0px 0px 0px;
+	width: 30px;
+}
+#calendar{
+	float: left;
+	margin: 4px 0px 0px 0px;
+	width: 32px;
+	height: 32px;
+	background-size: 32px auto;
+}
+
+
+.sub_top .area .btn_area {
+	display: inline-block;
+	position: absolute;
+	height: 32px;
+	padding: 0 0px 0 10px;
+	border: 1px solid rgba(0, 0, 0, 0.04);
+	border-radius: 4px;
+	background-size: 18px auto !important;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 32px;
+	color: #fff;
+}
+
+.sub_top .area .btn_area span {
+	display: inline;
+	background-size: 12px auto;
+	font-size: 18px;
+	line-height: 32px;
+	color: #fff;
+}
+
+#ico_arr_down_2{
+	width: 30px;
+}
+#ico_map{
+	width: 28px;
+	margin: 0px 0px 3px 0px;
+}
+
+/* content */
+#content {
+	overflow: hidden;
+}
+
+.sub_wrap {
+	min-height: 390px;
+}
+
+.sub_wrap {
+	width: 1024px !important;
+	margin: 0 auto 0 auto;
+	padding-bottom: 50px;
+}
+
+/* fillter wrap */
+.filter_wrap {
+	float: left;
+	position: relative !important;
+	top: 40px;
+	z-index: 1;
+	width: 296px;
+	margin: 0 32px 0 31px;
+	padding-bottom: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	background: #fff;
+}
+
+/* 날짜선택 */
+.filter_wrap .date_wrap {
+	display: block;
+}
+
+.filter_wrap h3 {
+	display: block;
+	font-size: 18px;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.filter_wrap .btn_date {
+	display: inline-block;
+	position: relative;
+	width: 246px;
+	height: 40px;
+	margin: 13px 0 32px 0;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	background: rgba(250, 250, 250, 0.7)
+		url(//image.goodchoice.kr/images/web_v3/ico_arr_down.png) right 8px
+		bottom 50% no-repeat;
+	background-size: 24px auto;
+	font-size: 18px;
+	line-height: 40px;
+	color: rgba(0, 0, 0, 0.56);
+	text-align: left;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.filter_wrap .date_view b {
+	font-weight: normal;
+}
+
+address, caption, em, var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* filler wrap h3 */
+.filter_wrap .date_wrap+h3 {
+	padding-left: 22px;
+	margin: 0 1px;
+	padding-top: 31px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.filter_wrap h3 {
+	display: block;
+	font-size: 18px;
+	color: rgba(0, 0, 0, 0.87);
+}
+/* 상세조건 버튼 */
+.filter_wrap .btn_wrap {
+	overflow: hidden;
+	position: relative;
+	top: auto;
+	height: 64px;
+	padding: 0 24px;
+	border-bottom: none;
+	background-color: #fff;
+}
+
+.filter_wrap .btn_wrap button {
+	height: 40px;
+	margin-top: 13px;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+.filter_wrap .btn_wrap button:nth-child(1) {
+	float: left;
+	width: 105px;
+	border: 1px solid rgb(242, 7, 76);
+	background: #fff;
+	color: rgb(242, 7, 76);
+}
+
+.filter_wrap .btn_wrap button:nth-child(2) {
+	float: right;
+	width: 105px;
+	border: 1px solid rgb(242, 7, 76);
+	background: rgb(242, 7, 76);
+	color: #fff;
+}
+
+/* 체크박스 */
+.filter_wrap section {
+	margin: 0 0 0 24px;
+	padding: 27px 0 0 0;
+	border-bottom: none;
+	position: relative;
+}
+
+.filter_wrap section ul li {
+	margin-bottom: 16px;
+}
+
+input[type=checkbox].inp_chk+label.label_chk {
+	padding: 0 0 0 22px;
+	height: 21px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 16px;
+	line-height: 22px;
+	color: rgba(0, 0, 0, 0.56);
+	vertical-align: top;
+	cursor: pointer;
+}
+input[type=checkbox]{
+	accent-color:#F7323F;
+}
+.inp_chk{
+	width: 21px;
+	height: 21px;
+	
+}
+/* checkbox persons */
+.filter_wrap section strong {
+	display: block;
+	position: relative;
+	margin-bottom: 21px;
+	font-size: 16px;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.56);
+}
+
+.filter_wrap .cnt_people {
+	position: absolute;
+	top: 0;
+	right: 24px;
+	width: 140px;
+}
+
+.filter_wrap .cnt_people button:first-child {
+	background-color: #fff;
+	position: absolute;
+	top: 25px;
+	left: 0;
+	width: 24px;
+	height: 24px;
+	background-size: 20px auto;
+}
+
+.filter_wrap .cnt_people button {
+	border: none;
+	font-size: 18px;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+.filter_wrap .cnt_people span {
+	display: block;
+	padding-top: 25px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: rgb(229, 16, 72);
+}
+
+.filter_wrap .cnt_people button:last-child {
+	position: absolute;
+	top: 25px;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	background-color: #fff;
+	background-size: 20px auto;
+}
+
+/* List */
+/* button */
+.list_wrap {
+	float: left;
+	width: 635px;
+	margin-top: 40px;
+}
+
+.top_sort {
+	overflow: hidden;
+	padding: 0;
+	background: #fff;
+	box-shadow: none;
+	text-align: center;
+}
+
+.top_sort .pc {
+	display: block;
+}
+
+.top_sort .btn_wrap {
+	overflow: hidden;
+	float: left;
+	width: 546px;
+	height: 40px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.top_sort .width_4 button {
+	width: 25%;
+}
+
+.top_sort button.on {
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.top_sort .btn_wrap button {
+	border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.top_sort button {
+	float: left;
+	height: 40px;
+	border: none;
+	border-radius: 0;
+	background: rgba(250, 250, 250, 0.6);
+	font-size: 16px;
+	line-height: 40px;
+}
+
+.top_sort .btn_map {
+	float: right;
+	display: inline-block;
+	width: 80px;
+	margin-left: 8px;
+	padding: 0 12px 0 0;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	background: url(//image.goodchoice.kr/images/web_v3/ico_map.png) 8px 50%
+		no-repeat;
+	background-size: 22px auto;
+	background-color: rgba(250, 250, 250, 0.6);
+	text-align: right;
+}
+
+.list_wrap .title {
+	position: relative;
+	padding: 23px 0 12px 0;
+	background: none;
+	font-size: 14px;
+}
+
+/* List */
+.list_2, .list_3 {
+	overflow: hidden;
+	position: relative;
+	height: 280px;
+}
+
+.list_2 a, .list_3 a {
+	display: block;
+	height: 280px;
+	color: #fff;
+}
+
+.list_2 img.align, .list_3 img.align {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	min-height: 280px;
+}
+
+.list_2 .stage, .list_3 .stage {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	padding: 0 24px;
+}
+
+.list_1 .stage .evt_info, .list_2 .stage .evt_info, .list_3 .stage .evt_info
+	{
+	position: absolute;
+	top: 24px;
+	left: 0;
+	right: auto;
+	height: 24px;
+}
+
+.list_2 .stage .evt_info span, .list_3 .stage .evt_info span {
+	height: 24px;
+	margin: 0 10px 0 24px;
+	padding-top: 3px;
+	font-size: 18px;
+	line-height: 1;
+}
+
+.evt_info{
+	float: right;
+	background-color: #F7323F;
+	
+}
+
+.list_2 .stage .name, .list_3 .stage .name {
+	position: absolute;
+	bottom: 20px;
+	left: 24px;
+}
+
+.list_2 .stage .name strong, .list_3 .stage .name strong {
+	display: block;
+	height: auto;
+	font-size: 26px;
+	line-height: normal;
+}
+
+.list_1 .stage .name .score, .list_2 .stage .name .score, .list_3 .stage .name .score
+	{
+	height: auto;
+	margin-top: 7px;
+	line-height: normal;
+	font-weight: bold;
+}
+
+.list_1 .stage .name .score, .list_2 .stage .name .score, .list_3 .stage .name .score
+	{
+	color: rgb(255, 167, 38);
+}
+
+.list_1 .stage .name p, .list_2 .stage .name p, .list_3 .stage .name p {
+	height: auto;
+	margin-top: 9px;
+	padding-bottom: 2px;
+	font-size: 20px;
+}
+
+.list_2 .stage .price, .list_3 .stage .price {
+	position: absolute;
+	bottom: 20px;
+	right: 24px;
+	text-align: right;
+}
+
+.map_html {
+	display: none;
+}
+
+.list_1 .stage .price p, .list_2 .stage .price p, .list_3 .stage .price p
+	{
+	height: auto;
+	margin-top: 11px;
+	font-size: 20px;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.list_1 .stage .price p b, .list_2 .stage .price p b, .list_3 .stage .price p b
+	{
+	top: 0;
+	font-size: 22px;
+	color: #fff;
+}
+
+.list_1 .stage .price p b, .list_2 .stage .price p b, .list_3 .stage .price p b
+	{
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+.list_2 .stage .evt_info span, .list_3 .stage .evt_info span {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-break: keep-all;
+}
