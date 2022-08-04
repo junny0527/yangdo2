@@ -195,7 +195,7 @@
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<span>양도중!</span>
+										<span>양도중</span>
 									</div>
 									<div class="name">
 										<strong>그린하우스펜션</strong>
@@ -229,7 +229,7 @@
 								</p>
 								<div class="stage gra_black_vertical">
 									<div class="evt_info">
-										<span>양도중!</span>
+										<span>양도중</span>
 									</div>
 									<div class="name">
 										<strong>그린하우스펜션</strong>

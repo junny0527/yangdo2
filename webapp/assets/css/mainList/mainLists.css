@@ -413,7 +413,8 @@ input[type=checkbox]{
 .evt_info{
 	float: right;
 	background-color: #F7323F;
-	
+	border-radius: 5px;
+	margin-left: 10px;
 }
 
 .list_2 .stage .name, .list_3 .stage .name {
@@ -434,7 +435,6 @@ input[type=checkbox]{
 	height: auto;
 	margin-top: 7px;
 	line-height: normal;
-	font-weight: bold;
 }
 
 .list_1 .stage .name .score, .list_2 .stage .name .score, .list_3 .stage .name .score
