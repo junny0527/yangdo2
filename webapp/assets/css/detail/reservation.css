@@ -18,13 +18,9 @@ button, form {
 }
 
 
-
-
-
 body {
    font-size: 12px;
    font-family: "맑은 고딕", 돋움, 굴림;
-   
 }
 
 
@@ -56,11 +52,27 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     height: 100%;
 }
 
-#wrap > #header {
-   padding: 10px 0px 10px 0px;
-   background-color: #f7323f;
+#header > #section > button {
+    float: right;
+    margin: 15px 0px 0px 0px;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    background-color: #F7323F;
 }
 
+#search-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #F7323F;
+}
+
+
+
+#header ul {
+    margin: 10.5px 0px 0px 0px;
+}
 
 #wrap > #area {
    padding: 10px 0px 10px 0px;
@@ -72,33 +84,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /* 헤더 제목 */
 
 
-#header > #section > h1> a {
-    font-family: 'TTCrownMychewR';
-}
 
-#header > #section > ul {
-    font-family: 'TTCrownMychewR';
-}
-
-#header > #section {
-    position: relative;
-    width: 1024px;
-    height: 64px;
-    background: none;
-    margin: auto;
-}
-
-#header > #section > h1:hover {
-    cursor:pointer;
-}
-
-#header > #section > h1 {
-   float: left;
-   color: #FFFFFF;
-   font-size: 35px;
-   font-weight: bold;
-   margin-top: 10px;
-}
 
 /* 헤더 ul */
 #header ul {
@@ -145,6 +131,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     width:1024px;
     margin:auto;
     margin-top:30px;
+    padding-top:70px;
 }
 
 #main > #content {
@@ -282,11 +269,51 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #main > #gallery > div > button {
-    margin:0px 10px;
+    margin:auto 10px;
     text-align: center;
     border-style: none;
     background-color: #ffffff;
+    display: flex;
+    justify-content:center;
+    align-items:center;
 }
+
+#main > #gallery > div > #left {
+
+	padding-top:15px;
+	padding-bottom:15px;
+	padding-left:5px;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	background-color:#eeeeee;
+	transition: all 0.3s ease;
+	height:80px;
+}
+
+
+#main > #gallery > div > #right {
+
+	padding-top:15px;
+	padding-bottom:15px;
+	padding-left:5px;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	background-color:#eeeeee;
+	transition: all 0.3s ease;
+	height:80px;
+}
+
+
+
+#main > #gallery > div > button:hover {
+	box-shadow:	-1px -1px 20px 0px #fff9,
+   				-1px -1px 5px 0px #fff9,
+			    7px 7px 20px 0px #0002,
+			    4px 4px 5px 0px #0001;
+}
+
+
+
 
 #main > #gallery > div > button:hover {
     cursor:pointer;
@@ -397,20 +424,118 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     margin-top:30px;
 }
 
+
 #roomList > #calendar {
-    border:1px solid grey;
-    height:35px;
-    width:150px;
-    display: flex;
-    align-items: center;
-    border-top-right-radius:10px;
-    border-top-left-radius:10px;
-    border-bottom-right-radius:10px;
-    border-bottom-left-radius:10px;
-    justify-content: center;
-    background-color: rgba(239, 235, 235, 0.974);
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 16px 0;
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color:#f7323f;
+    border-radius: 4px;
+    background-size: 32px auto;
+    font-size: 14px;
+    line-height: 40px;
+    color: rgba(0,0,0,0.87);
     
 }
+
+#roomList > #calendar > form > button {
+	background-color:rgb(52, 152, 219);
+	color:white;
+	font-weight:bold;
+	border-style:none;
+	border-radius:5px;
+	height:100%;
+	margin:auto;
+	vertical-align: middle;
+	text-align:center;
+	padding: 0 37px;
+	margin-left:280px;
+}
+
+#roomList > #calendar > form > span {
+	font-size:15px;
+	font-weight:bold;
+	margin-left:10px;
+	margin-right:5px;
+	color:white;
+}
+
+/* 달력api css */
+
+#datepicker {
+	height:35px;
+}
+
+#datepicker2 {
+	height:35px;
+}
+
+.ui-datepicker-trigger {
+	margin-left:10px;
+	margin-right:10px;
+	width:20px;
+}
+
+.ui-state-default {
+	margin-top:5px;
+}
+
+.ui-state-active {
+	color:black !important;
+}
+
+.ui-datepicker-header {
+	height:36px;
+}
+
+.ui-datepicker-title {
+	height:35px;
+}
+
+.ui-datepicker-year {
+	height:30px;
+	font-size:14px !important;
+	margin-right:10px !important;
+}
+
+.ui-datepicker-calendar > thead {
+	border-bottom:1px solid #c0c0c0!important;
+}
+
+.ui-datepicker-month {
+	height:30px;
+	font-size:14px !important;
+	margin-left:10px !important;
+}
+.ui-datepicker-prev{
+	width:25px !important;
+	height:25px !important;
+	margin-top:5px !important;
+}
+
+.ui-datepicker-next {
+	width:25px !important;
+	height:25px !important;
+	margin-top:5px !important;
+}
+
+#ui-datepicker-div {
+	width:400px;
+	height:250px;
+}
+
+.ui-state-default {
+	height:16px;
+	font-size:12px;
+	text-align:center !important;
+	border-style:none !important;
+	background-color:#FFFFFF !important;
+}
+
 
 #roomList > #calendar > #date {
     font-size:15px;

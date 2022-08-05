@@ -72,34 +72,23 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /* 헤더 제목 */
 
 
-#header > #section > h1> a {
-    font-family: 'TTCrownMychewR';
+
+#header > #section > button {
+    float: right;
+    margin: 15px 0px 0px 0px;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    background-color: #F7323F;
 }
 
-#header > #section > ul {
-    font-family: 'TTCrownMychewR';
-    height:20px;
+#search-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #F7323F;
 }
 
-#header > #section {
-    position: relative;
-    width: 1024px;
-    height: 64px;
-    background: none;
-    margin: auto;
-}
-
-#header > #section > h1:hover {
-    cursor:pointer;
-}
-
-#header > #section > h1 {
-   float: left;
-   color: #FFFFFF;
-   font-size: 35px;
-   font-weight: bold;
-   margin-top: 10px;
-}
 
 /* 헤더 ul */
 #header ul {

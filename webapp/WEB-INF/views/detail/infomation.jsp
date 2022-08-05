@@ -13,13 +13,14 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/infomation.css">
     
 </head>
 <body>
 
     <div id="wrap">
-        <c:import url="/WEB-INF/views/includes/header(user).jsp"></c:import>
+        <c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
         <!-- //header -->
         <div id="main">
             <div id="content" class="clearfix">
@@ -254,7 +255,7 @@
         </div>
 
         <!-- //footer -->
-        <c:import url="/WEB-INF/views/includes/footer(user).jsp"></c:import>
+        <c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
     </div>
 </body>
 </html>

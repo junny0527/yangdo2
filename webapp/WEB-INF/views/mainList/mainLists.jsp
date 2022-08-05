@@ -8,7 +8,10 @@
 <link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/mainList/mainLists.css">
-<link>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+
 <body>
 	<!-- wrap -->
 	<div id="wrap" class="wrap show">
@@ -36,7 +39,7 @@
 			<div class="filter_wrap">
 				<section class="date_wrap">
 					<h3>날짜</h3>
-					<div class="btn_date">
+					<div class="btn_date" id="">
 						<img id="calendar" src="./assets/image/mainList/ico_cal_2.png">
 						<span class="date_view">
 							<b>8.2 ~ 8.3</b>
@@ -324,5 +327,213 @@
 	</div>
 	<!-- wrap -->
 	
+	
+	<!-- 날짜선택 달력 -->
+	<div class="comiseo-daterangepicker comiseo-daterangepicker-right ui-widget ui-widget-content ui-corner-all ui-front" style="left: 456px; top: 0px;">
+		<div class="comiseo-daterangepicker-main ui-widget-content">
+			<div class="comiseo-daterangepicker-calendar ui-widget-content hasDatepicker" id="dp1659620751080">
+				<div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"  style="display: block;">
+					<!-- 년 월 -->
+					<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
+						<!-- 날짜 넘기는 왼쪽 버튼 -->
+						<a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="Prev">
+							<span class="ui-icon ui-icon-circle-triangle-w">Prev</span>
+						</a>
+						<!-- 날짜 넘기는 왼쪽버튼 -->
+						
+						<!-- 날짜 넘기는 오른쪽버튼 -->
+						<a class="ui-datepicker-next ui-corner-all" data-handler="Next" data-event="click" title="Next">
+							<span class="ui-icon ui-icon-circle-triangle-e">Next</span>
+						</a>
+						<!-- 날짜 넘기는 오른쪽버튼 -->
+						
+						<!-- 달력넘기는 영역 -->
+						<div class="ui-datepicker-title">
+							&nbsp;
+							<span class="ui-datepicker-year">2022년&nbsp;</span>
+							<span class="ui-datepicker-month">8월</span>
+						</div>
+						<!-- 달력넘기는 영역 -->
+					</div>	
+						<!-- 달력 -->
+						<!-- 달력 요일 -->
+		<table class="ui-datepicker-calendar">
+			<thead>
+				<tr>
+					<th scope="col" class="ui-datepicker-week-end">
+						<span title="일">일</span>
+					</th>
+					<th scope="col" >
+						<span title="월">월</span>
+					</th>
+					<th scope="col" >
+						<span title="화">화</span>
+					</th>
+					<th scope="col" >
+						<span title="수">수</span>
+					</th>
+					<th scope="col" >
+						<span title="목">목</span>
+					</th>
+					<th scope="col" >
+						<span title="금">금</span>
+					</th>
+					<th scope="col" class="ui-datepicker-week-end">
+						<span title="토">토</span>
+					</th>
+				</tr>
+			</thead>
+			<!-- 달력 요일 -->
+			
+					<!-- 달력 날짜-->
+					<tbody>
+						<tr>
+							<td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+							<td class="">
+								<span class="ui-state-default">1</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">2</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">3</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">4</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">5</span>
+							</td>
+							<td class=" ui-datepicker-week-end sa-day ui-state-highlight ">
+								<span class="ui-state-default">6</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-datepicker-week-end sun-day">
+								<span class="ui-state-default">7</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">8</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">9</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">10</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">11</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">12</span>
+							</td>
+							<td class="sa-day">
+								<span class="ui-state-default">13</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-datepicker-week-end sun-day">
+								<span class="ui-state-default">14</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">15</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">16</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">17</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">18</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">19</span>
+							</td>
+							<td class="sa-day">
+								<span class="ui-state-default">20</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-datepicker-week-end sun-day">
+								<span class="ui-state-default">21</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">22</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">23</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">24</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">25</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">26</span>
+							</td>
+							<td class="sa-day">
+								<span class="ui-state-default">27</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="ui-datepicker-week-end sun-day">
+								<span class="ui-state-default">28</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">29</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">30</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">31</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">&nbsp;</span>
+							</td>
+							<td class="">
+								<span class="ui-state-default">&nbsp;</span>
+							</td>
+							<td class="sa-day">
+								<span class="ui-state-default">&nbsp;</span>
+							</td>
+						</tr>
+					</tbody>
+					<!-- 달력 날짜-->
+				</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 선택완료 -->
+		<div class="ui-helper-clearfix">
+			<div class="comiseo-daterangepicker-buttonpanel">
+				<button type="button" class="ui-priority-primary ui-button ui-corner-all ui-widget">
+					선택완료
+				</button>
+				<!-- 버튼 clear / cancel -->
+				<!--  
+					<button type="button" class="ui-priority-primary ui-button ui-corner-all ui-widget">
+						Clear
+					</button>
+					<button type="button" class="ui-priority-primary ui-button ui-corner-all ui-widget">
+						Cancel
+					</button>
+					-->
+				<!-- 버튼 clear / cancel -->
+			</div>
+		</div>
+		<!-- 선택완료 -->
+		
+	</div>
+	<!--달력 -->
+	
 </body>
+	<script type="text/javascript">
+		$(".btn_date").on("click",function(){
+					
+		});
+	</script>
 </html>
