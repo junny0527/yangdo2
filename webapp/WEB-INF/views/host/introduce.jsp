@@ -364,7 +364,6 @@
 <div class="modal-backdrop fade in"></div>
 <!-- 이미지 업로드 modal -->	
 
-
 <!-- 이미지 삭제 modal -->
 <div id = "img-delete" class="modal fade in" tabindex="-1">
   <div class="modal-dialog">

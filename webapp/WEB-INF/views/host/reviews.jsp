@@ -60,6 +60,7 @@
 		                    <span id="guestRegDate">1개월 전</span>
 		                    
 		                    <button id="addreply" type="button" class="btn btn-default btn_add">+ 답글 달기</button>
+		                    
 		                    <div id = "reply">
 		                    	<textarea class = "form-control"></textarea>
 		                    	<button id = "cancel" type = "button" class="btn">취소</button>

@@ -102,7 +102,7 @@
 	
 	<div id = "salary" class = "center-block clearfix">
 		<div id = "roomsalary" class = "pull-left">
-			<a href = ""><span>예약 객실 판매></span></a>
+			<a href = "${pageContext.request.contextPath}/host/hostsales"><span>예약 객실 판매</span></a>
 			<span>
 				<ul>
 					<li>0</li>
@@ -118,7 +118,7 @@
 		</div>
 		
 		<div id = "reviews" class = "pull-right">
-			<a href = ""><span>등록된 리뷰 수(총 N개)</span></a>
+			<a href = "${pageContext.request.contextPath}/host/reviews"><span>등록된 리뷰 수(총 N개)</span></a>
 			<span>
 				<ul>
 					<li>0</li>
