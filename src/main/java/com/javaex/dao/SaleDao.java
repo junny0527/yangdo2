@@ -15,7 +15,7 @@ public class SaleDao {
 	public Map<String,Object> getReservation(int no) {
 		System.out.println("SaleDao > getReservation");
 		
-		Map<String,Object> sMap = sqlSession.selectOne("reservation.getReservation", no);
+		Map<String,Object> sMap = sqlSession.selectOne("sale.getReservation", no);
 		System.out.println(sMap);
 		
 		return sMap;
