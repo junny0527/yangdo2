@@ -5,12 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/includes/userHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/mainList/mainLists.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/mainLists.css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation-jiwoong.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <body>
 	<!-- wrap -->
@@ -39,14 +44,9 @@
 			<div class="filter_wrap">
 				<section class="date_wrap">
 					<h3>날짜</h3>
-					<div class="btn_date" id="">
-						<img id="calendar" src="./assets/image/mainList/ico_cal_2.png">
-						<span class="date_view">
-							<b>8.2 ~ 8.3</b>
-							<em><em>·1박</em></em>
-							
-						</span>
-					</div>
+						<input type="text" id="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center;">
+						<input type="text" id="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center;">
+					
 				</section>
 				<h3>상세조건</h3>
 				<div class="btn_wrap">
@@ -328,212 +328,44 @@
 	<!-- wrap -->
 	
 	
-	<!-- 날짜선택 달력 -->
-	<div class="comiseo-daterangepicker comiseo-daterangepicker-right ui-widget ui-widget-content ui-corner-all ui-front" style="left: 456px; top: 0px;">
-		<div class="comiseo-daterangepicker-main ui-widget-content">
-			<div class="comiseo-daterangepicker-calendar ui-widget-content hasDatepicker" id="dp1659620751080">
-				<div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"  style="display: block;">
-					<!-- 년 월 -->
-					<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
-						<!-- 날짜 넘기는 왼쪽 버튼 -->
-						<a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="Prev">
-							<span class="ui-icon ui-icon-circle-triangle-w">Prev</span>
-						</a>
-						<!-- 날짜 넘기는 왼쪽버튼 -->
-						
-						<!-- 날짜 넘기는 오른쪽버튼 -->
-						<a class="ui-datepicker-next ui-corner-all" data-handler="Next" data-event="click" title="Next">
-							<span class="ui-icon ui-icon-circle-triangle-e">Next</span>
-						</a>
-						<!-- 날짜 넘기는 오른쪽버튼 -->
-						
-						<!-- 달력넘기는 영역 -->
-						<div class="ui-datepicker-title">
-							&nbsp;
-							<span class="ui-datepicker-year">2022년&nbsp;</span>
-							<span class="ui-datepicker-month">8월</span>
-						</div>
-						<!-- 달력넘기는 영역 -->
-					</div>	
-						<!-- 달력 -->
-						<!-- 달력 요일 -->
-		<table class="ui-datepicker-calendar">
-			<thead>
-				<tr>
-					<th scope="col" class="ui-datepicker-week-end">
-						<span title="일">일</span>
-					</th>
-					<th scope="col" >
-						<span title="월">월</span>
-					</th>
-					<th scope="col" >
-						<span title="화">화</span>
-					</th>
-					<th scope="col" >
-						<span title="수">수</span>
-					</th>
-					<th scope="col" >
-						<span title="목">목</span>
-					</th>
-					<th scope="col" >
-						<span title="금">금</span>
-					</th>
-					<th scope="col" class="ui-datepicker-week-end">
-						<span title="토">토</span>
-					</th>
-				</tr>
-			</thead>
-			<!-- 달력 요일 -->
-			
-					<!-- 달력 날짜-->
-					<tbody>
-						<tr>
-							<td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
-							<td class="">
-								<span class="ui-state-default">1</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">2</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">3</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">4</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">5</span>
-							</td>
-							<td class=" ui-datepicker-week-end sa-day ui-state-highlight ">
-								<span class="ui-state-default">6</span>
-							</td>
-						</tr>
-						<tr>
-							<td class="ui-datepicker-week-end sun-day">
-								<span class="ui-state-default">7</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">8</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">9</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">10</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">11</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">12</span>
-							</td>
-							<td class="sa-day">
-								<span class="ui-state-default">13</span>
-							</td>
-						</tr>
-						<tr>
-							<td class="ui-datepicker-week-end sun-day">
-								<span class="ui-state-default">14</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">15</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">16</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">17</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">18</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">19</span>
-							</td>
-							<td class="sa-day">
-								<span class="ui-state-default">20</span>
-							</td>
-						</tr>
-						<tr>
-							<td class="ui-datepicker-week-end sun-day">
-								<span class="ui-state-default">21</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">22</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">23</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">24</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">25</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">26</span>
-							</td>
-							<td class="sa-day">
-								<span class="ui-state-default">27</span>
-							</td>
-						</tr>
-						<tr>
-							<td class="ui-datepicker-week-end sun-day">
-								<span class="ui-state-default">28</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">29</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">30</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">31</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">&nbsp;</span>
-							</td>
-							<td class="">
-								<span class="ui-state-default">&nbsp;</span>
-							</td>
-							<td class="sa-day">
-								<span class="ui-state-default">&nbsp;</span>
-							</td>
-						</tr>
-					</tbody>
-					<!-- 달력 날짜-->
-				</table>
-				</div>
-			</div>
-		</div>
-		
-		<!-- 선택완료 -->
-		<div class="ui-helper-clearfix">
-			<div class="comiseo-daterangepicker-buttonpanel">
-				<button type="button" class="ui-priority-primary ui-button ui-corner-all ui-widget">
-					선택완료
-				</button>
-				<!-- 버튼 clear / cancel -->
-				<!--  
-					<button type="button" class="ui-priority-primary ui-button ui-corner-all ui-widget">
-						Clear
-					</button>
-					<button type="button" class="ui-priority-primary ui-button ui-corner-all ui-widget">
-						Cancel
-					</button>
-					-->
-				<!-- 버튼 clear / cancel -->
-			</div>
-		</div>
-		<!-- 선택완료 -->
-		
-	</div>
-	<!--달력 -->
 	
 </body>
 	<script type="text/javascript">
-		$(".btn_date").on("click",function(){
-					
-		});
+			
+///////////////////////// 일정선택 ///////////////////////////
+	
+	
+	
+	$(function() {
+            //모든 datepicker에 대한 공통 옵션 설정
+            $.datepicker.setDefaults({
+                dateFormat: 'yy-mm-dd' //Input Display Format 변경
+                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+                ,changeYear: true //콤보박스에서 년 선택 가능
+                ,changeMonth: true //콤보박스에서 월 선택 가능                
+                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+                ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+                ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+            });
+ 
+            //input을 datepicker로 선언
+            $("#datepicker").datepicker();                    
+            $("#datepicker2").datepicker();
+            
+            //From의 초기값을 오늘 날짜로 설정
+            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+            //To의 초기값을 내일로 설정
+            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        });
+	
 	</script>
 </html>
