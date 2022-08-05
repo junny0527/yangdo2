@@ -11,11 +11,15 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation-jiwoong.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainList/reservation-jiwoong.css">
 
+<!-- 달력 ui -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- kakaoMap -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b67b7601c934be1e54baa80b6f1a7de0"></script>
 
 <body>
 	<!-- wrap -->
@@ -180,7 +184,7 @@
 								<span>높은 가격 순</span>
 							</button>
 						</div>
-						<button type="button" class="btn_map text-center" onclick="pop_map_pc();">
+						<button type="button"  class="btn_map text-center" ">
 						지도
 						</button>
 					</div>
@@ -327,8 +331,12 @@
 	</div>
 	<!-- wrap -->
 	
+	<!-- 지도 모달 -->
+		 <div id="map" style="width: 500px; height: 500px;">
+		 </div>
 	
-	
+		
+		
 </body>
 	<script type="text/javascript">
 			
@@ -366,6 +374,16 @@
             //To의 초기값을 내일로 설정
             $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
         });
-	
+		
+		/* kakaoMap */
+		
+		
+		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		var options = { //지도를 생성할 때 필요한 기본 옵션
+			center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+			level: 3 //지도의 레벨(확대, 축소 정도)
+		};
+		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		
 	</script>
 </html>
