@@ -12,7 +12,13 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/assets/bootstrap/js/bootstrap.js"></script>
+	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<!-- jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 	
 <!-- css -->
 <link rel="stylesheet" type="text/css"
@@ -34,28 +40,28 @@
 					<div class="right" data-v-33033856="" data-v-f785cca6="">
 						<section class="info" data-v-33033856="">
 							<p class="name" data-v-33033856="">
-								<strong data-v-33033856="">예약번호</strong>${rpMap.NO }
+								<strong data-v-33033856="">예약번호</strong>NO.${rpMap.NO }
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">펜션이름</strong>양평 스마일카라반펜션
+								<strong data-v-33033856="">펜션이름</strong>${rpMap.PNAME }
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">객실명/기간</strong>달콤룸 / 1박
+								<strong data-v-33033856="">객실명/기간</strong>${rpMap.RNAME } / 1박
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">인원수/(성인2명)</strong>2명
+								<strong data-v-33033856="">인원수</Strong>${rpMap.ADULT+rpMap.KID+rpMap.BABY}명
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">체크인</strong>22.07.27 수 15:00
+								<strong data-v-33033856="">체크인</strong>${rpMap.CHECK_IN }
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">체크아웃</strong>07.28 목 11:00
+								<strong data-v-33033856="">체크아웃</strong>${rpMap.CHECK_OUT }
 							</p>
 						</section>
 						<section class="total_price_pc" data-v-33033856="">
 							<p data-v-33033856="">
 								<strong data-v-33033856=""><b data-v-33033856="">총
-										결제 금액</b>(VAT포함)</strong><span class="in_price" data-v-33033856="">89,000원</span>
+										결제 금액</b>(VAT포함)</strong><span class="in_price" data-v-33033856="">${rpMap.TOTAL_PRICE}원</span>
 							</p>
 							<ul data-v-33033856="">
 								<li data-v-33033856="">해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -65,8 +71,8 @@
 							</ul>
 						</section>
 						<!---->
-						<button type="button" class="btn_pay gra_left_right_red"
-							data-v-33033856="">결제하기</button>
+						<button onclick="requestPay()" type="button"
+							class="btn_pay gra_left_right_red" data-v-33033856="">결제하기</button>
 					</div>
 					<div class="left" data-v-f785cca6="">
 						<!---->
@@ -87,10 +93,9 @@
 										class="safety_txt" data-v-2c1e3bcc="">개인 정보 보호를 위해
 										안심번호로 숙소에 전송됩니다.</span>
 									<p class="inp_wrap remove" data-v-35b6e85e="">
-									<input type="text" name="ph"
-										placeholder="체크인시 필요한 정보입니다." maxlength="20"
-										data-v-35b6e85e="">
-								</p>
+										<input type="text" name="ph" placeholder="${rpMap.RHP }"
+											maxlength="20" data-v-35b6e85e="">
+									</p>
 								</div>
 								<!---->
 								<hr class="hr-solid">
@@ -98,34 +103,36 @@
 									data-v-f785cca6="">
 									<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
 									<div class="product-amount" data-v-3ce5aaac="">
-										<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">89,000원</b>
+										<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">${rpMap.TOTAL_PRICE}원</b>
 									</div>
 									<hr>
 									<div class="product-total-service" data-v-3ce5aaac="">
-										<strong data-v-3ce5aaac="">상세 결제 내역</strong>
-										<br>
+										<strong data-v-3ce5aaac="">상세 결제 내역</strong> <br>
 										<div class="product-amount" data-v-3ce5aaac="">
-										<span class="addprice" data-v-2c1e3bcc="">성인0명</span><b data-v-3ce5aaac="">0원</b>
+											<span class="addprice" data-v-2c1e3bcc="">성인:
+												${rpMap.ADULT}명</span><b data-v-3ce5aaac="">0원</b>
+										</div>
+										<div class="product-amount" data-v-3ce5aaac="">
+											<span class="addprice" data-v-2c1e3bcc="">아동:
+												${rpMap.KID}명</span><b data-v-3ce5aaac="">0원</b>
+										</div>
+										<div class="product-amount" data-v-3ce5aaac="">
+											<span class="addprice" data-v-2c1e3bcc="">영유아:
+												${rpMap.BABY}명</span><b data-v-3ce5aaac="">0원</b>
+										</div>
+										<div class="product-amount" data-v-3ce5aaac="">
+											<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
+												data-v-3ce5aaac="">0P</b>
+										</div>
+										<div class="product-amount" data-v-3ce5aaac="">
+											<span class="addprice" data-v-2c1e3bcc="">합계</span><b
+												data-v-3ce5aaac="">${rpMap.TOTAL_PRICE }원</b>
+										</div>
 									</div>
-									<div class="product-amount" data-v-3ce5aaac="">
-										<span class="addprice" data-v-2c1e3bcc="">유아0명</span><b data-v-3ce5aaac="">0원</b>
-									</div>
-									<div class="product-amount" data-v-3ce5aaac="">
-										<span class="addprice" data-v-2c1e3bcc="">영유아0명</span><b data-v-3ce5aaac="">0원</b>
-									</div>
-									<div class="product-amount" data-v-3ce5aaac="">
-										<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b data-v-3ce5aaac="">0P</b>
-									</div>
-									<div class="product-amount" data-v-3ce5aaac="">
-										<span class="addprice" data-v-2c1e3bcc="">합계</span><b data-v-3ce5aaac="">0원</b>
-									</div>
-									</div>
-										<hr>
+									<hr>
 									<div class="product-point" data-v-3ce5aaac="">
-										<span
-										class="save-point" data-v-2c1e3bcc="">보유포인트:</span>
-										<span
-										class="see-point" data-v-2c1e3bcc="">1000p</span>
+										<span class="save-point" data-v-2c1e3bcc="">보유포인트:</span> <span
+											class="see-point" data-v-2c1e3bcc="">${rpMap.POINTS }</span>
 									</div>
 									<div class="discount-container" data-v-3ce5aaac="">
 										<div class="discount-header" data-v-3ce5aaac="">
@@ -150,16 +157,15 @@
 						<hr class="hr-solid">
 						<section class="pay_select" data-v-f785cca6="">
 							<h3 data-v-f785cca6="">결제수단 선택</h3>
-							<select id="payment-select" class="select_type_1"
-								>
+							<select id="payment-select" class="select_type_1">
 								<option data-minprice="0" selected="selected" value="CARD"
 									data-v-f785cca6="">선택해주세요</option>
-								<option data-minprice="0"
-									value="KAKAO" data-v-f785cca6="">카카오페이</option>
+								<option data-minprice="0" value="KAKAO" data-v-f785cca6="">카카오페이</option>
 								<option data-minprice="0" value="NAVER" data-v-f785cca6="">
 									네이버페이</option>
-									<option data-minprice="0"value="CARD" data-v-f785cca6="">
-									신용/체크카드</option></select>
+								<option data-minprice="0" value="CARD" data-v-f785cca6="">
+									신용/체크카드</option>
+							</select>
 							<!---->
 							<!---->
 						</section>
@@ -193,20 +199,26 @@
 									data-v-d63b628c=""><i data-v-d63b628c="">개인정보 제 3자
 										제공 동의</i><b data-v-d63b628c=""> (필수)</b></span>
 							</p>
-							
+
 						</section>
 					</div>
 				</div>
 			</div>
 		</div>
-			<!---->
-			<!---->
-		
-	
-	<!-- 왼쪽끝 -->
-	<!-- //footer -->
-	<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
-</div>
+		<!---->
+		<!---->
+
+
+		<!-- 왼쪽끝 -->
+		<!-- //footer -->
+		<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
+	</div>
+
+	<script>
+		function requestPay() {
+			console.log("클릭")
+		}
+	</script>
 
 
 </body>
