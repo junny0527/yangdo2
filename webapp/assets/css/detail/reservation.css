@@ -424,6 +424,72 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     margin-top:30px;
 }
 
+
+#roomList > #calendar {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 32px 0;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    background-size: 32px auto;
+    font-size: 14px;
+    line-height: 40px;
+    color: rgba(0,0,0,0.87);
+    
+}
+
+
+/* 달력 css */
+
+.ui-datepicker-header {
+	height:36px;
+}
+
+.ui-datepicker-title {
+	height:35px;
+}
+
+.ui-datepicker-year {
+	height:30px;
+	font-size:14px !important;
+	margin-right:10px !important;
+}
+
+.ui-datepicker-calendar > thead {
+	border-bottom:1px solid #c0c0c0!important;
+}
+
+.ui-datepicker-month {
+	height:30px;
+	font-size:14px !important;
+	margin-left:10px !important;
+}
+.ui-datepicker-prev{
+	width:30px !important;
+	height:30px !important;
+}
+
+.ui-datepicker-next {
+	width:30px !important;
+	height:30px !important;
+}
+
+#ui-datepicker-div {
+	width:400px;
+	height:190px;
+}
+
+.ui-state-default {
+	height:16px;
+	font-size:12px;
+	text-align:center !important;
+	border-style:none !important;
+	background-color:#FFFFFF !important;
+}
+
+/* 
 #roomList > #calendar {
     border:1px solid grey;
     height:35px;
@@ -438,7 +504,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     background-color: rgba(239, 235, 235, 0.974);
     
 }
-
+ */
 #roomList > #calendar > #date {
     font-size:15px;
     margin-right:10px;

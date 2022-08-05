@@ -71,21 +71,6 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /* ******************해더(로고  로그인,회원가입)************************** */
 /* 헤더 제목 */
 
-#header > #section > button {
-    float: right;
-    margin: 15px 0px 0px 0px;
-    padding: 0px;
-    width: 30px;
-    height: 30px;
-    color: #FFF;
-    background-color: #F7323F;
-}
-
-#search-icon {
-    width: 30px;
-    height: 30px;
-    background-color: #F7323F;
-}
 
 
 /* 헤더 ul */
