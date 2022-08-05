@@ -335,5 +335,11 @@
 		$("#yangdo-modal").modal("show");
 
 	});
+	
+	
+	$("#yang").on("click",function(){
+		
+		
+	});
 </script>
 </html>

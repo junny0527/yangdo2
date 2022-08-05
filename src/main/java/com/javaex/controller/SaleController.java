@@ -29,4 +29,6 @@ public class SaleController {
 		
 		return "/sale/yangdo";
 	}
+	
+	
 }

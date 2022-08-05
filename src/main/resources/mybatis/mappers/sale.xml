@@ -33,4 +33,11 @@
 		]]>
 	</select>
 
+	<insert id="yangdoReservation" >
+		<![CDATA[
+			insert into reservations
+			values(SEQ_RESERVATIONS_NO.nextval,{rNo},{uNo},{name},{hp},{checkIn},{checkOut},{adult},{kid},{baby},{totalPrice},SYSDATE,{payWay},{payStatus},{status},{transPrice},{no})
+		
+		]]>
+	</insert>
 </mapper>
