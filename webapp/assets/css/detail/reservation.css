@@ -468,10 +468,16 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #datepicker {
 	height:35px;
+	border:1px solid black !important;
+	border-radius:5px !important;
+	padding-left:5px;
 }
 
 #datepicker2 {
 	height:35px;
+	border:1px solid black !important;
+	border-radius:5px !important;
+	padding-left:5px;
 }
 
 .ui-datepicker-trigger {

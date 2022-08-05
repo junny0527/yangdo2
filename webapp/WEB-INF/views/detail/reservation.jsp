@@ -155,14 +155,6 @@
 					<button>일정 선택하기</button><br>
 				</form>
 			</div>
-
-			<%-- <div id="calendar">
-            <img src="${pageContext.request.contextPath}/assets/image/detail/calendar.png">
-            <button>
-               <span id="date">7.26 ~ 7.27</span> <img src="${pageContext.request.contextPath}/assets/image/detail/arrow-down.png">
-            </button>
-         </div> --%>
-
          <div class="room">
             <img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
             <button class="roomImgList">객실 사진보기</button>
