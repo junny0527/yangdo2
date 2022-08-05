@@ -150,8 +150,8 @@
       <div id="roomList">
 			<div id="calendar">
 				<form action="">
-					시작일 : <input type="text" id="datepicker"> 
-					종료일 : <input type="text" id="datepicker2">
+					<span>시작일 : </span> <input type="text" id="datepicker"> 
+					<span>종료일 : </span> <input type="text" id="datepicker2">
 					<button>일정 선택하기</button><br>
 				</form>
 			</div>

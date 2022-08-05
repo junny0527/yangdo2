@@ -430,8 +430,10 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     position: relative;
     width: 100%;
     height: 40px;
-    margin: 32px 0;
-    border: 1px solid rgba(0,0,0,0.08);
+    margin: 16px 0;
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color:#f7323f;
     border-radius: 4px;
     background-size: 32px auto;
     font-size: 14px;
@@ -440,8 +442,51 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     
 }
 
+#roomList > #calendar > form > button {
+	background-color:rgb(52, 152, 219);
+	color:white;
+	font-weight:bold;
+	border-style:none;
+	border-radius:5px;
+	height:100%;
+	margin:auto;
+	vertical-align: middle;
+	text-align:center;
+	padding: 0 37px;
+	margin-left:280px;
+}
 
-/* 달력 css */
+#roomList > #calendar > form > span {
+	font-size:15px;
+	font-weight:bold;
+	margin-left:10px;
+	margin-right:5px;
+	color:white;
+}
+
+/* 달력api css */
+
+#datepicker {
+	height:35px;
+}
+
+#datepicker2 {
+	height:35px;
+}
+
+.ui-datepicker-trigger {
+	margin-left:10px;
+	margin-right:10px;
+	width:20px;
+}
+
+.ui-state-default {
+	margin-top:5px;
+}
+
+.ui-state-active {
+	color:black !important;
+}
 
 .ui-datepicker-header {
 	height:36px;
@@ -467,18 +512,20 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	margin-left:10px !important;
 }
 .ui-datepicker-prev{
-	width:30px !important;
-	height:30px !important;
+	width:25px !important;
+	height:25px !important;
+	margin-top:5px !important;
 }
 
 .ui-datepicker-next {
-	width:30px !important;
-	height:30px !important;
+	width:25px !important;
+	height:25px !important;
+	margin-top:5px !important;
 }
 
 #ui-datepicker-div {
 	width:400px;
-	height:190px;
+	height:250px;
 }
 
 .ui-state-default {
@@ -489,22 +536,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	background-color:#FFFFFF !important;
 }
 
-/* 
-#roomList > #calendar {
-    border:1px solid grey;
-    height:35px;
-    width:150px;
-    display: flex;
-    align-items: center;
-    border-top-right-radius:10px;
-    border-top-left-radius:10px;
-    border-bottom-right-radius:10px;
-    border-bottom-left-radius:10px;
-    justify-content: center;
-    background-color: rgba(239, 235, 235, 0.974);
-    
-}
- */
+
 #roomList > #calendar > #date {
     font-size:15px;
     margin-right:10px;
