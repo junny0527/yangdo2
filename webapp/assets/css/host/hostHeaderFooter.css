@@ -90,9 +90,8 @@ a:active {
 /********************* 헤더 (nav)*********************/
 #nav{
 	padding-top: 80px;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
     width: 1024px;
-    height: 100px;
 }
 
 #nav a{
@@ -109,6 +108,58 @@ a:active {
 	text-align : center;
 	color : rgba(0,0,0,0.56);
 }
+
+#reserve{
+	width: 140px;
+	margin-left: 60px;
+	border: 1px solid #ddd;
+	background: #fff;
+	display: none;
+	text-align: center;
+}
+
+#reserve>ul{
+	margin-left: 20px;
+}
+
+#reserve>ul>li{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 16px;
+	padding-top: 0px;
+	text-align: center;
+}
+
+#reserve>ul>li>a{
+	transition: 0.4s;
+	overflow: hidden;
+}
+
+#introduce{
+	width: 140px;
+	margin-left: 60px;
+	border: 1px solid #ddd;
+	background: #fff;
+	display: none;
+}
+
+#introduce>ul{
+	margin-left: 20px;
+}
+
+#introduce>ul>li{
+	display: flex;
+	flex-direction: row;
+	font-size: 16px;
+	text-align: center;
+}
+
+#introduce>ul>li>a{
+	transition: 0.4s;
+	overflow: hidden;
+}
+
 
 /* ******************해더(로고  로그인,회원가입)************************** */
 /* 헤더 제목 */
@@ -254,8 +305,6 @@ address, caption, em, var {
 	font-style: normal;
 	font-weight: normal;
 }
-
-
 
 #container{
 	clear : both;

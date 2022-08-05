@@ -26,17 +26,13 @@
 	<div id = "process" class = "center-block">
 		<ul>
 			<li class = "imgs">
-				<a href="${pageContext.request.contextPath}/host/mypagereg">
+				<a href="${pageContext.request.contextPath}/host/companyreg">
 					<span><img src="${pageContext.request.contextPath}/assets/image/host/mypage.png"></span>
-					<span>마이페이지 입력</span>
+					<span>업체 등록</span>
 				</a>
 			</li>
 			<li class = "prog">
 				<br>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -47,7 +43,7 @@
 			<li class = "imgs">
 				<a href="${pageContext.request.contextPath}/host/introreg">
 					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png" class = "active"></span>
-					<span>소개작성</span>
+					<span>소개작성(필수)</span>
 				</a>
 			</li>
 			<li class = "prog">
@@ -56,6 +52,17 @@
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
+				<span class = "do">&nbsp;</span>
+				<span>&nbsp;</span>
+			</li>
+			<li class = "imgs">
+				<a href="${pageContext.request.contextPath}/host/introregopt">
+					<span><img src="${pageContext.request.contextPath}/assets/image/host/introduce.png"></span>
+					<span>소개작성(선택)</span>
+				</a>
+			</li>
+			<li class = "prog">
+				<br>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -71,10 +78,6 @@
 			</li>
 			<li class = "prog">
 				<br>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
-				<span class = "do">&nbsp;</span>
-				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
 				<span>&nbsp;</span>
 				<span class = "do">&nbsp;</span>
@@ -118,11 +121,11 @@
 								</th>
 								<td id = "firstline" class="bd_r_none">
 									<div class="form-layer mb_24">
-										<span class="form-title">업체명</span> <span class="form-body"> <input class="form-control normal-size" type="text" name="aname" placeholder="업체명을 입력하세요." value="">
+										<span class="form-title">펜션명</span> <span class="form-body"> <input class="form-control normal-size" type="text" name="aname" placeholder="업체명을 입력하세요." value="">
 										</span>
 									</div>
 									<div class="form-layer mb_24">
-										<span class="form-title">업체 주소</span>
+										<span class="form-title">펜션 주소</span>
 										<!-- BOD-1458 -->
 										<span class="form-body">
 											<input class="form-control normal-size" id="input_roadAddress" type="text" name="address1" readonly placeholder="업체 주소를 입력하세요." value="">
@@ -136,8 +139,11 @@
 									</div>
 									<div class="form-layer-text">
 										<input type="hidden" id = "delivername" value = "">
+										<input type="hidden" id = "postalcode" value = "">
 										<div id = "legalname" class = "order">
-											<input type = "text" readonly value = "법정동 코드: "><input id = "lawcode" type="text" readonly value = ""><input id = "fullname" type="text" readonly value = "">
+											<input type = "text" readonly value = "법정동 코드: ">
+											<input id = "lawcode" type="text" readonly value = "">
+											<input id = "fullname" type="text" readonly value = "">
 										</div>
 									</div>
 								</td>
@@ -295,9 +301,16 @@
 									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
 									<div class="exam-layer-guide4">
 										<div id="detail" class="exam-detail-layer">
-											<span class="guide-text"> 작성 예시<br><br>전객실금연<br> (금연건물로 흡연시 미환불 강제퇴실)<br> 애완동물 출입금지<br> 금, 토 24시간 출입자유<br> (단 일~월 소등시간 AM 1시, 1시 이후 출입 제한)<br> AM 1시 이후 샤워 불가<br> 객실
-												내 식음 금지, 식당 이용 <br> <br>
-											</span>
+											<ul>
+												<li>작성 예시</li>
+												<li>전 객실 금연</li>
+												<li>(금연건물로 흡연 시 미환불 강제퇴실)</li>		
+												<li>애완동물 출입금지</li>	
+												<li>금, 토 24시간 출입 자유</li>
+												<li>(단, 일~월 소등시간 AM 1시, 1시 이후 출입 제한)</li>
+												<li>AM 1시 이후 샤워 불가</li>	
+												<li>객실 내 식음 금지, 식당 이용</li>								
+											</ul>
 										</div>
 									</div>
 								</td>
@@ -306,7 +319,7 @@
 					</table>
 
 					<div class="submit-layer center-block">
-						<button class="btn btn-yeogi btn-submit" type="submit">저장 후 다음 단계</button>
+						<button class="btn btn-yeogi btn-submit" type="submit">저장하기</button>
 					</div>
 				</form>
 			</div>
@@ -416,8 +429,10 @@
 	                document.getElementById("lawcode").value = data.bcode;
 	                document.getElementById("fullname").value = data.sido + ' ' + data.sigungu + ' ' + data.bname;
 	                document.getElementById("delivername").value = fullname;
+	                document.getElementById("postalcode").value = data.zonecode;
 	                
 	                console.log(fullname);
+	                console.log(data.zonecode);
 	            }
 	        }).open();
 	}
@@ -439,7 +454,6 @@ $("#deleteimage").on("click", function(){
 	$("#cancel").on("click", function(){
 		$("#img-delete").modal("hide");
 	})
-	
 })
 
 

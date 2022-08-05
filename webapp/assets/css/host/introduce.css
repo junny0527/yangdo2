@@ -1,9 +1,23 @@
 @charset "UTF-8";
 
-#detail{
+#detail > ul > li{
+	margin-top: 3px;
+	margin-left: 20px;
 	text-align: left;
-	font-size:15px;
+	font-size: 14px;
 	font-weight: bold;
+	list-style-type: disc;
+}
+
+#detail > ul > li:first-of-type{
+	list-style-type: none;
+	margin-top: 20px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
+
+#detail > ul > li:last-of-type{
+	margin-bottom: 20px;
 }
 
 .backgrou{
@@ -308,6 +322,14 @@ textarea{
 	width: 150px;
 }
 
+#lawcode{
+	margin-left: -10px;
+}
+
+#fullname{
+	width: 200px;
+}
+
 #firstline{
 	border-top: 0px;
 }
@@ -315,3 +337,8 @@ textarea{
 .resize{
 	margin-left: 40px;
 }
+
+.textarea-layer{
+	margin-top: 10px;
+}
+

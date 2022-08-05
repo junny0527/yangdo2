@@ -1,50 +1,102 @@
 @charset "UTF-8";
 
-#nav{
-	height:100%;
+#roomstatus{
+	width: 1024px;
+	height : 200px;
+	background-color: #FFFFFF;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius : 5px;
+	border: 1px solid #aaa;
+	box-shadow: -1px 1px 2px #aaa;
 }
 
-#nav >#aside{
-	width:230px;
-	height: 100%;
-	padding-top: 30px;
-	margin: 0px 7px 0px 0px;
-}
-
-#nav >#aside > ul{
-	display:inline-block;
-	width:230px;
-	margin-top:30px;
-	padding: auto;
-	border: 1px solid #AAA;
-	border-radius: 10px;
-}
-
-#nav>#aside>ul >li{
+#roomstatus ul{ 
 	display: block;
-	padding-top: 0px;
-	margin: 10px;
-	width : 210px;
-	height : 34px;
-	font-size: 18px;
-	font-weight: normal;
-	text-align : center;
-	color : rgba(0,0,0,0.56);
 }
 
-#nav >#aside> ul >li > button{
+#roomstatus ul:first-of-type{
+	height: 20px;
+}
+
+#roomstatus ul li{
 	width: 200px;
-	color: #FFF;
-	background-color: #00bfa5;;
+	height: 120px;
+	display: table-cell;
+	font-size: 16px;
+	text-align: center;
+	vertical-align: middle;
 }
 
-#nav > #content {
+.subject{
+	font-size: 24px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.box{
+	height: 20px;
+	min-width: 20px;
+	line-height: 21px;
+	border-radius: 2px;
+	background-color: #f2114c;
+	color: #fff;
+}
+
+#one{
+	background-color: #5eb917;
+}
+
+#two{
+	background-color: #337ab7;
+}
+
+#four{
+	background-color: #2c3e50;
 	
 }
-#nav > #content> #month {
-	margin-top: 100px;
-	width: 780px;
+
+#five{
+	background-color: #ad01d2;
 }
-#nav > #content >#tCalendar{
-	width: 780px;
+
+#six{
+	background-color: #ed5f19;
+}
+
+#yangdo{
+	font-size: 12px;
+}
+
+#calendar{
+	width: 1024px;
+	height: 1500px;
+}
+
+#calendar > div > div > h2{
+	font-size: 24px;
+}
+
+.fc-col-header-cell-cushion{
+	color: #000;
+}
+
+.fc-day-sun > div > .fc-col-header-cell-cushion{
+	color: #f2114c;
+}
+
+.fc-day > div > div > a{
+	color: #000;
+}
+
+.fc-day-sat > div > div > a{
+	color: #337ab7;
+}
+
+.fc-day-sun > div > div > a{
+	color: #f2114c;
+}
+
+.fc-day-sat  > div > .fc-col-header-cell-cushion{
+	color: #337ab7;
 }

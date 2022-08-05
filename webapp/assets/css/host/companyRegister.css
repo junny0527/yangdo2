@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+.table tbody tr td div.form-layer{
+	width: auto;
+	display: table;
+	margin-bottom: 12px;
+}
+
+.table tbody tr td div.form-layer-text{
+	width: auto;
+	display: table;
+	height: 20px;
+}
+
+.table tbody tr th{
+	width: 136px;
+	background-color: #eaeaea;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: 500;
+	line-height: 1.57;
+	color: #000000;
+	min-height: 10px;
+	vertical-align: middle;
+}
+
+.table table-bordered tbody tr td{
+	padding: 0.8em!important;
+	vertical-align: middle;
+	border: 1px solid #ddd;
+}
+
+.table tbody tr td span.form-title{
+	clear: both;
+	width: 95px;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.57;
+	color: rbga(0,0,0,0.87);
+	display: table-cell;
+	margin-right: 24px;
+	text-align: left;
+}
+
+.table tbody tr td span.form-body{
+	width: 400px;
+	height: 48px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.57;
+	color: rbga(0,0,0,0.87);
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.table .label-layer label:first-of-type{
+	margin-right: 20px;
+	font-weight: normal;
+	color: rgba(0,0,0,0.87);
+	width: 80px;
+	font-size: 14px;
+}
+
+.table .label-layer label:last-of-type{
+	margin-right: 20px;
+	font-weight: normal;
+	color: rgba(0,0,0,0.87);
+	width: 80px;
+	font-size: 14px;
+}
+
+.select-style{
+	width: 328px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	overflow: hidden;
+	background: #fff no-repeat 100% 50%;
+}
+
+.select-style select{
+	padding-left: 10px;
+	width: 100%;
+	font-size: 14px;
+	border: none;
+	box-shadow: nlne;
+	background-color: transparent;
+	background-image: none;
+}
+
+.table .form-body select{
+	height: 32px;
+}
+
+.table input.normal-size{
+	width: 328px;
+}
+
+.table input.small-size{
+	width: 218px;
+	float: left;
+	margin-right: 10px;
+}
+
+div.select-style.small-size{
+	width: 100px;
+	float: left;
+	margin-right: 10px;
+}
+
+.form-title{
+	padding-left : 10px;
+}
+
+.form-control{
+	display: block;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+	transition: border-color ease-in-out.15s, box-shadow ease-in-out .15s;
+}
+
+.description{
+	width: 100%;
+	padding-left : 10px;
+	height: 12px;
+	font-size : 13px;
+	text-align: left;
+	line-height: 1.4;
+	color: rbga(0,0,0,0.56);
+}
+
+.text-bold{
+	color : #f2114c;
+	font-weight: 500;
+	padding-top: 10px;
+}
+
+.mb_24{
+	margin-bottom: 16px;
+}
+
+
+
+.submit-layer{
+	text-align: center;
+}
+
+.form-body .btn-normal-layer{
+	float:right;
+	margin-top: -35px;
+	height: 32px;
+	margin-right: -97px;
+}
+
+.submit-layer .btn-submit{
+	width: 177px;
+	height: 60px;
+	font-size: 16px;
+	line-height: 0;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.btn-yeogi{
+	background-color: #f2114c;
+	color: #fff;
+	font-weight: 500;
+}
+
+.checkbox-inline+.checkbox-inline{
+	margin-left: 0px;
+}
+
+.icon-label{
+	width: 120px;
+	font-size: 13px;
+}
+
+#status{
+	width: 830px;
+	background-color : #FFFFFF;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	border-radius : 5px;
+	box-shadow: -1px 1px 2px #aaa;
+}
+
+#status p{
+	margin-top : 10px;
+	font-size : 24px;
+}
+
+#statustable{
+	min-width : 830px;
+	margin : auto;
+	margin-bottom : 40px;
+	font-size : 18px;
+}
+
+#statustable thead tr th{
+	padding-top : 10px;
+	padding-bottom : 10px;
+}
+
+#statustable tbody tr td{
+	padding-top : 10px;
+	padding-bottom : 10px;
+}
+
+#leftaddress{
+	margin-left: 96px;
+}
+
+#jobstyle{
+	text-align: left;
+}
+
+#joblist{
+	text-align: left;
+}
+
+#tax{
+	margin-left : 10px;
+}
+
+.mb_08{
+	margin-top: 10px;
+}
+
+#postCode{
+	margin-top: -35px;
+	height: 32px;
+}
+
+.resize{
+	margin-left: 40px;
+}
+
+#etcText{
+	height: 20px;
+}
+
+#bizEtcText{
+	height: 20px;
+}
+

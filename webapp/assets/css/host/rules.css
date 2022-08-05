@@ -33,7 +33,7 @@
 
 .table tbody tr td span.form-title{
 	clear: both;
-	width: 95px;
+	width: 120px;
 	vertical-align: middle;
 	font-size: 14px;
 	font-weight: 500;
@@ -42,11 +42,13 @@
 	display: table-cell;
 	margin-right: 24px;
 	text-align: left;
+	border-left: none;
 }
 
 .table tbody tr td span.form-body{
 	width: auto;
 	height: 48px;
+	padding-left: 5px;
 	font-size: 14px;
 	font-weight: normal;
 	line-height: 1.57;
@@ -93,7 +95,8 @@
 }
 
 .table input.normal-size{
-	width: 328px;
+	width: 100px;
+	text-align: center;
 }
 
 .table input.small-size{
@@ -106,12 +109,6 @@ div.select-style.small-size{
 	width: 100px;
 	float: left;
 	margin-right: 10px;
-}
-
-
-
-.form-title{
-	padding-left : 10px;
 }
 
 .form-control{
@@ -130,7 +127,8 @@ div.select-style.small-size{
 
 .description{
 	width: 100%;
-	padding-left : 10px;
+	padding-left : 15px;
+	margin-bottom: 10px;
 	height: 12px;
 	font-size : 13px;
 	text-align: left;
@@ -194,19 +192,14 @@ div.select-style.small-size{
 	float: left;
 }
 
-.table tbody tr td span.form-title{
-	width: 150px;
-	border-left: none;
+.chk{
+	padding-left: 10px;
 }
 
 .table-bordered .help-tooltip{
 	width: 10px;
 	border-left-style: hidden;
 }
-.table-bordered td{
-	width: 800px;
-}
-
 
 .mb_24{
 	padding-top : 20px;
@@ -238,6 +231,7 @@ hr{
 }
 
 #season>td{
+	padding-left : 25px;
 	padding-bottom: 30px;
 }
 
@@ -250,11 +244,8 @@ hr{
 }
 
 #usetime{
+	padding-left: 15px;
 	padding-bottom: 0px;
-}
-
-.btn-default{
-	margin-left: 5px;
 }
 
 #time{
@@ -267,10 +258,6 @@ hr{
 
 .remove-layer{
 	margin-left: 10px;
-}
-
-.description{
-	margin-bottom: 10px;
 }
 
 .radio-inline{
@@ -300,4 +287,36 @@ hr{
 
 .resize{
 	margin-left: 40px;
+}
+
+#design{
+	padding-left: 10px;
+}
+
+#season> .form-layer> .title-align{
+	margin-left: 5px;
+}
+
+#additionalpeople{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+#additionalpeople > div > .form-title{
+	width: 50px;
+}
+
+.addpeoplestyle{
+	float: right;
+	margin-right: -2px;
+	margin-bottom: 15px;
+}
+
+.decrease{
+	width: 300px;
+	overflow: hidden;
+}
+
+.price{
+	display: inline-block;
 }

@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class MingyuController {
+public class SaleController {
 	
-	@RequestMapping(value="/yangdo",method = {RequestMethod.GET,RequestMethod.POST})
-	public String yangdo() {
+	@RequestMapping(value="/sale",method = {RequestMethod.GET,RequestMethod.POST})
+	public String sale() {
 		
+		System.out.println("sale");
 		return "/sale/yangdo";
 	}
 }
