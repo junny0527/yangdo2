@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sale">
-	
-	
+
+
+
+	<select id="getReservation" parameterType="int" resultType="Map">
+		<![CDATA[
+			select  r.no NO
+			        ,ro.no ROOMNO
+			        ,r.user_no  USERNO
+			        ,r.name RNAME 
+			        ,r.hp RHP
+			        ,r.check_in
+			        ,r.check_out 
+			        ,ro.room_name
+			        ,p.name PNAME
+			        ,ro.standard_people
+			        ,ro.max_people
+			        ,p.refund_no
+			        ,r.adult 
+			        ,r.kid 
+			        ,r.baby 
+			        ,r.total_price 
+			        ,r.status
+			        ,pensione.image_path
+			        ,r.reg_date
+			from reservations r , rooms ro , pension p , pension_image pensionE
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and p.no = pensione.pension_no
+			and r.no = #{no}
+		]]>
+	</select>
+
 </mapper>

@@ -137,6 +137,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #header ul>li>a{
 	color: #FFFFFFCC;
 }
+
 /* 헤더 펜션글자 */
 #area h2{
     display: block;

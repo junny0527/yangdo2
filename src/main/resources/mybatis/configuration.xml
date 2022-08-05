@@ -5,7 +5,7 @@
 		<!-- <typeAlias alias="UserVo" type="com.javaex.vo.UserVo" /> -->
 	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/mappers/sale.xml" />
+		<mapper resource="mybatis/mappers/reservation.xml" />
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
 	</mappers>
 </configuration>

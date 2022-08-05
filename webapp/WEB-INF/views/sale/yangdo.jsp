@@ -25,33 +25,40 @@
 		<div id="content" class="clearfix">
 			<h1>양도 하기</h1>
 
-			<div id="Reservation_num">예약번호 12831293128390</div>
+			<div id="Reservation_num">예약번호 ${sMap.NO }</div>
 
 			<div id="pension" class="clearfix">
-				<img id="pension_image" src="${pageContext.request.contextPath}/assets/image/sale/wow.png">
+				<!-- 펜션이미지 -->
+				<img id="pension_image" src="${pageContext.request.contextPath}/upload/${sMap.IMAGE_PATH}">
 
-				<div id="pension_pName" class="font-bold">대성리해오름</div>
-
+				<!-- 펜션이름 -->
+				<div id="pension_pName" class="font-bold">${sMap.PNAME}</div>
+				
+				<!-- 체크인 체크아웃 -->
 				<div id="flex">
 					<div class="flex-s">
 						<div class="font-size-13 color-dan">체크-인</div>
-						<div class="font-size-17">2022-09-18 15:00</div>
+						<div class="font-size-17">${sMap.CHECK_IN }</div>
 					</div>
 					<div class="flex-e font-size-17">
 						<div class="font-size-13 color-dan">체크-아웃</div>
-						<div class="font-size-17">2022-09-19 11:00</div>
+						<div class="font-size-17">${sMap.CHECK_OUT }</div>
 					</div>
 				</div>
-
-				<div id="pension_rName" class="font-bold">해오름</div>
-
-				<div id="pension_people" class="font-bold">기준 15인/ 최대 30인</div>
+				
+				<!-- 방이름 -->
+				<div id="pension_rName" class="font-bold">${sMap.ROOM_NAME }</div>
+				
+				<!-- 기준인원 -->
+				<div id="pension_people" class="font-bold">기준 ${sMap.STANDARD_PEOPLE }인/ 최대 ${sMap.MAX_PEOPLE }인</div>
 			</div>
 			<!-- 컨텐츠(숙소) -->
 
 			<div id="pay" class="clearfix">
+				<!-- 환불날짜규정 -->
 				<div id="refund_table">
-					<table id = "pay_refund" border = '1'>
+					<c:if test="${sMap.REFUND_NO==10}">
+						<table id = "pay_refund" border = '1'>
                         		<thead>
                         			<tr>
                         				<th class="text-center">기준날짜</th>
@@ -95,92 +102,100 @@
                         			</tr>
                         		</tbody>
                         	</table>
-					<!-- <table id="pay_refund"  border='1'>
-						<thead>
-							<tr>
-								<th class="text-center">기준날짜</th>
-								<th class="text-center">7일 전</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<tr>
-								<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불액 비율
-								</td>
-								<td>7일 전 : 100%</td>
-							</tr>
-							<tr>
-								<td>6일 전 : 90%</td>
-							</tr>
-							<tr>
-								<td>5일 전 : 85%</td>
-							</tr>
-							<tr>
-								<td>4일 전 : 80%</td>
-							</tr>
-							<tr>
-								<td>3일 전 : 70%</td>
-							</tr>
-							<tr>
-								<td>2일 전 : 50%</td>
-							</tr>
-							<tr>
-								<td>1일 전 : 30%</td>
-							</tr>
-							<tr>
-								<td>숙박일 당일, no-show 환불 불가</td>
-							</tr>
-						</tbody>
-					</table> -->
+                        </c:if>
+					<c:if test="${sMap.REFUND_NO == 7 }">
+						<table id="pay_refund"  border='1'>
+							<thead>
+								<tr>
+									<th class="text-center">기준날짜</th>
+									<th class="text-center">7일 전</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								<tr>
+									<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불액 비율
+									</td>
+									<td>7일 전 : 100%</td>
+								</tr>
+								<tr>
+									<td>6일 전 : 90%</td>
+								</tr>
+								<tr>
+									<td>5일 전 : 85%</td>
+								</tr>
+								<tr>
+									<td>4일 전 : 80%</td>
+								</tr>
+								<tr>
+									<td>3일 전 : 70%</td>
+								</tr>
+								<tr>
+									<td>2일 전 : 50%</td>
+								</tr>
+								<tr>
+									<td>1일 전 : 30%</td>
+								</tr>
+								<tr>
+									<td>숙박일 당일, no-show 환불 불가</td>
+								</tr>
+							</tbody>
+						</table>
+					</c:if>
 					
-					<!-- <table id="pay_refund" border='1'>
-						<thead>
-							<tr>
-								<th class="text-center">기준날짜</th>
-								<th class="text-center">6일 전</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<tr>
-								<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불액 비율
-								</td>
-								<td>6일 전 : 100%</td>
-							</tr>
-							<tr>
-								<td>5일 전 : 90%</td>
-							</tr>
-							<tr>
-								<td>4일 전 : 80%</td>
-							</tr>
-							<tr>
-								<td>3일 전 : 70%</td>
-							</tr>
-							<tr>
-								<td>2일 전 : 50%</td>
-							</tr>
-							<tr>
-								<td>1일 전 : 30%</td>
-							</tr>
-							<tr>
-								<td>숙박일 당일, no-show 환불 불가</td>
-							</tr>
-						</tbody>
-					</table>  -->
+					<c:if test="${sMap.REFUND_NO == 6 }">
+						<table id="pay_refund" border='1'>
+							<thead>
+								<tr>
+									<th class="text-center">기준날짜</th>
+									<th class="text-center">6일 전</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								<tr>
+									<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불액 비율
+									</td>
+									<td>6일 전 : 100%</td>
+								</tr>
+								<tr>
+									<td>5일 전 : 90%</td>
+								</tr>
+								<tr>
+									<td>4일 전 : 80%</td>
+								</tr>
+								<tr>
+									<td>3일 전 : 70%</td>
+								</tr>
+								<tr>
+									<td>2일 전 : 50%</td>
+								</tr>
+								<tr>
+									<td>1일 전 : 30%</td>
+								</tr>
+								<tr>
+									<td>숙박일 당일, no-show 환불 불가</td>
+								</tr>
+							</tbody>
+						</table>
+					</c:if>
+					
 				</div> 
+				<!-- 인원정보 -->
 				<div id="pay_addPerson">
 					인원정보
 					<div>
 						<ul>
-							<li id="pay_addPerson_adult">성인 : 15명</li>
-							<li id="pay_addPerson_kid">아동 : 0명</li>
-							<li id="pay_addPerson_baby">영유아 : 0명</li>
+							<li id="pay_addPerson_adult">성인 : ${sMap.ADULT }명</li>
+							<li id="pay_addPerson_kid">아동 : ${sMap.KID }명</li>
+							<li id="pay_addPerson_baby">영유아 : ${sMap.BABY }명</li>
 						</ul>
 					</div>
 				</div>
-
+				
+				<!-- 금액설정 -->
 				<div id="pay_confirm" class="clearfix">
-					<div id="pay_confirm_payment">결제액: 1,000,000,000원</div>
+					<div id="pay_confirm_payment">결제액: ${sMap.TOTAL_PRICE }원</div>
 					<div id="refund" class="clearfix">
-						<div id="pay_confirm_refund">환불액:</div>
+						<div id="pay_confirm_refund">환불액:&nbsp;</div>
 						<div id="refund_pay">800,000원</div>
 					</div>
 					<input type="text" id="pay_confirm_transfer" name="" value="" placeholder="양도후 받을 금액을 입력하세요">원
@@ -191,13 +206,14 @@
 
 
 
-
+			<!-- 양도자정보 -->
 			<div id="person">
 				<div id="person_Info">양도자 정보</div>
-				<div id="person_name" class="personInfo">이름 : 김민규</div>
-				<div id="person_hp" class="personInfo">연락처 : 010-1234-1234</div>
+				<div id="person_name" class="personInfo">이름 : ${sMap.RNAME }</div>
+				<div id="person_hp" class="personInfo">연락처 : ${sMap.RHP }</div>
 			</div>
 			<!-- 컨텐츠(사람) -->
+			<!-- 환뷸규정 -->
 			<div class="caution-field">
 				<h3 class="font-size-25 color-dan font-bold">약관 및 정책에 동의해주세요.</h3>
 				<div class="height-30"></div>
