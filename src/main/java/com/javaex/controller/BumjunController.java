@@ -1,25 +1,44 @@
 package com.javaex.controller;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.javaex.service.RePayService;
 
 @Controller
-@RequestMapping(value = "/res", method = { RequestMethod.GET, RequestMethod.POST })
-
-//¿¹¾àÆû
+@RequestMapping(value = "/res")
 public class BumjunController {
-	@RequestMapping(value = "/reserve", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reserve() {
-		System.out.println("MyPageController>reserve()");
 
+	@Autowired
+	private RePayService rePayService;
+
+	// ì˜ˆì•½
+	@RequestMapping(value = "/reserve", method = { RequestMethod.GET, RequestMethod.POST })
+	public String reserve(@RequestParam("no") int no, Model model) {
+		System.out.println("BumjunController>reserve()");
+		System.out.println(no);
+		
+		Map<String, Object> rpMap = rePayService.getRePay(no);
+
+		model.addAttribute("rpMap", rpMap);
 		return "/pay/reserve";
 	}
 
-//¾çµµ¿¡¾àÆû
+//ì–‘ë„ì˜ˆì•½
 	@RequestMapping(value = "/yangdoreserve", method = { RequestMethod.GET, RequestMethod.POST })
-	public String yangdoreserve() {
-		System.out.println("MyPageController>yangdoreserve()");
+	public String yangdoreserve(@RequestParam("no") int no, Model model) {
+		System.out.println("BumjunController>yangdoreserve()");
+		System.out.println(no);
+		
+		Map<String, Object> rpMap = rePayService.getRePay(no);
+
+		model.addAttribute("rpMap", rpMap);
 
 		return "/pay/yangdoReserve";
 	}

@@ -17,7 +17,7 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/pay/a.css">
@@ -34,13 +34,13 @@
 					<div class="right" data-v-33033856="" data-v-f785cca6="">
 						<section class="info" data-v-33033856="">
 							<p class="name" data-v-33033856="">
-								<strong data-v-33033856="">예약번호</strong>NO.1234567
+								<strong data-v-33033856="">예약번호</strong>${rpMap.NO }
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">숙소이름</strong>양평 스마일카라반펜션
+								<strong data-v-33033856="">펜션이름</strong>양평 스마일카라반펜션
 							</p>
 							<p data-v-33033856="">
-								<strong data-v-33033856="">객실타입/기간</strong>달콤룸 / 1박
+								<strong data-v-33033856="">객실명/기간</strong>달콤룸 / 1박
 							</p>
 							<p data-v-33033856="">
 								<strong data-v-33033856="">인원수/(성인2명)</strong>2명
