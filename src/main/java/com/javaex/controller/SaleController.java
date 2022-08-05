@@ -20,7 +20,7 @@ public class SaleController {
 	
 	@RequestMapping(value="/sale",method = {RequestMethod.GET,RequestMethod.POST})
 	public String sale(@RequestParam("no") int no,Model model) {
-		System.out.println("sale");
+		System.out.println("SaleController > sale");
 		System.out.println(no);
 		Map<String,Object> sMap = saleService.getReservation(no);
 		
