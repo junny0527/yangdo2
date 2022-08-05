@@ -21,7 +21,7 @@
 		<!-- 펜션어때 헤더 -->
 		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
 		<!-- 펜션어때 헤더 -->
-
+	
 		<div id="content" class="clearfix">
 			<h1>양도 하기</h1>
 
@@ -48,7 +48,6 @@
 				
 				<!-- 방이름 -->
 				<div id="pension_rName" class="font-bold">${sMap.ROOM_NAME }</div>
-				
 				<!-- 기준인원 -->
 				<div id="pension_people" class="font-bold">기준 ${sMap.STANDARD_PEOPLE }인/ 최대 ${sMap.MAX_PEOPLE }인</div>
 			</div>
@@ -198,7 +197,7 @@
 						<div id="pay_confirm_refund">환불액:&nbsp;</div>
 						<div id="refund_pay">800,000원</div>
 					</div>
-					<input type="text" id="pay_confirm_transfer" name="" value="" placeholder="양도후 받을 금액을 입력하세요">원
+					<input type="text" id="pay_confirm_transfer" name="trans_Price" value="" placeholder="양도후 받을 금액을 입력하세요">원
 				</div>
 				<button id="btn_transfer" type="button">양도 하기</button>
 			</div>
@@ -213,6 +212,8 @@
 				<div id="person_hp" class="personInfo">연락처 : ${sMap.RHP }</div>
 			</div>
 			<!-- 컨텐츠(사람) -->
+			<!-- 예약상태 -->
+			<input type="hidden" name="status" value="${sMap.STATUS}">
 			<!-- 환뷸규정 -->
 			<div class="caution-field">
 				<h3 class="font-size-25 color-dan font-bold">약관 및 정책에 동의해주세요.</h3>
@@ -263,7 +264,7 @@
 			<div class="modal-body">
 				<div class="con">
 					양도 하시겠습니까?
-					<div class="con color-dan">가격: 100,000원</div>
+					<div class="con color-dan">가격: <span id="modalPrice" class="con color-dan"></span>원</div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -314,7 +315,7 @@
 				<h4 class="modal-title">금액 확인</h4>
 			</div>
 			<div class="modal-body">
-				<div class="con color-dan">금액을 입력해 주세요</div>
+				<div class="con color-dan">금액을 확인해 주세요</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -330,15 +331,73 @@
 
 
 <script type="text/javascript">
+
+	function isEmpty (value){
+		if(value.length == 0 || value == null){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	function isNumeric(value){
+		var regExp = /^[0-9]+$/g;
+		return regExp.test(value);
+	}
+	
+	function currencyFormatter(amount){
+		return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+	}
+	
+	$('#pay_confirm_transfer').on('blur',function(){
+		var val = $("#pay_confirm_transfer").val();
+		if(!isEmpty(val) && isNumeric(val)){
+			val = currencyFormatter(val);
+			$('#pay_confirm_transfer').val(val);
+		}
+		
+	});
+	
+	
 	$("#btn_transfer").on("click", function() {
 		console.log("버튼클릭");
+		
+		var transPrice = $("[name='trans_Price']").val();
+		$("#modalPrice").text(transPrice);
+		
 		$("#yangdo-modal").modal("show");
 
 	});
 	
 	
 	$("#yang").on("click",function(){
+		console.log("콘솔클릭")
+		var no = '${sMap.NO}';
+		var status = $("[name='status']").val();
+		var transPrice = $("[name='trans_Price']").val();
 		
+		
+		var ReservationVo = {
+			no : no
+			,status : status
+			,transPrice: transPrice
+		}
+		
+		console.log(ReservationVo);
+		/*$.ajax({
+			url : "${pageContext.request.contextPath}/api/sale",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(ReservationVo),
+			dataType : "json",
+			success : function(result){
+			
+			
+			},
+			error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+			}
+		}); */
 		
 	});
 </script>
