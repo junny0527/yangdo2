@@ -68,8 +68,8 @@
 						</ul>
 					</section>
 					<!---->
-					<button onclick="requestPay()" type="button" class="btn_pay gra_left_right_red"
-						data-v-33033856="">결제하기</button>
+					<button onclick="requestPay()" type="button"
+						class="btn_pay gra_left_right_red" data-v-33033856="">결제하기</button>
 				</div>
 				<div class="left" data-v-f785cca6="">
 					<!---->
@@ -209,8 +209,12 @@
 	</div>
 
 	<script>
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp74601630");
 		function requestPay() {
 			console.log("클릭")
+			
+
 		}
 	</script>
 
