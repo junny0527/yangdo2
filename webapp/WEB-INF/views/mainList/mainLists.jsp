@@ -4,22 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/mainLists.css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainList/reservation-jiwoong.css">
-
 <!-- 달력 ui -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 <!-- kakaoMap -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b67b7601c934be1e54baa80b6f1a7de0"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b67b7601c934be1e54baa80b6f1a7de0&libraries=LIBRARY"></script>
+
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainList/reservation-jiwoong.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/mainLists.css">
+
+
+
 
 <body>
 	<!-- wrap -->
@@ -184,7 +190,7 @@
 								<span>높은 가격 순</span>
 							</button>
 						</div>
-						<button type="button"  class="btn_map text-center" ">
+						<button type="button" id="btn_map" class="btn_map text-center" ">
 						지도
 						</button>
 					</div>
@@ -261,45 +267,14 @@
 						</li>
 					</ul>	
 					<!-- 사진 정보 -->
-					<!-- 사진정보 -->
-					<ul>					
-						<li class="list_2 adcno3">
-							<a href="">
-								<p class="pic">
-									<img class="lazy align" src="./assets/image/mainList/62e1e83e21944.jpg" style="margin-top: -159px; display: block;">
-								</p>
-								<div class="stage gra_black_vertical">
-									
-									<div class="name">
-										<strong>그린하우스펜션</strong>
-										<p class="score">
-											<em>4.5</em>
-											<span>좋아요 (13)</span>
-										</p>
-										<p>양평군 | 백동낚시터 차량 10분</p>
-									</div>
-									<div class="price">
-										<div class="map_html">
-											<p>
-												<b>350,000원</b>
-											</p>	
-										</div>
-										<p>
-											<b>350,000원</b>
-										</p>
-									</div>
-								</div>
-							</a>
-						</li>
-					</ul>	
-					<!-- 사진 정보 -->
+					
 				</div>
 			</div>
 			<!-- List -->
 		</div>
 		<!-- content -->
 		
-		<!-- footer -->
+		
 		<!-- //footer -->
 		<footer>
 			<div class="align">
@@ -330,14 +305,29 @@
 		<!-- footer -->
 	</div>
 	<!-- wrap -->
-	
-	<!-- 지도 모달 -->
-		 <div id="map" style="width: 500px; height: 500px;">
-		 </div>
-	
-		
 		
 </body>
+	
+
+	
+	<!-- 지도 모달 -->
+		 <div class="modal" id="local" >
+		  <div class="modal-dialog" >
+		    <div class="modal-content" >
+		      <div class="modal-header" >        
+		      </div>
+		      <div class="modal-body">
+		        <div id="map1" >
+		        	
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
 	<script type="text/javascript">
 			
 ///////////////////////// 일정선택 ///////////////////////////
@@ -378,12 +368,59 @@
 		/* kakaoMap */
 		
 		
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			level: 3 //지도의 레벨(확대, 축소 정도)
-		};
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
+			var options = { //지도를 생성할 때 필요한 기본 옵션
+			   center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+			   level: 13 //지도의 레벨(확대, 축소 정도)
+			};
+			
+			var map = new kakao.maps.Map(container, options);
+			
+			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
+			var options = { //지도를 생성할 때 필요한 기본 옵션
+			   center: new kakao.maps.LatLng(37.4917397537238, 127.48756458504242), //지도의 중심좌표.
+			   level: 8 //지도의 레벨(확대, 축소 정도)
+			};
+			var map = new kakao.maps.Map(container, options);
+			const center = map.getCenter();
+			
+			// 마커가 표시될 위치입니다 
+			var markerPosition  = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); 
+			
+			// 마커를 생성합니다
+			var marker = new kakao.maps.Marker({
+			    position: markerPosition
+			});
+			
+			// 마커가 지도 위에 표시되도록 설정합니다
+			marker.setMap(map);
+			
+			var iwContent = 
+				'<div ><a href=""><img style="width:30px; height:30px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a>양평 그린펜션 <br> 130,000원', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		    iwPosition = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); //인포윈도우 표시 위치입니다
+
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+		    position : iwPosition, 
+		    content : iwContent 
+		});
+		  
+		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+		infowindow.open(map, marker);
+				
+			$("#btn_map").on("click", function() {
+		
+				$("#local").modal("show");
+				
+				//지도 사이즈 변경 후 재 출력
+				map.relayout();
+				//지도 사이즈 변경 후 위치 재 출력
+				map.setCenter(center);
+			});
+		
+			$(".btn-secondary").on("click", function() {
+				$(".modal").hide();
+			});
 		
 	</script>
 </html>
