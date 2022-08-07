@@ -11,6 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/css/host/fullcalendar-5.11.2/lib/main.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/css/host/fullcalendar-5.11.2/lib/locales/ko.js"></script>
+
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
@@ -57,7 +59,45 @@
 <!-- footer -->
 <c:import url="/WEB-INF/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
+
 </body>
+
+<!-- event modal -->
+<!-- modal -->
+<div id = "roomcontrol" class = "modal fade in" aria-hidden="false" >
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">객실 현황</h4>
+			</div>
+			
+			<div class="modal-body">
+				<div>
+					<h5>풍뎅이 방</h5>
+					<br>
+					<p id = "reservestatus"> 예약 완료</p>
+					<p>예약 번호 : A39991273</p>
+					<p>예약자 이름 : 제목없음</p>
+					<p>예약자 번호 : 010-3382-9945</p>
+					<br><br>
+					<p>예약 인원 </p>
+					<p>성인 : 2명 </p>
+					<p>아동 : 1명 </p>
+					<p>유아 : 0명 </p>
+				</div>
+				<br>
+				<div>
+					<button class = "btn btn-close">닫기</button>
+					<button class = "btn btn-danger">예약 취소</button>
+					<button class = "btn btn-primary">체크인</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="modal-backdrop fade in"></div>
+<!-- event modal -->	
 
 <script type = "text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
@@ -71,36 +111,42 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 'prev,next'
       },
       locale: initialLocaleCode,
-      navLinks: true, // can click day/week names to navigate views
-      selectable: true,
-      selectMirror: true,
-      select: function(arg) {
-        var title = prompt('예약일정');
-        if (title) {
-          calendar.addEvent({
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: arg.allDay
-          })
-        }
-        calendar.unselect()
-      },
-      eventClick: function(arg) {
-        if (confirm('예약내용을 삭제하시겠습니까?')) {
-          arg.event.remove()
-        }
+      navLinks: false, // can click day/week names to navigate views
+      selectable: false,
+      selectMirror: false,
+      eventClick: function() {
+    	  $("#roomcontrol").modal("show");
       },
       editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: []
+      dayMaxEvents: false, // allow "more" link when too many events
+      events: [
+    	  {
+    		  title: '예약자 이름',
+    		  start: '2022-08-01',
+    		  end: '2022-08-04'
+    	  }
+    	  ,
+    	  {
+    		  title: '또 다른 예약자',
+    		  start: '2022-08-16',
+    		  end: '2022-08-20',
+    	  }
+      ]
     });
-
+    
     calendar.render();
   });
+  
+  
 </script>
 
+<script type="text/javascript">
 
+$(".btn-close").on("click", function(){
+	$("#roomcontrol").modal("hide");
+})
+
+</script>
 
 
 </html>

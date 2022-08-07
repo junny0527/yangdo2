@@ -17,6 +17,7 @@ public class SaleService {
 		System.out.println("SaleService > getReservation()");
 		
 		Map<String,Object> sMap = saleDao.getReservation(no);
+		System.out.println(sMap);
 		
 		return sMap;
 	}

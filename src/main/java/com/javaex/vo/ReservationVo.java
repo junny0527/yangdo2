@@ -10,7 +10,6 @@ public class ReservationVo {
 	private String userHp;
 	private String checkIn;
 	private String checkOut;
-	private String imagePath;
 	private int adult;
 	private int kid;
 	private int baby;
@@ -26,7 +25,7 @@ public class ReservationVo {
 		super();
 	}
 	public ReservationVo(int no, int roomNo, int userNo, String userName, String userHp, String checkIn,
-			String checkOut, String imagePath, int adult, int kid, int baby, String payWay, String payStatus,
+			String checkOut, int adult, int kid, int baby, String payWay, String payStatus,
 			String status, int totalPrice, int transPrice, String regDate, String prNo) {
 		super();
 		this.no = no;
@@ -36,7 +35,6 @@ public class ReservationVo {
 		this.userHp = userHp;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-		this.imagePath = imagePath;
 		this.adult = adult;
 		this.kid = kid;
 		this.baby = baby;
@@ -90,12 +88,6 @@ public class ReservationVo {
 	}
 	public void setCheckOut(String checkOut) {
 		this.checkOut = checkOut;
-	}
-	public String getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
 	}
 	public int getAdult() {
 		return adult;
@@ -161,7 +153,7 @@ public class ReservationVo {
 	@Override
 	public String toString() {
 		return "ReservationVo [no=" + no + ", roomNo=" + roomNo + ", userNo=" + userNo + ", userName=" + userName
-				+ ", userHp=" + userHp + ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", imagePath=" + imagePath
+				+ ", userHp=" + userHp + ", checkIn=" + checkIn + ", checkOut=" + checkOut 
 				+ ", adult=" + adult + ", kid=" + kid + ", baby=" + baby + ", payWay=" + payWay + ", payStatus="
 				+ payStatus + ", Status=" + Status + ", totalPrice=" + totalPrice + ", transPrice=" + transPrice
 				+ ", regDate=" + regDate + ", prNo=" + prNo + "]";

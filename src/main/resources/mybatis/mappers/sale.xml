@@ -33,4 +33,13 @@
 		]]>
 	</select>
 
+	
+	<update id="yangdo" parameterType="ReservationVo">
+		<![CDATA[
+			update reservations
+			set status = {status}
+			where no = {no}
+		]]>
+	</update>
+	
 </mapper>

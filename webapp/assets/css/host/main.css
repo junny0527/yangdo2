@@ -256,7 +256,6 @@
 	line-height : 1;
 	letter-spacing : -0.5px;
 	color : #000;
-	display: inline-block;
 	margin-top: 24px;
 	margin-bottom: 18px;
 	margin-left: 20px;
@@ -270,8 +269,8 @@
 	font-weight: normal;
 	line-height : 1;
 	color : rgba(0, 0, 0, 0.56);
-	display: inline-block;
 	margin-top: 24px;
+	padding-top: 3px;
 	margin-bottom: 18px;
 	margin-left:24px;
 	float : right;

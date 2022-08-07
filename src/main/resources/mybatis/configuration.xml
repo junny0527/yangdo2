@@ -2,11 +2,15 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias alias="UserVo" type="com.javaex.vo.UserVo" /> -->
+		<typeAlias alias="ReservationVo" type="com.javaex.vo.ReservationVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/sale.xml" />
+<<<<<<< HEAD
 		<mapper resource="mybatis/mappers/detail.xml" />
+=======
+		<mapper resource="mybatis/mappers/repay.xml" />
+>>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
 	</mappers>
 </configuration>
