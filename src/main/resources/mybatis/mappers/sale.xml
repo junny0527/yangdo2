@@ -34,10 +34,11 @@
 	</select>
 
 	
-	<update id="yangdo" parameterType="ReservationVo">
+	<update id="yangdoUpdate" parameterType="ReservationVo">
 		<![CDATA[
 			update reservations
 			set status = {status}
+				,transPrice = {transPrice}
 			where no = {no}
 		]]>
 	</update>
