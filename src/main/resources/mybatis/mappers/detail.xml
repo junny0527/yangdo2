@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="detail">
+	
+	<!-- 펜션정보 가져오기 -->
+	<select id="select" resultType="map" parameterType="int">
+		<![CDATA[
+			select  p.no
+			        ,p.company_no
+			        ,p.name
+			        ,p.postal_code
+			        ,p.address
+			        ,p.detail_address
+			        ,p.law_code
+			        ,p.law_name
+			        ,p.visit_road1
+			        ,p.visit_road2
+			        ,p.visit_road3
+			        ,p.area_info1
+			        ,p.area_info2
+			        ,p.area_info3
+			        ,p.rules
+			        ,p.live_pay
+			        ,p.parking_info
+			        ,p.etc
+			        ,p.check_in
+			        ,p.check_out
+			        ,p.add_adult_price
+			        ,p.add_kid_price
+			        ,p.add_baby_price
+			        ,p.refund_no
+			from    pension p
+			where   p.no = #{pensionNo}
+		]]>
+	</select>
+	
+	<!-- 펜션이미지 리스트 가져오기 -->
+	<select id="imgList" resultType="map" parameterType="int">
+		<![CDATA[
+			select  p.no
+			        ,pImg.no
+			        ,pImg.image_path
+			        ,pImg.orders
+			from    pension p, pension_image pImg
+			where   p.no = pImg.pension_no
+			and     p.no = #{pensionNo}
+		]]>
+	</select>
+	
+	<!-- 평점 및 총 리뷰개수 -->
+	<select id = "totalReview" resultType="map" parameterType="int">
+		<![CDATA[
+			select  to_char(avg(re.stars), '0.0') avgStars
+			        ,count(re.review_no) rCount
+			from    reservations res, reviews re, users u, company c, pension p
+			where   res.no = re.no
+			and     u.no = res.user_no
+			and     u.no = c.no
+			and     c.no = p.company_no
+			and     p.no = #{pensionNo}
+		]]>
+	</select>
+	
+	
+	
+	
+	
+</mapper>
