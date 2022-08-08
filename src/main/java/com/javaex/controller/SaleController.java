@@ -19,7 +19,7 @@ public class SaleController {
 	@Autowired
 	private SaleService saleService;
 	
-	@RequestMapping(value="/sale",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/sale", method = {RequestMethod.GET,RequestMethod.POST})
 	public String sale(@RequestParam("no") int no,Model model) {
 		System.out.println("SaleController > sale");
 		System.out.println(no);
@@ -31,13 +31,13 @@ public class SaleController {
 		return "/sale/yangdo";
 	}
 	
-	@RequestMapping(value="/sale/update",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/sale/update", method = {RequestMethod.GET,RequestMethod.POST})
 	public String yangdoUpdate(@ModelAttribute ReservationVo reservationVo){
-		System.out.println("SaleApiController yangdoUpdate");
-		System.out.println(reservationVo);
+		System.out.println("SaleApiController > yangdoUpdate");
+		
+		saleService.yangdoUpdate(reservationVo);
 		
 		
-		
-		return "redirect:/list/transferred";
+		return "redirect:/my/list/relisted";
 	}
 }

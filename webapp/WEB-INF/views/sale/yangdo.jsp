@@ -66,7 +66,7 @@
                         		</thead>
                         		<tbody class="text-center">
                         			<tr>
-                        				<td id = "rateguide" rowspan = '11'>예약 취소 시 <br> 환불액 비율</td>
+                        				<td id = "rateguide" rowspan = '11'>예약 취소 시 <br> 환불금액 비율</td>
                         				<td>10일 전 : 100%</td>
                         			</tr>
                         			<tr>
@@ -112,7 +112,7 @@
 							</thead>
 							<tbody class="text-center">
 								<tr>
-									<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불액 비율
+									<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불금액 비율
 									</td>
 									<td>7일 전 : 100%</td>
 								</tr>
@@ -151,7 +151,7 @@
 							</thead>
 							<tbody class="text-center">
 								<tr>
-									<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불액 비율
+									<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불금액 비율
 									</td>
 									<td>6일 전 : 100%</td>
 								</tr>
@@ -192,9 +192,9 @@
 				
 				<!-- 금액설정 -->
 				<div id="pay_confirm" class="clearfix">
-					<div id="pay_confirm_payment">결제액: ${sMap.TOTAL_PRICE }원</div>
+					<div id="pay_confirm_payment">결제금액: ${sMap.TOTAL_PRICE }원</div>
 					<div id="refund" class="clearfix">
-						<div id="pay_confirm_refund">환불액:&nbsp;</div>
+						<div id="pay_confirm_refund">환불시 금액:&nbsp;</div>
 						<div id="refund_pay">${sMap.REFUND_PRICE}원</div>
 					</div>
 					<input type="text" id="pay_confirm_transfer" name="transPrice" value="" placeholder="양도후 받을 금액을 입력하세요">원
@@ -269,12 +269,14 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
 				<form action="${pageContext.request.contextPath}/sale/update" method="get">
 					<input type="hidden" name="no" value="${sMap.NO }">
 					<input type="hidden" name="Status" value="양도대기">
-					<input type="text" id="hidPrice" name="transPrice" value="">
+					<input type="hidden" id="hidPrice" name="transPrice" value="">
 					<button id="yang" type="submit" class="btn btn-danger">양도합니다</button>
 				</form>
+				
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -377,7 +379,7 @@
 	
 	 $("#yang").on("click",function(){
 		console.log("콘솔클릭")
-		$("#yangdo-modal").modal("hide");
+		//$("#yangdo-modal").modal("hide");
 
 	});
 </script>

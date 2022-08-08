@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.SaleDao;
+import com.javaex.vo.ReservationVo;
 
 @Service
 public class SaleService {
@@ -134,5 +135,13 @@ public class SaleService {
 		
 		
 		return sMap;
+	}
+	
+	public int yangdoUpdate(ReservationVo reservationVo) {
+		System.out.println("SaleService > yangdoUpdate()");
+		
+		int count = saleDao.yangdoUpdate(reservationVo);
+		
+		return count;
 	}
 }

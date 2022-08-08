@@ -24,7 +24,6 @@ public class SaleDao {
 	
 	public int yangdoUpdate(ReservationVo reservationVo) {
 		System.out.println("SaleDao  > yangdoUpdate");
-		
 		int count = sqlSession.update("sale.yangdoUpdate", reservationVo);
 		
 		return count;

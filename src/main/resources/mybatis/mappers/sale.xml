@@ -25,6 +25,7 @@
 			        ,r.status
 			        ,pensione.image_path
 			        ,r.reg_date
+			        ,r.trans_price
 			from reservations r , rooms ro , pension p , pension_image pensionE
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
@@ -37,9 +38,9 @@
 	<update id="yangdoUpdate" parameterType="ReservationVo">
 		<![CDATA[
 			update reservations
-			set status = {status}
-				,transPrice = {transPrice}
-			where no = {no}
+			set status = #{Status}
+				,trans_price = #{transPrice}
+			where no = #{no}
 		]]>
 	</update>
 	
