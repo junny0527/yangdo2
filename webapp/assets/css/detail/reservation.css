@@ -268,7 +268,12 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     overflow: hidden;
 }
 
-#main > #gallery > div > button {
+#main > #gallery > div > a {
+	margin:auto 10px;
+}
+
+
+#main > #gallery > div > a > button {
     margin:auto 10px;
     text-align: center;
     border-style: none;
@@ -278,7 +283,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     align-items:center;
 }
 
-#main > #gallery > div > #left {
+#main > #gallery > div > a > #left {
 
 	padding-top:15px;
 	padding-bottom:15px;
@@ -291,7 +296,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 
-#main > #gallery > div > #right {
+#main > #gallery > div > a > #right {
 
 	padding-top:15px;
 	padding-bottom:15px;
@@ -305,7 +310,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 
 
-#main > #gallery > div > button:hover {
+#main > #gallery > div > a > button:hover {
 	box-shadow:	-1px -1px 20px 0px #fff9,
    				-1px -1px 5px 0px #fff9,
 			    7px 7px 20px 0px #0002,
@@ -315,11 +320,11 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 
 
-#main > #gallery > div > button:hover {
+#main > #gallery > div > a > button:hover {
     cursor:pointer;
 }
 
-#main > #gallery > div > button > img {
+#main > #gallery > div > a > button > img {
     width:40px;
 }
 
