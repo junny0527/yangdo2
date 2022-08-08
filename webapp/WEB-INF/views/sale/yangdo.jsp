@@ -368,19 +368,47 @@
 	
 	$("#btn_transfer").on("click", function() {
 		console.log("버튼클릭");
-		
 		var transPrice = $("[name='transPrice']").val();
-		$("#modalPrice").text(transPrice);
-		$("#hidPrice").val(transPrice);
-		$("#yangdo-modal").modal("show");
+		if($(".chk:checked").length != 3){
+			$("#agree-modal").modal("show");
+		}else if(transPrice == '') {
+			$("#money-modal").modal("show");
+		}else{
+			$("#modalPrice").text(transPrice);
+			$("#hidPrice").val(transPrice);
+			$("#yangdo-modal").modal("show");
 
+		}
+		
+	
 	});
 	
 	
-	 $("#yang").on("click",function(){
+	$("#yang").on("click",function(){
 		console.log("콘솔클릭")
 		//$("#yangdo-modal").modal("hide");
 
+	});
+	/* -- '전체' 선택 시 이벤트 -- */
+	$("#all").on("click",function(){
+	 //전체선택시 전부체크
+		 if ($("#all").prop("checked")) {
+		     $("input[type=checkbox]").prop("checked", true);
+		 // '전체' 선택 해제 시 전부 체크해제
+		 } else {
+		     $("input[type=checkbox]").prop("checked", false);
+		 }
+	});
+	 
+	
+	$(".chk").on("click",function(){
+		// 모두 선택되어 있을 때 '전체' 체크
+	    if($(".chk:checked").length == $(".chk").length){
+	        $("#all").prop("checked", true);
+	    // 하나라도 체크 해제할 때 '전체' 체크해제
+	    }else{
+	        $("#all").prop("checked", false);
+	    }
 	});
 </script>
 </html>
