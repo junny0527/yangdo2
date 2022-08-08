@@ -31,7 +31,11 @@
       <!-- //header -->
 		      <div id="main">
 		         <div id="content" class="clearfix">
-		            <span id="area">양평</span> <span id="pensionName">${pInfo.NAME}</span> <span id="address">${pInfo.ADDRESS}</span> <img src="${pageContext.request.contextPath}/assets/image/detail/location.png">
+		         	<input id="pensionNo" type="hidden" value="${pInfo.NO}">
+		            <span id="area">양평</span> 
+		            <span id="pensionName">${pInfo.NAME}</span> 
+		            <span id="address">${pInfo.ADDRESS}</span> 
+		            <img src="${pageContext.request.contextPath}/assets/image/detail/location.png">
 		            <button id="map">숙소 위치확인</button>
 		            <c:choose>
 		            	<c:when test="${totalReview.AVGSTARS == 5.00}">
@@ -246,27 +250,33 @@
 			            </c:otherwise>
 		            </c:choose>
 		         </div>
-		         <div id="gallery">
-		            <img id="mainImg" src="${pageContext.request.contextPath}/assets/image/detail/jjanga.png">
-		            <div id="imgCount">1 / 20 | 전체사진</div>
-		            <div id="subImg">
-		               <button id="left">
-		                  <img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
-		               </button>
-		               <ul>
-		                  <li><img src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG"></li>
-		                  <li><img src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG"></li>
-		                  <li><img src="${pageContext.request.contextPath}/assets/image/detail/back.jfif"></li>
-		                  <li><img src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG"></li>
-		                  <li><img src="${pageContext.request.contextPath}/assets/image/detail/jjanga.png"></li>
-		                  <li><img src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG"></li>
-		               </ul>
-		               <button id="right">
-		                  <img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-		               </button>
-		            </div>
-		         </div>
-		      </div>
+
+			<div id="gallery">
+				<img id="mainImg" src="${pageContext.request.contextPath}/upload/${imgList[0].IMAGE_PATH}">
+				<div id="imgCount">1 / 20 | 전체사진</div>
+				<div id="subImg">
+					<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${pMap.startPageBtnNo}">
+					<button id="left">
+						<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+					</button>
+					</a>
+					<ul>
+						<c:forEach items="${boardList}" var="imgList" varStatus="status">
+							<c:if test="${status.count <= 6}">
+								<li><img id="listNo${imgList.PIMGNO}" src="${pageContext.request.contextPath}/upload/${imgList.IMAGE_PATH}"></li>
+							</c:if>
+						</c:forEach>
+					</ul>
+					<a id="next">
+					<button id="right">
+						<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+					</button>
+					</a>
+				</div>
+			</div>
+
+		</div>
+		      
       <div id="iconBox">
          <h4>편의시설 및 서비스</h4>
          <div id="container">
@@ -517,10 +527,6 @@
    </div>
 	
 	
-	<!-- tsret -->
-	
-    
-	
 	
 </body>
 
@@ -606,13 +612,8 @@
 
 
 
-
-
-
-
-
 <script type="text/javascript">
-	
+
 	///////////////////////// 숙소위치보기 (지도) ///////////////////////////
 	
 	var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
@@ -701,12 +702,51 @@
 	});
 	
 	
+	///////////////////////// 펜션사진 버튼이벤트  ///////////////////////////
+		
+		
+	$("#right").on("click", function() { 
+		next();
+	/* 	$("#next").attr("href", "${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage="+crtPage); */
+	});
 	
+	$("#left").on("click", function() { 
+		console.log("이벤트");
+	});
+
+	/* var crtPage = 1; */
 	
-	
-	
-	
-	
+	function next() {
+		
+		var pensionNo = $("#pensionNo").val();
+		
+		crtPage = crtPage + 1;		
+		
+		var pensionImg = {
+				pensionNo : pensionNo,
+				crtPage : crtPage
+		}
+		
+		
+		$.ajax({
+				
+				url : "${pageContext.request.contextPath}/reservation",		
+				type : "post",
+				//contentType : "application/json",
+				data : pensionImg,
+				
+				//dataType : "json",
+				success : function(){
+				//	/*성공시 처리해야될 코드 작성
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		 
+		
+	}
 	
 	
 	
