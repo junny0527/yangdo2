@@ -20,7 +20,9 @@ public class RePayVo {
 	private int baby;
 	private int totalPrice;
 	private int transPrice;
+	private String payWay;
 	private String regDate;
+	private int prNo;
 	
 	
 	public RePayVo() {
@@ -30,7 +32,7 @@ public class RePayVo {
 
 	public RePayVo(int no, int userNo, int roomNo, int pointNo, String point, String userName, String userHp,
 			String checkIn, String checkOut, String pName, String rName, String sPeople, String mPeople, int refundNo,
-			int adult, int kid, int baby, int totalPrice, int transPrice, String regDate) {
+			int adult, int kid, int baby, int totalPrice, int transPrice, String payWay, String regDate, int prNo) {
 		super();
 		this.no = no;
 		this.userNo = userNo;
@@ -51,7 +53,9 @@ public class RePayVo {
 		this.baby = baby;
 		this.totalPrice = totalPrice;
 		this.transPrice = transPrice;
+		this.payWay = payWay;
 		this.regDate = regDate;
+		this.prNo = prNo;
 	}
 
 
@@ -245,6 +249,16 @@ public class RePayVo {
 	}
 
 
+	public String getPayWay() {
+		return payWay;
+	}
+
+
+	public void setPayWay(String payWay) {
+		this.payWay = payWay;
+	}
+
+
 	public String getRegDate() {
 		return regDate;
 	}
@@ -255,15 +269,27 @@ public class RePayVo {
 	}
 
 
+	public int getPrNo() {
+		return prNo;
+	}
+
+
+	public void setPrNo(int prNo) {
+		this.prNo = prNo;
+	}
+
+
 	@Override
 	public String toString() {
-		return "ReservePayVo [no=" + no + ", userNo=" + userNo + ", roomNo=" + roomNo + ", pointNo=" + pointNo
-				+ ", point=" + point + ", userName=" + userName + ", userHp=" + userHp + ", checkIn=" + checkIn
-				+ ", checkOut=" + checkOut + ", pName=" + pName + ", rName=" + rName + ", sPeople=" + sPeople
-				+ ", mPeople=" + mPeople + ", refundNo=" + refundNo + ", adult=" + adult + ", kid=" + kid + ", baby="
-				+ baby + ", totalPrice=" + totalPrice + ", transPrice=" + transPrice + ", regDate=" + regDate + "]";
+		return "RePayVo [no=" + no + ", userNo=" + userNo + ", roomNo=" + roomNo + ", pointNo=" + pointNo + ", point="
+				+ point + ", userName=" + userName + ", userHp=" + userHp + ", checkIn=" + checkIn + ", checkOut="
+				+ checkOut + ", pName=" + pName + ", rName=" + rName + ", sPeople=" + sPeople + ", mPeople=" + mPeople
+				+ ", refundNo=" + refundNo + ", adult=" + adult + ", kid=" + kid + ", baby=" + baby + ", totalPrice="
+				+ totalPrice + ", transPrice=" + transPrice + ", payWay=" + payWay + ", regDate=" + regDate + ", prNo="
+				+ prNo + "]";
 	}
-	
+
+
 	
 	
 	

@@ -18,6 +18,9 @@
 	                 ,ro.room_name
 	                 ,p.name PNAME
 	                 ,ro.standard_people
+	                 ,p.add_adult_price
+	                 ,p.add_kid_price
+	                 ,p.add_baby_price
 	                 ,ro.max_people
 	                 ,p.refund_no
 	                 ,r.adult 
@@ -27,7 +30,7 @@
 	                 ,r.status
 	                 ,pensione.image_path
 	                 ,r.reg_date
-	         from reservations r , rooms ro , pension p , pension_image pensionE ,points po
+	         from reservations r , rooms ro , pension p , pension_image pensionE ,points pos
 	         where r.room_no = ro.no
 	         and po.no = r.no
 	         and p.no = ro.pension_no
@@ -35,5 +38,29 @@
 			 and r.no = #{no} 
 		]]>
 	</select>
+	<!-- <insert id="payInsert" parameterType="com.javaex.vo.RePayVo">
+		<![CDATA[
+				insert into reservations
+				values(SEQ_RESERVATIONS_NO.nextval,#{roomNo},#{userName},#{hp},#{checkIn},#{checkOut},#{adult},#{kid},#{baby},#{totalPrice},SYSDATE,#{payWay},#{payStatus},#{reStatus},,);
+		]]>
+	</insert>
+	
+	<insert id="yangdoPayInsert" parameterType="com.javaex.vo.RePayVo">
+		<![CDATA[
+				insert into reservations
+				values(SEQ_RESERVATIONS_NO.nextval,#{roomNo},#{userName},#{hp},#{checkIn},#{checkOut},#{adult},#{kid},#{baby},#{totalPrice},SYSDATE,#{payWay},#{payStatus},#{reStatus},#{trancePrice},#{prNo});
+		]]>
+	</insert>
+	
+	<update id="yangdoPayUpdate" parameterType="com.javaex.vo.RePayVo">
+		<![CDATA[
+				update reservations
+				set    
+	       			   name = #{name},
+				       hp = #{hp},
+				where  no = #{no}
+		]]>
+	</update> -->
+	
 
 </mapper>
