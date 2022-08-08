@@ -16,8 +16,8 @@ public class ReservationVo {
 	private String payWay;
 	private String payStatus;
 	private String Status;
-	private int totalPrice;
-	private int transPrice;
+	private String totalPrice;
+	private String transPrice;
 	private String regDate;
 	private String prNo;
 	//생성자
@@ -26,7 +26,7 @@ public class ReservationVo {
 	}
 	public ReservationVo(int no, int roomNo, int userNo, String userName, String userHp, String checkIn,
 			String checkOut, int adult, int kid, int baby, String payWay, String payStatus,
-			String status, int totalPrice, int transPrice, String regDate, String prNo) {
+			String status, String totalPrice, String transPrice, String regDate, String prNo) {
 		super();
 		this.no = no;
 		this.roomNo = roomNo;
@@ -125,16 +125,16 @@ public class ReservationVo {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public int getTotalPrice() {
+	public String getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public int getTransPrice() {
+	public String getTransPrice() {
 		return transPrice;
 	}
-	public void setTransPrice(int transPrice) {
+	public void setTransPrice(String transPrice) {
 		this.transPrice = transPrice;
 	}
 	public String getRegDate() {
