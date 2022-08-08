@@ -21,11 +21,11 @@
 		<!-- 펜션어때 헤더 -->
 		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
 		<!-- 펜션어때 헤더 -->
-	
+
 		<div id="content" class="clearfix">
 			<h1>양도 하기</h1>
 
-			<div id="Reservation_num">예약번호 ${sMap.NO }</div>
+			<div id="Reservation_num">예약번호 ${sMap.NO}</div>
 
 			<div id="pension" class="clearfix">
 				<!-- 펜션이미지 -->
@@ -66,7 +66,7 @@
                         		</thead>
                         		<tbody class="text-center">
                         			<tr>
-                        				<td id = "rateguide" rowspan = '11'>예약 취소 시 <br> 환불액 비율</td>
+                        				<td id = "rateguide" rowspan = '11'>예약 취소 시 <br> 환불금액 비율</td>
                         				<td>10일 전 : 100%</td>
                         			</tr>
                         			<tr>
@@ -112,7 +112,7 @@
 							</thead>
 							<tbody class="text-center">
 								<tr>
-									<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불액 비율
+									<td id="rateguide" rowspan='8'>예약 취소 시 <br> 환불금액 비율
 									</td>
 									<td>7일 전 : 100%</td>
 								</tr>
@@ -151,7 +151,7 @@
 							</thead>
 							<tbody class="text-center">
 								<tr>
-									<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불액 비율
+									<td id="rateguide" rowspan='7'>예약 취소 시 <br> 환불금액 비율
 									</td>
 									<td>6일 전 : 100%</td>
 								</tr>
@@ -192,12 +192,12 @@
 				
 				<!-- 금액설정 -->
 				<div id="pay_confirm" class="clearfix">
-					<div id="pay_confirm_payment">결제액: ${sMap.TOTAL_PRICE }원</div>
+					<div id="pay_confirm_payment">결제금액: ${sMap.TOTAL_PRICE }원</div>
 					<div id="refund" class="clearfix">
-						<div id="pay_confirm_refund">환불액:&nbsp;</div>
-						<div id="refund_pay">800,000원</div>
+						<div id="pay_confirm_refund">환불시 금액:&nbsp;</div>
+						<div id="refund_pay">${sMap.REFUND_PRICE}원</div>
 					</div>
-					<input type="text" id="pay_confirm_transfer" name="trans_Price" value="" placeholder="양도후 받을 금액을 입력하세요">원
+					<input type="text" id="pay_confirm_transfer" name="transPrice" value="" placeholder="양도후 받을 금액을 입력하세요">원
 				</div>
 				<button id="btn_transfer" type="button">양도 하기</button>
 			</div>
@@ -269,7 +269,14 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button id="yang" type="button" class="btn btn-danger">양도합니다</button>
+				
+				<form action="${pageContext.request.contextPath}/sale/update" method="get">
+					<input type="hidden" name="no" value="${sMap.NO }">
+					<input type="hidden" name="Status" value="양도대기">
+					<input type="hidden" id="hidPrice" name="transPrice" value="">
+					<button id="yang" type="submit" class="btn btn-danger">양도합니다</button>
+				</form>
+				
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -361,44 +368,47 @@
 	
 	$("#btn_transfer").on("click", function() {
 		console.log("버튼클릭");
-		
-		var transPrice = $("[name='trans_Price']").val();
-		$("#modalPrice").text(transPrice);
-		
-		$("#yangdo-modal").modal("show");
+		var transPrice = $("[name='transPrice']").val();
+		if($(".chk:checked").length != 3){
+			$("#agree-modal").modal("show");
+		}else if(transPrice == '') {
+			$("#money-modal").modal("show");
+		}else{
+			$("#modalPrice").text(transPrice);
+			$("#hidPrice").val(transPrice);
+			$("#yangdo-modal").modal("show");
 
+		}
+		
+	
 	});
 	
 	
 	$("#yang").on("click",function(){
 		console.log("콘솔클릭")
-		var no = '${sMap.NO}';
-		var status = $("[name='status']").val();
-		var transPrice = $("[name='trans_Price']").val();
-		
-		
-		var ReservationVo = {
-			no : no
-			,status : status
-			,transPrice: transPrice
-		}
-		
-		console.log(ReservationVo);
-		/*$.ajax({
-			url : "${pageContext.request.contextPath}/api/sale",
-			type : "post",
-			contentType : "application/json",
-			data : JSON.stringify(ReservationVo),
-			dataType : "json",
-			success : function(result){
-			
-			
-			},
-			error : function(XHR, status, error) {
-			console.error(status + " : " + error);
-			}
-		}); */
-		
+		//$("#yangdo-modal").modal("hide");
+
+	});
+	/* -- '전체' 선택 시 이벤트 -- */
+	$("#all").on("click",function(){
+	 //전체선택시 전부체크
+		 if ($("#all").prop("checked")) {
+		     $("input[type=checkbox]").prop("checked", true);
+		 // '전체' 선택 해제 시 전부 체크해제
+		 } else {
+		     $("input[type=checkbox]").prop("checked", false);
+		 }
+	});
+	 
+	
+	$(".chk").on("click",function(){
+		// 모두 선택되어 있을 때 '전체' 체크
+	    if($(".chk:checked").length == $(".chk").length){
+	        $("#all").prop("checked", true);
+	    // 하나라도 체크 해제할 때 '전체' 체크해제
+	    }else{
+	        $("#all").prop("checked", false);
+	    }
 	});
 </script>
 </html>

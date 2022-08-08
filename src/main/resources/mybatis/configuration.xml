@@ -6,11 +6,20 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/sale.xml" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 		<mapper resource="mybatis/mappers/detail.xml" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 		<mapper resource="mybatis/mappers/repay.xml" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
 	</mappers>
-</configuration>
+</configuration>	

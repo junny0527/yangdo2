@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.ReservationVo;
+
 @Repository
 public class SaleDao {
 	
@@ -18,5 +20,12 @@ public class SaleDao {
 		Map<String,Object> sMap = sqlSession.selectOne("sale.getReservation", no);
 		
 		return sMap;
+	}
+	
+	public int yangdoUpdate(ReservationVo reservationVo) {
+		System.out.println("SaleDao  > yangdoUpdate");
+		int count = sqlSession.update("sale.yangdoUpdate", reservationVo);
+		
+		return count;
 	}
 }
