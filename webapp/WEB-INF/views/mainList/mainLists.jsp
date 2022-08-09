@@ -21,7 +21,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainList/reservation-jiwoong.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/userHeaderFooter-jiwoong.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/mainLists.css">
 
 
@@ -60,7 +60,7 @@
 				</section>
 				<h3>상세조건</h3>
 				<div class="btn_wrap">
-					<button id="btn_child1" type="button">초기화</button>
+					<button id="btn_child1" type="button" onclick="initCheckBtn()">초기화</button>
 					<button id="btn_child2" type="submit">적용</button>
 				</div>
 				<section>
@@ -75,48 +75,48 @@
 					<input type="hidden" id="persons" name="persons">
 					<strong>인원</strong>
 					<div class="cnt_people">
-						<button type="button" class="disable dn">-</button>
-						<span>2</span>
-						<button type="button" class="up">+</button>						
+						<button type="button" class="disable dn" onclick="count('minus')" value="-">-</button>
+						<span id="result">2</span>
+						<button type="button" class="up" onclick="count('plus')" value="+">+</button>						
 					</div>
 				</section>
 				<section>
 					<strong>공용시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="swimming_pool" name="swimming_pool" class="inp_chk">
+							<input type="checkbox" id="swimming_pool" name="pensionItem" class="inp_chk">
 							<label for="swimming_pool" class="label_chk">수영장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="football" name="football" class="inp_chk">
+							<input type="checkbox" id="football" name="pensionItem" class="inp_chk">
 							<label for="football" class="label_chk">족구장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cafe" name="cafe" class="inp_chk">
+							<input type="checkbox" id="cafe" name="pensionItem" class="inp_chk">
 							<label for="cafe" class="label_chk">카페</label>
 						</li>
 						<li>
-							<input type="checkbox" id="singroom" name="singroom" class="inp_chk">
+							<input type="checkbox" id="singroom" name="pensionItem" class="inp_chk">
 							<label for="singroom" class="label_chk">노래방</label>
 						</li>
 						<li>
-							<input type="checkbox" id="store" name="store" class="inp_chk">
+							<input type="checkbox" id="store" name="pensionItem" class="inp_chk">
 							<label for="store" class="label_chk">편의점</label>
 						</li>
 						<li>
-							<input type="checkbox" id="parking" name="parking" class="inp_chk">
+							<input type="checkbox" id="parking" name="pensionItem" class="inp_chk">
 							<label for="parking" class="label_chk">주차장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bbq" name="bbq" class="inp_chk">
+							<input type="checkbox" id="bbq" name="pensionItem" class="inp_chk">
 							<label for="bbq" class="label_chk">BBQ</label>
 						</li>
 						<li>
-							<input type="checkbox" id="restaurant" name="restaurant" class="inp_chk">
+							<input type="checkbox" id="restaurant" name="pensionItem" class="inp_chk">
 							<label for="restaurant" class="label_chk">주방/식당</label>
 						</li>
 						<li>
-							<input type="checkbox" id="smoking_room" name="smoking_room" class="inp_chk">
+							<input type="checkbox" id="smoking_room" name="pensionItem" class="inp_chk">
 							<label for="smoking_room" class="label_chk">흡연부스</label>
 						</li>
 					</ul>
@@ -125,47 +125,47 @@
 					<strong>객실 내 시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="refrigerator" name="refrigerator" class="inp_chk">
+							<input type="checkbox" id="refrigerator" name="pensionItem" class="inp_chk">
 							<label for="refrigerator" class="label_chk">냉장고</label>
 						</li>
 						<li>
-							<input type="checkbox" id="aircon" name="aircon" class="inp_chk">
+							<input type="checkbox" id="aircon" name="pensionItem" class="inp_chk">
 							<label for="aircon" class="label_chk">에어컨</label>
 						</li>
 						<li>
-							<input type="checkbox" id="tv" name="tv" class="inp_chk">
+							<input type="checkbox" id="tv" name="pensionItem" class="inp_chk">
 							<label for="tv" class="label_chk">TV</label>
 						</li>
 						<li>
-							<input type="checkbox" id="wifi" name="wifi" class="inp_chk">
+							<input type="checkbox" id="wifi" name="pensionItem" class="inp_chk">
 							<label for="wifi" class="label_chk">와이파이</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathroom_ware" name="bathroom_ware" class="inp_chk">
+							<input type="checkbox" id="bathroom_ware" name="pensionItem" class="inp_chk">
 							<label for="bathroom_ware" class="label_chk">욕실용품</label>
 						</li>
 						<li>
-							<input type="checkbox" id="washing_mu" name="washing_mu" class="inp_chk">
+							<input type="checkbox" id="washing_mu" name="pensionItem" class="inp_chk">
 							<label for="washing_mu" class="label_chk">세탁기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dry_mu" name="dry_mu" class="inp_chk">
+							<input type="checkbox" id="dry_mu" name="pensionItem" class="inp_chk">
 							<label for="dry_mu" class="label_chk">드라이기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathtub" name="bathtub" class="inp_chk">
+							<input type="checkbox" id="bathtub" name="pensionItem" class="inp_chk">
 							<label for="bathtub" class="label_chk">욕조</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cook_ok" name="cook_ok" class="inp_chk">
+							<input type="checkbox" id="cook_ok" name="pensionItem" class="inp_chk">
 							<label for="cook_ok" class="label_chk">취사가능</label>
 						</li>
 						<li>
-							<input type="checkbox" id="room_smoking" name="room_smoking" class="inp_chk">
+							<input type="checkbox" id="room_smoking" name="pensionItem" class="inp_chk">
 							<label for="room_smoking" class="label_chk">객실 내 흡연</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dog" name="dog" class="inp_chk">
+							<input type="checkbox" id="dog" name="pensionItem" class="inp_chk">
 							<label for="dog" class="label_chk">반려견 동반</label>
 						</li>
 					</ul>
@@ -273,6 +273,7 @@
 			<!-- List -->
 		</div>
 		<!-- content -->
+		
 		
 		
 		<!-- //footer -->
@@ -396,7 +397,7 @@
 			marker.setMap(map);
 			
 			var iwContent = 
-				'<div ><a href=""><img style="width:30px; height:30px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a>양평 그린펜션 <br> 130,000원', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				'<div ><a href=""><img style="width:25px; height:21px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a><a style="color:black;" href="">양평 그린펜션</a>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		    iwPosition = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); //인포윈도우 표시 위치입니다
 
 		// 인포윈도우를 생성합니다
@@ -421,6 +422,48 @@
 			$(".btn-secondary").on("click", function() {
 				$(".modal").hide();
 			});
+	
+	//////////////////////////인원추가 버튼 ////////////////////////////
+	function count(type){
 		
+		//결과를 표시할 element
+		const resultElement = document.getElementById('result')
+		
+		//현재 화면에 표시된 값
+		var number = resultElement.innerText;
+		
+		//더하기
+		if(type === 'plus'){
+			
+			number = parseInt(number) + 1;
+			
+			if(number > 10){
+				alert("최대 인원입니다.")
+				return false;
+			}
+		}else if(type === 'minus')  {
+		    number = parseInt(number) - 1;
+		    
+		    if(number < 2){
+		    	alert("최소 인원입니다.")
+		    	return false;
+		    }
+		  }
+		
+		//결과 
+		resultElement.innerText = number;
+	}
+	
+	//체크박스 선택 초기화
+	function initCheckBtn(){
+		
+		//초기화할 체크박스 선택
+		var checkboxes = document.getElementsByName("pensionItem"); 
+		
+		/* 체크박스를 순회하며 값을 초기화 */
+		checkboxes.forEach((checkbox) => {
+    	checkbox.checked = false;
+ 	 })
+	}
 	</script>
 </html>
