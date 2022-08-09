@@ -9,6 +9,18 @@
 		where no = 3
 		and id = #{id}
 	]]>
+	
 	</select>
-
+	
+	
+	<insert id = "insertcompany" parameterType = "com.javaex.vo.HostCompanyregVo">
+	
+	<![CDATA[
+		insert into company
+		values(SEQ_COMPANY_NO.nextval, 3, #{companyHp}, #{ceoHp}, #{bankName}, #{accountHolder}, #{account}, #{settlementCycle}, #{taxInvoice}, #{companyName}, #{ceoName}, #{businessLicensenumber}, #{postalCode}, #{companyAddress}, #{detailAddress}, #{homepage}, #{taxInvoiceEmail})
+	]]>
+	
+	</insert>
+	
+	
 </mapper>

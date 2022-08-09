@@ -459,3 +459,7 @@ td>div>span>div .room_type{
 	margin-right: -2px;
 	margin-bottom: 15px;
 }
+
+.chk_date > .checkbox-inline{
+	margin-right: 30px;
+}

@@ -303,7 +303,7 @@ hr{
 }
 
 #additionalpeople > div > .form-title{
-	width: 50px;
+	width: 60px;
 }
 
 .addpeoplestyle{
@@ -313,8 +313,8 @@ hr{
 }
 
 .decrease{
-	width: 300px;
-	overflow: hidden;
+	width: 200px;
+	text-align: left;
 }
 
 .price{
