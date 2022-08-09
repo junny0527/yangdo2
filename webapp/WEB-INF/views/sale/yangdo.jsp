@@ -287,53 +287,8 @@
 
 
 
-<div id="agree-modal" class="modal fade">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title"></h4>
-			</div>
-			<div class="modal-body">
-				<div>동의 해주세요</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-danger">확인</button>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 
-
-<div id="money-modal" class="modal fade">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title">금액 확인</h4>
-			</div>
-			<div class="modal-body">
-				<div class="con color-dan">금액을 확인해 주세요</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-danger">확인</button>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 
 
@@ -358,6 +313,7 @@
 	
 	$('#pay_confirm_transfer').on('blur',function(){
 		var val = $("#pay_confirm_transfer").val();
+		console.log(typeof val);
 		if(!isEmpty(val) && isNumeric(val)){
 			val = currencyFormatter(val);
 			$('#pay_confirm_transfer').val(val);
@@ -370,9 +326,9 @@
 		console.log("버튼클릭");
 		var transPrice = $("[name='transPrice']").val();
 		if($(".chk:checked").length != 3){
-			$("#agree-modal").modal("show");
+			alert("동의해주세요");
 		}else if(transPrice == '') {
-			$("#money-modal").modal("show");
+			alert("금액을 입력해 주세요");
 		}else{
 			$("#modalPrice").text(transPrice);
 			$("#hidPrice").val(transPrice);

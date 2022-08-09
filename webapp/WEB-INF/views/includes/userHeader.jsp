@@ -7,7 +7,7 @@
          <li><a href="">내주변</a></li>
          <li><a href="">예약내역</a></li>
          <li><a href="">더보기</a></li>
-         <li><a href="">로그인</a></li>
+         <li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
       </ul>
       <button id="btn_search"type="button" class="btn btn_srch srch_open" style="right: 396px;">
 				<img id="search-icon" src="${pageContext.request.contextPath}/assets/image/includes/ico_srch_2.png">

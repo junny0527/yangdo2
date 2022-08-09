@@ -16,8 +16,8 @@
             <div class="fix_title">
                 <strong><a class="col_red" href="">양도	어때</a></strong>
             </div>
-            <a href="${pageContext.request.contextPath}/join/userJoinAgree"><button id="btn_hJoin" class="btn_link gra_left_right_red" type="button"><span>유저로 회원가입</span></button></a>
-            <a href="${pageContext.request.contextPath}/join/hostJoinAgree"><button id="btn_uJoin" class="btn_link col_host btn_join" type="button"><span>호스트로 회원가입</span></button></a>
+            <a href="${pageContext.request.contextPath}/join/user/agree"><button id="btn_hJoin" class="btn_link gra_left_right_red" type="button"><span>유저로 회원가입</span></button></a>
+            <a href="${pageContext.request.contextPath}/join/host/agree"><button id="btn_uJoin" class="btn_link col_host btn_join" type="button"><span>호스트로 회원가입</span></button></a>
       </section>
 </div>
 </body>
