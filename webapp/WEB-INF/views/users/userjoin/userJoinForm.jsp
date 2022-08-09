@@ -1,19 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../assets/css/hostHeaderFooter.css">
-<link rel="stylesheet" type="text/css" href="../../assets/css/loginjoin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/hostHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/users/loginjoin.css">
 
-<script type="text/javascript" src="../../assets/js/jquery/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="../../assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <body>
 <div class="layer_fix pop_login pop_mem_reserve fix_disable">
     <section>
-    <form id="joinForm" action="https://www.goodchoice.kr/user/joinProcess" autocomplete="off" method="post" novalidate="novalidate">
+    <form id="joinForm" action="" autocomplete="off" method="post" novalidate="novalidate">
 
 		<input type="hidden" name="privacy_auxiliary_policy">
 		<input type="hidden" name="location_policy">
@@ -59,7 +60,7 @@
                 <button type="button" class="btn_etc" onclick="changeNickname();">딴거할래요</button>
             </div>
 
-            <button type="button" id="joinBtn" class="btn_link gra_left_right_red btn_user_submit" disabled="" style="background-color: rgb(250, 250, 250); color: rgba(0, 0, 0, 0.16); border: none;"><span>가입하기</span></button>
+            <button type="submit" id="joinBtn" class="btn_link gra_left_right_red " style="border: none;"><span>가입하기</span></button>
         </div>
     </form>
 </section>

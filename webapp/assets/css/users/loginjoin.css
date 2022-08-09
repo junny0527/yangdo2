@@ -89,7 +89,16 @@ label{cursor:pointer}
 	content: "\e90b";
 }
 
-
+#kakaoLogo{
+	width: 30px;
+	height: 30px;
+	margin-top: 17px;
+}
+#naverLogo{
+	width: 35px;
+	height: 35px;
+	margin-top: 10px;
+}
 /* Iscroll */
 .scroller{
 	position:absolute;
