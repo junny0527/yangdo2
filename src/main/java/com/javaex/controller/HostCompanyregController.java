@@ -26,10 +26,11 @@ public class HostCompanyregController {
 		model.addAttribute("cVo", cVo);
 		return "/host/companyRegister";
 	}
-	
+	/*
 	@RequestMapping(value="companysave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companysave(@ModelAttribute HostCompanyregVo companyregVo
 							 ) {
 		return "redirect:/host/UpdatecompanyRegister";
 	}
+	*/
 }
