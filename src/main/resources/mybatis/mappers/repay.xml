@@ -6,36 +6,37 @@
 
 	<select id="getRePay" parameterType="int" resultType="Map">
 		<![CDATA[
-				 select  r.no NO
-	                 ,ro.no ROOMNO
-	                 ,r.user_no  USERNO
-	                 ,po.no POINTNO
-	                 ,po.point POints
-	                 ,r.name RNAME 
-	                 ,r.hp RHP
-	                 ,r.check_in
-	                 ,r.check_out 
-	                 ,ro.room_name
-	                 ,p.name PNAME
-	                 ,ro.standard_people
-	                 ,p.add_adult_price
-	                 ,p.add_kid_price
-	                 ,p.add_baby_price
-	                 ,ro.max_people
-	                 ,p.refund_no
-	                 ,r.adult 
-	                 ,r.kid 
-	                 ,r.baby 
-	                 ,r.total_price 
-	                 ,r.status
-	                 ,pensione.image_path
-	                 ,r.reg_date
-	         from reservations r , rooms ro , pension p , pension_image pensionE ,points pos
-	         where r.room_no = ro.no
-	         and po.no = r.no
-	         and p.no = ro.pension_no
-	         and p.no = pensione.pension_no
-			 and r.no = #{no} 
+				select    r.no NO
+		                 ,ro.no ROOMNO
+	                     ,u.no
+	                     ,u.email
+		                 ,r.user_no  USERNO
+		                 ,po.no POINTNO
+		                 ,po.point POints
+		                 ,r.name RNAME 
+		                 ,r.hp RHP
+		                 ,r.check_in
+		                 ,r.check_out 
+		                 ,ro.room_name
+		                 ,p.name PNAME
+		                 ,ro.standard_people
+		                 ,p.add_adult_price
+		                 ,p.add_kid_price
+		                 ,p.add_baby_price
+		                 ,ro.max_people
+		                 ,p.refund_no
+		                 ,r.adult 
+		                 ,r.kid 
+		                 ,r.baby 
+		                 ,r.total_price 
+		                 ,r.status
+		                 ,r.reg_date
+		         from reservations r , rooms ro , pension p , points po ,users u
+		         where r.room_no = ro.no
+		         and po.no = r.no
+		         and p.no = ro.pension_no
+		         and u.no =r.user_no
+				 and r.no = #{no} 
 		]]>
 	</select>
 	<!-- <insert id="payInsert" parameterType="com.javaex.vo.RePayVo">

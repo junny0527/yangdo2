@@ -8,6 +8,7 @@
 /* ******************컨텐츠************************** */
 #content{
 	margin: 80px 0px 0px 0px;
+
 	
 	
 }
@@ -313,6 +314,8 @@ input[type="checkbox"].inp_chk_02 {
     background-size: 24px auto;
     cursor: pointer;
 }
+
+
 
 .reserve .agree span[data-v-d63b628c] {
     display: inline-block;

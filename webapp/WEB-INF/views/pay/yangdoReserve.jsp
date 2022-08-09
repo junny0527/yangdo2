@@ -6,6 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+</style>
 <title>양도 결제정보 결제</title>
 </head>
 
@@ -96,7 +102,7 @@
 											class="safety_txt" data-v-2c1e3bcc="">개인 정보 보호를 위해
 											안심번호로 숙소에 전송됩니다.</span>
 										<p class="inp_wrap remove" data-v-35b6e85e="">
-											<input type="text" name="hp"
+											<input type="text" name="hp" placeholder="체크인시 필요한 정보입니다."
 												maxlength="20" data-v-35b6e85e="" required>
 										</p>
 									</div>
@@ -117,11 +123,11 @@
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${rpMap.KID}명</span><b data-v-3ce5aaac="">${rpMap.ADD_KID_PRICE}원</b>
+													${rpMap.KID}명</span><b data-v-3ce5aaac="">${rpMap.ADD_KID_PRICE*rpMap.KID}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
-													${rpMap.BABY}명</span><b data-v-3ce5aaac="">0원</b>
+													${rpMap.BABY}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*rpMap.BABY}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
@@ -139,12 +145,14 @@
 										</div>
 										<div class="discount-container" data-v-3ce5aaac="">
 											<div class="discount-header" data-v-3ce5aaac="">
-												<button type="button" id="pointBtn" class="discount-method-button" data-v-3ce5aaac="">
+												<button type="button" id="pointBtn"
+													class="discount-method-button" data-v-3ce5aaac="">
 													포인트 사용 0P</button>
 												<div class="discount-point-amount" data-v-3ce5aaac="">
 													<div class="value-total" data-v-3ce5aaac="">
-														<input type="number" id="point" value="0" class="point-input"
-															data-v-3ce5aaac> <span data-v-3ce5aaac>P</span>
+														<input type="number" id="point" value="0"
+															class="point-input" data-v-3ce5aaac=""> <span
+															data-v-3ce5aaac="">P</span>
 													</div>
 												</div>
 											</div>
@@ -219,28 +227,27 @@
 
 </body>
 <script type="text/javascript">
-	$(function(){
-		
-		$("#pointBtn").on("click", function(){
+	$(function() {
+
+		$("#pointBtn").on("click", function() {
 			let point = Number($("#point").val());
 			let minPoint = Number('${rpMap.POINTS}');
 			let totalPrice = Number('${rpMap.TOTAL_PRICE}');
-			if(minPoint < point) {
+			if (minPoint < point) {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
 				return false;
 			}
-			
+
 			$("#pointBtn").text("포인트 사용 " + point + "P");
 			$('#savePoint').text(minPoint - point);
-			$("#usedPoint").text(point +" P")
+			$("#usedPoint").text(point + " P")
 			$('.total').text(totalPrice - point);
-			
-			
+
 		});
 	});
 
 	function requestPay(form) {
-	
+
 		/* if(name == '' || name == undeifed) {
 			alert("이름을 입력해주세요")
 			return false;
@@ -248,7 +255,7 @@
 		let data = '${rpMap}';
 		console.log("rpMap:", data);
 		console.log("requestPay invoked......")
-		console.log("roomPay: ",document.roomPay);
+		console.log("roomPay: ", document.roomPay);
 		console.log("allItems: ", $("#roomPay").serialize());
 		return false;
 	}
