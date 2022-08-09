@@ -20,20 +20,23 @@ public class DetailController {
 	DetailService detailService;
 	
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pMap(@RequestParam("pensionNo") int pensionNo, Model model,
-					   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+	public String pensionList(@RequestParam("pensionNo") int pensionNo, Model model,
+							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("DetailController > pMap");
 		Map<String, Object> pMap = detailService.select(pensionNo, crtPage);
 		
+		model.addAttribute("pMap",pMap);
+		
 		model.addAttribute("totalReview", pMap.get("totalReview"));
 		model.addAttribute("pInfo", pMap.get("pInfo"));
-		model.addAttribute("pMap",pMap);
 		model.addAttribute("imgList",pMap.get("imgList"));
 		model.addAttribute("totalCnt",pMap.get("totalCnt"));
 		model.addAttribute("crtPage", crtPage);
-		
-		System.out.println(pMap.get("imgList"));
-		
+		model.addAttribute("pAmenList",pMap.get("pAmenList"));
+		model.addAttribute("pPubList",pMap.get("pPubList"));
+		model.addAttribute("roomList",pMap.get("roomList"));
+		model.addAttribute("roomNo",pMap.get("roomNo"));
+		System.out.println("pMap::"+pMap);
 		return "detail/reservation";
 	}
 	
