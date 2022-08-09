@@ -12,6 +12,7 @@
 		</ul>
 	</div>
 	<!-- aside top -->
+	
 	<!-- aside bottom -->
 	<div class="menu_bottom">
 		<ul>
@@ -22,7 +23,7 @@
 			</a>
 				<ul class="sub-menu">
 					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/reserved">└
-							예약확정 내역</a></li>
+							예약완료 내역</a></li>
 					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/used">└ 이용완료
 							내역</a></li>
 					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/canceled">└

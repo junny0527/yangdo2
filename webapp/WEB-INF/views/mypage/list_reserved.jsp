@@ -54,7 +54,7 @@
 			<div class="align_rt">
 				<div class="reserve_list">
 					<section>
-						<h3>예약확정 내역</h3>
+						<h3>예약완료 내역</h3>
 						<ul class="list_wrap">
 							<li class="reservation-detail"><div>
 									<p class="pic">
@@ -63,7 +63,7 @@
 											alt="양평 스마일카라반펜션" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="">예약확정</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
+									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
 											08.30 화 15:00 • 1박 </span> </a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -73,7 +73,7 @@
 											alt="양평 스마일카라반펜션" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="">예약확정</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
+									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
 											08.30 화 15:00 • 1박 </span> </a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -83,7 +83,7 @@
 											alt="양평 스마일카라반펜션" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="">예약확정</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
+									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
 											08.30 화 15:00 • 1박 </span> </a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -93,7 +93,7 @@
 											alt="양평 스마일카라반펜션" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="">예약확정</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
+									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
 											08.30 화 15:00 • 1박 </span> </a>
 								</div></li>
 						</ul>

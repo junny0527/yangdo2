@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "/my", method = { RequestMethod.GET, RequestMethod.POST })
-public class HeewonController {
+public class MyPageController {
 
 	/********* main item **********/
 	@RequestMapping(value = "/info", method = { RequestMethod.GET, RequestMethod.POST })

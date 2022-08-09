@@ -54,7 +54,7 @@
 			<div class="align_rt">
 				<div class="reserve_list">
 					<section>
-						<h3>예약취소 내역</h3>
+						<h3>이용완료 내역</h3>
 						<ul class="list_wrap">
 							<li class="reservation-detail"><div>
 									<button type="button" class="btn_del">삭제</button>
@@ -64,7 +64,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/used" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 									<p class="btn_re">
 										<a href=""> 리뷰 남기기 </a>
@@ -78,7 +78,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/used" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 									<p class="btn_re">
 										<a href=""> 리뷰 남기기 </a>
@@ -92,7 +92,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/used" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 									<p class="btn_re">
 										<a href=""> 리뷰 남기기 </a>
@@ -106,7 +106,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/used" class="product-title"><i class="bg_w">이용완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 									<p class="btn_re">
 										<a href=""> 리뷰 남기기 </a>

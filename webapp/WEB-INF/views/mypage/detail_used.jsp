@@ -108,13 +108,66 @@
 							<div class="booking_detail_section_layout_wrap booking-cancel__section"
 								style="border-bottom: none;"
 							>
-								<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰 남기기
-								</button>
+								<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰
+									남기기</button>
 								<!---->
-								<!---->
-							</div>
-						</div>
-						<!---->
+								<form>
+									<section>
+										<strong>리뷰 작성 폼</strong>
+										<div>
+											<b>제목 : </b> <input type="text" name="review_title" class="review_section"
+												placeholder="제목을 입력해주세요."
+											><span> *필수항목</span>
+										</div>
+									</section>
+								</form>
+
+								<div class="review-intake-form__rating">
+									<div class="review-table">
+										<div class="review-table__cell review-intake-head title">
+											<img
+												src="https://thumbnail8.coupangcdn.com/thumbnails/remote/250x250ex/image/vendor_inventory/5db9/42a24dbdbb1d5f278d11e4cc90a1b24d7ce2c43cbf8b976d5b7f6093f75c.jpg"
+												width="100" height="100" title="에비크 FHD 15인치 초슬림 DEX 포터블 HDR 휴대용 모니터 156B05"
+												alt="에비크 FHD 15인치 초슬림 DEX 포터블 HDR 휴대용 모니터 156B05"
+											/>
+										</div>
+										<div class="review-table__cell description">
+											<div class="review-intake-form__product-title">에비크 FHD 15인치 초슬림 DEX 포터블 HDR 휴대용 모니터
+												156B05</div>
+
+											<div class="my-review__modify__star js_reviewModifyStarContainer" data-star=""
+												data-text="최고"
+											>
+												<div class="my-review__modify__star__content">
+
+													<div>
+														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
+															type="button" value="1" data-text="나쁨"
+														></button>
+														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
+															type="button" value="2" data-text="별로"
+														></button>
+														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
+															type="button" value="3" data-text="보통"
+														></button>
+														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
+															type="button" value="4" data-text="좋음"
+														></button>
+														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
+															type="button" value="5" data-text="최고"
+														></button>
+														<span
+															class="my-review__modify__star__content__status js_reviewModifyStatus default-review-star"
+														>(필수)<em>*</em></span>
+													</div>
+
+
+
+												</div>
+												<!---->
+											</div>
+										</div>
+										<!---->
 					</section>
 				</div>
 			</div>
