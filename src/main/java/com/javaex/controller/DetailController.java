@@ -25,32 +25,16 @@ public class DetailController {
 		System.out.println("DetailController > pMap");
 		Map<String, Object> pMap = detailService.select(pensionNo, crtPage);
 		
-		
-		System.out.println("pmap :"+pMap);
-		
-		System.out.println("totalReview :" + pMap.get("totalReview"));
-		System.out.println("imgList :" + pMap.get("imgList"));
 		model.addAttribute("totalReview", pMap.get("totalReview"));
 		model.addAttribute("pInfo", pMap.get("pInfo"));
-		model.addAttribute("imgList", pMap.get("imgList"));
 		model.addAttribute("pMap",pMap);
-		model.addAttribute("boardList",pMap.get("boardList"));
+		model.addAttribute("imgList",pMap.get("imgList"));
+		model.addAttribute("totalCnt",pMap.get("totalCnt"));
+		model.addAttribute("crtPage", crtPage);
 		
-		
+		System.out.println(pMap.get("imgList"));
 		
 		return "detail/reservation";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/pensionImg", method = {RequestMethod.GET, RequestMethod.POST})
-	public Map<String, Object> pensionImg(@RequestParam("pensionNo") int pensionNo,
-							 			  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
-		System.out.println("DetailController > pensionImg");
-		Map<String, Object> imgMap = detailService.pensionImg(pensionNo, crtPage);
-		System.out.println("asdasdasdad"+ imgMap);
-		
-		
-		return imgMap;
 	}
 	
 	

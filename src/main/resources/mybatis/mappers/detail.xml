@@ -63,9 +63,9 @@
 	
 	
 	
-	<select id="selectList4" resultType="map" parameterType="map">
+	<select id="selectList" resultType="map" parameterType="map">
 		<![CDATA[
-				select  ort.rn
+				select  ort.rn RN
 				        ,ort.no
 				        ,ort.pension_no
 				        ,ort.image_path
@@ -84,14 +84,16 @@
 				         )ort
 				where   ort.rn >= #{startRnum}
 				and     ort.rn <= #{endRnum}
+				and		pension_no = #{pensionNo}
 		]]>
 	</select>
 	
 	<!-- 전체글갯수 구하기 -->
-	<select id="selectTotalCnt" resultType="int">
+	<select id="selectTotalCnt" resultType="int" parameterType="int">
 		<![CDATA[
 			select  count(*) count
 			from    pension_image
+			where	pension_no = #{pensionNo}
 		]]>
 	</select>
 	

@@ -38,21 +38,22 @@ public class DetailDao {
 	
 	
 	//리스트(일반)
-	public List<PensionImageVo> selectList4(int startRnum, int endRnum) {
+	public List<PensionImageVo> imgList(int pensionNo, int startRnum, int endRnum) {
 		System.out.println("DetailDao > selectList4()");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startRnum", startRnum);
 		map.put("endRnum", endRnum);
-		List<PensionImageVo> boardList = sqlSession.selectList("detail.selectList4", map);
-		return boardList;
+		map.put("pensionNo", pensionNo);
+		List<PensionImageVo> imgList = sqlSession.selectList("detail.selectList", map);
+		return imgList;
 	}
 	
 	//전체글 개수
-		public int selectTotalCnt() {
-			System.out.println("BoardDao > selectTotalCnt()");
+		public int selectTotalCnt(int pensionNo) {
+			System.out.println("DetailDao > selectTotalCnt()");
 			
-			int totalCnt = sqlSession.selectOne("detail.selectTotalCnt");
+			int totalCnt = sqlSession.selectOne("detail.selectTotalCnt", pensionNo);
 			
 			return totalCnt;
 		}

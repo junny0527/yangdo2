@@ -253,25 +253,61 @@
 
 			<div id="gallery">
 				<img id="mainImg" src="${pageContext.request.contextPath}/upload/${imgList[0].IMAGE_PATH}">
-				<div id="imgCount">1 / 20 | 전체사진</div>
+				<div id="imgCount">${imgList[0].RN} / ${totalCnt} | 전체사진</div>
 				<div id="subImg">
-					<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${pMap.startPageBtnNo}">
-					<button id="left">
-						<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
-					</button>
-					</a>
+					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
+						<c:choose>
+							<c:when test="${crtPage == page && crtPage > 1}">
+								<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${page -1}">
+									<button id="left">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+									</button>
+								</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${crtPage == 1}">
+							<a href="#">
+								<button id="left">
+									<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+								</button>
+							</a>
+						</c:when>
+					</c:choose>
+					
 					<ul>
-						<c:forEach items="${boardList}" var="imgList" varStatus="status">
+						<c:forEach items="${imgList}" var="imgList" varStatus="status">
 							<c:if test="${status.count <= 6}">
-								<li><img id="listNo${imgList.PIMGNO}" src="${pageContext.request.contextPath}/upload/${imgList.IMAGE_PATH}"></li>
+								<li>
+									<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.IMAGE_PATH}" alt="${imgList.NO}">
+									<input type="hidden" class="listNo" value="${imgList.NO}">
+								</li>
 							</c:if>
 						</c:forEach>
 					</ul>
-					<a id="next">
-					<button id="right">
-						<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-					</button>
-					</a>
+					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
+						<c:choose>
+							<c:when test="${crtPage == page && crtPage < 4}">
+								<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${page +1}">
+									<button id="right">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+									</button>
+								</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${crtPage == 4}">
+							<a href="#">
+								<button id="right">
+									<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+								</button>
+							</a>
+						</c:when>
+					</c:choose>
 				</div>
 			</div>
 
@@ -648,8 +684,6 @@
 		$(".modal").hide();
 	});
 	
-	
-	
 	///////////////////////// 일정선택 ///////////////////////////
 	
 	$(function() {
@@ -683,8 +717,6 @@
             $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
         });
 	
-	
-	
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	
 	$(".information_Use").on("click", function() {
@@ -702,51 +734,26 @@
 	});
 	
 	
-	///////////////////////// 펜션사진 버튼이벤트  ///////////////////////////
-		
-		
-	$("#right").on("click", function() { 
-		next();
-	/* 	$("#next").attr("href", "${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage="+crtPage); */
-	});
+	///////////////////////// 펜션사진 버튼이벤트 페이징  ///////////////////////////
 	
-	$("#left").on("click", function() { 
-		console.log("이벤트");
-	});
-
-	/* var crtPage = 1; */
+		$(".list").on("click", function() {
+			var $this = $(this);
+			var src = $this.attr("src");
+			
+			var no = $this.attr("alt");
+			
+			$("#mainImg").attr("src", src);
+			$("#imgCount").text(no + ' / ' + ${totalCnt} + ' | ' + '전체사진' );
+			
+		});
+			
+		
+		
 	
-	function next() {
-		
-		var pensionNo = $("#pensionNo").val();
-		
-		crtPage = crtPage + 1;		
-		
-		var pensionImg = {
-				pensionNo : pensionNo,
-				crtPage : crtPage
-		}
 		
 		
-		$.ajax({
-				
-				url : "${pageContext.request.contextPath}/reservation",		
-				type : "post",
-				//contentType : "application/json",
-				data : pensionImg,
-				
-				//dataType : "json",
-				success : function(){
-				//	/*성공시 처리해야될 코드 작성
-					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-			});
-		 
 		
-	}
+	
 	
 	
 	
