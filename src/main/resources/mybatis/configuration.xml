@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="ReservationVo" type="com.javaex.vo.ReservationVo" />
+		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/sale.xml" />

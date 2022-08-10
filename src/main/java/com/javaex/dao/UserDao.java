@@ -1,5 +1,45 @@
 package com.javaex.dao;
 
-public class UserDao {
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.UserVo;
+
+@Repository
+public class UserDao {
+	@Autowired
+	private SqlSession sqlSession;
+	
+	public int userJoin(UserVo userVo) {
+		System.out.println("UserDao > userJoin");
+		
+		int count =  sqlSession.insert("users.userJoin", userVo);
+		
+		return count;
+	}
+	
+	public int hostJoin(UserVo userVo) {
+		System.out.println("UserDao > hostJoin");
+		
+		int count = sqlSession.insert("users.hostJoin", userVo);
+		
+		return count;
+	}
+	
+	public UserVo userLogin(UserVo userVo) {
+		System.out.println("UserDao > userLogin");
+		
+		UserVo uVo = sqlSession.selectOne("users.userLogin", userVo);
+		
+		return uVo;
+	}
+	
+	public UserVo hostLogin(UserVo userVo) {
+		System.out.println("UserDao > hostLogin");
+		
+		UserVo uVo = sqlSession.selectOne("users.hostLogin", userVo);
+		
+		return uVo;
+	}
 }

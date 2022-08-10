@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="users">
-	
-	<insert id="userJoin" parameterType="com.javaex.vo.UserVo">
+
+	<insert id="userJoin" parameterType="UserVo">
 	  	<![CDATA[
 	  		insert into users
-			values(SEQ_USERS_NO.nextval,{id},{pw},{hp},{nickName},{email},'user')
+			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},#{nick},#{email},#{identify})
 	  	]]>
 	</insert>
 
-	<insert id="hostJoin" parameterType="com.javaex.vo.UserVo">
+	<insert id="hostJoin" parameterType="UserVo">
 	  	<![CDATA[
 	  		insert into users
-			values(SEQ_USERS_NO.nextval,{id},{pw},{hp},{nickName},{email},'host')
+			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},'',#{email},#{identify})
 	  	]]>
 	</insert>
-	
+
+	<select id="userLogin" resultType="UserVo" parameterType="UserVo">
+		<![CDATA[
+			select  no
+					,nick_name
+	       			,identify
+			from users
+			where id = #{id}
+			and pw = #{pw}
+		]]>
+	</select>
+
+
 </mapper>

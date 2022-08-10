@@ -121,6 +121,10 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	background-color:#F7323F;
 }
 
+#user-icon{
+	width: 30px;
+	height: 30px;
+}
 /* 헤더 ul */
 #header ul {
    margin: 15px 0px 0px 0px;

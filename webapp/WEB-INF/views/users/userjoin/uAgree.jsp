@@ -47,7 +47,7 @@
                 <a href="https://www.goodchoice.kr/more/terms/location" target="_blank">위치기반 서비스 이용약관 동의</a> (선택)
             </p>
 
-            <button type="button" class="btn_link gra_left_right_red" disabled="disabled" id="terms_agree_btn" onclick ="location.href='${pageContext.request.contextPath}/join/user/joinForm';"><span>다음</span></button>
+            <button type="button" class="btn_link gra_left_right_red" disabled="disabled" id="terms_agree_btn" onclick ="location.href='${pageContext.request.contextPath}/user/joinForm';"><span>다음</span></button>
         </div>
     </section>
 

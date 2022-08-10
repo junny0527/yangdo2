@@ -16,9 +16,7 @@
     <section>
     <form id="joinForm" action="${pageContext.request.contextPath}/host/join" autocomplete="off" method="post" novalidate="novalidate">
 
-		<input type="hidden" name="privacy_auxiliary_policy">
-		<input type="hidden" name="location_policy">
-		<input type="hidden" name="marketing_acceptance">
+		<input type="hidden" name="identify" value="host">
 
         <div class="fix_title">
                 <strong><a class="col_red" href="">양도	어때</a></strong>
@@ -28,13 +26,13 @@
             <strong class="sub_title">호스트회원가입</strong>
             <b>아이디</b>
             <div class="inp_type_2 form-errors btn-add">
-                <input type="text" name="uid" placeholder="아이디를 입력해주세요">
+                <input type="text" name="id" placeholder="아이디를 입력해주세요">
                 <button type="button" class="btn_etc" onclick="">중복체크</button>
             </div>
 
             <b>비밀번호</b>
             <div class="inp_type_2 form-errors form-password-rule">
-                <input type="password" name="upw" placeholder="비밀번호를 입력해주세요." id="new_pw">
+                <input type="password" name="pw" placeholder="비밀번호를 입력해주세요." id="new_pw">
 				<label id="new_pw_msg" class="validate_msg_label"></label>
             </div>
 
@@ -45,16 +43,16 @@
             </div>
             <b>휴대전화 번호</b>
             <div class="inp_type_2 form-errors">
-                <input type="text" name="hHp" placeholder="전화번호를 입력해주세요." id="new_pw_re">
+                <input type="text" name="hp" placeholder="전화번호를 입력해주세요." id="new_pw_re">
 				<label id="new_pw_re_msg" class="validate_msg_label"></label>
             </div>
             <b>이메일 입력</b>
             <div class="inp_type_2 form-errors">
-                <input type="text" name="hemail" placeholder="이메일 주소를 입력해주세요." id="new_pw_re">
+                <input type="text" name="email" placeholder="이메일 주소를 입력해주세요." id="new_pw_re">
 				<label id="new_pw_re_msg" class="validate_msg_label"></label>
             </div>
 
-            <button type="button" id="joinBtn" class="btn_link gra_left_right_red" style="border: none;"><span>가입하기</span></button>
+            <button type="submit" id="joinBtn" class="btn_link gra_left_right_red" style="border: none;"><span>가입하기</span></button>
         </div>
     </form>
 </section>
