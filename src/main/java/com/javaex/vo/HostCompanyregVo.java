@@ -9,10 +9,10 @@ public class HostCompanyregVo {
 	private String accountHolder;
 	private String account;
 	private String settlementCycle;
-	private String taxInvoice;
+	private int taxInvoice;
 	private String companyName;
 	private String ceoName;
-	private String businessLicensenumber;
+	private int businessLicensenumber;
 	private String postalCode;
 	private String companyAddress;
 	private String detailAddress;
@@ -20,10 +20,10 @@ public class HostCompanyregVo {
 	private String taxInvoiceEmail;
 	
 	public HostCompanyregVo() {};
-	
+
 	public HostCompanyregVo(String email, String companyHp, String ceoHp, String bankName, String accountHolder,
-			String account, String settlementCycle, String taxInvoice, String companyName, String ceoName,
-			String businessLicensenumber, String postalCode, String companyAddress, String detailAddress,
+			String account, String settlementCycle, int taxInvoice, String companyName, String ceoName,
+			int businessLicensenumber, String postalCode, String companyAddress, String detailAddress,
 			String homepage, String taxInvoiceEmail) {
 		this.email = email;
 		this.companyHp = companyHp;
@@ -99,11 +99,11 @@ public class HostCompanyregVo {
 		this.settlementCycle = settlementCycle;
 	}
 
-	public String getTaxInvoice() {
+	public int getTaxInvoice() {
 		return taxInvoice;
 	}
 
-	public void setTaxInvoice(String taxInvoice) {
+	public void setTaxInvoice(int taxInvoice) {
 		this.taxInvoice = taxInvoice;
 	}
 
@@ -123,11 +123,11 @@ public class HostCompanyregVo {
 		this.ceoName = ceoName;
 	}
 
-	public String getBusinessLicensenumber() {
+	public int getBusinessLicensenumber() {
 		return businessLicensenumber;
 	}
 
-	public void setBusinessLicensenumber(String businessLicensenumber) {
+	public void setBusinessLicensenumber(int businessLicensenumber) {
 		this.businessLicensenumber = businessLicensenumber;
 	}
 
