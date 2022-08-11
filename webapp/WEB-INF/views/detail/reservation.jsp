@@ -448,13 +448,7 @@
 				</div>
 				<div>
 					<div class="facTitle">추가정보</div>
-					<%-- <c:forEach items="${pMap}" var="pMap">
-						<c:choose>
-						<c:when test="${pMap.get("roomList").NO == pMap.get("roomNo").ROOM_NO}">
-						<span class="facilities2">${pMap.get(roomList).ADD_INFO}</span>
-						</c:when>
-						</c:choose>
-					</c:forEach> --%>
+					<div class="facilities roomNo"></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -574,14 +568,31 @@
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	
 	$(".information_Use").on("click", function() {
-		$(".infomationUse").modal("show");
 		//입력한 객실정보로 사진 열기.
 		var $this = $(this);  
-		console.log($this);
+		var name = Number($this.attr("name"));
 		
+		var roomList = new Array();
 		
+		<c:forEach items="${roomList}" var="roomList">
+			roomList.push("${roomList.ADD_INFO}");
+		</c:forEach>
+		
+		var roomNo = new Array();
+		
+		<c:forEach items="${roomNo}" var="roomNo">
+			roomNo.push("${roomNo.ROOM_NO}");
+		</c:forEach>
+		
+		for(var i = 0; i < roomNo.length; i++) {
+			if(roomNo[i] == name) {
+				$(".roomNo").text(roomList[i]);
+			}
+		}
+		$(".infomationUse").modal("show");
 	});
 	
+
 	
 	///////////////////////// 객실 사진보기  ///////////////////////////
 	

@@ -36,7 +36,9 @@ public class DetailController {
 		model.addAttribute("pPubList",pMap.get("pPubList"));
 		model.addAttribute("roomList",pMap.get("roomList"));
 		model.addAttribute("roomNo",pMap.get("roomNo"));
-		System.out.println("pMap::"+pMap);
+		System.out.println("pAmenList :"+pMap.get("pAmenList"));
+		System.out.println("pPubList :" +pMap.get("pPubList"));
+		
 		return "detail/reservation";
 	}
 	

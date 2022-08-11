@@ -32,7 +32,7 @@ public class DetailService {
 		List<Map<String, Object>> pAmenList = detailDao.pAmenList(pensionNo);
 		 
 		//펜션 공용시설 
-		List<Map<String, Object>> pPubList = detailDao.pAmenList(pensionNo);
+		List<Map<String, Object>> pPubList = detailDao.pPubList(pensionNo);
 		
 		//펜션 방 정보리스트 가져오기
 		List<Map<String, Object>> roomList = detailDao.roomList(pensionNo);
@@ -91,6 +91,7 @@ public class DetailService {
 		pMap.put("pPubList", pPubList);
 		pMap.put("roomList", roomList);
 		pMap.put("roomNo", roomNo);
+		
 		return pMap;
 	}
 	
