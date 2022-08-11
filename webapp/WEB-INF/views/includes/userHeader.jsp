@@ -4,42 +4,58 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
-
 <div id="header" class="clearfix recommend_header">
-    <div id="section" class="clearfix">
-      <h1><a href="">양도어때</a></h1>
-      <ul class="clearfix"> 
-         <li><a href="">내주변</a></li>
-         <li><a href="">예약내역</a></li>
-         <li><a href="">더보기</a></li>
-         <c:choose>
-         	<c:when test="${authUser == null}">
-        		 <li><a href="${pageContext.request.contextPath}/loginForm">로그인</a></li>
-        	</c:when>
-        	<c:otherwise>
-        		 <li><a href=""><img id="user-icon" src="${pageContext.request.contextPath}/assets/image/includes/icon.png"></a></li>
-        	</c:otherwise>
-         </c:choose>
-      </ul>
-      <button id="btn_search"type="button" class="btn btn_srch srch_open" style="right: 396px;">
-				<img id="search-icon" src="${pageContext.request.contextPath}/assets/image/includes/ico_srch_2.png">
-	  </button>
-    </div>
-   <%-- <div id="section">
-   	  <h1><a href="">양도어때</a></h1>
-      <ul class="clearfix"> 
-         <li><a href="">검색</a></li>
-         <li><a href="">내주변</a></li>
-         <li><a href="">예약내역</a></li>
-         <li><a href="">더보기</a></li>
-         <li><a href=""><img src="${pageContext.request.contextPath}/assets/image/includes/icon.png"></a></li>
-      </ul>
-      <button id="btn_search"type="button" class="btn btn_srch srch_open" style="right: 396px;">
+	<div id="section" class="clearfix">
+		<h1>
+			<a href="">양도어때</a>
+		</h1>
+		<ul class="clearfix gnb_pc">
+			<li><a href="" class="color-gray">내주변</a></li>
+			<li><a href="" class="color-gray">예약내역</a></li>
+			<li class="over">
+				<button type="button">
+					<span>더보기</span>
+				</button>
+				<ul class="list_03" style="display: none; opacity: 1;">
+					<li><a href="">공지사항</a></li>
+					<li><a href="">자주 묻는 질문</a></li>
+					<li><a href="">1:1 문의</a></li>
+					<li><a href="">약관 및 정책</a></li>
+				</ul>
+			</li>
+			<c:choose>
+				<c:when test="${authUser == null}">
+					<li><a href="${pageContext.request.contextPath}/loginForm">로그인</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="over pic">
+						<a href="${pageContext.request.contextPath}/my/info"><img id="user-icon" src="https://image.goodchoice.kr/profile/ico/ico_21.png" alt=""></a>
+						<ul class="list_04 clearfix" style="display: none;">
+							<li><b>나주머리빗</b></li>
+							<li><a href="${pageContext.request.contextPath}/my/info">내정보</a></li>
+							<li><a href="${pageContext.request.contextPath}/my/point" data-point="0">포인트<!-- span>0P</span --></a></li>
+							<li><a href="${pageContext.request.contextPath}/my/reservation">예약내역<!-- span>0건</span --></a></li>
+							<li><a href="">알림설정</a></li>
+							<li><button type="button" class="pop_logout_open">로그아웃</button></li>
+						</ul>
+					</li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+		<button id="btn_search" type="button" class="btn btn_srch srch_open" style="right: 396px;">
 			<img id="search-icon" src="${pageContext.request.contextPath}/assets/image/includes/ico_srch_2.png">
-	  </button>
-	</div> --%>
+		</button>
+	</div>
 </div>
 
-<script>
-
+<script type="text/javascript">
+	/* GNB 서브메뉴 노출 */
+	$('.over').each(function(e) {
+		$(this).mouseenter(function() {
+			$('ul', this).stop().fadeIn(150);
+		});
+		$(this).mouseleave(function() {
+			$('ul', this).stop().fadeOut(150);
+		});
+	});
 </script>

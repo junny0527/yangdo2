@@ -74,9 +74,6 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     font-family: 'TTCrownMychewR';
 }
 
-#header > #section > ul {
-    font-family: 'TTCrownMychewR';
-}
 
 #header > #section > h1 {
    float: left;
@@ -126,19 +123,17 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	height: 30px;
 }
 /* 헤더 ul */
-#header ul {
+.gnb_pc{
    margin: 15px 0px 0px 0px;
    float: right;
    
 }
 /* 헤더 li */
 #header ul>li {
-   margin: 0px 0px 0px 20px;
-   float: left;
    font-size: 20px;
 }
 
-#header ul>li>a{
+#header ul>li>.color-gray{
 	color: #FFFFFFCC;
 }
 
@@ -167,7 +162,6 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 /*List header*/
 .pc .gnb_pc {
     display: inline-block;
-    position: absolute;
     top: 27px;
     right: 31px;
 }
@@ -263,6 +257,39 @@ ul, ol, li {
     font-size: 18px;
     line-height: 32px;
     color: #fff;
+}
+
+.gnb_pc {width:auto;text-align:right}
+.gnb_pc li{display:inline-block;position:relative;min-width:53px;min-height:35px;margin-left:30px;vertical-align:top}
+.gnb_pc li ul{display:none;position:absolute;top:0;left:0;border-radius:5px;padding:32px;background:#fff;text-align:left;
+		-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+		-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+		box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+	}
+.gnb_pc li ul li{display:block;min-width:auto;min-height:auto;margin:0 0 14px 0}
+.gnb_pc li ul li b{display:block;overflow:hidden;padding-bottom:21px;margin-bottom:22px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:16px;line-height:normal;font-weight:bold;white-space:nowrap;text-overflow:ellipsis}
+.gnb_pc li ul li:last-child{margin-bottom:0}
+.gnb_pc li ul li a,.gnb_pc li ul li button{overflow:visible !important;display:block;position:relative !important;top:auto !important;left:auto !important;width:auto !important;height:auto !important;margin:0;font-size:16px;color:rgba(0,0,0,0.87)}
+.gnb_pc li ul li button{padding: 0;border: none;background: none;line-height: 1;}
+.gnb_pc li ul li a:hover{font-weight:normal;color:rgba(0,0,0,0.87)}
+.gnb_pc li ul li a span{display:inline-block;padding-left:6px;font-weight:bold;color:rgb(230,28,81)}
+.gnb_pc .list_03{top:30px;left:-65px;width:184px; font-family: "맑은 고딕" }
+.gnb_pc .list_04{top:30px;left:-90px;width:213px; font-family: "맑은 고딕"}
+.gnb_pc li a{display:inline-block;font-size:18px;color:rgba(255,255,255,0.8);letter-spacing:0}
+.gnb_pc li button{border: none;padding: 0;background: none;font-size:18px;line-height: 1;color:rgba(255,255,255,0.8);letter-spacing:0}
+.gnb_pc li button:hover{color:rgba(255,255,255,1)}
+.gnb_pc li li button:hover{color:rgba(0,0,0,0.87)}
+.gnb_pc .pic a{position:absolute;top:-5px;left:0;overflow:hidden;width:30px;height:30px;margin:0;border-radius:100%}
+.gnb_pc .pic img{width:100%;height:100%}
+.gnb_pc .pic:after{display:inline-block;content:"";position:absolute;top:6px;right:7px;width:0;height:0;border-right:6px solid transparent;border-bottom:6px solid #fff;
+	transform:rotate(315deg);
+		-ms-transform:rotate(315deg);
+		-webkit-transform:rotate(315deg);
+		-moz-transform:rotate(315deg);
+		-o-transform:rotate(315deg);
+	}
+.col-black{
+	color: #000000;
 }
 /* ******************푸터************************** */
 footer {
