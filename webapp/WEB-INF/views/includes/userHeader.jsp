@@ -48,10 +48,10 @@
 <script>
 
 	$(".over").on("mouseenter",function(){
-		console.log("보이기");
+		$('ul',this).stop().fadeIn(150);
 	});
 	$(".over").on("mouseleave",function(){
-		console.log("숨기기");
+		$('ul',this).stop().fadeOut(150);
 	});
 	
 </script>
