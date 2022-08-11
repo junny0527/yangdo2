@@ -5,63 +5,102 @@
 
 
 	<select id="getRePay" parameterType="int" resultType="Map">
-		<![CDATA[
-				select    r.no NO
-		                 ,ro.no ROOMNO
-	                     ,u.no
-	                     ,u.email
-		                 ,r.user_no  USERNO
-		                 ,po.no POINTNO
-		                 ,po.point POints
-		                 ,r.name RNAME 
-		                 ,r.hp RHP
-		                 ,r.check_in
-		                 ,r.check_out 
-		                 ,ro.room_name
-		                 ,p.name PNAME
-		                 ,ro.standard_people
-		                 ,p.add_adult_price
-		                 ,p.add_kid_price
-		                 ,p.add_baby_price
-		                 ,ro.max_people
-		                 ,p.refund_no
-		                 ,r.adult 
-		                 ,r.kid 
-		                 ,r.baby 
-		                 ,r.total_price 
-		                 ,r.status
-		                 ,r.reg_date
-		         from reservations r , rooms ro , pension p , points po ,users u
-		         where r.room_no = ro.no
-		         and po.no = r.no
-		         and p.no = ro.pension_no
-		         and u.no =r.user_no
-				 and r.no = #{no} 
-		]]>
+		SELECT
+		r.no NO
+		,ro.no ROOMNO
+		,u.no
+		,u.email
+		,r.user_no USERNO
+		,po.no POINTNO
+		,po.point POints
+		,r.name RNAME
+		,r.hp RHP
+		,r.check_in
+		,r.check_out
+		,ro.room_name
+		,p.name PNAME
+		,ro.standard_people
+		,p.add_adult_price
+		,p.add_kid_price
+		,p.add_baby_price
+		,ro.max_people
+		,p.refund_no
+		,r.adult
+		,r.kid
+		,r.baby
+		,r.total_price
+		,r.trans_price
+		,r.status
+		,r.reg_date
+		FROM reservations r
+		JOIN rooms ro ON r.room_no = ro.NO
+		JOIN pension p ON p.no = ro.pension_no
+		JOIN users u ON u.no =r.user_no
+		LEFT JOIN points po ON r.no = po.reserve_no
+		WHERE 1 = 1
+		AND r.no = #{no}
 	</select>
-	<!-- <insert id="payInsert" parameterType="com.javaex.vo.RePayVo">
-		<![CDATA[
-				insert into reservations
-				values(SEQ_RESERVATIONS_NO.nextval,#{roomNo},#{userName},#{hp},#{checkIn},#{checkOut},#{adult},#{kid},#{baby},#{totalPrice},SYSDATE,#{payWay},#{payStatus},#{reStatus},,);
-		]]>
-	</insert>
 	
+	<insert id="PayInsert" parameterType="com.javaex.vo.RePayVo">
+				INSERT INTO RESERVATIONS (
+						NO,
+						ROOM_NO,
+						USER_NO,
+						NAME,
+						HP,
+						CHECK_IN,
+						CHECK_OUT,
+						TOTAL_PRICE,
+						REG_DATE,
+						PAY_WAY
+				VALUES (
+				  		SEQ_RESERVATIONS_NO.nextval,
+						#{roomNo},
+						#{userNo},
+						#{name},
+						#{hp},
+						#{checkIn},
+						#{checkOut},
+						#{totalPrice},
+						NOWDATE,
+						#{payWay},
+						
+						)
+	</insert>
 	<insert id="yangdoPayInsert" parameterType="com.javaex.vo.RePayVo">
-		<![CDATA[
-				insert into reservations
-				values(SEQ_RESERVATIONS_NO.nextval,#{roomNo},#{userName},#{hp},#{checkIn},#{checkOut},#{adult},#{kid},#{baby},#{totalPrice},SYSDATE,#{payWay},#{payStatus},#{reStatus},#{trancePrice},#{prNo});
-		]]>
+				INSERT INTO RESERVATIONS (
+						NO,
+						ROOM_NO,
+						USER_NO,
+						NAME,
+						HP,
+						CHECK_IN,
+						CHECK_OUT,
+						TOTAL_PRICE,
+						REG_DATE,
+						PAY_WAY,
+						STATUS,
+						P_R_NO
+				VALUES (
+				  		SEQ_RESERVATIONS_NO.nextval,
+						#{roomNo},
+						#{userNo},
+						#{name},
+						#{hp},
+						#{checkIn},
+						#{checkOut},
+						#{totalPrice},
+						NOWDATE,
+						#{payWay},
+						#{status},
+						#{prNo},
+						)
 	</insert>
-	
-	<update id="yangdoPayUpdate" parameterType="com.javaex.vo.RePayVo">
-		<![CDATA[
-				update reservations
-				set    
-	       			   name = #{name},
-				       hp = #{hp},
-				where  no = #{no}
-		]]>
-	</update> -->
-	
-
+	<update id="yangdoPayUpdate" parameterType="com.javaex.vo.RePayVo"> 
+		UPDATE RESERVATIONS
+			SET 
+			  STATUS = #{status}
+			WHERE 
+			  NO = #{no}
+	</update>
 </mapper>

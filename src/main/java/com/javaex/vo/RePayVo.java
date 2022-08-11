@@ -6,8 +6,8 @@ public class RePayVo {
 	private int roomNo;
 	private int pointNo;
 	private String point;
-	private String userName;
-	private String userHp;
+	private String name;
+	private String hp;
 	private String checkIn;
 	private String checkOut;
 	private String pName;
@@ -18,11 +18,18 @@ public class RePayVo {
 	private int adult;
 	private int kid;
 	private int baby;
-	private int totalPrice;
-	private int transPrice;
+	private String totalPrice;
+	private String transPrice;
+	private String paySatatus;
+	private String status;
 	private String payWay;
 	private String regDate;
 	private int prNo;
+	private String id;
+	private String pw;
+	private String email;
+	
+	
 	
 	
 	public RePayVo() {
@@ -30,38 +37,11 @@ public class RePayVo {
 	}
 
 
-	public RePayVo(int no, int userNo, int roomNo, int pointNo, String point, String userName, String userHp,
-			String checkIn, String checkOut, String pName, String rName, String sPeople, String mPeople, int refundNo,
-			int adult, int kid, int baby, int totalPrice, int transPrice, String payWay, String regDate, int prNo) {
-		super();
-		this.no = no;
-		this.userNo = userNo;
-		this.roomNo = roomNo;
-		this.pointNo = pointNo;
-		this.point = point;
-		this.userName = userName;
-		this.userHp = userHp;
-		this.checkIn = checkIn;
-		this.checkOut = checkOut;
-		this.pName = pName;
-		this.rName = rName;
-		this.sPeople = sPeople;
-		this.mPeople = mPeople;
-		this.refundNo = refundNo;
-		this.adult = adult;
-		this.kid = kid;
-		this.baby = baby;
-		this.totalPrice = totalPrice;
-		this.transPrice = transPrice;
-		this.payWay = payWay;
-		this.regDate = regDate;
-		this.prNo = prNo;
-	}
-
 
 	public int getNo() {
 		return no;
 	}
+
 
 
 	public void setNo(int no) {
@@ -69,9 +49,11 @@ public class RePayVo {
 	}
 
 
+
 	public int getUserNo() {
 		return userNo;
 	}
+
 
 
 	public void setUserNo(int userNo) {
@@ -79,9 +61,11 @@ public class RePayVo {
 	}
 
 
+
 	public int getRoomNo() {
 		return roomNo;
 	}
+
 
 
 	public void setRoomNo(int roomNo) {
@@ -89,9 +73,11 @@ public class RePayVo {
 	}
 
 
+
 	public int getPointNo() {
 		return pointNo;
 	}
+
 
 
 	public void setPointNo(int pointNo) {
@@ -99,9 +85,11 @@ public class RePayVo {
 	}
 
 
+
 	public String getPoint() {
 		return point;
 	}
+
 
 
 	public void setPoint(String point) {
@@ -109,24 +97,29 @@ public class RePayVo {
 	}
 
 
-	public String getUserName() {
-		return userName;
+
+	public String getName() {
+		return name;
 	}
 
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
-	public String getUserHp() {
-		return userHp;
+
+	public String getHp() {
+		return hp;
 	}
 
 
-	public void setUserHp(String userHp) {
-		this.userHp = userHp;
+
+	public void setHp(String hp) {
+		this.hp = hp;
 	}
+
 
 
 	public String getCheckIn() {
@@ -134,9 +127,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setCheckIn(String checkIn) {
 		this.checkIn = checkIn;
 	}
+
 
 
 	public String getCheckOut() {
@@ -144,9 +139,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setCheckOut(String checkOut) {
 		this.checkOut = checkOut;
 	}
+
 
 
 	public String getpName() {
@@ -154,9 +151,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
+
 
 
 	public String getrName() {
@@ -164,9 +163,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setrName(String rName) {
 		this.rName = rName;
 	}
+
 
 
 	public String getsPeople() {
@@ -174,9 +175,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setsPeople(String sPeople) {
 		this.sPeople = sPeople;
 	}
+
 
 
 	public String getmPeople() {
@@ -184,9 +187,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setmPeople(String mPeople) {
 		this.mPeople = mPeople;
 	}
+
 
 
 	public int getRefundNo() {
@@ -194,9 +199,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setRefundNo(int refundNo) {
 		this.refundNo = refundNo;
 	}
+
 
 
 	public int getAdult() {
@@ -204,9 +211,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setAdult(int adult) {
 		this.adult = adult;
 	}
+
 
 
 	public int getKid() {
@@ -214,9 +223,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setKid(int kid) {
 		this.kid = kid;
 	}
+
 
 
 	public int getBaby() {
@@ -224,29 +235,35 @@ public class RePayVo {
 	}
 
 
+
 	public void setBaby(int baby) {
 		this.baby = baby;
 	}
 
 
-	public int getTotalPrice() {
+
+	public String getTotalPrice() {
 		return totalPrice;
 	}
 
 
-	public void setTotalPrice(int totalPrice) {
+
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
 
-	public int getTransPrice() {
+
+	public String getTransPrice() {
 		return transPrice;
 	}
 
 
-	public void setTransPrice(int transPrice) {
+
+	public void setTransPrice(String transPrice) {
 		this.transPrice = transPrice;
 	}
+
 
 
 	public String getPayWay() {
@@ -254,9 +271,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setPayWay(String payWay) {
 		this.payWay = payWay;
 	}
+
 
 
 	public String getRegDate() {
@@ -264,9 +283,11 @@ public class RePayVo {
 	}
 
 
+
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+
 
 
 	public int getPrNo() {
@@ -274,20 +295,94 @@ public class RePayVo {
 	}
 
 
+
 	public void setPrNo(int prNo) {
 		this.prNo = prNo;
 	}
 
 
+
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+	public String getPw() {
+		return pw;
+	}
+
+
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getPaySatatus() {
+		return paySatatus;
+	}
+
+
+
+	public void setPaySatatus(String paySatatus) {
+		this.paySatatus = paySatatus;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "RePayVo [no=" + no + ", userNo=" + userNo + ", roomNo=" + roomNo + ", pointNo=" + pointNo + ", point="
-				+ point + ", userName=" + userName + ", userHp=" + userHp + ", checkIn=" + checkIn + ", checkOut="
-				+ checkOut + ", pName=" + pName + ", rName=" + rName + ", sPeople=" + sPeople + ", mPeople=" + mPeople
+				+ point + ", name=" + name + ", hp=" + hp + ", checkIn=" + checkIn + ", checkOut=" + checkOut
+				+ ", pName=" + pName + ", rName=" + rName + ", sPeople=" + sPeople + ", mPeople=" + mPeople
 				+ ", refundNo=" + refundNo + ", adult=" + adult + ", kid=" + kid + ", baby=" + baby + ", totalPrice="
-				+ totalPrice + ", transPrice=" + transPrice + ", payWay=" + payWay + ", regDate=" + regDate + ", prNo="
-				+ prNo + "]";
+				+ totalPrice + ", transPrice=" + transPrice + ", paySatatus=" + paySatatus + ", status=" + status
+				+ ", payWay=" + payWay + ", regDate=" + regDate + ", prNo=" + prNo + ", id=" + id + ", pw=" + pw
+				+ ", email=" + email + "]";
 	}
+
+
+
+	
+
+
+	
+	
+	
+
+	
 
 
 	
