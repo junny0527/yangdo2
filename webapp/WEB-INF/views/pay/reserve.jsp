@@ -18,7 +18,7 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
@@ -58,7 +58,7 @@
 					<section class="total_price_pc" data-v-33033856="">
 						<p data-v-33033856="">
 							<strong data-v-33033856=""><b data-v-33033856="">총
-									결제 금액</b>(VAT포함)</strong><span class="in_price" data-v-33033856="">89,000원</span>
+									결제 금액</b>(VAT포함)</strong><span class="in_price" data-v-33033856="">${rpMap.TOTAL_PRICE}</span>
 						</p>
 						<ul data-v-33033856="">
 							<li data-v-33033856="">해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -208,15 +208,46 @@
 		<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
 	</div>
 
-	<script>
-		var IMP = window.IMP; // 생략 가능
-		IMP.init("imp74601630");
-		function requestPay() {
-			console.log("클릭")
-			
-
-		}
-	</script>
-
 </body>
+<script type="text/javascript">
+	var IMP = window.IMP; // 생략 가능
+	IMP.init('imp74601630');
+	function requestPay () {
+		//IMP.request_pay(param, callback)
+		IMP.request_pay({ // param
+          pg: "html5_inicis",
+          pay_method: "card",
+          merchant_uid: "ORD20180131-0000011",
+          name: "노르웨이 회전 의자",
+          amount: 100,
+          buyer_email: "gildong@gmail.com",
+          buyer_name: "홍길동",
+          buyer_tel: "010-4242-4242",
+          buyer_addr: "서울특별시 강남구 신사동",
+          buyer_postcode: "01181"
+      }, function (rsp) { // callback
+    	  if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+    	        // jQuery로 HTTP 요청
+    	        jQuery.ajax({
+    	            url: "{서버의 결제 정보를 받는 endpoint}", // 예: https://www.myservice.com/payments/complete
+    	            method: "POST",
+    	            headers: { "Content-Type": "application/json" },
+    	            data: {
+    	                imp_uid: rsp.imp_uid,
+    	                merchant_uid: rsp.merchant_uid
+    	            }
+    	        }).done(function (data) {
+    	          // 가맹점 서버 결제 API 성공시 로직
+    	        })
+    	      } else {
+    	        alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+    	      }
+    	    });
+		
+
+    
+    
+	}
+	
+</script>
 </html>

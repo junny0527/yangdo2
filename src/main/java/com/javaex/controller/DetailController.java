@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.DetailService;
 
@@ -19,21 +20,40 @@ public class DetailController {
 	DetailService detailService;
 	
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pMap(@RequestParam("pensionNo") int pensionNo, Model model) {
+	public String pMap(@RequestParam("pensionNo") int pensionNo, Model model,
+					   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("DetailController > pMap");
+		Map<String, Object> pMap = detailService.select(pensionNo, crtPage);
 		
-		Map<String, Object> pMap = detailService.select(pensionNo);
+		
+		System.out.println("pmap :"+pMap);
 		
 		System.out.println("totalReview :" + pMap.get("totalReview"));
 		System.out.println("imgList :" + pMap.get("imgList"));
 		model.addAttribute("totalReview", pMap.get("totalReview"));
 		model.addAttribute("pInfo", pMap.get("pInfo"));
 		model.addAttribute("imgList", pMap.get("imgList"));
+		model.addAttribute("pMap",pMap);
+		model.addAttribute("boardList",pMap.get("boardList"));
 		
 		
 		
 		return "detail/reservation";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/pensionImg", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, Object> pensionImg(@RequestParam("pensionNo") int pensionNo,
+							 			  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+		System.out.println("DetailController > pensionImg");
+		Map<String, Object> imgMap = detailService.pensionImg(pensionNo, crtPage);
+		System.out.println("asdasdasdad"+ imgMap);
+		
+		
+		return imgMap;
+	}
+	
+	
 	
 	@RequestMapping(value="/infomation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String test2() {

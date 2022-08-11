@@ -991,3 +991,92 @@ reserve_detail .info {
 	background-color: rgba(244, 88, 88, .1) !important;
 }
 /* ***************RESERVATION DETAILS  //*************** */
+
+/* ***************REVIEW  //*************** */
+.review_form {
+	margin-top: 20px;
+	width: 100%;
+	font-size: 16px;
+	text-align: left;
+}
+
+.review_form   strong {
+	display: block;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	font-size: 22px;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.87);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	font-size: 22px;
+}
+
+.review_form div {
+	float: left;
+	padding-left: 13px;
+	padding-left: 13px;
+}
+
+.review_form .inp_wrap {
+	display: inline-block;
+	width: 550px;
+	margin: 5px 0px 0px 0px;
+}
+
+.review_form div span {
+	display: inline-block;
+	font-size: 14px;
+	padding-left: 8px;
+}
+
+.review_form textarea {
+	display: inline-block;
+	margin: 5px;
+	padding: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	resize: none;
+}
+
+/********************** Star rating *******************/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+.review_form .rating {
+	border: none;
+	float: left;
+}
+
+.review_form  .rating>input {
+	display: none;
+}
+
+.review_form  .rating>label:before {
+	padding: 5px;
+	font-size: 1.75em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.review_form  .rating>.half:before {
+	content: "\f089";
+	position: absolute;
+}
+
+.review_form  .rating>label {
+	color: #ddd;
+	float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.review_form  .rating>input:checked ~ label, /* show gold star when clicked */ .rating:not(:checked)>label:hover,
+	/* hover current star */ .review_form  .rating:not(:checked)>label:hover ~ label {
+	color: #FFD700;
+} /* hover previous stars in list */
+.review_form  .rating>input:checked+label:hover, /* hover current star when changing rating */
+	.rating>input:checked 
+	 ~ label:hover, .review_form  .rating>label:hover ~ input:checked ~ label,
+	/* lighten current selection */ .review_form  .rating>input:checked 
+	 ~ label:hover ~ label {
+	color: #FFED85;
+}

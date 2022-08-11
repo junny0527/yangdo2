@@ -9,6 +9,7 @@
 		<mapper resource="mybatis/mappers/detail.xml" />
 		<mapper resource="mybatis/mappers/repay.xml" />
 		<mapper resource="mybatis/mappers/my.xml" />
+		<mapper resource="mybatis/mappers/Hostcompanyreg.xml" />
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
 	</mappers>
 </configuration>	

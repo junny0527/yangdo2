@@ -94,7 +94,7 @@
 			</li>
 		</ul>
 	</div>
-	<form class="form-horizontal" action="${pageContext.request.contextPath}/host/companysave" method="get">
+	<form class="form-horizontal">
 		<table class="table table-bordered resize">
 			<thead></thead>
 			<tbody>
@@ -166,7 +166,7 @@
                            	<span class="form-title">거래 은행</span>
                                <span class="form-body">
                                    <div class="select-style normal-size">
-                                       <select name = "bankName">
+                                       <select>
                                            <option value="">선택</option>
                                            <option value="한국은행">한국은행</option>
                                            <option value="산업은행">산업은행</option>
@@ -194,8 +194,7 @@
                                            <option value="상호저축은행">상호저축은행</option>
                                            <option value="산림조합중앙회">산림조합중앙회</option>
                                            <option value="케이뱅크">케이뱅크</option>
-                                           <option value="카카오뱅크">카카오뱅크</option>
-                                       </select>
+                                           <option value="카카오뱅크">카카오뱅크</option>                                        </select>
                                    </div>
                                </span>
                            </div>
@@ -203,22 +202,31 @@
                            <div class="form-layer mb_24">
                                <span class="form-title">예금주</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name = "accountHolder" disabled="" placeholder="이름을 입력하세요." value="">
+                                   <input class="form-control normal-size" type="text" disabled="" placeholder="이름을 입력하세요." value="">
                                </span>
                            </div>
                            
                            <div class="form-layer mb_08">
                                <span class="form-title">계좌 번호</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name = "account" disabled="" placeholder="숫자만 입력하세요." value="">
+                                   <input class="form-control normal-size" type="text" disabled="" placeholder="숫자만 입력하세요." value="">
                                </span>
                            </div>
+                           
+                           <!-- div class="form-layer mb_08">
+                               <span class="form-title">통장사본</span>
+                               <span class="form-body">
+                                   <input class="form-control normal-size" id="fileName" type="text" placeholder="통장사본을 등록해주세요." value="" disabled/>
+                                                                       <input type="button" value="등록" class="btn btn-primary refund-upload" id="uploadButton"  />
+                                   <input type="file" name="mrefund_bank_copy" title="등록" class="file-input-hidden"  />
+                               </span>
+                           </div -->
                            
                            <div class="form-layer mb_08">
                                <span class="form-title">정산 주기</span>
                                <span class="form-body label-layer">
-                                   <label for="W"><input id="W" name="settlementCycle" type="radio" disabled="" value="week"> 주정산</label>
-                                   <label for="M"><input id="M" name="settlementCycle" type="radio" disabled="" value="month"> 월정산</label>
+                                   <label for="W"><input id="W" type="radio" disabled="" value="week"> 주정산</label>
+                                   <label for="M"><input id="M" type="radio" disabled="" value="month"> 월정산</label>
                                </span>
                            </div>
                            
@@ -237,8 +245,8 @@
                        <td>
                            <div id = "tax" class="form-layer label-layer mb_24">
                            	<br>
-                               <label for="Y"><input id="Y" name = "taxInvoice" type="radio" name="account_type" value="2"> 발행</label>
-                               <label for="N"><input id="N" name = "taxInvoice" type="radio" name="account_type" value="1" checked=""> 미발행</label>
+                               <label for="Y"><input id="Y" type="radio" name="account_type" value="2"> 발행</label>
+                               <label for="N"><input id="N" type="radio" name="account_type" value="1" checked=""> 미발행</label>
                            </div>
                        </td>
                    </tr>
@@ -249,7 +257,7 @@
                            <div class="form-layer mb_08">
                                <span class="form-title">상호명<br>(법인명)</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="companyName" placeholder="사업자 등록증상 상호명" value="" disabled="disabled">
+                                   <input class="form-control normal-size" type="text" name="corporate" placeholder="사업자 등록증상 상호명" value="" disabled="disabled">
                                </span>
                            </div>
                            <div class="form-layer-text mb_24">
@@ -266,32 +274,32 @@
                            
                            <div id = "jobstyle" class="form-layer mb_24">
                                <span class="form-title">업태</span>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="businessType" disabled="disabled">숙박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="businessType" disabled="disabled">음식 및 숙박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="businessType" disabled="disabled">부동산</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="businessType" disabled="disabled">음식</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="businessType" disabled="disabled">서비스</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="b_condition[]" disabled="disabled">숙박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="b_condition[]" disabled="disabled">음식 및 숙박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="b_condition[]" disabled="disabled">부동산</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="b_condition[]" disabled="disabled">음식</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="b_condition[]" disabled="disabled">서비스</label>
                            </div>
 						
 						<br>
 						
                            <div id = "joblist" class="form-layer mb_24">
                                <span class="form-title">업종</span>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="businessGroup" disabled="disabled">민박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="businessGroup" disabled="disabled">외국인도시민박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="businessGroup" disabled="disabled">게스트하우스</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="businessGroup" disabled="disabled">한옥체험</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="businessGroup" disabled="disabled">여관</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="6" name="businessGroup" disabled="disabled">숙박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="7" name="businessGroup" disabled="disabled">펜션</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="8" name="businessGroup" disabled="disabled">호스텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="9" name="businessGroup" disabled="disabled">모텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="10" name="businessGroup" disabled="disabled">관광</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="11" name="businessGroup" disabled="disabled">임대</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="12" name="businessGroup" disabled="disabled">호텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="13" name="businessGroup" disabled="disabled">관광호텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="14" name="businessGroup" disabled="disabled">일반여행</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="15" name="businessGroup" disabled="disabled">무인텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="6" name="b_type[]" disabled="disabled">민박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="16" name="b_type[]" disabled="disabled">외국인도시민박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="13" name="b_type[]" disabled="disabled">게스트하우스</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="14" name="b_type[]" disabled="disabled">한옥체험</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="b_type[]" disabled="disabled">여관</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="b_type[]" disabled="disabled">숙박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="b_type[]" disabled="disabled">펜션</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="12" name="b_type[]" disabled="disabled">호스텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="b_type[]" disabled="disabled">모텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="7" name="b_type[]" disabled="disabled">관광</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="9" name="b_type[]" disabled="disabled">임대</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="b_type[]" disabled="disabled">호텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="8" name="b_type[]" disabled="disabled">관광호텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="11" name="b_type[]" disabled="disabled">일반여행</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="10" name="b_type[]" disabled="disabled">무인텔</label>
                            </div>
                            
                            <br>
@@ -308,19 +316,19 @@
                            <div class="form-layer mb_24">
                                <span class="form-title">업체 주소</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" id="input_roadAddress" name = "companyAddress" type="text" name="address1" readonly="" placeholder="사업자 등록증상 업체 주소를 입력하세요." value="">
+                                   <input class="form-control normal-size" id="input_roadAddress" type="text" name="address1" readonly="" placeholder="사업자 등록증상 업체 주소를 입력하세요." value="">
                                    <button type="button" class="btn btn-yeogi btn-normal-layer" id="postCode" onclick="daumPostCode()" disabled="disabled">주소 검색</button>
                                </span>
                            </div>
                            <div class="form-layer newline">
                                <span class="form-body">
-                                   <input id = "leftaddress" class="form-control normal-size" type="text" name="detailAddress" placeholder="나머지 주소를 입력하세요." value="" disabled="disabled">
+                                   <input id = "leftaddress" class="form-control normal-size" type="text" name="address2" placeholder="나머지 주소를 입력하세요." value="" disabled="disabled">
                                </span>
                            </div>
                            <div class="form-layer mb_24">
                                <span class="form-title">세금계산서<br>이메일</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="taxInvoiceEmail" placeholder="이메일을 입력하세요." value="" disabled="disabled">
+                                   <input class="form-control normal-size" type="text" name="settlement_email" placeholder="이메일을 입력하세요." value="" disabled="disabled">
                                </span>
                            </div>
                        </td>

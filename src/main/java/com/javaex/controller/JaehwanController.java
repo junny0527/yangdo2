@@ -8,11 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="host")
 public class JaehwanController {
 	
-	@RequestMapping(value="companyreg", method = {RequestMethod.GET, RequestMethod.POST})
-	public String mypage() {
-		return "/host/companyRegister";
-	}
-	
 	@RequestMapping(value="newhost", method = {RequestMethod.GET, RequestMethod.POST})
 	public String newhost() {
 		return "/host/mainNoRegister";
@@ -56,5 +51,15 @@ public class JaehwanController {
 	@RequestMapping(value="customerservice", method = {RequestMethod.GET, RequestMethod.POST})
 	public String customerservice() {
 		return "/host/customerService";
+	}
+	
+	@RequestMapping(value="hostsales", method = {RequestMethod.GET, RequestMethod.POST})
+	public String hostsale() {
+		return "/host/hostsales";
+	}
+	
+	@RequestMapping(value="hostjoin", method = {RequestMethod.GET, RequestMethod.POST})
+	public String hostjoin() {
+		return "/host/hostJoinForm";
 	}
 }

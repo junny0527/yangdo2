@@ -11,6 +11,9 @@
 
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css"
+>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css"
 >
@@ -20,8 +23,11 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/mypage/my.css"
 >
-
 <!-- //css -->
+
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/d80d4fed4a.js" crossorigin="anonymous"></script>
+<!-- //fontawesome -->
 </head>
 
 <!-- js -->
@@ -110,74 +116,97 @@
 							>
 								<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰
 									남기기</button>
-								<!---->
-								<form>
-									<section>
-										<strong>리뷰 작성 폼</strong>
-										<div>
-											<b>제목 : </b> <input type="text" name="review_title" class="review_section"
-												placeholder="제목을 입력해주세요."
-											><span> *필수항목</span>
-										</div>
-									</section>
-								</form>
-
-								<div class="review-intake-form__rating">
-									<div class="review-table">
-										<div class="review-table__cell review-intake-head title">
-											<img
-												src="https://thumbnail8.coupangcdn.com/thumbnails/remote/250x250ex/image/vendor_inventory/5db9/42a24dbdbb1d5f278d11e4cc90a1b24d7ce2c43cbf8b976d5b7f6093f75c.jpg"
-												width="100" height="100" title="에비크 FHD 15인치 초슬림 DEX 포터블 HDR 휴대용 모니터 156B05"
-												alt="에비크 FHD 15인치 초슬림 DEX 포터블 HDR 휴대용 모니터 156B05"
-											/>
-										</div>
-										<div class="review-table__cell description">
-											<div class="review-intake-form__product-title">에비크 FHD 15인치 초슬림 DEX 포터블 HDR 휴대용 모니터
-												156B05</div>
-
-											<div class="my-review__modify__star js_reviewModifyStarContainer" data-star=""
-												data-text="최고"
-											>
-												<div class="my-review__modify__star__content">
-
-													<div>
-														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
-															type="button" value="1" data-text="나쁨"
-														></button>
-														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
-															type="button" value="2" data-text="별로"
-														></button>
-														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
-															type="button" value="3" data-text="보통"
-														></button>
-														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
-															type="button" value="4" data-text="좋음"
-														></button>
-														<button class="my-review__modify__star__content__value js_reviewModifyStarBtn"
-															type="button" value="5" data-text="최고"
-														></button>
-														<span
-															class="my-review__modify__star__content__status js_reviewModifyStatus default-review-star"
-														>(필수)<em>*</em></span>
-													</div>
-
-
-
-												</div>
-												<!---->
-											</div>
-										</div>
-										<!---->
+							</div>
+						</div>
 					</section>
+					<!---->
+					<form class=review_form>
+						<section>
+							<strong>리뷰 작성 폼</strong>
+							<div class="star_rating">
+								<b>별점주기 : </b>
+							</div>
+							<fieldset class="rating">
+								<input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+									title="Awesome - 5 stars"
+								></label> <input type="radio" id="star4half" name="rating" value="4 and a half" /><label
+									class="half" for="star4half" title="Pretty good - 4.5 stars"
+								></label> <input type="radio" id="star4" name="rating" value="4" /><label class="full"
+									for="star4" title="Pretty good - 4 stars"
+								></label> <input type="radio" id="star3half" name="rating" value="3 and a half" /><label
+									class="half" for="star3half" title="Meh - 3.5 stars"
+								></label> <input type="radio" id="star3" name="rating" value="3" /><label class="full"
+									for="star3" title="Meh - 3 stars"
+								></label> <input type="radio" id="star2half" name="rating" value="2 and a half" /><label
+									class="half" for="star2half" title="Kinda bad - 2.5 stars"
+								></label> <input type="radio" id="star2" name="rating" value="2" /><label class="full"
+									for="star2" title="Kinda bad - 2 stars"
+								></label> <input type="radio" id="star1half" name="rating" value="1 and a half" /><label
+									class="half" for="star1half" title="Meh - 1.5 stars"
+								></label> <input type="radio" id="star1" name="rating" value="1" /><label class="full"
+									for="star1" title="Sucks big time - 1 star"
+								></label> <input type="radio" id="starhalf" name="rating" value="half" /><label class="half"
+									for="starhalf" title="Sucks big time - 0.5 stars"
+								></label>
+							</fieldset>
+							<div>
+								<span>*필수항목</span>
+							</div>
+							<div>
+								<b>리뷰제목 : </b>
+								<p class="inp_wrap remove form-errors">
+									<input type="text" name="review_title" class="review_section" placeholder="리뷰 제목을 입력해주세요.">
+								</p>
+								<span> *필수항목</span>
+							</div>
+							<div>
+								<b>상세리뷰 : </b>
+							</div>
+							<textarea rows="10" cols="68" placeholder="리뷰 상세내용을 입력해주세요."></textarea>
+						</section>
+
+					</form>
+					<!---->
 				</div>
 			</div>
-			<div>
-				<!---->
-			</div>
-			<!-- Footer -->
-			<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
-			<!-- Footer -->
+			<!---->
 		</div>
 	</div>
+	<div>
+		<!---->
+	</div>
+	<!-- Footer -->
+	<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
+	<!-- Footer -->
 </body>
+
+<script type="text/javascript">
+	var $star_rating = $('.star-rating .fa');
+
+	var SetRatingStar = function() {
+		return $star_rating
+				.each(function() {
+					if (parseInt($star_rating.siblings('input.rating-value')
+							.val()) >= parseInt($(this).data('rating'))) {
+						return $(this).removeClass('fa-star-o').addClass(
+								'fa-star');
+					} else {
+						return $(this).removeClass('fa-star').addClass(
+								'fa-star-o');
+					}
+				});
+	};
+
+	$star_rating.on('click',
+			function() {
+				$star_rating.siblings('input.rating-value').val(
+						$(this).data('rating'));
+				return SetRatingStar();
+			});
+
+	SetRatingStar();
+	$(document).ready(function() {
+
+	});
+</script>
 </html>
