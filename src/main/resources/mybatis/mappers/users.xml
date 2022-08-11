@@ -26,6 +26,16 @@
 			and pw = #{pw}
 		]]>
 	</select>
-
+	
+	<select id="getRoom" resultType="com.javaex.vo.HostRoomsVo" parameterType="int">
+		<![CDATA[
+			select nvl(r.no,0) no
+			from users u, company p, pension pen, rooms r
+			where u.no = p.user_no
+			and p.no = pen.company_no
+			and pen.no = r.pension_no
+			and u.no = #{hostNo}
+		]]>
+	</select>
 
 </mapper>

@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.UserVo;
 
 @Repository
@@ -35,11 +36,11 @@ public class UserDao {
 		return uVo;
 	}
 	
-	public UserVo hostLogin(UserVo userVo) {
+	public HostRoomsVo hostLogin(int hostNo) {
 		System.out.println("UserDao > hostLogin");
 		
-		UserVo uVo = sqlSession.selectOne("users.hostLogin", userVo);
+		HostRoomsVo hVo = sqlSession.selectOne("users.getRoom", hostNo);
 		
-		return uVo;
+		return hVo;
 	}
 }

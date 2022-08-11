@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.UserService;
+import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -29,12 +30,19 @@ public class UserController {
 		System.out.println("UserController > login");
 		
 		UserVo authUser = userService.userLogin(userVo);
-		  
+		
 		/* 세션에 저장 */
 		if(authUser != null) { //로그인 성공
 			session.setAttribute("authUser", authUser);
 			if(authUser.getIdentify().equals("host")) {
-				return "redirect:/host/main";
+				int hostNo = authUser.getNo();
+				HostRoomsVo hVo = userService.hostLogin(hostNo);
+				//나누는거 조금있다가 해야됨
+				if(hVo.getNo() == 0) {
+					return "redirect:/host/main";
+				}else {
+					return "redirect:/host/newhost";
+				}
 			}else {
 				return "redirect:/main";
 			}

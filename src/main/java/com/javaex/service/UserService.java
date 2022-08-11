@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.UserDao;
+import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.UserVo;
 
 @Service
@@ -36,11 +37,11 @@ public class UserService {
 		return uVo;
 	}
 	
-	public UserVo hostLogin(UserVo userVo) {
+	public HostRoomsVo hostLogin(int hostNo) {
 		System.out.println("UserService > hostLogin");
 		
-		UserVo uVo = userDao.userLogin(userVo);
+		HostRoomsVo hVo = userDao.hostLogin(hostNo);
 		
-		return uVo;
+		return hVo;
 	}
 }
