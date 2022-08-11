@@ -13,6 +13,9 @@
 		<mapper resource="mybatis/mappers/repay.xml" />
 
 		<mapper resource="mybatis/mappers/users.xml" />
+
+		<mapper resource="mybatis/mappers/Hostcompanyreg.xml" />
+		
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
 	</mappers>
 </configuration>	
