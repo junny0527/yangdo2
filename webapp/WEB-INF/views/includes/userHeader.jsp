@@ -36,7 +36,7 @@
 							<li><a href="${pageContext.request.contextPath}/my/point" data-point="0">포인트<!-- span>0P</span --></a></li>
 							<li><a href="${pageContext.request.contextPath}/my/reservation">예약내역<!-- span>0건</span --></a></li>
 							<li><a href="">알림설정</a></li>
-							<li><button type="button" class="pop_logout_open">로그아웃</button></li>
+							<li><a href="${pageContext.request.contextPath}/logout"><button type="button" class="pop_logout_open">로그아웃</button></a></li>
 						</ul>
 					</li>
 				</c:otherwise>
