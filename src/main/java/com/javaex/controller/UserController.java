@@ -38,10 +38,10 @@ public class UserController {
 				int hostNo = authUser.getNo();
 				HostRoomsVo hVo = userService.hostLogin(hostNo);
 				//나누는거 조금있다가 해야됨
-				if(hVo.getNo() == 0) {
-					return "redirect:/host/main";
-				}else {
+				if(hVo == null) {
 					return "redirect:/host/newhost";
+				}else {
+					return "redirect:/host/main";
 				}
 			}else {
 				return "redirect:/main";
