@@ -25,7 +25,7 @@
 					<li><a href="${pageContext.request.contextPath}/loginForm">로그인</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="over pic">
+					<li class="over pic clearfix">
 						<a href="${pageContext.request.contextPath}/my/info"><img id="user-icon" src="https://image.goodchoice.kr/profile/ico/ico_21.png" alt=""></a>
 						<ul class="list_04 clearfix" style="display: none;">
 							<li><b>나주머리빗</b></li>
