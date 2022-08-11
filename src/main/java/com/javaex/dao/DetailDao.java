@@ -67,23 +67,21 @@ public class DetailDao {
 		return pPubList;
 	}	
 		
-	//펜션 방 정보 리스트 가져오기
-	public List<Map<String, Object>> roomList(int pensionNo) {
-		System.out.println("DetailDao > roomList()");
-		
-		List<Map<String, Object>> roomList = sqlSession.selectList("detail.roomList", pensionNo);
-		return roomList;
-	}
-	
 	//객실 방 번호 리스트 가져오기
 	public List<Map<String, Object>> roomNo(int pensionNo) {
 		System.out.println("DetailDao > pAmenities()");
 		
 		List<Map<String, Object>> roomNo = sqlSession.selectList("detail.roomNo", pensionNo);
-		System.out.println("roomNo :" + roomNo);
 		return roomNo;
 	}
 	
+	//예약객실 리스트 가져오기
+	public List<Map<String, Object>> reservation(int pensionNo) {
+		System.out.println("DetailDao > reservation()");
+		
+		List<Map<String, Object>> reservation = sqlSession.selectList("detail.reservation", pensionNo);
+		return reservation;
+	}
 	
 	
 	
