@@ -47,7 +47,7 @@
                 <a href="https://www.goodchoice.kr/more/terms/location" target="_blank">위치기반 서비스 이용약관 동의</a> (선택)
             </p>
 
-            <button type="button" class="btn_link gra_left_right_red" id="terms_agree_btn"><span>다음</span></button>
+            <button type="button" class="btn_link gra_left_right_red" id="terms_agree_btn" onclick ="location.href='${pageContext.request.contextPath}/host/joinForm';"><span>다음</span></button>
         </div>
     </section>
 
@@ -55,4 +55,46 @@
 
 </div>
 </body>
+<script type="text/javascript">
+
+
+$(function () {
+    if ($('.terms_agree').length > 0) {
+        $('#checkAll').on('click', function () {
+            var checked = false;
+
+            if($(this).is(':checked')){
+                checked = true;
+
+                $('#terms_agree_btn').addClass('gra_left_right_red').attr('disabled',false);
+            }else{
+                checked = false;
+
+                $('#terms_agree_btn').removeClass('gra_left_right_red').attr('disabled',true);
+            }
+
+            $('.terms_checkbox').each(function (k) {
+                $(this).prop("checked", checked);
+            });
+        });
+
+        $('.terms_checkbox').on('click', function () {
+            if ($('.terms_checkbox:checked').length > 4) {
+                $('#checkAll').prop("checked", true);
+            } else {
+                $('#checkAll').prop("checked", false);
+            }
+
+            if ($('.terms_checkbox[require]:checked').length > 2) {
+                $('#terms_agree_btn').addClass('gra_left_right_red').attr('disabled',false);
+            } else {
+                $('#terms_agree_btn').removeClass('gra_left_right_red').attr('disabled',true);
+            }
+        });
+
+    }
+});
+
+
+</script>
 </html>

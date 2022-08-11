@@ -253,25 +253,61 @@
 
 			<div id="gallery">
 				<img id="mainImg" src="${pageContext.request.contextPath}/upload/${imgList[0].IMAGE_PATH}">
-				<div id="imgCount">1 / 20 | 전체사진</div>
+				<div id="imgCount">${imgList[0].RN} / ${totalCnt} | 전체사진</div>
 				<div id="subImg">
-					<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${pMap.startPageBtnNo}">
-					<button id="left">
-						<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
-					</button>
-					</a>
+					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
+						<c:choose>
+							<c:when test="${crtPage == page && crtPage > 1}">
+								<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${page -1}">
+									<button id="left">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+									</button>
+								</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${crtPage == 1}">
+							<a href="#">
+								<button id="left">
+									<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+								</button>
+							</a>
+						</c:when>
+					</c:choose>
+					
 					<ul>
-						<c:forEach items="${boardList}" var="imgList" varStatus="status">
+						<c:forEach items="${imgList}" var="imgList" varStatus="status">
 							<c:if test="${status.count <= 6}">
-								<li><img id="listNo${imgList.PIMGNO}" src="${pageContext.request.contextPath}/upload/${imgList.IMAGE_PATH}"></li>
+								<li>
+									<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.IMAGE_PATH}" alt="${imgList.NO}">
+									<input type="hidden" class="listNo" value="${imgList.NO}">
+								</li>
 							</c:if>
 						</c:forEach>
 					</ul>
-					<a id="next">
-					<button id="right">
-						<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-					</button>
-					</a>
+					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
+						<c:choose>
+							<c:when test="${crtPage == page && crtPage < 4}">
+								<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${page +1}">
+									<button id="right">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+									</button>
+								</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${crtPage == 4}">
+							<a href="#">
+								<button id="right">
+									<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+								</button>
+							</a>
+						</c:when>
+					</c:choose>
 				</div>
 			</div>
 
@@ -280,66 +316,18 @@
       <div id="iconBox">
          <h4>편의시설 및 서비스</h4>
          <div id="container">
+            <c:forEach items="${pAmenList}" var="pAmenList">
             <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
+               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> 
+               <span class="iconName">${pAmenList.NAME}</span>
             </div>
+            </c:forEach>
+            <c:forEach items="${pPubList}" var="pPubList">
             <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
+               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> 
+               <span class="iconName">${pPubList.NAME}</span>
             </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> <span class="iconName">와이파이</span>
-            </div>
+            </c:forEach>
          </div>
          
          <div id="menu">
@@ -357,172 +345,66 @@
 					<button>일정 선택하기</button><br>
 				</form>
 			</div>
-         <div class="room">
-            <img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
-            <button class="roomImgList">객실 사진보기</button>
-            <div class="roomInfo">
-               <span class="roomName">찌찌웅</span>
-               <div class="infoBtn">
-                  <span>객실 이용안내</span>
-                  <button class="information_Use">보기</button>
-               </div>
-               <div class="settingPeople">기준 2인 / 최대 4인</div>
-               <div class="defaultForm">
-                  <div>
-                     <span class="people">성인</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>2명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div>
-                     <span class="people">아동</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>0명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div>
-                     <span class="people">유아</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>0명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div class="price">
-                     <span class="roomPrice">220,000원</span> <span class="assignmentPrice">200,000원</span>
-                  </div>
-               </div>
-               <button>양도받으러가기</button>
-            </div>
-         </div>
+			<c:forEach items="${roomList}" var="roomList">
+				<div class="room">
+					<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+					<button class="roomImgList">객실 사진보기</button>
+					<div class="roomInfo">
+						<span class="roomName">${roomList.ROOM_NAME}</span>
+						<div class="infoBtn">
+							<span>객실 이용안내</span>
+							<button class="information_Use" name="${roomList.NO}">보기</button>
+						</div>
+						<div class="settingPeople">기준 ${roomList.STANDARD_PEOPLE}인 / 최대 ${roomList.MAX_PEOPLE}인</div>
+						<div class="defaultForm">
+							<div>
+								<span class="people">성인</span>
+								<div>
+									<button class="minus">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+									</button>
+									<span>2명</span>
+									<button class="plus">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+									</button>
+								</div>
+							</div>
+							<div>
+								<span class="people">아동</span>
+								<div>
+									<button class="minus">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+									</button>
+									<span>0명</span>
+									<button class="plus">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+									</button>
+								</div>
+							</div>
+							<div>
+								<span class="people">유아</span>
+								<div>
+									<button class="minus">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+									</button>
+									<span>0명</span>
+									<button class="plus">
+										<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+									</button>
+								</div>
+							</div>
+							<div class="price">
+								<span class="roomPrice">220,000원</span> 
+								<span class="assignmentPrice">200,000원</span>
+							</div>
+						</div>
+						<button>양도받으러가기</button>
+					</div>
+				</div>
+			</c:forEach>
 
-         <div class="room">
-            <img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
-            <button class="roomImgList">객실 사진보기</button>
-            <div class="roomInfo">
-               <span class="roomName">범주니</span>
-               <div class="infoBtn">
-                  <span>객실 이용안내</span>
-                  <button class="information_Use">보기</button>
-               </div>
-               <div class="settingPeople">기준 2인 / 최대 4인</div>
-               <div class="defaultForm">
-                  <div>
-                     <span class="people">성인</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>4명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div>
-                     <span class="people">아동</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>0명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div>
-                     <span class="people">유아</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>0명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div class="price">
-                     <span class="roomPrice">220,000원</span> <span class="assignmentPrice">200,000원</span>
-                  </div>
-               </div>
-               <button>양도받으러가기</button>
-            </div>
-         </div>
-         <div class="room">
-            <img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
-            <button class="roomImgList">객실 사진보기</button>
-            <div class="roomInfo">
-               <span class="roomName">민조장</span>
-               <div class="infoBtn">
-                  <span>객실 이용안내</span>
-                  <button class="information_Use">보기</button>
-               </div>
-               <div class="settingPeople">기준 2인 / 최대 4인</div>
-               <div class="defaultForm">
-                  <div>
-                     <span class="people">성인</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>2명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div>
-                     <span class="people">아동</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>1명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div>
-                     <span class="people">유아</span>
-                     <div>
-                        <button class="minus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-                        </button>
-                        <span>1명</span>
-                        <button class="plus">
-                           <img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-                        </button>
-                     </div>
-                  </div>
-                  <div class="price">
-                     <span class="roomPrice">220,000원</span> <span class="assignmentPrice">200,000원</span>
-                  </div>
-               </div>
-               <button>양도받으러가기</button>
-            </div>
-         </div>
-      </div>
 
-      <!-- //footer -->
+			<!-- //footer -->
       <c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
    </div>
 	
@@ -560,11 +442,13 @@
 			<div class="modal-body modalInfo">
 				<div>
 					<div class="facTitle">편의시설</div>
-					<span class="facilities">침구류, 120인치 스크린빔, 오디오, 에어컨, 냉장고, 전자레인지, 취사도구, 기타,컴퓨터, 텐트</span>
+						<c:forEach items="${pAmenList}" var="pAmenList">
+							<span class="facilities">${pAmenList.NAME} </span>
+						</c:forEach>
 				</div>
 				<div>
 					<div class="facTitle">추가정보</div>
-					<span class="facilities">스파 20,000원 현장결제</span>
+					<div class="facilities roomNo"></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -648,8 +532,6 @@
 		$(".modal").hide();
 	});
 	
-	
-	
 	///////////////////////// 일정선택 ///////////////////////////
 	
 	$(function() {
@@ -683,70 +565,65 @@
             $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
         });
 	
-	
-	
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	
 	$(".information_Use").on("click", function() {
-		$(".infomationUse").modal("show");
 		//입력한 객실정보로 사진 열기.
 		var $this = $(this);  
-		console.log($this);
+		var name = Number($this.attr("name"));
+		
+		var roomList = new Array();
+		
+		<c:forEach items="${roomList}" var="roomList">
+			roomList.push("${roomList.ADD_INFO}");
+		</c:forEach>
+		
+		var roomNo = new Array();
+		
+		<c:forEach items="${roomNo}" var="roomNo">
+			roomNo.push("${roomNo.ROOM_NO}");
+		</c:forEach>
+		
+		for(var i = 0; i < roomNo.length; i++) {
+			if(roomNo[i] == name) {
+				$(".roomNo").text(roomList[i]);
+			}
+		}
+		$(".infomationUse").modal("show");
 	});
 	
+
 	
 	///////////////////////// 객실 사진보기  ///////////////////////////
 	
 	$(".roomImgList").on("click", function() { 
 		$(".roomPhoto").modal("show");
+		var $this = $(this);  
+		console.log($this);
 	});
 	
 	
-	///////////////////////// 펜션사진 버튼이벤트  ///////////////////////////
-		
-		
-	$("#right").on("click", function() { 
-		next();
-	/* 	$("#next").attr("href", "${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage="+crtPage); */
-	});
+	///////////////////////// 펜션사진 버튼이벤트 페이징  ///////////////////////////
+		$(".list").css("cursor", "pointer");
 	
-	$("#left").on("click", function() { 
-		console.log("이벤트");
-	});
-
-	/* var crtPage = 1; */
+		$(".list").on("click", function() {
+			var $this = $(this);
+			var src = $this.attr("src");
+			
+			var no = $this.attr("alt");
+			
+			$("#mainImg").attr("src", src);
+			$("#imgCount").text(no + ' / ' + ${totalCnt} + ' | ' + '전체사진' );
+			
+		});
+			
+		
+		
 	
-	function next() {
-		
-		var pensionNo = $("#pensionNo").val();
-		
-		crtPage = crtPage + 1;		
-		
-		var pensionImg = {
-				pensionNo : pensionNo,
-				crtPage : crtPage
-		}
 		
 		
-		$.ajax({
-				
-				url : "${pageContext.request.contextPath}/reservation",		
-				type : "post",
-				//contentType : "application/json",
-				data : pensionImg,
-				
-				//dataType : "json",
-				success : function(){
-				//	/*성공시 처리해야될 코드 작성
-					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-			});
-		 
 		
-	}
+	
 	
 	
 	

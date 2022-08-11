@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+
+	<insert id="userJoin" parameterType="UserVo">
+	  	<![CDATA[
+	  		insert into users
+			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},#{nick},#{email},#{identify})
+	  	]]>
+	</insert>
+
+	<insert id="hostJoin" parameterType="UserVo">
+	  	<![CDATA[
+	  		insert into users
+			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},'',#{email},#{identify})
+	  	]]>
+	</insert>
+
+	<select id="userLogin" resultType="UserVo" parameterType="UserVo">
+		<![CDATA[
+			select  no
+					,nick_name
+	       			,identify
+			from users
+			where id = #{id}
+			and pw = #{pw}
+		]]>
+	</select>
+	
+	<select id="getRoom" resultType="com.javaex.vo.HostRoomsVo" parameterType="int">
+		<![CDATA[
+			select r.no
+			from users u, company p, pension pen, rooms r
+			where u.no = p.user_no
+			and p.no = pen.company_no
+			and pen.no = r.pension_no
+			and u.no = #{hostNo}
+		]]>
+	</select>
+
+</mapper>

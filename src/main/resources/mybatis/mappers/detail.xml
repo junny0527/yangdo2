@@ -20,7 +20,7 @@
 			        ,p.area_info2
 			        ,p.area_info3
 			        ,p.rules
-			        ,p.live_pay
+			        ,p.live_pay livePay
 			        ,p.parking_info
 			        ,p.etc
 			        ,p.check_in
@@ -31,19 +31,6 @@
 			        ,p.refund_no
 			from    pension p
 			where   p.no = #{pensionNo}
-		]]>
-	</select>
-	
-	<!-- 펜션이미지 리스트 가져오기 -->
-	<select id="imgList" resultType="map" parameterType="int">
-		<![CDATA[
-			select  p.no pensionNo
-			        ,pImg.no pImgNo
-			        ,pImg.image_path
-			        ,pImg.orders
-			from    pension p, pension_image pImg
-			where   p.no = pImg.pension_no
-			and     p.no = #{pensionNo}
 		]]>
 	</select>
 	
@@ -61,11 +48,10 @@
 		]]>
 	</select>
 	
-	
-	
-	<select id="selectList4" resultType="map" parameterType="map">
+	<!-- 이미지 리스트 -->
+	<select id="selectList" resultType="map" parameterType="map">
 		<![CDATA[
-				select  ort.rn
+				select  ort.rn RN
 				        ,ort.no
 				        ,ort.pension_no
 				        ,ort.image_path
@@ -84,17 +70,72 @@
 				         )ort
 				where   ort.rn >= #{startRnum}
 				and     ort.rn <= #{endRnum}
+				and		pension_no = #{pensionNo}
 		]]>
 	</select>
 	
 	<!-- 전체글갯수 구하기 -->
-	<select id="selectTotalCnt" resultType="int">
+	<select id="selectTotalCnt" resultType="int" parameterType="int">
 		<![CDATA[
 			select  count(*) count
 			from    pension_image
+			where	pension_no = #{pensionNo}
 		]]>
 	</select>
 	
+	<!-- 편의시설 리스트 -->
+	<select id="pAmenList" resultType="map" parameterType="int">
+		<![CDATA[
+			select  sAmen.no
+					,sAmen.name
+			from    pension p, p_amenities pAmen, s_amenities sAmen
+			where   p.no = pAmen.pension_no
+			and     pAmen.s_amenities_no = sAmen.no
+			and     p.no = #{pensionNo}
+		]]>
+	</select>
 	
+	<!-- 공용시설 리스트 -->
+	<select id="pPubList" resultType="map" parameterType="int">
+		<![CDATA[
+			select  sPub.no
+					,sPub.name
+			from    pension p, p_public pPub, s_public sPub
+			where   p.no = pPub.pension_no
+			and     pPub.s_public_no = sPub.no
+			and     p.no = #{pensionNo}
+		]]>
+	</select>
+	
+	<!-- 객실 리스트 정보 가져오기 -->
+	<select id="roomList" resultType="map" parameterType="int">
+		<![CDATA[
+			select  r.no
+			        ,r.pension_no
+			        ,r.room_name
+			        ,r.standard_people
+			        ,r.max_people
+			        ,r.room_amenities
+			        ,r.add_info
+			        ,r.reserve_avai
+			from    pension p, rooms r
+			where   p.no = r.pension_no
+			and     p.no = #{pensionNo}
+		]]>
+	</select>
+	
+	<select id="roomNo" resultType="map" parameterType="int">
+		<![CDATA[
+			select  res.room_no
+			from    reservations res, rooms r, pension p
+			where   res.room_no = r.no
+			and     r.pension_no = p.no
+			and     status = '예약완료'
+			or      status = '양도대기'
+			and     p.no = #{pensionNo}
+			group by res.room_no
+			order by res.room_no asc
+		]]>
+	</select>
 	
 </mapper>

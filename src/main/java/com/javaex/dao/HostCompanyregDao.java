@@ -16,4 +16,10 @@ public class HostCompanyregDao {
 		return sqlSession.selectOne("Hostcompanyreg.email", id);
 	}
 	
+	public int insertCompany(HostCompanyregVo cVo) {
+		sqlSession.insert("Hostcompanyreg.insertcompany", cVo);
+		return sqlSession.insert("Hostcompanyreg.insertcompany", cVo);
+	}
+	
+	
 }

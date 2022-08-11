@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.RePayDao;
+import com.javaex.vo.RePayVo;
 
 @Service
 public class RePayService {
@@ -60,19 +61,22 @@ public class RePayService {
 		
 		return rpMap;
 	}
-
-	/*
-	 * // 예약 인서트 public int reInsert(RePayVo rePayVo) {
-	 * 
-	 * System.out.println("RePayService > reInsert"); return
-	 * rePayDao.reInsert(rePayVo); }
-	 * 
-	 * //양도 예약 업데이트 + 인서트 (순서: 업데이트 후 인서트) public int yangdoUpIn(RePayVo rePayVo) {
-	 * //업데이트 System.out.println("RePayService > yangdoUpIn");
-	 * rePayDao.yangdoUpdate(rePayVo);
-	 * 
-	 * // -------------
-	 * 
-	 * //인서트 return rePayDao.yangdoInsert(rePayVo) ; }
-	 */
+	
+	
+//	@Transcational
+	public Integer PayInsert(RePayVo bean) {
+		// PointVo pointVo 매개변수 추가
+		// if 포인트를 사용했을 경우 포인트 업데이트 
+		// pointDao.pointUpdate(bean)
+		// pointDao.pointInsert(bean)
+		return rePayDao.PayInsert(bean);
+	}
+	
+	
+	public int yangdoUpdateInsert(RePayVo bean) {
+		// point 업데이트 인서트
+		rePayDao.yangdoUpdate(bean);
+		return rePayDao.yangdoInsert(bean);
+	}
+	
 }

@@ -97,7 +97,7 @@
 }
 
 .table input.small-size{
-	width: 218px;
+	width: 100px;
 	float: left;
 	margin-right: 10px;
 }
@@ -245,11 +245,7 @@ div.select-style.small-size{
 	margin-left: 40px;
 }
 
-#etcText{
-	height: 20px;
-}
-
-#bizEtcText{
-	height: 20px;
+#jobstyletitle{
+	padding-top: 7px;
 }
 

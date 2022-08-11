@@ -20,37 +20,26 @@ public class DetailController {
 	DetailService detailService;
 	
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pMap(@RequestParam("pensionNo") int pensionNo, Model model,
-					   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+	public String pensionList(@RequestParam("pensionNo") int pensionNo, Model model,
+							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("DetailController > pMap");
 		Map<String, Object> pMap = detailService.select(pensionNo, crtPage);
 		
+		model.addAttribute("pMap",pMap);
 		
-		System.out.println("pmap :"+pMap);
-		
-		System.out.println("totalReview :" + pMap.get("totalReview"));
-		System.out.println("imgList :" + pMap.get("imgList"));
 		model.addAttribute("totalReview", pMap.get("totalReview"));
 		model.addAttribute("pInfo", pMap.get("pInfo"));
-		model.addAttribute("imgList", pMap.get("imgList"));
-		model.addAttribute("pMap",pMap);
-		model.addAttribute("boardList",pMap.get("boardList"));
-		
-		
+		model.addAttribute("imgList",pMap.get("imgList"));
+		model.addAttribute("totalCnt",pMap.get("totalCnt"));
+		model.addAttribute("crtPage", crtPage);
+		model.addAttribute("pAmenList",pMap.get("pAmenList"));
+		model.addAttribute("pPubList",pMap.get("pPubList"));
+		model.addAttribute("roomList",pMap.get("roomList"));
+		model.addAttribute("roomNo",pMap.get("roomNo"));
+		System.out.println("pAmenList :"+pMap.get("pAmenList"));
+		System.out.println("pPubList :" +pMap.get("pPubList"));
 		
 		return "detail/reservation";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/pensionImg", method = {RequestMethod.GET, RequestMethod.POST})
-	public Map<String, Object> pensionImg(@RequestParam("pensionNo") int pensionNo,
-							 			  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
-		System.out.println("DetailController > pensionImg");
-		Map<String, Object> imgMap = detailService.pensionImg(pensionNo, crtPage);
-		System.out.println("asdasdasdad"+ imgMap);
-		
-		
-		return imgMap;
 	}
 	
 	
