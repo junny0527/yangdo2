@@ -1,8 +1,17 @@
 package com.javaex.vo;
 
+import java.util.Arrays;
+
 public class HostCompanyregVo {
 	
+	private int no;
 	private String email;
+	private String phone1;
+	private String phone2;
+	private String phone3;
+	private String tel1;
+	private String tel2;
+	private String tel3;
 	private String companyHp;
 	private String ceoHp;
 	private String bankName;
@@ -12,20 +21,31 @@ public class HostCompanyregVo {
 	private int taxInvoice;
 	private String companyName;
 	private String ceoName;
-	private int businessLicensenumber;
-	private String postalCode;
+	private String businessLicensenumber;
 	private String companyAddress;
 	private String detailAddress;
 	private String homepage;
 	private String taxInvoiceEmail;
+	private String postalCode;
 	
-	public HostCompanyregVo() {};
+	private int[] businessTypeArrays;
+	private int[] businessGroupArrays;
+	
+	public HostCompanyregVo() {}
 
-	public HostCompanyregVo(String email, String companyHp, String ceoHp, String bankName, String accountHolder,
-			String account, String settlementCycle, int taxInvoice, String companyName, String ceoName,
-			int businessLicensenumber, String postalCode, String companyAddress, String detailAddress,
-			String homepage, String taxInvoiceEmail) {
+	public HostCompanyregVo(int no, String email, String phone1, String phone2, String phone3, String tel1, String tel2,
+			String tel3, String companyHp, String ceoHp, String bankName, String accountHolder, String account,
+			String settlementCycle, int taxInvoice, String companyName, String ceoName, String businessLicensenumber,
+			String companyAddress, String detailAddress, String homepage, String taxInvoiceEmail, String postalCode,
+			int[] businessTypeArrays, int[] businessGroupArrays) {
+		this.no = no;
 		this.email = email;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
+		this.tel1 = tel1;
+		this.tel2 = tel2;
+		this.tel3 = tel3;
 		this.companyHp = companyHp;
 		this.ceoHp = ceoHp;
 		this.bankName = bankName;
@@ -36,11 +56,21 @@ public class HostCompanyregVo {
 		this.companyName = companyName;
 		this.ceoName = ceoName;
 		this.businessLicensenumber = businessLicensenumber;
-		this.postalCode = postalCode;
 		this.companyAddress = companyAddress;
 		this.detailAddress = detailAddress;
 		this.homepage = homepage;
 		this.taxInvoiceEmail = taxInvoiceEmail;
+		this.postalCode = postalCode;
+		this.businessTypeArrays = businessTypeArrays;
+		this.businessGroupArrays = businessGroupArrays;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	public String getEmail() {
@@ -49,6 +79,54 @@ public class HostCompanyregVo {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPhone1() {
+		return phone1;
+	}
+
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
+	}
+
+	public String getPhone2() {
+		return phone2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+
+	public String getPhone3() {
+		return phone3;
+	}
+
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+
+	public String getTel1() {
+		return tel1;
+	}
+
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
+	}
+
+	public String getTel2() {
+		return tel2;
+	}
+
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+
+	public String getTel3() {
+		return tel3;
+	}
+
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
 	}
 
 	public String getCompanyHp() {
@@ -123,20 +201,12 @@ public class HostCompanyregVo {
 		this.ceoName = ceoName;
 	}
 
-	public int getBusinessLicensenumber() {
+	public String getBusinessLicensenumber() {
 		return businessLicensenumber;
 	}
 
-	public void setBusinessLicensenumber(int businessLicensenumber) {
+	public void setBusinessLicensenumber(String businessLicensenumber) {
 		this.businessLicensenumber = businessLicensenumber;
-	}
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
 	}
 
 	public String getCompanyAddress() {
@@ -171,15 +241,41 @@ public class HostCompanyregVo {
 		this.taxInvoiceEmail = taxInvoiceEmail;
 	}
 
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public int[] getBusinessTypeArrays() {
+		return businessTypeArrays;
+	}
+
+	public void setBusinessTypeArrays(int[] businessTypeArrays) {
+		this.businessTypeArrays = businessTypeArrays;
+	}
+
+	public int[] getBusinessGroupArrays() {
+		return businessGroupArrays;
+	}
+
+	public void setBusinessGroupArrays(int[] businessGroupArrays) {
+		this.businessGroupArrays = businessGroupArrays;
+	}
+
 	@Override
 	public String toString() {
-		return "CompanyregVo [email=" + email + ", companyHp=" + companyHp + ", ceoHp=" + ceoHp + ", bankName="
-				+ bankName + ", accountHolder=" + accountHolder + ", account=" + account + ", settlementCycle="
-				+ settlementCycle + ", taxInvoice=" + taxInvoice + ", companyName=" + companyName + ", ceoName="
-				+ ceoName + ", businessLicensenumber=" + businessLicensenumber + ", postalCode=" + postalCode
-				+ ", companyAddress=" + companyAddress + ", detailAddress=" + detailAddress + ", homepage=" + homepage
-				+ ", taxInvoiceEmail=" + taxInvoiceEmail + "]";
+		return "HostCompanyregVo [no=" + no + ", email=" + email + ", phone1=" + phone1 + ", phone2=" + phone2
+				+ ", phone3=" + phone3 + ", tel1=" + tel1 + ", tel2=" + tel2 + ", tel3=" + tel3 + ", companyHp="
+				+ companyHp + ", ceoHp=" + ceoHp + ", bankName=" + bankName + ", accountHolder=" + accountHolder
+				+ ", account=" + account + ", settlementCycle=" + settlementCycle + ", taxInvoice=" + taxInvoice
+				+ ", companyName=" + companyName + ", ceoName=" + ceoName + ", businessLicensenumber="
+				+ businessLicensenumber + ", companyAddress=" + companyAddress + ", detailAddress=" + detailAddress
+				+ ", homepage=" + homepage + ", taxInvoiceEmail=" + taxInvoiceEmail + ", postalCode=" + postalCode
+				+ ", businessTypeArrays=" + Arrays.toString(businessTypeArrays) + ", businessGroupArrays="
+				+ Arrays.toString(businessGroupArrays) + "]";
 	}
-	
-	
+
 }
