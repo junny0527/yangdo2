@@ -49,14 +49,3 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	/* GNB 서브메뉴 노출 */
-	$('.over').each(function(e) {
-		$(this).mouseenter(function() {
-			$('ul', this).stop().fadeIn(150);
-		});
-		$(this).mouseleave(function() {
-			$('ul', this).stop().fadeOut(150);
-		});
-	});
-</script>
