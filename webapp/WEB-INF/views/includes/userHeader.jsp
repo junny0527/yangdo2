@@ -7,6 +7,7 @@
 <div id="header" class="clearfix recommend_header">
 	<div id="section" class="clearfix">
 		<h1>
+		
 			<a href="">양도어때</a>
 		</h1>
 		<ul class="clearfix gnb_pc">
