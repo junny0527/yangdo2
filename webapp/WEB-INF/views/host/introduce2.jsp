@@ -98,7 +98,7 @@
 	
 	<div id="content">
 			<div class="list-layer">
-				<form class="form-horizontal" id="intro-form" method="post" action="/guest/intro" name="intro" enctype="multipart/form-data">
+				<form class="form-horizontal" id="intro-form" method="get" action="" name="intro" enctype="multipart/form-data">
 					<input type="hidden" name="ano" value="3309">
 					<input type="hidden" name="uno" value="18212587">
 					<input class="form-control normal-size" id="input_jibunAddress" type="hidden" name="jibun_address1">

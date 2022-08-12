@@ -7,14 +7,18 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.javaex.dao.PointsDao;
 import com.javaex.dao.RePayDao;
+import com.javaex.vo.PointsVo;
 import com.javaex.vo.RePayVo;
 
 @Service
-public class RePayService {
+public class RePayService  {
 	@Autowired
 	private RePayDao rePayDao;
+	private PointsDao pointsDao;
 
 	// 예약+양도예약 정보 가져오기
 	public Map<String, Object> getRePay(int no) {
@@ -62,21 +66,22 @@ public class RePayService {
 		return rpMap;
 	}
 	
-	
-//	@Transcational
-	public Integer PayInsert(RePayVo bean) {
-		// PointVo pointVo 매개변수 추가
+	//일반 결제 포인트 
+	@Transactional
+	public void PayInsert(RePayVo bean ,PointsVo pointsVo) {
 		// if 포인트를 사용했을 경우 포인트 업데이트 
-		// pointDao.pointUpdate(bean)
-		// pointDao.pointInsert(bean)
-		return rePayDao.PayInsert(bean);
+		pointsDao.pointsUpdate(pointsVo);
+		pointsDao.pointsInsert(pointsVo);
+		rePayDao.PayInsert(bean);
 	}
 	
-	
-	public int yangdoUpdateInsert(RePayVo bean) {
-		// point 업데이트 인서트
+	//양도 결제 포인트 
+	@Transactional
+	public void yangdoUpdateInsert(RePayVo bean,PointsVo pointsVo) {
+		pointsDao.pointsUpdate(pointsVo);
+		pointsDao.pointsInsert(pointsVo);
 		rePayDao.yangdoUpdate(bean);
-		return rePayDao.yangdoInsert(bean);
+		rePayDao.yangdoInsert(bean);
 	}
 	
 }

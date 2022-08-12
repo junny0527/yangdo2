@@ -64,7 +64,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -75,7 +75,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -86,7 +86,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -97,7 +97,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -108,7 +108,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -119,7 +119,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 							<li class="reservation-detail"><div>
@@ -130,7 +130,7 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 								</div></li>
 						</ul>

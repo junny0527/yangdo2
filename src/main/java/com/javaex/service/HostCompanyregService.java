@@ -17,8 +17,7 @@ public class HostCompanyregService {
 		String email = cVo.getEmail();
 		return email;
 	}
-	
-	
+
 	public int insertCompany(HostCompanyregVo cVo) {
 		
 		String phone1 = cVo.getPhone1();
@@ -31,6 +30,7 @@ public class HostCompanyregService {
 		String ceoNo = phone1 + "-" + phone2 + "-" + phone3;
 		String companyNo = tel1 + "-" + tel2 + "-" + tel3;
 		String removeNull = "";
+		int[] removeArray = {};
 		
 		cVo.setCeoHp(ceoNo);
 		cVo.setCompanyHp(companyNo);
@@ -42,7 +42,19 @@ public class HostCompanyregService {
 			cVo.setSettlementCycle(removeNull);
 		}
 		
-		if(cVo.getTaxInvoice() == 1) {
+		
+		if(cVo.getTaxInvoice() == 2) {
+			int[] btArray = cVo.getBusinessTypeArrays();
+			int[] bgArray = cVo.getBusinessGroupArrays();
+			
+			for(int i=0; i<btArray.length; i++) {
+				cregDao.insertBTArray(btArray[i]);
+			}
+			
+			for(int i=0; i<bgArray.length; i++) {
+				cregDao.insertBGArray(bgArray[i]);
+			}
+		}else {
 			cVo.setCompanyName(removeNull);
 			cVo.setCeoName(removeNull);
 			cVo.setBusinessLicensenumber(removeNull);
@@ -50,19 +62,18 @@ public class HostCompanyregService {
 			cVo.setDetailAddress(removeNull);
 			cVo.setTaxInvoiceEmail(removeNull);
 			cVo.setPostalCode(removeNull);
+			cVo.setBusinessTypeArrays(removeArray);
+			cVo.setBusinessGroupArrays(removeArray);
 		}
 		
 		if(cVo.getHomepage() == null) {
 			cVo.setHomepage(removeNull);
 		}
-		
-		
 		System.out.println("service cVo : " + cVo);
 		
-		
 		int count = cregDao.insertCompany(cVo);
-		
 		return count;
 	}
+	
 	
 }

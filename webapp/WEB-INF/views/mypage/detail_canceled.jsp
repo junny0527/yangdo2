@@ -111,14 +111,14 @@
 
 								<!---->
 							</div>
-							<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">다시 예약
-							</button>
+							<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">다시
+								예약</button>
 							<!---->
 							<!---->
 						</div>
+					</section>
 				</div>
 				<!---->
-				</section>
 			</div>
 		</div>
 		<div>
@@ -127,7 +127,6 @@
 		<!-- Footer -->
 		<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
 		<!-- Footer -->
-	</div>
 	</div>
 </body>
 </html>

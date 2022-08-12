@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="my">
+
+		<!-- reservation list (예약완료 내역) -->
+		<select id="getReservedList" resultType="map"
+				parameterType="int">
+		<![CDATA[
+			select r.status,
+                   p.name,
+                   r.check_in
+            from reservations r, pension p, rooms ro
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and r.status = '예약완료'
+			and r.user_no = #{no}
+			order by r.no desc
+		]]>
+		</select>
+
+		<!-- reservation list (이용완료 내역) -->
+		<select id="getUsedList" resultType="map" parameterType="int">
+		<![CDATA[
+			select r.status,
+                   p.name,
+                   r.check_in,
+                   r.check_out
+            from reservations r, pension p, rooms ro
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and r.status = '이용완료'
+			and r.user_no = #{no}
+			order by r.no desc
+		]]>
+		</select>
+
+		<!-- reservation list (예약취소 내역) -->
+		<select id="getCanceledList" resultType="map"
+				parameterType="int">
+		<![CDATA[
+			select r.status,
+                   p.name,
+                   r.check_in,
+                   r.check_out
+            from reservations r, pension p, rooms ro
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and r.status = '예약취소'
+			and r.user_no = #{no}
+			order by r.no desc
+		]]>
+		</select>
+
+		<!-- reservation list (양도대기 내역) -->
+		<select id="getRelistedList" resultType="map"
+				parameterType="int">
+		<![CDATA[
+			select r.status,
+                   p.name,
+                   r.check_in,
+                   r.check_out
+            from reservations r, pension p, rooms ro
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and r.status = '양도대기'
+			and r.user_no = #{no}
+			order by r.no desc
+		]]>
+		</select>
+
+		<!-- reservation list (양도완료 내역) -->
+		<select id="getTransferredList" resultType="map"
+				parameterType="int">
+		<![CDATA[
+			select r.status,
+                   p.name,
+                   r.check_in,
+                   r.check_out
+            from reservations r, pension p, rooms ro
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and r.status = '양도완료'
+			and r.user_no = #{no}
+			order by r.no desc
+		]]>
+		</select>
+
+		<select id="getImg" resultType="pImgVo"
+				parameterType="pImgVo">
+			<![CDATA[
+			select pImg.*
+			from pension_image pImg, pension p
+			where pImg.pension_no = p.no
+			and pImg.orders = '1'
+		]]>
+		</select>
+
+		<!-- reservation list (예약내역) -->
+		<!-- <select id="getStatusList" resultType="map" parameterType="String"> 
+				<![CDATA[ select ot.status, ot.pName, ot.checkin from (select r.status status, 
+				p.name pName, r.check_in checkin from reservations r, pension p, rooms ro 
+				where r.room_no = ro.no and p.no = ro.pension_no and r.user_no = #{no} order 
+				by checkin desc) ot where ot.status = #{status} ]]> </select> -->
+
+		<!-- 나중에 다시 시도 -->
+		<!-- <select id="getListByUser" resultType="map" parameterType="map"> <![CDATA[ 
+				select r.status, p.name, r.check_in from reservations r, pension p, rooms 
+				ro where r.room_no = ro.no and p.no = ro.pension_no and r.user_no = #{no} 
+				order by r.no desc ]]> </select> -->
+</mapper>

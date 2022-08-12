@@ -56,7 +56,7 @@
 					<!---->
 					<div class="info" style="">
 						<div>
-							<i> 양도대기 </i> <strong>삼선 도보</strong> <span>골드룸(기본 2인 최대 4인) • 1박</span>
+							<i class="bg_w"> 양도완료 </i> <strong>삼선 도보</strong> <span>골드룸(기본 2인 최대 4인) • 1박</span>
 						</div>
 					</div>
 					<section class="detail">
@@ -94,12 +94,12 @@
 								<strong class="sub_info"> 추가금액 </strong> <b> 20,000원</b>
 							</p>
 							<p>
-								<strong class="sub_info"> 할인금액 </strong> <b> - </b>
+								<strong class="sub_info"> 양도금액 </strong> <b> 50,000원 </b>
 							</p>
 						</div>
 						<div class="total">
 							<p>
-								<strong>총 결제금액 </strong> <b> 79,000원</b>
+								<strong>총 결제금액 </strong> <b> 29,000원</b>
 							</p>
 						</div>
 					</section>
@@ -110,17 +110,9 @@
 								style="border-bottom: none;"
 							>
 								<div class="booking-detail-section-title__wrap">
-									<div>
-										<!---->
-										<div class="sub-title">
-											<div class="color-red">2022년 08월 24일 23:59까지 무료 취소 가능합니다.</div>
-											<!---->
-										</div>
-									</div>
 									<!---->
 								</div>
-								<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">예약취소
-								</button>
+								<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">메인으로 이동하기</button>
 								<!---->
 								<!---->
 							</div>
