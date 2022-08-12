@@ -136,11 +136,10 @@
 										</span>
 									</div>
 									<div class="form-layer-text">
-										<input type="hidden" id = "delivername" name = "lawName" value = "">
 										<input type="hidden" id = "postalcode" name = "postalCode" value = "">
 										<div id = "legalname" class = "order">
-											<input type = "text" name = "lawCode" readonly value = "법정동 코드: ">
-											<input id = "lawcode" type="text" readonly value = "">
+											<input type = "text" readonly value = "법정동 코드: ">
+											<input id = "lawcode" type="text" name = "lawCode" readonly value = "">
 											<input id = "fullname" type="text" name = "lawName" readonly value = "">
 										</div>
 									</div>
@@ -168,7 +167,6 @@
 									<div class="form-layer mb_15">
 										<ul id="house-images">
 											<li class="backgrou">
-												<input type="hidden" name="adino[]" value="235381">
 												<div>
 													<img src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
 												</div>
@@ -197,15 +195,15 @@
 								</th>
 								<td class="bd_r_none">
 									<div class="form-layer align_chk">
-										<label for="theme0" class="checkbox-inline icon-label"> <input type="checkbox" id="theme0" name="ad_theme[]" value="0">수영장</label>
-										<label for="theme1" class="checkbox-inline icon-label"> <input type="checkbox" id="theme1" name="ad_theme[]" value="1">족구장</label>
-										<label for="theme2" class="checkbox-inline icon-label"> <input type="checkbox" id="theme2" name="ad_theme[]" value="2">카페</label>
-										<label for="theme3" class="checkbox-inline icon-label"> <input type="checkbox" id="theme3" name="ad_theme[]" value="3">노래방</label>
-										<label for="theme4" class="checkbox-inline icon-label"> <input type="checkbox" id="theme4" name="ad_theme[]" value="4">편의점</label>
-										<label for="theme5" class="checkbox-inline icon-label"> <input type="checkbox" id="theme5" name="ad_theme[]" value="5">주차장</label>
-										<label for="theme6" class="checkbox-inline icon-label"> <input type="checkbox" id="theme6" name="ad_theme[]" value="6">BBQ</label>
-										<label for="theme7" class="checkbox-inline icon-label"> <input type="checkbox" id="theme7" name="ad_theme[]" value="7">주방/식당</label>
-										<label for="theme8" class="checkbox-inline icon-label"> <input type="checkbox" id="theme8" name="ad_theme[]" value="8">흡연부스</label>
+										<label for="theme0" class="checkbox-inline icon-label"> <input type="checkbox" id="theme0" name="publicArrays" value="0">수영장</label>
+										<label for="theme1" class="checkbox-inline icon-label"> <input type="checkbox" id="theme1" name="publicArrays" value="1">족구장</label>
+										<label for="theme2" class="checkbox-inline icon-label"> <input type="checkbox" id="theme2" name="publicArrays" value="2">카페</label>
+										<label for="theme3" class="checkbox-inline icon-label"> <input type="checkbox" id="theme3" name="publicArrays" value="3">노래방</label>
+										<label for="theme4" class="checkbox-inline icon-label"> <input type="checkbox" id="theme4" name="publicArrays" value="4">편의점</label>
+										<label for="theme5" class="checkbox-inline icon-label"> <input type="checkbox" id="theme5" name="publicArrays" value="5">주차장</label>
+										<label for="theme6" class="checkbox-inline icon-label"> <input type="checkbox" id="theme6" name="publicArrays" value="6">BBQ</label>
+										<label for="theme7" class="checkbox-inline icon-label"> <input type="checkbox" id="theme7" name="publicArrays" value="7">주방/식당</label>
+										<label for="theme8" class="checkbox-inline icon-label"> <input type="checkbox" id="theme8" name="publicArrays" value="8">흡연부스</label>
 									</div>
 								</td>
 								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
@@ -218,17 +216,17 @@
 								</th>
 								<td class="bd_r_none">
 									<div class="form-layer align_chk">
-										<label for="theme9" class="checkbox-inline icon-label"> <input type="checkbox" id="theme9" name="ad_theme[]" value="90">냉장고</label>
-										<label for="theme10" class="checkbox-inline icon-label"> <input type="checkbox" id="theme10" name="ad_theme[]" value="10">에어컨</label>
-										<label for="theme11" class="checkbox-inline icon-label"> <input type="checkbox" id="theme11" name="ad_theme[]" value="11">TV</label>
-										<label for="theme12" class="checkbox-inline icon-label"> <input type="checkbox" id="theme12" name="ad_theme[]" value="12">와이파이</label>
-										<label for="theme13" class="checkbox-inline icon-label"> <input type="checkbox" id="theme13" name="ad_theme[]" value="13">욕실용품</label>
-										<label for="theme14" class="checkbox-inline icon-label"> <input type="checkbox" id="theme14" name="ad_theme[]" value="14">세탁기</label>
-										<label for="theme15" class="checkbox-inline icon-label"> <input type="checkbox" id="theme15" name="ad_theme[]" value="15">드라이기</label>
-										<label for="theme16" class="checkbox-inline icon-label"> <input type="checkbox" id="theme16" name="ad_theme[]" value="16">욕조</label>
-										<label for="theme17" class="checkbox-inline icon-label"> <input type="checkbox" id="theme17" name="ad_theme[]" value="17">반려견동반</label>
-										<label for="theme18" class="checkbox-inline icon-label"> <input type="checkbox" id="theme18" name="ad_theme[]" value="18">객실 내 흡연</label>
-										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="ad_theme[]" value="19">취사가능</label>
+										<label for="theme9" class="checkbox-inline icon-label"> <input type="checkbox" id="theme9" name="pAmenitiesArrays" value="90">냉장고</label>
+										<label for="theme10" class="checkbox-inline icon-label"> <input type="checkbox" id="theme10" name="pAmenitiesArrays" value="10">에어컨</label>
+										<label for="theme11" class="checkbox-inline icon-label"> <input type="checkbox" id="theme11" name="pAmenitiesArrays" value="11">TV</label>
+										<label for="theme12" class="checkbox-inline icon-label"> <input type="checkbox" id="theme12" name="pAmenitiesArrays" value="12">와이파이</label>
+										<label for="theme13" class="checkbox-inline icon-label"> <input type="checkbox" id="theme13" name="pAmenitiesArrays" value="13">욕실용품</label>
+										<label for="theme14" class="checkbox-inline icon-label"> <input type="checkbox" id="theme14" name="pAmenitiesArrays" value="14">세탁기</label>
+										<label for="theme15" class="checkbox-inline icon-label"> <input type="checkbox" id="theme15" name="pAmenitiesArrays" value="15">드라이기</label>
+										<label for="theme16" class="checkbox-inline icon-label"> <input type="checkbox" id="theme16" name="pAmenitiesArrays" value="16">욕조</label>
+										<label for="theme17" class="checkbox-inline icon-label"> <input type="checkbox" id="theme17" name="pAmenitiesArrays" value="17">반려견동반</label>
+										<label for="theme18" class="checkbox-inline icon-label"> <input type="checkbox" id="theme18" name="pAmenitiesArrays" value="18">객실 내 흡연</label>
+										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="pAmenitiesArrays" value="19">취사가능</label>
 									</div>
 								</td>
 								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>

@@ -109,7 +109,6 @@
 					<li>요금설정에서는 요일이 겹치지 않게 주의해 주시기 바랍니다.</li>
 					<li>해당 페이지의 요금 설정은 객실별 기준 가격입니다.</li>
 					<li>객실별 판매 금액 수정은 등록 이후 '객실관리' 메뉴에서 가능합니다.</li>
-					<li>[객실정보 복사추가]를 누르시면 선택하신 객실의 정보를 복사하여 추가 하실수 있습니다.</li>
 				</ul>
 			</div>
 			
@@ -120,9 +119,6 @@
 					</li>
 					<li>
 						<a href="" id = "moreroom">+ 객실 추가</a>
-					</li>
-					<li>
-						<a href="" id = "copyroom">+ 객실 복사추가</a>
 					</li>
 				</ul>
 				
@@ -449,6 +445,8 @@
 								  <label class="form-check-label" for="flexSwitchCheckChecked">객실 예약 허용</label>
 								</div>
 								<p id = "checkinfo" class = "order text-normal">* 체크 해제 시 이용객들이 해당 객실을 예약 할 수 없습니다.</p>
+							</td>
+							<td class="bd_r_none border_right">
 							</td>
 						</tr>
 					</tbody>
