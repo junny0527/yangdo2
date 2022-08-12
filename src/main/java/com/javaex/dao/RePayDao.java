@@ -24,17 +24,17 @@ public class RePayDao {
 		return rpMap;
 	}
 	
-	// 양도 저장
-	public Integer PayInsert(RePayVo bean) {
-		return sqlSession.insert(SQLMAP + "PayInsert", bean);
+	// 저장
+	public void PayInsert(RePayVo bean) {
+		 sqlSession.insert(SQLMAP + "PayInsert", bean);
 	}
 	
-	public int yangdoUpdate(RePayVo bean) {
-		return sqlSession.update(SQLMAP+ "yangdoPayUpdate", bean);
+	public void yangdoUpdate(RePayVo bean) {
+		sqlSession.update(SQLMAP+ "yangdoPayUpdate", bean);
 	}
 	
-	public int yangdoInsert(RePayVo bean) {
-		return sqlSession.insert(SQLMAP+ "yangdoPayInsert", bean);
+	public void yangdoInsert(RePayVo bean) {
+		 sqlSession.insert(SQLMAP+ "yangdoPayInsert", bean);
 	}
 	
 }

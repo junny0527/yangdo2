@@ -32,6 +32,8 @@
 		,r.trans_price
 		,r.status
 		,r.reg_date
+		,r.p_r_no
+		,r.pay_status
 		FROM reservations r
 		JOIN rooms ro ON r.room_no = ro.NO
 		JOIN pension p ON p.no = ro.pension_no

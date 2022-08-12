@@ -49,7 +49,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 						<div class="right" data-v-33033856="" data-v-f785cca6="">
 							<section class="info" data-v-33033856="">
 								<p class="name" data-v-33033856="">
-									<strong data-v-33033856="">예약번호</strong>NO.${rpMap.NO }
+									<strong data-v-33033856="">예약번호</strong>NO.${rpMap.P_R_NO}
 								</p>
 								<p data-v-33033856="">
 									<strong data-v-33033856="">펜션이름</strong>${rpMap.PNAME }
@@ -144,7 +144,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										<hr>
 										<div class="product-point" data-v-3ce5aaac="">
 											<span class="save-point" data-v-2c1e3bcc="">보유포인트:</span> <span
-												class="see-point" data-v-2c1e3bcc="" id="savePoint">${rpMap.POINTS == null ? 0 : rpMap.POINTS }</span>P
+												class="see-point" data-v-2c1e3bcc="" id="savePoint">${rpMap.POINTS == null ? 0 : rpMap.POINTS }P</span>
 										</div>
 										<div class="discount-container" data-v-3ce5aaac="">
 											<div class="discount-header" data-v-3ce5aaac="">
@@ -160,6 +160,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 												</div>
 											</div>
 										</div>
+										<!-- 예약상태 -->
+														<input  type="hidden" name="status" value="${sMap.STATUS}">
 									</section>
 								</section>
 								<div class="point" style="display: block" data-v-35b6e85e="">
@@ -175,10 +177,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 									<option data-minprice="0" selected="selected" value="CARD"
 										data-v-f785cca6="">선택해주세요</option>
 									<option data-minprice="0" value="KAKAO" data-v-f785cca6="">카카오페이</option>
-									<option data-minprice="0" value="NAVER" data-v-f785cca6="">
-										네이버페이</option>
-									<option data-minprice="0" value="CARD" data-v-f785cca6=""
-										name="CARD">신용/체크카드</option>
+									<option data-minprice="0" value="NAVER" data-v-f785cca6="">네이버페이</option>
+									<option data-minprice="0" value="CARD" data-v-f785cca6="">신용/체크카드</option>
 								</select>
 								<!---->
 								<!---->
@@ -238,7 +238,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		$("#pointBtn").on("click", function() {
 			let point = Number($("#point").val());
 			let minPoint = Number('${rpMap.POINTS}');
-			let totalPrice = Number('${rpMap.TRANS_PRICE}');
+			let transPrice = Number('${rpMap.TRANS_PRICE}');
 			if (minPoint < point) {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
 				return false;
@@ -248,7 +248,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			$("#pointBtn").text("포인트 사용 " + point + "P");
 			$('#savePoint').text(minPoint - point);
 			$("#usedPoint").text("-" + point + " P")
-			$('.total').text(moneyFormat(totalPrice - point));
+			$('.total').text(moneyFormat(transPrice - point));
 
 		});
 	});
@@ -282,12 +282,13 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	        	no: '${rpMap.NO}',
 	    	        	name: $('#userName').val(),
 	    	        	hp: $('#hp').val(),
-	    	        	transPrice: 140000
+	    	        	status: '${rpMap.STATUS}'
+	    	        	transPrice: '${rpMap.TRANS_PRICE}'
 	    	        };
 	    	        
 	    	    	$.ajax({
 	    	    		type : "POST",
-	    	    		url : "/yangdo/res/yangdoUpdate", //요청 할 URL
+	    	    		url : "/yangdo/res/yangdoUpdateInsert", //요청 할 URL
 	    	    		contentType : "application/json; charset=utf-8",
 	    	    		data : JSON.stringify(data), //넘길 파라미터
 	    	    		success : function(data) {

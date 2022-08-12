@@ -11,6 +11,8 @@
 		<mapper resource="mybatis/mappers/detail.xml" />
 
 		<mapper resource="mybatis/mappers/repay.xml" />
+		
+		<mapper resource="mybatis/mappers/points.xml" />
 
 		<mapper resource="mybatis/mappers/users.xml" />
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
