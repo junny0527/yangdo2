@@ -88,6 +88,7 @@
 		<![CDATA[
 			select  sAmen.no
 					,sAmen.name
+					,sAmen.ICON_PATH
 			from    pension p, p_amenities pAmen, s_amenities sAmen
 			where   p.no = pAmen.pension_no
 			and     pAmen.s_amenities_no = sAmen.no
@@ -100,6 +101,7 @@
 		<![CDATA[
 			select  sPub.no
 					,sPub.name
+					,sPub.ICON_PATH
 			from    pension p, p_public pPub, s_public sPub
 			where   p.no = pPub.pension_no
 			and     pPub.s_public_no = sPub.no
@@ -107,23 +109,8 @@
 		]]>
 	</select>
 	
-	<!-- 객실 리스트 정보 가져오기 -->
-	<select id="roomList" resultType="map" parameterType="int">
-		<![CDATA[
-			select  r.no
-			        ,r.pension_no
-			        ,r.room_name
-			        ,r.standard_people
-			        ,r.max_people
-			        ,r.room_amenities
-			        ,r.add_info
-			        ,r.reserve_avai
-			from    pension p, rooms r
-			where   p.no = r.pension_no
-			and     p.no = #{pensionNo}
-		]]>
-	</select>
 	
+	<!-- 객실 방 번호 리스트 가져오기 -->
 	<select id="roomNo" resultType="map" parameterType="int">
 		<![CDATA[
 			select  res.room_no
@@ -138,4 +125,38 @@
 		]]>
 	</select>
 	
+	<!-- 예약객실 리스트 가져오기 -->
+	<select id="reservation" resultType="map" parameterType="int">
+		<![CDATA[
+			select  res.no
+			        ,res.room_no
+			        ,res.user_no
+			        ,res.name
+			        ,res.hp
+			        ,res.check_in
+			        ,res.check_out
+			        ,res.adult
+			        ,res.kid
+			        ,res.baby
+			        ,res.total_price
+			        ,res.reg_date
+			        ,res.pay_way
+			        ,res.pay_status
+			        ,res.status
+			        ,res.trans_price
+			        ,r.pension_no
+                    ,r.room_name
+                    ,r.no
+                    ,r.standard_people
+                    ,r.max_people
+                    ,r.add_info
+			from    reservations res, rooms r, pension p
+			where   res.room_no(+) = r.no
+			and     r.pension_no = p.no
+			and     p.no = #{pensionNo}
+			and     (res.status = '예약완료' or res.status = '양도대기')
+			order by res.no asc
+		]]>
+		
+	</select>
 </mapper>

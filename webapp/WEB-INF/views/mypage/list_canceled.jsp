@@ -64,7 +64,35 @@
 											alt="삼산 도브" class="align"
 										>
 									</p>
-									<a href="" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
+									<a href="${pageContext.request.contextPath}/my/detail/canceled" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
+											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
+									<p class="btn_re">
+										<a href=""> 다시 예약 </a>
+									</p>
+								</div></li>
+							<li class="reservation-detail"><div>
+									<button type="button" class="btn_del">삭제</button>
+									<p class="pic">
+										<img
+											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+											alt="삼산 도브" class="align"
+										>
+									</p>
+									<a href="${pageContext.request.contextPath}/my/detail/canceled" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
+											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
+									<p class="btn_re">
+										<a href=""> 다시 예약 </a>
+									</p>
+								</div></li>
+							<li class="reservation-detail"><div>
+									<button type="button" class="btn_del">삭제</button>
+									<p class="pic">
+										<img
+											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+											alt="삼산 도브" class="align"
+										>
+									</p>
+									<a href="${pageContext.request.contextPath}/my/detail/canceled" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 									<p class="btn_re">
 										<a href=""> 다시 예약 </a>
@@ -81,35 +109,7 @@
 									<a href="" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
 											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
 									<p class="btn_re">
-										<a href=""> 다시 예약 </a>
-									</p>
-								</div></li>
-							<li class="reservation-detail"><div>
-									<button type="button" class="btn_del">삭제</button>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-											alt="삼산 도브" class="align"
-										>
-									</p>
-									<a href="" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
-											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
-									<p class="btn_re">
-										<a href=""> 다시 예약 </a>
-									</p>
-								</div></li>
-							<li class="reservation-detail"><div>
-									<button type="button" class="btn_del">삭제</button>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-											alt="삼산 도브" class="align"
-										>
-									</p>
-									<a href="" class="product-title"><i class="bg_w">예약취소</i> <strong>삼산 도브</strong> <span>
-											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
-									<p class="btn_re">
-										<a href=""> 다시 예약 </a>
+										<a href="${pageContext.request.contextPath}/my/detail/canceled"> 다시 예약 </a>
 									</p>
 								</div></li>
 						</ul>

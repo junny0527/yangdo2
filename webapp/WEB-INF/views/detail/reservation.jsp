@@ -26,113 +26,135 @@
 </head>
 <body>
 	
-   <div id="wrap">
-      <c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
-      <!-- //header -->
-		      <div id="main">
-		         <div id="content" class="clearfix">
-		         	<input id="pensionNo" type="hidden" value="${pInfo.NO}">
-		            <span id="area">양평</span> 
-		            <span id="pensionName">${pInfo.NAME}</span> 
-		            <span id="address">${pInfo.ADDRESS}</span> 
-		            <img src="${pageContext.request.contextPath}/assets/image/detail/location.png">
-		            <button id="map">숙소 위치확인</button>
-		            <c:choose>
-		            	<c:when test="${totalReview.AVGSTARS == 5.00}">
-				            <div id="star">
+	<div id="wrap">
+		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
+		<!-- //header -->
+		
+		<div id="main">
+			<div id="content" class="clearfix">
+	         	<input id="pensionNo" type="hidden" value="${pInfo.NO}">
+	            <span id="area">양평</span> 
+	            <span id="pensionName">${pInfo.NAME}</span> 
+	            <span id="address">${pInfo.ADDRESS}</span> 
+	            <img src="${pageContext.request.contextPath}/assets/image/detail/location.png">
+	            <button id="map">숙소 위치확인</button>
+		        <c:choose>
+            		<c:when test="${totalReview.AVGSTARS == 5.00}">
+			            <div id="star">
+			            	<span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+			            </div>
+            		</c:when>
+			        <c:when test="${totalReview.AVGSTARS >= 4.10 && totalReview.AVGSTARS <= 4.99}">
+				        <div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+				        </div>
+			        </c:when>
+					<c:when test="${totalReview.AVGSTARS == 4.00}">
+				        <div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+				        </div>
+					</c:when>
+					<c:when test="${totalReview.AVGSTARS >= 3.10 && totalReview.AVGSTARS <= 3.99}">
+						<div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+						</div>
+					</c:when>
+					<c:when test="${totalReview.AVGSTARS == 3.00}">
+			            <div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+			            </div>
+					</c:when>
+					<c:when test="${totalReview.AVGSTARS >= 2.10 && totalReview.AVGSTARS <= 2.99}">
+						<div id="star">
 				                <span class="starCount">
 									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
 				                </span> 
 				                <span class="starCount">
 				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS >= 4.10 && totalReview.AVGSTARS <= 4.99}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
 				            	</span> 
 				            	<span class="starCount">
 				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
 				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS == 4.00}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS >= 3.10 && totalReview.AVGSTARS <= 3.99}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS == 3.00}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
 				            	<span class="starCount">
 				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
 				            	</span> 
@@ -140,116 +162,96 @@
 				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
 				            	</span> 
 				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+				                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
 				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS >= 2.10 && totalReview.AVGSTARS <= 2.99}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS == 2.00}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS >= 1.10 && totalReview.AVGSTARS <= 1.99}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:when test="${totalReview.AVGSTARS == 1.00}">
-				            <div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:when>
-			            <c:otherwise>
-			            	<div id="star">
-				                <span class="starCount">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
-				                </span> 
-				                <span class="starCount">
-				                	<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span class="starCount">
-				            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
-				            	</span> 
-				            	<span id="starScore">${totalReview.AVGSTARS}</span>
-				               <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
-				            </div>
-			            </c:otherwise>
-		            </c:choose>
-		         </div>
+					</c:when>
+					<c:when test="${totalReview.AVGSTARS == 2.00}">
+			            <div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+			            </div>
+					</c:when>
+					<c:when test="${totalReview.AVGSTARS >= 1.10 && totalReview.AVGSTARS <= 1.99}">
+			            <div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+			            </div>
+					</c:when>
+					<c:when test="${totalReview.AVGSTARS == 1.00}">
+			            <div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/stars.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+			            </div>
+					</c:when>
+					<c:otherwise>
+		            	<div id="star">
+			                <span class="starCount">
+								<img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png">
+			                </span> 
+			                <span class="starCount">
+			                	<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span class="starCount">
+			            		<img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png">
+			            	</span> 
+			            	<span id="starScore">${totalReview.AVGSTARS}</span>
+			                <button id="pensionReview">(${totalReview.RCOUNT}) ></button>
+			            </div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<!-- //content -->	
 
 			<div id="gallery">
 				<img id="mainImg" src="${pageContext.request.contextPath}/upload/${imgList[0].IMAGE_PATH}">
@@ -310,34 +312,43 @@
 					</c:choose>
 				</div>
 			</div>
-
+			<!-- //gallery -->
 		</div>
-		      
-      <div id="iconBox">
-         <h4>편의시설 및 서비스</h4>
-         <div id="container">
-            <c:forEach items="${pAmenList}" var="pAmenList">
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> 
-               <span class="iconName">${pAmenList.NAME}</span>
-            </div>
-            </c:forEach>
-            <c:forEach items="${pPubList}" var="pPubList">
-            <div>
-               <span class="icon"><img src="${pageContext.request.contextPath}/assets/image/detail/wifi.png"></span> 
-               <span class="iconName">${pPubList.NAME}</span>
-            </div>
-            </c:forEach>
-         </div>
-         
-         <div id="menu">
-            <a href="${pageContext.request.contextPath}/reservation"><button id="var">객실안내</button></a>
-            <a href="${pageContext.request.contextPath}/infomation"><button id="var1">숙소정보</button></a>
-            <a href="${pageContext.request.contextPath}/review"><button id="var2">리뷰</button></a>
-         </div>
-         
-      </div>
-      <div id="roomList">
+		<!-- //main -->  
+		
+		<div id="iconBox">
+			<h4>편의시설 및 서비스</h4>
+			<div id="container">
+			   	<c:forEach items="${pAmenList}" var="pAmenList">
+					<div>
+					   	<span class="icon"><img src="${pageContext.request.contextPath}/upload/${pAmenList.ICON_PATH}"></span> 
+						<span class="iconName">${pAmenList.NAME}</span>
+					</div>
+				</c:forEach>
+				<c:forEach items="${pPubList}" var="pPubList">
+					<div>
+						<span class="icon"><img src="${pageContext.request.contextPath}/upload/${pPubList.ICON_PATH}"></span> 
+						<span class="iconName">${pPubList.NAME}</span>
+					</div>
+				</c:forEach>
+			</div>
+         	<!-- //container -->
+		
+		</div>
+      	<!-- //iconBox -->
+		
+			
+        <div id="menuBox"> 
+			<div id="menu">
+			   	<a href="${pageContext.request.contextPath}/reservation"><button id="var">객실안내</button></a>
+				<a href="${pageContext.request.contextPath}/infomation"><button id="var1">숙소정보</button></a>
+				<a href="${pageContext.request.contextPath}/review"><button id="var2">리뷰</button></a>
+			</div>
+        	<!-- //menu -->
+        </div>
+        <!-- //menuBox -->
+        
+        <div id="roomList">
 			<div id="calendar">
 				<form action="">
 					<span>시작일 : </span> <input type="text" id="datepicker"> 
@@ -345,71 +356,136 @@
 					<button>일정 선택하기</button><br>
 				</form>
 			</div>
-			<c:forEach items="${roomList}" var="roomList">
-				<div class="room">
-					<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
-					<button class="roomImgList">객실 사진보기</button>
-					<div class="roomInfo">
-						<span class="roomName">${roomList.ROOM_NAME}</span>
-						<div class="infoBtn">
-							<span>객실 이용안내</span>
-							<button class="information_Use" name="${roomList.NO}">보기</button>
+			<c:forEach items="${reservation}" var="reservation">
+				<c:choose>
+					<c:when test="${reservation.STATUS == '양도대기'}">
+						<div class="room">
+							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+							<button class="roomImgList">객실 사진보기</button>
+							<div class="roomInfo">
+								<span class="roomName">${reservation.ROOM_NAME}</span>
+								<div class="infoBtn">
+									<span>객실 이용안내</span>
+									<button class="information_Use" name="${reservation.ROOM_NO}">보기</button>
+								</div>
+								<div class="settingPeople">기준 ${reservation.STANDARD_PEOPLE}인 / 최대 ${reservation.MAX_PEOPLE}인</div>
+								<div class="defaultForm">
+									<div>
+										<span class="people">성인</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>${reservation.STANDARD_PEOPLE}명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div>
+										<span class="people">아동</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>0명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div>
+										<span class="people">유아</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>0명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div class="price">
+										<span class="roomPrice">${reservation.TOTAL_PRICE}원</span> 
+										<span class="assignmentPrice">${reservation.TRANS_PRICE}원</span>
+									</div>
+								</div>
+								<button>양도받으러가기</button>
+							</div>
 						</div>
-						<div class="settingPeople">기준 ${roomList.STANDARD_PEOPLE}인 / 최대 ${roomList.MAX_PEOPLE}인</div>
-						<div class="defaultForm">
-							<div>
-								<span class="people">성인</span>
-								<div>
-									<button class="minus">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-									</button>
-									<span>2명</span>
-									<button class="plus">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-									</button>
+					</c:when>
+					<c:otherwise>
+						<div class="room reservation">
+							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+							<button class="roomImgList">객실 사진보기</button>
+							<div class="roomInfo">
+								<span class="roomName">${reservation.ROOM_NAME}</span>
+								<div class="infoBtn">
+									<span>객실 이용안내</span>
+									<button class="information_Use" name="${reservation.ROOM_NO}">보기</button>
 								</div>
-							</div>
-							<div>
-								<span class="people">아동</span>
-								<div>
-									<button class="minus">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-									</button>
-									<span>0명</span>
-									<button class="plus">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-									</button>
+								<div class="settingPeople">기준 ${reservation.STANDARD_PEOPLE}인 / 최대 ${reservation.MAX_PEOPLE}인</div>
+								<div class="defaultForm">
+									<div>
+										<span class="people">성인</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>${reservation.STANDARD_PEOPLE}명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div>
+										<span class="people">아동</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>0명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div>
+										<span class="people">유아</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>0명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div class="price">
+										<span class="assignmentPrice" style="visibility:hidden;">${reservation.TRANS_PRICE}원</span>
+										<span class="roomPrice" style="text-decoration:none;">${reservation.TOTAL_PRICE}원</span> 
+									</div>
 								</div>
-							</div>
-							<div>
-								<span class="people">유아</span>
-								<div>
-									<button class="minus">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
-									</button>
-									<span>0명</span>
-									<button class="plus">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
-									</button>
-								</div>
-							</div>
-							<div class="price">
-								<span class="roomPrice">220,000원</span> 
-								<span class="assignmentPrice">200,000원</span>
+								<button>예약완료</button>
 							</div>
 						</div>
-						<button>양도받으러가기</button>
-					</div>
-				</div>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-
-
+				<!-- //room -->
+		</div>
+	    <!-- //roomList --> 	
+         	
+		<div class="clearfix"> 
 			<!-- //footer -->
-      <c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
-   </div>
+			<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
+   		</div>
 	
-	
-	
+	</div>
+   	<!-- //"wrap" -->
+      
 </body>
 
 
@@ -428,8 +504,6 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
 
 
 <!-- 객실 이용안내 모달 -->
@@ -469,13 +543,15 @@
 		<div class="modal-content roomContent">
 			<div class="modal-body imgList">
 				<button class="imgLeft">
-                  <img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
+					<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
                 </button>
                 <ul>
-                   <li><img src="${pageContext.request.contextPath}/assets/image/detail/back.jfif"></li>
+					<li>
+						<img src="${pageContext.request.contextPath}/assets/image/detail/back.jfif">
+					</li>
                 </ul>
                 <button class="imgRight">
-                   <img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+					<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
                 </button>
 			</div>
 			<div class="modal-footer footer">
@@ -487,9 +563,6 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-
-
-
 
 
 
@@ -571,11 +644,10 @@
 		//입력한 객실정보로 사진 열기.
 		var $this = $(this);  
 		var name = Number($this.attr("name"));
-		
 		var roomList = new Array();
 		
-		<c:forEach items="${roomList}" var="roomList">
-			roomList.push("${roomList.ADD_INFO}");
+		<c:forEach items="${reservation}" var="reservation">
+			roomList.push("${reservation.ADD_INFO}");
 		</c:forEach>
 		
 		var roomNo = new Array();

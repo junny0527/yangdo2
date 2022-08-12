@@ -239,8 +239,8 @@
                        <td>
                            <div id = "tax" class="form-layer label-layer mb_24">
                            	<br>
-                               <label for="Y"><input id="Y" name = "taxInvoice" type="radio" name="account_type" value="2"> 발행</label>
-                               <label for="N"><input id="N" name = "taxInvoice" type="radio" name="account_type" value="1" checked> 미발행</label>
+                               <label for="Y"><input id="Y" name = "taxInvoice" type="radio" value="2"> 발행</label>
+                               <label for="N"><input id="N" name = "taxInvoice" type="radio" value="1" checked> 미발행</label>
                            </div>
                        </td>
                    </tr>
@@ -254,6 +254,7 @@
                                    <input class="form-control normal-size" type="text" name="companyName" placeholder="사업자 등록증상 상호명" value="" disabled="disabled">
                                </span>
                            </div>
+                          
                            <div class="form-layer-text mb_24">
                                <p class="description">* 펜션 이름은 별도로 기입이 가능하오니 필히 사업자 상호, 등록번호를 입력해주시기 바랍니다.</p>
                            </div>
@@ -265,36 +266,37 @@
                            </div>
                            
                            <br>
-                           
+                          
                            <div id = "jobstyle" class="form-layer mb_24">
                                <span id = "jobstyletitle" class="form-title">업태</span>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="businessType" disabled="disabled">숙박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="businessType" disabled="disabled">음식 및 숙박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="businessType" disabled="disabled">부동산</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="businessType" disabled="disabled">음식</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="businessType" disabled="disabled">서비스</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="businessTypeArrays" class = "businessType" disabled="disabled">숙박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="businessTypeArrays" class = "businessType" disabled="disabled">음식 및 숙박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="businessTypeArrays" class = "businessType" disabled="disabled">부동산</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="businessTypeArrays" class = "businessType" disabled="disabled">음식</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="businessTypeArrays" class = "businessType" disabled="disabled">서비스</label>
                            </div>
                            
 						<br>
-						
+					
                            <div id = "joblist" class="form-layer mb_24">
                                <span class="form-title">업종</span>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="businessGroup" disabled="disabled">민박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="businessGroup" disabled="disabled">외국인도시민박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="businessGroup" disabled="disabled">게스트하우스</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="businessGroup" disabled="disabled">한옥체험</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="businessGroup" disabled="disabled">여관</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="6" name="businessGroup" disabled="disabled">숙박</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="7" name="businessGroup" disabled="disabled">펜션</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="8" name="businessGroup" disabled="disabled">호스텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="9" name="businessGroup" disabled="disabled">모텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="10" name="businessGroup" disabled="disabled">관광</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="11" name="businessGroup" disabled="disabled">임대</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="12" name="businessGroup" disabled="disabled">호텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="13" name="businessGroup" disabled="disabled">관광호텔</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="14" name="businessGroup" disabled="disabled">일반여행</label>
-                               <label class="checkbox-inline icon-label"><input type="checkbox" value="15" name="businessGroup" disabled="disabled">무인텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="1" name="businessGroupArrays" class = "businessGroup" disabled="disabled">민박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="2" name="businessGroupArrays" class = "businessGroup" disabled="disabled">외국인도시민박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="3" name="businessGroupArrays" class = "businessGroup" disabled="disabled">게스트하우스</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="4" name="businessGroupArrays" class = "businessGroup" disabled="disabled">한옥체험</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="5" name="businessGroupArrays" class = "businessGroup" disabled="disabled">여관</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="6" name="businessGroupArrays" class = "businessGroup" disabled="disabled">숙박</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="7" name="businessGroupArrays" class = "businessGroup" disabled="disabled">펜션</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="8" name="businessGroupArrays" class = "businessGroup" disabled="disabled">호스텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="9" name="businessGroupArrays" class = "businessGroup" disabled="disabled">모텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="10" name="businessGroupArrays" class = "businessGroup" disabled="disabled">관광</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="11" name="businessGroupArrays" class = "businessGroup" disabled="disabled">임대</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="12" name="businessGroupArrays" class = "businessGroup" disabled="disabled">호텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="13" name="businessGroupArrays" class = "businessGroup" disabled="disabled">관광호텔</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="14" name="businessGroupArrays" class = "businessGroup" disabled="disabled">일반여행</label>
+                               <label class="checkbox-inline icon-label"><input type="checkbox" value="15" name="businessGroupArrays" class = "businessGroup" disabled="disabled">무인텔</label>
                            </div>
+                          
                            <br>
                            <div class="form-layer mb_24">
                                <span class="form-title">사업자<br>등록번호</span>
@@ -302,19 +304,20 @@
                                    <input class="form-control normal-size" type="text" name="businessLicensenumber" placeholder="숫자만 입력하세요." value="" disabled="disabled">
                                </span>
                            </div>
-                           
+                          
                            <br>
                            
                            <div class="form-layer mb_24">
                                <span class="form-title">업체 주소</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" id="input_roadAddress" name = "companyAddress" type="text" name="address1" readonly placeholder="사업자 등록증상 업체 주소를 입력하세요." value="">
+                                   <input class="form-control normal-size" id="input_roadAddress" name = "companyAddress" type="text" readonly placeholder="사업자 등록증상 업체 주소를 입력하세요." value="">
                                    <button type="button" class="btn btn-yeogi btn-normal-layer" id="postCode" onclick="daumPostCode()" disabled="disabled">주소 검색</button>
                                </span>
                            </div>
                            <div class="form-layer newline">
                                <span class="form-body">
                                    <input id = "leftaddress" class="form-control normal-size" type="text" name="detailAddress" placeholder="나머지 주소를 입력하세요." value="" disabled="disabled">
+                                   <input id = "postcodenum" name = "postalCode" type = "hidden">
                                </span>
                            </div>
                            <div class="form-layer mb_24">
@@ -337,7 +340,6 @@
                            </div>
                        </td>
                    </tr>
-                   
 			</tbody>
 		</table>
 		
@@ -360,8 +362,8 @@
 $("#Y").on("click", function(){
 	$('input[name="companyName"]').removeAttr('disabled');
     $('input[name="ceoName"]').removeAttr('disabled');
-    $("input[name='businessType']").removeAttr('disabled');
-    $("input[name='businessGroup']").removeAttr('disabled');
+    $("input[class='businessType']").removeAttr('disabled');
+    $("input[class='businessGroup']").removeAttr('disabled');
     $('input[name="businessLicensenumber"]').removeAttr('disabled');
     $('input[name="detailAddress"]').removeAttr('disabled');
     $('input[name="taxInvoiceEmail"]').removeAttr('disabled');
@@ -371,8 +373,8 @@ $("#Y").on("click", function(){
 $("#N").on("click", function(){
 	$('input[name="companyName"]').attr('disabled', true);
     $('input[name="ceoName"]').attr('disabled', true);
-    $("input[name='businessType']").attr('disabled', true);
-    $("input[name='businessGroup']").attr('disabled', true);
+    $("input[class='businessType']").attr('disabled', true);
+    $("input[class='businessGroup']").attr('disabled', true);
     $('input[name="businessLicensenumber"]').attr('disabled', true);
     $('input[name="detailAddress"]').attr('disabled', true);
     $('input[name="taxInvoiceEmail"]').attr('disabled', true);
@@ -410,7 +412,7 @@ $("#N").on("click", function(){
 
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById("input_roadAddress").value = roadAddr;
-	                
+	                document.getElementById("postcodenum").value = data.zonecode;
 	                console.log(fullname);
 	                console.log(data.zonecode);
 	            }
