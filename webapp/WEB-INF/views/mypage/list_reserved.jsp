@@ -50,53 +50,46 @@
 			<!-- Nav -->
 			<c:import url="/WEB-INF/views/mypage/includes/mynav.jsp"></c:import>
 			<!-- Nav -->
-
+			<input id="userNo" type="hidden" name="no" value="${param.NO}">
 			<div class="align_rt">
 				<div class="reserve_list">
 					<section>
-						<h3>예약완료 내역</h3>
-						<ul class="list_wrap">
-							<li class="reservation-detail"><div>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
-											alt="양평 스마일카라반펜션" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
-											08.30 화 15:00 • 1박 </span> </a>
-								</div></li>
-							<li class="reservation-detail"><div>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
-											alt="양평 스마일카라반펜션" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
-											08.30 화 15:00 • 1박 </span> </a>
-								</div></li>
-							<li class="reservation-detail"><div>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
-											alt="양평 스마일카라반펜션" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
-											08.30 화 15:00 • 1박 </span> </a>
-								</div></li>
-							<li class="reservation-detail"><div>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
-											alt="양평 스마일카라반펜션" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i class="">예약완료</i> <strong>양평 스마일카라반펜션</strong> <span>체크인:
-											08.30 화 15:00 • 1박 </span> </a>
-								</div></li>
-						</ul>
+						<c:if test="${listMap.}">
+							<h3>${listMap.STATUS}내역</h3>
+							<ul class="list_wrap">
+								<li class="reservation-detail"><div>
+										<p class="pic">
+											<img
+												src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
+												alt="" class="align"
+											>
+										</p>
+										<a href="${pageContext.request.contextPath}/my/detail/reserved" class="product-title"><i
+											class=""
+										>${listMap.STATUS}</i> <strong>${listMap.NAME}</strong> <span>${listMap.CHECK_IN} •
+												1박 </span> </a>
+									</div></li>
+							</ul>
+						</c:if>
+						<c:if test="${listMap.STATUS == '이용완료'}">
+							<h3>${listMap.STATUS}내역</h3>
+							<ul class="list_wrap">
+								<li class="reservation-detail"><div>
+										<p class="pic">
+											<img
+												src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
+												alt="" class="align"
+											>
+										</p>
+										<a href="${pageContext.request.contextPath}/my/detail/used
+												class="product-title"
+											><i
+											class=""
+										>${listMap.STATUS}</i> <strong>${listMap.NAME}</strong> <span>${listMap.CHECK_IN} •
+												1박 </span> </a>
+									</div></li>
+							</ul>
+						</c:if>
 						<!---->
 					</section>
 				</div>

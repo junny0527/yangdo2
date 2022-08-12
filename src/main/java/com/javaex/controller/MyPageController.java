@@ -1,12 +1,24 @@
 package com.javaex.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.javaex.service.MyReservationService;
 
 @Controller
 @RequestMapping(value = "/my", method = { RequestMethod.GET, RequestMethod.POST })
 public class MyPageController {
+
+	@Autowired
+	private MyReservationService mrService;
 
 	/********* main item **********/
 	@RequestMapping(value = "/info", method = { RequestMethod.GET, RequestMethod.POST })
@@ -39,25 +51,40 @@ public class MyPageController {
 
 	/********* main item **********/
 
-	/********* sub item (reservation) **********/
+	/********* sub item (reservation) 나중에 다시 정리 **********/
 
-	@RequestMapping(value = "/list/reserved", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reserved() {
+	@ResponseBody
+	@RequestMapping(value = "/list/reserved/{no}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String reserved(@RequestParam("no") int no, Model model) {
 		System.out.println("MyPageController>reserved()");
+
+		List<Map<String, Object>> listMap = mrService.reservedList(no);
+
+		model.addAttribute("listMap", listMap);
 
 		return "mypage/list_reserved";
 	}
 
-	@RequestMapping(value = "/list/used", method = { RequestMethod.GET, RequestMethod.POST })
-	public String used() {
+	@ResponseBody
+	@RequestMapping(value = "/list/used/{no}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String used(@RequestParam("no") int no, Model model) {
 		System.out.println("MyPageController>used()");
+
+		List<Map<String, Object>> listMap = mrService.usedList(no);
+
+		model.addAttribute("listMap", listMap);
 
 		return "mypage/list_used";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/list/canceled", method = { RequestMethod.GET, RequestMethod.POST })
-	public String canceled() {
+	public String canceled(@RequestParam("no") int no, Model model) {
 		System.out.println("MyPageController>canceled()");
+
+		List<Map<String, Object>> listMap = mrService.usedList(no);
+
+		model.addAttribute("listMap", listMap);
 
 		return "mypage/list_canceled";
 	}
@@ -65,17 +92,26 @@ public class MyPageController {
 	/********* sub item (reservation) **********/
 
 	/********* sub item (yangdo) **********/
-
+	@ResponseBody
 	@RequestMapping(value = "/list/relisted", method = { RequestMethod.GET, RequestMethod.POST })
-	public String relisted() {
+	public String relisted(@RequestParam("no") int no, Model model) {
 		System.out.println("MyPageController>relisted()");
+
+		List<Map<String, Object>> listMap = mrService.usedList(no);
+
+		model.addAttribute("listMap", listMap);
 
 		return "mypage/list_relisted";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/list/transferred", method = { RequestMethod.GET, RequestMethod.POST })
-	public String transferred() {
+	public String transferred(@RequestParam("no") int no, Model model) {
 		System.out.println("MyPageController>transferred()");
+
+		List<Map<String, Object>> listMap = mrService.usedList(no);
+
+		model.addAttribute("listMap", listMap);
 
 		return "mypage/list_transferred";
 	}
