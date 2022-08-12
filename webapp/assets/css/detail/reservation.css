@@ -210,6 +210,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #main > #gallery {
     display:flex;
     position:relative;
+    height:348px;
 }
 
 #main > #gallery > #mainImg {
@@ -269,7 +270,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #main > #gallery > div > a {
-	margin:auto 10px;
+	margin:auto 0px;
 }
 
 
@@ -332,12 +333,11 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #iconBox {
     width:1024px;
-    height:185px;
     margin:auto;
     margin-top:21px;
     padding-top:30px;
+    padding-bottom:30px;
     border-top:1px solid black;
-    border-bottom:1px solid black;
     display: flex;
     flex-direction: column;
 }
@@ -351,7 +351,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     font-size:20px;
     font-weight: bold;
     display: flex;
-    justify-content: space-around; 
+    flex-wrap:wrap;
 }
 
 #iconBox > #container > div > span > img {
@@ -360,6 +360,9 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     display: flex;
 }
 
+#iconBox > #container > div > span {
+	width:50px;
+}
 
 #iconBox > #container > div {
     margin-right:6px;
@@ -375,6 +378,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     font-size:10px;
     display: flex;
     justify-content: center;
+    width:50px;
 }
 
 #iconBox > #container > #moreIcon:hover {
@@ -382,12 +386,21 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 /* ********* 메뉴바 ********* */
-#iconBox > #menu {
-    margin-top:30px;
-    margin-bottom:30px;
+#menuBox {
+    width:1024px;
+    margin:auto;
+    border-bottom:1px solid black;
+    display: flex;
+    flex-direction: column;
 }
 
-#iconBox > #menu > a > button {
+
+#menuBox > #menu {
+    margin-top:30px;
+    margin-bottom:10px;
+}
+
+#menuBox > #menu > a > button {
     margin-right:30px;
     border-style:none;
     background-color: #FFFFFF;
@@ -426,7 +439,6 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 #roomList {
     width:1024px;
     margin:0 auto;
-    margin-top:30px;
 }
 
 
@@ -684,9 +696,9 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     bottom:0;
     display: flex;
     flex-direction: column;
-    height:40px;
     font-size:18px;
     font-weight: bold;
+    margin-bottom:30px;
 }
 
 #roomList > .room > .roomInfo > .defaultForm > .price > .roomPrice {
@@ -762,6 +774,23 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     background-color: #FFFFFF;
     border-style: none;
 }
+
+#roomList >.reservation > .roomInfo > button {
+	background-color:#f7323f;
+}
+
+#roomList > .reservation > .roomImgList {
+	background-color:#f7323f;
+}
+
+#roomList > .reservation > .roomInfo > .infoBtn > .information_Use {
+	background-color:#f7323f;
+}
+
+#roomList >.reservation > .roomInfo > button:hover {
+	cursor:not-allowed;
+}
+
 
 /* ******************모달 (객실 이용안내)************************** */
 

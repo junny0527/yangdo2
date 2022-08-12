@@ -34,10 +34,11 @@ public class DetailController {
 		model.addAttribute("crtPage", crtPage);
 		model.addAttribute("pAmenList",pMap.get("pAmenList"));
 		model.addAttribute("pPubList",pMap.get("pPubList"));
-		model.addAttribute("roomList",pMap.get("roomList"));
 		model.addAttribute("roomNo",pMap.get("roomNo"));
-		System.out.println("pAmenList :"+pMap.get("pAmenList"));
-		System.out.println("pPubList :" +pMap.get("pPubList"));
+		model.addAttribute("reservation",pMap.get("reservation"));
+		
+		System.out.println("pPubList :"+ pMap.get("pPubList"));
+		System.out.println("pAmenbList :"+pMap.get("pAmenList"));
 		
 		return "detail/reservation";
 	}

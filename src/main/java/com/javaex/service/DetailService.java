@@ -34,11 +34,12 @@ public class DetailService {
 		//펜션 공용시설 
 		List<Map<String, Object>> pPubList = detailDao.pPubList(pensionNo);
 		
-		//펜션 방 정보리스트 가져오기
-		List<Map<String, Object>> roomList = detailDao.roomList(pensionNo);
 		
 		//객실번호 그룹 가져오기
 		List<Map<String, Object>> roomNo = detailDao.roomNo(pensionNo);
+		
+		//예약객실 리스트 가져오기
+		List<Map<String, Object>> reservation = detailDao.reservation(pensionNo);
 		
 		//현재페이지
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
@@ -89,8 +90,8 @@ public class DetailService {
 		pMap.put("totalCnt", totalCnt);
 		pMap.put("pAmenList", pAmenList);
 		pMap.put("pPubList", pPubList);
-		pMap.put("roomList", roomList);
 		pMap.put("roomNo", roomNo);
+		pMap.put("reservation", reservation);
 		
 		return pMap;
 	}

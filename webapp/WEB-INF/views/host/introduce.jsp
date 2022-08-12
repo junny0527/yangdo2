@@ -97,9 +97,7 @@
 
 		<div id="content">
 			<div class="list-layer">
-				<form class="form-horizontal" id="intro-form" method="post" action="/guest/intro" name="intro" enctype="multipart/form-data">
-					<input type="hidden" name="ano" value="">
-					<input type="hidden" name="uno" value="">
+				<form class="form-horizontal" id="intro-form" method="get" action="introsave" name="intro" enctype="multipart/form-data">
 					<input class="form-control normal-size" id="input_jibunAddress" type="hidden" name="jibun_address1">
 					
 					<div id = "design">
@@ -121,29 +119,29 @@
 								</th>
 								<td id = "firstline" class="bd_r_none">
 									<div class="form-layer mb_24">
-										<span class="form-title">펜션명</span> <span class="form-body"> <input class="form-control normal-size" type="text" name="aname" placeholder="업체명을 입력하세요." value="">
+										<span class="form-title">펜션명</span> <span class="form-body"> <input class="form-control normal-size" type="text" name="pensionName" placeholder="업체명을 입력하세요." value="">
 										</span>
 									</div>
 									<div class="form-layer mb_24">
 										<span class="form-title">펜션 주소</span>
 										<!-- BOD-1458 -->
 										<span class="form-body">
-											<input class="form-control normal-size" id="input_roadAddress" type="text" name="address1" readonly placeholder="업체 주소를 입력하세요." value="">
+											<input class="form-control normal-size" id="input_roadAddress" type="text" name="pensionAddress" readonly placeholder="업체 주소를 입력하세요." value="">
 											<button type="button" class="btn btn-yeogi btn-normal-layer" onclick="daumPostCode()">주소 검색</button>
 										</span>
 									</div>
 									<div class="form-layer newline mb_24">
 										<span class="form-body">
-											<input id="address"class="form-control normal-size" type="text" name="address2" placeholder="나머지 주소를 입력하세요." value="">
+											<input id="address"class="form-control normal-size" type="text" name="detailAddress" placeholder="나머지 주소를 입력하세요." value="">
 										</span>
 									</div>
 									<div class="form-layer-text">
-										<input type="hidden" id = "delivername" value = "">
-										<input type="hidden" id = "postalcode" value = "">
+										<input type="hidden" id = "delivername" name = "lawName" value = "">
+										<input type="hidden" id = "postalcode" name = "postalCode" value = "">
 										<div id = "legalname" class = "order">
-											<input type = "text" readonly value = "법정동 코드: ">
+											<input type = "text" name = "lawCode" readonly value = "법정동 코드: ">
 											<input id = "lawcode" type="text" readonly value = "">
-											<input id = "fullname" type="text" readonly value = "">
+											<input id = "fullname" type="text" name = "lawName" readonly value = "">
 										</div>
 									</div>
 								</td>
@@ -172,16 +170,16 @@
 											<li class="backgrou">
 												<input type="hidden" name="adino[]" value="235381">
 												<div>
-													<img data-adino="235381" src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
+													<img src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
 												</div>
-												<button id = "changeimage" data-role="img-changer" data-adino="235381" data-ano="3309" data-armgno="0" data-type="8" type="button" class="btn btn-xs btn-success">변경</button>
-												<button id = "deleteimage" data-role="img-delete" data-adino="235381" type="button" class="btn btn-xs btn-deleete">삭제</button>
+												<button id = "changeimage" type="button" class="btn btn-xs btn-success">변경</button>
+												<button id = "deleteimage" type="button" class="btn btn-xs btn-deleete">삭제</button>
 											</li>
 										</ul>
 									</div>
 
 									<div class="form-layer-text">
-										<button id = "addimage" type="button" class="btn btn-default btn_add" data-role="img-uploader" data-ano="3309" data-armno="0" data-type="8">+ 이미지 추가</button>
+										<button id = "addimage" type="button" class="btn btn-default btn_add">+ 이미지 추가</button>
 									</div>
 								</td>
 								
@@ -238,37 +236,15 @@
 										<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
 									</div></td>
 							</tr>
-							<!--// 편의시설/서비스 안내 -->
-							<!-- TODO : BOD-1252 sub BOD-1268 호스트하우스 업주CMS 에서 해당 기능 제한함. 정책변경에 의해 해제할 수 있음. 주석처리함. -->
-							<!--
-                    <tr id="target_host">
-                       <th>취향필터</th>
-                        <td class="bd_r_none">
-                            <div class="form-layer align_chk">
-                                                                    <label for="favorite_36" class="checkbox-inline icon-label">
-                                        <input type="checkbox" id="favorite_36" name="favorite_info[]"  value="36" />서핑스팟근처                                    </label>
-                                                                    <label for="favorite_73" class="checkbox-inline icon-label">
-                                        <input type="checkbox" id="favorite_73" name="favorite_info[]"  value="73" />파티가능                                    </label>
-                                                                    <label for="favorite_12" class="checkbox-inline icon-label">
-                                        <input type="checkbox" id="favorite_12" name="favorite_info[]"  value="12" />루프탑라운지                                    </label>
-                                                                    <label for="favorite_26" class="checkbox-inline icon-label">
-                                        <input type="checkbox" id="favorite_26" name="favorite_info[]"  value="26" />조식맛집                                    </label>
-                                                                    <label for="favorite_11" class="checkbox-inline icon-label">
-                                        <input type="checkbox" id="favorite_11" name="favorite_info[]"  value="11" />오션뷰                                    </label>
-                                                            </div>
-                        </td>
-                        <td class="help-tooltip popover-container"></td>
-                    </tr>
-                    -->
 
 							<!-- 오시는길 -->
 							<tr>
 								<th>오시는길</th>
 								<td colspan="2">
 									<div id = "visitpath" class="form-layer">
-										<input type="text" class="form-control writeform" name="traffic_info" placeholder="주요 버스터미널, 기차역 등에서 숙소를 찾아가는 방법을 간단히 기재해 주세요. 예시)대성리역 차량 10분" value=""> <br> 
-										<input type="text" class="form-control writeform" name="traffic_info2" placeholder="주요 버스터미널, 기차역 등에서 숙소를 찾아가는 방법을 간단히 기재해 주세요. 예시)대성리역 차량 10분" value=""> <br> 
-										<input type="text" class="form-control writeform" name="traffic_info3" placeholder="주요 버스터미널, 기차역 등에서 숙소를 찾아가는 방법을 간단히 기재해 주세요. 예시)대성리역 차량 10분" value=""> 
+										<input type="text" class="form-control writeform" name="visitRoad1" placeholder="주요 버스터미널, 기차역 등에서 숙소를 찾아가는 방법을 간단히 기재해 주세요. 예시)대성리역 차량 10분" value=""> <br> 
+										<input type="text" class="form-control writeform" name="visitRoad2" placeholder="주요 버스터미널, 기차역 등에서 숙소를 찾아가는 방법을 간단히 기재해 주세요. 예시)대성리역 차량 10분" value=""> <br> 
+										<input type="text" class="form-control writeform" name="visitRoad3" placeholder="주요 버스터미널, 기차역 등에서 숙소를 찾아가는 방법을 간단히 기재해 주세요. 예시)대성리역 차량 10분" value=""> 
 									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
 
 								</td>
@@ -284,9 +260,9 @@
 										<p class="order text-normal">* 예시) 팔당댐 차량 10분</p>
 									</div> <br>
 									<div class="form-layer">
-										<input type="text" class="form-control writeform" name="traffic_info" placeholder="교통, 관광, 쇼핑 명소부터 게스트하우스까지의 소요시간을 작성해 주세요." value=""> <br> 
-										<input type="text" class="form-control writeform" name="traffic_info2" placeholder="교통, 관광, 쇼핑 명소부터 게스트하우스까지의 소요시간을 작성해 주세요." value=""> <br> 
-										<input type="text" class="form-control writeform" name="traffic_info3" placeholder="교통, 관광, 쇼핑 명소부터 게스트하우스까지의 소요시간을 작성해 주세요." value="">
+										<input type="text" class="form-control writeform" name="areaInfo1" placeholder="교통, 관광, 쇼핑 명소부터 게스트하우스까지의 소요시간을 작성해 주세요." value=""> <br> 
+										<input type="text" class="form-control writeform" name="areaInfo2" placeholder="교통, 관광, 쇼핑 명소부터 게스트하우스까지의 소요시간을 작성해 주세요." value=""> <br> 
+										<input type="text" class="form-control writeform" name="areaInfo3" placeholder="교통, 관광, 쇼핑 명소부터 게스트하우스까지의 소요시간을 작성해 주세요." value="">
 									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
 									<div class="exam-layer-guide3">
 									</div>
@@ -297,7 +273,7 @@
 								</th>
 								<td colspan="2">
 									<div class="form-layer">
-										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="숙소 내 필수 이용규칙이 있을 경우 기재해주세요."></textarea>
+										<textarea class="form-control textarea-layer" rows="6" name="rules" placeholder="숙소 내 필수 이용규칙이 있을 경우 기재해주세요."></textarea>
 									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
 									<div class="exam-layer-guide4">
 										<div id="detail" class="exam-detail-layer">
@@ -427,7 +403,6 @@
 	                document.getElementById("input_roadAddress").value = roadAddr;
 	                document.getElementById("lawcode").value = data.bcode;
 	                document.getElementById("fullname").value = data.sido + ' ' + data.sigungu + ' ' + data.bname;
-	                document.getElementById("delivername").value = fullname;
 	                document.getElementById("postalcode").value = data.zonecode;
 	                
 	                console.log(fullname);
