@@ -24,5 +24,10 @@ public class HostIntroduceDao {
 		return sqlSession.insert("insertAmenities", value);
 	}
 	
+	public int updateOpt(HostIntroduceVo iVo) {
+		System.out.println("DAO ㅎㅇ");
+		return sqlSession.update("updateOpt", iVo);
+	}
+	
 	
 }
