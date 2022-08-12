@@ -21,7 +21,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainList/reservation-jiwoong.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/userHeaderFooter-jiwoong.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mainList/mainLists.css">
 
 
@@ -39,10 +39,10 @@
 			<div class="sub_top">
 				<h2>펜션</h2>
 				<div class="area">
-						<select name="sido1" id="sido1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#ed0918; font-weight: bold;
+						<select name="sido1" id="sido1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
 						border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
 						</select>
-						<select name="gugun1" id="gugun1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#ed0918; font-weight: bold;
+						<select name="gugun1" id="gugun1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
 						border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
 						</select>
 				</div>
@@ -68,7 +68,7 @@
 				<section>
 					<ul>
 						<li>
-							<input type="checkbox" id="yangdo" name="reserve[]" class="inp_chk" value="">
+							<input type="checkbox" id="yangdo" name="pensionItem" class="inp_chk" value="">
 							<label for="yangdo" class="label_chk">양도 중</label>
 						</li>
 					</ul>
@@ -198,51 +198,18 @@
 					</div>
 				</div>
 				<div id="poduct_list_area">
+				<input type="hidden" name="penNo" value="">
 					<div class="title">
 						<h3>양평군</h3>
 					</div>
 					<!-- 사진정보 -->
-					<ul>					
+					<ul>
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
 									<img class="lazy align" src="./assets/image/mainList/62e1e83e21944.jpg" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
-									<div class="evt_info">
-										<span>양도중</span>
-									</div>
-									<div class="name">
-										<strong>그린하우스펜션</strong>
-										<p class="score">
-											<em>4.5</em>
-											<span>좋아요 (13)</span>
-										</p>
-										<p>양평군 | 백동낚시터 차량 10분</p>
-									</div>
-									<div class="price">
-										<div class="map_html">
-											<p>
-												<b>350,000원</b>
-											</p>	
-										</div>
-										<p>
-											<b>350,000원</b>
-										</p>
-									</div>
-								</div>
-							</a>
-						</li>
-					</ul>	
-					<!-- 사진 정보 -->
-					<!-- 사진정보 -->
-					<ul>					
-						<li class="list_2 adcno3">
-							<a href="">
-								<p class="pic">
-									<img class="lazy align" src="./assets/image/mainList/62e1e83e21944.jpg" style="margin-top: -159px; display: block;">
-								</p>
-								<div class="stage gra_black_vertical">
 									<div class="evt_info">
 										<span>양도중</span>
 									</div>
