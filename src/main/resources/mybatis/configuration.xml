@@ -16,6 +16,8 @@
 
 		<mapper resource="mybatis/mappers/Hostcompanyreg.xml" />
 		
+		<mapper resource="mybatis/mappers/mainList.xml" />
+		
 		<!-- <mapper resource="mybatis/mappers/guestbook.xml"/>  -->
 	</mappers>
 </configuration>	
