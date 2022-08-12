@@ -11,14 +11,13 @@
 		<mapper resource="mybatis/mappers/sale.xml" />
 		<mapper resource="mybatis/mappers/detail.xml" />
 		<mapper resource="mybatis/mappers/repay.xml" />
-<<<<<<< HEAD
-		
+				
 		<mapper resource="mybatis/mappers/points.xml" />
 
-=======
+
 		<mapper resource="mybatis/mappers/my.xml" />
 		<mapper resource="mybatis/mappers/Hostcompanyreg.xml" />
->>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
+
 		<mapper resource="mybatis/mappers/users.xml" />
 		<mapper resource="mybatis/mappers/Hostcompanyreg.xml" />
 	
