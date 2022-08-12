@@ -17,8 +17,15 @@ public class HostCompanyregDao {
 	}
 	
 	public int insertCompany(HostCompanyregVo cVo) {
-		sqlSession.insert("Hostcompanyreg.insertcompany", cVo);
 		return sqlSession.insert("Hostcompanyreg.insertcompany", cVo);
+	}
+	
+	public int insertBTArray(int insertBTArrays) {
+		return sqlSession.insert("Hostcompanyreg.insertBTA", insertBTArrays);
+	}
+	
+	public int insertBGArray(int insertBGArrays) {
+		return sqlSession.insert("Hostcompanyreg.insertBGA", insertBGArrays);
 	}
 	
 	
