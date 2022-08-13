@@ -250,7 +250,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin:0px 10px;
+    margin:0px 8.5px;
     list-style-type:none;
     padding:0;
 }
@@ -288,7 +288,8 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 	padding-top:15px;
 	padding-bottom:15px;
-	padding-left:5px;
+	padding-left:2.5px;
+	padding-right:2.5px;
 	border-top-left-radius:5px;
 	border-bottom-left-radius:5px;
 	background-color:#eeeeee;
@@ -301,7 +302,8 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 	padding-top:15px;
 	padding-bottom:15px;
-	padding-left:5px;
+	padding-left:2.5px;
+	padding-right:2.5px;
 	border-top-right-radius:5px;
 	border-bottom-right-radius:5px;
 	background-color:#eeeeee;
@@ -365,7 +367,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #iconBox > #container > div {
-    margin-right:6px;
+    margin-right:10px;
     
 }
 
@@ -855,7 +857,8 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	right:-13.2%;
 	padding-top:15px;
 	padding-bottom:15px;
-	padding-left:5px;
+	padding-left:2.5px;
+	padding-right:2.5px;
 	border-top-left-radius:5px;
 	border-bottom-left-radius:5px;
 	background-color:#eeeeee;
@@ -872,10 +875,11 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 .imgList > .imgLeft {
 	top:50%;
-	left:4.2%;
+	left:4.15%;
 	padding-top:15px;
 	padding-bottom:15px;
-	padding-right:5px;
+	padding-left:2.5px;
+	padding-right:2.5px;
 	border-top-right-radius:5px;
 	border-bottom-right-radius:5px;
 	background-color:#eeeeee;

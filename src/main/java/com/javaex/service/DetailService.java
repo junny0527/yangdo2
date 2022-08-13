@@ -39,7 +39,13 @@ public class DetailService {
 		List<Map<String, Object>> roomNo = detailDao.roomNo(pensionNo);
 		
 		//예약객실 리스트 가져오기
-		List<Map<String, Object>> reservation = detailDao.reservation(pensionNo);
+		//List<Map<String, Object>> reservation = detailDao.reservation(pensionNo);
+		
+		//비수기(평일) 요금정보 리스트 가져오기
+		//List<Map<String, Object>> lowWeekDay = detailDao.lowWeekDay(pensionNo);
+		
+		//비수기(주말) 요금정보 리스트 가져오기
+		//List<Map<String, Object>> lowWeekEnd = detailDao.lowWeekEnd(pensionNo);
 		
 		//현재페이지
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
@@ -91,12 +97,21 @@ public class DetailService {
 		pMap.put("pAmenList", pAmenList);
 		pMap.put("pPubList", pPubList);
 		pMap.put("roomNo", roomNo);
-		pMap.put("reservation", reservation);
+		//pMap.put("reservation", reservation);
+		//pMap.put("lowWeekDay", lowWeekDay);
+		//pMap.put("lowWeekEnd", lowWeekEnd);
 		
 		return pMap;
 	}
 	
-	
+	//객실 정보 가져오기 (ajax)
+	public List<Map<String, Object>> roomInfoList(int pensionNo, int roomNo) {
+		System.out.println("DetailService > roomInfo");
+		
+		List<Map<String, Object>> roomInfoList = detailDao.roomInfoList(pensionNo, roomNo);
+		
+		return roomInfoList;
+	}
 	
 	
 	

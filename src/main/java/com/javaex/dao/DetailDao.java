@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,20 +70,57 @@ public class DetailDao {
 		
 	//객실 방 번호 리스트 가져오기
 	public List<Map<String, Object>> roomNo(int pensionNo) {
-		System.out.println("DetailDao > pAmenities()");
+		System.out.println("DetailDao > roomNo()");
 		
 		List<Map<String, Object>> roomNo = sqlSession.selectList("detail.roomNo", pensionNo);
 		return roomNo;
 	}
 	
 	//예약객실 리스트 가져오기
+	/*
 	public List<Map<String, Object>> reservation(int pensionNo) {
 		System.out.println("DetailDao > reservation()");
 		
 		List<Map<String, Object>> reservation = sqlSession.selectList("detail.reservation", pensionNo);
 		return reservation;
 	}
+	*/
+	//객실 정보 가져오기 (ajax)
+	public List<Map<String, Object>> roomInfoList(int pensionNo, int roomNo) {
+		System.out.println("DetailService > roomInfo");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pensionNo", pensionNo);
+		map.put("roomNo", roomNo);
+		
+		List<Map<String, Object>> roomInfoList = sqlSession.selectList("detail.roomInfoList", map);
+		
+		return roomInfoList;
+	}
 	
+	//비수기 평일 요금정보 리스트 가져오기
+	/*
+	public List<Map<String, Object>> lowWeekDay(int pensionNo) {
+		System.out.println("DetailService > lowSeason");
+		
+		List<Map<String, Object>> lowWeekDay = sqlSession.selectList("detail.lowWeekDay", pensionNo);
+		System.out.println(lowWeekDay);
+		
+		
+		return lowWeekDay;
+	}
+	
+	//비수기 주말 요금정보 리스트 가져오기
+		public List<Map<String, Object>> lowWeekEnd(int pensionNo) {
+			System.out.println("DetailService > lowSeason");
+			
+			List<Map<String, Object>> lowWeekEnd = sqlSession.selectList("detail.lowWeekEnd", pensionNo);
+			System.out.println(lowWeekEnd);
+			
+			
+			return lowWeekEnd;
+		}
+	*/
 	
 	
 }

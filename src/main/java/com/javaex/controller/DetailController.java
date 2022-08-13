@@ -1,11 +1,11 @@
 package com.javaex.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,29 +21,29 @@ public class DetailController {
 	
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pensionList(@RequestParam("pensionNo") int pensionNo, Model model,
-							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+							  @RequestParam(value= "datepicker", required = false)String datepicker,
+							  @RequestParam(value= "datepicker2", required = false)String datepicker2) {
 		System.out.println("DetailController > pMap");
 		Map<String, Object> pMap = detailService.select(pensionNo, crtPage);
-		
+		System.out.println("datepicker:" + datepicker);
+		System.out.println("datepicker2:" + datepicker2);
 		model.addAttribute("pMap",pMap);
-		
-		model.addAttribute("totalReview", pMap.get("totalReview"));
-		model.addAttribute("pInfo", pMap.get("pInfo"));
-		model.addAttribute("imgList",pMap.get("imgList"));
-		model.addAttribute("totalCnt",pMap.get("totalCnt"));
 		model.addAttribute("crtPage", crtPage);
-		model.addAttribute("pAmenList",pMap.get("pAmenList"));
-		model.addAttribute("pPubList",pMap.get("pPubList"));
-		model.addAttribute("roomNo",pMap.get("roomNo"));
-		model.addAttribute("reservation",pMap.get("reservation"));
-		
-		System.out.println("pPubList :"+ pMap.get("pPubList"));
-		System.out.println("pAmenbList :"+pMap.get("pAmenList"));
+
 		
 		return "detail/reservation";
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/api/reservation", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<Map<String, Object>> pMap(@RequestParam("pensionNo") int pensionNo, @RequestParam("roomNo") int roomNo) {
+		System.out.println("ApiGuestbookController > list()");
+		
+		List<Map<String, Object>> roomMap = detailService.roomInfoList(pensionNo, roomNo);
+		System.out.println("roomMap :"+roomMap);
+		return roomMap;
+	}
 	
 	@RequestMapping(value="/infomation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String test2() {
