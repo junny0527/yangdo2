@@ -198,9 +198,8 @@
 					</div>
 				</div>
 				<div id="poduct_list_area">
-				<input type="hidden" name="penNo" value="">
 					<div class="title">
-						<h3>양평군</h3>
+						<h3>${penMapList.LAW_NAME}</h3>
 					</div>
 					<!-- 사진정보 -->
 					<ul>
@@ -211,24 +210,29 @@
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<span>양도중</span>
+										<span>${penMapList.STATUS}</span>
 									</div>
 									<div class="name">
-										<strong>그린하우스펜션</strong>
+										<strong>${penMapList.NAME}</strong>
 										<p class="score">
-											<em>4.5</em>
-											<span>좋아요 (13)</span>
+											<em>${penMapList.STARS}</em>
+											<c:choose>
+												<c:when test="${penMapList.STARS <= 3}">
+													<span>별로에요</span>
+												</c:when>
+												<c:when test="${penMapList.STARS > 3 && penMapList.STARS < 4}">
+													<span>좋아요</span>
+												</c:when>
+												<c:when test="${penMapList.STARS >= 4 && penMapList.STARS <= 5}">
+													<span>최고에요</span>
+												</c:when>	
+											</c:choose>	
 										</p>
-										<p>양평군 | 백동낚시터 차량 10분</p>
+										<p>${penMapList.LAW_NAME} | ${penMapList.VISIT_ROAD3}</p>
 									</div>
 									<div class="price">
-										<div class="map_html">
-											<p>
-												<b>350,000원</b>
-											</p>	
-										</div>
 										<p>
-											<b>350,000원</b>
+											<b>${penMapList.PRICE}원</b>
 										</p>
 									</div>
 								</div>

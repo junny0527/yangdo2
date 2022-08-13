@@ -6,21 +6,25 @@
 	<select id="penSelect" resultType="map" parameterType="int">
 		<![CDATA[
 			select
-				    p.no 펜션번호,
-				    p.name 펜션이름,
-				    p.visit_road3 오시는길,
-				    v.stars 평점,
-				    r.status 예약상태,
-				    pr.price 가격
-				from pension p, company c, users u, reservations r, reviews v,
-				rooms rm, prices pr
-				where p.no = c.no
-				and c.no = u.no
-				and u.no = r.no
-				and r.no = v.no
-				and r.no = rm.no
-				and rm.no = pr.no
+			    p.name ,
+			    p.visit_road3 ,
+			    v.stars ,
+			    r.status ,
+			    pr.price ,
+			    p.law_name
+			from pension p, company c, users u, reservations r, reviews v,
+			rooms rm, prices pr
+			where p.no = c.no
+			and c.no = u.no
+			and u.no = r.no
+			and r.no = v.no
+			and r.no = rm.no
+			and rm.no = pr.no
+			and p.law_code = #{areaNo}
 		]]>
 	</select>
+	
+	
+	
 	
 </mapper>

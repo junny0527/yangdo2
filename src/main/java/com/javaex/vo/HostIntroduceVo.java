@@ -22,14 +22,14 @@ public class HostIntroduceVo {
 	private String parkingInfo;
 	private String etc;
 	private int[] publicArrays;
-	private int[] pAmenitiesArrays;
+	private int[] amenitiesArrays;
 	
 	public HostIntroduceVo() {}
 
 	public HostIntroduceVo(int companyNo, String pensionName, String postalCode, String pensionAddress,
 			String detailAddress, String lawCode, String lawName, String visitRoad1, String visitRoad2,
 			String visitRoad3, String areaInfo1, String areaInfo2, String areaInfo3, String rules, String livePay,
-			String parkingInfo, String etc, int[] publicArrays, int[] pAmenitiesArrays) {
+			String parkingInfo, String etc, int[] publicArrays, int[] amenitiesArrays) {
 		this.companyNo = companyNo;
 		this.pensionName = pensionName;
 		this.postalCode = postalCode;
@@ -48,7 +48,7 @@ public class HostIntroduceVo {
 		this.parkingInfo = parkingInfo;
 		this.etc = etc;
 		this.publicArrays = publicArrays;
-		this.pAmenitiesArrays = pAmenitiesArrays;
+		this.amenitiesArrays = amenitiesArrays;
 	}
 
 	public int getCompanyNo() {
@@ -195,12 +195,12 @@ public class HostIntroduceVo {
 		this.publicArrays = publicArrays;
 	}
 
-	public int[] getpAmenitiesArrays() {
-		return pAmenitiesArrays;
+	public int[] getAmenitiesArrays() {
+		return amenitiesArrays;
 	}
 
-	public void setpAmenitiesArrays(int[] pAmenitiesArrays) {
-		this.pAmenitiesArrays = pAmenitiesArrays;
+	public void setAmenitiesArrays(int[] amenitiesArrays) {
+		this.amenitiesArrays = amenitiesArrays;
 	}
 
 	@Override
@@ -210,8 +210,8 @@ public class HostIntroduceVo {
 				+ ", lawName=" + lawName + ", visitRoad1=" + visitRoad1 + ", visitRoad2=" + visitRoad2 + ", visitRoad3="
 				+ visitRoad3 + ", areaInfo1=" + areaInfo1 + ", areaInfo2=" + areaInfo2 + ", areaInfo3=" + areaInfo3
 				+ ", rules=" + rules + ", livePay=" + livePay + ", parkingInfo=" + parkingInfo + ", etc=" + etc
-				+ ", publicArrays=" + Arrays.toString(publicArrays) + ", pAmenitiesArrays="
-				+ Arrays.toString(pAmenitiesArrays) + "]";
+				+ ", publicArrays=" + Arrays.toString(publicArrays) + ", amenitiesArrays="
+				+ Arrays.toString(amenitiesArrays) + "]";
 	}
 
 }

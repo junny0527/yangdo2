@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value="host")
 public class JaehwanController {
-	
 	@RequestMapping(value="newhost", method = {RequestMethod.GET, RequestMethod.POST})
 	public String newhost() {
 		return "/host/mainNoRegister";
@@ -16,16 +15,6 @@ public class JaehwanController {
 	@RequestMapping(value="main", method= {RequestMethod.GET, RequestMethod.POST})
 	public String main() {
 		return "/host/mainRegister";
-	}
-	
-	@RequestMapping(value="introreg", method= {RequestMethod.GET, RequestMethod.POST})
-	public String introreg() {
-		return "/host/introduce";
-	}
-	
-	@RequestMapping(value="introregopt", method= {RequestMethod.GET, RequestMethod.POST})
-	public String introregopt(){
-		return "/host/introduce2";
 	}
 	
 	@RequestMapping(value="rules", method= {RequestMethod.GET, RequestMethod.POST})

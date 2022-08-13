@@ -54,6 +54,7 @@ public class HostCompanyregService {
 			for(int i=0; i<bgArray.length; i++) {
 				cregDao.insertBGArray(bgArray[i]);
 			}
+			
 		}else {
 			cVo.setCompanyName(removeNull);
 			cVo.setCeoName(removeNull);
@@ -69,6 +70,7 @@ public class HostCompanyregService {
 		if(cVo.getHomepage() == null) {
 			cVo.setHomepage(removeNull);
 		}
+		
 		System.out.println("service cVo : " + cVo);
 		
 		int count = cregDao.insertCompany(cVo);

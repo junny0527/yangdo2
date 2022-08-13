@@ -1,12 +1,13 @@
 package com.javaex.service;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.MainListDao;
+import com.javaex.vo.PensionImageVo;
 
 @Service
 public class MainListService {
@@ -14,12 +15,15 @@ public class MainListService {
 	@Autowired
 	private MainListDao mainDao;
 	
-	public Map<String, Object> select(int penNo){
+	public Map<String, Object> select(int areaNo){
 		System.out.println("mainService>select");
 		
-		Map<String, Object> pensionMap = mainDao.select(penNo);
+		// 펜션정보
+		Map<String, Object> penMapList = mainDao.select(areaNo);
 		
-		return pensionMap;
+		
+		
+		return penMapList;
 	}
 	
 }
