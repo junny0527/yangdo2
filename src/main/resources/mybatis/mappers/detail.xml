@@ -176,7 +176,28 @@
 		]]>
 	</select>
 		
-	
+	<select id="pensionInfo" parameterType="int" resultType="map">
+		<![CDATA[
+			select  visit_road1
+			        ,visit_road2
+			        ,visit_road3
+			        ,area_info1
+			        ,area_info2
+			        ,area_info3
+			        ,rules
+			        ,live_pay
+			        ,parking_info
+			        ,etc
+			        ,check_in
+			        ,check_out
+			        ,to_char(add_adult_price,'99,999') ADD_ADULT_PRICE
+			        ,to_char(add_kid_price,'99,999') ADD_KID_PRICE
+			        ,add_baby_price
+			        ,refund_no
+			from    pension
+			where   no = #{pensionNo}
+		]]>
+	</select>
 	
 
 </mapper>

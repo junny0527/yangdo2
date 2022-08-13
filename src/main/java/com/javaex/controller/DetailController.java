@@ -19,6 +19,7 @@ public class DetailController {
 	@Autowired
 	DetailService detailService;
 	
+	//예약 사이트
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pensionList(@RequestParam("pensionNo") int pensionNo, Model model,
 							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
@@ -30,32 +31,44 @@ public class DetailController {
 		System.out.println("datepicker2:" + datepicker2);
 		model.addAttribute("pMap",pMap);
 		model.addAttribute("crtPage", crtPage);
+		model.addAttribute("datepicker", datepicker);
+		model.addAttribute("datepicker2", datepicker2);
 
 		
 		return "detail/reservation";
 	}
 	
+	//객실 정보 가져오기 (ajax)
 	@ResponseBody
 	@RequestMapping(value="/api/reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<Map<String, Object>> pMap(@RequestParam("pensionNo") int pensionNo, @RequestParam("roomNo") int roomNo) {
-		System.out.println("ApiGuestbookController > list()");
+		System.out.println("ApiGuestbookController > pMap()");
 		
 		List<Map<String, Object>> roomMap = detailService.roomInfoList(pensionNo, roomNo);
 		System.out.println("roomMap :"+roomMap);
 		return roomMap;
 	}
 	
-	@RequestMapping(value="/infomation", method = {RequestMethod.GET, RequestMethod.POST})
-	public String test2() {
-		System.out.println("test2");
+	//펜션 숙소정보 가져오기 (ajax)
+	@ResponseBody
+	@RequestMapping(value="/api/infomation", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, Object> infomation(@RequestParam("pensionNo") int pensionNo) {
+		System.out.println("ApiGuestbookController > infomation()");
 		
-		return "detail/infomation";
+		Map<String, Object> iMap = detailService.pensionInfo(pensionNo);
+		System.out.println("iMap:"+iMap);
+		
+		return iMap;
 	}
 	
-	@RequestMapping(value="/review", method = {RequestMethod.GET, RequestMethod.POST})
-	public String test3() {
-		System.out.println("test3");
+	@ResponseBody
+	@RequestMapping(value="/api/review", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, Object> review(@RequestParam("pensionNo") int pensionNo) {
+		System.out.println("ApiGuestbookController > review()");
 		
-		return "detail/review";
+		Map<String, Object> rMap = detailService.reviewInfo(pensionNo);
+		System.out.println("rMap:"+rMap);
+		
+		return rMap;
 	}
 }

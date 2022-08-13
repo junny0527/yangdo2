@@ -122,5 +122,15 @@ public class DetailDao {
 		}
 	*/
 	
+	//펜션 숙소정보 가져오기 (ajax)
+	public Map<String, Object> pensionInfo(int pensionNo) {
+		System.out.println("DetailService > pensionInfo");
+		
+		Map<String, Object> pensionInfo = sqlSession.selectOne("pensionInfo",pensionNo);
+		return pensionInfo;
+	}
+	
+	
+	
 	
 }

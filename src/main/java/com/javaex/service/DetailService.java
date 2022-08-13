@@ -113,9 +113,26 @@ public class DetailService {
 		return roomInfoList;
 	}
 	
+	//펜션 숙소정보 가져오기 (ajax)
+	public Map<String, Object> pensionInfo(int pensionNo) {
+		System.out.println("DetailService > pensionInfo");
+		
+		Map<String, Object> pensionInfo = detailDao.pensionInfo(pensionNo);
+		return pensionInfo;
+	}
 	
-	
-	
+	//펜션 리뷰정보 가져오기 (ajax)
+	public Map<String, Object> reviewInfo(int pensionNo) {
+		System.out.println("DetailService > pensionInfo");
+		
+		Map<String, Object> rMap = new HashMap<String, Object>();
+		
+		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
+		
+		rMap.put("totalReview", totalReview);
+		
+		return rMap;
+	}
 
 	
 	

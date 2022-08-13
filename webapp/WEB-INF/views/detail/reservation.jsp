@@ -340,9 +340,9 @@
 			
         <div id="menuBox"> 
 			<div id="menu">
-			   	<a href="${pageContext.request.contextPath}/reservation"><button id="var">객실안내</button></a>
-				<a href="${pageContext.request.contextPath}/infomation"><button id="var1">숙소정보</button></a>
-				<a href="${pageContext.request.contextPath}/review"><button id="var2">리뷰</button></a>
+			   	<button id="var">객실안내</button>
+				<button id="var1">숙소정보</button>
+				<button id="var2">리뷰</button>
 			</div>
         	<!-- //menu -->
         </div>
@@ -350,9 +350,18 @@
         
         <div id="roomList">
 			<div id="calendar">
-				<form action="${pageContext.request.contextPath}/reservation/${pMap.pInfo.NO}">
-					<span>시작일 : </span> <input type="text" id="datepicker" name="datepicker" > 
-					<span>종료일 : </span> <input type="text" id="datepicker2" name="datepicker2" >
+				<form action="${pageContext.request.contextPath}/reservation">
+					<input type="hidden" name="pensionNo" value="${pMap.pInfo.NO}">
+					<c:choose>
+						<c:when test="${datepicker != null && datepicker2 != null}">
+							<span>시작일 : </span> <input type="text" id="datepicker" name="datepicker" value="${datepicker}"> 
+							<span>종료일 : </span> <input type="text" id="datepicker2" name="datepicker2" value="${datepicker2}">
+						</c:when>
+						<c:otherwise>
+								<span>시작일 : </span> <input type="text" id="datepicker" name="datepicker"> 
+								<span>종료일 : </span> <input type="text" id="datepicker2" name="datepicker2">
+						</c:otherwise>
+					</c:choose>
 					<button type="submit">일정 선택하기</button><br>
 				</form>
 			</div>
@@ -477,7 +486,13 @@
 				<!-- //room -->
 		</div>
 	    <!-- //roomList --> 	
-         	
+        
+        <div id="pensionInfo"></div>
+         <!-- //pensionInfo -->
+         
+        <div id="review"></div> 	
+        <!-- //review -->
+        
 		<div class="clearfix"> 
 			<!-- //footer -->
 			<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
@@ -629,11 +644,24 @@
             //input을 datepicker로 선언
             $("#datepicker").datepicker();                    
             $("#datepicker2").datepicker();
+            var datepicker = $("#datepicker").val();
+            var datepicker2 = $("#datepicker2").val();
             
+            
+            /* 
             //From의 초기값을 오늘 날짜로 설정
             $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
             //To의 초기값을 내일로 설정
             $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+             */
+             
+            if(${"datepicker"} != null && ${"datepicker2"} != null) {
+            	//From의 초기값을 오늘 날짜로 설정
+	            $('#datepicker').datepicker('setDate', datepicker); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+	            //To의 초기값을 내일로 설정
+	            $('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+            }
+	           
         });
 	
 	///////////////////////// 객실 이용안내  ///////////////////////////
@@ -671,9 +699,6 @@
 	});
 	
 	
-	
-
-	
 	///////////////////////// 객실 사진보기  ///////////////////////////
 	
 	$(".roomImgList").on("click", function() { 
@@ -696,13 +721,191 @@
 			$("#imgCount").text(no + ' / ' + ${totalCnt} + ' | ' + '전체사진' );
 			
 		});
-			
-		
-		
 	
+	var reBtn = true;
+	var iBtn = true;
+	var rBtn = true;
+	
+	///////////////////////// 숙소정보(ajax)  ///////////////////////////
+	$("#var1").on("click", function() {
+		$("#pensionInfo").show();
+		$("#roomList").hide();
+		rBtn = true;
 		
+		var pensionNo = $("#pensionNo").val();
+		$("#var").css("color", "black");
+		$("#var1").css("color", "red");
+		$("#var2").css("color", "black");
+		$("#pensionInfo").width("1024px");
+		$("#pensionInfo").css("background-color", "rgba(0,0,0,0.08)");
+		$("#pensionInfo").css("border-radius", "5px");
+		$("#pensionInfo").css("border", "1px solid black");
+		$("#pensionInfo").css("margin", "auto");
+		$("#pensionInfo").css("margin-top", "30px");
+		$("#pensionInfo").css("padding-top", "5px");
+		$("#pensionInfo").css("padding-left", "5px");
 		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/api/infomation?pensionNo=" + pensionNo,		
+			type : "post",
+			//contentType : "application/json",
+			//data : ,
+
+			dataType : "json",
+			success : function(iMap){
+				/*성공시 처리해야될 코드 작성*/
+				
+				if(iBtn == true) {
+					var1Render(iMap);
+					iBtn = false;
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}); 
+	
+	
+	function var1Render(iMap) {
+		var str = '';
+			str += '<div id="aroundInfo">';
+			str += '	<div class="info">주변정보</div>';	
+			str += '	<span>'+iMap.AREA_INFO1+'</span><br>';
+			str += '	<span>'+iMap.AREA_INFO2+'</span><br>';
+			str += '	<span>'+iMap.AREA_INFO3+'</span><br>';
+			str += '</div>';
+			str += '<div id="notice">';
+			str += '	<div class="info">공지사항</div>';	
+			str += '	<span>방역실시 / 손소독제 구비 / 전 직원 마스크 착용</span>'; //X
+			str += '	</div>';
+			str += '<div id="basic">';
+			str += '	<div class="info">기본정보</div>';	
+			str += '	<span>입실 : 15:00 | 퇴실 : 11:00</span>'; //X
+			str += '</div>';
+			str += '<div id="guestroom">';
+			str += '	<div class="info">객실정보</div>';	//X
+			str += '	<span>앞마당 : 프라이빗한 모닥데크, 캠핑의자, 비바코로마 5인텐트, 실외 슬리퍼 (현관 입구 선반에 비치), 손소독제 (현관입구)</span>';
+			str += '</div>';
+			str += '<div id="addPeople">';
+			str += '	<div class="info">인원 추가정보</div>';	
+			str += '	<span>성인 1인당'+iMap.ADD_ADULT_PRICE+'원</span><br>'; 
+			str += '	<span>아동 1인당'+iMap.ADD_KID_PRICE+'원</span><br>'; 
+			str += '	<span>영유아 1인당 '+iMap.ADD_BABY_PRICE+'원</span><br>'; 
+			str += '</div>';
+			str += '<div id="dog">';
+			str += '	<div class="info">애견 입실안내</div>';	
+			str += '	<span>애견동반을 원할 시 사전문의 및 상담필수</span>'; //X
+			str += '</div>';
+			str += '<div id="service">';
+			str += '	<div class="info">펜션 서비스</div>';
+			str += '	<span>시설 이용문의 및 비용 별도 펜션문의</span>';	//X
+			str += '</div>';
+			str += '<div id="bbq">';
+			str += '	<div class="info">바비큐</div>';	
+			str += '	<span>숯 + 그릴 대여 : 2인 기준 20,000원</span>';	//X
+			str += '</div>';
+			str += '<div id="cancle">';
+			str += '	<div class="info">취소 및 환불규정</div>';
+			str += '	<span>숙박일 기준 7일 전 : 100% 환불</span>';	//X
+			str += '</div>';
+			str += '<div id="checkList">';
+			str += '	<div class="info">확인사항 및 기타</div>';
+			str += '	<span>'+iMap.ETC+'</span>';	//반복문
+			str += '</div>';
+			
+			$("#pensionInfo").append(str);
+	};
+	
+	/* 리뷰 페이지 */
+	$("#var2").on("click", function() {
+		console.log(rBtn);
+		$("#pensionInfo").hide();
+		var pensionNo = $("#pensionNo").val();
+		$("#var").css("color", "black");
+		$("#var1").css("color", "black");
+		$("#var2").css("color", "red");
+		iBtn = true;
 		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/api/review?pensionNo=" + pensionNo,		
+			type : "post",
+			//contentType : "application/json",
+			//data : ,
+
+			dataType : "json",
+			success : function(){
+				/*성공시 처리해야될 코드 작성*/
+				if(rBtn == true) {
+					var2Render();
+					rBtn = false;
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}); 	
+		
+	function var2Render(rMap) {
+		var str = '';
+			str += '<span id="ment">최고예요</span>';
+			str += '<div id="star">';
+			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '</div>';
+			str += '<div id="reviewCount">';
+			str += '	<span id="allReview">전체리뷰 2</span>';
+			str += '	<span id="pensionReview">제휴점 답변 2</span>';
+			str += '</div>';
+			str += '<div id="reviewBox">';
+			str += '	<div id="guestContainer">';
+			str += '		<div class="box">';
+			str += '			<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
+			str += '		</div>';
+			str += '		<div id="guestBox">';
+			str += '			<span id="guestReview">여기만한 곳은 어디에도 없을 거예요.</span>';
+			str += '			<div id="reviewStar">';
+			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+			str += '				<span id="starScore">5.0</span>';
+			str += '			</div>';
+			str += '			<div id="guestInfo">';
+			str += '				<span id="roomName">풍뎅이 객실 이용</span>';
+			str += '				<span> | 지웅잉</span>';
+			str += '			</div>';
+			str += '			<span id="reviewContent">진심으로 가는길에 카페를 들렀다가 숙소로 갔는데 진짜 카페가지말고 바로 숙소로 갈껄 하는 생각이 들만큼 너무너무 좋은 숙소였습니다 ㅎㅎ 불멍도 야무지게 하고 맛있는 음식도 잘 먹고 갑니다 ㅎㅎ 사장님도 너무 좋고 시설도 너무 좋아서 완전 힐링 하고 가네요 ㅎㅎ 다음에는 2박을 하고싶을정도로 너무 좋은 하루였습니다!!!</span>';
+			str += '			<div id="roomImg">';
+			str += '				<ul>';
+			str += '					<li><img src="${pageContext.request.contextPath}/assets/image/detail/img.PNG"></li>';
+			str += '					<li><img src="${pageContext.request.contextPath}/assets/image/detail/img2.PNG"></li>';
+			str += '				</ul>';
+			str += '			</div>';
+			str += '			<span id="guestRegDate">1개월 전</span>';
+			str += '			<div id="ceoContainer">';
+			str += '				<div class="box">';
+			str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
+			str += '				</div>';
+			str += '				<div id="ceoInfo">';
+			str += '					<span id="ceoReview">제휴점 답변</span>';
+			str += '					<span id="ceoContent">지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.</span>';
+			str += '					<span id="ceoRegDate">1개월 전</span>';
+			str += '				</div>';
+			str += '			</div>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</div>';
+			
+			$("#review").append(str);
+	}	
 	
 	
 	
