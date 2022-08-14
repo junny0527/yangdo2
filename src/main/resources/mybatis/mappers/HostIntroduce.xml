@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "HostIntroduce">
+
+<insert id = "insertPension" parameterType = "com.javaex.vo.HostIntroduceVo">
+	<![CDATA[
+		insert into pension(
+			no
+			,company_no
+			,name
+			,postal_code
+			,address
+			,detail_address
+			,law_code
+			,law_name
+			,visit_road1
+			,visit_road2
+			,visit_road3
+			,area_info1
+			,area_info2
+			,area_info3
+			,rules
+			)
+		values(
+			SEQ_PENSION_NO.nextval
+			,1
+			,#{pensionName}
+			,#{postalCode}
+			,#{pensionAddress}
+			,#{detailAddress}
+			,#{lawCode}
+			,#{lawName}
+			,#{visitRoad1}
+			,#{visitRoad2}
+			,#{visitRoad3}
+			,#{areaInfo1}
+			,#{areaInfo2}
+			,#{areaInfo3}
+			,#{rules}
+			)
+	]]>
+</insert>
+
+<insert id= "insertPublic" parameterType = "int">
+	<![CDATA[
+		insert into p_public
+		values(SEQ_P_PUBLIC_NO.nextval, 1, #{value})
+	]]>
+</insert>
+
+
+<insert id= "insertAmenities" parameterType = "int">
+	<![CDATA[
+		insert into p_amenities
+		values(SEQ_P_AMENITIES_NO.nextval, 1, #{value})
+	]]>
+</insert>
+
+
+<update id = "updateOpt" parameterType = "com.javaex.vo.HostIntroduceVo">
+	<![CDATA[
+		update pension
+			set
+				live_pay = #{livePay}
+			    ,parking_info = #{parkingInfo}
+			    ,etc = #{etc}
+		where company_no = 1
+	]]>
+</update>
+
+
+</mapper>

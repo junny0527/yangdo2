@@ -38,7 +38,6 @@ public class HostIntroduceService {
 	}
 	
 	public int updateOpt(HostIntroduceVo iVo) {
-		System.out.println("Service ㅎㅇ");
 		return iDao.updateOpt(iVo);
 	}
 	

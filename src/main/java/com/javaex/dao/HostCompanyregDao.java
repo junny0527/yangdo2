@@ -13,19 +13,19 @@ public class HostCompanyregDao {
 	private SqlSession sqlSession;
 	
 	public HostCompanyregVo getEmail(String id){
-		return sqlSession.selectOne("Hostcompanyreg.email", id);
+		return sqlSession.selectOne("HostCompanyreg.email", id);
 	}
 	
 	public int insertCompany(HostCompanyregVo cVo) {
-		return sqlSession.insert("Hostcompanyreg.insertcompany", cVo);
+		return sqlSession.insert("HostCompanyreg.insertcompany", cVo);
 	}
 	
 	public int insertBTArray(int insertBTArrays) {
-		return sqlSession.insert("Hostcompanyreg.insertBTA", insertBTArrays);
+		return sqlSession.insert("HostCompanyreg.insertBTA", insertBTArrays);
 	}
 	
 	public int insertBGArray(int insertBGArrays) {
-		return sqlSession.insert("Hostcompanyreg.insertBGA", insertBGArrays);
+		return sqlSession.insert("HostCompanyreg.insertBGA", insertBGArrays);
 	}
 	
 	

@@ -13,20 +13,19 @@ public class HostIntroduceDao {
 	private SqlSession sqlSession;
 	
 	public int insertPension(HostIntroduceVo iVo) {
-		return sqlSession.insert("insertPension", iVo);
+		return sqlSession.insert("HostIntroduce.insertPension", iVo);
 	}
 	
 	public int insertPublic(int value) {
-		return sqlSession.insert("insertPublic", value);
+		return sqlSession.insert("HostIntroduce.insertPublic", value);
 	}
 	
 	public int insertAmenities(int value) {
-		return sqlSession.insert("insertAmenities", value);
+		return sqlSession.insert("HostIntroduce.insertAmenities", value);
 	}
 	
 	public int updateOpt(HostIntroduceVo iVo) {
-		System.out.println("DAO ㅎㅇ");
-		return sqlSession.update("updateOpt", iVo);
+		return sqlSession.update("HostIntroduce.updateOpt", iVo);
 	}
 	
 	
