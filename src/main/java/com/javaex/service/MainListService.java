@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.MainListDao;
-import com.javaex.vo.PensionImageVo;
+import com.javaex.vo.MainListVo;
 
 @Service
 public class MainListService {
@@ -15,20 +15,24 @@ public class MainListService {
 	@Autowired
 	private MainListDao mainDao;
 	
-	public Map<String, Object> select(int areaNo){
+	public List<MainListVo> select(int areaNo){
 		System.out.println("mainService>select");
 		
 		// 펜션정보
-		Map<String, Object> penMapList = mainDao.select(areaNo);
+		List<MainListVo> mainList = mainDao.select(areaNo);
 		
-		//댓글 수
-		int totalCnt = mainDao.selectTotalCnt();
 		
-		penMapList.put("totalCnt", totalCnt);
 		
-		return penMapList;
+		return mainList;
 	}
 	
-	
+	public Map<String,Object> selectArea(int areaNo){
+		System.out.println("mainService>Area");
+		
+		Map<String, Object> pMap = mainDao.selectArea(areaNo);
+		System.out.println(pMap);
+		return pMap;
+		
+	}
 	
 }

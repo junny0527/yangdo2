@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
-<!-- ´Þ·Â ui -->
+<!-- ë‹¬ë ¥ ui -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -34,10 +35,10 @@
 		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
 		<!-- header -->
 		
-		<!-- header Áö¿ª¼±ÅÃ -->
+		<!-- header ì§€ì—­ì„ íƒ -->
 		<div class="sub_top_wrap">
 			<div class="sub_top">
-				<h2>Ææ¼Ç</h2>
+				<h2>íŽœì…˜</h2>
 				<div class="area">
 						<select name="sido1" id="sido1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
 						border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
@@ -48,34 +49,34 @@
 				</div>
 			</div>
 		</div>
-		<!-- header Áö¿ª¼±ÅÃ -->
+		<!-- header ì§€ì—­ì„ íƒ -->
 		
 		<!-- content -->
 		<div id="content" class="sub_wrap">
 			<!-- fillter -->
 			<div class="filter_wrap">
 				<section class="date_wrap">
-					<h3>³¯Â¥</h3>
+					<h3>ë‚ ì§œ</h3>
 						<input type="text" id="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center;">
 						<input type="text" id="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center;">
 					
 				</section>
-				<h3>»ó¼¼Á¶°Ç</h3>
+				<h3>ìƒì„¸ì¡°ê±´</h3>
 				<div class="btn_wrap">
-					<button id="btn_child1" type="button" onclick="initCheckBtn()">ÃÊ±âÈ­</button>
-					<button id="btn_child2" type="submit">Àû¿ë</button>
+					<button id="btn_child1" type="button" onclick="initCheckBtn()">ì´ˆê¸°í™”</button>
+					<button id="btn_child2" type="submit">ì ìš©</button>
 				</div>
 				<section>
 					<ul>
 						<li>
 							<input type="checkbox" id="yangdo" name="pensionItem" class="inp_chk" value="">
-							<label for="yangdo" class="label_chk">¾çµµ Áß</label>
+							<label for="yangdo" class="label_chk">ì–‘ë„ ì¤‘</label>
 						</li>
 					</ul>
 				</section>
 				<section>
 					<input type="hidden" id="persons" name="persons">
-					<strong>ÀÎ¿ø</strong>
+					<strong>ì¸ì›</strong>
 					<div class="cnt_people">
 						<button type="button" class="disable dn" onclick="count('minus')" value="-">-</button>
 						<span id="result">2</span>
@@ -83,31 +84,31 @@
 					</div>
 				</section>
 				<section>
-					<strong>°ø¿ë½Ã¼³</strong>
+					<strong>ê³µìš©ì‹œì„¤</strong>
 					<ul class="hide_type half">
 						<li>
 							<input type="checkbox" id="swimming_pool" name="pensionItem" class="inp_chk">
-							<label for="swimming_pool" class="label_chk">¼ö¿µÀå</label>
+							<label for="swimming_pool" class="label_chk">ìˆ˜ì˜ìž¥</label>
 						</li>
 						<li>
 							<input type="checkbox" id="football" name="pensionItem" class="inp_chk">
-							<label for="football" class="label_chk">Á·±¸Àå</label>
+							<label for="football" class="label_chk">ì¡±êµ¬ìž¥</label>
 						</li>
 						<li>
 							<input type="checkbox" id="cafe" name="pensionItem" class="inp_chk">
-							<label for="cafe" class="label_chk">Ä«Æä</label>
+							<label for="cafe" class="label_chk">ì¹´íŽ˜</label>
 						</li>
 						<li>
 							<input type="checkbox" id="singroom" name="pensionItem" class="inp_chk">
-							<label for="singroom" class="label_chk">³ë·¡¹æ</label>
+							<label for="singroom" class="label_chk">ë…¸ëž˜ë°©</label>
 						</li>
 						<li>
 							<input type="checkbox" id="store" name="pensionItem" class="inp_chk">
-							<label for="store" class="label_chk">ÆíÀÇÁ¡</label>
+							<label for="store" class="label_chk">íŽ¸ì˜ì </label>
 						</li>
 						<li>
 							<input type="checkbox" id="parking" name="pensionItem" class="inp_chk">
-							<label for="parking" class="label_chk">ÁÖÂ÷Àå</label>
+							<label for="parking" class="label_chk">ì£¼ì°¨ìž¥</label>
 						</li>
 						<li>
 							<input type="checkbox" id="bbq" name="pensionItem" class="inp_chk">
@@ -115,24 +116,24 @@
 						</li>
 						<li>
 							<input type="checkbox" id="restaurant" name="pensionItem" class="inp_chk">
-							<label for="restaurant" class="label_chk">ÁÖ¹æ/½Ä´ç</label>
+							<label for="restaurant" class="label_chk">ì£¼ë°©/ì‹ë‹¹</label>
 						</li>
 						<li>
 							<input type="checkbox" id="smoking_room" name="pensionItem" class="inp_chk">
-							<label for="smoking_room" class="label_chk">Èí¿¬ºÎ½º</label>
+							<label for="smoking_room" class="label_chk">í¡ì—°ë¶€ìŠ¤</label>
 						</li>
 					</ul>
 				</section>
 				<section>
-					<strong>°´½Ç ³» ½Ã¼³</strong>
+					<strong>ê°ì‹¤ ë‚´ ì‹œì„¤</strong>
 					<ul class="hide_type half">
 						<li>
 							<input type="checkbox" id="refrigerator" name="pensionItem" class="inp_chk">
-							<label for="refrigerator" class="label_chk">³ÃÀå°í</label>
+							<label for="refrigerator" class="label_chk">ëƒ‰ìž¥ê³ </label>
 						</li>
 						<li>
 							<input type="checkbox" id="aircon" name="pensionItem" class="inp_chk">
-							<label for="aircon" class="label_chk">¿¡¾îÄÁ</label>
+							<label for="aircon" class="label_chk">ì—ì–´ì»¨</label>
 						</li>
 						<li>
 							<input type="checkbox" id="tv" name="pensionItem" class="inp_chk">
@@ -140,35 +141,35 @@
 						</li>
 						<li>
 							<input type="checkbox" id="wifi" name="pensionItem" class="inp_chk">
-							<label for="wifi" class="label_chk">¿ÍÀÌÆÄÀÌ</label>
+							<label for="wifi" class="label_chk">ì™€ì´íŒŒì´</label>
 						</li>
 						<li>
 							<input type="checkbox" id="bathroom_ware" name="pensionItem" class="inp_chk">
-							<label for="bathroom_ware" class="label_chk">¿å½Ç¿ëÇ°</label>
+							<label for="bathroom_ware" class="label_chk">ìš•ì‹¤ìš©í’ˆ</label>
 						</li>
 						<li>
 							<input type="checkbox" id="washing_mu" name="pensionItem" class="inp_chk">
-							<label for="washing_mu" class="label_chk">¼¼Å¹±â</label>
+							<label for="washing_mu" class="label_chk">ì„¸íƒê¸°</label>
 						</li>
 						<li>
 							<input type="checkbox" id="dry_mu" name="pensionItem" class="inp_chk">
-							<label for="dry_mu" class="label_chk">µå¶óÀÌ±â</label>
+							<label for="dry_mu" class="label_chk">ë“œë¼ì´ê¸°</label>
 						</li>
 						<li>
 							<input type="checkbox" id="bathtub" name="pensionItem" class="inp_chk">
-							<label for="bathtub" class="label_chk">¿åÁ¶</label>
+							<label for="bathtub" class="label_chk">ìš•ì¡°</label>
 						</li>
 						<li>
 							<input type="checkbox" id="cook_ok" name="pensionItem" class="inp_chk">
-							<label for="cook_ok" class="label_chk">Ãë»ç°¡´É</label>
+							<label for="cook_ok" class="label_chk">ì·¨ì‚¬ê°€ëŠ¥</label>
 						</li>
 						<li>
 							<input type="checkbox" id="room_smoking" name="pensionItem" class="inp_chk">
-							<label for="room_smoking" class="label_chk">°´½Ç ³» Èí¿¬</label>
+							<label for="room_smoking" class="label_chk">ê°ì‹¤ ë‚´ í¡ì—°</label>
 						</li>
 						<li>
 							<input type="checkbox" id="dog" name="pensionItem" class="inp_chk">
-							<label for="dog" class="label_chk">¹Ý·Á°ß µ¿¹Ý</label>
+							<label for="dog" class="label_chk">ë°˜ë ¤ê²¬ ë™ë°˜</label>
 						</li>
 					</ul>
 				</section>
@@ -180,68 +181,70 @@
 					<div class="pc">
 						<div class="btn_wrap width_4">
 							<button type="button" data-sort="HIT" class="on">
-								<span>ÃßÃµ ¼ø</span>
+								<span>ì¶”ì²œ ìˆœ</span>
 							</button>
 							<button type="button" data-sort="DISTANCE" class="">
-								<span>°Å¸® ¼ø</span>
+								<span>ê±°ë¦¬ ìˆœ</span>
 							</button>
 							<button type="button" data-sort="LOWPRICE" class="">
-								<span>³·Àº °¡°Ý ¼ø</span>
+								<span>ë‚®ì€ ê°€ê²© ìˆœ</span>
 							</button>
 							<button type="button" data-sort="HIGHPRICE" class="">
-								<span>³ôÀº °¡°Ý ¼ø</span>
+								<span>ë†’ì€ ê°€ê²© ìˆœ</span>
 							</button>
 						</div>
 						<button type="button" id="btn_map" class="btn_map text-center" ">
-						Áöµµ
+						ì§€ë„
 						</button>
 					</div>
 				</div>
 				<div id="poduct_list_area">
 					<div class="title">
-						<h3>${penMapList.LAW_NAME}</h3>
+						<h3>${pMap.LAW_NAME}</h3>
 					</div>
-					<!-- »çÁøÁ¤º¸ -->
+					<!-- ì‚¬ì§„ì •ë³´ -->
 					<ul>
+					<c:forEach var="mainList" items="${mainList}">
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${penMapList.IMAGE_PATH}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${mainList.imagePath}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${penMapList.STATUS == '¾çµµÁß'}">									
-											<span>¾çµµÁß</span>
+										<c:if test="${mainList.status == 'ì–‘ë„ì¤‘'}">									
+											<span>ì–‘ë„ì¤‘</span>
 										</c:if>	
 									</div>
 									<div class="name">
-										<strong>${penMapList.NAME}</strong>
+										<strong>${mainList.pName}</strong>
 										<p class="score">
-											<em>${penMapList.STARS}</em>
+											<em>${mainList.stars}</em>
 											<c:choose>
-												<c:when test="${penMapList.STARS <= 3}">
-													<span>º°·Î¿¡¿ä (${penMapList.totalCnt})</span>
+												<c:when test="${mainList.stars <= 3}">
+													<span>ë³„ë¡œì—ìš” </span>
 												</c:when>
-												<c:when test="${penMapList.STARS > 3 && penMapList.STARS < 4}">
-													<span>ÁÁ¾Æ¿ä (${penMapList.totalCnt})</span>
+												<c:when test="${mainList.stars > 3 && mainList.stars < 4}">
+													<span>ì¢‹ì•„ìš”</span>
 												</c:when>
-												<c:when test="${penMapList.STARS >= 4 && penMapList.STARS <= 5}">
-													<span>ÃÖ°í¿¡¿ä (${penMapList.totalCnt})</span>
+												<c:when test="${mainList.stars >= 4 && mainList.stars <= 5}">
+													<span>ìµœê³ ì—ìš” </span>
 												</c:when>	
 											</c:choose>	
 										</p>
-										<p>${penMapList.LAW_NAME} | ${penMapList.VISIT_ROAD3}</p>
+										<p>${mainList.lawName} | ${mainList.visitRoad3}</p>
 									</div>
 									<div class="price">
 										<p>
-											<b>${penMapList.PRICE}¿ø</b>
+											<b>${mainList.penPrice}ì›</b>
 										</p>
 									</div>
 								</div>
 							</a>
 						</li>
+						</c:forEach>
 					</ul>	
-					<!-- »çÁø Á¤º¸ -->
+					<!-- ì‚¬ì§„ ì •ë³´ -->
 					
 				</div>
 			</div>
@@ -255,24 +258,24 @@
 		<footer>
 			<div class="align">
 				<ul class="link">
-					<li><a href="">È¸»ç¼Ò°³</a> <span>|</span></li>
-					<li><a href="">ÀÌ¿ë¾à°ü</a> <span>|</span></li>
-					<li><a href="">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a> <span>|</span></li>
-					<li><a href="">¼ÒºñÀÚ ºÐÀïÇØ°á ±âÁØ</a> <span>|</span></li>
-					<li><a href="">»ç¾÷ÀÚ Á¤º¸È®ÀÎ</a> <span>|</span></li>
-					<li><a href="">¾çµµ¾î¶§ ¸¶ÄÉÆÃ¼¾ÅÍ</a> <span>|</span></li>
-					<li><a href="">¾×Æ¼ºñÆ¼ È£½ºÆ®¼¾ÅÍ</a> <span>|</span></li>
-					<li><a href="">Ææ¼Ç ¾çµµ¾î¶§</a> <span>|</span></li>
-					<li><a href="">ÄÜÅÙÃ÷»ê¾÷ÁøÈï¹ý¿¡ÀÇÇÑ Ç¥½Ã</a></li>
+					<li><a href="">íšŒì‚¬ì†Œê°œ</a> <span>|</span></li>
+					<li><a href="">ì´ìš©ì•½ê´€</a> <span>|</span></li>
+					<li><a href="">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</a> <span>|</span></li>
+					<li><a href="">ì†Œë¹„ìž ë¶„ìŸí•´ê²° ê¸°ì¤€</a> <span>|</span></li>
+					<li><a href="">ì‚¬ì—…ìž ì •ë³´í™•ì¸</a> <span>|</span></li>
+					<li><a href="">ì–‘ë„ì–´ë•Œ ë§ˆì¼€íŒ…ì„¼í„°</a> <span>|</span></li>
+					<li><a href="">ì•¡í‹°ë¹„í‹° í˜¸ìŠ¤íŠ¸ì„¼í„°</a> <span>|</span></li>
+					<li><a href="">íŽœì…˜ ì–‘ë„ì–´ë•Œ</a> <span>|</span></li>
+					<li><a href="">ì½˜í…ì¸ ì‚°ì—…ì§„í¥ë²•ì—ì˜í•œ í‘œì‹œ</a></li>
 				</ul>
 		
 				<p>
-					<b>¾çµµ¾î¶§ °í°´¼¾ÅÍ 1670-4215</b> <span>¿ÀÀü 9½Ã - »õº® 3½Ã</span>
+					<b>ì–‘ë„ì–´ë•Œ ê³ ê°ì„¼í„° 1670-4215</b> <span>ì˜¤ì „ 9ì‹œ - ìƒˆë²½ 3ì‹œ</span>
 				</p>
 		
 				<address>
-					<span>(ÁÖ) ¾çµµ¾î¶§ÄÄÆÛ´Ï</span> ÁÖ¼Ò : ¼­¿ïÆ¯º°½Ã ºÀÃµµ¿ ºÀÃµ»ç·Î 611, 648Å¸¿ö 14Ãþ | ´ëÇ¥ÀÌ»ç : ÃÖÁ¾ºó | »ç¾÷ÀÚµî·Ï¹øÈ£: 741-64-88541 <br> Åë½ÅÆÇ¸Å¹øÈ£ : 2011-¼­¿ïºÀÃµ-75441 | °ü±¤»ç¾÷ÀÚ µî·Ï¹øÈ£: Á¦2011-74È£ | ÀüÈ­¹øÈ£ : 1670-4215 |
-					ÀüÀÚ¿ìÆíÁÖ¼Ò : yangdo@goodchoice.kr <br> Copyright GC COMPANY Corp. All rights reserved.
+					<span>(ì£¼) ì–‘ë„ì–´ë•Œì»´í¼ë‹ˆ</span> ì£¼ì†Œ : ì„œìš¸íŠ¹ë³„ì‹œ ë´‰ì²œë™ ë´‰ì²œì‚¬ë¡œ 611, 648íƒ€ì›Œ 14ì¸µ | ëŒ€í‘œì´ì‚¬ : ìµœì¢…ë¹ˆ | ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸: 741-64-88541 <br> í†µì‹ íŒë§¤ë²ˆí˜¸ : 2011-ì„œìš¸ë´‰ì²œ-75441 | ê´€ê´‘ì‚¬ì—…ìž ë“±ë¡ë²ˆí˜¸: ì œ2011-74í˜¸ | ì „í™”ë²ˆí˜¸ : 1670-4215 |
+					ì „ìžìš°íŽ¸ì£¼ì†Œ : yangdo@goodchoice.kr <br> Copyright GC COMPANY Corp. All rights reserved.
 				</address>
 		
 			</div>
@@ -286,7 +289,7 @@
 	
 
 	
-	<!-- Áöµµ ¸ð´Þ -->
+	<!-- ì§€ë„ ëª¨ë‹¬ -->
 		 <div class="modal" id="local" >
 		  <div class="modal-dialog" >
 		    <div class="modal-content" >
@@ -298,7 +301,7 @@
 		        </div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">´Ý±â</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">ë‹«ê¸°</button>
 		      </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
@@ -306,91 +309,90 @@
 
 	<script type="text/javascript">
 			
-///////////////////////// ÀÏÁ¤¼±ÅÃ ///////////////////////////
+///////////////////////// ì¼ì •ì„ íƒ ///////////////////////////
 	
 	
 	
 	$(function() {
-            //¸ðµç datepicker¿¡ ´ëÇÑ °øÅë ¿É¼Ç ¼³Á¤
+            //ëª¨ë“  datepickerì— ëŒ€í•œ ê³µí†µ ì˜µì…˜ ì„¤ì •
             $.datepicker.setDefaults({
-                dateFormat: 'yy-mm-dd' //Input Display Format º¯°æ
-                ,showOtherMonths: true //ºó °ø°£¿¡ ÇöÀç¿ùÀÇ ¾ÕµÚ¿ùÀÇ ³¯Â¥¸¦ Ç¥½Ã
-                ,showMonthAfterYear:true //³âµµ ¸ÕÀú ³ª¿À°í, µÚ¿¡ ¿ù Ç¥½Ã
-                ,changeYear: true //ÄÞº¸¹Ú½º¿¡¼­ ³â ¼±ÅÃ °¡´É
-                ,changeMonth: true //ÄÞº¸¹Ú½º¿¡¼­ ¿ù ¼±ÅÃ °¡´É                
-                ,showOn: "both" //button:¹öÆ°À» Ç¥½ÃÇÏ°í,¹öÆ°À» ´­·¯¾ß¸¸ ´Þ·Â Ç¥½Ã ^ both:¹öÆ°À» Ç¥½ÃÇÏ°í,¹öÆ°À» ´©¸£°Å³ª inputÀ» Å¬¸¯ÇÏ¸é ´Þ·Â Ç¥½Ã  
-                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //¹öÆ° ÀÌ¹ÌÁö °æ·Î
-                ,buttonImageOnly: true //±âº» ¹öÆ°ÀÇ È¸»ö ºÎºÐÀ» ¾ø¾Ö°í, ÀÌ¹ÌÁö¸¸ º¸ÀÌ°Ô ÇÔ
-                ,buttonText: "¼±ÅÃ" //¹öÆ°¿¡ ¸¶¿ì½º °®´Ù ´òÀ» ¶§ Ç¥½ÃµÇ´Â ÅØ½ºÆ®                
-                ,yearSuffix: "³â" //´Þ·ÂÀÇ ³âµµ ºÎºÐ µÚ¿¡ ºÙ´Â ÅØ½ºÆ®
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //´Þ·ÂÀÇ ¿ù ºÎºÐ ÅØ½ºÆ®
-                ,monthNames: ['1¿ù','2¿ù','3¿ù','4¿ù','5¿ù','6¿ù','7¿ù','8¿ù','9¿ù','10¿ù','11¿ù','12¿ù'] //´Þ·ÂÀÇ ¿ù ºÎºÐ Tooltip ÅØ½ºÆ®
-                ,dayNamesMin: ['ÀÏ','¿ù','È­','¼ö','¸ñ','±Ý','Åä'] //´Þ·ÂÀÇ ¿äÀÏ ºÎºÐ ÅØ½ºÆ®
-                ,dayNames: ['ÀÏ¿äÀÏ','¿ù¿äÀÏ','È­¿äÀÏ','¼ö¿äÀÏ','¸ñ¿äÀÏ','±Ý¿äÀÏ','Åä¿äÀÏ'] //´Þ·ÂÀÇ ¿äÀÏ ºÎºÐ Tooltip ÅØ½ºÆ®
-                ,minDate: "-1Y" //ÃÖ¼Ò ¼±ÅÃÀÏÀÚ(-1D:ÇÏ·çÀü, -1M:ÇÑ´ÞÀü, -1Y:ÀÏ³âÀü)
-                ,maxDate: "+1Y" //ÃÖ´ë ¼±ÅÃÀÏÀÚ(+1D:ÇÏ·çÈÄ, -1M:ÇÑ´ÞÈÄ, -1Y:ÀÏ³âÈÄ)                    
+                dateFormat: 'yy-mm-dd' //Input Display Format ë³€ê²½
+                ,showOtherMonths: true //ë¹ˆ ê³µê°„ì— í˜„ìž¬ì›”ì˜ ì•žë’¤ì›”ì˜ ë‚ ì§œë¥¼ í‘œì‹œ
+                ,showMonthAfterYear:true //ë…„ë„ ë¨¼ì € ë‚˜ì˜¤ê³ , ë’¤ì— ì›” í‘œì‹œ
+                ,changeYear: true //ì½¤ë³´ë°•ìŠ¤ì—ì„œ ë…„ ì„ íƒ ê°€ëŠ¥
+                ,changeMonth: true //ì½¤ë³´ë°•ìŠ¤ì—ì„œ ì›” ì„ íƒ ê°€ëŠ¥                
+                ,showOn: "both" //button:ë²„íŠ¼ì„ í‘œì‹œí•˜ê³ ,ë²„íŠ¼ì„ ëˆŒëŸ¬ì•¼ë§Œ ë‹¬ë ¥ í‘œì‹œ ^ both:ë²„íŠ¼ì„ í‘œì‹œí•˜ê³ ,ë²„íŠ¼ì„ ëˆ„ë¥´ê±°ë‚˜ inputì„ í´ë¦­í•˜ë©´ ë‹¬ë ¥ í‘œì‹œ  
+                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //ë²„íŠ¼ ì´ë¯¸ì§€ ê²½ë¡œ
+                ,buttonImageOnly: true //ê¸°ë³¸ ë²„íŠ¼ì˜ íšŒìƒ‰ ë¶€ë¶„ì„ ì—†ì• ê³ , ì´ë¯¸ì§€ë§Œ ë³´ì´ê²Œ í•¨
+                ,buttonText: "ì„ íƒ" //ë²„íŠ¼ì— ë§ˆìš°ìŠ¤ ê°–ë‹¤ ëŒ”ì„ ë•Œ í‘œì‹œë˜ëŠ” í…ìŠ¤íŠ¸                
+                ,yearSuffix: "ë…„" //ë‹¬ë ¥ì˜ ë…„ë„ ë¶€ë¶„ ë’¤ì— ë¶™ëŠ” í…ìŠ¤íŠ¸
+                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //ë‹¬ë ¥ì˜ ì›” ë¶€ë¶„ í…ìŠ¤íŠ¸
+                ,monthNames: ['1ì›”','2ì›”','3ì›”','4ì›”','5ì›”','6ì›”','7ì›”','8ì›”','9ì›”','10ì›”','11ì›”','12ì›”'] //ë‹¬ë ¥ì˜ ì›” ë¶€ë¶„ Tooltip í…ìŠ¤íŠ¸
+                ,dayNamesMin: ['ì¼','ì›”','í™”','ìˆ˜','ëª©','ê¸ˆ','í† '] //ë‹¬ë ¥ì˜ ìš”ì¼ ë¶€ë¶„ í…ìŠ¤íŠ¸
+                ,dayNames: ['ì¼ìš”ì¼','ì›”ìš”ì¼','í™”ìš”ì¼','ìˆ˜ìš”ì¼','ëª©ìš”ì¼','ê¸ˆìš”ì¼','í† ìš”ì¼'] //ë‹¬ë ¥ì˜ ìš”ì¼ ë¶€ë¶„ Tooltip í…ìŠ¤íŠ¸
+                ,minDate: "-1Y" //ìµœì†Œ ì„ íƒì¼ìž(-1D:í•˜ë£¨ì „, -1M:í•œë‹¬ì „, -1Y:ì¼ë…„ì „)
+                ,maxDate: "+1Y" //ìµœëŒ€ ì„ íƒì¼ìž(+1D:í•˜ë£¨í›„, -1M:í•œë‹¬í›„, -1Y:ì¼ë…„í›„)                    
             });
  
-            //inputÀ» datepicker·Î ¼±¾ð
+            //inputì„ datepickerë¡œ ì„ ì–¸
             $("#datepicker").datepicker();                    
             $("#datepicker2").datepicker();
             
-            //FromÀÇ ÃÊ±â°ªÀ» ¿À´Ã ³¯Â¥·Î ¼³Á¤
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:ÇÏ·çÀü, -1M:ÇÑ´ÞÀü, -1Y:ÀÏ³âÀü), (+1D:ÇÏ·çÈÄ, -1M:ÇÑ´ÞÈÄ, -1Y:ÀÏ³âÈÄ)
-            //ToÀÇ ÃÊ±â°ªÀ» ³»ÀÏ·Î ¼³Á¤
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:ÇÏ·çÀü, -1M:ÇÑ´ÞÀü, -1Y:ÀÏ³âÀü), (+1D:ÇÏ·çÈÄ, -1M:ÇÑ´ÞÈÄ, -1Y:ÀÏ³âÈÄ)
+            //Fromì˜ ì´ˆê¸°ê°’ì„ ì˜¤ëŠ˜ ë‚ ì§œë¡œ ì„¤ì •
+            $('#datepicker').datepicker('setDate', 'today'); //(-1D:í•˜ë£¨ì „, -1M:í•œë‹¬ì „, -1Y:ì¼ë…„ì „), (+1D:í•˜ë£¨í›„, -1M:í•œë‹¬í›„, -1Y:ì¼ë…„í›„)
+            //Toì˜ ì´ˆê¸°ê°’ì„ ë‚´ì¼ë¡œ ì„¤ì •
+            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:í•˜ë£¨ì „, -1M:í•œë‹¬ì „, -1Y:ì¼ë…„ì „), (+1D:í•˜ë£¨í›„, -1M:í•œë‹¬í›„, -1Y:ì¼ë…„í›„)
         });
 		
 		/* kakaoMap */
 		
 		
-			var container = document.getElementById('map1'); //Áöµµ¸¦ ´ãÀ» ¿µ¿ªÀÇ DOM ·¹ÆÛ·±½º
-			var options = { //Áöµµ¸¦ »ý¼ºÇÒ ¶§ ÇÊ¿äÇÑ ±âº» ¿É¼Ç
-			   center: new kakao.maps.LatLng(33.450701, 126.570667), //ÁöµµÀÇ Áß½ÉÁÂÇ¥.
-			   level: 13 //ÁöµµÀÇ ·¹º§(È®´ë, Ãà¼Ò Á¤µµ)
+			var container = document.getElementById('map1'); //ì§€ë„ë¥¼ ë‹´ì„ ì˜ì—­ì˜ DOM ë ˆí¼ëŸ°ìŠ¤
+			var options = { //ì§€ë„ë¥¼ ìƒì„±í•  ë•Œ í•„ìš”í•œ ê¸°ë³¸ ì˜µì…˜
+			   center: new kakao.maps.LatLng(33.450701, 126.570667), //ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ.
+			   level: 13 //ì§€ë„ì˜ ë ˆë²¨(í™•ëŒ€, ì¶•ì†Œ ì •ë„)
 			};
 			
 			var map = new kakao.maps.Map(container, options);
 			
-			var container = document.getElementById('map1'); //Áöµµ¸¦ ´ãÀ» ¿µ¿ªÀÇ DOM ·¹ÆÛ·±½º
-			var options = { //Áöµµ¸¦ »ý¼ºÇÒ ¶§ ÇÊ¿äÇÑ ±âº» ¿É¼Ç
-			   center: new kakao.maps.LatLng(37.4917397537238, 127.48756458504242), //ÁöµµÀÇ Áß½ÉÁÂÇ¥.
-			   level: 8 //ÁöµµÀÇ ·¹º§(È®´ë, Ãà¼Ò Á¤µµ)
+			var container = document.getElementById('map1'); //ì§€ë„ë¥¼ ë‹´ì„ ì˜ì—­ì˜ DOM ë ˆí¼ëŸ°ìŠ¤
+			var options = { //ì§€ë„ë¥¼ ìƒì„±í•  ë•Œ í•„ìš”í•œ ê¸°ë³¸ ì˜µì…˜
+			   center: new kakao.maps.LatLng(37.4917397537238, 127.48756458504242), //ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ.
+			   level: 8 //ì§€ë„ì˜ ë ˆë²¨(í™•ëŒ€, ì¶•ì†Œ ì •ë„)
 			};
 			var map = new kakao.maps.Map(container, options);
 			const center = map.getCenter();
 			
-			// ¸¶Ä¿°¡ Ç¥½ÃµÉ À§Ä¡ÀÔ´Ï´Ù 
+			// ë§ˆì»¤ê°€ í‘œì‹œë  ìœ„ì¹˜ìž…ë‹ˆë‹¤ 
 			var markerPosition  = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); 
 			
-			// ¸¶Ä¿¸¦ »ý¼ºÇÕ´Ï´Ù
+			// ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 			var marker = new kakao.maps.Marker({
 			    position: markerPosition
 			});
 			
-			// ¸¶Ä¿°¡ Áöµµ À§¿¡ Ç¥½ÃµÇµµ·Ï ¼³Á¤ÇÕ´Ï´Ù
+			// ë§ˆì»¤ê°€ ì§€ë„ ìœ„ì— í‘œì‹œë˜ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤
 			marker.setMap(map);
 			
 			var iwContent = 
-				'<div ><a href=""><img style="width:25px; height:21px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a><a style="color:black;" href="">¾çÆò ±×¸°Ææ¼Ç</a>', // ÀÎÆ÷À©µµ¿ì¿¡ Ç¥ÃâµÉ ³»¿ëÀ¸·Î HTML ¹®ÀÚ¿­ÀÌ³ª document element°¡ °¡´ÉÇÕ´Ï´Ù
-		    iwPosition = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); //ÀÎÆ÷À©µµ¿ì Ç¥½Ã À§Ä¡ÀÔ´Ï´Ù
-
-		// ÀÎÆ÷À©µµ¿ì¸¦ »ý¼ºÇÕ´Ï´Ù
+				'<div ><a href=""><img style="width:25px; height:21px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a><a style="color:black;" href="">ì–‘í‰ ê·¸ë¦°íŽœì…˜</a>', // ì¸í¬ìœˆë„ìš°ì— í‘œì¶œë  ë‚´ìš©ìœ¼ë¡œ HTML ë¬¸ìžì—´ì´ë‚˜ document elementê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤
+		    iwPosition = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); //ì¸í¬ìœˆë„ìš° í‘œì‹œ ìœ„ì¹˜ìž…ë‹ˆë‹¤
+		// ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 		var infowindow = new kakao.maps.InfoWindow({
 		    position : iwPosition, 
 		    content : iwContent 
 		});
 		  
-		// ¸¶Ä¿ À§¿¡ ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÕ´Ï´Ù. µÎ¹øÂ° ÆÄ¶ó¹ÌÅÍÀÎ marker¸¦ ³Ö¾îÁÖÁö ¾ÊÀ¸¸é Áöµµ À§¿¡ Ç¥½ÃµË´Ï´Ù
+		// ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤. ë‘ë²ˆì§¸ íŒŒë¼ë¯¸í„°ì¸ markerë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì§€ë„ ìœ„ì— í‘œì‹œë©ë‹ˆë‹¤
 		infowindow.open(map, marker);
 				
 			$("#btn_map").on("click", function() {
 		
 				$("#local").modal("show");
 				
-				//Áöµµ »çÀÌÁî º¯°æ ÈÄ Àç Ãâ·Â
+				//ì§€ë„ ì‚¬ì´ì¦ˆ ë³€ê²½ í›„ ìž¬ ì¶œë ¥
 				map.relayout();
-				//Áöµµ »çÀÌÁî º¯°æ ÈÄ À§Ä¡ Àç Ãâ·Â
+				//ì§€ë„ ì‚¬ì´ì¦ˆ ë³€ê²½ í›„ ìœ„ì¹˜ ìž¬ ì¶œë ¥
 				map.setCenter(center);
 			});
 		
@@ -398,88 +400,88 @@
 				$(".modal").hide();
 			});
 	
-	//////////////////////////ÀÎ¿øÃß°¡ ¹öÆ° ////////////////////////////
+	//////////////////////////ì¸ì›ì¶”ê°€ ë²„íŠ¼ ////////////////////////////
 	function count(type){
 		
-		//°á°ú¸¦ Ç¥½ÃÇÒ element
+		//ê²°ê³¼ë¥¼ í‘œì‹œí•  element
 		const resultElement = document.getElementById('result')
 		
-		//ÇöÀç È­¸é¿¡ Ç¥½ÃµÈ °ª
+		//í˜„ìž¬ í™”ë©´ì— í‘œì‹œëœ ê°’
 		var number = resultElement.innerText;
 		
-		//´õÇÏ±â
+		//ë”í•˜ê¸°
 		if(type === 'plus'){
 			
 			number = parseInt(number) + 1;
 			
 			if(number > 10){
-				alert("ÃÖ´ë ÀÎ¿øÀÔ´Ï´Ù.")
+				alert("ìµœëŒ€ ì¸ì›ìž…ë‹ˆë‹¤.")
 				return false;
 			}
 		}else if(type === 'minus')  {
 		    number = parseInt(number) - 1;
 		    
 		    if(number < 2){
-		    	alert("ÃÖ¼Ò ÀÎ¿øÀÔ´Ï´Ù.")
+		    	alert("ìµœì†Œ ì¸ì›ìž…ë‹ˆë‹¤.")
 		    	return false;
 		    }
 		  }
 		
-		//°á°ú 
+		//ê²°ê³¼ 
 		resultElement.innerText = number;
 	}
 	
-	//Ã¼Å©¹Ú½º ¼±ÅÃ ÃÊ±âÈ­
+	//ì²´í¬ë°•ìŠ¤ ì„ íƒ ì´ˆê¸°í™”
 	function initCheckBtn(){
 		
-		//ÃÊ±âÈ­ÇÒ Ã¼Å©¹Ú½º ¼±ÅÃ
+		//ì´ˆê¸°í™”í•  ì²´í¬ë°•ìŠ¤ ì„ íƒ
 		var checkboxes = document.getElementsByName("pensionItem"); 
 		
-		/* Ã¼Å©¹Ú½º¸¦ ¼øÈ¸ÇÏ¸ç °ªÀ» ÃÊ±âÈ­ */
+		/* ì²´í¬ë°•ìŠ¤ë¥¼ ìˆœíšŒí•˜ë©° ê°’ì„ ì´ˆê¸°í™” */
 		checkboxes.forEach((checkbox) => {
     	checkbox.checked = false;
  	 })
 	}
 	
-	////////////////////////// Áö¿ª¼±ÅÃ ////////////////////////////
+	////////////////////////// ì§€ì—­ì„ íƒ ////////////////////////////
 		$('document').ready(function() {
-		 var area0 = ["½Ã/µµ ¼±ÅÃ","¼­¿ïÆ¯º°½Ã","ÀÎÃµ±¤¿ª½Ã","´ëÀü±¤¿ª½Ã","±¤ÁÖ±¤¿ª½Ã","´ë±¸±¤¿ª½Ã","¿ï»ê±¤¿ª½Ã","ºÎ»ê±¤¿ª½Ã","°æ±âµµ","°­¿øµµ","ÃæÃ»ºÏµµ","ÃæÃ»³²µµ","Àü¶óºÏµµ","Àü¶ó³²µµ","°æ»óºÏµµ","°æ»ó³²µµ","Á¦ÁÖµµ"];
-		  var area1 = ["°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±ÝÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß±¸","Áß¶û±¸"];
-		   var area2 = ["°è¾ç±¸","³²±¸","³²µ¿±¸","µ¿±¸","ºÎÆò±¸","¼­±¸","¿¬¼ö±¸","Áß±¸","°­È­±º","¿ËÁø±º"];
-		   var area3 = ["´ë´ö±¸","µ¿±¸","¼­±¸","À¯¼º±¸","Áß±¸"];
-		   var area4 = ["±¤»ê±¸","³²±¸","µ¿±¸","ºÏ±¸","¼­±¸"];
-		   var area5 = ["³²±¸","´Þ¼­±¸","µ¿±¸","ºÏ±¸","¼­±¸","¼ö¼º±¸","Áß±¸","´Þ¼º±º"];
-		   var area6 = ["³²±¸","µ¿±¸","ºÏ±¸","Áß±¸","¿ïÁÖ±º"];
-		   var area7 = ["°­¼­±¸","±ÝÁ¤±¸","³²±¸","µ¿±¸","µ¿·¡±¸","ºÎ»êÁø±¸","ºÏ±¸","»ç»ó±¸","»çÇÏ±¸","¼­±¸","¼ö¿µ±¸","¿¬Á¦±¸","¿µµµ±¸","Áß±¸","ÇØ¿î´ë±¸","±âÀå±º"];
-		   var area8 = ["°í¾ç½Ã","°úÃµ½Ã","±¤¸í½Ã","±¤ÁÖ½Ã","±¸¸®½Ã","±ºÆ÷½Ã","±èÆ÷½Ã","³²¾çÁÖ½Ã","µ¿µÎÃµ½Ã","ºÎÃµ½Ã","¼º³²½Ã","¼ö¿ø½Ã","½ÃÈï½Ã","¾È»ê½Ã","¾È¼º½Ã","¾È¾ç½Ã","¾çÁÖ½Ã","¿À»ê½Ã","¿ëÀÎ½Ã","ÀÇ¿Õ½Ã","ÀÇÁ¤ºÎ½Ã","ÀÌÃµ½Ã","ÆÄÁÖ½Ã","ÆòÅÃ½Ã","Æ÷Ãµ½Ã","ÇÏ³²½Ã","È­¼º½Ã","°¡Æò±º","¾çÆò±º","¿©ÁÖ±º","¿¬Ãµ±º"];
-		   var area9 = ["°­¸ª½Ã","µ¿ÇØ½Ã","»ïÃ´½Ã","¼ÓÃÊ½Ã","¿øÁÖ½Ã","ÃáÃµ½Ã","ÅÂ¹é½Ã","°í¼º±º","¾ç±¸±º","¾ç¾ç±º","¿µ¿ù±º","ÀÎÁ¦±º","Á¤¼±±º","Ã¶¿ø±º","ÆòÃ¢±º","È«Ãµ±º","È­Ãµ±º","È¾¼º±º"];
-		   var area10 = ["Á¦Ãµ½Ã","Ã»ÁÖ½Ã","ÃæÁÖ½Ã","±«»ê±º","´Ü¾ç±º","º¸Àº±º","¿µµ¿±º","¿ÁÃµ±º","À½¼º±º","ÁõÆò±º","ÁøÃµ±º","Ã»¿ø±º"];
-		   var area11 = ["°è·æ½Ã","°øÁÖ½Ã","³í»ê½Ã","º¸·É½Ã","¼­»ê½Ã","¾Æ»ê½Ã","Ãµ¾È½Ã","±Ý»ê±º","´çÁø±º","ºÎ¿©±º","¼­Ãµ±º","¿¬±â±º","¿¹»ê±º","Ã»¾ç±º","ÅÂ¾È±º","È«¼º±º"];
-		   var area12 = ["±º»ê½Ã","±èÁ¦½Ã","³²¿ø½Ã","ÀÍ»ê½Ã","ÀüÁÖ½Ã","Á¤À¾½Ã","°íÃ¢±º","¹«ÁÖ±º","ºÎ¾È±º","¼øÃ¢±º","¿ÏÁÖ±º","ÀÓ½Ç±º","Àå¼ö±º","Áø¾È±º"];
-		   var area13 = ["±¤¾ç½Ã","³ªÁÖ½Ã","¸ñÆ÷½Ã","¼øÃµ½Ã","¿©¼ö½Ã","°­Áø±º","°íÈï±º","°î¼º±º","±¸·Ê±º","´ã¾ç±º","¹«¾È±º","º¸¼º±º","½Å¾È±º","¿µ±¤±º","¿µ¾Ï±º","¿Ïµµ±º","Àå¼º±º","ÀåÈï±º","Áøµµ±º","ÇÔÆò±º","ÇØ³²±º","È­¼ø±º"];
-		   var area14 = ["°æ»ê½Ã","°æÁÖ½Ã","±¸¹Ì½Ã","±èÃµ½Ã","¹®°æ½Ã","»óÁÖ½Ã","¾Èµ¿½Ã","¿µÁÖ½Ã","¿µÃµ½Ã","Æ÷Ç×½Ã","°í·É±º","±ºÀ§±º","ºÀÈ­±º","¼ºÁÖ±º","¿µ´ö±º","¿µ¾ç±º","¿¹Ãµ±º","¿ï¸ª±º","¿ïÁø±º","ÀÇ¼º±º","Ã»µµ±º","Ã»¼Û±º","Ä¥°î±º"];
-		   var area15 = ["°ÅÁ¦½Ã","±èÇØ½Ã","¸¶»ê½Ã","¹Ð¾ç½Ã","»çÃµ½Ã","¾ç»ê½Ã","ÁøÁÖ½Ã","ÁøÇØ½Ã","Ã¢¿ø½Ã","Åë¿µ½Ã","°ÅÃ¢±º","°í¼º±º","³²ÇØ±º","»êÃ»±º","ÀÇ·É±º","Ã¢³ç±º","ÇÏµ¿±º","ÇÔ¾È±º","ÇÔ¾ç±º","ÇÕÃµ±º"];
-		   var area16 = ["¼­±ÍÆ÷½Ã","Á¦ÁÖ½Ã","³²Á¦ÁÖ±º","ºÏÁ¦ÁÖ±º"];
+		 var area0 = ["ì‹œ/ë„ ì„ íƒ","ì„œìš¸íŠ¹ë³„ì‹œ","ì¸ì²œê´‘ì—­ì‹œ","ëŒ€ì „ê´‘ì—­ì‹œ","ê´‘ì£¼ê´‘ì—­ì‹œ","ëŒ€êµ¬ê´‘ì—­ì‹œ","ìš¸ì‚°ê´‘ì—­ì‹œ","ë¶€ì‚°ê´‘ì—­ì‹œ","ê²½ê¸°ë„","ê°•ì›ë„","ì¶©ì²­ë¶ë„","ì¶©ì²­ë‚¨ë„","ì „ë¼ë¶ë„","ì „ë¼ë‚¨ë„","ê²½ìƒë¶ë„","ê²½ìƒë‚¨ë„","ì œì£¼ë„"];
+		  var area1 = ["ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ìž‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘êµ¬","ì¤‘ëž‘êµ¬"];
+		   var area2 = ["ê³„ì–‘êµ¬","ë‚¨êµ¬","ë‚¨ë™êµ¬","ë™êµ¬","ë¶€í‰êµ¬","ì„œêµ¬","ì—°ìˆ˜êµ¬","ì¤‘êµ¬","ê°•í™”êµ°","ì˜¹ì§„êµ°"];
+		   var area3 = ["ëŒ€ë•êµ¬","ë™êµ¬","ì„œêµ¬","ìœ ì„±êµ¬","ì¤‘êµ¬"];
+		   var area4 = ["ê´‘ì‚°êµ¬","ë‚¨êµ¬","ë™êµ¬","ë¶êµ¬","ì„œêµ¬"];
+		   var area5 = ["ë‚¨êµ¬","ë‹¬ì„œêµ¬","ë™êµ¬","ë¶êµ¬","ì„œêµ¬","ìˆ˜ì„±êµ¬","ì¤‘êµ¬","ë‹¬ì„±êµ°"];
+		   var area6 = ["ë‚¨êµ¬","ë™êµ¬","ë¶êµ¬","ì¤‘êµ¬","ìš¸ì£¼êµ°"];
+		   var area7 = ["ê°•ì„œêµ¬","ê¸ˆì •êµ¬","ë‚¨êµ¬","ë™êµ¬","ë™ëž˜êµ¬","ë¶€ì‚°ì§„êµ¬","ë¶êµ¬","ì‚¬ìƒêµ¬","ì‚¬í•˜êµ¬","ì„œêµ¬","ìˆ˜ì˜êµ¬","ì—°ì œêµ¬","ì˜ë„êµ¬","ì¤‘êµ¬","í•´ìš´ëŒ€êµ¬","ê¸°ìž¥êµ°"];
+		   var area8 = ["ê³ ì–‘ì‹œ","ê³¼ì²œì‹œ","ê´‘ëª…ì‹œ","ê´‘ì£¼ì‹œ","êµ¬ë¦¬ì‹œ","êµ°í¬ì‹œ","ê¹€í¬ì‹œ","ë‚¨ì–‘ì£¼ì‹œ","ë™ë‘ì²œì‹œ","ë¶€ì²œì‹œ","ì„±ë‚¨ì‹œ","ìˆ˜ì›ì‹œ","ì‹œí¥ì‹œ","ì•ˆì‚°ì‹œ","ì•ˆì„±ì‹œ","ì•ˆì–‘ì‹œ","ì–‘ì£¼ì‹œ","ì˜¤ì‚°ì‹œ","ìš©ì¸ì‹œ","ì˜ì™•ì‹œ","ì˜ì •ë¶€ì‹œ","ì´ì²œì‹œ","íŒŒì£¼ì‹œ","í‰íƒì‹œ","í¬ì²œì‹œ","í•˜ë‚¨ì‹œ","í™”ì„±ì‹œ","ê°€í‰êµ°","ì–‘í‰êµ°","ì—¬ì£¼êµ°","ì—°ì²œêµ°"];
+		   var area9 = ["ê°•ë¦‰ì‹œ","ë™í•´ì‹œ","ì‚¼ì²™ì‹œ","ì†ì´ˆì‹œ","ì›ì£¼ì‹œ","ì¶˜ì²œì‹œ","íƒœë°±ì‹œ","ê³ ì„±êµ°","ì–‘êµ¬êµ°","ì–‘ì–‘êµ°","ì˜ì›”êµ°","ì¸ì œêµ°","ì •ì„ êµ°","ì² ì›êµ°","í‰ì°½êµ°","í™ì²œêµ°","í™”ì²œêµ°","íš¡ì„±êµ°"];
+		   var area10 = ["ì œì²œì‹œ","ì²­ì£¼ì‹œ","ì¶©ì£¼ì‹œ","ê´´ì‚°êµ°","ë‹¨ì–‘êµ°","ë³´ì€êµ°","ì˜ë™êµ°","ì˜¥ì²œêµ°","ìŒì„±êµ°","ì¦í‰êµ°","ì§„ì²œêµ°","ì²­ì›êµ°"];
+		   var area11 = ["ê³„ë£¡ì‹œ","ê³µì£¼ì‹œ","ë…¼ì‚°ì‹œ","ë³´ë ¹ì‹œ","ì„œì‚°ì‹œ","ì•„ì‚°ì‹œ","ì²œì•ˆì‹œ","ê¸ˆì‚°êµ°","ë‹¹ì§„êµ°","ë¶€ì—¬êµ°","ì„œì²œêµ°","ì—°ê¸°êµ°","ì˜ˆì‚°êµ°","ì²­ì–‘êµ°","íƒœì•ˆêµ°","í™ì„±êµ°"];
+		   var area12 = ["êµ°ì‚°ì‹œ","ê¹€ì œì‹œ","ë‚¨ì›ì‹œ","ìµì‚°ì‹œ","ì „ì£¼ì‹œ","ì •ìì‹œ","ê³ ì°½êµ°","ë¬´ì£¼êµ°","ë¶€ì•ˆêµ°","ìˆœì°½êµ°","ì™„ì£¼êµ°","ìž„ì‹¤êµ°","ìž¥ìˆ˜êµ°","ì§„ì•ˆêµ°"];
+		   var area13 = ["ê´‘ì–‘ì‹œ","ë‚˜ì£¼ì‹œ","ëª©í¬ì‹œ","ìˆœì²œì‹œ","ì—¬ìˆ˜ì‹œ","ê°•ì§„êµ°","ê³ í¥êµ°","ê³¡ì„±êµ°","êµ¬ë¡€êµ°","ë‹´ì–‘êµ°","ë¬´ì•ˆêµ°","ë³´ì„±êµ°","ì‹ ì•ˆêµ°","ì˜ê´‘êµ°","ì˜ì•”êµ°","ì™„ë„êµ°","ìž¥ì„±êµ°","ìž¥í¥êµ°","ì§„ë„êµ°","í•¨í‰êµ°","í•´ë‚¨êµ°","í™”ìˆœêµ°"];
+		   var area14 = ["ê²½ì‚°ì‹œ","ê²½ì£¼ì‹œ","êµ¬ë¯¸ì‹œ","ê¹€ì²œì‹œ","ë¬¸ê²½ì‹œ","ìƒì£¼ì‹œ","ì•ˆë™ì‹œ","ì˜ì£¼ì‹œ","ì˜ì²œì‹œ","í¬í•­ì‹œ","ê³ ë ¹êµ°","êµ°ìœ„êµ°","ë´‰í™”êµ°","ì„±ì£¼êµ°","ì˜ë•êµ°","ì˜ì–‘êµ°","ì˜ˆì²œêµ°","ìš¸ë¦‰êµ°","ìš¸ì§„êµ°","ì˜ì„±êµ°","ì²­ë„êµ°","ì²­ì†¡êµ°","ì¹ ê³¡êµ°"];
+		   var area15 = ["ê±°ì œì‹œ","ê¹€í•´ì‹œ","ë§ˆì‚°ì‹œ","ë°€ì–‘ì‹œ","ì‚¬ì²œì‹œ","ì–‘ì‚°ì‹œ","ì§„ì£¼ì‹œ","ì§„í•´ì‹œ","ì°½ì›ì‹œ","í†µì˜ì‹œ","ê±°ì°½êµ°","ê³ ì„±êµ°","ë‚¨í•´êµ°","ì‚°ì²­êµ°","ì˜ë ¹êµ°","ì°½ë…•êµ°","í•˜ë™êµ°","í•¨ì•ˆêµ°","í•¨ì–‘êµ°","í•©ì²œêµ°"];
+		   var area16 = ["ì„œê·€í¬ì‹œ","ì œì£¼ì‹œ","ë‚¨ì œì£¼êµ°","ë¶ì œì£¼êµ°"];
 		 
-		 // ½Ã/µµ ¼±ÅÃ ¹Ú½º ÃÊ±âÈ­
+		 // ì‹œ/ë„ ì„ íƒ ë°•ìŠ¤ ì´ˆê¸°í™”
 		
 		 $("select[name^=sido]").each(function() {
 		  $selsido = $(this);
 		  $.each(eval(area0), function() {
 		   $selsido.append("<option value='"+this+"'>"+this+"</option>");
 		  });
-		  $selsido.next().append("<option value=''>±¸/±º ¼±ÅÃ</option>");
+		  $selsido.next().append("<option value=''>êµ¬/êµ° ì„ íƒ</option>");
 		 });
 		
-		 // ½Ã/µµ ¼±ÅÃ½Ã ±¸/±º ¼³Á¤
+		 // ì‹œ/ë„ ì„ íƒì‹œ êµ¬/êµ° ì„¤ì •
 		
 		 $("select[name^=sido]").change(function() {
-		  var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // ¼±ÅÃÁö¿ªÀÇ ±¸±º Array
-		  var $gugun = $(this).next(); // ¼±ÅÃ¿µ¿ª ±º±¸ °´Ã¼
-		  $("option",$gugun).remove(); // ±¸±º ÃÊ±âÈ­
+		  var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // ì„ íƒì§€ì—­ì˜ êµ¬êµ° Array
+		  var $gugun = $(this).next(); // ì„ íƒì˜ì—­ êµ°êµ¬ ê°ì²´
+		  $("option",$gugun).remove(); // êµ¬êµ° ì´ˆê¸°í™”
 		
 		  if(area == "area0")
-		   $gugun.append("<option value=''>±¸/±º ¼±ÅÃ</option>");
+		   $gugun.append("<option value=''>êµ¬/êµ° ì„ íƒ</option>");
 		  else {
 		   $.each(eval(area), function() {
 		    $gugun.append("<option value='"+this+"'>"+this+"</option>");
