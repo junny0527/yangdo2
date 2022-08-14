@@ -11,10 +11,12 @@
 			    v.stars ,
 			    r.status ,
 			    pr.price ,
-			    p.law_name
+			    p.law_name,
+                pi.image_path
 			from pension p, company c, users u, reservations r, reviews v,
-			rooms rm, prices pr
+			rooms rm, prices pr, pension_image pi
 			where p.no = c.no
+            and p.no = pi.no
 			and c.no = u.no
 			and u.no = r.no
 			and r.no = v.no
@@ -24,7 +26,12 @@
 		]]>
 	</select>
 	
-	
+	<!-- 리뷰 수 가ㅕ오기 -->
+	<select id="selectTotalCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM reviews
+		]]>
+	</select>
 	
 	
 </mapper>

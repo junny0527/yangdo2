@@ -20,19 +20,18 @@ public class JiwoongController {
 	private MainListService mainService;
 	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @RequestParam("areaNo") int areaNo,
-										@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
+	public String mainList(Model model, @RequestParam("areaNo") int areaNo) {
 		System.out.println("jiwoongController>mainList");
 		System.out.println(areaNo);
 		Map<String, Object> penMapList = mainService.select(areaNo);
 		
 		System.out.println(penMapList);
 		
+		
 		//펜션 정보 
 		model.addAttribute("penMapList",penMapList);
 		
-		//사진 가져오기
-		
+		//이미지 출력
 		
 		return "/mainList/mainLists";
 	}

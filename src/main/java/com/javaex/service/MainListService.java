@@ -21,9 +21,14 @@ public class MainListService {
 		// 펜션정보
 		Map<String, Object> penMapList = mainDao.select(areaNo);
 		
+		//댓글 수
+		int totalCnt = mainDao.selectTotalCnt();
 		
+		penMapList.put("totalCnt", totalCnt);
 		
 		return penMapList;
 	}
+	
+	
 	
 }

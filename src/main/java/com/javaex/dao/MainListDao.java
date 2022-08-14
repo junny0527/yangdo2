@@ -25,6 +25,14 @@ public class MainListDao {
 		return penMapList;
 	}
 	
+	//댓글 수
+	public int selectTotalCnt() {
+		System.out.println("mainDao>selectTotqalCnt");
 		
+		int totalCnt = sqlSession.selectOne("MainList.selectTotalCnt");
+		
+		return totalCnt;
+		
+	}
 	
 }
