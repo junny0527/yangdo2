@@ -1,6 +1,5 @@
 package com.javaex.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.javaex.vo.PensionImageVo;
+import com.javaex.vo.MainListVo;
 
 @Repository
 public class MainListDao {
@@ -16,13 +15,13 @@ public class MainListDao {
 	private SqlSession sqlSession;
 	
 	// 펜션정보
-	public Map<String, Object> select(int areaNo){
+	public List<MainListVo> select(int areaNo){
 		System.out.println("mainDao>select");
 		
-		Map<String, Object> penMapList =  sqlSession.selectOne("MainList.penSelect", areaNo);
-		System.out.println(penMapList);
+		List<MainListVo> mainList =  sqlSession.selectList("MainList.penList", areaNo);
+		System.out.println(mainList);
 		
-		return penMapList;
+		return mainList;
 	}
 	
 	//댓글 수
@@ -33,6 +32,15 @@ public class MainListDao {
 		
 		return totalCnt;
 		
+	}
+	
+	//지역이름
+	public Map<String, Object> selectArea(int areaNo){
+		System.out.println("mainDao > Area");
+		
+		Map<String, Object> pMap = sqlSession.selectOne("MainList.selectArea");
+		System.out.println();
+		return pMap;
 	}
 	
 }
