@@ -16,7 +16,12 @@ public class HostIntroduceService {
 		
 		String editName = iVo.getLawName();
 		String[] editArray = editName.split(" ");
-		iVo.setLawName(editArray[1]);
+		
+		if(editArray[0].equals("세종특별자치시")) {
+			iVo.setLawName(editArray[2]);
+		}else {
+			iVo.setLawName(editArray[1]);
+		}
 		
 		int[] publicArray = iVo.getPublicArrays();
 		int[] amenitiesArray = iVo.getAmenitiesArrays();
