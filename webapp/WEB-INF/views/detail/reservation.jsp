@@ -261,7 +261,7 @@
 					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
 						<c:choose>
 							<c:when test="${crtPage == page && crtPage > 1}">
-								<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page -1}">
+								<a id="prev" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page -1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
 									<button id="left">
 										<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
 									</button>
@@ -292,7 +292,7 @@
 					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
 						<c:choose>
 							<c:when test="${crtPage == page && crtPage < 4}">
-								<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pInfo.NO}&crtPage=${page +1}">
+								<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
 									<button id="right">
 										<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
 									</button>
@@ -365,19 +365,19 @@
 					<button type="submit">일정 선택하기</button><br>
 				</form>
 			</div>
-			<%-- <c:forEach items="${pMap.reservation}" var="reservationVo">
+			<c:forEach items="${pMap.roomList}" var="roomVo">
 				<c:choose>
-					<c:when test="${reservationVo.STATUS == '양도대기'}">
+					<c:when test="${roomVo.STATUS == '양도대기'}">
 						<div class="room">
 							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
-							<button class="roomImgList">객실 사진보기</button>
+							<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
 							<div class="roomInfo">
-								<span class="roomName">${reservationVo.ROOM_NAME}</span>
+								<span class="roomName">${roomVo.ROOM_NAME}</span>
 								<div class="infoBtn">
 									<span>객실 이용안내</span>
-									<button class="information_Use" name="${reservationVo.ROOM_NO}">보기</button>
+									<button class="information_Use" name="${roomVo.NO}">보기</button>
 								</div>
-								<div class="settingPeople">기준 ${reservationVo.STANDARD_PEOPLE}인 / 최대 ${reservationVo.MAX_PEOPLE}인</div>
+								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 								<div class="defaultForm">
 									<div>
 										<span class="people">성인</span>
@@ -385,7 +385,7 @@
 											<button class="minus">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span>${reservationVo.STANDARD_PEOPLE}명</span>
+											<span>${roomVo.STANDARD_PEOPLE}명</span>
 											<button class="plus">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
@@ -416,25 +416,25 @@
 										</div>
 									</div>
 									<div class="price">
-										<span class="roomPrice">${reservationVo.TOTAL_PRICE}원</span> 
-										<span class="assignmentPrice">${reservationVo.TRANS_PRICE}원</span>
+										<span class="roomPrice">${roomVo.TOTAL_PRICE}원</span> 
+										<span class="assignmentPrice">${roomVo.TRANS_PRICE}원</span>
 									</div>
 								</div>
 								<button>양도받으러가기</button>
 							</div>
 						</div>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${roomVo.STATUS == '예약완료'}">
 						<div class="room reservation">
 							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
-							<button class="roomImgList">객실 사진보기</button>
+							<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
 							<div class="roomInfo">
-								<span class="roomName">${reservationVo.ROOM_NAME}</span>
+								<span class="roomName">${roomVo.ROOM_NAME}</span>
 								<div class="infoBtn">
 									<span>객실 이용안내</span>
-									<button class="information_Use" name="${reservationVo.ROOM_NO}">보기</button>
+									<button class="information_Use" name="${roomVo.NO}">보기</button>
 								</div>
-								<div class="settingPeople">기준 ${reservationVo.STANDARD_PEOPLE}인 / 최대 ${reservationVo.MAX_PEOPLE}인</div>
+								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 								<div class="defaultForm">
 									<div>
 										<span class="people">성인</span>
@@ -442,7 +442,7 @@
 											<button class="minus">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span>${reservationVo.STANDARD_PEOPLE}명</span>
+											<span>${roomVo.STANDARD_PEOPLE}명</span>
 											<button class="plus">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
@@ -473,17 +473,75 @@
 										</div>
 									</div>
 									<div class="price">
-										<span class="assignmentPrice" style="visibility:hidden;">${reservationVo.TRANS_PRICE}원</span>
-										<span class="roomPrice" style="text-decoration:none;">${reservationVo.TOTAL_PRICE}원</span> 
+										<span class="assignmentPrice" style="visibility:hidden;">${roomVo.TRANS_PRICE}원</span>
+										<span class="roomPrice" style="text-decoration:none;">${roomVo.TOTAL_PRICE}원</span> 
 									</div>
 								</div>
 								<button>예약완료</button>
 							</div>
 						</div>
-					</c:otherwise>
+					</c:when>
+					<c:when test="${roomVo.STATUS == 'null'}">
+						<div class="room noReservation">
+							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+							<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
+							<div class="roomInfo">
+								<span class="roomName">${roomVo.ROOM_NAME}</span>
+								<div class="infoBtn">
+									<span>객실 이용안내</span>
+									<button class="information_Use" name="${roomVo.NO}">보기</button>
+								</div>
+								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
+								<div class="defaultForm">
+									<div>
+										<span class="people">성인</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>${roomVo.STANDARD_PEOPLE}명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div>
+										<span class="people">아동</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>0명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div>
+										<span class="people">유아</span>
+										<div>
+											<button class="minus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
+											</button>
+											<span>0명</span>
+											<button class="plus">
+												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
+											</button>
+										</div>
+									</div>
+									<div class="price">
+										<span class="assignmentPrice" style="visibility:hidden;">${roomVo.TRANS_PRICE}원</span>
+										<span class="roomPrice" style="text-decoration:none;">${roomVo.PRICE}원</span> 
+									</div>
+								</div>
+								<button>예약하러가기</button>
+							</div>
+						</div>
+					</c:when>
 				</c:choose>
-			</c:forEach> --%>
-				<!-- //room -->
+			</c:forEach>
+			<!-- 예약 후 이용완료 시 status null값으로 바꿔야한다. 애들한테 말하기. null로 안바꿔주면 방 안보임. -->
+			<!-- //room -->
 		</div>
 	    <!-- //roomList --> 	
         
@@ -560,7 +618,7 @@
                 </button>
                 <ul>
 					<li>
-						<img src="${pageContext.request.contextPath}/assets/image/detail/back.jfif">
+						<img class="roomImageList" src="">
 					</li>
                 </ul>
                 <button class="imgRight">
@@ -621,48 +679,40 @@
 	///////////////////////// 일정선택 ///////////////////////////
 	
 	$(function() {
-            //모든 datepicker에 대한 공통 옵션 설정
-            $.datepicker.setDefaults({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능                
-                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
-            });
- 
-            //input을 datepicker로 선언
-            $("#datepicker").datepicker();                    
-            $("#datepicker2").datepicker();
-            var datepicker = $("#datepicker").val();
-            var datepicker2 = $("#datepicker2").val();
-            
-            
-            /* 
-            //From의 초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            //To의 초기값을 내일로 설정
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-             */
-             
-            if(${"datepicker"} != null && ${"datepicker2"} != null) {
-            	//From의 초기값을 오늘 날짜로 설정
-	            $('#datepicker').datepicker('setDate', datepicker); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-	            //To의 초기값을 내일로 설정
-	            $('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            }
-	           
+        //모든 datepicker에 대한 공통 옵션 설정
+        $.datepicker.setDefaults({
+            dateFormat: 'yy-mm-dd' //Input Display Format 변경
+            ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+            ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+            ,changeYear: true //콤보박스에서 년 선택 가능
+            ,changeMonth: true //콤보박스에서 월 선택 가능                
+            ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+            ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+            ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+            ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+            ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+            ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+            ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+            ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+            ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+            ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
         });
+ 
+	//input을 datepicker로 선언
+	$("#datepicker").datepicker();                    
+	$("#datepicker2").datepicker();
+	var datepicker = $("#datepicker").val();
+	var datepicker2 = $("#datepicker2").val();
+            
+        if(${"datepicker"} != null && ${"datepicker2"} != null) {
+        	//From의 초기값을 오늘 날짜로 설정
+         $('#datepicker').datepicker('setDate', datepicker); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+         //To의 초기값을 내일로 설정
+         $('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        }
+        
+    });
 	
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	
@@ -670,6 +720,7 @@
 		//입력한 객실정보로 사진 열기.
 		var $this = $(this);  
 		var roomNo = Number($this.attr("name"));
+		console.log(roomNo);
 		var pensionNo = $("#pensionNo").val();
 	
 		$.ajax({
@@ -677,7 +728,6 @@
 			type : "post",
 			//contentType : "application/json",
 			//data : ,
-
 			dataType : "json",
 			success : function(roomMap){
 				/*성공시 처리해야될 코드 작성*/
@@ -702,34 +752,62 @@
 	///////////////////////// 객실 사진보기  ///////////////////////////
 	
 	$(".roomImgList").on("click", function() { 
-		$(".roomPhoto").modal("show");
 		var $this = $(this);  
-		console.log($this);
+		var roomNo = Number($this.attr("name")); 
+		var pensionNo = $("#pensionNo").val();
+		console.log(roomNo);
+		console.log(pensionNo);
+		$(".roomPhoto").modal("show");
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/api/roomImg?pensionNo=" + pensionNo + "&roomNo=" + roomNo,		
+			type : "post",
+			//contentType : "application/json",
+			//data : ,
+
+			dataType : "json",
+			success : function(roomImgList){
+				/*성공시 처리해야될 코드 작성*/
+				/* src="${pageContext.request.contextPath}/upload/${pMap.imgList[0].IMAGE_PATH}"> */
+				console.log(roomImgList);
+				for(var i = 0; i < roomImgList.length; i++) {
+					var src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[i].IMAGE_PATH"};
+					console.log(src);
+					$(".roomImageList").attr("src", src);
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	});
 	
 	
 	///////////////////////// 펜션사진 버튼이벤트 페이징  ///////////////////////////
-		$(".list").css("cursor", "pointer");
+	$(".list").css("cursor", "pointer");
+
+	$(".list").on("click", function() {
+		var $this = $(this);
+		var src = $this.attr("src");
+		
+		var no = $this.attr("alt");
+		$("#mainImg").attr("src", src);
+		$("#imgCount").text(no + ' / ' + ${pMap.totalCnt} + ' | ' + '전체사진' );
+		
+	});
 	
-		$(".list").on("click", function() {
-			var $this = $(this);
-			var src = $this.attr("src");
-			
-			var no = $this.attr("alt");
-			
-			$("#mainImg").attr("src", src);
-			$("#imgCount").text(no + ' / ' + ${totalCnt} + ' | ' + '전체사진' );
-			
-		});
-	
+		
+	///////////////////////// 숙소정보 페이지(ajax)  ///////////////////////////	
+		
 	var reBtn = true;
 	var iBtn = true;
 	var rBtn = true;
 	
-	///////////////////////// 숙소정보(ajax)  ///////////////////////////
+	
 	$("#var1").on("click", function() {
 		$("#pensionInfo").show();
 		$("#roomList").hide();
+		$("#review").empty();
 		rBtn = true;
 		
 		var pensionNo = $("#pensionNo").val();
@@ -818,10 +896,11 @@
 			$("#pensionInfo").append(str);
 	};
 	
-	/* 리뷰 페이지 */
+	///////////////////////// 리뷰 페이지(ajax)  ///////////////////////////
 	$("#var2").on("click", function() {
 		console.log(rBtn);
 		$("#pensionInfo").hide();
+		$("#pensionInfo").empty();
 		var pensionNo = $("#pensionNo").val();
 		$("#var").css("color", "black");
 		$("#var1").css("color", "black");

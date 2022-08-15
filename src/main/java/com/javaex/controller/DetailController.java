@@ -26,9 +26,10 @@ public class DetailController {
 							  @RequestParam(value= "datepicker", required = false)String datepicker,
 							  @RequestParam(value= "datepicker2", required = false)String datepicker2) {
 		System.out.println("DetailController > pMap");
-		Map<String, Object> pMap = detailService.select(pensionNo, crtPage);
+		Map<String, Object> pMap = detailService.select(pensionNo, crtPage, datepicker, datepicker2);
 		System.out.println("datepicker:" + datepicker);
 		System.out.println("datepicker2:" + datepicker2);
+		System.out.println("pMap:"+pMap);
 		model.addAttribute("pMap",pMap);
 		model.addAttribute("crtPage", crtPage);
 		model.addAttribute("datepicker", datepicker);
@@ -49,6 +50,17 @@ public class DetailController {
 		return roomMap;
 	}
 	
+	//객실별 사진 정보 가져오기 (ajax)
+	@ResponseBody
+	@RequestMapping(value="/api/roomImg", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<Map<String, Object>> roomImgList(@RequestParam("pensionNo") int pensionNo, @RequestParam("roomNo") int roomNo) {
+		System.out.println("ApiGuestbookController > roomImgList()");
+		
+		List<Map<String, Object>> roomImgList = detailService.roomImgList(pensionNo, roomNo);
+		System.out.println("roomImgList :"+roomImgList);
+		return roomImgList;
+	}
+	
 	//펜션 숙소정보 가져오기 (ajax)
 	@ResponseBody
 	@RequestMapping(value="/api/infomation", method = {RequestMethod.GET, RequestMethod.POST})
@@ -61,6 +73,7 @@ public class DetailController {
 		return iMap;
 	}
 	
+	//펜션 리뷰정보 가져오기 (ajax)
 	@ResponseBody
 	@RequestMapping(value="/api/review", method = {RequestMethod.GET, RequestMethod.POST})
 	public Map<String, Object> review(@RequestParam("pensionNo") int pensionNo) {

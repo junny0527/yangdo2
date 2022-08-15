@@ -17,7 +17,7 @@ public class DetailService {
 	DetailDao detailDao;
 
 	//펜션리스트 가져오기 (+ 페이징)
-	public Map<String, Object> select(int pensionNo, int crtPage) {
+	public Map<String, Object> select(int pensionNo, int crtPage, String datepicker, String datepicker2) {
 		System.out.println("DetailService > select()");
 
 		//맵 생성
@@ -34,18 +34,11 @@ public class DetailService {
 		//펜션 공용시설 
 		List<Map<String, Object>> pPubList = detailDao.pPubList(pensionNo);
 		
-		
 		//객실번호 그룹 가져오기
 		List<Map<String, Object>> roomNo = detailDao.roomNo(pensionNo);
 		
-		//예약객실 리스트 가져오기
-		//List<Map<String, Object>> reservation = detailDao.reservation(pensionNo);
-		
-		//비수기(평일) 요금정보 리스트 가져오기
-		//List<Map<String, Object>> lowWeekDay = detailDao.lowWeekDay(pensionNo);
-		
-		//비수기(주말) 요금정보 리스트 가져오기
-		//List<Map<String, Object>> lowWeekEnd = detailDao.lowWeekEnd(pensionNo);
+		//날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전)
+		List<Map<String, Object>> roomList = detailDao.roomList(pensionNo, datepicker, datepicker2);
 		
 		//현재페이지
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
@@ -60,7 +53,7 @@ public class DetailService {
 		//이미지 리스트 가져오기
 		List<PensionImageVo> imgList = detailDao.imgList(pensionNo, startRnum, endRnum);
 		
-		//전체글갯수
+		//전체 사진 개수
 		int totalCnt = detailDao.selectTotalCnt(pensionNo);	
 		
 		//페이지 당 버튼 갯수
@@ -97,11 +90,19 @@ public class DetailService {
 		pMap.put("pAmenList", pAmenList);
 		pMap.put("pPubList", pPubList);
 		pMap.put("roomNo", roomNo);
-		//pMap.put("reservation", reservation);
-		//pMap.put("lowWeekDay", lowWeekDay);
-		//pMap.put("lowWeekEnd", lowWeekEnd);
+		pMap.put("roomList", roomList);
+		
 		
 		return pMap;
+	}
+	
+	//객실 정보 가져오기 (ajax)
+	public List<Map<String, Object>> roomImgList(int pensionNo, int roomNo) {
+		System.out.println("DetailService > roomInfo");
+		
+		List<Map<String, Object>> roomImgList = detailDao.roomImgList(pensionNo, roomNo);
+		
+		return roomImgList;
 	}
 	
 	//객실 정보 가져오기 (ajax)

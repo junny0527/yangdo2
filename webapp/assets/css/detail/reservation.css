@@ -778,20 +778,34 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #roomList >.reservation > .roomInfo > button {
-	background-color:#f7323f;
+	background-color:#9ea7aa;;
 }
 
 #roomList > .reservation > .roomImgList {
-	background-color:#f7323f;
+	background-color:#9ea7aa;
 }
 
 #roomList > .reservation > .roomInfo > .infoBtn > .information_Use {
-	background-color:#f7323f;
+	background-color:#9ea7aa;
 }
 
 #roomList >.reservation > .roomInfo > button:hover {
 	cursor:not-allowed;
 }
+
+#roomList >.noReservation > .roomInfo > button {
+	background-color:#f7323f;
+}
+
+#roomList > .noReservation > .roomImgList {
+	background-color:#f7323f;
+}
+
+#roomList > .noReservation > .roomInfo > .infoBtn > .information_Use {
+	background-color:#f7323f;
+}
+
+
 
 
 /* ******************모달 (객실 이용안내)************************** */

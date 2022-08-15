@@ -39,11 +39,11 @@
 		<![CDATA[
 			select  to_char(avg(re.stars), '0.0') avgStars
 			        ,count(re.review_no) rCount
-			from    reservations res, reviews re, users u, company c, pension p
-			where   res.no = re.no
-			and     u.no = res.user_no
-			and     u.no = c.no
-			and     c.no = p.company_no
+			from    pension p, rooms r, reservations res, reviews re
+			where   p.no = r.pension_no
+			and     r.no = res.room_no
+			and     res.no = re.no
+			and     res.status = '이용완료'
 			and     p.no = #{pensionNo}
 		]]>
 	</select>
@@ -74,7 +74,7 @@
 		]]>
 	</select>
 	
-	<!-- 전체글갯수 구하기 -->
+	<!-- 전체 사진 갯수 구하기 -->
 	<select id="selectTotalCnt" resultType="int" parameterType="int">
 		<![CDATA[
 			select  count(*) count
@@ -125,39 +125,60 @@
 		]]>
 	</select>
 	
-	<!-- 예약객실 리스트 가져오기 -->
-	<!-- <select id="reservation" resultType="map" parameterType="int">
+	<!-- 날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전) -->
+	<select id="roomList" parameterType="map" resultType="map">
 		<![CDATA[
-			select  res.no
-			        ,res.room_no
-			        ,res.user_no
-			        ,res.name
-			        ,res.hp
-			        ,res.check_in
-			        ,res.check_out
-			        ,res.adult
-			        ,res.kid
-			        ,res.baby
-			        ,res.total_price
-			        ,res.reg_date
-			        ,res.pay_way
-			        ,res.pay_status
-			        ,res.status
-			        ,res.trans_price
-			        ,r.pension_no
-                    ,r.room_name
-                    ,r.no
-                    ,r.standard_people
-                    ,r.max_people
-                    ,r.add_info
-			from    reservations res, rooms r, pension p
-			where   res.room_no(+) = r.no
-			and     r.pension_no = p.no
-			and     p.no = #{pensionNo}
-			and     (res.status = '예약완료' or res.status = '양도대기')
-			order by res.no asc
+			select  ro.no NO
+			        ,ro.pension_no PENSION_NO
+			        ,ro.room_name ROOM_NAME
+			        ,ro.standard_people STANDARD_PEOPLE
+			        ,ro.max_people MAX_PEOPLE
+			        ,ro.add_info ADD_INFO
+			        ,r.user_no USER_NO
+			        ,r.name NAME
+			        ,r.check_in CHECK_IN
+			        ,r.check_out CHECK_OUT
+			        ,r.adult ADULT
+			        ,r.kid KID
+			        ,r.baby BABY
+			        ,to_char(r.total_price, '999,999') TOTAL_PRICE
+			        ,nvl(r.status,'null') STATUS
+			        ,to_char(r.trans_price, '999,999') TRANS_PRICE
+			        ,to_char(p.price, '999,999') PRICE
+			        ,w.name WEEK_NAME
+			from    rooms ro , (select  no
+			                            ,room_no
+			                            ,user_no
+			                            ,name
+			                            ,hp
+			                            ,check_in
+			                            ,check_out
+			                            ,adult
+			                            ,kid
+			                            ,baby
+			                            ,total_price
+			                            ,reg_date
+			                            ,pay_way
+			                            ,pay_status
+			                            ,status
+			                            ,trans_price
+			                            ,p_r_no
+			                    from reservations
+			                    where check_in = #{datepicker}
+			                    and check_out = #{datepicker2}) r ,prices p , week w
+			where   ro.no = r.room_no(+)
+			and     ro.pension_no = #{pensionNo}
+			and     ro.no = p.room_no
+			and     p.no = w.price_no
+			and     p.sortation =   (select gubun
+			                        from peck p, p_peck pp 
+			                        where peck_start < #{datepicker}
+			                        and peck_end > #{datepicker}
+			                        and p.no = pp.peck_no
+			                        and pp.pension_no = #{pensionNo})
+			and w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
 		]]>
-	</select> -->
+	</select>
 		
 	<!-- 객실 정보 가져오기 -->
 	<select id="roomInfoList" parameterType="map" resultType="map">
@@ -199,5 +220,19 @@
 		]]>
 	</select>
 	
-
+	
+	<select id="roomImgList" resultType="map" parameterType="map">
+		<![CDATA[
+			select  r.pension_no
+					,rImg.no rImgNo
+					,rImg.rooms_no
+					,rImg.image_path
+			from    rooms r, room_image rImg
+			where   r.no = rImg.rooms_no
+			and     r.pension_no = #{pensionNo}
+			and		rImg.rooms_no = #{roomNo}
+		]]>
+	</select>
+	
+	
 </mapper>

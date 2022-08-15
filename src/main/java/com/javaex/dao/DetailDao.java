@@ -43,7 +43,7 @@ public class DetailDao {
 		return imgList;
 	}
 	
-	//전체글 개수
+	//전체 사진 개수
 	public int selectTotalCnt(int pensionNo) {
 		System.out.println("DetailDao > selectTotalCnt()");
 		
@@ -76,15 +76,20 @@ public class DetailDao {
 		return roomNo;
 	}
 	
-	//예약객실 리스트 가져오기
-	/*
-	public List<Map<String, Object>> reservation(int pensionNo) {
+	//날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전)
+	public List<Map<String, Object>> roomList(int pensionNo, String datepicker, String datepicker2) {
 		System.out.println("DetailDao > reservation()");
-		
-		List<Map<String, Object>> reservation = sqlSession.selectList("detail.reservation", pensionNo);
-		return reservation;
+		Map<String, Object> roomMap = new HashMap<String, Object>();
+		roomMap.put("pensionNo", pensionNo);
+		roomMap.put("datepicker", datepicker);
+		roomMap.put("datepicker2", datepicker2);
+		List<Map<String, Object>> roomList = sqlSession.selectList("detail.roomList", roomMap);
+		System.out.println("::::::::::::::::"+roomList);
+		System.out.println(datepicker);
+		System.out.println(datepicker2);
+		return roomList;
 	}
-	*/
+	
 	//객실 정보 가져오기 (ajax)
 	public List<Map<String, Object>> roomInfoList(int pensionNo, int roomNo) {
 		System.out.println("DetailService > roomInfo");
@@ -98,29 +103,18 @@ public class DetailDao {
 		return roomInfoList;
 	}
 	
-	//비수기 평일 요금정보 리스트 가져오기
-	/*
-	public List<Map<String, Object>> lowWeekDay(int pensionNo) {
-		System.out.println("DetailService > lowSeason");
+	//객실 정보 가져오기 (ajax)
+	public List<Map<String, Object>> roomImgList(int pensionNo, int roomNo) {
+		System.out.println("DetailService > roomInfo");
 		
-		List<Map<String, Object>> lowWeekDay = sqlSession.selectList("detail.lowWeekDay", pensionNo);
-		System.out.println(lowWeekDay);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pensionNo", pensionNo);
+		map.put("roomNo", roomNo);
 		
+		List<Map<String, Object>> roomImgList = sqlSession.selectList("detail.roomImgList", map);
 		
-		return lowWeekDay;
+		return roomImgList;
 	}
-	
-	//비수기 주말 요금정보 리스트 가져오기
-		public List<Map<String, Object>> lowWeekEnd(int pensionNo) {
-			System.out.println("DetailService > lowSeason");
-			
-			List<Map<String, Object>> lowWeekEnd = sqlSession.selectList("detail.lowWeekEnd", pensionNo);
-			System.out.println(lowWeekEnd);
-			
-			
-			return lowWeekEnd;
-		}
-	*/
 	
 	//펜션 숙소정보 가져오기 (ajax)
 	public Map<String, Object> pensionInfo(int pensionNo) {
