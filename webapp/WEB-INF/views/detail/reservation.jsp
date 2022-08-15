@@ -772,7 +772,9 @@
 				console.log(roomImgList);
 				for(var i = 0; i < roomImgList.length; i++) {
 					var src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[i].IMAGE_PATH"};
-					console.log(src);
+					if() {
+						
+					}
 					$(".roomImageList").attr("src", src);
 				}
 			},
