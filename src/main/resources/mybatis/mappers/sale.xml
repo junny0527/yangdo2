@@ -11,9 +11,13 @@
 			        ,r.user_no  USERNO
 			        ,r.name RNAME 
 			        ,r.hp RHP
-			        ,r.check_in
-			        ,r.check_out 
-			        ,ro.room_name
+			        ,To_char(r.check_in ,'YYYY-MM-DD') CHECKIN 
+                    ,TO_CHAR(TO_DATE(r.check_in, 'YYYY-MM-DD'), 'DY') AS CHECKINDAY
+			        ,To_char(r.check_out ,'YYYY-MM-DD') CHECKOUT
+			        ,TO_CHAR(TO_DATE(r.check_out, 'YYYY-MM-DD'), 'DY') AS CHECKOUTDAY
+                    ,p.check_in CHECKINTIME
+                    ,p.check_out CHECKOUTTIME
+                    ,ro.room_name
 			        ,p.name PNAME
 			        ,ro.standard_people
 			        ,ro.max_people
