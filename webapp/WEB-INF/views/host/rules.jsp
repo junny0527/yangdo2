@@ -99,7 +99,7 @@
 		</ul>
 	</div>
 	
-	<form class="form-horizontal">
+	<form class="form-horizontal" action = "rulessave" method = "get">
 		<div class="guest-title-layer mb_0 pb_0">
 			<ul class = "order">
 				<li>[이용규칙관리] 는 업체 공통적인 정책을 기입하는 란입니다. (체크인, 체크아웃, 성수기 설정 등)</li>
@@ -175,12 +175,13 @@
 								
 								<div class="form form-subpeak">
 									<div class="subpeak-item form-inline mb_24 hide">
-										<input class="form-control middle-size datepicker" name = "subpeakStart" type="text" readonly="readonly">
+										<input class="form-control middle-size datepicker plussubpeakstart" type="text" readonly="readonly">
 										<span class="range"> ~ </span>
-										<input class="form-control middle-size datepicker" name = "subpeakEnd" type="text" readonly="readonly">
+										<input class="form-control middle-size datepicker plussubpeakend" type="text" readonly="readonly">
 										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
 									</div>
 								</div>
+								
 							</span>
                         </div>
                         
@@ -202,9 +203,9 @@
 
                                 <div class="form form-peak">
                                     <div class="peak-item form-inline mb_24 hide">
-                                        <input class="form-control middle-size datepicker" name = "peakStart" type="text" readonly="readonly">
+                                        <input class="form-control middle-size datepicker pluspeakstart" type="text" readonly="readonly">
                                         <span class="range"> ~ </span>
-                                        <input class="form-control middle-size datepicker" name = "peakEnd" type="text" readonly="readonly">
+                                        <input class="form-control middle-size datepicker pluspeakend" type="text" readonly="readonly">
                                         <button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
                                     </div>
                                 </div>
@@ -230,7 +231,7 @@
 							<div class = "decrease">
 								<span class="form-title">성인</span>
 								<span class="form-body">
-									<input class="form-control normal-size" type="text" value="">
+									<input class="form-control normal-size" name = "addAdultPrice" type="text" value="">
 								</span>
 								<span class="form-body">
 									 원
@@ -240,19 +241,17 @@
 							<div class = "decrease">
 								<span class="form-title">아동</span>
 								<span class="form-body">
-									<input class="form-control normal-size" type="text" value="">
+									<input class="form-control normal-size" name = "addKidPrice" type="text" value="">
 								</span>
 								<span class="form-body">
 									 원
 								</span>
 							</div>
 							
-							
-							
 							<div class = "decrease">
 								<span class="form-title">유아</span>
 								<span class="form-body">
-									<input class="form-control normal-size" type="text" value="">
+									<input class="form-control normal-size" name = "addBabyPrice" type="text" value="">
 								</span>
 								<span class="form-body">
 									 원
@@ -417,7 +416,9 @@ $(function() {
     // 준성수기 아이템 추가
     $('[data-role=add-subpeak]').on('click',function() {
     	$('.form-subpeak').append($('.subpeak-item.hide').clone().removeClass('hide'));
-    	$(".datepicker").removeAttr("id").removeClass('hasDatepicker').datepicker();
+    	$('.datepicker').removeAttr('id').removeClass('hasDatepicker').datepicker();
+    	$('.plussubpeakstart').attr('name', 'subpeakStart');
+    	$('.plussubpeakend').attr('name', 'subpeakEnd');
     });
 
     // 성수기 아이템 제거
@@ -432,7 +433,9 @@ $(function() {
     // 성수기 아이템 추가
     $('[data-role=add-peak]').on('click',function() {
     	$('.form-peak').append($('.peak-item.hide').clone().removeClass('hide'));
-    	$(".datepicker").removeAttr("id").removeClass('hasDatepicker').datepicker();
+    	$('.datepicker').removeAttr('id').removeClass('hasDatepicker').datepicker();
+    	$('.pluspeakstart').attr('name', 'peakStart');
+    	$('.pluspeakend').attr('name', 'peakEnd');
     });
     
 

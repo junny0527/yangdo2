@@ -15,6 +15,7 @@ public class HostRulesVo {
 	private String[] subpeakStart;
 	private String[] subpeakEnd;
 	
+	public HostRulesVo() {}
 	
 	public HostRulesVo(String checkin, String checkout, int addAdultPrice, int addKidPrice, int addBabyPrice,
 			int refundNo, String[] peakStart, String[] peakEnd, String[] subpeakStart, String[] subpeakEnd) {

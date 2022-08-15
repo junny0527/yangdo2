@@ -10,12 +10,15 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/hostHeaderFooter.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/host/rules.css">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <body>
 
@@ -115,15 +118,15 @@
 							<span class="form-body">
 								<div class="select-style middle-size">
 									<select name="checkin">
-										<option value="13" selected="">오후 01:00</option>
-										<option value="14">오후 02:00</option>
-										<option value="15">오후 03:00</option>
-										<option value="16">오후 04:00</option>
-										<option value="17">오후 05:00</option>
-										<option value="18">오후 06:00</option>
-										<option value="19">오후 07:00</option>
-										<option value="20">오후 08:00</option>
-                                        </select>
+										<option value="13:00" selected="">오후 01:00</option>
+										<option value="14:00">오후 02:00</option>
+										<option value="15:00">오후 03:00</option>
+										<option value="16:00">오후 04:00</option>
+										<option value="17:00">오후 05:00</option>
+										<option value="18:00">오후 06:00</option>
+										<option value="19:00">오후 07:00</option>
+										<option value="20:00">오후 08:00</option>
+                                    </select>
                                 </div>
                             </span>
                         </div>
@@ -133,14 +136,14 @@
                         	<span class="form-body">
                         		<div class="select-style middle-size">
                         			<select name="checkout">
-                        				<option value="10" selected="">오전 10:00</option>
-                        				<option value="11">오전 11:00</option>
-                        				<option value="12">오후 12:00</option>
-                        				<option value="13">오후 01:00</option>
-                        				<option value="14">오후 02:00</option>
-                        				<option value="15">오후 03:00</option>
-                        				<option value="16">오후 04:00</option>
-                        				<option value="17">오후 05:00</option>
+                        				<option value="10:00" selected="">오전 10:00</option>
+                        				<option value="11:00">오전 11:00</option>
+                        				<option value="12:00">오후 12:00</option>
+                        				<option value="13:00">오후 01:00</option>
+                        				<option value="14:00">오후 02:00</option>
+                        				<option value="15:00">오후 03:00</option>
+                        				<option value="16:00">오후 04:00</option>
+                        				<option value="17:00">오후 05:00</option>
                        				</select>
                   				</div>
               				</span>
@@ -164,18 +167,17 @@
                 			<span class="form-title text-center title_align">준 성수기</span>
                 			<span class="form-body">
                 				<div class="subpeak-item form-inline mb_24">
-									<input type="hidden" data-name="subpeak_id" value="5764">
-									<input class="form-control middle-size datepicker" type="text" data-name="subpeak_start" data-role="datepicker" readonly="readonly">
+									<input class="form-control middle-size datepicker" name = "subpeakStart" type="text" readonly="readonly">
 									<span class="range"> ~ </span>
-									<input class="form-control middle-size datepicker" type="text" data-name="subpeak_end" data-role="datepicker" readonly="readonly">
+									<input class="form-control middle-size datepicker" name = "subpeakEnd" type="text" readonly="readonly">
 									<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
 								</div>
+								
 								<div class="form form-subpeak">
 									<div class="subpeak-item form-inline mb_24 hide">
-										<input type="hidden" data-name="subpeak_id" value="">
-										<input class="form-control middle-size datepicker" type="text" data-name="subpeak_start" data-role="datepicker" value="" readonly="readonly">
+										<input class="form-control middle-size datepicker" name = "subpeakStart" type="text" readonly="readonly">
 										<span class="range"> ~ </span>
-										<input class="form-control middle-size datepicker" type="text" data-name="subpeak_end" data-role="datepicker" value="" readonly="readonly">
+										<input class="form-control middle-size datepicker" name = "subpeakEnd" type="text" readonly="readonly">
 										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
 									</div>
 								</div>
@@ -192,19 +194,17 @@
                         	<span class="form-title text-center title_align">성수기</span>
                             <span class="form-body">
                             	<div class="peak-item form-inline mb_24">
-                            		<input type="hidden" data-name="peak_id" value="">
-                            		<input class="form-control middle-size datepicker" type="text" data-name="peak_start" data-role="datepicker" value="" readonly="readonly">
+                            		<input class="form-control middle-size datepicker" name = "peakStart" type="text" readonly="readonly">
                             		<span class="range"> ~ </span>
-                            		<input class="form-control middle-size datepicker" type="text" data-name="peak_end" data-role="datepicker" value="" readonly="readonly">
+                            		<input class="form-control middle-size datepicker" name = "peakEnd" type="text" readonly="readonly">
                             		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
                            		</div>
 
                                 <div class="form form-peak">
                                     <div class="peak-item form-inline mb_24 hide">
-                                        <input type="hidden" data-name="peak_id" value="">
-                                        <input class="form-control middle-size datepicker" type="text" data-name="peak_start" data-role="datepicker" value="" readonly="readonly">
+                                        <input class="form-control middle-size datepicker" name = "peakStart" type="text" readonly="readonly">
                                         <span class="range"> ~ </span>
-                                        <input class="form-control middle-size datepicker" type="text" data-name="peak_end" data-role="datepicker" value="" readonly="readonly">
+                                        <input class="form-control middle-size datepicker" name = "peakEnd" type="text" readonly="readonly">
                                         <button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
                                     </div>
                                 </div>
@@ -274,19 +274,19 @@
 						<div class="form-layer mb_24">
 							<span class="form-body">
 								<div class="radio-inline">
-									<input id = "tenday" class="form-check-input" type="radio">
+									<input id = "tenday" name = "refundNo" class="form-check-input" type="radio" value = "10">
 									<label for = "tenday" class="form-check-label">
 									10일 전
 									</label>
 								</div>
 								<div class="radio-inline">
-									<input id = "sevenday" class="form-check-input" type="radio">
+									<input id = "sevenday" name = "refundNo" class="form-check-input" type="radio" value = "7">
 									<label for = "sevenday" class="form-check-label">
 									7일 전
 									</label>
 								</div>
 								<div class="radio-inline">
-									<input id = "sixday" class="form-check-input" type="radio">
+									<input id = "sixday" name = "refundNo" class="form-check-input" type="radio" value = "6">
 									<label for = "sixday" class="form-check-label">
 									6일 전
 									</label>
@@ -381,4 +381,65 @@
 <c:import url="/WEB-INF/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
 </body>
+
+
+<script type = "text/javascript">
+$(function() {
+    //모든 datepicker에 대한 공통 옵션 설정
+    $.datepicker.setDefaults({
+        dateFormat: 'mm월 dd일' //Input Display Format 변경
+        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+        ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+        ,changeYear: true //콤보박스에서 년 선택 가능
+        ,changeMonth: true //콤보박스에서 월 선택 가능                
+        ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+        ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+        ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+        ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)      
+    });
+
+    //input을 datepicker로 선언
+   	$(".datepicker").datepicker();
+    
+    
+    // 준성수기 아이템 제거
+	$('.subpeak-item').on('click','[data-role=remove-subpeak]',function() {
+		$(this).closest('.subpeak-item').remove();
+	});
+	
+	$('.form-subpeak').on('click','[data-role=remove-subpeak]',function() {
+		$(this).closest('.subpeak-item').remove();
+	});
+
+    // 준성수기 아이템 추가
+    $('[data-role=add-subpeak]').on('click',function() {
+    	$('.form-subpeak').append($('.subpeak-item.hide').clone().removeClass('hide'));
+    	$(".datepicker").removeAttr("id").removeClass('hasDatepicker').datepicker();
+    });
+
+    // 성수기 아이템 제거
+    $('.peak-item').on('click','[data-role=remove-peak]',function() {
+    	$(this).closest('.peak-item').remove();
+    });
+
+	$('.form-peak').on('click','[data-role=remove-peak]',function() {
+		$(this).closest('.peak-item').remove();
+	});
+
+    // 성수기 아이템 추가
+    $('[data-role=add-peak]').on('click',function() {
+    	$('.form-peak').append($('.peak-item.hide').clone().removeClass('hide'));
+    	$(".datepicker").removeAttr("id").removeClass('hasDatepicker').datepicker();
+    });
+    
+
+});
+
+
+</script>
+
+
 </html>
