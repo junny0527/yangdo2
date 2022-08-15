@@ -748,16 +748,18 @@
 		$(".sAmen").text("");
 	});
 	
-	
 	///////////////////////// 객실 사진보기  ///////////////////////////
 	
-	$(".roomImgList").on("click", function() { 
+	$(".roomImgList").on("click", function() {
+		$(".roomPhoto").modal("show");
 		var $this = $(this);  
 		var roomNo = Number($this.attr("name")); 
 		var pensionNo = $("#pensionNo").val();
-		console.log(roomNo);
-		console.log(pensionNo);
-		$(".roomPhoto").modal("show");
+		var count = 0;
+		var src = "";
+		console.log("방번호 :"+roomNo);
+		console.log("펜션번호 :"+pensionNo);
+		
 		
 		$.ajax({
 			url : "${pageContext.request.contextPath}/api/roomImg?pensionNo=" + pensionNo + "&roomNo=" + roomNo,		
@@ -767,14 +769,29 @@
 
 			dataType : "json",
 			success : function(roomImgList){
+				
 				/*성공시 처리해야될 코드 작성*/
-				/* src="${pageContext.request.contextPath}/upload/${pMap.imgList[0].IMAGE_PATH}"> */
-				console.log(roomImgList);
-				for(var i = 0; i < roomImgList.length; i++) {
-					var src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[i].IMAGE_PATH"};
-					console.log(src);
+				console.log("이미지숫자 :"+roomImgList.length);
+				console.log("밖count값"+count); 
+				
+					$(".imgRight").on("click", function() {
+						if(count < roomImgList.length -1) {
+							count += 1;
+							src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
+							$(".roomImageList").attr("src", src);
+							console.log("+count값 :"+count);
+						}
+					});
+					$(".imgLeft").on("click", function() {
+						if(count > 0 && count <= roomImgList.length -1) {
+							count -= 1;
+							console.log("-count값 :"+count);
+							src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
+							$(".roomImageList").attr("src", src);
+						}
+					});	
+					src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
 					$(".roomImageList").attr("src", src);
-				}
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
