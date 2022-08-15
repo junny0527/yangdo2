@@ -201,7 +201,8 @@
 	display: none;
 }
 
-.mypage .pw_input .pw_input__btns-wrap.modifying .btns-wrap__cancel-btn, .mypage .pw_input .pw_input__btns-wrap.modifying .btns-wrap__submit-btn
+.mypage .pw_input .pw_input__btns-wrap.modifying .btns-wrap__cancel-btn,
+	.mypage .pw_input .pw_input__btns-wrap.modifying .btns-wrap__submit-btn
 	{
 	display: block;
 }
@@ -574,7 +575,7 @@
 .reserve_list li a span {
 	display: block;
 	padding: 2px 0 13px 0;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .reserve_list li .btn_re {
@@ -610,7 +611,8 @@
 	width: 24px;
 	height: 24px;
 	border: none;
-	background: url('//image.goodchoice.kr/images/web_v3/ico_close_2.png') 50% 50% no-repeat;
+	background: url('//image.goodchoice.kr/images/web_v3/ico_close_2.png')
+		50% 50% no-repeat;
 	background-size: 24px auto;
 	text-indent: -9999px;
 }
@@ -647,9 +649,10 @@
 
 .reserve_list li {
 	float: left;
-	width: 354px;
+	width: 345px;
 	height: auto;
-	margin: 0 16px 16px 0;
+	margin: 0px 16px 16px 0px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .reserve_list li:after {
@@ -704,7 +707,7 @@
 
 .reserve_list li a span {
 	padding: 0 0 20px 0;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .reserve_list li button {
@@ -809,8 +812,9 @@ reserve_detail .info {
 	height: auto;
 	padding: 0px;
 	opacity: 0.8;
-	background: url(https://image.goodchoice.kr/affiliate/2021/12/06/61ad9b97dd2d2.jpg) local center
-		no-repeat;
+	background:
+		url(https://image.goodchoice.kr/affiliate/2021/12/06/61ad9b97dd2d2.jpg)
+		local center no-repeat;
 }
 
 .reserve_detail section {
@@ -886,10 +890,12 @@ reserve_detail .info {
 	height: 24px;
 	margin-left: 4px;
 	border: none;
-	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0 no-repeat;
+	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0
+		no-repeat;
 	background-size: 24px auto;
 	text-indent: -9999px;
-	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0 no-repeat;
+	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0
+		no-repeat;
 }
 
 .btn_call {
@@ -911,7 +917,8 @@ reserve_detail .info {
 	width: 24px;
 	height: 24px;
 	margin-top: -12px;
-	background: transparent url('//image.goodchoice.kr/images/web_v3/ico_call.png') 0 0 no-repeat;
+	background: transparent
+		url('//image.goodchoice.kr/images/web_v3/ico_call.png') 0 0 no-repeat;
 	background-size: 24px auto;
 }
 
@@ -1039,7 +1046,8 @@ reserve_detail .info {
 }
 
 /********************** Star rating *******************/
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import
+	url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 .review_form .rating {
 	border: none;
@@ -1069,14 +1077,16 @@ reserve_detail .info {
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
-.review_form  .rating>input:checked ~ label, /* show gold star when clicked */ .rating:not(:checked)>label:hover,
-	/* hover current star */ .review_form  .rating:not(:checked)>label:hover ~ label {
+.review_form  .rating>input:checked ~ label,
+	/* show gold star when clicked */ .rating:not(:checked)>label:hover,
+	/* hover current star */ .review_form  .rating:not(:checked)>label:hover 
+	 ~ label {
 	color: #FFD700;
 } /* hover previous stars in list */
-.review_form  .rating>input:checked+label:hover, /* hover current star when changing rating */
-	.rating>input:checked 
-	 ~ label:hover, .review_form  .rating>label:hover ~ input:checked ~ label,
-	/* lighten current selection */ .review_form  .rating>input:checked 
+.review_form  .rating>input:checked+label:hover,
+	/* hover current star when changing rating */ .rating>input:checked 
+	 ~ label:hover, .review_form  .rating>label:hover ~ input:checked ~
+	label, /* lighten current selection */ .review_form  .rating>input:checked 
 	 ~ label:hover ~ label {
 	color: #FFED85;
 }
