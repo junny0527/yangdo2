@@ -12,6 +12,10 @@ public class HostIntroduceService {
 	@Autowired
 	private HostIntroduceDao iDao;
 	
+	public int getCompanyNo(int userNo) {
+		return iDao.getCompanyNo(userNo);
+	}
+	
 	public int insertPension(HostIntroduceVo iVo) {
 		
 		String editName = iVo.getLawName();
@@ -23,23 +27,39 @@ public class HostIntroduceService {
 			iVo.setLawName(editArray[1]);
 		}
 		
+		iDao.insertPension(iVo);
+		int pensionNo = iDao.getPensionNo();
+		iVo.setPensionNo(pensionNo);
+		
+		iDao.insertsido(iVo);
+		iDao.insertgugun(iVo);
+		
+		HostIntroduceVo arrayVo = new HostIntroduceVo();
+		arrayVo.setPensionNo(pensionNo);
+		
 		int[] publicArray = iVo.getPublicArrays();
 		int[] amenitiesArray = iVo.getAmenitiesArrays();
 		
 		if(publicArray != null) {
 			for(int i=0; i<publicArray.length; i++) {
-				iDao.insertPublic(publicArray[i]);
+				arrayVo.setPublics(publicArray[i]);
+				iDao.insertPublic(arrayVo);
 			}
 		}
 		
 		if(amenitiesArray != null) {
 			for(int i=0; i<amenitiesArray.length; i++) {
-				iDao.insertAmenities(amenitiesArray[i]);
+				arrayVo.setAmanities(amenitiesArray[i]);
+				iDao.insertAmenities(arrayVo);
 			}
 		}
 		
 		System.out.println("service : " + iVo);
-		return iDao.insertPension(iVo);
+		return 1;
+	}
+	
+	public int getPensionNoBySession(int userNo) {
+		return iDao.getPensionNoBySession(userNo);
 	}
 	
 	public int updateOpt(HostIntroduceVo iVo) {

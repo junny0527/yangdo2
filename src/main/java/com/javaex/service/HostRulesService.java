@@ -1,8 +1,5 @@
 package com.javaex.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,52 +12,72 @@ public class HostRulesService {
 	@Autowired
 	private HostRulesDao rDao;
 	
+	public int getPensionNoBySession(int userNo) {
+		return rDao.getPensionNoBySession(userNo);
+	}
+	
 	public int updateRules(HostRulesVo hVo) {
 		System.out.println("service: " + hVo);
 		
-		List<String> peakStartList = new ArrayList<String>();
-		List<String> peakEndList = new ArrayList<String>();
-		List<String> subpeakStartList = new ArrayList<String>();
-		List<String> subpeakEndList = new ArrayList<String>();
+		HostRulesVo peckVo = new HostRulesVo();
+		peckVo.setPensionNo(hVo.getPensionNo());
+		String[] editpeckStart = hVo.getPeckStartArray();
+		String[] editpeckEnd = hVo.getPeckEndArray();
+		String[] editSubpeckStart = hVo.getSubpeckStartArray();
+		String[] editSubpeckEnd = hVo.getSubpeckEndArray();
 		
-		String[] editPeakStart = hVo.getPeakStart();
-		String[] editPeakEnd = hVo.getPeakEnd();
-		String[] editSubpeakStart = hVo.getSubpeakStart();
-		String[] editSubpeakEnd = hVo.getSubpeakEnd();
-		
-		for(int i = 0; i<editPeakStart.length; i++) {
+		for(int i = 0; i<editpeckStart.length; i++) {
 			if(i == 1) {
 				i = i+1;
 			}
-			peakStartList.add(editPeakStart[i]);
+			String ps = editpeckStart[i];
+			String pe = editpeckEnd[i];
+			
+			String newPs = ps.replace("월 ", "-");
+			newPs = newPs.replace("일", "");
+			String newPe = pe.replace("일", "");
+			newPe = newPe.replace("월 ", "-");
+			
+			peckVo.setPeckStart(newPs);
+			peckVo.setPeckEnd(newPe);
+			
+			System.out.println("peck : " + peckVo);
+			System.out.println("peckStart : " + peckVo.getPeckStart());
+			System.out.println("peckEnd : " + peckVo.getPeckEnd());
+			rDao.insertPeck(peckVo);
+			
+			System.out.println("insertPeck Ok");
+			
+			int peckNo = rDao.getpeckNo();
+			System.out.println("peckNo : " + peckNo);
+			peckVo.setPeckNo(peckNo);
+			System.out.println("after insert peckVo : " + peckVo);
+			rDao.insertPensionPeck(peckVo);
 		}
 		
-		for(int i = 0; i<editPeakEnd.length; i++) {
+		for(int i = 0; i<editSubpeckStart.length; i++) {
 			if(i == 1) {
 				i = i+1;
 			}
-			peakEndList.add(editPeakEnd[i]);
+			String subPs = editSubpeckStart[i];
+			String subPe = editSubpeckEnd[i];
+			
+			String subNewPs = subPs.replace("월 ", "-");
+			subNewPs = subNewPs.replace("일", "");
+			String subNewPe = subPe.replace("일", "");
+			subNewPe = subNewPe.replace("월 ", "-");
+			
+			peckVo.setSubpeckStart(subNewPs);
+			peckVo.setSubpeckEnd(subNewPe);
+			
+			System.out.println("subpeck : " + peckVo);
+			
+			rDao.insertsubPeck(peckVo);
+			
+			int peckNo = rDao.getpeckNo();
+			peckVo.setPeckNo(peckNo);
+			rDao.insertPensionPeck(peckVo);
 		}
-		
-		for(int i = 0; i<editSubpeakStart.length; i++) {
-			if(i == 1) {
-				i = i+1;
-			}
-			subpeakStartList.add(editSubpeakStart[i]);
-		}
-		
-		for(int i = 0; i<editSubpeakEnd.length; i++) {
-			if(i == 1) {
-				i = i+1;
-			}
-			subpeakEndList.add(editSubpeakEnd[i]);
-		}
-		
-		System.out.println(peakStartList);
-		System.out.println(peakEndList);
-		System.out.println(subpeakStartList);
-		System.out.println(subpeakEndList);
-		
 		return rDao.updateRules(hVo);
 	}
 

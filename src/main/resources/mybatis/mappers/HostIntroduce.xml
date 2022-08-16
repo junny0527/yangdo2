@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "HostIntroduce">
 
+<select id = "getCompanyNo" parameterType = "int" resultType = "int">
+	<![CDATA[
+		select no
+		from company
+		where user_no = #{userNo}
+	]]>
+
+</select>
+
 <insert id = "insertPension" parameterType = "com.javaex.vo.HostIntroduceVo">
 	<![CDATA[
 		insert into pension(
@@ -23,7 +32,7 @@
 			)
 		values(
 			SEQ_PENSION_NO.nextval
-			,1
+			,#{companyNo}
 			,#{pensionName}
 			,#{postalCode}
 			,#{pensionAddress}
@@ -41,30 +50,64 @@
 	]]>
 </insert>
 
-<insert id= "insertPublic" parameterType = "int">
+<select id = "getPensionNo" resultType = "int">
+	<![CDATA[
+		select rn.no
+		from
+		(select no
+		from pension
+		order by no desc) rn
+		where rownum = 1
+	]]>
+</select>
+
+<select id = "getPensionNoBySession" resultType = "int">
+	<![CDATA[
+		select p.no
+		from pension p, company c
+		where p.company_no = c.no
+		and c.user_no = #{userNo}
+	]]>
+</select>
+
+
+
+<insert id= "insertPublic" parameterType = "com.javaex.vo.HostIntroduceVo">
 	<![CDATA[
 		insert into p_public
-		values(SEQ_P_PUBLIC_NO.nextval, 1, #{value})
+		values(SEQ_P_PUBLIC_NO.nextval, #{pensionNo}, #{publics})
 	]]>
 </insert>
 
-
-<insert id= "insertAmenities" parameterType = "int">
+<insert id= "insertAmenities" parameterType = "com.javaex.vo.HostIntroduceVo">
 	<![CDATA[
 		insert into p_amenities
-		values(SEQ_P_AMENITIES_NO.nextval, 1, #{value})
+		values(SEQ_P_AMENITIES_NO.nextval, #{pensionNo}, #{amanities})
 	]]>
 </insert>
 
+<insert id = "insertsido" parameterType = "com.javaex.vo.HostIntroduceVo">
+	<![CDATA[
+		insert into sido
+		values(seq_sido_no.nextval, #{pensionNo}, #{sido})
+	]]>
+</insert>
+
+<insert id = "insertgugun" parameterType = "com.javaex.vo.HostIntroduceVo">
+	<![CDATA[
+		insert into gugun
+		values(seq_gugun_no.nextval, #{pensionNo}, #{gugun})
+	]]>
+</insert>
 
 <update id = "updateOpt" parameterType = "com.javaex.vo.HostIntroduceVo">
 	<![CDATA[
 		update pension
-			set
-				live_pay = #{livePay}
-			    ,parking_info = #{parkingInfo}
-			    ,etc = #{etc}
-		where company_no = 1
+		set
+			live_pay = #{livePay}
+		    ,parking_info = #{parkingInfo}
+		    ,etc = #{etc}
+		where no = #{pensionNo}
 	]]>
 </update>
 

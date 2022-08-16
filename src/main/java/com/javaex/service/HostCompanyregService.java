@@ -12,10 +12,8 @@ public class HostCompanyregService {
 	@Autowired
 	private HostCompanyregDao cregDao;
 	
-	public String getEmail(String id) {
-		HostCompanyregVo cVo = cregDao.getEmail(id);
-		String email = cVo.getEmail();
-		return email;
+	public String getEmail(int userNo) {
+		return cregDao.getEmail(userNo);
 	}
 
 	public int insertCompany(HostCompanyregVo cVo) {
@@ -27,55 +25,46 @@ public class HostCompanyregService {
 		String tel2 = cVo.getTel2();
 		String tel3 = cVo.getTel3();
 		
-		String ceoNo = phone1 + "-" + phone2 + "-" + phone3;
-		String companyNo = tel1 + "-" + tel2 + "-" + tel3;
-		String removeNull = "";
-		int[] removeArray = {};
+		String ceoHp = phone1 + "-" + phone2 + "-" + phone3;
+		String companyHp = tel1 + "-" + tel2 + "-" + tel3;
 		
-		cVo.setCeoHp(ceoNo);
-		cVo.setCompanyHp(companyNo);
+		cVo.setCeoHp(ceoHp);
+		cVo.setCompanyHp(companyHp);
 		
-		if(cVo.getBankName().equals("없음")) {
-			cVo.setBankName(removeNull);
-			cVo.setAccountHolder(removeNull);
-			cVo.setAccount(removeNull);
-			cVo.setSettlementCycle(removeNull);
-		}
+		System.out.println("ceoHp: " + cVo.getCeoHp());
+		System.out.println("companyHp: " + cVo.getCompanyHp());
 		
+		/*
+		cregDao.insertCompany(cVo);
+		int companyNo = cregDao.getCompanyNo();
+		System.out.println("companyNo : " + companyNo);
+		*/
 		
 		if(cVo.getTaxInvoice() == 2) {
+			
+			cregDao.insertcompanyTaxInvoice(cVo);
+			int companyNo = cregDao.getCompanyNo();
+			System.out.println("getCompanyNo : " + companyNo);
+			cVo.setCompanyNo(companyNo);
+			
 			int[] btArray = cVo.getBusinessTypeArrays();
 			int[] bgArray = cVo.getBusinessGroupArrays();
 			
 			for(int i=0; i<btArray.length; i++) {
-				cregDao.insertBTArray(btArray[i]);
+				cVo.setBusinessType(btArray[i]);
+				cregDao.insertBTArray(cVo);
 			}
 			
 			for(int i=0; i<bgArray.length; i++) {
-				cregDao.insertBGArray(bgArray[i]);
+				cVo.setBusinessGroup(bgArray[i]);
+				cregDao.insertBGArray(cVo);
 			}
-			
 		}else {
-			cVo.setCompanyName(removeNull);
-			cVo.setCeoName(removeNull);
-			cVo.setBusinessLicensenumber(removeNull);
-			cVo.setCompanyAddress(removeNull);
-			cVo.setDetailAddress(removeNull);
-			cVo.setTaxInvoiceEmail(removeNull);
-			cVo.setPostalCode(removeNull);
-			cVo.setBusinessTypeArrays(removeArray);
-			cVo.setBusinessGroupArrays(removeArray);
+			cregDao.insertCompany(cVo);
 		}
 		
-		if(cVo.getHomepage() == null) {
-			cVo.setHomepage(removeNull);
-		}
-		
-		System.out.println("service cVo : " + cVo);
-		
-		int count = cregDao.insertCompany(cVo);
-		return count;
+		return 1;
 	}
-	
+		
 	
 }

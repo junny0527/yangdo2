@@ -5,12 +5,15 @@ import java.util.Arrays;
 public class HostIntroduceVo {
 	
 	private int companyNo;
+	private int pensionNo;
 	private String pensionName;
 	private String postalCode;
 	private String pensionAddress;
 	private String detailAddress;
 	private String lawCode;
 	private String lawName;
+	private String sido;
+	private String gugun;
 	private String visitRoad1;
 	private String visitRoad2;
 	private String visitRoad3;
@@ -21,22 +24,29 @@ public class HostIntroduceVo {
 	private String livePay;
 	private String parkingInfo;
 	private String etc;
+	
 	private int[] publicArrays;
 	private int[] amenitiesArrays;
+	private int publics;
+	private int amanities;
 	
 	public HostIntroduceVo() {}
 
-	public HostIntroduceVo(int companyNo, String pensionName, String postalCode, String pensionAddress,
-			String detailAddress, String lawCode, String lawName, String visitRoad1, String visitRoad2,
-			String visitRoad3, String areaInfo1, String areaInfo2, String areaInfo3, String rules, String livePay,
-			String parkingInfo, String etc, int[] publicArrays, int[] amenitiesArrays) {
+	public HostIntroduceVo(int companyNo, int pensionNo, String pensionName, String postalCode, String pensionAddress,
+			String detailAddress, String lawCode, String lawName, String sido, String gugun, String visitRoad1,
+			String visitRoad2, String visitRoad3, String areaInfo1, String areaInfo2, String areaInfo3, String rules,
+			String livePay, String parkingInfo, String etc, int[] publicArrays, int[] amenitiesArrays, int publics,
+			int amanities) {
 		this.companyNo = companyNo;
+		this.pensionNo = pensionNo;
 		this.pensionName = pensionName;
 		this.postalCode = postalCode;
 		this.pensionAddress = pensionAddress;
 		this.detailAddress = detailAddress;
 		this.lawCode = lawCode;
 		this.lawName = lawName;
+		this.sido = sido;
+		this.gugun = gugun;
 		this.visitRoad1 = visitRoad1;
 		this.visitRoad2 = visitRoad2;
 		this.visitRoad3 = visitRoad3;
@@ -49,6 +59,8 @@ public class HostIntroduceVo {
 		this.etc = etc;
 		this.publicArrays = publicArrays;
 		this.amenitiesArrays = amenitiesArrays;
+		this.publics = publics;
+		this.amanities = amanities;
 	}
 
 	public int getCompanyNo() {
@@ -57,6 +69,14 @@ public class HostIntroduceVo {
 
 	public void setCompanyNo(int companyNo) {
 		this.companyNo = companyNo;
+	}
+
+	public int getPensionNo() {
+		return pensionNo;
+	}
+
+	public void setPensionNo(int pensionNo) {
+		this.pensionNo = pensionNo;
 	}
 
 	public String getPensionName() {
@@ -105,6 +125,22 @@ public class HostIntroduceVo {
 
 	public void setLawName(String lawName) {
 		this.lawName = lawName;
+	}
+
+	public String getSido() {
+		return sido;
+	}
+
+	public void setSido(String sido) {
+		this.sido = sido;
+	}
+
+	public String getGugun() {
+		return gugun;
+	}
+
+	public void setGugun(String gugun) {
+		this.gugun = gugun;
 	}
 
 	public String getVisitRoad1() {
@@ -203,15 +239,32 @@ public class HostIntroduceVo {
 		this.amenitiesArrays = amenitiesArrays;
 	}
 
+	public int getPublics() {
+		return publics;
+	}
+
+	public void setPublics(int publics) {
+		this.publics = publics;
+	}
+
+	public int getAmanities() {
+		return amanities;
+	}
+
+	public void setAmanities(int amanities) {
+		this.amanities = amanities;
+	}
+
 	@Override
 	public String toString() {
-		return "HostIntroduceVo [companyNo=" + companyNo + ", pensionName=" + pensionName + ", postalCode=" + postalCode
-				+ ", pensionAddress=" + pensionAddress + ", detailAddress=" + detailAddress + ", lawCode=" + lawCode
-				+ ", lawName=" + lawName + ", visitRoad1=" + visitRoad1 + ", visitRoad2=" + visitRoad2 + ", visitRoad3="
-				+ visitRoad3 + ", areaInfo1=" + areaInfo1 + ", areaInfo2=" + areaInfo2 + ", areaInfo3=" + areaInfo3
-				+ ", rules=" + rules + ", livePay=" + livePay + ", parkingInfo=" + parkingInfo + ", etc=" + etc
-				+ ", publicArrays=" + Arrays.toString(publicArrays) + ", amenitiesArrays="
-				+ Arrays.toString(amenitiesArrays) + "]";
+		return "HostIntroduceVo [companyNo=" + companyNo + ", pensionNo=" + pensionNo + ", pensionName=" + pensionName
+				+ ", postalCode=" + postalCode + ", pensionAddress=" + pensionAddress + ", detailAddress="
+				+ detailAddress + ", lawCode=" + lawCode + ", lawName=" + lawName + ", sido=" + sido + ", gugun="
+				+ gugun + ", visitRoad1=" + visitRoad1 + ", visitRoad2=" + visitRoad2 + ", visitRoad3=" + visitRoad3
+				+ ", areaInfo1=" + areaInfo1 + ", areaInfo2=" + areaInfo2 + ", areaInfo3=" + areaInfo3 + ", rules="
+				+ rules + ", livePay=" + livePay + ", parkingInfo=" + parkingInfo + ", etc=" + etc + ", publicArrays="
+				+ Arrays.toString(publicArrays) + ", amenitiesArrays=" + Arrays.toString(amenitiesArrays) + ", publics="
+				+ publics + ", amanities=" + amanities + "]";
 	}
 
 }
