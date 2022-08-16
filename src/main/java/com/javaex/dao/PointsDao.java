@@ -12,9 +12,10 @@ public class PointsDao {
 	private SqlSession sqlSession;
 	
 	
-	public void pointsInsert(PointsVo bean) {
-		 sqlSession.insert(SQLMAP + "pointsInsert", bean);
-	}
+	/*
+	 * public void pointsInsert(PointsVo bean) { sqlSession.insert(SQLMAP +
+	 * "pointsInsert", bean); }
+	 */
 	
 	
 	public void pointsUpdate(PointsVo bean) {

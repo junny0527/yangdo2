@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.javaex.service.PointsService;
 import com.javaex.service.RePayService;
 import com.javaex.vo.PointsVo;
 import com.javaex.vo.RePayVo;
@@ -24,11 +25,12 @@ public class BumjunController {
 
 	@Autowired
 	private RePayService rePayService;
-
+	private PointsService pointsService;
+	
 	// 예약
 	@GetMapping("/reserve/{no}")
 	public String reserve(@PathVariable int no, Model model, HttpSession session) {
-		System.out.println("\t\t+ BumJunController::reserve() invoked...");
+		System.out.println("\t\t BumJunController::reserve() invoked...");
 		
 		System.out.println(no);
 		
@@ -43,7 +45,7 @@ public class BumjunController {
 	 //양도예약
 	@GetMapping("/yangdoreserve/{no}")
 	public String yangdoreserve(@PathVariable int no, Model model, HttpSession session) {
-		System.out.println("\t\t+ BumJunController::yangdoreserve() invoked...");
+		System.out.println("\t\t BumJunController::yangdoreserve() invoked...");
 		
 		
 		session.getAttribute("authUser");
@@ -57,19 +59,21 @@ public class BumjunController {
 	//일반 결제 인서트
 	@PostMapping("/reserve")
 	@ResponseBody
-	public void reInsert(@RequestBody RePayVo bean ,PointsVo pointsVo) {
-		System.out.println("\t\t+ BumJunController::reInsert() invoked...");
+	public void reInsert(@RequestBody RePayVo bean ,PointsVo pointsVo ) {
+		System.out.println("\t\t BumJunController::reInsert() invoked...");
 		System.out.println("RePayVo::"+ bean);
-		rePayService.PayInsert(bean, pointsVo);
+		pointsService.pointUpdate(pointsVo);
+		rePayService.PayInsert(bean );
 	}
 	
 	//양도 결제 인서트+업데이트
 	@PostMapping("/yangdoUpdateInsert")
 	@ResponseBody
-	public void yangdoUpdateInsert(@RequestBody RePayVo bean,PointsVo pointsVo) {
-		System.out.println("\t\t+ BumJunController::yangdoPayUpdate() invoked...");
+	public void yangdoUpdateInsert(@RequestBody RePayVo bean ,PointsVo pointsVo ) {
+		System.out.println("\t\t BumJunController::yangdoPayUpdate() invoked...");
 		System.out.println("RePayVo::"+ bean);
-		 rePayService.yangdoUpdateInsert(bean, pointsVo);
+		pointsService.pointUpdate(pointsVo);
+		rePayService.yangdoUpdateInsert(bean);
 		 
 	}
 	
