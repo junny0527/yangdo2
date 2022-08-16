@@ -68,7 +68,7 @@
 													class="product-title"><i class="bg_w">양도완료</i> <strong>${list.pName}</strong>
 													<span> 체크인: ${list.checkIn} <br> 체크아웃:
 														${list.checkOut}
-												</span> <b>예약 상세 &gt;</b></a>
+												</span></a>
 											</div></li>
 									</ul>
 								</c:when>

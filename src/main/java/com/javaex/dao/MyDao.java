@@ -56,4 +56,18 @@ public class MyDao {
 		return sqlSession.selectList("my.getTransferList", no);
 	}
 
+	// 예약번호로 예약상세 내역 출력하기
+	public List<MyListVo> getDetail(int resNo) {
+		System.out.println("MyDao>getDetail()");
+
+		return sqlSession.selectList("my.getDetail", resNo);
+	}
+
+	// 예약내역(이용완료, 예약취소, 양도완료) 삭제
+	public int deleteOne(int no) {
+		System.out.println("MyDao>deleteOne");
+
+		return sqlSession.delete("my.deleteOne", no);
+	}
+
 }

@@ -12,12 +12,16 @@
                    p.name pName,
                    r.check_in checkIn,
                    r.check_out checkOut,
+                   p.check_in inTime,
+                   p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			order by r.reg_date desc
+			order by r.no desc
 		]]>
 	</select>
 
@@ -25,24 +29,23 @@
 	<select id="getReserveList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select ot.status status,
-					ot.pName pName,
-					ot.checkIn checkIn,
-					ot.checkOut checkOut
-			from (select r.user_no no,
+			select r.user_no no,
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
                    r.check_in checkIn,
                    r.check_out checkOut,
+                   p.check_in inTime,
+                   p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			order by r.reg_date desc) ot
-			where status = '예약완료'
-		
+			and r.status = '예약완료'
+			order by r.no desc
 		]]>
 	</select>
 
@@ -50,93 +53,148 @@
 	<select id="getUsedList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select ot.status status,
-					ot.pName pName,
-					ot.checkIn checkIn,
-					ot.checkOut checkOut
-			from (select r.user_no no,
+			select r.user_no no,
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
                    r.check_in checkIn,
                    r.check_out checkOut,
+                   p.check_in inTime,
+                   p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			order by r.reg_date desc) ot
-			where status = '이용완료'
+			and r.status = '이용완료'
+			order by r.no desc
 		]]>
 	</select>
+
 	<!-- 유저 번호로 예약취소 리스트 가져오기 -->
 	<select id="getCancelList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select ot.status status,
-					ot.pName pName,
-					ot.checkIn checkIn,
-					ot.checkOut checkOut
-			from (select r.user_no no,
+			select r.user_no no,
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
                    r.check_in checkIn,
                    r.check_out checkOut,
+                   p.check_in inTime,
+                   p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			order by r.reg_date desc) ot
-			where status = '일반취소'
+			and r.status = '예약취소'
+			order by r.no desc
 		]]>
 	</select>
+
 	<!-- 유저 번호로 양도대기 리스트 가져오기 -->
 	<select id="getRelistList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select ot.status status,
-					ot.pName pName,
-					ot.checkIn checkIn,
-					ot.checkOut checkOut
-			from (select r.user_no no,
+			select r.user_no no,
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
                    r.check_in checkIn,
                    r.check_out checkOut,
+                   p.check_in inTime,
+                   p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			order by r.reg_date desc) ot
-			where status = '양도대기'
+			and r.status = '양도대기'
+			order by r.no desc
 		]]>
 	</select>
+
 	<!-- 유저 번호로 양도완료 리스트 가져오기 -->
 	<select id="getTransferList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select ot.status status,
-					ot.pName pName,
-					ot.checkIn checkIn,
-					ot.checkOut checkOut
-			from (select r.user_no no,
+			select r.user_no no,
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
                    r.check_in checkIn,
                    r.check_out checkOut,
+                   p.check_in inTime,
+                   p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			order by r.reg_date desc) ot
-			where status = '양도에의한취소'
+			and r.status = '양도대기'
+			order by r.no desc
 		]]>
 	</select>
 
+	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
+	<delete id="deleteOne" parameterType="int">
+		<![CDATA[
+			delete from reservations
+			where resNo = #{resNo}
+		]]>
+	</delete>
+
+	<!-- 예약상태 업데이트 하기 -->
+	<update id="updateStatus" parameterType="int">
+		<![CDATA[
+			update reservations
+			set status=#{status}
+			where resNo = #{resNo}
+		]]>
+	</update>
+
+	<!-- 예약상세 페이지 예약번호로 불러오기 -->
+	<select id="getDetail" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
+		<![CDATA[
+ 			select r.status status,
+ 					p.name pName,
+ 					ro.room_name rName,
+ 					r.check_in checkIn,
+ 					r.check_out checkOut,
+ 					p.check_in inTime,
+ 					p.check_out outTime,
+ 					pImg.image_path imgPath,
+ 					ro.standard_people sPple,
+ 					ro.max_people mPple,
+ 					r.no resNo,
+ 					r.name,
+ 					r.hp,
+ 					r.total_price tPrice,
+ 					p.add_adult_price aPrice,
+ 					p.add_kid_price kPrice,
+ 					p.add_baby_price bPrice,
+ 					r.trans_price trPrice,
+ 					r.pay_status pStatus,
+ 					p.refund_no refNo,
+ 					co.company_hp comHp,
+ 					r.p_r_no pRno
+ 			from reservations r, pension p, rooms ro, company co, pension_image pImg
+ 			where r.room_no = ro.no
+ 			and p.no = ro.pension_no
+            and co.no = p.company_no
+            and p.no = pImg.no
+            and pImg.orders = 1
+ 			and r.no = #{resNo}
+		]]>
+	</select>
 </mapper>

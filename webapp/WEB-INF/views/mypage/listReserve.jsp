@@ -52,25 +52,21 @@
 					<section>
 						<h3>예약완료 내역</h3>
 						<c:forEach var="list" items="${list}">
-							<c:choose>
-								<c:when test="${list.status == '예약완료'}">
-									<ul class="list_wrap">
-										<li class="reservation-detail"><div>
-												<p class="pic">
-													<img
-														src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
-														alt="" class="align">
-												</p>
-												<a
-													href="${pageContext.request.contextPath}/my/detail/reserved"
-													class="product-title"><i class="">예약완료</i> <strong>${list.pName }</strong>
-													<span>체크인: ${list.checkIn} <br> 체크아웃:
-														${list.checkOut}
-												</span> </a>
-											</div></li>
-									</ul>
-								</c:when>
-							</c:choose>
+							<ul class="list_wrap">
+								<li class="reservation-detail"><div>
+										<p class="pic">
+											<img
+												src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
+												alt="" class="align">
+										</p>
+										<a
+											href="${pageContext.request.contextPath}/my/detail/reserved"
+											class="product-title"><i class="">예약완료</i> <strong>${rlist.pName }</strong>
+											<span>체크인: ${rlist.checkIn} <br> 체크아웃:
+												${rlist.checkOut}
+										</span> </a>
+									</div></li>
+							</ul>
 						</c:forEach>
 						<!---->
 					</section>

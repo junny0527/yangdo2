@@ -9,16 +9,31 @@ public class MyListVo {
 	public int resNo; // 예약번호
 	public String status; // 예약상태
 	public String pName; // 펜션이름
-	public String checkIn; // 체크인
-	public String checkOut; // 체크아웃
+	public Date checkIn; // 체크인 일자
+	public Date checkOut; // 체크아웃 일자
+	public String inTime; // 체크인 시간
+	public String outTime; // 체크아웃 시간
 	public Long imgPath; // 이미지경로
 	public Date regDate; // 등록일
+	////////////////////////////////
+	public String rName; // 방이름
+	public int sPple; // 기본인원
+	public int mPple; // 최대인원
+	public String name; // 예약자이름
+	public String hp; // 예약자핸드폰
+	public String tPrice; // 총금액
+	public int trPrice; // 양도가격
+	public String pStatus; // 결제상태
+	public int refNo; // 환불번호
+	public String comHp; // 회사번호
+	public int pRno; // 부모예약번호
 
 	public MyListVo() {
 	}
 
-	public MyListVo(int no, int resNo, String status, String pName, String checkIn, String checkOut, Long imgPath,
-			Date regDate) {
+	public MyListVo(int no, int resNo, String status, String pName, Date checkIn, Date checkOut, String inTime,
+			String outTime, Long imgPath, Date regDate, String rName, int sPple, int mPple, String name, String hp,
+			String tPrice, int trPrice, String pStatus, int refNo, String comHp, int pRno) {
 		super();
 		this.no = no;
 		this.resNo = resNo;
@@ -26,8 +41,21 @@ public class MyListVo {
 		this.pName = pName;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		this.inTime = inTime;
+		this.outTime = outTime;
 		this.imgPath = imgPath;
 		this.regDate = regDate;
+		this.rName = rName;
+		this.sPple = sPple;
+		this.mPple = mPple;
+		this.name = name;
+		this.hp = hp;
+		this.tPrice = tPrice;
+		this.trPrice = trPrice;
+		this.pStatus = pStatus;
+		this.refNo = refNo;
+		this.comHp = comHp;
+		this.pRno = pRno;
 	}
 
 	public int getNo() {
@@ -62,20 +90,36 @@ public class MyListVo {
 		this.pName = pName;
 	}
 
-	public String getCheckIn() {
+	public Date getCheckIn() {
 		return checkIn;
 	}
 
-	public void setCheckIn(String checkIn) {
+	public void setCheckIn(Date checkIn) {
 		this.checkIn = checkIn;
 	}
 
-	public String getCheckOut() {
+	public Date getCheckOut() {
 		return checkOut;
 	}
 
-	public void setCheckOut(String checkOut) {
+	public void setCheckOut(Date checkOut) {
 		this.checkOut = checkOut;
+	}
+
+	public String getInTime() {
+		return inTime;
+	}
+
+	public void setInTime(String inTime) {
+		this.inTime = inTime;
+	}
+
+	public String getOutTime() {
+		return outTime;
+	}
+
+	public void setOutTime(String outTime) {
+		this.outTime = outTime;
 	}
 
 	public Long getImgPath() {
@@ -94,10 +138,101 @@ public class MyListVo {
 		this.regDate = regDate;
 	}
 
+	public String getrName() {
+		return rName;
+	}
+
+	public void setrName(String rName) {
+		this.rName = rName;
+	}
+
+	public int getsPple() {
+		return sPple;
+	}
+
+	public void setsPple(int sPple) {
+		this.sPple = sPple;
+	}
+
+	public int getmPple() {
+		return mPple;
+	}
+
+	public void setmPple(int mPple) {
+		this.mPple = mPple;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getHp() {
+		return hp;
+	}
+
+	public void setHp(String hp) {
+		this.hp = hp;
+	}
+
+	public String gettPrice() {
+		return tPrice;
+	}
+
+	public void settPrice(String tPrice) {
+		this.tPrice = tPrice;
+	}
+
+	public int getTrPrice() {
+		return trPrice;
+	}
+
+	public void setTrPrice(int trPrice) {
+		this.trPrice = trPrice;
+	}
+
+	public String getpStatus() {
+		return pStatus;
+	}
+
+	public void setpStatus(String pStatus) {
+		this.pStatus = pStatus;
+	}
+
+	public int getRefNo() {
+		return refNo;
+	}
+
+	public void setRefNo(int refNo) {
+		this.refNo = refNo;
+	}
+
+	public String getComHp() {
+		return comHp;
+	}
+
+	public void setComHp(String comHp) {
+		this.comHp = comHp;
+	}
+
+	public int getpRno() {
+		return pRno;
+	}
+
+	public void setpRno(int pRno) {
+		this.pRno = pRno;
+	}
+
 	@Override
 	public String toString() {
 		return "MyListVo [no=" + no + ", resNo=" + resNo + ", status=" + status + ", pName=" + pName + ", checkIn="
-				+ checkIn + ", checkOut=" + checkOut + ", imgPath=" + imgPath + ", regDate=" + regDate + "]";
+				+ checkIn + ", checkOut=" + checkOut + ", inTime=" + inTime + ", outTime=" + outTime + ", imgPath="
+				+ imgPath + ", regDate=" + regDate + ", rName=" + rName + ", sPple=" + sPple + ", mPple=" + mPple
+				+ ", name=" + name + ", hp=" + hp + ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", pStatus="
+				+ pStatus + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno=" + pRno + "]";
 	}
 
 }

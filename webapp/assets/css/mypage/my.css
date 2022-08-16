@@ -557,6 +557,9 @@
 	left: 0;
 	width: 100%;
 }
+.reserve_list li a {
+	border:none;
+}
 
 .reserve_list li a i {
 	display: inline-block;
@@ -582,10 +585,21 @@
 	width: 100%;
 	height: auto;
 	padding-bottom: 20px;
-	border: 1px solid rgba(0, 0, 0, 0.08);
-	border-top: none;
-	border-radius: 0 0 4px 4px;
+	border: none;
+	background: #fff;
 	text-align: center;
+}
+
+.reserve_list li .btn_re a {
+	display: block;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	height: 19px;
+	font-size: 16px;
+	line-height: normal;
+	color: #00796b;
+	border: none;
 }
 
 .reserve_list li button {

@@ -39,7 +39,7 @@
 	</select>
 
 	
-	<update id="yangdoUpdate" parameterType="ReservationVo">
+	<update id="yangdoUpdate" parameterType="com.javaex.vo.MyListVo">
 		<![CDATA[
 			update reservations
 			set status = #{Status}

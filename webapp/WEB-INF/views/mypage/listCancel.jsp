@@ -68,7 +68,7 @@
 													class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
 													<span>체크인: ${list.checkIn} <br> 체크아웃:
 														${list.checkOut}
-												</span> <b>예약 상세 &gt;</b></a>
+												</span></a>
 												<p class="btn_re">
 													<a href=""> 다시 예약 </a>
 												</p>
