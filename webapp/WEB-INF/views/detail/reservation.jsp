@@ -826,7 +826,7 @@
 		}
 	});	
 	
-	//모달 창 닫기 이벤트 (값 초기화)
+	//모달 창 닫기 이벤트 (값 초기화)123
 	$(".btnClose").on("click", function(){
 		crtImgList = null;
 		crtPos = 0;
