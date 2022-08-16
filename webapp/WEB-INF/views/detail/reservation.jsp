@@ -764,15 +764,12 @@
 				
 				crtImgList = roomImgList;
 				/*성공시 처리해야될 코드 작성*/
-<<<<<<< HEAD
 				console.log("이미지숫자 :"+roomImgList.length);
 				
-<<<<<<< HEAD
 				src = "${pageContext.request.contextPath}/upload/"+ crtImgList[crtPos].IMAGE_PATH;
 				$(".roomImageList").attr("src", src);
 				
 				$(".roomPhoto").modal("show");
-=======
 					$(".imgRight").on("click", function() {
 						if(count < roomImgList.length -1) {
 							count += 1;
@@ -790,17 +787,13 @@
 						}
 					});	
 					src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
-=======
-				/* src="${pageContext.request.contextPath}/upload/${pMap.imgList[0].IMAGE_PATH}"> */
 				console.log(roomImgList);
 				for(var i = 0; i < roomImgList.length; i++) {
 					var src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[i].IMAGE_PATH"};
 					if() {
 						
 					}
->>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 					$(".roomImageList").attr("src", src);
->>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
