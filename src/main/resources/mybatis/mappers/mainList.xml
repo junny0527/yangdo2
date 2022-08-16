@@ -3,6 +3,7 @@
 <mapper namespace = "MainList">
 	
 	<!-- 펜션 리스트 -->
+	<!--  
 	<select id="penList" resultType="com.javaex.vo.MainListVo" parameterType="int">
 		<![CDATA[
 			select 
@@ -24,21 +25,56 @@
 			and p.law_code = #{areaNo}
 		]]>
 	</select>
-	
-	<!-- 리뷰 수 가ㅕ오기 -->
-	<select id="selectTotalCnt" resultType="int">
+	-->
+		<select id="penList" resultType="com.javaex.vo.MainListVo" parameterType="int">
 		<![CDATA[
-			SELECT COUNT(*) FROM reviews
+			select          
+                COUNT(p.no) rCount,
+                p.no pNo,
+			    p.name pName,
+			    p.law_name lawName,
+			    p.law_code lawCode,
+			    p.visit_road3  visitRoad3,
+			    pi.image_path imagePath,
+			    pr.price penPrice,
+			    ri.stars stars,
+			    re.status status
+			from pension p, pension_image pi, rooms r, prices pr,
+			     reservations re, reviews ri    
+			where p.no = pi.pension_no
+			and p.company_no = r.pension_no
+			and r.no = pr.no
+			and r.no = re.no
+			and re.no = ri.review_no
+            GROUP by p.name ,
+			    p.law_name ,
+			    p.law_code ,
+			    p.visit_road3 ,
+			    pi.image_path ,
+			    pr.price ,
+			    ri.stars ,
+			    re.status,
+                p.no
+                having p.law_code = #{areaNo}
+		]]>
+	</select>
+		
+	<!-- 리뷰 수 가져오기 -->
+	<select id="selectTotalCnt" resultType="com.javaex.vo.MainListVo">
+		<![CDATA[
+			select  COUNT(*)
+			   
+			from pension p, pension_image pi, rooms r, prices pr,
+			reservations re, reviews ri   
+			where p.no = pi.pension_no
+			and p.company_no = r.pension_no
+			and r.no = pr.no
+			and r.no = re.no
+			and re.no = ri.review_no
+			and p.no = #{pNo}
 		]]>
 	</select>
 	
-	<!-- 지역이름 -->
-	<select id="selectArea" resultType="Map" parameterType="int">
-		<![CDATA[
-			select law_name 
-					from pension
-					where law_code = #{areaNo}
-		]]>
-	</select>
+	
 	
 </mapper>

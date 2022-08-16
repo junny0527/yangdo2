@@ -7,22 +7,19 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.javaex.dao.PointsDao;
 import com.javaex.dao.RePayDao;
-import com.javaex.vo.PointsVo;
 import com.javaex.vo.RePayVo;
 
 @Service
 public class RePayService  {
 	@Autowired
 	private RePayDao rePayDao;
-	private PointsDao pointsDao;
+	
 
 	// 예약+양도예약 정보 가져오기
 	public Map<String, Object> getRePay(int no) {
-		System.out.println("RePayService > getRePay()");
+		System.out.println("\t\t RePayService::getRePay() invoked...");
 
 		Map<String, Object> rpMap = rePayDao.getRePay(no);
 		// 체크인 날짜 구하기
@@ -67,21 +64,24 @@ public class RePayService  {
 	}
 	
 	//일반 결제 포인트 
-	@Transactional
-	public void PayInsert(RePayVo bean ,PointsVo pointsVo) {
-		// if 포인트를 사용했을 경우 포인트 업데이트 
-		pointsDao.pointsUpdate(pointsVo);
-		pointsDao.pointsInsert(pointsVo);
+	
+	public void PayInsert(RePayVo bean ) {
+		System.out.println("\t\t RePayService::PayInsert() invoked...");
+		
+		//if포인트사용할때만 업데이트문
+		
+		
 		rePayDao.PayInsert(bean);
 	}
 	
 	//양도 결제 포인트 
-	@Transactional
-	public void yangdoUpdateInsert(RePayVo bean,PointsVo pointsVo) {
-		pointsDao.pointsUpdate(pointsVo);
-		pointsDao.pointsInsert(pointsVo);
-		rePayDao.yangdoUpdate(bean);
+	
+	public void yangdoUpdateInsert(RePayVo bean) {
+		System.out.println("\t\t RePayService::yangdoUpdateInsert() invoked...");
+		
 		rePayDao.yangdoInsert(bean);
+		rePayDao.yangdoUpdate(bean);
+		
 	}
 	
 }

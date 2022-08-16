@@ -20,6 +20,7 @@ public class DetailDao {
 	//펜션정보 가져오기
 	public Map<String, Object> select(int pensionNo) {
 		System.out.println("DetailDao > select()");
+		
 		Map<String, Object> pMap = sqlSession.selectOne("detail.select", pensionNo);
 		return pMap;
 	}
@@ -27,6 +28,7 @@ public class DetailDao {
 	//펜션 별점 및 리뷰 가져오기
 	public Map<String, Object> totalReview(int pensionNo) {
 		System.out.println("DetailDao > totalReview()");
+		
 		Map<String, Object> totalReview = sqlSession.selectOne("detail.totalReview", pensionNo);
 		return totalReview;
 	}
@@ -48,7 +50,6 @@ public class DetailDao {
 		System.out.println("DetailDao > selectTotalCnt()");
 		
 		int totalCnt = sqlSession.selectOne("detail.selectTotalCnt", pensionNo);
-		
 		return totalCnt;
 	}
 	
@@ -78,28 +79,38 @@ public class DetailDao {
 	
 	//날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전)
 	public List<Map<String, Object>> roomList(int pensionNo, String datepicker, String datepicker2) {
-		System.out.println("DetailDao > reservation()");
+		System.out.println("DetailDao > roomList()");
+		
 		Map<String, Object> roomMap = new HashMap<String, Object>();
 		roomMap.put("pensionNo", pensionNo);
 		roomMap.put("datepicker", datepicker);
 		roomMap.put("datepicker2", datepicker2);
+		
 		List<Map<String, Object>> roomList = sqlSession.selectList("detail.roomList", roomMap);
-		System.out.println("::::::::::::::::"+roomList);
-		System.out.println(datepicker);
-		System.out.println(datepicker2);
 		return roomList;
 	}
 	
-	//객실 정보 가져오기 (ajax)
+	//펜션 별 객실 메인사진 보여주기
+	public List<Map<String, Object>> pensionRoomImg(int pensionNo) {
+		System.out.println("DetailDao > pensionRoomImg()");
+		
+		Map<String, Object> roomMap = new HashMap<String, Object>();
+		roomMap.put("pensionNo", pensionNo);
+		
+		List<Map<String, Object>> pensionRoomImg = sqlSession.selectList("detail.pensionRoomImg", pensionNo);
+		return pensionRoomImg;
+	}
+	
+	
+	//객실 리스트 정보 가져오기 (ajax)
 	public List<Map<String, Object>> roomInfoList(int pensionNo, int roomNo) {
-		System.out.println("DetailService > roomInfo");
+		System.out.println("DetailService > roomInfoList");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pensionNo", pensionNo);
 		map.put("roomNo", roomNo);
 		
 		List<Map<String, Object>> roomInfoList = sqlSession.selectList("detail.roomInfoList", map);
-		
 		return roomInfoList;
 	}
 	
@@ -112,7 +123,6 @@ public class DetailDao {
 		map.put("roomNo", roomNo);
 		
 		List<Map<String, Object>> roomImgList = sqlSession.selectList("detail.roomImgList", map);
-		
 		return roomImgList;
 	}
 	
@@ -123,8 +133,5 @@ public class DetailDao {
 		Map<String, Object> pensionInfo = sqlSession.selectOne("pensionInfo",pensionNo);
 		return pensionInfo;
 	}
-	
-	
-	
 	
 }

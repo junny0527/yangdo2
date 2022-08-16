@@ -4,31 +4,64 @@ import java.util.Arrays;
 
 public class HostRulesVo {
 	
+	private int pensionNo;
 	private String checkin;
 	private String checkout;
 	private int addAdultPrice;
 	private int addKidPrice;
 	private int addBabyPrice;
 	private int refundNo;
-	private String[] peakStart;
-	private String[] peakEnd;
-	private String[] subpeakStart;
-	private String[] subpeakEnd;
+	
+	private String[] peckStartArray;
+	private String[] peckEndArray;
+	private String[] subpeckStartArray;
+	private String[] subpeckEndArray;
+	private String peckStart;
+	private String peckEnd;
+	private String subpeckStart;
+	private String subpeckEnd;
+	
+	private int peckNo;
+	
 	
 	public HostRulesVo() {}
+
+
+	public HostRulesVo(String peckStart, String peckEnd) {
+		this.peckStart = peckStart;
+		this.peckEnd = peckEnd;
+	}
 	
-	public HostRulesVo(String checkin, String checkout, int addAdultPrice, int addKidPrice, int addBabyPrice,
-			int refundNo, String[] peakStart, String[] peakEnd, String[] subpeakStart, String[] subpeakEnd) {
+	public HostRulesVo(int pensionNo, String checkin, String checkout, int addAdultPrice, int addKidPrice,
+			int addBabyPrice, int refundNo, String[] peckStartArray, String[] peckEndArray, String[] subpeckStartArray,
+			String[] subpeckEndArray, String peckStart, String peckEnd, String subpeckStart, String subpeckEnd,
+			int peckNo) {
+		this.pensionNo = pensionNo;
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.addAdultPrice = addAdultPrice;
 		this.addKidPrice = addKidPrice;
 		this.addBabyPrice = addBabyPrice;
 		this.refundNo = refundNo;
-		this.peakStart = peakStart;
-		this.peakEnd = peakEnd;
-		this.subpeakStart = subpeakStart;
-		this.subpeakEnd = subpeakEnd;
+		this.peckStartArray = peckStartArray;
+		this.peckEndArray = peckEndArray;
+		this.subpeckStartArray = subpeckStartArray;
+		this.subpeckEndArray = subpeckEndArray;
+		this.peckStart = peckStart;
+		this.peckEnd = peckEnd;
+		this.subpeckStart = subpeckStart;
+		this.subpeckEnd = subpeckEnd;
+		this.peckNo = peckNo;
+	}
+
+
+	public int getPensionNo() {
+		return pensionNo;
+	}
+
+
+	public void setPensionNo(int pensionNo) {
+		this.pensionNo = pensionNo;
 	}
 
 
@@ -92,52 +125,106 @@ public class HostRulesVo {
 	}
 
 
-	public String[] getPeakStart() {
-		return peakStart;
+	public String[] getPeckStartArray() {
+		return peckStartArray;
 	}
 
 
-	public void setPeakStart(String[] peakStart) {
-		this.peakStart = peakStart;
+	public void setPeckStartArray(String[] peckStartArray) {
+		this.peckStartArray = peckStartArray;
 	}
 
 
-	public String[] getPeakEnd() {
-		return peakEnd;
+	public String[] getPeckEndArray() {
+		return peckEndArray;
 	}
 
 
-	public void setPeakEnd(String[] peakEnd) {
-		this.peakEnd = peakEnd;
+	public void setPeckEndArray(String[] peckEndArray) {
+		this.peckEndArray = peckEndArray;
 	}
 
 
-	public String[] getSubpeakStart() {
-		return subpeakStart;
+	public String[] getSubpeckStartArray() {
+		return subpeckStartArray;
 	}
 
 
-	public void setSubpeakStart(String[] subpeakStart) {
-		this.subpeakStart = subpeakStart;
+	public void setSubpeckStartArray(String[] subpeckStartArray) {
+		this.subpeckStartArray = subpeckStartArray;
 	}
 
 
-	public String[] getSubpeakEnd() {
-		return subpeakEnd;
+	public String[] getSubpeckEndArray() {
+		return subpeckEndArray;
 	}
 
 
-	public void setSubpeakEnd(String[] subpeakEnd) {
-		this.subpeakEnd = subpeakEnd;
+	public void setSubpeckEndArray(String[] subpeckEndArray) {
+		this.subpeckEndArray = subpeckEndArray;
 	}
+
+
+	public String getPeckStart() {
+		return peckStart;
+	}
+
+
+	public void setPeckStart(String peckStart) {
+		this.peckStart = peckStart;
+	}
+
+
+	public String getPeckEnd() {
+		return peckEnd;
+	}
+
+
+	public void setPeckEnd(String peckEnd) {
+		this.peckEnd = peckEnd;
+	}
+
+
+	public String getSubpeckStart() {
+		return subpeckStart;
+	}
+
+
+	public void setSubpeckStart(String subpeckStart) {
+		this.subpeckStart = subpeckStart;
+	}
+
+
+	public String getSubpeckEnd() {
+		return subpeckEnd;
+	}
+
+
+	public void setSubpeckEnd(String subpeckEnd) {
+		this.subpeckEnd = subpeckEnd;
+	}
+
+
+	public int getPeckNo() {
+		return peckNo;
+	}
+
+
+	public void setPeckNo(int peckNo) {
+		this.peckNo = peckNo;
+	}
+
 
 	@Override
 	public String toString() {
-		return "HostRulesVo [checkin=" + checkin + ", checkout=" + checkout + ", addAdultPrice=" + addAdultPrice
-				+ ", addKidPrice=" + addKidPrice + ", addBabyPrice=" + addBabyPrice + ", refundNo=" + refundNo
-				+ ", peakStart=" + Arrays.toString(peakStart) + ", peakEnd=" + Arrays.toString(peakEnd)
-				+ ", subpeakStart=" + Arrays.toString(subpeakStart) + ", subpeakEnd=" + Arrays.toString(subpeakEnd)
+		return "HostRulesVo [pensionNo=" + pensionNo + ", checkin=" + checkin + ", checkout=" + checkout
+				+ ", addAdultPrice=" + addAdultPrice + ", addKidPrice=" + addKidPrice + ", addBabyPrice=" + addBabyPrice
+				+ ", refundNo=" + refundNo + ", peckStartArray=" + Arrays.toString(peckStartArray) + ", peckEndArray="
+				+ Arrays.toString(peckEndArray) + ", subpeckStartArray=" + Arrays.toString(subpeckStartArray)
+				+ ", subpeckEndArray=" + Arrays.toString(subpeckEndArray) + ", peckStart=" + peckStart + ", peckEnd="
+				+ peckEnd + ", subpeckStart=" + subpeckStart + ", subpeckEnd=" + subpeckEnd + ", peckNo=" + peckNo
 				+ "]";
 	}
+
 
 }

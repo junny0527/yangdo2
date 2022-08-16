@@ -159,7 +159,7 @@
 									<div class="area">
 										<span class="form-body">
 											<select class = "select-style middle-size category" name = sido></select>
-											<select class = "select-style middle-size category" name = option></select>
+											<select class = "select-style middle-size category" name = gugun></select>
 										</span>
 									</div>
 									<p class="order text-normal">* 펜션 검색 시 분류되는 지역 항목입니다.</p>
@@ -471,7 +471,6 @@ $('document').ready(function() {
    });
   }
  });
-
 });
 
 

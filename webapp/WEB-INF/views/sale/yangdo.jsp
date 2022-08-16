@@ -49,7 +49,7 @@
 				<!-- 방이름 -->
 				<div id="pension_rName" class="font-bold">${sMap.ROOM_NAME }</div>
 				<!-- 기준인원 -->
-				<div id="pension_people" class="font-bold">기준 ${sMap.STANDARD_PEOPLE }인/ 최대 ${sMap.MAX_PEOPLE }인</div>
+				<div id="pension_people" class="font-bold">기준 ${sMap.STANDARD_PEOPLE }인/ 최대 ${sMap.MAX_PEOPLE}인</div>
 			</div>
 			<!-- 컨텐츠(숙소) -->
 
@@ -192,7 +192,7 @@
 				
 				<!-- 금액설정 -->
 				<div id="pay_confirm" class="clearfix">
-					<div id="pay_confirm_payment">결제금액: ${sMap.TOTAL_PRICE }원</div>
+					<div id="pay_confirm_payment">결제금액: ${sMap.totalPRICE }원</div>
 					<div id="refund" class="clearfix">
 						<div id="pay_confirm_refund">환불시 금액:&nbsp;</div>
 						<div id="refund_pay">${sMap.REFUND_PRICE}원</div>

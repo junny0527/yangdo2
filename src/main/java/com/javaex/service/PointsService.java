@@ -12,11 +12,13 @@ public class PointsService {
 	@Autowired
 	private PointsDao pointsDao;
 	
-	public void pointsInsert(PointsVo pointsVo){
-		pointsDao.pointsInsert(pointsVo);
-	}
+	/*
+	 * public void pointsInsert(PointsVo pointsVo){
+	 * pointsDao.pointsInsert(pointsVo); }
+	 */
 	
 	public void pointUpdate(PointsVo pointsVo){
+		
 		pointsDao.pointsUpdate(pointsVo);
 	}
 }
