@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="points">
 
-	<insert id="pointsInsert" parameterType="com.javaex.vo.PointsVo">
+	<!-- <insert id="pointsInsert" parameterType="com.javaex.vo.PointsVo">
 				INSERT INTO RESERVATIONS (
 						NO,
 						RESERVE_NO,
@@ -14,7 +14,7 @@
 						#{point},
 						NOWDATE
 						)
-	</insert>
+	</insert> -->
 	<update id="pointsUpdate" parameterType="com.javaex.vo.PointsVo"> 
 		UPDATE POINTS
 			SET 

@@ -2,109 +2,141 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="my">
 
-		<!-- reservation list (예약완료 내역) -->
-		<select id="getReservedList" resultType="map"
-				parameterType="int">
+	<!-- 유저 번호로 전체 리스트 가져오기 -->
+	<select id="getUserList" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
 		<![CDATA[
-			select r.status,
-                   p.name,
-                   r.check_in
+			select r.user_no no,
+				   r.no resNo,
+				   r.status status,
+                   p.name pName,
+                   r.check_in checkIn,
+                   r.check_out checkOut,
+                   r.reg_date regDate
             from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and r.status = '예약완료'
 			and r.user_no = #{no}
-			order by r.no desc
+			order by r.reg_date desc
 		]]>
-		</select>
+	</select>
 
-		<!-- reservation list (이용완료 내역) -->
-		<select id="getUsedList" resultType="map" parameterType="int">
+	<!-- 유저 번호로 예약완료 리스트 가져오기 -->
+	<select id="getReserveList" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
 		<![CDATA[
-			select r.status,
-                   p.name,
-                   r.check_in,
-                   r.check_out
+			select ot.status status,
+					ot.pName pName,
+					ot.checkIn checkIn,
+					ot.checkOut checkOut
+			from (select r.user_no no,
+				   r.no resNo,
+				   r.status status,
+                   p.name pName,
+                   r.check_in checkIn,
+                   r.check_out checkOut,
+                   r.reg_date regDate
             from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and r.status = '이용완료'
 			and r.user_no = #{no}
-			order by r.no desc
+			order by r.reg_date desc) ot
+			where status = '예약완료'
+		
 		]]>
-		</select>
+	</select>
 
-		<!-- reservation list (예약취소 내역) -->
-		<select id="getCanceledList" resultType="map"
-				parameterType="int">
+	<!-- 유저 번호로 이용완료 리스트 가져오기 -->
+	<select id="getUsedList" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
 		<![CDATA[
-			select r.status,
-                   p.name,
-                   r.check_in,
-                   r.check_out
+			select ot.status status,
+					ot.pName pName,
+					ot.checkIn checkIn,
+					ot.checkOut checkOut
+			from (select r.user_no no,
+				   r.no resNo,
+				   r.status status,
+                   p.name pName,
+                   r.check_in checkIn,
+                   r.check_out checkOut,
+                   r.reg_date regDate
             from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and r.status = '예약취소'
 			and r.user_no = #{no}
-			order by r.no desc
+			order by r.reg_date desc) ot
+			where status = '이용완료'
 		]]>
-		</select>
-
-		<!-- reservation list (양도대기 내역) -->
-		<select id="getRelistedList" resultType="map"
-				parameterType="int">
+	</select>
+	<!-- 유저 번호로 예약취소 리스트 가져오기 -->
+	<select id="getCancelList" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
 		<![CDATA[
-			select r.status,
-                   p.name,
-                   r.check_in,
-                   r.check_out
+			select ot.status status,
+					ot.pName pName,
+					ot.checkIn checkIn,
+					ot.checkOut checkOut
+			from (select r.user_no no,
+				   r.no resNo,
+				   r.status status,
+                   p.name pName,
+                   r.check_in checkIn,
+                   r.check_out checkOut,
+                   r.reg_date regDate
             from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and r.status = '양도대기'
 			and r.user_no = #{no}
-			order by r.no desc
+			order by r.reg_date desc) ot
+			where status = '일반취소'
 		]]>
-		</select>
-
-		<!-- reservation list (양도완료 내역) -->
-		<select id="getTransferredList" resultType="map"
-				parameterType="int">
+	</select>
+	<!-- 유저 번호로 양도대기 리스트 가져오기 -->
+	<select id="getRelistList" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
 		<![CDATA[
-			select r.status,
-                   p.name,
-                   r.check_in,
-                   r.check_out
+			select ot.status status,
+					ot.pName pName,
+					ot.checkIn checkIn,
+					ot.checkOut checkOut
+			from (select r.user_no no,
+				   r.no resNo,
+				   r.status status,
+                   p.name pName,
+                   r.check_in checkIn,
+                   r.check_out checkOut,
+                   r.reg_date regDate
             from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and r.status = '양도완료'
 			and r.user_no = #{no}
-			order by r.no desc
+			order by r.reg_date desc) ot
+			where status = '양도대기'
 		]]>
-		</select>
-
-		<select id="getImg" resultType="pImgVo"
-				parameterType="pImgVo">
-			<![CDATA[
-			select pImg.*
-			from pension_image pImg, pension p
-			where pImg.pension_no = p.no
-			and pImg.orders = '1'
+	</select>
+	<!-- 유저 번호로 양도완료 리스트 가져오기 -->
+	<select id="getTransferList" resultType="com.javaex.vo.MyListVo"
+		parameterType="int">
+		<![CDATA[
+			select ot.status status,
+					ot.pName pName,
+					ot.checkIn checkIn,
+					ot.checkOut checkOut
+			from (select r.user_no no,
+				   r.no resNo,
+				   r.status status,
+                   p.name pName,
+                   r.check_in checkIn,
+                   r.check_out checkOut,
+                   r.reg_date regDate
+            from reservations r, pension p, rooms ro
+			where r.room_no = ro.no
+			and p.no = ro.pension_no
+			and r.user_no = #{no}
+			order by r.reg_date desc) ot
+			where status = '양도에의한취소'
 		]]>
-		</select>
+	</select>
 
-		<!-- reservation list (예약내역) -->
-		<!-- <select id="getStatusList" resultType="map" parameterType="String"> 
-				<![CDATA[ select ot.status, ot.pName, ot.checkin from (select r.status status, 
-				p.name pName, r.check_in checkin from reservations r, pension p, rooms ro 
-				where r.room_no = ro.no and p.no = ro.pension_no and r.user_no = #{no} order 
-				by checkin desc) ot where ot.status = #{status} ]]> </select> -->
-
-		<!-- 나중에 다시 시도 -->
-		<!-- <select id="getListByUser" resultType="map" parameterType="map"> <![CDATA[ 
-				select r.status, p.name, r.check_in from reservations r, pension p, rooms 
-				ro where r.room_no = ro.no and p.no = ro.pension_no and r.user_no = #{no} 
-				order by r.no desc ]]> </select> -->
 </mapper>

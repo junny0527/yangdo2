@@ -25,21 +25,28 @@ public class SaleService {
 		Map<String,Object> sMap = saleDao.getReservation(no);
 		//오늘 날짜 구하기
 		Date today = new Date();
-		//체크인 날짜 구하기
 		//맵에서 꺼내기
-		String checkIn = (String) sMap.get("CHECK_IN");
-		//스플릿으로 짤라주기
-		String[] checkInList = checkIn.split(" ");
-		//날짜만 가져옴
-		String CheckInDate = checkInList[0];
+		String checkIn = (String)sMap.get("CHECKIN");
+		String checkOut = (String)sMap.get("CHECKOUT");
+		String checkInDay = (String)sMap.get("CHECKINDAY");
+		String checkOutDay = (String)sMap.get("CHECKOUTDAY");
+		String checkInTime = (String)sMap.get("CHECKINTIME");
+		String checkOutTime = (String)sMap.get("CHECKOUTTIME");
+
+		
+		
+		String CheckIn = checkIn +" "+checkInDay+" "+checkInTime ;
+		String CheckOut = checkOut +" "+checkOutDay+" "+checkOutTime;
+		
 		Date dt1 = null;
 		//데이트형으로 바꿔주기
 		try {
-			dt1 = new SimpleDateFormat("yyyy-MM-dd").parse(CheckInDate);
+			dt1 = new SimpleDateFormat("yyyy-MM-dd").parse(checkIn);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+		sMap.put("CHECK_IN", CheckIn);
+		sMap.put("CHECK_OUT", CheckOut);
 		//일수계산
 		long diffSec = (dt1.getTime() - today.getTime()) / 1000; //초 차이
 		
@@ -55,7 +62,6 @@ public class SaleService {
         	StotalPrice += price[i];
         }
         int totalPrice = Integer.parseInt(StotalPrice);
-        
         //refundNo 꺼내주기
         int refundNo = Integer.parseInt(String.valueOf(sMap.get("REFUND_NO")));
         System.out.println(refundNo);
@@ -127,7 +133,7 @@ public class SaleService {
         
         //숫자에 , 넣어주기
         String RefundPrice = new DecimalFormat("#,###").format(IRefundPrice);
-        
+        System.out.println(RefundPrice);
         //맵에 넣기
         sMap.put("REFUND_PRICE",RefundPrice);
         

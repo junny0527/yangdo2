@@ -15,6 +15,7 @@ public class MainListDao {
 	private SqlSession sqlSession;
 	
 	// 펜션정보
+	
 	public List<MainListVo> select(int areaNo){
 		System.out.println("mainDao>select");
 		
@@ -32,15 +33,6 @@ public class MainListDao {
 		
 		return totalCnt;
 		
-	}
-	
-	//지역이름
-	public Map<String, Object> selectArea(int areaNo){
-		System.out.println("mainDao > Area");
-		
-		Map<String, Object> pMap = sqlSession.selectOne("MainList.selectArea");
-		System.out.println();
-		return pMap;
 	}
 	
 }

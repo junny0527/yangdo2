@@ -267,17 +267,17 @@
 					<div class="con color-dan">가격: <span id="modalPrice" class="con color-dan"></span>원</div>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				
-				<form action="${pageContext.request.contextPath}/sale/update" method="get">
+			<form action="${pageContext.request.contextPath}/sale/update" method="get">
+				<div class="modal-footer">
 					<input type="hidden" name="no" value="${sMap.NO }">
 					<input type="hidden" name="Status" value="양도대기">
 					<input type="hidden" id="hidPrice" name="transPrice" value="">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button id="yang" type="submit" class="btn btn-danger">양도합니다</button>
-				</form>
+				</div>
+			</form>
 				
-			</div>
+			
 		</div>
 		<!-- /.modal-content -->
 	</div>

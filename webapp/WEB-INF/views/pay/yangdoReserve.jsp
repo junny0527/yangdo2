@@ -259,7 +259,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 	function requestPay(form) {
 	
-		/* IMP.request_pay({ // param
+		 IMP.request_pay({ // param
 	          pg: "html5_inicis",
 	          pay_method: "card",
 	          merchant_uid: "YANGDO"+ new Date().getTime(),
@@ -269,7 +269,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	          buyer_name: $('#userName').val(),
 	          buyer_tel: "${rpMap.RHP}"
 	      }, function (rsp) { // callback
-	    	  if ( rsp.success ) { */
+	    	  if ( rsp.success ) { 
 	    	        
 	    	        /* msg += '고유ID : ' + rsp.imp_uid;
 	    	        msg += '상점 거래ID : ' + rsp.merchant_uid;
@@ -282,7 +282,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	        	no: '${rpMap.NO}',
 	    	        	name: $('#userName').val(),
 	    	        	hp: $('#hp').val(),
-	    	        	status: '${rpMap.STATUS}'
+	    	        	status: '${rpMap.STATUS}',
 	    	        	transPrice: '${rpMap.TRANS_PRICE}'
 	    	        };
 	    	        

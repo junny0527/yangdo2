@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -10,27 +11,23 @@
 <title>여행할때 양도어때</title>
 
 <!-- css -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css"
->
+	href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/mypage/mycommon.css"
->
+	href="${pageContext.request.contextPath}/assets/css/mypage/mycommon.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/mypage/my.css"
->
+	href="${pageContext.request.contextPath}/assets/css/mypage/my.css">
 
 <!-- //css -->
 </head>
 
 <!-- js -->
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"
-></script>
+	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"
-></script>
+	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <!-- //js -->
 <body class="pc and">
 	<!-- Wrap -->
@@ -55,50 +52,51 @@
 				<div class="reserve_list">
 					<section class="list_wrap">
 						<h3>
-							양도대기 내역 <a class="more_info" style="display: none" href="${pageContext.request.contextPath}/my/list/relisted">더보기>></a>
+							양도대기 내역 <a class="more_info" style="display: none"
+								href="${pageContext.request.contextPath}/my/list/relisted">더보기>></a>
 						</h3>
-						<ul class="list_wrap">
-							<li class="reservation-detail"><div>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-											alt="삼산 도브" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/list/relisted" class="product-title"><i class="">양도대기</i> <strong>삼산 도브</strong> <span>
-											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
-								</div></li>
-						</ul>
+						<c:forEach var="ylist" items="${ylist}" begin="0" end="1">
+							<ul class="list_wrap">
+								<li class="reservation-detail"><div>
+										<p class="pic">
+											<img
+												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+												alt="삼산 도브" class="align">
+										</p>
+										<a href="${pageContext.request.contextPath}/my/list/relisted"
+											class="product-title"><i class="">양도대기</i> <strong>${ylist.pName}</strong>
+											<span> 체크인: ${ylist.checkIn} <br> 체크아웃:
+												${ylist.checkOut}
+										</span> <b>예약 상세 &gt;</b></a>
+									</div></li>
+							</ul>
+						</c:forEach>
 						<!---->
 					</section>
 					<section class="list_cancel">
 						<h3>
-							양도완료 내역<a class="more_info" href="${pageContext.request.contextPath}/my/list/transferred">더보기>></a>
+							양도완료 내역<a class="more_info"
+								href="${pageContext.request.contextPath}/my/list/transferred">더보기>></a>
 						</h3>
-						<ul class="list_wrap">
-							<li class="reservation-detail"><div>
-									<button type="button" class="btn_del">삭제</button>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-											alt="삼산 도브" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
-											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
-								</div></li>
-							<li class="reservation-detail"><div>
-									<button type="button" class="btn_del">삭제</button>
-									<p class="pic">
-										<img
-											src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-											alt="삼산 도브" class="align"
-										>
-									</p>
-									<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>삼산 도브</strong> <span>
-											07.30 토 - 07.31 일 • 1박 </span> <b>예약 상세 &gt;</b></a>
-								</div></li>
-						</ul>
+						<c:forEach var="tlist" items="${tlist}" begin="0" end="1">
+
+							<ul class="list_wrap">
+								<li class="reservation-detail"><div>
+										<button type="button" class="btn_del">삭제</button>
+										<p class="pic">
+											<img
+												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+												alt="삼산 도브" class="align">
+										</p>
+										<a
+											href="${pageContext.request.contextPath}/my/detail/transferred"
+											class="product-title"><i class="bg_w">양도완료</i> <strong>${tlist.pName}</strong>
+											<span> 체크인: ${tlist.checkIn} <br> 체크아웃:
+												${tlist.checkOut}
+										</span> <b>예약 상세 &gt;</b></a>
+									</div></li>
+							</ul>
+						</c:forEach>
 						<!---->
 					</section>
 				</div>

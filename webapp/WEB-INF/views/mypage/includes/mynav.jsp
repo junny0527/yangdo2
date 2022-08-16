@@ -18,24 +18,24 @@
 		<ul>
 			<li class="item"><a href="${pageContext.request.contextPath}/my/info">내정보관리</a></li>
 			<!-- drop down menu -->
-			<li class="item"><a class="sub-btn" href="${pageContext.request.contextPath}/my/reservation">
+			<li class="item"><a class="sub-btn" href="${pageContext.request.contextPath}/my/list">
 					예약내역<i class="fas fa-angle-right dropdown"></i>
 			</a>
 				<ul class="sub-menu">
-					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/reserved">└
+					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/reserve">└
 							예약완료 내역</a></li>
 					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/used">└ 이용완료
 							내역</a></li>
-					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/canceled">└
+					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/cancel">└
 							예약취소 내역</a></li>
 				</ul></li>
 			<li class="item"><a class="sub-btn" href="${pageContext.request.contextPath}/my/yangdo">
 					양도내역<i class="fas fa-angle-right dropdown"></i>
 			</a>
 				<ul class="sub-menu">
-					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/relisted">└
+					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/relist">└
 							양도대기 내역</a></li>
-					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/transferred">└
+					<li><a class="sub-item" href="${pageContext.request.contextPath}/my/list/transfer">└
 							양도완료 내역</a></li>
 				</ul></li>
 			<!-- drop down -->

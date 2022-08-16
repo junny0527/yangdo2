@@ -4,24 +4,21 @@
 	<typeAliases>
 		<typeAlias alias="ReservationVo" type="com.javaex.vo.ReservationVo" />
 		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
-		<typeAlias alias="MyVo" type="com.javaex.vo.MyPageVo" />
 		<typeAlias alias="pImgVo" type="com.javaex.vo.PensionImageVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/sale.xml" />
 		<mapper resource="mybatis/mappers/detail.xml" />
 		<mapper resource="mybatis/mappers/repay.xml" />
-				
 		<mapper resource="mybatis/mappers/points.xml" />
-
-
 		<mapper resource="mybatis/mappers/my.xml" />
 		<!-- <mapper resource="mybatis/mappers/Hostcompanyreg.xml" /> -->
 
 		<mapper resource="mybatis/mappers/users.xml" />
-		
-
 		<mapper resource="mybatis/mappers/mainList.xml" />
-		
+
+
+		<mapper resource="mybatis/mappers/HostIntroduce.xml" />
+		<mapper resource="mybatis/mappers/HostRules.xml" />
 	</mappers>
 </configuration>	

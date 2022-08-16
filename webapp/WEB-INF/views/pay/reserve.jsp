@@ -284,7 +284,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	        	no: '${rpMap.NO}',
 	    	        	name: $('#userName').val(),
 	    	        	hp: $('#hp').val(),
-	    	        	status: '${rpMap.STATUS}'
+	    	        	status: '${rpMap.STATUS}',
 	    	        	totalprice: '${rpMap.TOTAL_PRICE}'
 	    	        };
 	    	        
