@@ -192,7 +192,7 @@
 				
 				<!-- 금액설정 -->
 				<div id="pay_confirm" class="clearfix">
-					<div id="pay_confirm_payment">결제금액: ${sMap.TOTAL_PRICE }원</div>
+					<div id="pay_confirm_payment">결제금액: ${sMap.totalPRICE }원</div>
 					<div id="refund" class="clearfix">
 						<div id="pay_confirm_refund">환불시 금액:&nbsp;</div>
 						<div id="refund_pay">${sMap.REFUND_PRICE}원</div>

@@ -38,6 +38,6 @@ public class SaleController {
 		saleService.yangdoUpdate(reservationVo);
 		
 		
-		return "redirect:/my/list/relisted";
+		return "redirect:/my/list/relist";
 	}
 }
