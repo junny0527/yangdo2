@@ -32,8 +32,6 @@ public class JiwoongController {
 		//펜션 정보 
 		model.addAttribute("mainList",mainList);
 		
-		//댓글수
-		
 		
 		return "/mainList/mainLists";
 	}

@@ -209,7 +209,7 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${mainList.imagePath}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${mainList.imagePath}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
