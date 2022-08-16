@@ -49,7 +49,7 @@
 				<!-- 방이름 -->
 				<div id="pension_rName" class="font-bold">${sMap.ROOM_NAME }</div>
 				<!-- 기준인원 -->
-				<div id="pension_people" class="font-bold">기준 ${sMap.STANDARD_PEOPLE }인/ 최대 ${sMap.MAX_PEOPLE }인</div>
+				<div id="pension_people" class="font-bold">기준 ${sMap.STANDARD_PEOPLE }인/ 최대 ${sMap.MAX_PEOPLE}인</div>
 			</div>
 			<!-- 컨텐츠(숙소) -->
 
