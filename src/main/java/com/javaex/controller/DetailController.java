@@ -19,7 +19,7 @@ public class DetailController {
 	@Autowired
 	DetailService detailService;
 	
-	//예약 사이트
+	//펜션 사이트
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pensionList(@RequestParam("pensionNo") int pensionNo, Model model,
 							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
@@ -39,22 +39,22 @@ public class DetailController {
 		return "detail/reservation";
 	}
 	
-	//객실 정보 가져오기 (ajax)
+	//객실 리스트 정보 가져오기 (ajax)
 	@ResponseBody
-	@RequestMapping(value="/api/reservation", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/api/roomInfoList", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<Map<String, Object>> pMap(@RequestParam("pensionNo") int pensionNo, @RequestParam("roomNo") int roomNo) {
-		System.out.println("ApiGuestbookController > pMap()");
+		System.out.println("DetailController > pMap()");
 		
-		List<Map<String, Object>> roomMap = detailService.roomInfoList(pensionNo, roomNo);
-		System.out.println("roomMap :"+roomMap);
-		return roomMap;
+		List<Map<String, Object>> roomInfoList = detailService.roomInfoList(pensionNo, roomNo);
+		System.out.println("roomInfoList :"+roomInfoList);
+		return roomInfoList;
 	}
 	
 	//객실별 사진 정보 가져오기 (ajax)
 	@ResponseBody
 	@RequestMapping(value="/api/roomImg", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<Map<String, Object>> roomImgList(@RequestParam("pensionNo") int pensionNo, @RequestParam("roomNo") int roomNo) {
-		System.out.println("ApiGuestbookController > roomImgList()");
+		System.out.println("DetailController > roomImgList()");
 		
 		List<Map<String, Object>> roomImgList = detailService.roomImgList(pensionNo, roomNo);
 		System.out.println("roomImgList :"+roomImgList);
@@ -65,7 +65,7 @@ public class DetailController {
 	@ResponseBody
 	@RequestMapping(value="/api/infomation", method = {RequestMethod.GET, RequestMethod.POST})
 	public Map<String, Object> infomation(@RequestParam("pensionNo") int pensionNo) {
-		System.out.println("ApiGuestbookController > infomation()");
+		System.out.println("DetailController > infomation()");
 		
 		Map<String, Object> iMap = detailService.pensionInfo(pensionNo);
 		System.out.println("iMap:"+iMap);
@@ -77,7 +77,7 @@ public class DetailController {
 	@ResponseBody
 	@RequestMapping(value="/api/review", method = {RequestMethod.GET, RequestMethod.POST})
 	public Map<String, Object> review(@RequestParam("pensionNo") int pensionNo) {
-		System.out.println("ApiGuestbookController > review()");
+		System.out.println("DetailController > review()");
 		
 		Map<String, Object> rMap = detailService.reviewInfo(pensionNo);
 		System.out.println("rMap:"+rMap);
