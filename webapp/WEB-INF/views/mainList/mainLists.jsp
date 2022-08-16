@@ -200,8 +200,9 @@
 				</div>
 				<div id="poduct_list_area">
 					<div class="title">
-						<h3>${pMap.LAW_NAME}</h3>
+						<h3>${mainList[0].lawName}</h3>
 					</div>
+					
 					<!-- 사진정보 -->
 					<ul>
 					<c:forEach var="mainList" items="${mainList}">
@@ -222,13 +223,13 @@
 											<em>${mainList.stars}</em>
 											<c:choose>
 												<c:when test="${mainList.stars <= 3}">
-													<span>별로에요 </span>
+													<span>별로에요 (${mainList.rCount})</span>
 												</c:when>
 												<c:when test="${mainList.stars > 3 && mainList.stars < 4}">
-													<span>좋아요</span>
+													<span>좋아요 (${mainList.rCount})</span>
 												</c:when>
 												<c:when test="${mainList.stars >= 4 && mainList.stars <= 5}">
-													<span>최고에요 </span>
+													<span>최고에요 (${mainList.rCount})</span>
 												</c:when>	
 											</c:choose>	
 										</p>

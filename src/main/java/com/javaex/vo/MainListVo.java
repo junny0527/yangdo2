@@ -10,18 +10,17 @@ public class MainListVo {
 	private int penPrice;
 	private int stars;
 	private String status;
-	
+	private int pNo;
+	private String rCount;
 	
 	public MainListVo() {
 		super();
 	}
 
-
 	
-
-
+	
 	public MainListVo(String pName, String lawName, int lawCode, String visitRoad3, String imagePath, int penPrice,
-			int stars, String status) {
+			int stars, String status, int pNo, String rCount) {
 		super();
 		this.pName = pName;
 		this.lawName = lawName;
@@ -31,9 +30,33 @@ public class MainListVo {
 		this.penPrice = penPrice;
 		this.stars = stars;
 		this.status = status;
+		this.pNo = pNo;
+		this.rCount = rCount;
+	}
+
+	
+	
+	public String getrCount() {
+		return rCount;
 	}
 
 
+
+	public void setrCount(String rCount) {
+		this.rCount = rCount;
+	}
+
+
+
+	public int getpNo() {
+		return pNo;
+	}
+
+
+
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
 
 
 
@@ -41,17 +64,9 @@ public class MainListVo {
 		return status;
 	}
 
-
-
-
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
-
-
 
 	public String getpName() {
 		return pName;
@@ -124,18 +139,14 @@ public class MainListVo {
 
 
 
-
-
 	@Override
 	public String toString() {
 		return "MainListVo [pName=" + pName + ", lawName=" + lawName + ", lawCode=" + lawCode + ", visitRoad3="
 				+ visitRoad3 + ", imagePath=" + imagePath + ", penPrice=" + penPrice + ", stars=" + stars + ", status="
-				+ status + "]";
+				+ status + ", pNo=" + pNo + ", rCount=" + rCount + "]";
 	}
 
 
-	
-	
 	
 	
 }

@@ -19,6 +19,7 @@ public class JiwoongController {
 	@Autowired
 	private MainListService mainService;
 	
+	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
 	public String mainList(Model model, @RequestParam("areaNo") int areaNo) {
 		System.out.println("jiwoongController>mainList");
@@ -26,16 +27,33 @@ public class JiwoongController {
 		
 		
 		List<MainListVo> mainList = mainService.select(areaNo);
-		
 		System.out.println(mainList);
 		
 		//펜션 정보 
 		model.addAttribute("mainList",mainList);
+		
+		//댓글수
 		
 		
 		return "/mainList/mainLists";
 	}
 	
 	
+	
+	/*
+	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
+	public String mainList(Model model, @RequestParam("areaNo") int areaNo) {
+		System.out.println("jiwoongController>mainList");
+		System.out.println(areaNo);
+		
+		Map<String, Object> pMap =  mainService.select(areaNo);
+		System.out.println(pMap);
+		
+		model.addAttribute(pMap);
+		
+		return "/mainList/mainLists";
+	}
+	
+	*/
 	
 }
