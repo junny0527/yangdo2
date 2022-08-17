@@ -45,28 +45,5 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-  <!-- 김범준 -->
-	
-	<select id="userLoginbumjun" resultType="int" parameterType="UserVo">
-		<![CDATA[
-			select 
-				no
-			from users
-			where id = #{id}
-			and pw = #{pw}
-		]]>
-	</select>
-	
-	
-	
 
 </mapper>
