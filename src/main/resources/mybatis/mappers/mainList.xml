@@ -3,29 +3,54 @@
 <mapper namespace = "MainList">
 	
 	<!-- 펜션 리스트 -->
-	<!--  
+	  
 	<select id="penList" resultType="com.javaex.vo.MainListVo" parameterType="int">
 		<![CDATA[
-			select 
-			    p.name pName,
-			    p.law_name lawName,
-			    p.law_code lawCode,
-			    p.visit_road3  visitRoad3,
-			    pi.image_path imagePath,
-			    pr.price penPrice,
-			    ri.stars stars,
-			    re.status status
-			from pension p, pension_image pi, rooms r, prices pr,
-			     reservations re, reviews ri   
-			where p.no = pi.pension_no
-			and p.company_no = r.pension_no
-			and r.no = pr.no
-			and r.no = re.no
-			and re.no = ri.review_no
-			and p.law_code = #{areaNo}
+			select          
+					        ri.rcount,
+					        p.no pNo,
+					        p.name pName,
+					        p.law_name lawName,
+					        p.law_code lawCode,
+					        p.visit_road3  visitRoad3,
+					        pi.image_path imagePath,
+					        pr.price penPrice,
+					        ri.stars stars ,
+					        re.status status
+					from pension p, (select rownum
+					                        ,rn.image_path image_path
+					                        ,rn.pension_no
+					                from(select 
+					                        image_path
+					                        ,pension_no
+					                from pension_image
+					                order by no asc) rn) pi, rooms r, (select min(p.price) price
+					                                                    from prices p, rooms r
+					                                                    where p.room_no = r.no
+					                                                    and r.pension_no = 1) pr, reservations re,(select round(avg(ri.stars),1) stars
+					                                                                                                        ,count(review_no) rcount
+					                                                                                                from reviews ri, reservations re, rooms r
+					                                                                                                where ri.no = re.no
+					                                                                                                and re.room_no = r.no
+					                                                                                                and r.pension_no = 1) ri    
+					where p.no = pi.pension_no
+					and p.company_no = r.pension_no
+					and r.no = re.no
+					and rownum = 1
+					GROUP by p.name ,
+					         p.law_name ,
+					         p.law_code ,
+					         p.visit_road3 ,
+					         pi.image_path ,
+					         pr.price ,
+					         ri.stars ,
+					         ri.rcount,
+					         re.status,
+					         p.no
+					having p.law_code = #{areaNo}
 		]]>
 	</select>
-	-->
+		<!--
 		<select id="penList" resultType="com.javaex.vo.MainListVo" parameterType="int">
 		<![CDATA[
 			select          
@@ -58,7 +83,7 @@
                 having p.law_code = #{areaNo}
 		]]>
 	</select>
-		
+	-->	
 	<!-- 리뷰 수 가져오기 -->
 	<select id="selectTotalCnt" resultType="com.javaex.vo.MainListVo">
 		<![CDATA[
