@@ -11,51 +11,39 @@ import com.javaex.vo.UserVo;
 public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	public int userJoin(UserVo userVo) {
 		System.out.println("UserDao > userJoin");
-		
-		int count =  sqlSession.insert("users.userJoin", userVo);
-		
+
+		int count = sqlSession.insert("users.userJoin", userVo);
+
 		return count;
 	}
-	
+
 	public int hostJoin(UserVo userVo) {
 		System.out.println("UserDao > hostJoin");
-		
+
 		int count = sqlSession.insert("users.hostJoin", userVo);
-		
+
 		return count;
 	}
-	
+
 	public UserVo userLogin(UserVo userVo) {
 		System.out.println("UserDao > userLogin");
-		
+
 		UserVo uVo = sqlSession.selectOne("users.userLogin", userVo);
-		
+
 		return uVo;
 	}
-	
+
 	public HostRoomsVo hostLogin(int hostNo) {
 		System.out.println("UserDao > hostLogin");
-		
+
 		HostRoomsVo hVo = sqlSession.selectOne("users.getRoom", hostNo);
-		
+
 		return hVo;
 	}
+
 	
-	
-	
-	
-	
-	/* 김범준 */
-	public int userLoginbumjun(UserVo userVo) {
-		System.out.println("UserDao > userLogin");
-		
-		return  sqlSession.selectOne("users.userLoginbumjun", userVo);
-		
-		
-	}
-	
-	
+
 }

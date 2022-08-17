@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,9 +20,10 @@ public class PointsDao {
 	}
 
 	// 포인트 뽑아오기
-	public int getpoints(int userNo) {
-		return sqlSession.selectOne(SQLMAP + "getpoint", userNo);
-
+	public Map<String, Object> getpoints(int userNo) {
+		Map<String, Object> poMap =  sqlSession.selectOne(SQLMAP + "getpoint", userNo);
+		
+		return poMap;
 	}
 
 }

@@ -24,7 +24,7 @@ public class MyDao {
 		// 유저번호로 예약완료 리스트 불러오기
 		public List<MyListVo> getReserveList(int no) {
 			System.out.println("MyDao>getReserveList()");
-
+			System.out.println(sqlSession.selectList("my.getReserveList", no));
 			return sqlSession.selectList("my.getReserveList", no);
 		}
 

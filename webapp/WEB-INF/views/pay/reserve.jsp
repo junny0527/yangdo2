@@ -148,7 +148,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										<div class="product-point" data-v-3ce5aaac="">
 											<span class="save-point" data-v-2c1e3bcc="">보유포인트:</span> <span
 												class="see-point" data-v-2c1e3bcc="" id="savePoint"><fmt:formatNumber
-														value="${rpMap.POINTS == null ? 0 : rpMap.POINTS }" pattern="#,###" />P</span>
+														value="${gajidaPoints.POINTS == null ? 0 : gajidaPoints.POINTS }" pattern="#,###" />P</span>
 										</div>
 										<div class="discount-container" data-v-3ce5aaac="">
 											<div class="discount-header" data-v-3ce5aaac="">
@@ -244,7 +244,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		$("#pointBtn").on("click", function() {
 			//---포인트
 			let point = Number($("#point").val());
-			let minPoint = Number('${rpMap.POINTS}'); //보유포인트
+			let minPoint = Number('${gajidaPoints.POINTS}'); //보유포인트
 			let totalPrice = Number('${rpMap.TOTAL_PRICE}');
 			if (minPoint < point) {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
