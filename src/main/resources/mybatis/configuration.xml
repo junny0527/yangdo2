@@ -17,8 +17,9 @@
 		<mapper resource="mybatis/mappers/users.xml" />
 		<mapper resource="mybatis/mappers/mainList.xml" />
 
-
+		<mapper resource="mybatis/mappers/HostCompanyreg.xml" />
 		<mapper resource="mybatis/mappers/HostIntroduce.xml" />
+		<mapper resource="mybatis/mappers/HostRooms.xml" />
 		<mapper resource="mybatis/mappers/HostRules.xml" />
 	</mappers>
 </configuration>	
