@@ -19,7 +19,7 @@
 
 		<mapper resource="mybatis/mappers/HostCompanyreg.xml" />
 		<mapper resource="mybatis/mappers/HostIntroduce.xml" />
-		<!-- <mapper resource="mybatis/mappers/HostRooms.xml" /> -->
+		<mapper resource="mybatis/mappers/HostRooms.xml" />
 		<mapper resource="mybatis/mappers/HostRules.xml" />
 	</mappers>
 </configuration>	
