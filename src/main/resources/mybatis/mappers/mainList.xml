@@ -47,7 +47,7 @@
 					         ri.rcount,
 					         re.status,
 					         p.no
-					having p.law_code = 
+					having p.law_code = #{areaNo}
 		]]>
 	</select>
 		<!--
