@@ -320,3 +320,74 @@ hr{
 .price{
 	display: inline-block;
 }
+
+.form-body > .datepicker {
+	height:35px;
+	border:1px solid black !important;
+	border-radius:5px !important;
+	padding-left:5px;
+}
+
+.ui-datepicker-trigger {
+	margin-left:10px;
+	margin-right:10px;
+	width:20px;
+}
+
+.ui-state-default {
+	text-align: center;
+	margin-top:5px;
+}
+
+.ui-state-active {
+	color:black !important;
+}
+
+.ui-datepicker-header {
+	text-align: center;
+	height:36px;
+}
+
+.ui-datepicker-title {
+	text-align: center;
+	height:35px;
+}
+
+.ui-datepicker-year {
+	text-align: center;
+	height:30px;
+	font-size:14px !important;
+	margin-right:10px !important;
+}
+
+.ui-datepicker-calendar > thead {
+	border-bottom:1px solid #c0c0c0!important;
+}
+
+.ui-datepicker-month {
+	text-align: center;
+	height:30px;
+	font-size:14px !important;
+	margin-left:10px !important;
+}
+.ui-datepicker-prev{
+	width:25px !important;
+	height:25px !important;
+	margin-top:5px !important;
+}
+
+.ui-datepicker-next {
+	width:25px !important;
+	height:25px !important;
+	margin-top:5px !important;
+}
+
+#ui-datepicker-div {
+	width:400px;
+	height:250px;
+}
+
+.form-control[readonly]{
+	cursor: default;
+}
+
