@@ -17,10 +17,6 @@ public class JaehwanController {
 		return "/host/mainRegister";
 	}
 	
-	@RequestMapping(value="roomreg", method={RequestMethod.GET, RequestMethod.POST})
-	public String roomreg() {
-		return "/host/roomRegister";
-	}
 	
 	@RequestMapping(value="reservemanage", method= {RequestMethod.GET, RequestMethod.POST})
 	public String reservationManagement() {
