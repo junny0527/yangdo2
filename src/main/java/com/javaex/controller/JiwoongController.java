@@ -37,7 +37,6 @@ public class JiwoongController {
 	}
 	
 	
-	
 	/*
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
 	public String mainList(Model model, @RequestParam("areaNo") int areaNo) {
