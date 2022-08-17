@@ -25,7 +25,8 @@ public class DetailService {
 		
 		//펜션정보
 		Map<String, Object> pInfo = detailDao.select(pensionNo);
-		//펜션 리뷰 및 별점
+		
+		//펜션 리뷰 및 별점(업주+)
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
 		
 		//펜션 편의시설 
@@ -130,8 +131,11 @@ public class DetailService {
 		
 		Map<String, Object> rMap = new HashMap<String, Object>();
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
+		List<Map<String, Object>> allReview = detailDao.allReview(pensionNo);
 		
 		rMap.put("totalReview", totalReview);
+		rMap.put("allReview", allReview);
+		
 		return rMap;
 	}
 	

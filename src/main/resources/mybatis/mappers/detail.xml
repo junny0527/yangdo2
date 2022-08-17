@@ -34,16 +34,17 @@
 		]]>
 	</select>
 	
-	<!-- 평점 및 총 리뷰개수 -->
+	<!-- 평점 및 총 리뷰개수(업주+) -->
 	<select id = "totalReview" resultType="map" parameterType="int">
 		<![CDATA[
 			select  to_char(avg(re.stars), '0.0') avgStars
 			        ,count(re.review_no) rCount
-			from    pension p, rooms r, reservations res, reviews re
-			where   p.no = r.pension_no
-			and     r.no = res.room_no
-			and     res.no = re.no
-			and     res.status = '이용완료'
+			        ,count(rep.reply_no) repCount
+			from    reviews re, replys rep, users u, company c, pension p
+			where   re.review_no = rep.review_no
+			and     rep.owner = u.no
+			and     u.no = c.user_no
+			and     c.no = p.no
 			and     p.no = #{pensionNo}
 		]]>
 	</select>
@@ -142,7 +143,7 @@
 			                 ,r.kid KID
 			                 ,r.baby BABY
 			                 ,to_char(r.total_price, '999,999') TOTAL_PRICE
-			                 ,nvl(r.status,'null') STATUS
+			                 ,nvl(r.status,'0') STATUS
 			                 ,to_char(r.trans_price, '999,999') TRANS_PRICE
 			                 ,to_char(p.price, '999,999') PRICE
 			                 ,w.name WEEK_NAME
@@ -260,6 +261,41 @@
 		]]>
 	</select>
 	
-	
+	<!-- 리뷰 가져오기(이용자 + 업주) -->
+	<select id="allReview" parameterType="int" resultType="map">
+		<![CDATA[
+			select  re.review_no
+			        ,re.title
+			        ,re.stars
+			        ,re.image1
+			        ,re.image2
+			        ,re.content
+			        ,re.reg_date
+			        ,rep.content
+			        ,rep.reg_date
+			        ,rep.owner
+			        ,re2.room_name
+			        ,re2.name
+			from    reviews re, replys rep, users u, company c, pension p, (select      re.review_no
+			                                                                            ,r.room_name
+			                                                                            ,res.name
+			                                                                from        rooms r, pension p, reservations res, reviews re
+			                                                                where       r.pension_no = p.no
+			                                                                and         r.no = res.room_no
+			                                                                and         res.no = re.no
+			                                                                and         p.no = #{pensionNo}
+			                                                                and         res.status = '이용완료'
+			                                                                group by    re.review_no
+			                                                                            ,r.room_name
+			                                                                            ,res.name) re2
+			where   re.review_no = rep.review_no
+			and     rep.owner = u.no
+			and     u.no = c.user_no
+			and     c.no = p.no
+			and     re.review_no = re2.review_no
+			and     p.no = #{pensionNo}
+			order by review_no asc
+		]]>
+	</select>
 	
 </mapper>
