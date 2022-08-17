@@ -35,12 +35,15 @@
                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '예약완료'
+			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -57,12 +60,15 @@
                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '이용완료'
+			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -79,12 +85,15 @@
                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '예약취소'
+			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -101,12 +110,15 @@
                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '양도대기'
+			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -119,16 +131,19 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                  to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '양도완료'
+			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -158,7 +173,7 @@
  					p.name pName,
  					ro.room_name rName,
  					to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
-                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
+                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
  					p.check_in inTime,
  					p.check_out outTime,
  					ro.standard_people sPple,

@@ -51,12 +51,12 @@
 				<div class="reserve_list">
 					<section>
 						<h3>예약완료 내역</h3>
-						<c:forEach var="list" items="${list}">
+						<c:forEach items="${list}" var="myListVo" >
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
+												src=""
 												alt="" class="align">
 										</p>
 										<a

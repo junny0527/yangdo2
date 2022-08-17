@@ -61,11 +61,11 @@
 									<div>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/affiliate/2021/12/06/61ad9b97dd2d2.jpg"
+												src="${pageContext.request.contextPath}/upload/${rlist.imgPath}"
 												alt="양평 스마일카라반펜션" class="align">
 										</p>
 										<a
-											href="${pageContext.request.contextPath}/my/detail/reserved"
+											href="${pageContext.request.contextPath}/my/reserved?resNo=${rlist.resNo}"
 											class="product-title"><i class="">예약완료</i> <strong>${rlist.pName}</strong>
 											<span>체크인: ${rlist.checkIn} ㆍ ${rlist.inTime}<br>
 												체크아웃: ${rlist.checkOut} ㆍ ${rlist.outTime}
@@ -86,10 +86,11 @@
 										<button type="button" class="btn_del">삭제</button>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+												src="${pageContext.request.contextPath}/upload/${ulist.imgPath}"
 												alt="삼산 도브" class="align">
 										</p>
-										<a href="${pageContext.request.contextPath}/my/detail/used"
+										<a
+											href="${pageContext.request.contextPath}/my/used?resNo=${ulist.resNo}"
 											class="product-title"><i class="bg_w">이용완료</i> <strong>${ulist.pName}</strong>
 											<span>체크인: ${ulist.checkIn} ㆍ ${ulist.inTime}<br>
 												체크아웃: ${ulist.checkOut} ㆍ ${ulist.outTime}
@@ -113,11 +114,11 @@
 										<button type="button" class="btn_del">삭제</button>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+												src="${pageContext.request.contextPath}/upload/${clist.imgPath}"
 												alt="삼산 도브" class="align">
 										</p>
 										<a
-											href="${pageContext.request.contextPath}/my/detail/canceled"
+											href="${pageContext.request.contextPath}/my/canceled?resNo=${clist.resNo}"
 											class="product-title"><i class="bg_w">예약취소</i> <strong>${clist.pName}</strong>
 											<span>체크인: ${clist.checkIn} ㆍ ${clist.inTime}<br>
 												체크아웃: ${clist.checkOut} ㆍ ${clist.outTime}

@@ -58,7 +58,7 @@
 										<button type="button" class="btn_del">삭제</button>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+												src=""
 												alt="삼산 도브" class="align">
 										</p>
 										<a

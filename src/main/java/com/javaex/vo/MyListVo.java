@@ -13,7 +13,7 @@ public class MyListVo {
 	public String checkOut; // 체크아웃 일자
 	public String inTime; // 체크인 시간
 	public String outTime; // 체크아웃 시간
-	public Long imgPath; // 이미지경로
+	public String imgPath; // 이미지경로
 	public Date regDate; // 등록일
 	////////////////////////////////
 	public String rName; // 방이름
@@ -32,7 +32,7 @@ public class MyListVo {
 	}
 
 	public MyListVo(int no, int resNo, String status, String pName, String checkIn, String checkOut, String inTime,
-			String outTime, Long imgPath, Date regDate, String rName, int sPple, int mPple, String name, String hp,
+			String outTime, String imgPath, Date regDate, String rName, int sPple, int mPple, String name, String hp,
 			String tPrice, int trPrice, String pStatus, int refNo, String comHp, int pRno) {
 		super();
 		this.no = no;
@@ -122,11 +122,11 @@ public class MyListVo {
 		this.outTime = outTime;
 	}
 
-	public Long getImgPath() {
+	public String getImgPath() {
 		return imgPath;
 	}
 
-	public void setImgPath(Long imgPath) {
+	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
 
