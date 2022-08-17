@@ -71,7 +71,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 							<section class="total_price_pc" data-v-33033856="">
 								<p data-v-33033856="">
 									<strong data-v-33033856=""><b data-v-33033856="">총
-											결제 금액</b>(VAT포함)</strong><span class="in_price total" data-v-33033856="">${rpMap.TOTAL_PRICE}원</span>
+											결제 금액</b>(VAT포함)</strong><span class="in_price total" data-v-33033856=""><fmt:formatNumber
+														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원</span>
 								</p>
 								<ul data-v-33033856="">
 									<li data-v-33033856="">해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -112,19 +113,20 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 									<section class="price_wrap" data-v-3ce5aaac=""
 										data-v-f785cca6="">
 										<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
-										<div class="product-amount" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">${rpMap.TOTAL_PRICE}원</b>
+										<div class="product-amount " data-v-3ce5aaac="">
+											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac=""><fmt:formatNumber
+														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원</b>
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
 											<strong data-v-3ce5aaac="">상세 결제 내역</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${rpMap.ADULT}명</span><b data-v-3ce5aaac="">${rpMap.ADULT_KID_PRICE*rpMap.ADULT}원</b>
+													${rpMap.ADULT}명</span><b data-v-3ce5aaac=""class="">${rpMap.ADULT_KID_PRICE*rpMap.ADULT}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${rpMap.KID}명</span><b data-v-3ce5aaac="">${rpMap.ADD_KID_PRICE*rpMap.KID}원</b>
+													${rpMap.KID}명</span><b data-v-3ce5aaac="" class="kidss">${rpMap.ADD_KID_PRICE*rpMap.KID}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
@@ -132,19 +134,21 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
-													data-v-3ce5aaac="" id="usedPoint">0P</b>
+													data-v-3ce5aaac="" id="usedPoint"><fmt:formatNumber
+														value="0" pattern="#,###" />P</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">합계</span><b
 													class="total" data-v-3ce5aaac=""> <fmt:formatNumber
-														value="${rpMap.TOTAL_PRICE}" pattern="#,###" /> 원
+														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원
 												</b>
 											</div>
 										</div>
 										<hr>
 										<div class="product-point" data-v-3ce5aaac="">
 											<span class="save-point" data-v-2c1e3bcc="">보유포인트:</span> <span
-												class="see-point" data-v-2c1e3bcc="" id="savePoint">${rpMap.POINTS == null ? 0 : rpMap.POINTS }P</span>
+												class="see-point" data-v-2c1e3bcc="" id="savePoint"><fmt:formatNumber
+														value="${rpMap.POINTS == null ? 0 : rpMap.POINTS }" pattern="#,###" />P</span>
 										</div>
 										<div class="discount-container" data-v-3ce5aaac="">
 											<div class="discount-header" data-v-3ce5aaac="">
@@ -238,19 +242,31 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		IMP.init('imp74601630');
 
 		$("#pointBtn").on("click", function() {
+			//---포인트
 			let point = Number($("#point").val());
-			let minPoint = Number('${rpMap.POINTS}');
+			let minPoint = Number('${rpMap.POINTS}'); //보유포인트
 			let totalPrice = Number('${rpMap.TOTAL_PRICE}');
 			if (minPoint < point) {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
 				return false;
 			}
+			//------어른,아이,유아계산---
+			let adult = Number('${rpMap.ADULT}');
+			let kid = Number('${rpMap.KID}');
+			let baby = Number('${rpMap.BABY}');
+			let adultpri = Number('${rpMap.ADULT_KID_PRICE}');
+			let kidpri = Number('${rpMap.ADD_KID_PRICE}');
+			let babypri = Number('${rpMap.ADD_BABY_PRICE}');
+			
 			const user = '${authUser}';
 			console.log("user: ", user);
-			$("#pointBtn").text("포인트 사용 " + point + "P");
-			$('#savePoint').text(minPoint - point);
-			$("#usedPoint").text("-" + point + " P")
-			$('.total').text(moneyFormat(totalPrice - point));
+			$("#pointBtn").text(pBtnFormat("포인트 사용 " + point + "P"));
+			$('#savePoint').text(pointFormat(minPoint - point+"P"));
+			$("#usedPoint").text(upointFormat("-" + point + " P"))
+			$('.total').text(moneyFormat(totalPrice - point +"원"));
+			$('#product-amount').text(stFormat("구매총액"+totalPrice - point +"원"));
+			$('#kidss').text(stFormat(kid * kidpri +"원"));
+			
 
 		});
 	});
@@ -258,10 +274,26 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	const moneyFormat = (money) => {
 		return String(money).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
+	
+	const pointFormat = (point) => {
+		return String(point).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	const upointFormat = (upoint) => {
+		return String(upoint).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	const pBtnFormat = (bpoint) => {
+		return String(bpoint).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	const stFormat = (stpoint) => {
+		return String(stpoint).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	const kidss = (kidpri) => {
+		return String(kidpri).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 
 	function requestPay(form) {
-	
-		/* IMP.request_pay({ // param
+		console.log("클릭")
+		 IMP.request_pay({ // param
 	          pg: "html5_inicis",
 	          pay_method: "card",
 	          merchant_uid: "YANGDO"+ new Date().getTime(),
@@ -270,13 +302,14 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	          buyer_email: "bonjun03@naver.com",
 	          buyer_name: $('#userName').val(),
 	          buyer_tel: "${rpMap.RHP}"
+	          
 	      }, function (rsp) { // callback
-	    	  if ( rsp.success ) { */
-	    	        
-	    	        /* msg += '고유ID : ' + rsp.imp_uid;
+	    	  if ( rsp.success ) { 
+	    		  console.log("결제")
+	    	       /*  msg += '고유ID : ' + rsp.imp_uid;
 	    	        msg += '상점 거래ID : ' + rsp.merchant_uid;
 	    	        msg += '결제 금액 : ' + rsp.paid_amount;
-	    	        msg += '카드 승인번호 : ' + rsp.apply_num; */
+	    	        msg += '카드 승인번호 : ' + rsp.apply_num;  */
 	    	        // todo 예약테이블에 insert
 	    	        // post요청 submit();
 	    	        
@@ -285,12 +318,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	        	name: $('#userName').val(),
 	    	        	hp: $('#hp').val(),
 	    	        	status: '${rpMap.STATUS}',
+	    	        	point:$('#point').val(),
 	    	        	totalprice: '${rpMap.TOTAL_PRICE}'
 	    	        };
 	    	        
+	    	        console.log("data ::: >> ", data);
+	    	        
 	    	    	$.ajax({
 	    	    		type : "POST",
-	    	    		url : "/yangdo/res/reserve", //요청 할 URL
+	    	    		url : "/yangdo/res/repay", //요청 할 URL
 	    	    		contentType : "application/json; charset=utf-8",
 	    	    		data : JSON.stringify(data), //넘길 파라미터
 	    	    		success : function(data) {
@@ -303,10 +339,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    		}
 	    	    	});
 	    	        
-	    /* 	    } else {
+	    	    } else {
 	    	        alert("결제가 실패되었습니다.")
 	    	    }
-	      }); */
+	      }); 
 		/* let data = '${rpMap}';
 		console.log("rpMap:", data);
 		console.log("requestPay invoked......")

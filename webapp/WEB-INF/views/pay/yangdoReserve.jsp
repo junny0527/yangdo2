@@ -259,17 +259,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 	function requestPay(form) {
 	
-		 IMP.request_pay({ // param
-	          pg: "html5_inicis",
-	          pay_method: "card",
-	          merchant_uid: "YANGDO"+ new Date().getTime(),
-	          name: '${rpMap.PNAME}',
-	          amount: 100,
-	          buyer_email: "bonjun03@naver.com",
-	          buyer_name: $('#userName').val(),
-	          buyer_tel: "${rpMap.RHP}"
-	      }, function (rsp) { // callback
-	    	  if ( rsp.success ) { 
+		/* IMP.request_pay({ // param
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: "YANGDO"+ new Date().getTime(),
+        name: '${rpMap.PNAME}',
+        amount: 100,
+        buyer_email: "bonjun03@naver.com",
+        buyer_name: $('#userName').val(),
+        buyer_tel: "${rpMap.RHP}"
+    }, function (rsp) { // callback
+  	  if ( rsp.success ) { */
 	    	        
 	    	        /* msg += '고유ID : ' + rsp.imp_uid;
 	    	        msg += '상점 거래ID : ' + rsp.merchant_uid;

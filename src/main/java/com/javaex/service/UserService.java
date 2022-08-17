@@ -44,4 +44,24 @@ public class UserService {
 		
 		return hVo;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* 김범준 */
+	public int userLoginbumjun(UserVo userVo) {
+		
+		
+		return  userDao.userLoginbumjun(userVo);
+		
+		
+	}
 }

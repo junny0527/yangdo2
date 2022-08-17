@@ -43,4 +43,19 @@ public class UserDao {
 		
 		return hVo;
 	}
+	
+	
+	
+	
+	
+	/* 김범준 */
+	public int userLoginbumjun(UserVo userVo) {
+		System.out.println("UserDao > userLogin");
+		
+		return  sqlSession.selectOne("users.userLoginbumjun", userVo);
+		
+		
+	}
+	
+	
 }
