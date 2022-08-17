@@ -53,29 +53,27 @@
 					<section>
 						<h3>이용완료 내역</h3>
 						<c:forEach var="list" items="${list}">
-							<c:choose>
-								<c:when test="${list.status == '이용완료'}">
-									<ul class="list_wrap">
-										<li class="reservation-detail"><div>
-												<button type="button" class="btn_del">삭제</button>
-												<p class="pic">
-													<img
-														src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-														alt="삼산 도브" class="align">
-												</p>
-												<a href="${pageContext.request.contextPath}/my/detail/used"
-													class="product-title"><i class="bg_w">${list.status}</i>
-													<strong>${list.pName }</strong> <span>체크인:
-														${list.checkIn} <br> 체크아웃: ${list.checkOut}
-												</span> <b>예약 상세 &gt;</b></a>
-												<p class="btn_re">
-													<a href=""> 리뷰 남기기 </a>
-												</p>
-											</div></li>
-									</ul>
-									<!---->
-								</c:when>
-							</c:choose>
+							<ul class="list_wrap">
+								<li class="reservation-detail"><div>
+										<button type="button" class="btn_del">삭제</button>
+										<p class="pic">
+											<img
+												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
+												alt="삼산 도브" class="align">
+										</p>
+										<a
+											href="${pageContext.request.contextPath}/my/used?resNo=${list.resNo}"
+											class="product-title"><i class="bg_w">${list.status}</i>
+											<strong>${list.pName }</strong> <span>체크인:
+												${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃:
+												${list.checkOut} ㆍ ${list.outTime}
+										</span></a>
+										<p class="btn_re">
+											<a href=""> 리뷰 남기기 </a>
+										</p>
+									</div></li>
+							</ul>
+							<!---->
 						</c:forEach>
 					</section>
 				</div>

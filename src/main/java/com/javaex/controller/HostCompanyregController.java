@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,18 +20,21 @@ public class HostCompanyregController {
 	private HostCompanyregService cregService;
 	
 	@RequestMapping(value="companyreg", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyreg(Model model, String id) {
-		id = "bb";
-		String email = cregService.getEmail(id);
+	public String companyreg(HttpSession session, Model model, String id) {
+		
+		int userNo = (Integer) session.getAttribute("userNo");
+		System.out.println(userNo);
 		HostCompanyregVo cVo = new HostCompanyregVo();
+		String email = cregService.getEmail(userNo);
 		cVo.setEmail(email);
 		model.addAttribute("cVo", cVo);
 		return "/host/companyRegister";
 	}
 
 	@RequestMapping(value="companysave", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companysave(@ModelAttribute HostCompanyregVo cVo) {
-		System.out.println(cVo);
+	public String companysave(HttpSession session, @ModelAttribute HostCompanyregVo cVo) {
+		int userNo = (Integer) session.getAttribute("userNo");
+		cVo.setUserNo(userNo);
 		cregService.insertCompany(cVo);
 		return "redirect:/host/companyreg";
 	}

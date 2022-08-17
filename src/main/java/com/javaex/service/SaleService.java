@@ -130,12 +130,15 @@ public class SaleService {
         }
         //인트로 바꾸기
         int IRefundPrice = (int) refundPrice;
-        
+        //
         //숫자에 , 넣어주기
         String RefundPrice = new DecimalFormat("#,###").format(IRefundPrice);
+        int total_Price = Integer.parseInt(dotTotalPrice);
+        String total_price = new DecimalFormat("#,###").format(total_Price);
         System.out.println(RefundPrice);
         //맵에 넣기
         sMap.put("REFUND_PRICE",RefundPrice);
+        sMap.put("totalPRICE",total_price);
         
 		System.out.println(sMap);
 		

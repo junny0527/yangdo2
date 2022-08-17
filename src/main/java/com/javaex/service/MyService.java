@@ -27,28 +27,40 @@ public class MyService {
 
 		return myDao.getReserveList(no);
 	}
+
 	// 유저번호로 이용완료 리스트 불러오기
 	public List<MyListVo> getUsedList(int no) {
 		System.out.println("MyService>getUsedList()");
-		
+
 		return myDao.getUsedList(no);
 	}
+
 	// 유저번호로 예약취소 리스트 불러오기
 	public List<MyListVo> getCancelList(int no) {
 		System.out.println("MyService>getCancelList()");
-		
+
 		return myDao.getCancelList(no);
 	}
+
 	// 유저번호로 양도대기 리스트 불러오기
 	public List<MyListVo> getRelistList(int no) {
 		System.out.println("MyService>getRelistList()");
-		
+
 		return myDao.getRelistList(no);
 	}
+
 	// 유저번호로 양도완료 리스트 불러오기
 	public List<MyListVo> getTransferList(int no) {
 		System.out.println("MyService>getTransferList()");
-		
+
 		return myDao.getTransferList(no);
 	}
+
+	// 예약번호로 예약상세 정보 불러오기
+	public List<MyListVo> getDetail(int resNo) {
+		System.out.println("MyService>getDetail()");
+
+		return myDao.getDetail(resNo);
+	}
+
 }

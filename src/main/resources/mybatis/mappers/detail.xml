@@ -34,16 +34,17 @@
 		]]>
 	</select>
 	
-	<!-- 평점 및 총 리뷰개수 -->
+	<!-- 평점 및 총 리뷰개수(업주+) -->
 	<select id = "totalReview" resultType="map" parameterType="int">
 		<![CDATA[
 			select  to_char(avg(re.stars), '0.0') avgStars
 			        ,count(re.review_no) rCount
-			from    pension p, rooms r, reservations res, reviews re
-			where   p.no = r.pension_no
-			and     r.no = res.room_no
-			and     res.no = re.no
-			and     res.status = '이용완료'
+			        ,count(rep.reply_no) repCount
+			from    reviews re, replys rep, users u, company c, pension p
+			where   re.review_no = rep.review_no
+			and     rep.owner = u.no
+			and     u.no = c.user_no
+			and     c.no = p.no
 			and     p.no = #{pensionNo}
 		]]>
 	</select>
@@ -128,59 +129,70 @@
 	<!-- 날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전) -->
 	<select id="roomList" parameterType="map" resultType="map">
 		<![CDATA[
-			select  ro.no NO
-			        ,ro.pension_no PENSION_NO
-			        ,ro.room_name ROOM_NAME
-			        ,ro.standard_people STANDARD_PEOPLE
-			        ,ro.max_people MAX_PEOPLE
-			        ,ro.add_info ADD_INFO
-			        ,r.user_no USER_NO
-			        ,r.name NAME
-			        ,r.check_in CHECK_IN
-			        ,r.check_out CHECK_OUT
-			        ,r.adult ADULT
-			        ,r.kid KID
-			        ,r.baby BABY
-			        ,to_char(r.total_price, '999,999') TOTAL_PRICE
-			        ,nvl(r.status,'null') STATUS
-			        ,to_char(r.trans_price, '999,999') TRANS_PRICE
-			        ,to_char(p.price, '999,999') PRICE
-			        ,w.name WEEK_NAME
-			from    rooms ro , (select  no
-			                            ,room_no
-			                            ,user_no
-			                            ,name
-			                            ,hp
-			                            ,check_in
-			                            ,check_out
-			                            ,adult
-			                            ,kid
-			                            ,baby
-			                            ,total_price
-			                            ,reg_date
-			                            ,pay_way
-			                            ,pay_status
-			                            ,status
-			                            ,trans_price
-			                            ,p_r_no
-			                    from reservations
-			                    where check_in = #{datepicker}
-			                    and check_out = #{datepicker2}) r ,prices p , week w
-			where   ro.no = r.room_no(+)
-			and     ro.pension_no = #{pensionNo}
-			and     ro.no = p.room_no
-			and     p.no = w.price_no
-			and     p.sortation =   (select gubun
-			                        from peck p, p_peck pp 
-			                        where peck_start < #{datepicker}
-			                        and peck_end > #{datepicker}
-			                        and p.no = pp.peck_no
-			                        and pp.pension_no = #{pensionNo})
-			and w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
+			select           ro.no NO
+			                 ,ro.pension_no PENSION_NO
+			                 ,ro.room_name ROOM_NAME
+			                 ,ro.standard_people STANDARD_PEOPLE
+			                 ,ro.max_people MAX_PEOPLE
+			                 ,ro.add_info ADD_INFO
+			                 ,r.user_no USER_NO
+			                 ,r.name NAME
+			                 ,r.check_in CHECK_IN
+			                 ,r.check_out CHECK_OUT
+			                 ,r.adult ADULT
+			                 ,r.kid KID
+			                 ,r.baby BABY
+			                 ,to_char(r.total_price, '999,999') TOTAL_PRICE
+			                 ,nvl(r.status,'0') STATUS
+			                 ,to_char(r.trans_price, '999,999') TRANS_PRICE
+			                 ,to_char(p.price, '999,999') PRICE
+			                 ,w.name WEEK_NAME
+			                 ,ri.image_path
+         	from    		 rooms ro , (select  no
+			                                     ,room_no
+			                                     ,user_no
+			                                     ,name
+			                                     ,hp
+			                                     ,check_in
+			                                     ,check_out
+			                                     ,adult
+			                                     ,kid
+			                                     ,baby
+			                                     ,total_price
+			                                     ,reg_date
+			                                     ,pay_way
+			                                     ,pay_status
+			                                     ,status
+			                                     ,trans_price
+			                                     ,p_r_no
+			                             from reservations
+			                             where check_in = #{datepicker}
+			                             and check_out = #{datepicker2}) r ,prices p , week w, (select a.img_no,
+			                                                                                         b.rooms_no,
+			                                                                                         b.image_path
+			                                                                                  from (select		min(rim.no) img_no,
+			                                                                                               		rim.rooms_no
+			                                                                                        from 		room_image rim
+			                                                                                        group by 	rim.rooms_no) a,
+			                                                                                       (select	image_path, rooms_no, no img_no
+			                                                                                        from	room_image) b
+			                                                                                  where a.img_no = b.img_no) ri
+	         where   ro.no = r.room_no(+)
+	         and     ro.pension_no = #{pensionNo}
+	         and     ro.no = p.room_no
+	         and     p.no = w.price_no
+	         and     ro.no = ri.rooms_no
+	         and     p.sortation =   (select gubun
+	                                 from peck p, p_peck pp 
+	                                 where peck_start < #{datepicker}
+	                                 and peck_end > #{datepicker}
+	                                 and p.no = pp.peck_no
+	                                 and pp.pension_no = #{pensionNo})
+	         and w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
 		]]>
 	</select>
 		
-	<!-- 객실 정보 가져오기 -->
+	<!-- 객실 리스트 정보 가져오기 (ajax) -->
 	<select id="roomInfoList" parameterType="map" resultType="map">
 		<![CDATA[
 			select  sAmen.name
@@ -196,7 +208,9 @@
 			and     r.no = #{roomNo}
 		]]>
 	</select>
-		
+	
+	
+	<!-- 펜션 숙소정보 가져오기 (ajax) -->	
 	<select id="pensionInfo" parameterType="int" resultType="map">
 		<![CDATA[
 			select  visit_road1
@@ -220,7 +234,7 @@
 		]]>
 	</select>
 	
-	
+	<!-- 객실 정보 가져오기 (ajax) -->
 	<select id="roomImgList" resultType="map" parameterType="map">
 		<![CDATA[
 			select  r.pension_no
@@ -234,5 +248,54 @@
 		]]>
 	</select>
 	
+	<!-- 펜션 별 객실 메인사진 보여주기 -->
+	<select id ="pensionRoomImg" parameterType="int" resultType="map">
+		<![CDATA[
+			select  rImg.rooms_no
+			        ,rImg.image_path
+			from    rooms r, room_image rImg
+			where   r.no = rImg.rooms_no
+			and     r.pension_no = #{pensionNo}
+			group by rImg.rooms_no,     rImg.image_path
+			order by rImg.rooms_no asc
+		]]>
+	</select>
+	
+	<!-- 리뷰 가져오기(이용자 + 업주) -->
+	<select id="allReview" parameterType="int" resultType="map">
+		<![CDATA[
+			select  re.review_no
+			        ,re.title
+			        ,re.stars
+			        ,re.image1
+			        ,re.image2
+			        ,re.content
+			        ,re.reg_date
+			        ,rep.content
+			        ,rep.reg_date
+			        ,rep.owner
+			        ,re2.room_name
+			        ,re2.name
+			from    reviews re, replys rep, users u, company c, pension p, (select      re.review_no
+			                                                                            ,r.room_name
+			                                                                            ,res.name
+			                                                                from        rooms r, pension p, reservations res, reviews re
+			                                                                where       r.pension_no = p.no
+			                                                                and         r.no = res.room_no
+			                                                                and         res.no = re.no
+			                                                                and         p.no = #{pensionNo}
+			                                                                and         res.status = '이용완료'
+			                                                                group by    re.review_no
+			                                                                            ,r.room_name
+			                                                                            ,res.name) re2
+			where   re.review_no = rep.review_no
+			and     rep.owner = u.no
+			and     u.no = c.user_no
+			and     c.no = p.no
+			and     re.review_no = re2.review_no
+			and     p.no = #{pensionNo}
+			order by review_no asc
+		]]>
+	</select>
 	
 </mapper>

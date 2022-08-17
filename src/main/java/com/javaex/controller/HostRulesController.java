@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +24,12 @@ public class HostRulesController {
 	}
 	
 	@RequestMapping(value="rulessave", method = {RequestMethod.GET, RequestMethod.POST})
-	public String rulessave(@ModelAttribute HostRulesVo hVo) {
+	public String rulessave(HttpSession session, @ModelAttribute HostRulesVo hVo) {
+		int userNo = (Integer) session.getAttribute("userNo");
+		System.out.println(userNo);
+		int pensionNo = rService.getPensionNoBySession(userNo);
+		System.out.println("pensionNo : " + pensionNo);
+		hVo.setPensionNo(pensionNo);
 		rService.updateRules(hVo);
 		return "redirect:/host/rules";
 	}

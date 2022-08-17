@@ -25,7 +25,8 @@ public class DetailService {
 		
 		//펜션정보
 		Map<String, Object> pInfo = detailDao.select(pensionNo);
-		//펜션 리뷰 및 별점
+		
+		//펜션 리뷰 및 별점(업주+)
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
 		
 		//펜션 편의시설 
@@ -39,6 +40,9 @@ public class DetailService {
 		
 		//날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전)
 		List<Map<String, Object>> roomList = detailDao.roomList(pensionNo, datepicker, datepicker2);
+		
+		//펜션 별 객실 메인사진 보여주기
+		List<Map<String, Object>> pensionRoomImg = detailDao.pensionRoomImg(pensionNo);
 		
 		//현재페이지
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
@@ -70,7 +74,6 @@ public class DetailService {
 		//이전 화살표 유무
 		boolean prev = true;
 		
-		
 		if( (listCnt * endPageBtnNo) < totalCnt ) {// ex) 50 < 127 true
 			next = true;
 		}else {
@@ -80,7 +83,6 @@ public class DetailService {
 		if( (startPageBtnNo != 1) ) {	// 
 			prev = true;
 		}
-		
 		pMap.put("pInfo", pInfo);
 		pMap.put("totalReview", totalReview);
 		pMap.put("imgList", imgList);
@@ -91,27 +93,28 @@ public class DetailService {
 		pMap.put("pPubList", pPubList);
 		pMap.put("roomNo", roomNo);
 		pMap.put("roomList", roomList);
-		
+		pMap.put("pensionRoomImg", pensionRoomImg);
+		pMap.put("datepicker", datepicker);
+		pMap.put("datepicker2", datepicker2);
+		pMap.put("crtPage", crtPage);
 		
 		return pMap;
 	}
 	
-	//객실 정보 가져오기 (ajax)
-	public List<Map<String, Object>> roomImgList(int pensionNo, int roomNo) {
-		System.out.println("DetailService > roomInfo");
-		
-		List<Map<String, Object>> roomImgList = detailDao.roomImgList(pensionNo, roomNo);
-		
-		return roomImgList;
-	}
-	
-	//객실 정보 가져오기 (ajax)
+	//객실 리스트 정보 가져오기 (ajax)
 	public List<Map<String, Object>> roomInfoList(int pensionNo, int roomNo) {
 		System.out.println("DetailService > roomInfo");
 		
 		List<Map<String, Object>> roomInfoList = detailDao.roomInfoList(pensionNo, roomNo);
-		
 		return roomInfoList;
+	}
+	
+	//객실별 사진 정보 가져오기 (ajax)
+	public List<Map<String, Object>> roomImgList(int pensionNo, int roomNo) {
+		System.out.println("DetailService > roomInfo");
+		
+		List<Map<String, Object>> roomImgList = detailDao.roomImgList(pensionNo, roomNo);
+		return roomImgList;
 	}
 	
 	//펜션 숙소정보 가져오기 (ajax)
@@ -127,15 +130,13 @@ public class DetailService {
 		System.out.println("DetailService > pensionInfo");
 		
 		Map<String, Object> rMap = new HashMap<String, Object>();
-		
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
+		List<Map<String, Object>> allReview = detailDao.allReview(pensionNo);
 		
 		rMap.put("totalReview", totalReview);
+		rMap.put("allReview", allReview);
 		
 		return rMap;
 	}
-
-	
-	
 	
 }

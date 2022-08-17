@@ -2,16 +2,19 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.MyService;
 import com.javaex.vo.MyListVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/my", method = { RequestMethod.GET, RequestMethod.POST })
@@ -24,10 +27,15 @@ public class MyController {
 
 	/********* main item **********/
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
-	public String list(@ModelAttribute MyListVo myListVo, Model model) {
+	public String list(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
 		System.out.println("MyController>list()");
 
-		int no = 1;
+		// 유저번호 세션에서 불러오기
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
+
+		// int no = 2;
 
 		// 예약완료 리스트
 		List<MyListVo> rlist = myService.getReserveList(no);
@@ -49,10 +57,12 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/yangdo", method = { RequestMethod.GET, RequestMethod.POST })
-	public String yangdo(@ModelAttribute MyListVo myListVo, Model model) {
+	public String yangdo(@ModelAttribute MyListVo myListVo, HttpSession session, Model model) {
 		System.out.println("MyController>yangdo()");
 
-		int no = 1;
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
 
 		// 예약완료 리스트
 		List<MyListVo> ylist = myService.getRelistList(no);
@@ -70,14 +80,14 @@ public class MyController {
 
 	@RequestMapping(value = "/point", method = { RequestMethod.GET, RequestMethod.POST })
 	public String point() {
-		System.out.println("MyPageController>point()");
+		System.out.println("MyController>point()");
 
 		return "mypage/mypoint";
 	}
 
 	@RequestMapping(value = "/info", method = { RequestMethod.GET, RequestMethod.POST })
 	public String info() {
-		System.out.println("MyPageController>info()");
+		System.out.println("MyController>info()");
 
 		return "mypage/myinfo";
 	}
@@ -87,12 +97,14 @@ public class MyController {
 	/********* sub item (reservation) 나중에 다시 정리 **********/
 
 	@RequestMapping(value = "/list/reserve", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reserved(@ModelAttribute MyListVo myListVo, Model model) {
-		System.out.println("MyPageController>reserved()");
+	public String reserved(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
+		System.out.println("MyController>reserved()");
 
-		int no = 1;
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
 
-		List<MyListVo> list = myService.getUserList(no);
+		List<MyListVo> list = myService.getReserveList(no);
 		System.out.println(list);
 
 		model.addAttribute("list", list);
@@ -102,12 +114,14 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/list/used", method = { RequestMethod.GET, RequestMethod.POST })
-	public String listUsed(@ModelAttribute MyListVo myListVo, Model model) {
+	public String listUsed(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
 		System.out.println("MyController>list()");
 
-		int no = 1;
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
 
-		List<MyListVo> list = myService.getUserList(no);
+		List<MyListVo> list = myService.getUsedList(no);
 		System.out.println(list);
 
 		model.addAttribute("list", list);
@@ -116,12 +130,14 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/list/cancel", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cancel(@ModelAttribute MyListVo myListVo, Model model) {
+	public String cancel(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
 		System.out.println("MyController>cancel()");
 
-		int no = 1;
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
 
-		List<MyListVo> list = myService.getUserList(no);
+		List<MyListVo> list = myService.getCancelList(no);
 		System.out.println(list);
 
 		model.addAttribute("list", list);
@@ -133,12 +149,14 @@ public class MyController {
 
 	/********* sub item (yangdo) **********/
 	@RequestMapping(value = "/list/relist", method = { RequestMethod.GET, RequestMethod.POST })
-	public String relist(@ModelAttribute MyListVo myListVo, Model model) {
+	public String relist(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
 		System.out.println("MyController>relisted()");
 
-		int no = 1;
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
 
-		List<MyListVo> list = myService.getUserList(no);
+		List<MyListVo> list = myService.getRelistList(no);
 		System.out.println(list);
 
 		model.addAttribute("list", list);
@@ -147,12 +165,14 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/list/transfer", method = { RequestMethod.GET, RequestMethod.POST })
-	public String transfer(@ModelAttribute MyListVo myListVo, Model model) {
+	public String transfer(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
 		System.out.println("MyController>transfer()");
 
-		int no = 1;
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
 
-		List<MyListVo> list = myService.getUserList(no);
+		List<MyListVo> list = myService.getTransferList(no);
 		System.out.println(list);
 
 		model.addAttribute("list", list);
@@ -164,23 +184,34 @@ public class MyController {
 
 	/********* detail (reservation) **********/
 
-	@RequestMapping(value = "/detail/reserved", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detailReserved() {
-		System.out.println("MyPageController>detailReserved()");
+	@RequestMapping(value = "/reserved", method = { RequestMethod.GET, RequestMethod.POST })
+	public String detailReserved(@RequestParam("resNo") int resNo, @ModelAttribute MyListVo myListVo, Model model,
+			HttpSession session) {
+		System.out.println("MyController>detailReserved()");
+
+		List<MyListVo> dlist = myService.getDetail(resNo);
+		model.addAttribute("dlist", dlist);
 
 		return "mypage/detail_reserved";
 	}
 
-	@RequestMapping(value = "/detail/canceled", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detailCanceled() {
-		System.out.println("MyPageController>detailCanceled()");
+	@RequestMapping(value = "/canceled", method = { RequestMethod.GET, RequestMethod.POST })
+	public String detailCanceled(@RequestParam("resNo") int resNo, @ModelAttribute MyListVo myListVo, Model model) {
+		System.out.println("MyController>detailCanceled()");
+
+		List<MyListVo> dlist = myService.getDetail(resNo);
+		model.addAttribute("dlist", dlist);
 
 		return "mypage/detail_canceled";
 	}
 
-	@RequestMapping(value = "/detail/used", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detailUsed() {
-		System.out.println("MyPageController>detailUsed()");
+	@RequestMapping(value = "/used", method = { RequestMethod.GET, RequestMethod.POST })
+	public String detailUsed(@RequestParam("resNo") int resNo, @ModelAttribute MyListVo myListVo, Model model,
+			HttpSession session) {
+		System.out.println("MyController>detailUsed()");
+
+		List<MyListVo> dlist = myService.getDetail(resNo);
+		model.addAttribute("dlist", dlist);
 
 		return "mypage/detail_used";
 	}
@@ -188,16 +219,24 @@ public class MyController {
 	/********* detail (reservation) **********/
 
 	/********* detail (yangdo) **********/
-	@RequestMapping(value = "/detail/relisted", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detailRelisted() {
-		System.out.println("MyPageController>detailRelisted()");
+	@RequestMapping(value = "/relisted", method = { RequestMethod.GET, RequestMethod.POST })
+	public String detailRelisted(@RequestParam("resNo") int resNo, @ModelAttribute MyListVo myListVo, Model model,
+			HttpSession session) {
+		System.out.println("MyController>detailRelisted()");
+
+		List<MyListVo> dlist = myService.getDetail(resNo);
+		model.addAttribute("dlist", dlist);
 
 		return "mypage/detail_relisted";
 	}
 
-	@RequestMapping(value = "/detail/transferred", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detailTransferred() {
-		System.out.println("MyPageController>detailTransferred()");
+	@RequestMapping(value = "/transferred", method = { RequestMethod.GET, RequestMethod.POST })
+	public String detailTransferred(@RequestParam("resNo") int resNo, @ModelAttribute MyListVo myListVo, Model model,
+			HttpSession session) {
+		System.out.println("MyController>detailTransferred()");
+
+		List<MyListVo> dlist = myService.getDetail(resNo);
+		model.addAttribute("dlist", dlist);
 
 		return "mypage/detail_transferred";
 	}

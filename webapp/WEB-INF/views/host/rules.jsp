@@ -166,19 +166,19 @@
                 		<div class="form-layer">
                 			<span class="form-title text-center title_align">준 성수기</span>
                 			<span class="form-body">
-                				<div class="subpeak-item form-inline mb_24">
-									<input class="form-control middle-size datepicker" name = "subpeakStart" type="text" readonly="readonly">
+                				<div class="subpeck-item form-inline mb_24">
+									<input class="form-control middle-size datepicker" name = "subpeckStartArray" type="text" readonly="readonly">
 									<span class="range"> ~ </span>
-									<input class="form-control middle-size datepicker" name = "subpeakEnd" type="text" readonly="readonly">
-									<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
+									<input class="form-control middle-size datepicker" name = "subpeckEndArray" type="text" readonly="readonly">
+									<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeck">삭제</button>
 								</div>
 								
-								<div class="form form-subpeak">
-									<div class="subpeak-item form-inline mb_24 hide">
-										<input class="form-control middle-size datepicker plussubpeakstart" type="text" readonly="readonly">
+								<div class="form form-subpeck">
+									<div class="subpeck-item form-inline mb_24 hide">
+										<input class="form-control middle-size datepicker plussubpeckstart" type="text" readonly="readonly">
 										<span class="range"> ~ </span>
-										<input class="form-control middle-size datepicker plussubpeakend" type="text" readonly="readonly">
-										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
+										<input class="form-control middle-size datepicker plussubpeckend" type="text" readonly="readonly">
+										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeck">삭제</button>
 									</div>
 								</div>
 								
@@ -186,7 +186,7 @@
                         </div>
                         
                         <div class="form-layer-text">
-                            <button type="button" class="btn btn-default" data-role="add-subpeak">+ 추가</button>
+                            <button type="button" class="btn btn-default" data-role="add-subpeck">+ 추가</button>
                         </div>
                         
                         <hr>
@@ -194,26 +194,26 @@
                         <div class="form-layer">
                         	<span class="form-title text-center title_align">성수기</span>
                             <span class="form-body">
-                            	<div class="peak-item form-inline mb_24">
-                            		<input class="form-control middle-size datepicker" name = "peakStart" type="text" readonly="readonly">
+                            	<div class="peck-item form-inline mb_24">
+                            		<input class="form-control middle-size datepicker" name = "peckStartArray" type="text" readonly="readonly">
                             		<span class="range"> ~ </span>
-                            		<input class="form-control middle-size datepicker" name = "peakEnd" type="text" readonly="readonly">
-                            		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
+                            		<input class="form-control middle-size datepicker" name = "peckEndArray" type="text" readonly="readonly">
+                            		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peck">삭제</button>
                            		</div>
 
-                                <div class="form form-peak">
-                                    <div class="peak-item form-inline mb_24 hide">
-                                        <input class="form-control middle-size datepicker pluspeakstart" type="text" readonly="readonly">
+                                <div class="form form-peck">
+                                    <div class="peck-item form-inline mb_24 hide">
+                                        <input class="form-control middle-size datepicker pluspeckstart" type="text" readonly="readonly">
                                         <span class="range"> ~ </span>
-                                        <input class="form-control middle-size datepicker pluspeakend" type="text" readonly="readonly">
-                                        <button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
+                                        <input class="form-control middle-size datepicker pluspeckend" type="text" readonly="readonly">
+                                        <button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peck">삭제</button>
                                     </div>
                                 </div>
                             </span>
                         </div>
                         
                         <div class="form-layer-text">
-                            <button type="button" class="btn btn-default" data-role="add-peak">+ 추가</button>
+                            <button type="button" class="btn btn-default" data-role="add-peck">+ 추가</button>
                         </div>
                    	</td>
                    	
@@ -405,37 +405,37 @@ $(function() {
     
     
     // 준성수기 아이템 제거
-	$('.subpeak-item').on('click','[data-role=remove-subpeak]',function() {
-		$(this).closest('.subpeak-item').remove();
+	$('.subpeck-item').on('click','[data-role=remove-subpeck]',function() {
+		$(this).closest('.subpeck-item').remove();
 	});
 	
-	$('.form-subpeak').on('click','[data-role=remove-subpeak]',function() {
-		$(this).closest('.subpeak-item').remove();
+	$('.form-subpeck').on('click','[data-role=remove-subpeck]',function() {
+		$(this).closest('.subpeck-item').remove();
 	});
 
     // 준성수기 아이템 추가
-    $('[data-role=add-subpeak]').on('click',function() {
-    	$('.form-subpeak').append($('.subpeak-item.hide').clone().removeClass('hide'));
+    $('[data-role=add-subpeck]').on('click',function() {
+    	$('.form-subpeck').append($('.subpeck-item.hide').clone().removeClass('hide'));
     	$('.datepicker').removeAttr('id').removeClass('hasDatepicker').datepicker();
-    	$('.plussubpeakstart').attr('name', 'subpeakStart');
-    	$('.plussubpeakend').attr('name', 'subpeakEnd');
+    	$('.plussubpeckstart').attr('name', 'subpeckStartArray');
+    	$('.plussubpeckend').attr('name', 'subpeckEndArray');
     });
 
     // 성수기 아이템 제거
-    $('.peak-item').on('click','[data-role=remove-peak]',function() {
-    	$(this).closest('.peak-item').remove();
+    $('.peck-item').on('click','[data-role=remove-peck]',function() {
+    	$(this).closest('.peck-item').remove();
     });
 
-	$('.form-peak').on('click','[data-role=remove-peak]',function() {
-		$(this).closest('.peak-item').remove();
+	$('.form-peck').on('click','[data-role=remove-peck]',function() {
+		$(this).closest('.peck-item').remove();
 	});
 
     // 성수기 아이템 추가
-    $('[data-role=add-peak]').on('click',function() {
-    	$('.form-peak').append($('.peak-item.hide').clone().removeClass('hide'));
+    $('[data-role=add-peck]').on('click',function() {
+    	$('.form-peck').append($('.peck-item.hide').clone().removeClass('hide'));
     	$('.datepicker').removeAttr('id').removeClass('hasDatepicker').datepicker();
-    	$('.pluspeakstart').attr('name', 'peakStart');
-    	$('.pluspeakend').attr('name', 'peakEnd');
+    	$('.pluspeckstart').attr('name', 'peckStartArray');
+    	$('.pluspeckend').attr('name', 'peckEndArray');
     });
     
 

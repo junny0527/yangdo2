@@ -18,7 +18,7 @@
 					</ul>
 					 -->
 				</li>
-				<li><a href=""><img src="${pageContext.request.contextPath}/assets/image/host/logout.png"> 로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath}/host/logout"><img src="${pageContext.request.contextPath}/assets/image/host/logout.png"> 로그아웃</a></li>
 			</ul>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 			<div id = "reserve">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/host/reservemanage">예약관리</a></li>
-					<li><a href="">정산 및 매출내역</a></li>
+					<li><a href="">매출내역</a></li>
 					<li><a href="">리뷰관리</a></li>
 				</ul>
 			</div>
@@ -51,7 +51,7 @@
 </div>
 <!-- nav -->
 
-
+<!--  
 <script type = "text/javascript">
 
 $("#showReserve").on("mouseover",function(){
@@ -72,6 +72,8 @@ $("#showIntroduce").on("mouseout",function(){
 
 
 </script>
+
+-->
 
 
 <!--  

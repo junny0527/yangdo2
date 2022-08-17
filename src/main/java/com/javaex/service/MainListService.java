@@ -1,5 +1,6 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,24 +16,18 @@ public class MainListService {
 	@Autowired
 	private MainListDao mainDao;
 	
+	
 	public List<MainListVo> select(int areaNo){
 		System.out.println("mainService>select");
+		
 		
 		// 펜션정보
 		List<MainListVo> mainList = mainDao.select(areaNo);
 		
 		
-		
 		return mainList;
 	}
 	
-	public Map<String,Object> selectArea(int areaNo){
-		System.out.println("mainService>Area");
-		
-		Map<String, Object> pMap = mainDao.selectArea(areaNo);
-		System.out.println(pMap);
-		return pMap;
-		
-	}
+	
 	
 }

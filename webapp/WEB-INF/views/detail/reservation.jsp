@@ -4,28 +4,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7&libraries=LIBRARY"></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
-
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7&libraries=LIBRARY"></script>
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 <body>
-	
 	<div id="wrap">
 		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
 		<!-- //header -->
@@ -33,6 +29,7 @@
 		<div id="main">
 			<div id="content" class="clearfix">
 	         	<input id="pensionNo" type="hidden" value="${pMap.pInfo.NO}">
+	         	<input id="crtPage" type="hidden" value="${crtPage}">
 	            <span id="area">양평</span> 
 	            <span id="pensionName">${pMap.pInfo.NAME}</span> 
 	            <span id="address">${pMap.pInfo.ADDRESS}</span> 
@@ -269,7 +266,6 @@
 							</c:when>
 						</c:choose>
 					</c:forEach>
-					
 					<c:choose>
 						<c:when test="${crtPage == 1}">
 							<a href="#">
@@ -279,7 +275,6 @@
 							</a>
 						</c:when>
 					</c:choose>
-					
 					<ul>
 						<c:forEach items="${pMap.imgList}" var="imgList" varStatus="status">
 							<c:if test="${status.count <= 6}">
@@ -300,7 +295,6 @@
 							</c:when>
 						</c:choose>
 					</c:forEach>
-					
 					<c:choose>
 						<c:when test="${crtPage == 4}">
 							<a href="#">
@@ -315,7 +309,6 @@
 			<!-- //gallery -->
 		</div>
 		<!-- //main -->  
-		
 		<div id="iconBox">
 			<h4>편의시설 및 서비스</h4>
 			<div id="container">
@@ -336,8 +329,6 @@
 		
 		</div>
       	<!-- //iconBox -->
-		
-			
         <div id="menuBox"> 
 			<div id="menu">
 			   	<button id="var">객실안내</button>
@@ -365,11 +356,12 @@
 					<button type="submit">일정 선택하기</button><br>
 				</form>
 			</div>
-			<c:forEach items="${pMap.roomList}" var="roomVo">
+			<!-- //calendar -->
+			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == '양도대기'}">
 						<div class="room">
-							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+							<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.IMAGE_PATH}">
 							<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
 							<div class="roomInfo">
 								<span class="roomName">${roomVo.ROOM_NAME}</span>
@@ -420,13 +412,16 @@
 										<span class="assignmentPrice">${roomVo.TRANS_PRICE}원</span>
 									</div>
 								</div>
+								<!-- //defaultForm -->
 								<button>양도받으러가기</button>
 							</div>
+							<!-- //roomInfo -->
 						</div>
+						<!-- //room -->
 					</c:when>
 					<c:when test="${roomVo.STATUS == '예약완료'}">
 						<div class="room reservation">
-							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+							<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.IMAGE_PATH}">
 							<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
 							<div class="roomInfo">
 								<span class="roomName">${roomVo.ROOM_NAME}</span>
@@ -477,13 +472,16 @@
 										<span class="roomPrice" style="text-decoration:none;">${roomVo.TOTAL_PRICE}원</span> 
 									</div>
 								</div>
+								<!-- //defaultForm -->
 								<button>예약완료</button>
 							</div>
+							<!-- //roomInfo -->
 						</div>
+						<!-- //room reservation -->
 					</c:when>
-					<c:when test="${roomVo.STATUS == 'null'}">
+					<c:otherwise>
 						<div class="room noReservation">
-							<img class="roomImg" src="${pageContext.request.contextPath}/assets/image/detail/pension.PNG">
+							<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.IMAGE_PATH}">
 							<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
 							<div class="roomInfo">
 								<span class="roomName">${roomVo.ROOM_NAME}</span>
@@ -534,10 +532,13 @@
 										<span class="roomPrice" style="text-decoration:none;">${roomVo.PRICE}원</span> 
 									</div>
 								</div>
+								<!-- //defaultForm -->
 								<button>예약하러가기</button>
 							</div>
+							<!-- //roomInfo -->
 						</div>
-					</c:when>
+						<!-- //room noReservation -->
+					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<!-- 예약 후 이용완료 시 status null값으로 바꿔야한다. 애들한테 말하기. null로 안바꿔주면 방 안보임. -->
@@ -607,7 +608,6 @@
 <!-- /.modal -->
 
 
-
 <!-- 객실 사진보기 모달 -->
 <div class="modal fade roomPhoto">
 	<div class="modal-dialog">
@@ -634,10 +634,6 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-
-
-
-
 
 
 <script type="text/javascript">
@@ -672,10 +668,7 @@
 		map.setCenter(center);
 	});
 
-	$(".btn-secondary").on("click", function() {
-		$(".modal").hide();
-	});
-	
+
 	///////////////////////// 일정선택 ///////////////////////////
 	
 	$(function() {
@@ -699,46 +692,41 @@
             ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
         });
  
-	//input을 datepicker로 선언
-	$("#datepicker").datepicker();                    
-	$("#datepicker2").datepicker();
-	var datepicker = $("#datepicker").val();
-	var datepicker2 = $("#datepicker2").val();
-            
+		//input을 datepicker로 선언
+		$("#datepicker").datepicker();                    
+		$("#datepicker2").datepicker();
+		var datepicker = $("#datepicker").val();
+		var datepicker2 = $("#datepicker2").val();
+	            
         if(${"datepicker"} != null && ${"datepicker2"} != null) {
         	//From의 초기값을 오늘 날짜로 설정
-         $('#datepicker').datepicker('setDate', datepicker); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-         //To의 초기값을 내일로 설정
-         $('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+         	$('#datepicker').datepicker('setDate', datepicker); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        	 //To의 초기값을 내일로 설정
+        	 $('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
         }
         
     });
 	
 	///////////////////////// 객실 이용안내  ///////////////////////////
-	
 	$(".information_Use").on("click", function() {
 		//입력한 객실정보로 사진 열기.
 		var $this = $(this);  
 		var roomNo = Number($this.attr("name"));
-		console.log(roomNo);
 		var pensionNo = $("#pensionNo").val();
-	
 		$.ajax({
-			url : "${pageContext.request.contextPath}/api/reservation?pensionNo=" + pensionNo + "&roomNo=" + roomNo,		
+			url : "${pageContext.request.contextPath}/api/roomInfoList?pensionNo=" + pensionNo + "&roomNo=" + roomNo,		
 			type : "post",
 			//contentType : "application/json",
 			//data : ,
 			dataType : "json",
-			success : function(roomMap){
+			success : function(roomInfoList){
 				/*성공시 처리해야될 코드 작성*/
-				for(var i = 0; i < roomMap.length; i++) {
-					if(roomMap[i].NO == roomNo) {
-						$(".roomNo").text(roomMap[i].ADD_INFO);
-						$(".sAmen").text(roomMap[i].ROOM_AMENITIES);
+				for(var i = 0; i < roomInfoList.length; i++) {
+					if(roomInfoList[i].NO == roomNo) {
+						$(".roomNo").text(roomInfoList[i].ADD_INFO);
+						$(".sAmen").text(roomInfoList[i].ROOM_AMENITIES);
 					}
-					
 				}
-			
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -749,17 +737,18 @@
 	});
 	
 	///////////////////////// 객실 사진보기  ///////////////////////////
+	//ajax로 받아온 이미지를 담을 변수
+	var crtImgList;
+	var crtPos = 0;
 	
+	//모달 창 보기(방 이미지 클릭 시)
 	$(".roomImgList").on("click", function() {
-		$(".roomPhoto").modal("show");
 		var $this = $(this);  
 		var roomNo = Number($this.attr("name")); 
 		var pensionNo = $("#pensionNo").val();
-		var count = 0;
 		var src = "";
 		console.log("방번호 :"+roomNo);
 		console.log("펜션번호 :"+pensionNo);
-		
 		
 		$.ajax({
 			url : "${pageContext.request.contextPath}/api/roomImg?pensionNo=" + pensionNo + "&roomNo=" + roomNo,		
@@ -769,46 +758,45 @@
 
 			dataType : "json",
 			success : function(roomImgList){
-				
+				crtImgList = roomImgList;
 				/*성공시 처리해야될 코드 작성*/
-<<<<<<< HEAD
 				console.log("이미지숫자 :"+roomImgList.length);
-				console.log("밖count값"+count); 
 				
-					$(".imgRight").on("click", function() {
-						if(count < roomImgList.length -1) {
-							count += 1;
-							src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
-							$(".roomImageList").attr("src", src);
-							console.log("+count값 :"+count);
-						}
-					});
-					$(".imgLeft").on("click", function() {
-						if(count > 0 && count <= roomImgList.length -1) {
-							count -= 1;
-							console.log("-count값 :"+count);
-							src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
-							$(".roomImageList").attr("src", src);
-						}
-					});	
-					src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[count].IMAGE_PATH"};
-=======
-				/* src="${pageContext.request.contextPath}/upload/${pMap.imgList[0].IMAGE_PATH}"> */
-				console.log(roomImgList);
-				for(var i = 0; i < roomImgList.length; i++) {
-					var src = "${pageContext.request.contextPath}/upload/"+${"roomImgList[i].IMAGE_PATH"};
-					if() {
-						
-					}
->>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
-					$(".roomImageList").attr("src", src);
+				src = "${pageContext.request.contextPath}/upload/"+ crtImgList[crtPos].IMAGE_PATH;
+				$(".roomImageList").attr("src", src);
+				
+				$(".roomPhoto").modal("show");
+				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
 			}
 		});
 	});
+		
+	//방 이미지 모달창 오른쪽 버튼 클릭 이벤트
+	$(".imgRight").on("click", function() {
+		if(crtPos < crtImgList.length -1) {
+			crtPos += 1;
+			src = "${pageContext.request.contextPath}/upload/"+ crtImgList[crtPos].IMAGE_PATH;
+			$(".roomImageList").attr("src", src);
+		}
+	});
+		
+	//방 이미지 모달창 왼쪽 버튼 클릭 이벤트
+	$(".imgLeft").on("click", function() {
+		if(crtPos > 0 && crtPos < crtImgList.length) {
+			crtPos -= 1;
+			src = "${pageContext.request.contextPath}/upload/"+ crtImgList[crtPos].IMAGE_PATH;
+			$(".roomImageList").attr("src", src);
+		}
+	});	
 	
+	//모달 창 닫기 이벤트 (값 초기화)
+	$(".btnClose").on("click", function(){
+		crtImgList = null;
+		crtPos = 0;
+	});	
 	
 	///////////////////////// 펜션사진 버튼이벤트 페이징  ///////////////////////////
 	$(".list").css("cursor", "pointer");
@@ -816,28 +804,45 @@
 	$(".list").on("click", function() {
 		var $this = $(this);
 		var src = $this.attr("src");
-		
 		var no = $this.attr("alt");
 		$("#mainImg").attr("src", src);
 		$("#imgCount").text(no + ' / ' + ${pMap.totalCnt} + ' | ' + '전체사진' );
 		
 	});
 	
-		
-	///////////////////////// 숙소정보 페이지(ajax)  ///////////////////////////	
-		
+	// ajax 페이지용 전역변수
 	var reBtn = true;
 	var iBtn = true;
 	var rBtn = true;
 	
-	
+	///////////////////////// 객실안내 페이지(ajax)  ///////////////////////////
+	$("#var").on("click", function() {
+		var pensionNo = $("#pensionNo").val();
+		var crtPage = $("#crtPage").val();
+		var datepicker = $("#datepicker").val();
+		var datepicker2 = $("#datepicker2").val();
+		rBtn = true;
+		iBtn = true;
+		
+		$("#roomList").show();
+		$("#pensionInfo").empty();
+		$("#pensionInfo").hide();
+		$("#review").empty();
+		$("#review").hide();
+		$("#var").css("color", "red");
+		$("#var1").css("color", "black");
+		$("#var2").css("color", "black");
+	});
+		
+	///////////////////////// 숙소정보 페이지(ajax)   ///////////////////////////	
 	$("#var1").on("click", function() {
+		rBtn = true;
+		var pensionNo = $("#pensionNo").val();
+		
 		$("#pensionInfo").show();
 		$("#roomList").hide();
+		$("#review").hide();
 		$("#review").empty();
-		rBtn = true;
-		
-		var pensionNo = $("#pensionNo").val();
 		$("#var").css("color", "black");
 		$("#var1").css("color", "red");
 		$("#var2").css("color", "black");
@@ -864,7 +869,6 @@
 					var1Render(iMap);
 					iBtn = false;
 				}
-				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -872,7 +876,7 @@
 		});
 	}); 
 	
-	
+	//숙소정보 페이지 클릭 시 html 그려주는 함수 
 	function var1Render(iMap) {
 		var str = '';
 			str += '<div id="aroundInfo">';
@@ -913,7 +917,121 @@
 			str += '</div>';
 			str += '<div id="cancle">';
 			str += '	<div class="info">취소 및 환불규정</div>';
-			str += '	<span>숙박일 기준 7일 전 : 100% 환불</span>';	//X
+			if(iMap.REFUND_NO == 10) {
+				str += '		<table id = "pay_refund" border = "1">';
+				str += '			<thead>';
+				str += '				<tr>';
+				str += '					<th class="text-center">기준날짜</th>';
+				str += '					<th class="text-center">10일 전</th>';
+				str += '				</tr>';
+				str += '			</thead>';
+				str += '			<tbody class="text-center">';
+				str += '				<tr>';
+				str += '					<td id = "rateguide" rowspan = "11">예약 취소 시 <br> 환불금액 비율</td>';
+				str += '					<td>10일 전 : 100%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>9일 전 : 90%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>8일 전 : 80%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>7일 전 : 70%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>6일 전 : 60%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>5일 전 : 50%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>4일 전 : 40%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>3일 전 : 30%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>2일 전 : 20%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>1일 전 : 10%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>숙박일 당일, no-show 환불 불가</td>';
+				str += '				</tr>';
+				str += '			</tbody>';
+				str += '		</table>';
+			}else if(iMap.REFUND_NO == 7) {
+				str += '		<table id = "pay_refund" border = "1">';
+				str += '			<thead>';
+				str += '				<tr>';
+				str += '					<th class="text-center">기준날짜</th>';
+				str += '					<th class="text-center">7일 전</th>';
+				str += '				</tr>';
+				str += '			</thead>';
+				str += '			<tbody class="text-center">';
+				str += '				<tr>';
+				str += '					<td id = "rateguide" rowspan = "8">예약 취소 시 <br> 환불금액 비율</td>';
+				str += '					<td>7일 전 : 100%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>6일 전 : 90%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>5일 전 : 85%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>4일 전 : 80%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>3일 전 : 70%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>2일 전 : 50%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>1일 전 : 30%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>숙박일 당일, no-show 환불 불가</td>';
+				str += '				</tr>';
+				str += '			</tbody>';
+				str += '		</table>';
+			}else if(iMap.REFUND_NO == 6) {
+				str += '		<table id = "pay_refund" border = "1">';
+				str += '			<thead>';
+				str += '				<tr>';
+				str += '					<th class="text-center">기준날짜</th>';
+				str += '					<th class="text-center">6일 전</th>';
+				str += '				</tr>';
+				str += '			</thead>';
+				str += '			<tbody class="text-center">';
+				str += '				<tr>';
+				str += '					<td id = "rateguide" rowspan = "7">예약 취소 시 <br> 환불금액 비율</td>';
+				str += '					<td>6일 전 : 100%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>5일 전 : 90%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>4일 전 : 80%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>3일 전 : 70%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>2일 전 : 50%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>1일 전 : 30%</td>';
+				str += '				</tr>';
+				str += '				<tr>';
+				str += '					<td>숙박일 당일, no-show 환불 불가</td>';
+				str += '				</tr>';
+				str += '			</tbody>';
+				str += '		</table>';
+			}
 			str += '</div>';
 			str += '<div id="checkList">';
 			str += '	<div class="info">확인사항 및 기타</div>';
@@ -925,49 +1043,124 @@
 	
 	///////////////////////// 리뷰 페이지(ajax)  ///////////////////////////
 	$("#var2").on("click", function() {
-		console.log(rBtn);
+		var pensionNo = $("#pensionNo").val();
+		iBtn = true;
+		
+		$("#review").show();
 		$("#pensionInfo").hide();
 		$("#pensionInfo").empty();
-		var pensionNo = $("#pensionNo").val();
+		$("#roomList").hide();
 		$("#var").css("color", "black");
 		$("#var1").css("color", "black");
 		$("#var2").css("color", "red");
-		iBtn = true;
 		
 		$.ajax({
 			url : "${pageContext.request.contextPath}/api/review?pensionNo=" + pensionNo,		
 			type : "post",
 			//contentType : "application/json",
 			//data : ,
-
 			dataType : "json",
-			success : function(){
+			success : function(rMap){
 				/*성공시 처리해야될 코드 작성*/
 				if(rBtn == true) {
-					var2Render();
+					var2Render(rMap);
 					rBtn = false;
 				}
-				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
 			}
 		});
 	}); 	
-		
+	
+	//리뷰 페이지 클릭 시 html 그려주는 함수
 	function var2Render(rMap) {
 		var str = '';
 			str += '<span id="ment">최고예요</span>';
-			str += '<div id="star">';
-			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '</div>';
+			if(rMap.totalReview.AVGSTARS == 5.00) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 4.10 && rMap.totalReview.AVGSTARS == 4.99) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 4.00) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 3.10 && rMap.totalReview.AVGSTARS == 3.99) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 3.00) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 2.10 && rMap.totalReview.AVGSTARS == 2.99) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 2.00) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 1.10 && rMap.totalReview.AVGSTARS == 1.99) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else if(rMap.totalReview.AVGSTARS == 1.00) {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}else {
+				str += '<div id="star">';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+				str += '</div>';
+			}
 			str += '<div id="reviewCount">';
-			str += '	<span id="allReview">전체리뷰 2</span>';
-			str += '	<span id="pensionReview">제휴점 답변 2</span>';
+			str += '	<span id="allReview">전체리뷰' + rMap.totalReview.RCOUNT + '</span>';
+			str += '	<span id="pensionReview">제휴점 답변' + rMap.totalReview.REPCOUNT + '</span>';
 			str += '</div>';
 			str += '<div id="reviewBox">';
 			str += '	<div id="guestContainer">';
@@ -1013,18 +1206,6 @@
 			$("#review").append(str);
 	}	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </script>
-
-
 
 </html>

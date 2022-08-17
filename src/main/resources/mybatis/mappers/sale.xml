@@ -12,12 +12,12 @@
 			        ,r.name RNAME 
 			        ,r.hp RHP
 			        ,To_char(r.check_in ,'YYYY-MM-DD') CHECKIN 
-                    ,TO_CHAR(TO_DATE(r.check_in, 'YYYY-MM-DD'), 'DY') AS CHECKINDAY
+			        ,TO_CHAR(TO_DATE(r.check_in, 'YYYY-MM-DD'), 'DY') AS CHECKINDAY
 			        ,To_char(r.check_out ,'YYYY-MM-DD') CHECKOUT
 			        ,TO_CHAR(TO_DATE(r.check_out, 'YYYY-MM-DD'), 'DY') AS CHECKOUTDAY
-                    ,p.check_in CHECKINTIME
-                    ,p.check_out CHECKOUTTIME
-                    ,ro.room_name
+			        ,p.check_in CHECKINTIME
+			        ,p.check_out CHECKOUTTIME
+			        ,ro.room_name
 			        ,p.name PNAME
 			        ,ro.standard_people
 			        ,ro.max_people
@@ -30,16 +30,24 @@
 			        ,pensione.image_path
 			        ,r.reg_date
 			        ,r.trans_price
-			from reservations r , rooms ro , pension p , pension_image pensionE
+			from reservations r , rooms ro , pension p ,(select rownum
+			                                                    ,rn.image_path
+			                                                    ,rn.pension_no
+			                                            from(select 
+			                                                    image_path
+			                                                    ,pension_no
+			                                            from pension_image
+			                                            order by no asc) rn) pensionE
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
 			and p.no = pensione.pension_no
 			and r.no = #{no}
+			and rownum = 1
 		]]>
 	</select>
 
 	
-	<update id="yangdoUpdate" parameterType="ReservationVo">
+	<update id="yangdoUpdate" parameterType="com.javaex.vo.MyListVo">
 		<![CDATA[
 			update reservations
 			set status = #{Status}

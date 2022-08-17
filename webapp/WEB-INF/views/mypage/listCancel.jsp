@@ -53,8 +53,6 @@
 					<section>
 						<h3>예약취소 내역</h3>
 						<c:forEach var="list" items="${list}">
-							<c:choose>
-								<c:when test="${list.status == '일반취소'}">
 									<ul class="list_wrap">
 										<li class="reservation-detail"><div>
 												<button type="button" class="btn_del">삭제</button>
@@ -64,18 +62,16 @@
 														alt="삼산 도브" class="align">
 												</p>
 												<a
-													href="${pageContext.request.contextPath}/my/detail/canceled"
+													href="${pageContext.request.contextPath}/my/canceled?resNo=${list.resNo}"
 													class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
-													<span>체크인: ${list.checkIn} <br> 체크아웃:
-														${list.checkOut}
-												</span> <b>예약 상세 &gt;</b></a>
+													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br>
+														체크아웃: ${list.checkOut} ㆍ ${list.outTime}
+												</span></a>
 												<p class="btn_re">
 													<a href=""> 다시 예약 </a>
 												</p>
 											</div></li>
 									</ul>
-								</c:when>
-							</c:choose>
 						</c:forEach>
 						<!---->
 					</section>
