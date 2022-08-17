@@ -51,7 +51,7 @@
 		<![CDATA[
 			update reservations
 			set status = #{Status}
-				,trans_price = #{transPrice}
+				,trans_price = #{trans_Price}
 			where no = #{no}
 		]]>
 	</update>

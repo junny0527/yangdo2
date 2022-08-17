@@ -149,6 +149,18 @@ public class SaleService {
 	public int yangdoUpdate(ReservationVo reservationVo) {
 		System.out.println("SaleService > yangdoUpdate()");
 		
+		String transp = reservationVo.getTransPrice();
+		String[] transprice = transp.split(",");
+		String transPrice = "";
+		
+		for(int i = 0;i<transprice.length; i++) {
+			transPrice += transprice[i];
+		}
+		System.out.println(transPrice);
+		int trans_Price = Integer.parseInt(transPrice);
+		
+		reservationVo.setTrans_Price(trans_Price);
+		
 		int count = saleDao.yangdoUpdate(reservationVo);
 		
 		return count;
