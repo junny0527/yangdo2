@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.javaex.dao.PointsDao;
 import com.javaex.dao.RePayDao;
 import com.javaex.vo.RePayVo;
 
@@ -15,7 +16,8 @@ import com.javaex.vo.RePayVo;
 public class RePayService  {
 	@Autowired
 	private RePayDao rePayDao;
-	
+	@Autowired
+	private PointsDao pointsDao;
 
 	// 예약+양도예약 정보 가져오기
 	public Map<String, Object> getRePay(int no) {
@@ -65,13 +67,16 @@ public class RePayService  {
 	
 	//일반 결제 포인트 
 	
-	public void PayInsert(RePayVo bean ) {
+	public void PayInsert(RePayVo bean) {
 		System.out.println("\t\t RePayService::PayInsert() invoked...");
-		
-		//if포인트사용할때만 업데이트문
-		
-		
+		System.out.println("Service Bean :: " + bean);
+//		System.out.println("Service Point :: " + pointsVo);
+		// PointsVo pointsVo => 포인트 정보
+		// 여기서 int points -로 바꿔 다시 set해
+		pointsDao.pointsInsert(bean);
 		rePayDao.PayInsert(bean);
+		
+		
 	}
 	
 	//양도 결제 포인트 

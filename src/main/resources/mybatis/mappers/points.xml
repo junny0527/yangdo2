@@ -2,25 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="points">
 
-	<!-- <insert id="pointsInsert" parameterType="com.javaex.vo.PointsVo">
-				INSERT INTO RESERVATIONS (
+	<select id="getpoint" parameterType="int" resultType="int">
+		SELECT
+			sum(POINT) POINTS
+		FROM
+			POINTS POINTS,
+			RESERVATIONS RESERVATIONS,
+			USERS USERS
+		WHERE
+			POINTS.RESERVE_NO = RESERVATIONS."NO"
+			AND POINTS."NO" = USERS."NO"
+			AND RESERVATIONS.user_no = #{userNo}
+
+	</select> 
+
+	 <insert id="pointsInsert" parameterType="com.javaex.vo.RePayVo">
+				INSERT INTO POINTS (
 						NO,
 						RESERVE_NO,
 						POINT,
-						NAME
+						REG_DATE )
 				VALUES (
-				  		SEQ_RESERVATIONS_NO.nextval,
-						#{reserveNo},
-						#{point},
-						NOWDATE
+				  		SEQ_POINTS_NO.nextval,
+						#{no},
+						TO_NUMBER('-'||#{point}),
+						SYSDATE
 						)
-	</insert> -->
-	<update id="pointsUpdate" parameterType="com.javaex.vo.PointsVo"> 
-		UPDATE POINTS
-			SET 
-			  POINT = #{point}
-			WHERE 
-			  NO = #{no}
-	</update>
+	</insert> 
+	
 
 </mapper>

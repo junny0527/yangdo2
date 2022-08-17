@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.PointsService;
 import com.javaex.service.RePayService;
-import com.javaex.vo.PointsVo;
+//import com.javaex.vo.PointsVo;
 import com.javaex.vo.RePayVo;
 
 @Controller
@@ -25,19 +25,25 @@ public class BumjunController {
 
 	@Autowired
 	private RePayService rePayService;
+	@Autowired
 	private PointsService pointsService;
+
+	
 	
 	// 예약
 	@GetMapping("/reserve/{no}")
-	public String reserve(@PathVariable int no, Model model, HttpSession session) {
+	public String reserve(@PathVariable int no,  Model model, HttpSession session) {
 		System.out.println("\t\t BumJunController::reserve() invoked...");
 		
 		System.out.println(no);
 		
 		session.getAttribute("authUser");
 		
+		int userNo = (Integer)session.getAttribute("repayUser");
+		int Points = pointsService.getpoints(userNo);
+		
 		Map<String, Object> rpMap = rePayService.getRePay(no);
-
+		rpMap.put("Points", Points);
 		model.addAttribute("rpMap", rpMap);
 		return "/pay/reserve";
 	}
@@ -57,22 +63,24 @@ public class BumjunController {
 	}
 	
 	//일반 결제 인서트
-	@PostMapping("/reserve")
+	@PostMapping("/repay")
 	@ResponseBody
-	public void reInsert(@RequestBody RePayVo bean ,PointsVo pointsVo ) {
+	public void reInsert(@RequestBody RePayVo bean) {
+
 		System.out.println("\t\t BumJunController::reInsert() invoked...");
-		System.out.println("RePayVo::"+ bean);
-		pointsService.pointUpdate(pointsVo);
-		rePayService.PayInsert(bean );
+		System.out.println("Controller RePayVo::"+ bean);
+//		System.out.println("Controller pointsVo::"+ pointsVo);
+
+		rePayService.PayInsert(bean);
 	}
 	
 	//양도 결제 인서트+업데이트
 	@PostMapping("/yangdoUpdateInsert")
 	@ResponseBody
-	public void yangdoUpdateInsert(@RequestBody RePayVo bean ,PointsVo pointsVo ) {
+	public void yangdoUpdateInsert(@RequestBody RePayVo bean  ) {
 		System.out.println("\t\t BumJunController::yangdoPayUpdate() invoked...");
 		System.out.println("RePayVo::"+ bean);
-		pointsService.pointUpdate(pointsVo);
+		
 		rePayService.yangdoUpdateInsert(bean);
 		 
 	}

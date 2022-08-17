@@ -31,9 +31,11 @@ public class UserController {
 		
 		UserVo authUser = userService.userLogin(userVo);
 		
+		int repayUser = userService.userLoginbumjun(userVo);
 		/* 세션에 저장 */
 		if(authUser != null) { //로그인 성공
 			session.setAttribute("authUser", authUser);
+			session.setAttribute("repayUser", repayUser);
 			if(authUser.getIdentify().equals("host")) {
 				int hostNo = authUser.getNo();
 				HostRoomsVo hVo = userService.hostLogin(hostNo);
