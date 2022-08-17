@@ -34,7 +34,6 @@ public class DetailController {
 		model.addAttribute("crtPage", crtPage);
 		model.addAttribute("datepicker", datepicker);
 		model.addAttribute("datepicker2", datepicker2);
-
 		
 		return "detail/reservation";
 	}
@@ -44,7 +43,8 @@ public class DetailController {
 	@RequestMapping(value="/api/roomInfoList", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<Map<String, Object>> pMap(@RequestParam("pensionNo") int pensionNo, @RequestParam("roomNo") int roomNo) {
 		System.out.println("DetailController > pMap()");
-		
+		System.out.println(pensionNo);
+		System.out.println(roomNo);
 		List<Map<String, Object>> roomInfoList = detailService.roomInfoList(pensionNo, roomNo);
 		System.out.println("roomInfoList :"+roomInfoList);
 		return roomInfoList;

@@ -25,7 +25,7 @@ public class DetailDao {
 		return pMap;
 	}
 	
-	//펜션 별점 및 리뷰 가져오기
+	//펜션 별점 및 리뷰 가져오기(업주+)
 	public Map<String, Object> totalReview(int pensionNo) {
 		System.out.println("DetailDao > totalReview()");
 		
@@ -134,4 +134,11 @@ public class DetailDao {
 		return pensionInfo;
 	}
 	
+	//리뷰 가져오기(이용자 + 업주)
+	public List<Map<String, Object>> allReview(int pensionNo) {
+		System.out.println("DetailService > allReview");
+		
+		List<Map<String, Object>> allReview = sqlSession.selectList("detail.allReview", pensionNo);
+		return allReview;
+	}
 }
