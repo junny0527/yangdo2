@@ -557,8 +557,9 @@
 	left: 0;
 	width: 100%;
 }
+
 .reserve_list li a {
-	border:none;
+	border: none;
 }
 
 .reserve_list li a i {

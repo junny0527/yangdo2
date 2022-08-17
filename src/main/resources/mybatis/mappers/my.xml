@@ -186,12 +186,16 @@
  					r.pay_status pStatus,
  					p.refund_no refNo,
  					co.company_hp comHp,
+ 					pImg.image_path imgPath,
  					r.p_r_no pRno
- 			from reservations r, pension p, rooms ro, company co
+ 			from reservations r, pension p, rooms ro, company co,pension_image pImg
  			where r.room_no = ro.no
  			and p.no = ro.pension_no
             and co.no = p.company_no
+            and p.no = pImg.pension_no
+            and pImg.orders = 1
  			and r.no = #{resNo}
+ 			order by r.no desc
 		]]>
 	</select>
 </mapper>

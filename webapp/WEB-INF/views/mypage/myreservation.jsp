@@ -53,7 +53,7 @@
 					<section>
 						<h3>
 							예약완료 내역 <a class="more_info" style="display: block"
-								href="${pageContext.request.contextPath}/my/list/reserved">더보기>></a>
+								href="${pageContext.request.contextPath}/my/list/reserve">더보기>></a>
 						</h3>
 						<c:forEach var="rlist" items="${rlist}" begin="0" end="1">
 							<ul class="list_wrap">
@@ -106,7 +106,7 @@
 					<section class="list_cancel">
 						<h3>
 							예약취소 내역 <a class="more_info"
-								href="${pageContext.request.contextPath}/my/list/canceled">더보기>></a>
+								href="${pageContext.request.contextPath}/my/list/cancel">더보기>></a>
 						</h3>
 						<c:forEach var="clist" items="${clist}" begin="0" end="1">
 							<ul class="list_wrap">

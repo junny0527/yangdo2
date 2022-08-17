@@ -100,7 +100,7 @@
 								</p>
 							</div>
 						</section>
-						<a href="" class="btn_call" >전화로 문의하기</a>
+						<a href="" class="btn_call">전화로 문의하기</a>
 
 						<section>
 							<div style="padding-top: 0; padding-bottom: 0">
@@ -120,8 +120,11 @@
 										</div>
 										<!---->
 									</div>
-									<button type="button"
-										class="btn_flat booking_detail_flat_button color-green">양도하기</button>
+									<a
+										href="${pageContext.request.contextPath}/sale?no=${dlist.no}">
+										<button type="button"
+											class="btn_flat booking_detail_flat_button color-green">양도하기</button>
+									</a>
 									<button type="button"
 										class="btn_flat booking_detail_flat_button color-red">예약취소
 									</button>
@@ -142,7 +145,7 @@
 			<!-- Footer -->
 		</div>
 	</div>
-	
-	
+
+
 </body>
 </html>
