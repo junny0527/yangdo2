@@ -67,8 +67,8 @@
 										<a
 											href="${pageContext.request.contextPath}/my/detail/reserved"
 											class="product-title"><i class="">예약완료</i> <strong>${rlist.pName}</strong>
-											<span>체크인: ${rlist.checkIn} <br> 체크아웃:
-												${rlist.checkOut}
+											<span>체크인: ${rlist.checkIn} ㆍ ${rlist.inTime}<br>
+												체크아웃: ${rlist.checkOut} ㆍ ${rlist.outTime}
 										</span></a>
 									</div>
 								</li>
@@ -91,8 +91,8 @@
 										</p>
 										<a href="${pageContext.request.contextPath}/my/detail/used"
 											class="product-title"><i class="bg_w">이용완료</i> <strong>${ulist.pName}</strong>
-											<span>체크인: ${ulist.checkIn} <br> 체크아웃:
-												${ulist.checkOut}
+											<span>체크인: ${ulist.checkIn} ㆍ ${ulist.inTime}<br>
+												체크아웃: ${ulist.checkOut} ㆍ ${ulist.outTime}
 										</span></a>
 										<p class="btn_re">
 											<a href=""> 리뷰 남기기 </a>
@@ -118,8 +118,10 @@
 										</p>
 										<a
 											href="${pageContext.request.contextPath}/my/detail/canceled"
-											class="product-title"><i class="bg_w">예약취소</i> <strong>${clist.pName}</strong> <span> 체크인: ${clist.checkIn} <br> 체크아웃:
-												${clist.checkOut}</span></a>
+											class="product-title"><i class="bg_w">예약취소</i> <strong>${clist.pName}</strong>
+											<span>체크인: ${clist.checkIn} ㆍ ${clist.inTime}<br>
+												체크아웃: ${clist.checkOut} ㆍ ${clist.outTime}
+										</span></a>
 										<p class="btn_re">
 											<a href=""> 다시 예약 </a>
 										</p>

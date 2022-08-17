@@ -55,16 +55,16 @@
 						<div class="info" style="">
 							<div>
 								<i>${dlist.status}</i> <strong>${dlist.pName}</strong> <span>${dlist.rName}(기준
-									${dlist.sPple}인 최대 ${dlist.mPple}인)</span>
+									${dlist.sPple}인 / 최대 ${dlist.mPple}인)</span>
 							</div>
 						</div>
 						<section class="detail">
 							<div>
 								<p>
-									<strong>체크인</strong>${dlist.checkIn}
+									<strong>체크인</strong>${dlist.checkIn} ㆍ ${dlist.inTime}
 								</p>
 								<p>
-									<strong>체크아웃</strong>${dlist.checkOut}
+									<strong>체크아웃</strong>${dlist.checkOut} ㆍ ${dlist.outTime}
 								</p>
 								<p>
 									<strong>인원</strong>기준 ${dlist.sPple}인 / 최대 ${dlist.mPple}인
@@ -91,10 +91,6 @@
 										${dlist.tPrice}원</b>
 								</p>
 								<p>
-									<strong class="sub_info"> 추가금액 </strong> <b>
-										${dlist.xPrice}원</b>
-								</p>
-								<p>
 									<strong class="sub_info"> 할인금액 </strong> <b>- 원</b>
 								</p>
 							</div>
@@ -104,7 +100,7 @@
 								</p>
 							</div>
 						</section>
-						<a href="" class="btn_call">전화로 문의하기</a>
+						<a href="" class="btn_call" >전화로 문의하기</a>
 
 						<section>
 							<div style="padding-top: 0; padding-bottom: 0">
@@ -146,5 +142,7 @@
 			<!-- Footer -->
 		</div>
 	</div>
+	
+	
 </body>
 </html>

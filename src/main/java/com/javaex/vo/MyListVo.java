@@ -9,8 +9,8 @@ public class MyListVo {
 	public int resNo; // 예약번호
 	public String status; // 예약상태
 	public String pName; // 펜션이름
-	public Date checkIn; // 체크인 일자
-	public Date checkOut; // 체크아웃 일자
+	public String checkIn; // 체크인 일자
+	public String checkOut; // 체크아웃 일자
 	public String inTime; // 체크인 시간
 	public String outTime; // 체크아웃 시간
 	public Long imgPath; // 이미지경로
@@ -31,7 +31,7 @@ public class MyListVo {
 	public MyListVo() {
 	}
 
-	public MyListVo(int no, int resNo, String status, String pName, Date checkIn, Date checkOut, String inTime,
+	public MyListVo(int no, int resNo, String status, String pName, String checkIn, String checkOut, String inTime,
 			String outTime, Long imgPath, Date regDate, String rName, int sPple, int mPple, String name, String hp,
 			String tPrice, int trPrice, String pStatus, int refNo, String comHp, int pRno) {
 		super();
@@ -90,19 +90,19 @@ public class MyListVo {
 		this.pName = pName;
 	}
 
-	public Date getCheckIn() {
+	public String getCheckIn() {
 		return checkIn;
 	}
 
-	public void setCheckIn(Date checkIn) {
+	public void setCheckIn(String checkIn) {
 		this.checkIn = checkIn;
 	}
 
-	public Date getCheckOut() {
+	public String getCheckOut() {
 		return checkOut;
 	}
 
-	public void setCheckOut(Date checkOut) {
+	public void setCheckOut(String checkOut) {
 		this.checkOut = checkOut;
 	}
 

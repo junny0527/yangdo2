@@ -60,11 +60,11 @@
 												alt="" class="align">
 										</p>
 										<a
-											href="${pageContext.request.contextPath}/my/detail/reserved"
-											class="product-title"><i class="">예약완료</i> <strong>${rlist.pName }</strong>
-											<span>체크인: ${rlist.checkIn} <br> 체크아웃:
-												${rlist.checkOut}
-										</span> </a>
+											href="${pageContext.request.contextPath}/my/reserved?resNo=${list.resNo}"
+											class="product-title"><i class="">예약완료</i> <strong>${list.pName }</strong>
+											<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br>
+												체크아웃: ${list.checkOut} ㆍ ${list.outTime}
+										</span></a>
 									</div></li>
 							</ul>
 						</c:forEach>

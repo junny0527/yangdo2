@@ -10,16 +10,14 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                   r.check_in checkIn,
-                   r.check_out checkOut,
+                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
-                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
+            from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			order by r.no desc
 		]]>
@@ -33,16 +31,14 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                   r.check_in checkIn,
-                   r.check_out checkOut,
+                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
-                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
+            from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '예약완료'
 			order by r.no desc
@@ -57,16 +53,14 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                   r.check_in checkIn,
-                   r.check_out checkOut,
+                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
-                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
+            from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '이용완료'
 			order by r.no desc
@@ -81,16 +75,14 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                   r.check_in checkIn,
-                   r.check_out checkOut,
+                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
-                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
+            from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '예약취소'
 			order by r.no desc
@@ -105,16 +97,14 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                   r.check_in checkIn,
-                   r.check_out checkOut,
+                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
-                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
+            from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = '양도대기'
 			order by r.no desc
@@ -129,18 +119,16 @@
 				   r.no resNo,
 				   r.status status,
                    p.name pName,
-                   r.check_in checkIn,
-                   r.check_out checkOut,
+                  to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
-                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
+            from reservations r, pension p, rooms ro
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			and r.status = '양도대기'
+			and r.status = '양도완료'
 			order by r.no desc
 		]]>
 	</select>
@@ -169,31 +157,25 @@
  			select r.status status,
  					p.name pName,
  					ro.room_name rName,
- 					r.check_in checkIn,
- 					r.check_out checkOut,
+ 					to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
  					p.check_in inTime,
  					p.check_out outTime,
- 					pImg.image_path imgPath,
  					ro.standard_people sPple,
  					ro.max_people mPple,
  					r.no resNo,
  					r.name,
  					r.hp,
  					r.total_price tPrice,
- 					p.add_adult_price aPrice,
- 					p.add_kid_price kPrice,
- 					p.add_baby_price bPrice,
  					r.trans_price trPrice,
  					r.pay_status pStatus,
  					p.refund_no refNo,
  					co.company_hp comHp,
  					r.p_r_no pRno
- 			from reservations r, pension p, rooms ro, company co, pension_image pImg
+ 			from reservations r, pension p, rooms ro, company co
  			where r.room_no = ro.no
  			and p.no = ro.pension_no
             and co.no = p.company_no
-            and p.no = pImg.no
-            and pImg.orders = 1
  			and r.no = #{resNo}
 		]]>
 	</select>

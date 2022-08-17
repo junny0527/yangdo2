@@ -61,10 +61,12 @@
 												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
 												alt="삼산 도브" class="align">
 										</p>
-										<a href="${pageContext.request.contextPath}/my/detail/used"
+										<a
+											href="${pageContext.request.contextPath}/my/used?resNo=${list.resNo}"
 											class="product-title"><i class="bg_w">${list.status}</i>
 											<strong>${list.pName }</strong> <span>체크인:
-												${list.checkIn} <br> 체크아웃: ${list.checkOut}
+												${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃:
+												${list.checkOut} ㆍ ${list.outTime}
 										</span></a>
 										<p class="btn_re">
 											<a href=""> 리뷰 남기기 </a>

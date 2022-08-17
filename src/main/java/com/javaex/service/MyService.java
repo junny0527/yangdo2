@@ -17,7 +17,7 @@ public class MyService {
 	// 유저번호로 전체 리스트 불러오기
 	public List<MyListVo> getUserList(int no) {
 		System.out.println("MyService>getUserList()");
-		
+
 		return myDao.getUserList(no);
 	};
 
@@ -56,18 +56,11 @@ public class MyService {
 		return myDao.getTransferList(no);
 	}
 
-	// // 예약번호로 예약상세 내역 출력하기
+	// 예약번호로 예약상세 정보 불러오기
 	public List<MyListVo> getDetail(int resNo) {
 		System.out.println("MyService>getDetail()");
 
 		return myDao.getDetail(resNo);
-	}
-
-	// 예약내역(이용완료, 예약취소, 양도완료) 삭제
-	public int deleteOne(int no) {
-		System.out.println("MyService>deleteOne()");
-
-		return myDao.deleteOne(no);
 	}
 
 }
