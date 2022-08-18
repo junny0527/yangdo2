@@ -61,7 +61,7 @@
 	]]>
 </select>
 
-<select id = "getPensionNoBySession" resultType = "int">
+<select id = "getPensionNoBySession" parameterType = "int" resultType = "int">
 	<![CDATA[
 		select p.no
 		from pension p, company c
