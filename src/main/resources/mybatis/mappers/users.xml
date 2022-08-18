@@ -31,12 +31,16 @@
 	
 	<select id="getRoom" resultType="com.javaex.vo.HostRoomsVo" parameterType="int">
 		<![CDATA[
-			select r.no
-			from users u, company p, pension pen, rooms r
-			where u.no = p.user_no
-			and p.no = pen.company_no
-			and pen.no = r.pension_no
-			and u.no = #{hostNo}
+			select  rownum
+			        ,rn.no
+			from        (select r.no no
+			                    ,u.no uNo
+			        from users u, company p, pension pen, rooms r
+			        where u.no = p.user_no
+			        and p.no = pen.company_no
+			        and pen.no = r.pension_no) rn
+			where rownum = 1
+			and rn.uNo = #{hostNo}
 		]]>
 	</select>
 	
