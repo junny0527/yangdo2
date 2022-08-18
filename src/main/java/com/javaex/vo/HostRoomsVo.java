@@ -15,9 +15,8 @@ public class HostRoomsVo {
 	private String addInfo;
 	private String reserveAvai;
 
-	private List<Integer> imgNo;
-	private List<String> orgName;
-	private List<Integer> imagePath;
+	// 파일 리스트
+	private List<String> imgfile;
 
 	// 기본 비수기1
 	private int gbNo1;
@@ -54,11 +53,10 @@ public class HostRoomsVo {
 	}
 
 	public HostRoomsVo(int no, int userNo, int pensionNo, String roomName, int standardPeople, int maxPeople,
-			String roomAmenities, String addInfo, String reserveAvai, List<Integer> imgNo, List<String> orgName,
-			List<Integer> imagePath, int gbNo1, int gbPrice1, List<String> gbWeeks1, int gbNo2, int gbPrice2,
-			List<String> gbWeeks2, int jsNo1, int jsPrice1, List<String> jsWeeks1, int jsNo2, int jsPrice2,
-			List<String> jsWeeks2, int sNo1, int sPrice1, List<String> sWeeks1, int sNo2, int sPrice2,
-			List<String> sWeeks2) {
+			String roomAmenities, String addInfo, String reserveAvai, List<String> imgfile, int gbNo1, int gbPrice1,
+			List<String> gbWeeks1, int gbNo2, int gbPrice2, List<String> gbWeeks2, int jsNo1, int jsPrice1,
+			List<String> jsWeeks1, int jsNo2, int jsPrice2, List<String> jsWeeks2, int sNo1, int sPrice1,
+			List<String> sWeeks1, int sNo2, int sPrice2, List<String> sWeeks2) {
 		super();
 		this.no = no;
 		this.userNo = userNo;
@@ -69,9 +67,7 @@ public class HostRoomsVo {
 		this.roomAmenities = roomAmenities;
 		this.addInfo = addInfo;
 		this.reserveAvai = reserveAvai;
-		this.imgNo = imgNo;
-		this.orgName = orgName;
-		this.imagePath = imagePath;
+		this.imgfile = imgfile;
 		this.gbNo1 = gbNo1;
 		this.gbPrice1 = gbPrice1;
 		this.gbWeeks1 = gbWeeks1;
@@ -163,30 +159,6 @@ public class HostRoomsVo {
 
 	public void setReserveAvai(String reserveAvai) {
 		this.reserveAvai = reserveAvai;
-	}
-
-	public List<Integer> getImgNo() {
-		return imgNo;
-	}
-
-	public void setImgNo(List<Integer> imgNo) {
-		this.imgNo = imgNo;
-	}
-
-	public List<String> getOrgName() {
-		return orgName;
-	}
-
-	public void setOrgName(List<String> orgName) {
-		this.orgName = orgName;
-	}
-
-	public List<Integer> getImagePath() {
-		return imagePath;
-	}
-
-	public void setImagePath(List<Integer> imagePath) {
-		this.imagePath = imagePath;
 	}
 
 	public int getGbPrice1() {
@@ -333,16 +305,24 @@ public class HostRoomsVo {
 		this.sNo2 = sNo2;
 	}
 
+	public List<String> getImgfile() {
+		return imgfile;
+	}
+
+	public void setImgfile(List<String> imgfile) {
+		this.imgfile = imgfile;
+	}
+
 	@Override
 	public String toString() {
-		return "HostRoomsVo [no=" + no + ", pensionNo=" + pensionNo + ", roomName=" + roomName + ", standardPeople="
-				+ standardPeople + ", maxPeople=" + maxPeople + ", roomAmenities=" + roomAmenities + ", addInfo="
-				+ addInfo + ", reserveAvai=" + reserveAvai + ", imgNo=" + imgNo + ", orgName=" + orgName
-				+ ", imagePath=" + imagePath + ", gbNo1=" + gbNo1 + ", gbPrice1=" + gbPrice1 + ", gbWeeks1=" + gbWeeks1
-				+ ", gbNo2=" + gbNo2 + ", gbPrice2=" + gbPrice2 + ", gbWeeks2=" + gbWeeks2 + ", jsNo1=" + jsNo1
-				+ ", jsPrice1=" + jsPrice1 + ", jsWeeks1=" + jsWeeks1 + ", jsNo2=" + jsNo2 + ", jsPrice2=" + jsPrice2
-				+ ", jsWeeks2=" + jsWeeks2 + ", sNo1=" + sNo1 + ", sPrice1=" + sPrice1 + ", sWeeks1=" + sWeeks1
-				+ ", sNo2=" + sNo2 + ", sPrice2=" + sPrice2 + ", sWeeks2=" + sWeeks2 + "]";
+		return "HostRoomsVo [no=" + no + ", userNo=" + userNo + ", pensionNo=" + pensionNo + ", roomName=" + roomName
+				+ ", standardPeople=" + standardPeople + ", maxPeople=" + maxPeople + ", roomAmenities=" + roomAmenities
+				+ ", addInfo=" + addInfo + ", reserveAvai=" + reserveAvai + ", imgfile=" + imgfile + ", gbNo1=" + gbNo1
+				+ ", gbPrice1=" + gbPrice1 + ", gbWeeks1=" + gbWeeks1 + ", gbNo2=" + gbNo2 + ", gbPrice2=" + gbPrice2
+				+ ", gbWeeks2=" + gbWeeks2 + ", jsNo1=" + jsNo1 + ", jsPrice1=" + jsPrice1 + ", jsWeeks1=" + jsWeeks1
+				+ ", jsNo2=" + jsNo2 + ", jsPrice2=" + jsPrice2 + ", jsWeeks2=" + jsWeeks2 + ", sNo1=" + sNo1
+				+ ", sPrice1=" + sPrice1 + ", sWeeks1=" + sWeeks1 + ", sNo2=" + sNo2 + ", sPrice2=" + sPrice2
+				+ ", sWeeks2=" + sWeeks2 + "]";
 	}
 
 }

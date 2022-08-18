@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.HostRoomService;
 import com.javaex.vo.HostRoomsVo;
@@ -30,9 +32,10 @@ public class HostRoomController {
 		System.out.println("HostRoomController > roomSave ");
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int userNo = uVo.getNo();
-		System.out.println(userNo);
+		System.out.println(rVo);
 		rVo.setUserNo(userNo);
-		hostRoomSerivce.roomSave(rVo);
+		
+		//hostRoomSerivce.roomSave(rVo , file);
 		
 		return "redirect:/host/main";
 	}
