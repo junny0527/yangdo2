@@ -132,7 +132,6 @@ public class DetailService {
 		Map<String, Object> rMap = new HashMap<String, Object>();
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
 		List<Map<String, Object>> allReview = detailDao.allReview(pensionNo);
-		
 		rMap.put("totalReview", totalReview);
 		rMap.put("allReview", allReview);
 		

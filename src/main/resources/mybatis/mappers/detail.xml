@@ -166,8 +166,10 @@
 			                                     ,trans_price
 			                                     ,p_r_no
 			                             from reservations
-			                             where check_in = #{datepicker}
-			                             and check_out = #{datepicker2}) r ,prices p , week w, (select a.img_no,
+			                             where check_in >= #{datepicker}
+			                             and check_in < #{datepicker2}
+			                             or check_out > #{datepicker}
+			                             and check_out <= #{datepicker2}) r ,prices p , week w, (select a.img_no,
 			                                                                                         b.rooms_no,
 			                                                                                         b.image_path
 			                                                                                  from (select		min(rim.no) img_no,
@@ -238,7 +240,7 @@
 	<select id="roomImgList" resultType="map" parameterType="map">
 		<![CDATA[
 			select  r.pension_no
-					,rImg.no rImgNo
+					,rImg.no RIMGNO
 					,rImg.rooms_no
 					,rImg.image_path
 			from    rooms r, room_image rImg
@@ -253,10 +255,10 @@
 		<![CDATA[
 			select  rImg.rooms_no
 			        ,rImg.image_path
-			from    rooms r, room_image rImg
+			from    rooms r, room_image RIMG
 			where   r.no = rImg.rooms_no
 			and     r.pension_no = #{pensionNo}
-			group by rImg.rooms_no,     rImg.image_path
+			group by rImg.rooms_no,     rImg.IMAGE_PATH
 			order by rImg.rooms_no asc
 		]]>
 	</select>
@@ -266,14 +268,61 @@
 		<![CDATA[
 			select  re.review_no
 			        ,re.title
-			        ,re.stars
+			        ,to_char(re.stars, '0.0') STARS
 			        ,re.image1
 			        ,re.image2
 			        ,re.content
-			        ,re.reg_date
-			        ,rep.content
-			        ,rep.reg_date
-			        ,rep.owner
+			        --,re.reg_date REG_DATE
+                    ,CASE    WHEN to_char(sysdate-1,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('1일 전')
+                             WHEN to_char(sysdate-2,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('2일 전')        
+                             WHEN to_char(sysdate-3,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('3일 전')        
+                             WHEN to_char(sysdate-4,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('4일 전')       
+                             WHEN to_char(sysdate-5,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('5일 전')       
+                             WHEN to_char(sysdate-6,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('6일 전')       
+                             WHEN to_char(sysdate-7,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('7일 전')
+                             WHEN to_char(sysdate-8,'yy/mm/dd') > to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-13,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('1주 전')
+                             WHEN to_char(sysdate-14,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-21,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('2주 전')
+                             WHEN to_char(sysdate-21,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-28,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('3주 전')
+                             WHEN to_char(sysdate-28,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-31,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('4주 전')
+                             WHEN to_char(sysdate-31,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-62,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('1개월 전')
+                             WHEN to_char(sysdate-62,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-92,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('2개월 전')
+                             WHEN to_char(sysdate-92,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-123,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('3개월 전')
+                             WHEN to_char(sysdate-123,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-153,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('4개월 전')
+                             WHEN to_char(sysdate-153,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-184,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('5개월 전')
+                             WHEN to_char(sysdate-184,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-214,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('6개월 전')
+                             WHEN to_char(sysdate-214,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-244,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('7개월 전')
+                             WHEN to_char(sysdate-244,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-274,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('8개월 전')
+                             WHEN to_char(sysdate-274,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-304,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('9개월 전')
+                             WHEN to_char(sysdate-304,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-334,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('10개월 전')
+                             WHEN to_char(sysdate-334,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-364,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('11개월 전')
+                             WHEN to_char(sysdate-364,'yy/mm/dd') >= to_char(re.reg_date,'yy/mm/dd') and to_char(sysdate-730,'yy/mm/dd') < to_char(re.reg_date,'yy/mm/dd') THEN to_char('1년 전')
+                    END reg_date
+			        ,rep.content RCONTENT
+			        ,CASE    WHEN to_char(sysdate-1,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('1일 전')
+                             WHEN to_char(sysdate-2,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('2일 전')        
+                             WHEN to_char(sysdate-3,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('3일 전')        
+                             WHEN to_char(sysdate-4,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('4일 전')       
+                             WHEN to_char(sysdate-5,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('5일 전')       
+                             WHEN to_char(sysdate-6,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('6일 전')       
+                             WHEN to_char(sysdate-7,'yy/mm/dd') = to_char(rep.reg_date,'yy/mm/dd') THEN to_char('7일 전')
+                             WHEN to_char(sysdate-8,'yy/mm/dd') > to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-13,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('1주 전')
+                             WHEN to_char(sysdate-14,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-21,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('2주 전')
+                             WHEN to_char(sysdate-21,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-28,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('3주 전')
+                             WHEN to_char(sysdate-28,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-31,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('4주 전')
+                             WHEN to_char(sysdate-31,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-62,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('1개월 전')
+                             WHEN to_char(sysdate-62,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-92,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('2개월 전')
+                             WHEN to_char(sysdate-92,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-123,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('3개월 전')
+                             WHEN to_char(sysdate-123,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-153,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('4개월 전')
+                             WHEN to_char(sysdate-153,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-184,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('5개월 전')
+                             WHEN to_char(sysdate-184,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-214,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('6개월 전')
+                             WHEN to_char(sysdate-214,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-244,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('7개월 전')
+                             WHEN to_char(sysdate-244,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-274,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('8개월 전')
+                             WHEN to_char(sysdate-274,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-304,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('9개월 전')
+                             WHEN to_char(sysdate-304,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-334,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('10개월 전')
+                             WHEN to_char(sysdate-334,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-364,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('11개월 전')
+                             WHEN to_char(sysdate-364,'yy/mm/dd') >= to_char(rep.reg_date,'yy/mm/dd') and to_char(sysdate-730,'yy/mm/dd') < to_char(rep.reg_date,'yy/mm/dd') THEN to_char('1년 전')
+                    END RREG_DATE
+			        ,rep.owner 
 			        ,re2.room_name
 			        ,re2.name
 			from    reviews re, replys rep, users u, company c, pension p, (select      re.review_no

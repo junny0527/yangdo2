@@ -1144,11 +1144,13 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     width:926px;
     background-color:rgba(0,0,0,0.08);
     padding:10px;
+    margin-bottom:30px;
 }
 
 #reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo {
     display: flex;
     flex-direction: column;
+    width:869px;
 }
 
 #reviewBox > #guestContainer > #guestBox > #ceoContainer > #ceoInfo > #ceoReview {
@@ -1168,7 +1170,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #reviewBox > #guestContainer > #guestBox > #ceoContainer > .box {
-    width:150px;
+    width:49.68px;
     height:50px;
     border-radius: 70%;
     background-color: rgb(233, 109, 73);

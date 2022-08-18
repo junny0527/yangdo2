@@ -348,11 +348,8 @@
 							<span>시작일 : </span> <input type="text" id="datepicker" name="datepicker" value="${datepicker}"> 
 							<span>종료일 : </span> <input type="text" id="datepicker2" name="datepicker2" value="${datepicker2}">
 						</c:when>
-						<c:otherwise>
-								<span>시작일 : </span> <input type="text" id="datepicker" name="datepicker"> 
-								<span>종료일 : </span> <input type="text" id="datepicker2" name="datepicker2">
-						</c:otherwise>
 					</c:choose>
+					
 					<button type="submit">일정 선택하기</button><br>
 				</form>
 			</div>
@@ -541,7 +538,6 @@
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-			<!-- 예약 후 이용완료 시 status null값으로 바꿔야한다. 애들한테 말하기. null로 안바꿔주면 방 안보임. -->
 			<!-- //room -->
 		</div>
 	    <!-- //roomList --> 	
@@ -701,11 +697,18 @@
         if(${"datepicker"} != null && ${"datepicker2"} != null) {
         	//From의 초기값을 오늘 날짜로 설정
          	$('#datepicker').datepicker('setDate', datepicker); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        	 //To의 초기값을 내일로 설정
-        	 $('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        	//To의 초기값을 내일로 설정
+        	$('#datepicker2').datepicker('setDate', datepicker2); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
         }
         
+		if(datepicker == datepicker2) {
+			alert("일정을 확인하여 다시 입력해주세요.");
+		}else if(datepicker >= datepicker2) {
+			alert("일정을 확인하여 다시 입력해주세요.");
+		}
     });
+	
+	
 	
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	$(".information_Use").on("click", function() {
@@ -1163,44 +1166,131 @@
 			str += '	<span id="pensionReview">제휴점 답변' + rMap.totalReview.REPCOUNT + '</span>';
 			str += '</div>';
 			str += '<div id="reviewBox">';
-			str += '	<div id="guestContainer">';
-			str += '		<div class="box">';
-			str += '			<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
-			str += '		</div>';
-			str += '		<div id="guestBox">';
-			str += '			<span id="guestReview">여기만한 곳은 어디에도 없을 거예요.</span>';
-			str += '			<div id="reviewStar">';
-			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
-			str += '				<span id="starScore">5.0</span>';
-			str += '			</div>';
-			str += '			<div id="guestInfo">';
-			str += '				<span id="roomName">풍뎅이 객실 이용</span>';
-			str += '				<span> | 지웅잉</span>';
-			str += '			</div>';
-			str += '			<span id="reviewContent">진심으로 가는길에 카페를 들렀다가 숙소로 갔는데 진짜 카페가지말고 바로 숙소로 갈껄 하는 생각이 들만큼 너무너무 좋은 숙소였습니다 ㅎㅎ 불멍도 야무지게 하고 맛있는 음식도 잘 먹고 갑니다 ㅎㅎ 사장님도 너무 좋고 시설도 너무 좋아서 완전 힐링 하고 가네요 ㅎㅎ 다음에는 2박을 하고싶을정도로 너무 좋은 하루였습니다!!!</span>';
-			str += '			<div id="roomImg">';
-			str += '				<ul>';
-			str += '					<li><img src="${pageContext.request.contextPath}/assets/image/detail/img.PNG"></li>';
-			str += '					<li><img src="${pageContext.request.contextPath}/assets/image/detail/img2.PNG"></li>';
-			str += '				</ul>';
-			str += '			</div>';
-			str += '			<span id="guestRegDate">1개월 전</span>';
-			str += '			<div id="ceoContainer">';
-			str += '				<div class="box">';
-			str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
-			str += '				</div>';
-			str += '				<div id="ceoInfo">';
-			str += '					<span id="ceoReview">제휴점 답변</span>';
-			str += '					<span id="ceoContent">지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.</span>';
-			str += '					<span id="ceoRegDate">1개월 전</span>';
-			str += '				</div>';
-			str += '			</div>';
-			str += '		</div>';
-			str += '	</div>';
+
+			for(var i = 0; i < rMap.allReview.length; i++) {
+				str += '	<div id="guestContainer">';
+				str += '		<div class="box">';
+				str += '			<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
+				str += '		</div>';
+				str += '		<div id="guestBox">';
+				str += '			<span id="guestReview">' + rMap.allReview[i].TITLE + '</span>';
+				if(rMap.allReview[i].STARS == 5.0) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span id="starScore">5.0</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 4.5) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+					str += '				<span id="starScore">4.5</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 4.0) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">4.0</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 3.5) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">3.5</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 3.0) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">3.0</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 2.5) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">2.5</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 2.0) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">2.0</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 1.5) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">1.5</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 1.0) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">1.0</span>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].STARS == 0.5) {
+					str += '			<div id="reviewStar">';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
+					str += '				<span id="starScore">1.0</span>';
+					str += '			</div>';
+				}
+				str += '			<div id="guestInfo">';
+				str += '				<span id="roomName">' + rMap.allReview[i].ROOM_NAME + ' 이용' + '</span>';
+				str += '				<span> | ' + rMap.allReview[i].NAME + '</span>';
+				str += '			</div>';
+				str += '			<span id="reviewContent">' + rMap.allReview[i].CONTENT + '</span>';
+				str += '			<div id="roomImg">';
+				str += '				<ul>';
+				str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE1 + '"></li>';
+				str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE2 + '"></li>';
+				str += '				</ul>';
+				str += '			</div>';
+				str += '			<span id="guestRegDate">' + rMap.allReview[i].REG_DATE + '</span>';
+				str += '			<div id="ceoContainer">';
+				str += '				<div class="box">';
+				str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
+				str += '				</div>';
+				str += '				<div id="ceoInfo">';
+				str += '					<span id="ceoReview">제휴점 답변</span>';
+				str += '					<span id="ceoContent">' + rMap.allReview[i].RCONTENT + '</span>';
+				str += '					<span id="ceoRegDate">' + rMap.allReview[i].RREG_DATE + '</span>';
+				str += '				</div>';
+				str += '			</div>';
+				str += '		</div>';
+				str += '	</div>';
+			}
+			
 			str += '</div>';
 			
 			$("#review").append(str);
