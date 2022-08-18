@@ -27,7 +27,7 @@
             <b>아이디</b>
             <div class="inp_type_2 form-errors btn-add">
                 <input type="text" name="id" placeholder="아이디를 입력해주세요">
-                <button type="button" class="btn_etc" onclick="">중복체크</button>
+                <button type="button" class="btn_etc">중복체크</button>
             </div>
 
             <b>비밀번호</b>

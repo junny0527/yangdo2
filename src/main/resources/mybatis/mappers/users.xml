@@ -12,7 +12,7 @@
 	<insert id="hostJoin" parameterType="UserVo">
 	  	<![CDATA[
 	  		insert into users
-			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},'',#{email},#{identify})
+			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},' ',#{email},#{identify})
 	  	]]>
 	</insert>
 
