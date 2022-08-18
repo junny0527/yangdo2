@@ -75,8 +75,7 @@
 							<th>객실 정보</th>
 							<td class="bd_r_none">
 								<div class="form-layer mb_24">
-									<span class="form-title">객실명</span> <span class="form-body"> 
-										<input class="form-control normal-size" type="text" name="roomName" placeholder="이름을 입력하세요." maxlength="30" value="">
+									<span class="form-title">객실명</span> <span class="form-body"> <input class="form-control normal-size" type="text" name="roomName" placeholder="이름을 입력하세요." maxlength="30" value="">
 									</span>
 								</div>
 
@@ -132,18 +131,13 @@
 
 								<div class="form-layer mb_15">
 									<ul id="room-images">
-										<li class="backgrou"><input type="hidden" name="adino[]" value="235381">
-											<div>
-												<img data-adino="235381" src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
-											</div>
-											<button id="changeimage" data-role="img-changer" data-adino="235381" data-ano="3309" data-armgno="0" data-type="8" type="button" class="btn btn-xs btn-success">변경</button>
-											<button id="deleteimage" data-role="img-delete" data-adino="235381" type="button" class="btn btn-xs btn-deleete">삭제</button></li>
+										
 									</ul>
 
 								</div>
 
 								<div class="form-layer-text">
-									<button id="addimage" type="button" class="btn btn-default btn_add" data-role="img-uploader" data-ano="3309" data-armno="0" data-type="8">+ 이미지 추가</button>
+									<button id="addimage" type="button" class="btn btn-default btn_add">+ 이미지 추가</button>
 								</div>
 							</td>
 							<td class="border_right"><a href="javascript:void(0)" data-toggle="popover" data-original-title="" title=""> <img id="tooltip"
@@ -155,22 +149,16 @@
 							<th>객실 이용 안내</th>
 							<td class="bd_r_none">
 								<div class="form-layer mb_24">
-									<span class="form-title">편의시설</span> 
-									<span class="form-body"> 
-									<input class="form-control normal-size re-size" type="text" name="roomAmenities" placeholder="객실 내 편의시설을 간략하게 작성해주세요." value="">
+									<span class="form-title">편의시설</span> <span class="form-body"> <input class="form-control normal-size re-size" type="text" name="roomAmenities" placeholder="객실 내 편의시설을 간략하게 작성해주세요."
+										value="">
 									</span>
 								</div>
 								<div class="form-layer mb_24">
-									<span class="form-title">추가정보</span> <span class="form-body"> 
-									<input class="form-control normal-size re-size" type="text" name="addInfo" placeholder="객실 내 편의시설을 간략하게 작성해주세요." value="">
+									<span class="form-title">추가정보</span> <span class="form-body"> <input class="form-control normal-size re-size" type="text" name="addInfo" placeholder="객실 내 편의시설을 간략하게 작성해주세요." value="">
 									</span>
 								</div>
 								<p id="detail">
-									<br>
-									<br> 작성 예시 <br>
-									<br> [편의시설] <br> 침구류, 120인치 스크린빔, 오디오, 에어컨, 냉장고, 전자레인지, 취사도구 등 <br>
-									<br> [추가정보]<br> 스파 20,000 현장결제 <br>
-									<br>
+									<br> <br> 작성 예시 <br> <br> [편의시설] <br> 침구류, 120인치 스크린빔, 오디오, 에어컨, 냉장고, 전자레인지, 취사도구 등 <br> <br> [추가정보]<br> 스파 20,000 현장결제 <br> <br>
 								</p>
 							</td>
 							<td class="bd_r_none border_right"></td>
@@ -186,36 +174,22 @@
 									</p>
 								</div>
 								<div class="form-layer">
-									<span class="form-title large">
-									 기본<br>(비수기)
-									</span> 
-									<span id="pricewidth" class="form-body" data-season="NOMAL">
+									<span class="form-title large"> 기본<br>(비수기)
+									</span> <span id="pricewidth" class="form-body" data-season="NOMAL">
 										<div class="room-price room-price-wrap">
-											
+
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-sun" name="gbWeeks1" value="sunday" checked="checked"> 일
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-mon" name="gbWeeks1" value="monday" checked="checked"> 월
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-tue" name="gbWeeks1" value="tuesday" checked="checked"> 화
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-wed" name="gbWeeks1" value="wednesday" checked="checked"> 수
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-thu" name="gbWeeks1" value="thursday" checked="checked"> 목
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-fri" name="gbWeeks1" value="friday" > 금
-												</label> 
-												<label class="checkbox-inline icon-label">
-													<input type="checkbox" class="NORMAL-sat" name="gbWeeks1" value="saturday"> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="gbWeeks1" value="sunday" checked="checked"> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="gbWeeks1" value="monday" checked="checked"> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="gbWeeks1" value="tuesday" checked="checked"> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="gbWeeks1" value="wednesday" checked="checked"> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="gbWeeks1" value="thursday" checked="checked"> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="gbWeeks1" value="friday"> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="gbWeeks1" value="saturday"> 토
 												</label>
 											</div>
-s											<div class="form-inline">
+											s
+											<div class="form-inline">
 												<label class="radio-inline"> 정상가 : <input class="form-control input-sm" type="text" name="gbPrice1"> 원
 												</label>
 											</div>
@@ -223,26 +197,13 @@ s											<div class="form-inline">
 
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-sun" name="gbWeeks2" value="sunday"> 일
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-mon" name="gbWeeks2" value="monday"> 월
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-tue" name="gbWeeks2" value="tuesday"> 화
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-wed" name="gbWeeks2" value="wednesday"> 수
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-thu" name="gbWeeks2" value="thursday"> 목
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-fri" name="gbWeeks2" value="friday" checked="checked"> 금
-												</label> 
-												<label class="checkbox-inline icon-label">
-													<input type="checkbox" class="NORMAL-sat" name="gbWeeks2" value="saturday" checked="checked"> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="gbWeeks2" value="sunday"> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="gbWeeks2" value="monday"> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="gbWeeks2" value="tuesday"> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="gbWeeks2" value="wednesday"> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="gbWeeks2" value="thursday"> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="gbWeeks2" value="friday" checked="checked"> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="gbWeeks2" value="saturday" checked="checked"> 토
 												</label>
 											</div>
 
@@ -264,30 +225,16 @@ s											<div class="form-inline">
 						<tr>
 							<td class="bd_r_none">
 								<div class="form-layer">
-									<span class="form-title large"> 준성수기
-									</span> <span id="pricewidth" class="form-body" data-season="NOMAL">
+									<span class="form-title large"> 준성수기 </span> <span id="pricewidth" class="form-body" data-season="NOMAL">
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-sun" name="jsWeeks1" value="sunday" checked="checked"> 일
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-mon" name="jsWeeks1" value="monday" checked="checked"> 월
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-tue" name="jsWeeks1" value="tuesday" checked="checked"> 화
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-wed" name="jsWeeks1" value="wednesday" checked="checked"> 수
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-thu" name="jsWeeks1" value="thursday" checked="checked"> 목
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-fri" name="jsWeeks1" value="friday"> 금
-												</label> 
-												<label class="checkbox-inline icon-label">
-													<input type="checkbox" class="NORMAL-sat" name="jsWeeks1" value="saturday"> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="jsWeeks1" value="sunday" checked="checked"> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="jsWeeks1" value="monday" checked="checked"> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="jsWeeks1" value="tuesday" checked="checked"> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="jsWeeks1" value="wednesday" checked="checked"> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="jsWeeks1" value="thursday" checked="checked"> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="jsWeeks1" value="friday"> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="jsWeeks1" value="saturday"> 토
 												</label>
 											</div>
 
@@ -299,26 +246,13 @@ s											<div class="form-inline">
 
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-sun" name="jsWeeks2" value="sunday"> 일
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-mon" name="jsWeeks2" value="monday"> 월
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-tue" name="jsWeeks2" value="tuesday"> 화
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-wed" name="jsWeeks2" value="wednesday"> 수
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-thu" name="jsWeeks2" value="thursday"> 목
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-fri" name="jsWeeks2" value="friday" checked="checked"> 금
-												</label> 
-												<label class="checkbox-inline icon-label">
-													<input type="checkbox" class="NORMAL-sat" name="jsWeeks2" value="saturday" checked="checked"> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="jsWeeks2" value="sunday"> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="jsWeeks2" value="monday"> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="jsWeeks2" value="tuesday"> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="jsWeeks2" value="wednesday"> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="jsWeeks2" value="thursday"> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="jsWeeks2" value="friday" checked="checked"> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="jsWeeks2" value="saturday" checked="checked"> 토
 												</label>
 											</div>
 
@@ -339,31 +273,17 @@ s											<div class="form-inline">
 						<tr>
 							<td class="bd_r_none">
 								<div class="form-layer">
-									<span class="form-title large"> 성수기
-									</span> <span id="pricewidth" class="form-body">
+									<span class="form-title large"> 성수기 </span> <span id="pricewidth" class="form-body">
 										<div class="room-price room-price-wrap">
 
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-sun" name="sWeeks1" value="sunday" checked="checked"> 일
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-mon" name="sWeeks1" value="monday" checked="checked"> 월
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-tue" name="sWeeks1" value="tuesday" checked="checked"> 화
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-wed" name="sWeeks1" value="wednesday" checked="checked"> 수
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-thu" name="sWeeks1" value="thursday" checked="checked"> 목
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-fri" name="sWeeks1" value="friday"> 금
-												</label> 
-												<label class="checkbox-inline icon-label">
-													<input type="checkbox" class="NORMAL-sat" name="sWeeks1" value="saturday"> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="sWeeks1" value="sunday" checked="checked"> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="sWeeks1" value="monday" checked="checked"> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="sWeeks1" value="tuesday" checked="checked"> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="sWeeks1" value="wednesday" checked="checked"> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="sWeeks1" value="thursday" checked="checked"> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="sWeeks1" value="friday"> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="sWeeks1" value="saturday"> 토
 												</label>
 											</div>
 
@@ -374,29 +294,16 @@ s											<div class="form-inline">
 										</div>
 
 										<div class="room-price room-price-wrap">
-											<input type="hidden" name="sortation" value="peck"> 
-											
+											<input type="hidden" name="sortation" value="peck">
+
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-sun" name="sWeeks2" value="sunday"> 일
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-mon" name="sWeeks2" value="monday"> 월
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-tue" name="sWeeks2" value="tuesday"> 화
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-wed" name="sWeeks2" value="wednesday"> 수
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-thu" name="sWeeks2" value="thursday"> 목
-												</label> 
-												<label class="checkbox-inline icon-label"> 
-													<input type="checkbox" class="NORMAL-fri" name="sWeeks2" value="friday" checked="checked"> 금
-												</label> 
-												<label class="checkbox-inline icon-label">
-													<input type="checkbox" class="NORMAL-sat" name="sWeeks2" value="saturday" checked="checked"> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="sWeeks2" value="sunday"> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="sWeeks2" value="monday"> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="sWeeks2" value="tuesday"> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="sWeeks2" value="wednesday"> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="sWeeks2" value="thursday"> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="sWeeks2" value="friday" checked="checked"> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="sWeeks2" value="saturday" checked="checked"> 토
 												</label>
 											</div>
 
@@ -418,7 +325,8 @@ s											<div class="form-inline">
 							<th>예약가능여부</th>
 							<td>
 								<div class="form-check form-switch">
-									<input class="form-check-input" type="checkbox" name="reserveAvai" value="Y" id="flexSwitchCheckChecked" checked> <label class="form-check-label" for="flexSwitchCheckChecked">객실 예약 허용</label>
+									<input class="form-check-input" type="checkbox" name="reserveAvai" value="Y" id="flexSwitchCheckChecked" checked> <label class="form-check-label" for="flexSwitchCheckChecked">객실
+										예약 허용</label>
 								</div>
 								<p id="checkinfo" class="order text-normal">* 체크 해제 시 이용객들이 해당 객실을 예약 할 수 없습니다.</p>
 							</td>
@@ -442,4 +350,125 @@ s											<div class="form-inline">
 	<!-- footer -->
 
 </body>
+<!-- 이미지 업로드 modal -->
+<div id="img-uploader" class="modal fade in" aria-hidden="false">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">이미지 업로드</h4>
+			</div>
+
+			<div class="modal-body">
+				<div id="drop-zone" style="height: 200px; border: 1px dashed gray; border-radius: 3px; position: relative">
+					<label style="position: relative; left: 50%; margin-left: -100px; top: 50%; margin-top: -15px; overflow: hidden"> <span class="btn btn-primary">드래그 하시거나 클릭하세요.</span> <input id="file"
+						style="position: absolute; left: 0; top: 0; border-width: 0 0 100px 200px; border: solid transparent; direction: ltr; opacity: .0; cursor: pointer" type="file" name="files[]"
+						multiple="multiple">
+					</label>
+				</div>
+				<div id="upload-list" style="margin-top: 10px"></div>
+				<span> * 여러장을 한꺼번에 드래그하여 업로드 할 수 있습니다. <br> <strong>&nbsp;&nbsp;<font color="#ff0000">최대 15장 까지 등록이 가능합니다.</font></strong> <br> <strong>&nbsp;&nbsp;사진 권장사이즈 : 1920 *
+						1080 또는 960 * 540</strong>
+				</span> <span class="btn btn-success" id="succes" data-dismiss="modal" aria-label="Close" style="float: right; margin-top: -25px;">확인</span>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var $file = $("#file");
+	var dropZone = $("#drop-zone");
+	var uploadFiles = [];
+	var count = 0;
+	
+	$("#addimage").on("click", function() {
+		$("#img-uploader").modal("show");
+	});
+
+	$(".changeimage").on("click", function() {
+		$("#img-uploader").modal("show");
+	});
+
+	$(".deleteimage").on("click", function() {
+		$("#img-delete").modal("show");
+
+		$("#cancel").on("click", function() {
+			$("#img-delete").modal("hide");
+		})
+	});
+
+	$("#drop-zone").on("dragenter", function(e) {
+		console.log("들어오고~?");
+		e.stopPropagation();
+		e.preventDefault();
+	});
+
+	$("#drop-zone").on("dragleave", function(e) {
+		console.log("나가고~?");
+		e.stopPropagation();
+		e.preventDefault();
+	});
+
+	$("#drop-zone").on("dragover", function(e) {
+		console.log("머무르고~?");
+		e.stopPropagation();
+		e.preventDefault();
+	});
+
+	$("#drop-zone").on("drop", function(e) {
+		console.log("드랍~?");
+		e.preventDefault();
+
+		e.dataTransfer = e.originalEvent.dataTransfer;
+		var files = e.dataTransfer && e.dataTransfer.files;
+		console.log(files);
+		if (files.length > 15) {
+			alert("폴더 업로드 불가");
+			return;
+		} else {
+			var str = '';
+			
+			for (var i = 0; i < files.length; i++) {
+				str += '<p>' + files[i].name + '</p>';
+				count = count+1;
+			}
+			console.log(count);
+			if(count < 16){
+				for (var i = 0; i < files.length; i++) {
+					var file = files[i];
+					var size = uploadFiles.push(file); //업로드 목록에 추가   
+					preview(file, size - 1); //미리보기 만들기  
+				}
+				$("#upload-list").append(str);
+			}else{
+				alert("15개 이상입니다");
+			}
+			
+			
+		}
+	});
+
+	function preview(file, idx) {
+		var reader = new FileReader();
+
+		reader.onload = (function(f, idx) {
+			return function(e) {
+				var div = '';
+				div += '<li class="backgrou">'
+				div += '	<div class="thumb"> '
+				div += '		<img src="'+e.target.result+'" title="'+escape(f.name)+'"class="img-rounded preview">' 
+				div += '    </div>'
+				div += '	<button type="button" class="btn btn-xs btn-success changeimage">변경</button>'
+				div += '    <button type="button" class="btn btn-xs btn-deleete deleteimage">삭제</button>'		
+				div += '</li>';
+				$("#room-images").append(div);
+			};
+		})(file, idx);
+		reader.readAsDataURL(file);
+	}
+</script>
+
 </html>
