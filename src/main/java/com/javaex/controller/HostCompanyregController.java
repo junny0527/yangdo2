@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.HostCompanyregService;
 import com.javaex.vo.HostCompanyregVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "host")
@@ -22,8 +23,9 @@ public class HostCompanyregController {
 	@RequestMapping(value="companyreg", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companyreg(HttpSession session, Model model, String id) {
 		
-		int userNo = (Integer) session.getAttribute("userNo");
-		System.out.println(userNo);
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
+		
 		HostCompanyregVo cVo = new HostCompanyregVo();
 		String email = cregService.getEmail(userNo);
 		cVo.setEmail(email);
@@ -33,7 +35,9 @@ public class HostCompanyregController {
 
 	@RequestMapping(value="companysave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companysave(HttpSession session, @ModelAttribute HostCompanyregVo cVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
+		
 		cVo.setUserNo(userNo);
 		cregService.insertCompany(cVo);
 		return "redirect:/host/companyreg";

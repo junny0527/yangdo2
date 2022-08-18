@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.HostIntroduceService;
 import com.javaex.vo.HostIntroduceVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "host")
@@ -25,8 +26,9 @@ public class HostIntroduceController {
 	
 	@RequestMapping(value = "introsave", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introsave(HttpSession session, @ModelAttribute HostIntroduceVo iVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
-		System.out.println("session: " + userNo);
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
+		
 		int companyNo = iService.getCompanyNo(userNo);
 		iVo.setCompanyNo(companyNo);
 		System.out.println(iVo);
@@ -41,8 +43,9 @@ public class HostIntroduceController {
 	
 	@RequestMapping(value="introoptsave", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introroptsave(HttpSession session, @ModelAttribute HostIntroduceVo iVo){
-		int userNo = (Integer) session.getAttribute("userNo");
-		System.out.println(userNo);
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
+		
 		int pensionNo = iService.getPensionNoBySession(userNo);
 		System.out.println("pensionNo : " + pensionNo);
 		iVo.setPensionNo(pensionNo);

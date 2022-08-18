@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "HostRooms">
+
+	<insert id="roomInsert" parameterType="com.javaex.vo.HostRoomsVo">
+			<selectKey keyProperty="no" resultType="int" order="BEFORE">
+					select seq_rooms_no.nextval from dual
+			</selectKey>
+		<![CDATA[
+			insert into rooms
+			values(#{no},#{pensionNo},#{roomName},#{standardPeople},#{maxPeople},#{roomAmenities},#{addInfo},#{reserveAvai})
+		]]>
+	</insert>
+	
+	<insert id="roomImgInsert" parameterType="com.javaex.vo.HostRoomsVo">
+		<![CDATA[
+			insert into room_image
+			values(seq_room_image_no.nextval,#{no},#{imagePath})		
+		]]>
+	</insert>
+	
+	<insert id="roomPriceInsert" parameterType="com.javaex.vo.PriceVo">
+			<selectKey keyProperty="no" resultType="int" order="BEFORE">
+					select seq_prices_no.nextval from dual
+			</selectKey>
+		<![CDATA[
+			insert into prices
+			values(#{no},#{roomNo},#{sortation},#{price})
+		]]>
+	</insert>
+	
+	<insert id="roomPriceWeekInsert" parameterType="com.javaex.vo.WeekVo">
+		<![CDATA[
+			insert into week
+			values(SEQ_WEEK_NO.nextval,#{priceNo},#{weekName})
+		]]>
+	</insert>
+	
+</mapper>

@@ -16,9 +16,7 @@ public class JaehwanController {
 	}
 	
 	@RequestMapping(value="newhost", method = {RequestMethod.GET, RequestMethod.POST})
-	public String newhost(HttpSession session) {
-		int userNo = 5;
-		session.setAttribute("userNo", userNo);
+	public String newhost() {
 		return "/host/mainNoRegister";
 	}
 	
