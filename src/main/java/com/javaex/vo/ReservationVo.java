@@ -18,6 +18,7 @@ public class ReservationVo {
 	private String Status;
 	private String totalPrice;
 	private String transPrice;
+	private int trans_Price;
 	private String regDate;
 	private String prNo;
 	//생성자
@@ -25,8 +26,8 @@ public class ReservationVo {
 		super();
 	}
 	public ReservationVo(int no, int roomNo, int userNo, String userName, String userHp, String checkIn,
-			String checkOut, int adult, int kid, int baby, String payWay, String payStatus,
-			String status, String totalPrice, String transPrice, String regDate, String prNo) {
+			String checkOut, int adult, int kid, int baby, String payWay, String payStatus, String status,
+			String totalPrice, String transPrice, int trans_Price, String regDate, String prNo) {
 		super();
 		this.no = no;
 		this.roomNo = roomNo;
@@ -43,9 +44,11 @@ public class ReservationVo {
 		Status = status;
 		this.totalPrice = totalPrice;
 		this.transPrice = transPrice;
+		this.trans_Price = trans_Price;
 		this.regDate = regDate;
 		this.prNo = prNo;
 	}
+
 	//메소드 gs
 	public int getNo() {
 		return no;
@@ -148,6 +151,13 @@ public class ReservationVo {
 	}
 	public void setPrNo(String prNo) {
 		this.prNo = prNo;
+	}
+	
+	public int getTrans_Price() {
+		return trans_Price;
+	}
+	public void setTrans_Price(int trans_Price) {
+		this.trans_Price = trans_Price;
 	}
 	//메소드 일반
 	@Override
