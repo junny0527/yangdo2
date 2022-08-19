@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.HostRulesService;
 import com.javaex.vo.HostRulesVo;
-import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value="host")
@@ -26,14 +25,13 @@ public class HostRulesController {
 	
 	@RequestMapping(value="rulessave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String rulessave(HttpSession session, @ModelAttribute HostRulesVo hVo) {
-		UserVo uVo = (UserVo) session.getAttribute("authUser");
-		int userNo = uVo.getNo();
-		
+		int userNo = (Integer) session.getAttribute("userNo");
+		System.out.println(userNo);
 		int pensionNo = rService.getPensionNoBySession(userNo);
 		System.out.println("pensionNo : " + pensionNo);
 		hVo.setPensionNo(pensionNo);
 		rService.updateRules(hVo);
-		return "redirect:/host/rules";
+		return "/host/roomRegister";
 	}
 		
 	
