@@ -4,7 +4,9 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,39 @@ public class HostRoomService {
 	@Autowired
 	private HostRoomDao hostRoomDao;
 
+	
+	//방정보 가져오기
+	public Map<String,Object> getRoomInfo(HostRoomsVo hVo) {
+		
+		int roomNo = hVo.getNo();
+		int userNo = hVo.getUserNo();
+		
+		List<HostRoomsVo> rNoList = hostRoomDao.roomList(userNo);
+		
+		Map<String,Object> rMap = new HashMap<String,Object>();
+		
+		
+		
+		HostRoomsVo rVo = hostRoomDao.getRoom(hVo);
+		
+		List<PriceVo> pList = hostRoomDao.getPrice(roomNo);
+		
+		
+		List<WeekVo> wList = hostRoomDao.getWeek(roomNo);
+		
+		System.out.println(wList);
+		
+		rMap.put("rVo", rVo);
+		rMap.put("pList", pList);
+		rMap.put("wList", wList);
+		rMap.put("rNoList", rNoList);
+		
+		return rMap;
+	}
+	
+	
 	// 방저장
-	public int roomSave(HostRoomsVo rVo ,MultipartFile file) {
+	public int roomSave(HostRoomsVo rVo ) {
 		System.out.println("HostRoomService > roomSave");
 		
 		//////////////////////////////방저장
@@ -39,35 +72,33 @@ public class HostRoomService {
 		
 		/////////////////파일저장
 		//이미지 파일 꺼내기
-		List<String> imgFile = rVo.getImgfile();
-		for(int i=0; i<imgFile.size(); i++) {
-			
-			String saveDir = "C:\\javaStudy\\upload";
-			
-			String orgName = file.getOriginalFilename();
-			
-			String exName = orgName.substring(orgName.lastIndexOf("."));
-			
-			String saveName = System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
-			
-			String filePath = saveDir +"\\"+ saveName;
-			
-			rVo.setNo(roomNo);
-			hostRoomDao.roomImgInsert(rVo);
-			
-			try {
-				byte[] fileData = file.getBytes();
-				OutputStream os = new FileOutputStream(filePath);
-				BufferedOutputStream bos = new BufferedOutputStream(os);
-				
-				bos.write(fileData);
-				bos.close();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		
-		}
+		/*
+		 * List<String> imgFile = rVo.getImgfile(); for(int i=0; i<imgFile.size(); i++)
+		 * {
+		 * 
+		 * String saveDir = "C:\\javaStudy\\upload";
+		 * 
+		 * String orgName = file.getOriginalFilename();
+		 * 
+		 * String exName = orgName.substring(orgName.lastIndexOf("."));
+		 * 
+		 * String saveName =
+		 * System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
+		 * 
+		 * String filePath = saveDir +"\\"+ saveName;
+		 * 
+		 * rVo.setNo(roomNo); hostRoomDao.roomImgInsert(rVo);
+		 * 
+		 * try { byte[] fileData = file.getBytes(); OutputStream os = new
+		 * FileOutputStream(filePath); BufferedOutputStream bos = new
+		 * BufferedOutputStream(os);
+		 * 
+		 * bos.write(fileData); bos.close();
+		 * 
+		 * } catch (IOException e) { e.printStackTrace(); }
+		 * 
+		 * }
+		 */
 		
 		
 		
