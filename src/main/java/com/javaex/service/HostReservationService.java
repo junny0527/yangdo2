@@ -14,10 +14,22 @@ public class HostReservationService {
 	@Autowired
 	private HostReservationDao hDao;
 	
+	public int getPensionNo(int userNo) {
+		return hDao.getPensionNo(userNo);
+	}
+	
 	public List<HostReservationVo> getList(int userNo){
+		System.out.println("service");
 		List<HostReservationVo> rList = hDao.getList(userNo);
 		System.out.println(rList);
 		return rList;
+	}
+	
+	public HostReservationVo getReserve(Integer userNo, String reserveid) {
+		HostReservationVo hVo = new HostReservationVo();
+		hVo.setUserNo(userNo);
+		hVo.setReservationNo(reserveid);
+		return hDao.getReserve(hVo);
 	}
 	
 	

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "HostReservation">
+
+<select id = "getList" parameterType = "int" resultType = "com.javaex.vo.HostReservationVo">
+
+	<![CDATA[
+		select
+			res.no reservationNo
+	        ,info.room_name roomName
+	        ,res.name guestName
+	        ,res.check_in checkin
+	        ,res.check_out checkout
+	        ,res.status status
+	        
+		from
+			reservations res
+		
+			, 
+			
+			(
+			select
+				p.no pension_no
+		        ,p.name pension_name
+		        ,r.no  room_no
+		        ,r.room_name room_name
+			from
+				pension p, rooms r
+			where
+				p.no = r.pension_no
+			and p.no = #{userNo}
+			) info
+		where
+			res.room_no = info.room_no
+	]]>
+
+</select>
+
+
+
+<select id = "getReserve" parameterType = "com.javaex.vo.HostReservationVo" resultType = "com.javaex.vo.HostReservationVo">
+
+	<![CDATA[
+		select
+			res.no reservationNo
+	        ,info.room_name roomName
+	        ,res.name guestName
+	        ,res.hp hp
+	        ,res.check_in checkin
+	        ,res.check_out checkout
+	        ,res.adult adult
+	        ,res.kid kid
+	        ,res.baby baby
+	        ,res.status status
+	        
+		from
+			reservations res
+		
+			, 
+			
+			(
+			select
+				p.no pension_no
+		        ,p.name pension_name
+		        ,r.no  room_no
+		        ,r.room_name room_name
+			from
+				pension p, rooms r
+			where
+				p.no = r.pension_no
+			and p.no = #{userNo}
+			) info
+		where
+			res.room_no = info.room_no
+		and
+			res.no = #{reservationNo}
+	]]>
+
+</select>
+
+
+</mapper>

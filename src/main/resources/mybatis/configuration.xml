@@ -21,5 +21,6 @@
 		<mapper resource="mybatis/mappers/HostIntroduce.xml" />
 		<mapper resource="mybatis/mappers/HostRooms.xml" />
 		<mapper resource="mybatis/mappers/HostRules.xml" />
+		<mapper resource="mybatis/mappers/HostReservation.xml" />
 	</mappers>
 </configuration>	

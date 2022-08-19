@@ -49,10 +49,9 @@
 			</ul>
 		</div>
 	</div>
-	<br><br>
+	<br><br><br>
 	
 	<div id = "calendar"></div>
-	
 </div>
 <!-- content -->
 	
@@ -64,6 +63,7 @@
 
 <!-- event modal -->
 <!-- modal -->
+
 <div id = "roomcontrol" class = "modal fade in" aria-hidden="false" >
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -73,37 +73,54 @@
 			
 			<div class="modal-body">
 				<div>
-					<h5>풍뎅이 방</h5>
+					<h5 id = "reserveroom"></h5>
 					<br>
-					<p id = "reservestatus"> 예약 완료</p>
-					<p>예약 번호 : A39991273</p>
-					<p>예약자 이름 : 제목없음</p>
-					<p>예약자 번호 : 010-3382-9945</p>
+					<p id = "reservestatus"></p>
+					<p id = "reservenum">예약 번호 : </p>
+					<p id = "reservename">예약자 이름 : </p>
+					<p id = "reservehp">예약자 번호 : </p>
 					<br><br>
 					<p>예약 인원 </p>
-					<p>성인 : 2명 </p>
-					<p>아동 : 1명 </p>
-					<p>유아 : 0명 </p>
+					<p id = "reserveadult">성인 : 명 </p>
+					<p id = "reservekid">아동 : 명 </p>
+					<p id = "reservebaby">유아 : 명 </p>
 				</div>
 				<br>
 				<div>
-					<button class = "btn btn-close">닫기</button>
-					<button class = "btn btn-danger">예약 취소</button>
-					<button class = "btn btn-primary">체크인</button>
+					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
+					<button id = "reservecancel"></button>
+					<button id = "checkingIn"></button>
+					<button id = "checkingOut"></button>
 				</div>
 			</div>
 			
 		</div>
 	</div>
 </div>
+
 <div class="modal-backdrop fade in"></div>
 <!-- event modal -->	
 
 <script type = "text/javascript">
+
+$("#reservecancel").on("click",function(){
+	console.log("예약취소")
+})
+
+$("#checkingIn").on("click",function(){
+	console.log("체크인")
+})
+
+$("#checkingOut").on("click",function(){
+	console.log("이용완료")
+})
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
 	var initialLocaleCode = 'ko';
     var calendarEl = document.getElementById('calendar');
-
+    
     var calendar = new FullCalendar.Calendar(calendarEl, {
       headerToolbar: {
     	left: 'today',
@@ -114,39 +131,198 @@ document.addEventListener('DOMContentLoaded', function() {
       navLinks: false, // can click day/week names to navigate views
       selectable: false,
       selectMirror: false,
-      eventClick: function() {
-    	  $("#roomcontrol").modal("show");
+      eventClick: function(info) {
+    	  var reserveid = info.event.id;
+    	  console.log(reserveid);
+    	  
+    	  $.ajax({
+    			url : "${pageContext.request.contextPath }/api/getReserve",
+    			type : "post",
+    			contentType : "application/json",
+    			data : JSON.stringify(reserveid),	// js객체를 문자열로 변경
+    			dataType : "json",
+    			success : function(result){
+    				console.log('성공');
+    				$("#reserveroom").html(result.roomName);
+    				
+    				if(result.status == 1){
+    					console.log(result.status)
+    					$("#reservecancel").removeAttr('class', 'hide');
+    					$("#checkingIn").removeAttr('class', 'hide');
+    					
+    					$("#reservestatus").html('예약완료');
+    					$("#reservecancel").html('예약취소');
+    					$("#reservecancel").attr('class' , 'btn btn-danger');
+    					$("#reservecancel").css("border", "0px");
+    					$("#checkingIn").html('체크인')
+    					$("#checkingIn").attr('class', 'btn btn-primary');
+    					$("#checkingIn").css("border", "0px");
+    				}
+    				
+    				if(result.status == 2){
+    					console.log(result.status);
+    					$("#reservecancel").attr('class', 'hide');
+    					$("#checkingIn").attr('class', 'hide');
+    					
+    					$("#reservestatus").html('이용중');
+    					$("#reservestatus").css("background-color", "#337ab7");
+    					$("#reservecancel").removeAttr('class', 'btn btn-danger');
+    					
+    					$("#checkingOut").html('이용완료');
+    					$("#checkingOut").attr('class', 'btn');
+    					$("#checkingOut").css("background-color", "#2c3e50");
+    					$("#checkingOut").css("color", "white");
+    					$("#checkingOut").css("border", "none");
+    					
+    				}
+    				
+    				if(result.status == 3){
+    					console.log(result.status);
+    					$("#reservecancel").attr('class', 'hide');
+    					$("#checkingIn").attr('class', 'hide');
+    					
+    					$("#reservestatus").html('이용완료');
+    					$("#reservestatus").css("background-color", "#2c3e50");
+    					
+    				}
+    				
+    				if(result.status == 4){
+    					console.log(result.status);
+    					$("#reservecancel").attr('class', 'hide');
+    					$("#checkingIn").attr('class', 'hide');
+    					
+    					$("#reservestatus").html('일반취소');
+    					$("#reservestatus").css("background-color", "#f2114c");
+    				}
+    				
+    				if(result.status == 5){
+    					console.log(result.status);
+    					$("#reservecancel").removeAttr('class', 'hide');
+    					$("#checkingIn").removeAttr('class', 'hide');
+    					
+    					$("#reservestatus").html('이용자 변경(양도완료)');
+    					$("#reservestatus").css("background-color", "#ed5f19");
+    					
+    					$("#reservecancel").html('예약 취소');
+    					$("#reservecancel").attr('class', 'btn btn-danger');
+    					$("#reservecancel").css("border", "0px");
+    					$("#checkingIn").html('체크인');
+    					$("#checkingIn").attr('class', 'btn btn-primary');
+    					$("#checkingIn").css("border", "0px");
+    					
+    				}if(result.status == 6){
+    					console.log(result.status);
+    					$("#checkingIn").attr('class', 'hide');
+    					
+    					$("#reservestatus").html('양도대기');
+    					$("#reservestatus").css("background-color", "#ad01d2");
+    					$("#reservecancel").html('예약 취소');
+    					$("#reservecancel").attr('class', 'btn btn-danger');
+    					$("#reservecancel").css("border", "0px");
+    				}
+    				
+    				$("#reservenum").html('예약 번호 : '+result.reservationNo);
+    				$("#reservename").html('예약자 이름 : '+result.guestName);
+    				$("#reservehp").html('예약자 번호 : '+result.hp);
+    				$("#reserveadult").html('성인 : '+result.adult+'명');
+    				$("#reservekid").html('아동 : '+result.kid+'명');
+    				$("#reservebaby").html('유아 : '+result.baby+'명');
+    				
+    				$("#roomcontrol").modal("show");
+    			},
+    			error : function(XHR, status, error) {
+    				console.log(status + ' : ' + error);
+    			} });
+    	  
       },
-      editable: true,
+      editable: false,
       dayMaxEvents: false, // allow "more" link when too many events
-      events: [
-    	  {
-    		  title: '예약자 이름',
-    		  start: '2022-08-01',
-    		  end: '2022-08-04'
-    	  }
-    	  ,
-    	  {
-    		  title: '또 다른 예약자',
-    		  start: '2022-08-16',
-    		  end: '2022-08-20',
-    	  }
-      ]
-    });
+      events:function(info, successCallback, failureCallback){
+    	  
+    	  $.ajax({
+    		  	url: "${pageContext.request.contextPath}/api/getReserveList",
+    			dataType : "json",
+    			success : function(result){
+    				
+    				var events = [];
+    				console.log(events);
+    				
+    				if(result != null){
+    					
+    					$.each(result, function(index, source) {
+    						var status = source.status;
+    						var fullname = source.guestName + " " +  source.roomName;
+    						
+    						if(source.status == 1){
+        						events.push({
+        							id: source.reservationNo,
+        							title: fullname,
+        							start: source.checkin,
+        							end: source.checkout,
+        							color: '#5eb917',
+        							textColor: 'white'
+        						})
+        					}else if(source.status == 2){
+        						events.push({
+        							id: source.reservationNo,
+        							title: fullname,
+        							start: source.checkin,
+        							end: source.checkout,
+        							color: '#337ab7',
+        							textColor: 'white'
+        						})
+        					}else if(source.status == 3){
+        						events.push({
+        							id: source.reservationNo,
+        							title: fullname,
+        							start: source.checkin,
+        							end: source.checkout,
+        							color: '#2c3e50',
+        							textColor: 'white'
+        						})
+        					}else if(source.status == 4){
+        						events.push({
+        							id: source.reservationNo,
+        							title: fullname,
+        							start: source.checkin,
+        							end: source.checkout,
+        							color: '#f2114c',
+        							textColor: 'white'
+        						})
+        					}else if(source.status == 5){
+        						events.push({
+        							id: source.reservationNo,
+        							title: fullname,
+        							start: source.checkin,
+        							end: source.checkout,
+        							color: '#ed5f19',
+        							textColor: 'white'
+        						})
+        					}else{
+        						events.push({
+        							id: source.reservationNo,
+        							title: fullname,
+        							start: source.checkin,
+        							end: source.checkout,
+        							color: '#ad01d2',
+        							textColor: 'white'
+       							})// event.push
+        					}
+    					}); // each
+    				} //if result end 
+    				successCallback(events);
+    			}// success: function
+    		}); // ajax end
+    	  
+      } // event:function
+      
+    });// fullcalendar end
     
     calendar.render();
-  });
-  
-  
-</script>
-
-<script type="text/javascript">
-
-$(".btn-close").on("click", function(){
-	$("#roomcontrol").modal("hide");
-})
+});
 
 </script>
+
 
 
 </html>
