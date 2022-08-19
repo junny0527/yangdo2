@@ -57,8 +57,8 @@
 			<div class="filter_wrap">
 				<section class="date_wrap">
 					<h3>날짜</h3>
-						<input type="text" id="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center;">
-						<input type="text" id="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center;">
+						<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center;">
+						<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center;">
 					
 				</section>
 				<h3>상세조건</h3>
@@ -87,39 +87,39 @@
 					<strong>공용시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="swimming_pool" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="swimming_pool" name="pensionItem" class="inp_chk" value="swimmingPool">
 							<label for="swimming_pool" class="label_chk">수영장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="football" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="football" name="pensionItem"  class="inp_chk" value="football">
 							<label for="football" class="label_chk">족구장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cafe" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="cafe" name="pensionItem" class="inp_chk" value="cafe">
 							<label for="cafe" class="label_chk">카페</label>
 						</li>
 						<li>
-							<input type="checkbox" id="singroom" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="singroom" name="pensionItem" class="inp_chk" value="singroom">
 							<label for="singroom" class="label_chk">노래방</label>
 						</li>
 						<li>
-							<input type="checkbox" id="store" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="store" name="pensionItem" class="inp_chk" value="store">
 							<label for="store" class="label_chk">편의점</label>
 						</li>
 						<li>
-							<input type="checkbox" id="parking" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="parking" name="pensionItem" class="inp_chk" value="parking">
 							<label for="parking" class="label_chk">주차장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bbq" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="bbq" name="pensionItem" class="inp_chk" value="bbq">
 							<label for="bbq" class="label_chk">BBQ</label>
 						</li>
 						<li>
-							<input type="checkbox" id="restaurant" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="restaurant" name="pensionItem" class="inp_chk" value="restaurant">
 							<label for="restaurant" class="label_chk">주방/식당</label>
 						</li>
 						<li>
-							<input type="checkbox" id="smoking_room" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="smoking_room" name="pensionItem" class="inp_chk" value="smokingRoom">
 							<label for="smoking_room" class="label_chk">흡연부스</label>
 						</li>
 					</ul>
@@ -128,48 +128,48 @@
 					<strong>객실 내 시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="refrigerator" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="refrigerator" name="pensionItem" class="inp_chk" value="refrigerator">
 							<label for="refrigerator" class="label_chk">냉장고</label>
 						</li>
 						<li>
-							<input type="checkbox" id="aircon" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="aircon" name="pensionItem" class="inp_chk" value="aircon">
 							<label for="aircon" class="label_chk">에어컨</label>
 						</li>
 						<li>
-							<input type="checkbox" id="tv" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="tv" name="pensionItem" class="inp_chk" value="tv">
 							<label for="tv" class="label_chk">TV</label>
 						</li>
 						<li>
-							<input type="checkbox" id="wifi" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="wifi" name="pensionItem" class="inp_chk" value="wifi">
 							<label for="wifi" class="label_chk">와이파이</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathroom_ware" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="bathroom_ware" name="pensionItem" class="inp_chk" value="bathroomWare">
 							<label for="bathroom_ware" class="label_chk">욕실용품</label>
 						</li>
 						<li>
-							<input type="checkbox" id="washing_mu" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="washing_mu" name="pensionItem" class="inp_chk" value="washingMu">
 							<label for="washing_mu" class="label_chk">세탁기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dry_mu" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="dry_mu" name="pensionItem" class="inp_chk" value="dryMu">
 							<label for="dry_mu" class="label_chk">드라이기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathtub" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="bathtub" name="pensionItem" class="inp_chk" value="bathtub">
 							<label for="bathtub" class="label_chk">욕조</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cook_ok" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="cook_ok" name="pensionItem" class="inp_chk" value="cookOk">
 							<label for="cook_ok" class="label_chk">취사가능</label>
 						</li>
 						<li>
-							<input type="checkbox" id="room_smoking" name="pensionItem" class="inp_chk">
+							<input type="checkbox" id="room_smoking" name="pensionItem" class="inp_chk" value="roomSmoking">
 							<label for="room_smoking" class="label_chk">객실 내 흡연</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dog" name="pensionItem" class="inp_chk">
-							<label for="dog" class="label_chk">반려견 동반</label>
+							<input type="checkbox" id="dog" name="pensionItem" class="inp_chk" value="dog">
+							<label for="dog" class="label_chk" value="반려견동반">반려견 동반</label>
 						</li>
 					</ul>
 				</section>
@@ -200,44 +200,44 @@
 				</div>
 				<div id="poduct_list_area">
 					<div class="title">
-						<h3>${mainList[0].lawName}</h3>
+						<h3>${pMap.pList[0].LAWNAME}</h3>
 					</div>
-					
+					<!-- 
 					<!-- 사진정보 -->
 					<ul>
-					<c:forEach var="mainList" items="${mainList}">
+					<c:forEach var="pList" items="${pMap.pList}">
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${mainList.imagePath}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGEPATH}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${mainList.status == '양도중'}">									
+										<c:if test="${pList.STATUS == '양도대기'}">									
 											<span>양도중</span>
 										</c:if>	
 									</div>
 									<div class="name">
-										<strong>${mainList.pName}</strong>
+										<strong>${pList.PNAME}</strong>
 										<p class="score">
-											<em>${mainList.stars}</em>
+											<em>${pList.STARS}</em>
 											<c:choose>
-												<c:when test="${mainList.stars <= 3}">
-													<span>별로에요 (${mainList.rCount})</span>
+												<c:when test="${pList.STARS <= 3}">
+													<span>별로에요 (${pList.RCOUNT})</span>
 												</c:when>
-												<c:when test="${mainList.stars > 3 && mainList.stars < 4}">
-													<span>좋아요 (${mainList.rCount})</span>
+												<c:when test="${pList.STARS > 3 && pList.STARS < 4}">
+													<span>좋아요 (${pList.RCOUNT})</span>
 												</c:when>
-												<c:when test="${mainList.stars >= 4 && mainList.stars <= 5}">
-													<span>최고에요 (${mainList.rCount})</span>
+												<c:when test="${pList.STARS >= 4 && pList.STARS <= 5}">
+													<span>최고에요 (${pList.RCOUNT})</span>
 												</c:when>	
 											</c:choose>	
 										</p>
-										<p>${mainList.lawName} | ${mainList.visitRoad3}</p>
+										<p>${pList.LAWNAME} | ${pList.VISITROAD3}</p>
 									</div>
 									<div class="price">
 										<p>
-											<b>${mainList.penPrice}원</b>
+											<b>${pList.PENPRICE}원</b>
 										</p>
 									</div>
 								</div>
@@ -290,62 +290,74 @@
 	
 
 	
-	<!-- 지도 모달 -->
-		 <div class="modal" id="local" >
-		  <div class="modal-dialog" >
-		    <div class="modal-content" >
-		      <div class="modal-header" >        
-		      </div>
-		      <div class="modal-body">
-		        <div id="map1" >
-		        	
-		        </div>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-
-	<script type="text/javascript">
+		<!-- 지도 모달 -->
+			 <div class="modal" id="local" >
+			  <div class="modal-dialog" >
+			    <div class="modal-content" >
+			      <div class="modal-header" >        
+			      </div>
+			      <div class="modal-body">
+			        <div id="map1" >
+			        	
+			        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+	
+		<script type="text/javascript">
 			
-///////////////////////// 일정선택 ///////////////////////////
-	
-	
-	
-	$(function() {
-            //모든 datepicker에 대한 공통 옵션 설정
-            $.datepicker.setDefaults({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능                
-                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
-            });
- 
-            //input을 datepicker로 선언
-            $("#datepicker").datepicker();                    
-            $("#datepicker2").datepicker();
-            
-            //From의 초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            //To의 초기값을 내일로 설정
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        });
+			//적용버튼 클릭시
+			$("#btn_child2").on("click",function(){
+				
+				console.log("적용");
+				
+				if($(this).is("checked")==true){
+					
+					var checked = $(this).val();
+					console.log(checked);
+				}
+				
+			});
 		
-		/* kakaoMap */
+			
+		
+			///////////////////////// 일정선택 ///////////////////////////
+			$(function() {
+	            //모든 datepicker에 대한 공통 옵션 설정
+	            $.datepicker.setDefaults({
+	                dateFormat: 'yy-mm-dd' //Input Display Format 변경
+	                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+	                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+	                ,changeYear: true //콤보박스에서 년 선택 가능
+	                ,changeMonth: true //콤보박스에서 월 선택 가능                
+	                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+	                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+	                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+	                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+	                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+	                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+	                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+	                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+	                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+	                ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+	                ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+	            });
+ 
+           		 //input을 datepicker로 선언
+           		 $("#datepicker").datepicker();                    
+           		 $("#datepicker2").datepicker();
+            	 
+           		 //From의 초기값을 오늘 날짜로 설정
+            	$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+            	//To의 초기값을 내일로 설정
+           		 $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+       		 });
+		
+			/* kakaoMap */
 		
 		
 			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
@@ -378,16 +390,16 @@
 			var iwContent = 
 				'<div ><a href=""><img style="width:25px; height:21px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a><a style="color:black;" href="">양평 그린펜션</a>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		    iwPosition = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); //인포윈도우 표시 위치입니다
-		// 인포윈도우를 생성합니다
-		var infowindow = new kakao.maps.InfoWindow({
-		    position : iwPosition, 
-		    content : iwContent 
-		});
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+		    	position : iwPosition, 
+		    	content : iwContent 
+			});
 		  
-		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-		infowindow.open(map, marker);
+			// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+			infowindow.open(map, marker);
 				
-			$("#btn_map").on("click", function() {
+				$("#btn_map").on("click", function() {
 		
 				$("#local").modal("show");
 				
@@ -401,8 +413,8 @@
 				$(".modal").hide();
 			});
 	
-	//////////////////////////인원추가 버튼 ////////////////////////////
-	function count(type){
+		//////////////////////////인원추가 버튼 ////////////////////////////
+		function count(type){
 		
 		//결과를 표시할 element
 		const resultElement = document.getElementById('result')
@@ -428,12 +440,12 @@
 		    }
 		  }
 		
-		//결과 
-		resultElement.innerText = number;
-	}
+			//결과 
+			resultElement.innerText = number;
+		}
 	
-	//체크박스 선택 초기화
-	function initCheckBtn(){
+		//체크박스 선택 초기화
+		function initCheckBtn(){
 		
 		//초기화할 체크박스 선택
 		var checkboxes = document.getElementsByName("pensionItem"); 
@@ -446,8 +458,8 @@
 	
 	////////////////////////// 지역선택 ////////////////////////////
 		$('document').ready(function() {
-		 var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
-		  var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+		   var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+		   var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
 		   var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
 		   var area3 = ["대덕구","동구","서구","유성구","중구"];
 		   var area4 = ["광산구","남구","동구","북구","서구"];
@@ -465,33 +477,33 @@
 		   var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 		 
 		 // 시/도 선택 박스 초기화
-		
 		 $("select[name^=sido]").each(function() {
-		  $selsido = $(this);
-		  $.each(eval(area0), function() {
-		   $selsido.append("<option value='"+this+"'>"+this+"</option>");
-		  });
+		  	 	$selsido = $(this);
+		  	 	$.each(eval(area0), function() {
+		  	 	$selsido.append("<option value='"+this+"'>"+this+"</option>");
+		  	});
 		  $selsido.next().append("<option value=''>구/군 선택</option>");
 		 });
 		
 		 // 시/도 선택시 구/군 설정
 		
 		 $("select[name^=sido]").change(function() {
-		  var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
-		  var $gugun = $(this).next(); // 선택영역 군구 객체
+		 	 var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
+		 	 var $gugun = $(this).next(); // 선택영역 군구 객체
 		  $("option",$gugun).remove(); // 구군 초기화
 		
-		  if(area == "area0")
-		   $gugun.append("<option value=''>구/군 선택</option>");
-		  else {
-		   $.each(eval(area), function() {
-		    $gugun.append("<option value='"+this+"'>"+this+"</option>");
-		   });
+			  if(area == "area0")
+			   $gugun.append("<option value=''>구/군 선택</option>");
+			  else {
+			   $.each(eval(area), function() {
+			    $gugun.append("<option value='"+this+"'>"+this+"</option>");
+			   });
 		  }
 		 });
 		
 		
 		});
+		
 	
 	</script>
 </html>

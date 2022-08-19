@@ -13,6 +13,7 @@ public class MainListVo {
 	private int pNo;
 	private String rCount;
 	
+	
 	public MainListVo() {
 		super();
 	}
