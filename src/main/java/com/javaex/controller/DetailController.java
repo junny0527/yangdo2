@@ -84,4 +84,12 @@ public class DetailController {
 		
 		return rMap;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

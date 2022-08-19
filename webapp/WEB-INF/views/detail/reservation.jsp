@@ -371,11 +371,11 @@
 									<div>
 										<span class="people">성인</span>
 										<div>
-											<button class="minus">
+											<button class="minus" id="yAdultMinus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span>${roomVo.STANDARD_PEOPLE}명</span>
-											<button class="plus">
+											<span id="yAdultValue">${roomVo.STANDARD_PEOPLE}명</span>
+											<button class="plus" id="yAdultPlus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
 										</div>
@@ -383,11 +383,11 @@
 									<div>
 										<span class="people">아동</span>
 										<div>
-											<button class="minus">
+											<button class="minus" id="yKidPlus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span>0명</span>
-											<button class="plus">
+											<span id="yKidValue">0명</span>
+											<button class="plus" id="yKidMinus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
 										</div>
@@ -395,11 +395,11 @@
 									<div>
 										<span class="people">유아</span>
 										<div>
-											<button class="minus">
+											<button class="minus" id="yBabyPlus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span>0명</span>
-											<button class="plus">
+											<span id="yBabyValue">0명</span>
+											<button class="plus" id="yBabyMinus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
 										</div>
@@ -410,7 +410,7 @@
 									</div>
 								</div>
 								<!-- //defaultForm -->
-								<button>양도받으러가기</button>
+								<a href="#"><button>양도받으러가기</button></a>
 							</div>
 							<!-- //roomInfo -->
 						</div>
@@ -530,7 +530,7 @@
 									</div>
 								</div>
 								<!-- //defaultForm -->
-								<button>예약하러가기</button>
+								<a href="#"><button>예약하러가기</button></a>
 							</div>
 							<!-- //roomInfo -->
 						</div>
@@ -812,6 +812,92 @@
 		$("#imgCount").text(no + ' / ' + ${pMap.totalCnt} + ' | ' + '전체사진' );
 		
 	});
+	
+	///////////////////////// 양도대기 버튼이벤트  ///////////////////////////
+	var yAdultValue = $("#yAdultValue").text();
+	var yAdultArray = yAdultValue.split("");
+	var yAdult = Number(yAdultArray[0]);
+	
+	var yKidValue = $("#yKidValue").text();
+	var yKidArray = yKidValue.split("");
+	var yKid = Number(yKidArray[0]);
+	
+	var yBabyValue = $("#yBabyValue").text();
+	var yBabyArray = yBabyValue.split("");
+	var yBaby = Number(yBabyArray[0]);
+	
+	
+	var datepicker = $("#datepicker").val();
+	var datepicker2 = $("#datepicker2").val();
+	var pensionNo = $("#pensionNo").val();
+	
+	console.log(yAdult);
+	console.log(typeof yAdult);
+	console.log(yKid);
+	console.log(typeof yKid);
+	console.log(yBaby);
+	console.log(typeof yBaby);
+	
+	
+	/* 
+	var list = {
+		standard_people :	${pMap.roomList[0].STANDARD_PEOPLE}
+		
+	} */
+	
+	//console.log(list);
+	
+	
+	var roomArray = new Array();
+	
+	<c:forEach items="${pMap.roomList}" var="roomVo">
+		roomArray.push("${roomVo}");
+	</c:forEach>
+	
+	console.log(roomArray[0]);
+	
+	//양도 버튼 명수 증가 이벤트
+	$("#yAdultPlus").on("click", function() {
+		  
+		var $this = $(this);  
+		var roomNo = Number($this.attr("name"));
+		console.log("방번호 :"+roomNo);
+		
+		
+		/* 	if(roomArray[i].NO = roomNo ) { */
+				yAdult += 1;
+				$("#yAdultValue").text(yAdult + "명");
+			 //} 
+		
+		
+	});
+	
+	
+	//양도 버튼 명수 감소 이벤트
+	$("#yAdultMinus").on("click", function() {
+		
+		yAdult -= 1;
+		$("#yAdultValue").text(yAdult + "명");
+		
+	});
+
+	$("#yKidPlus").on("click", function() {
+		console.log("kidppp");
+	});
+	
+	$("#yKidMinus").on("click", function() {
+		console.log("kidmmmm");
+	});
+	
+	$("#yBabyPlus").on("click", function() {
+		console.log("babyppp");
+	});
+	
+	$("#yBabyMinus").on("click", function() {
+		console.log("babymmmm");
+	});
+	
+	
 	
 	// ajax 페이지용 전역변수
 	var reBtn = true;

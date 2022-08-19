@@ -129,68 +129,68 @@
 	<!-- 날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전) -->
 	<select id="roomList" parameterType="map" resultType="map">
 		<![CDATA[
-			select           ro.no NO
-			                 ,ro.pension_no PENSION_NO
-			                 ,ro.room_name ROOM_NAME
-			                 ,ro.standard_people STANDARD_PEOPLE
-			                 ,ro.max_people MAX_PEOPLE
-			                 ,ro.add_info ADD_INFO
-			                 ,r.user_no USER_NO
-			                 ,r.name NAME
-			                 ,r.check_in CHECK_IN
-			                 ,r.check_out CHECK_OUT
-			                 ,r.adult ADULT
-			                 ,r.kid KID
-			                 ,r.baby BABY
-			                 ,to_char(r.total_price, '999,999') TOTAL_PRICE
-			                 ,nvl(r.status,'0') STATUS
-			                 ,to_char(r.trans_price, '999,999') TRANS_PRICE
-			                 ,to_char(p.price, '999,999') PRICE
-			                 ,w.name WEEK_NAME
-			                 ,ri.image_path
-         	from    		 rooms ro , (select  no
-			                                     ,room_no
-			                                     ,user_no
-			                                     ,name
-			                                     ,hp
-			                                     ,check_in
-			                                     ,check_out
-			                                     ,adult
-			                                     ,kid
-			                                     ,baby
-			                                     ,total_price
-			                                     ,reg_date
-			                                     ,pay_way
-			                                     ,pay_status
-			                                     ,status
-			                                     ,trans_price
-			                                     ,p_r_no
-			                             from reservations
-			                             where check_in >= #{datepicker}
-			                             and check_in < #{datepicker2}
-			                             or check_out > #{datepicker}
-			                             and check_out <= #{datepicker2}) r ,prices p , week w, (select a.img_no,
-			                                                                                         b.rooms_no,
-			                                                                                         b.image_path
-			                                                                                  from (select		min(rim.no) img_no,
-			                                                                                               		rim.rooms_no
-			                                                                                        from 		room_image rim
-			                                                                                        group by 	rim.rooms_no) a,
-			                                                                                       (select	image_path, rooms_no, no img_no
-			                                                                                        from	room_image) b
-			                                                                                  where a.img_no = b.img_no) ri
-	         where   ro.no = r.room_no(+)
-	         and     ro.pension_no = #{pensionNo}
-	         and     ro.no = p.room_no
-	         and     p.no = w.price_no
-	         and     ro.no = ri.rooms_no
-	         and     p.sortation =   (select gubun
-	                                 from peck p, p_peck pp 
-	                                 where peck_start < #{datepicker}
-	                                 and peck_end > #{datepicker}
-	                                 and p.no = pp.peck_no
-	                                 and pp.pension_no = #{pensionNo})
-	         and w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
+			select        ro.no NO
+                          ,ro.pension_no PENSION_NO
+                          ,ro.room_name ROOM_NAME
+                          ,ro.standard_people STANDARD_PEOPLE
+                          ,ro.max_people MAX_PEOPLE
+                          ,ro.add_info ADD_INFO
+                          ,r.user_no USER_NO
+                          ,r.name NAME
+                          ,r.check_in CHECK_IN
+                          ,r.check_out CHECK_OUT
+                          ,r.adult ADULT
+                          ,r.kid KID
+                          ,r.baby BABY
+                          ,to_char(r.total_price, '999,999') TOTAL_PRICE
+                          ,nvl(r.status,'0') STATUS
+                          ,to_char(r.trans_price, '999,999') TRANS_PRICE
+                          ,to_char(p.price, '999,999') PRICE
+                          ,w.name WEEK_NAME
+                          ,ri.image_path
+            from          rooms ro , (select  no
+                                              ,room_no
+                                              ,user_no
+                                              ,name
+                                              ,hp
+                                              ,check_in
+                                              ,check_out
+                                              ,adult
+                                              ,kid
+                                              ,baby
+                                              ,total_price
+                                              ,reg_date
+                                              ,pay_way
+                                              ,pay_status
+                                              ,status
+                                              ,trans_price
+                                              ,p_r_no
+                                      from reservations
+                                      where check_in >= #{datepicker}
+                                      and check_in < #{datepicker2}
+                                      or check_out > #{datepicker}
+                                      and check_out <= #{datepicker2}) r ,prices p , week w, (select a.img_no,
+                                                                                                  	 b.rooms_no,
+                                                                                                 	 b.image_path
+                                                                                           from (select     min(rim.no) img_no,
+                                                                                                            rim.rooms_no
+                                                                                                 from       room_image rim
+                                                                                                 group by   rim.rooms_no) a,
+                                                                                                (select   	image_path, rooms_no, no img_no
+                                                                                                 from   	room_image) b
+                                                                                           where a.img_no = b.img_no) ri
+            where   ro.no = r.room_no(+)
+            and     ro.pension_no = #{pensionNo}
+            and     ro.no = p.room_no
+            and     p.no = w.price_no
+            and     ro.no = ri.rooms_no
+            and     p.sortation =   (select gubun
+                                    from peck p, p_peck pp 
+                                    where peck_start < #{datepicker}
+                                    and peck_end > #{datepicker}
+                                    and p.no = pp.peck_no
+                                    and pp.pension_no = #{pensionNo})
+            and w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
 		]]>
 	</select>
 		
