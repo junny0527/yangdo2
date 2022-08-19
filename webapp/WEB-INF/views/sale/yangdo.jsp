@@ -269,7 +269,7 @@
 			</div>
 			<form action="${pageContext.request.contextPath}/sale/update" method="get">
 				<div class="modal-footer">
-					<input type="hidden" name="no" value="${sMap.NO }">
+					<input type="hidden" name="no" value="${sMap.NO}">
 					<input type="hidden" name="Status" value="6">
 					<input type="hidden" id="hidPrice" name="transPrice" value="">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
