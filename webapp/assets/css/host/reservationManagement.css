@@ -139,3 +139,8 @@
 #calendar > .fc-view-harness > .fc-daygrid > table > tbody{
 	font-size: 16px;
 }
+
+.fc-event-title-container{
+	cursor: pointer;
+}
+

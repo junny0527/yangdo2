@@ -62,9 +62,8 @@
 </body>
 
 <!-- event modal -->
-<!-- modal -->
-
-<div id = "roomcontrol" class = "modal fade in" aria-hidden="false" >
+<!-- 예약완료, 예약자 변경 modal -->
+<div id = "roomreserved" class = "modal fade in" aria-hidden="false" >
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -73,48 +72,135 @@
 			
 			<div class="modal-body">
 				<div>
-					<h5 id = "reserveroom"></h5>
+					<h5 class = "reserveroom"></h5>
 					<br>
-					<p id = "reservestatus"></p>
-					<p id = "reservenum">예약 번호 : </p>
-					<p id = "reservename">예약자 이름 : </p>
-					<p id = "reservehp">예약자 번호 : </p>
+					<p class = "reservestatus"></p>
+					<p class = "reservenum">예약 번호 : </p>
+					<p class = "reservename">예약자 이름 : </p>
+					<p class = "reservehp">예약자 번호 : </p>
 					<br><br>
 					<p>예약 인원 </p>
-					<p id = "reserveadult">성인 : 명 </p>
-					<p id = "reservekid">아동 : 명 </p>
-					<p id = "reservebaby">유아 : 명 </p>
+					<p class = "reserveadult">성인 : 명 </p>
+					<p class = "reservekid">아동 : 명 </p>
+					<p class = "reservebaby">유아 : 명 </p>
 				</div>
 				<br>
 				<div>
 					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
-					<button id = "reservecancel"></button>
-					<button id = "checkingIn"></button>
-					<button id = "checkingOut"></button>
+					<button class = "btn btn-danger">예약취소</button>
+					<button class = "btn btn-primary">체크인</button>
 				</div>
 			</div>
 			
 		</div>
 	</div>
 </div>
+<!-- 예약완료, 예약자 변경 modal -->
 
-<div class="modal-backdrop fade in"></div>
+<!-- 이용중 modal  -->
+<div id = "roominuse" class = "modal fade in" aria-hidden="false" >
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">객실 현황</h4>
+			</div>
+			
+			<div class="modal-body">
+				<div>
+					<h5 class = "reserveroom"></h5>
+					<br>
+					<p class = "reservestatus"></p>
+					<p class = "reservenum">예약 번호 : </p>
+					<p class = "reservename">예약자 이름 : </p>
+					<p class = "reservehp">예약자 번호 : </p>
+					<br><br>
+					<p>예약 인원 </p>
+					<p class = "reserveadult">성인 : 명 </p>
+					<p class = "reservekid">아동 : 명 </p>
+					<p class = "reservebaby">유아 : 명 </p>
+				</div>
+				<br>
+				<div>
+					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
+					<button class = "btn used">이용완료</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- 이용중 modal  -->
+
+<!-- 이용완료, 일반취소 modal  -->
+<div id = "roomchecking" class = "modal fade in" aria-hidden="false" >
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">객실 현황</h4>
+			</div>
+			
+			<div class="modal-body">
+				<div>
+					<h5 class = "reserveroom"></h5>
+					<br>
+					<p class = "reservestatus"></p>
+					<p class = "reservenum">예약 번호 : </p>
+					<p class = "reservename">예약자 이름 : </p>
+					<p class = "reservehp">예약자 번호 : </p>
+					<br><br>
+					<p>예약 인원 </p>
+					<p class = "reserveadult">성인 : 명 </p>
+					<p class = "reservekid">아동 : 명 </p>
+					<p class = "reservebaby">유아 : 명 </p>
+				</div>
+				<br>
+				<div>
+					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- 이용완료, 일반취소 modal  -->
+
+<!-- 양도대기 modal  -->
+<div id = "roomstandby" class = "modal fade in" aria-hidden="false" >
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">객실 현황</h4>
+			</div>
+			
+			<div class="modal-body">
+				<div>
+					<h5 class = "reserveroom"></h5>
+					<br>
+					<p class = "reservestatus"></p>
+					<p class = "reservenum">예약 번호 : </p>
+					<p class = "reservename">예약자 이름 : </p>
+					<p class = "reservehp">예약자 번호 : </p>
+					<br><br>
+					<p>예약 인원 </p>
+					<p class = "reserveadult">성인 : 명 </p>
+					<p class = "reservekid">아동 : 명 </p>
+					<p class = "reservebaby">유아 : 명 </p>
+				</div>
+				<br>
+				<div>
+					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
+					<button class = "btn btn-danger">예약 취소</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- 양도대기 modal  -->
+
 <!-- event modal -->	
 
 <script type = "text/javascript">
-
-$("#reservecancel").on("click",function(){
-	console.log("예약취소")
-})
-
-$("#checkingIn").on("click",function(){
-	console.log("체크인")
-})
-
-$("#checkingOut").on("click",function(){
-	console.log("이용완료")
-})
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -143,92 +229,135 @@ document.addEventListener('DOMContentLoaded', function() {
     			dataType : "json",
     			success : function(result){
     				console.log('성공');
-    				$("#reserveroom").html(result.roomName);
     				
     				if(result.status == 1){
     					console.log(result.status)
-    					$("#reservecancel").removeAttr('class', 'hide');
-    					$("#checkingIn").removeAttr('class', 'hide');
     					
-    					$("#reservestatus").html('예약완료');
-    					$("#reservecancel").html('예약취소');
-    					$("#reservecancel").attr('class' , 'btn btn-danger');
-    					$("#reservecancel").css("border", "0px");
-    					$("#checkingIn").html('체크인')
-    					$("#checkingIn").attr('class', 'btn btn-primary');
-    					$("#checkingIn").css("border", "0px");
+    					$(".reserveroom").html(result.roomName);
+    					$(".reserveroom").css('text-align', 'center');
+    					$(".reserveroom").css('font-size', '20px');
+    					$(".reservenum").html('예약 번호 : '+result.reservationNo);
+        				$(".reservename").html('예약자 이름 : '+result.guestName);
+        				$(".reservehp").html('예약자 번호 : '+result.hp);
+        				$(".reservestatus").html('예약완료');
+        				$(".reservestatus").css('float', 'right');
+        				$(".reservestatus").css('font-size', '20px');
+        				$(".reservestatus").css('color', 'white');
+        				$(".reservestatus").css('background-color', '#5eb917');
+        				$(".reserveadult").html('성인 : '+result.adult+'명');
+        				$(".reservekid").html('아동 : '+result.kid+'명');
+        				$(".reservebaby").html('유아 : '+result.baby+'명');
+        				
+        				$("#roomreserved").modal("show");
     				}
     				
     				if(result.status == 2){
     					console.log(result.status);
-    					$("#reservecancel").attr('class', 'hide');
-    					$("#checkingIn").attr('class', 'hide');
     					
-    					$("#reservestatus").html('이용중');
-    					$("#reservestatus").css("background-color", "#337ab7");
-    					$("#reservecancel").removeAttr('class', 'btn btn-danger');
-    					
-    					$("#checkingOut").html('이용완료');
-    					$("#checkingOut").attr('class', 'btn');
-    					$("#checkingOut").css("background-color", "#2c3e50");
-    					$("#checkingOut").css("color", "white");
-    					$("#checkingOut").css("border", "none");
-    					
+    					$(".reserveroom").html(result.roomName);
+    					$(".reserveroom").css('text-align', 'center');
+    					$(".reserveroom").css('font-size', '20px');
+    					$(".reservenum").html('예약 번호 : '+result.reservationNo);
+        				$(".reservename").html('예약자 이름 : '+result.guestName);
+        				$(".reservehp").html('예약자 번호 : '+result.hp);
+        				$(".reservestatus").html('이용중');
+        				$(".reservestatus").css('float', 'right');
+        				$(".reservestatus").css('font-size', '20px');
+        				$(".reservestatus").css('color', 'white');
+        				$(".reservestatus").css('background-color', '#337ab7');
+        				$(".reserveadult").html('성인 : '+result.adult+'명');
+        				$(".reservekid").html('아동 : '+result.kid+'명');
+        				$(".reservebaby").html('유아 : '+result.baby+'명');
+        				$(".used").css('background-color', '#2c3e50');
+        				$(".used").css('color', 'white');
+        				
+        				$("#roominuse").modal("show");
     				}
     				
     				if(result.status == 3){
     					console.log(result.status);
-    					$("#reservecancel").attr('class', 'hide');
-    					$("#checkingIn").attr('class', 'hide');
     					
-    					$("#reservestatus").html('이용완료');
-    					$("#reservestatus").css("background-color", "#2c3e50");
+    					$(".reserveroom").html(result.roomName);
+    					$(".reserveroom").css('text-align', 'center');
+    					$(".reserveroom").css('font-size', '20px');
+    					$(".reservenum").html('예약 번호 : '+result.reservationNo);
+        				$(".reservename").html('예약자 이름 : '+result.guestName);
+        				$(".reservehp").html('예약자 번호 : '+result.hp);
+        				$(".reservestatus").html('이용완료');
+        				$(".reservestatus").css('float', 'right');
+        				$(".reservestatus").css('font-size', '20px');
+        				$(".reservestatus").css('color', 'white');
+        				$(".reservestatus").css('background-color', '#2c3e50');
+        				$(".reserveadult").html('성인 : '+result.adult+'명');
+        				$(".reservekid").html('아동 : '+result.kid+'명');
+        				$(".reservebaby").html('유아 : '+result.baby+'명');
+        				
+        				$("#roomchecking").modal("show");
     					
     				}
     				
-    				if(result.status == 4){
-    					console.log(result.status);
-    					$("#reservecancel").attr('class', 'hide');
-    					$("#checkingIn").attr('class', 'hide');
+    				if(result.status ==4){
     					
-    					$("#reservestatus").html('일반취소');
-    					$("#reservestatus").css("background-color", "#f2114c");
+    					$(".reserveroom").html(result.roomName);
+    					$(".reserveroom").css('text-align', 'center');
+    					$(".reserveroom").css('font-size', '20px');
+    					$(".reservenum").html('예약 번호 : '+result.reservationNo);
+        				$(".reservename").html('예약자 이름 : '+result.guestName);
+        				$(".reservehp").html('예약자 번호 : '+result.hp);
+        				$(".reservestatus").html('일반 취소');
+        				$(".reservestatus").css('float', 'right');
+        				$(".reservestatus").css('font-size', '20px');
+        				$(".reservestatus").css('color', 'white');
+        				$(".reservestatus").css('background-color', '#f2114c');
+        				$(".reserveadult").html('성인 : '+result.adult+'명');
+        				$(".reservekid").html('아동 : '+result.kid+'명');
+        				$(".reservebaby").html('유아 : '+result.baby+'명');
+        				
+        				$("#roomchecking").modal("show");
+    					
     				}
-    				
     				if(result.status == 5){
+    					
+    					$(".reserveroom").html(result.roomName);
+    					$(".reserveroom").css('text-align', 'center');
+    					$(".reserveroom").css('font-size', '20px');
+    					$(".reservenum").html('예약 번호 : '+result.reservationNo);
+        				$(".reservename").html('예약자 이름 : '+result.guestName);
+        				$(".reservehp").html('예약자 번호 : '+result.hp);
+        				$(".reservestatus").html('예약자 변경');
+        				$(".reservestatus").css('float', 'right');
+        				$(".reservestatus").css('font-size', '20px');
+        				$(".reservestatus").css('color', 'white');
+        				$(".reservestatus").css('background-color', '#ed5f19');
+        				$(".reserveadult").html('성인 : '+result.adult+'명');
+        				$(".reservekid").html('아동 : '+result.kid+'명');
+        				$(".reservebaby").html('유아 : '+result.baby+'명');
+        				
+        				$("#roomreserved").modal("show");
+    					
+    				}
+    				if(result.status == 6){
     					console.log(result.status);
-    					$("#reservecancel").removeAttr('class', 'hide');
-    					$("#checkingIn").removeAttr('class', 'hide');
     					
-    					$("#reservestatus").html('이용자 변경(양도완료)');
-    					$("#reservestatus").css("background-color", "#ed5f19");
-    					
-    					$("#reservecancel").html('예약 취소');
-    					$("#reservecancel").attr('class', 'btn btn-danger');
-    					$("#reservecancel").css("border", "0px");
-    					$("#checkingIn").html('체크인');
-    					$("#checkingIn").attr('class', 'btn btn-primary');
-    					$("#checkingIn").css("border", "0px");
-    					
-    				}if(result.status == 6){
-    					console.log(result.status);
-    					$("#checkingIn").attr('class', 'hide');
-    					
-    					$("#reservestatus").html('양도대기');
-    					$("#reservestatus").css("background-color", "#ad01d2");
-    					$("#reservecancel").html('예약 취소');
-    					$("#reservecancel").attr('class', 'btn btn-danger');
-    					$("#reservecancel").css("border", "0px");
+    					$(".reserveroom").html(result.roomName);
+    					$(".reserveroom").css('text-align', 'center');
+    					$(".reserveroom").css('font-size', '20px');
+    					$(".reservenum").html('예약 번호 : '+result.reservationNo);
+        				$(".reservename").html('예약자 이름 : '+result.guestName);
+        				$(".reservehp").html('예약자 번호 : '+result.hp);
+        				$(".reservestatus").html('양도대기');
+        				$(".reservestatus").css('float', 'right');
+        				$(".reservestatus").css('font-size', '20px');
+        				$(".reservestatus").css('color', 'white');
+        				$(".reservestatus").css('background-color', '#ad01d2');
+        				$(".reserveadult").html('성인 : '+result.adult+'명');
+        				$(".reservekid").html('아동 : '+result.kid+'명');
+        				$(".reservebaby").html('유아 : '+result.baby+'명');
+        				
+        				$("#roomstandby").modal("show");
     				}
     				
-    				$("#reservenum").html('예약 번호 : '+result.reservationNo);
-    				$("#reservename").html('예약자 이름 : '+result.guestName);
-    				$("#reservehp").html('예약자 번호 : '+result.hp);
-    				$("#reserveadult").html('성인 : '+result.adult+'명');
-    				$("#reservekid").html('아동 : '+result.kid+'명');
-    				$("#reservebaby").html('유아 : '+result.baby+'명');
     				
-    				$("#roomcontrol").modal("show");
     			},
     			error : function(XHR, status, error) {
     				console.log(status + ' : ' + error);
