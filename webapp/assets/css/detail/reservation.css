@@ -363,12 +363,13 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #iconBox > #container > div > span {
-	width:50px;
+	width:55px;
 }
 
 #iconBox > #container > div {
     margin-right:10px;
-    
+    margin-left:10px;
+    width:57px;
 }
 
 #iconBox > #container > div > .icon {
@@ -377,10 +378,11 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 
 #iconBox > #container > div > .iconName {
+	padding-top:5px;
     font-size:10px;
     display: flex;
     justify-content: center;
-    width:50px;
+    width:55px;
 }
 
 #iconBox > #container > #moreIcon:hover {
@@ -420,6 +422,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 #var2 {
     color:black;
+    position:absolute;
 }
 
 

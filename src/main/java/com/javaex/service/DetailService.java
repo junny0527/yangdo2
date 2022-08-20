@@ -26,6 +26,12 @@ public class DetailService {
 		//펜션정보
 		Map<String, Object> pInfo = detailDao.select(pensionNo);
 		
+		String areaName = (String) pInfo.get("LAW_NAME");
+		String[] areaNameArray = areaName.split(" ");
+		String[] areaArray = areaNameArray[1].split("");
+		//지역명 가져오기
+		String area = areaArray[0] + areaArray[1];
+		
 		//펜션 리뷰 및 별점(업주+)
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
 		
@@ -40,7 +46,7 @@ public class DetailService {
 		
 		//날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전)
 		List<Map<String, Object>> roomList = detailDao.roomList(pensionNo, datepicker, datepicker2);
-		
+		System.out.println("이거다이;거 ::::"+roomList);
 		//펜션 별 객실 메인사진 보여주기
 		List<Map<String, Object>> pensionRoomImg = detailDao.pensionRoomImg(pensionNo);
 		
@@ -97,6 +103,7 @@ public class DetailService {
 		pMap.put("datepicker", datepicker);
 		pMap.put("datepicker2", datepicker2);
 		pMap.put("crtPage", crtPage);
+		pMap.put("area", area);
 		
 		return pMap;
 	}

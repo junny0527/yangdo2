@@ -12,9 +12,9 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7&libraries=services"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c7c270257fa165edfa51150dee34ae7&libraries=LIBRARY"></script>
-	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/detail/reservation.css">
@@ -26,11 +26,12 @@
 		<c:import url="/WEB-INF/views/includes/userHeader.jsp"></c:import>
 		<!-- //header -->
 		
+		
 		<div id="main">
 			<div id="content" class="clearfix">
 	         	<input id="pensionNo" type="hidden" value="${pMap.pInfo.NO}">
 	         	<input id="crtPage" type="hidden" value="${crtPage}">
-	            <span id="area">양평</span> 
+	            <span id="area">${pMap.area}</span> 
 	            <span id="pensionName">${pMap.pInfo.NAME}</span> 
 	            <span id="address">${pMap.pInfo.ADDRESS}</span> 
 	            
@@ -250,7 +251,6 @@
 				</c:choose>
 			</div>
 			<!-- //content -->	
-
 			<div id="gallery">
 				<img id="mainImg" src="${pageContext.request.contextPath}/upload/${pMap.imgList[0].IMAGE_PATH}">
 				<div id="imgCount">${pMap.imgList[0].RN} / ${pMap.totalCnt} | 전체사진</div>
@@ -367,15 +367,17 @@
 									<button class="information_Use" name="${roomVo.NO}">보기</button>
 								</div>
 								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
-								<div class="defaultForm">
+								<div data-max="${roomVo.MAX_PEOPLE}" data-min="${roomVo.STANDARD_PEOPLE}" data-adult_price ="${roomVo.ADULT_PRICE}"
+								 data-kid_price ="${roomVo.KID_PRICE}" data-baby_price ="${roomVo.BABY_PRICE}" 
+								 data-trans_price="${roomVo.TRANS_PRICE}" class="defaultForm">
 									<div>
 										<span class="people">성인</span>
 										<div>
-											<button class="minus" id="yAdultMinus" name="${roomVo.NO}">
+											<button class="minus yAdultMinus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span id="yAdultValue">${roomVo.STANDARD_PEOPLE}명</span>
-											<button class="plus" id="yAdultPlus" name="${roomVo.NO}">
+											<span class="yAdultValue${roomVo.NO}">${roomVo.ADULT}명</span>
+											<button class="plus yAdultPlus" data-max="${roomVo.MAX_PEOPLE}" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
 										</div>
@@ -386,7 +388,7 @@
 											<button class="minus" id="yKidPlus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span id="yKidValue">0명</span>
+											<span id="yKidValue">${roomVo.KID}명</span>
 											<button class="plus" id="yKidMinus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
@@ -395,18 +397,18 @@
 									<div>
 										<span class="people">유아</span>
 										<div>
-											<button class="minus" id="yBabyPlus" name="${roomVo.NO}">
+											<button class="minus yBabyPlus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
-											<span id="yBabyValue">0명</span>
-											<button class="plus" id="yBabyMinus" name="${roomVo.NO}">
+											<span id="yBabyValue">${roomVo.BABY}명</span>
+											<button class="plus yBabyMinus" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
 										</div>
 									</div>
 									<div class="price">
 										<span class="roomPrice">${roomVo.TOTAL_PRICE}원</span> 
-										<span class="assignmentPrice">${roomVo.TRANS_PRICE}원</span>
+										<span class="assignmentPrice${roomVo.NO}">${roomVo.TRANS_PRICE}원</span>
 									</div>
 								</div>
 								<!-- //defaultForm -->
@@ -424,7 +426,7 @@
 								<span class="roomName">${roomVo.ROOM_NAME}</span>
 								<div class="infoBtn">
 									<span>객실 이용안내</span>
-									<button class="information_Use" name="${roomVo.NO}">보기</button>
+									<button class="information_Use${roomVo.NO}" name="${roomVo.NO}">보기</button>
 								</div>
 								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 								<div class="defaultForm">
@@ -487,15 +489,15 @@
 									<button class="information_Use" name="${roomVo.NO}">보기</button>
 								</div>
 								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
-								<div class="defaultForm">
+								<div data-max="${roomVo.MAX_PEOPLE}"  data-min="${roomVo.STANDARD_PEOPLE}" class="defaultForm">
 									<div>
 										<span class="people">성인</span>
 										<div>
-											<button class="minus">
+											<button class="minus aaa">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
 											<span>${roomVo.STANDARD_PEOPLE}명</span>
-											<button class="plus">
+											<button class="plus bbb">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
 										</div>
@@ -635,26 +637,52 @@
 <script type="text/javascript">
 
 	///////////////////////// 숙소위치보기 (지도) ///////////////////////////
+	var container = ""; 
+	var options = ""; 
+	var map = ""; 
+	var center = "";
+	var markerPosition = "";
+	var mapContainer = "";
 	
-	var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
-	var options = { //지도를 생성할 때 필요한 기본 옵션
-	   center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-	   level: 3 //지도의 레벨(확대, 축소 정도)
-	};
-	var map = new kakao.maps.Map(container, options);
-	const center = map.getCenter();
+	const geocoder = new kakao.maps.services.Geocoder()
+	geocoder.addressSearch("${pMap.pInfo.LAW_NAME}", (res, stat) => { 
+	   if (stat === kakao.maps.services.Status.OK) {
+	      const coords = new kakao.maps.LatLng(res[0].y, res[0].x);
+	      const marker = new kakao.maps.Marker({
+	         map: map,
+	         position: coords
+	      })
+	      const infowindow = new kakao.maps.InfoWindow({ 
+	         content: `<div style="width:150px;text-align:center;padding:6px 0;">${e.name}</div>`
+	      })
+	      infowindow.open(map, marker)
+	      
+	      
+	      container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
+	      options = { //지도를 생성할 때 필요한 기본 옵션
+	    		  
+			      center: new kakao.maps.LatLng(res[0].y, res[0].x), //지도의 중심좌표.
+			  	  level: 3 //지도의 레벨(확대, 축소 정도)
+	  			};
+	      
+	      map = new kakao.maps.Map(container, options);
+	      center = map.getCenter();
+	      
+	      // 마커가 표시될 위치입니다 
+	      markerPosition = new kakao.maps.LatLng(res[0].y, res[0].x);
+		
+	      // 마커가 지도 위에 표시되도록 설정합니다
+	      marker.setMap(map);
+	     
+	      mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
+	      mapOption = {
+		        center: new kakao.maps.LatLng(res[0].y, res[0].x), // 지도의 중심좌표
+		        level: 1 // 지도의 확대 레벨
+    		};  
+	   }
+	})
 	
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
-
-	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	    position: markerPosition
-	});
-	
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-
+	// 숙소 위치확인 버튼 모달창 이벤트
 	$("#map").on("click", function() {
 
 		$("#local").modal("show");
@@ -663,10 +691,8 @@
 		//지도 사이즈 변경 후 위치 재 출력
 		map.setCenter(center);
 	});
-
-
-	///////////////////////// 일정선택 ///////////////////////////
 	
+	///////////////////////// 일정선택 ///////////////////////////
 	$(function() {
         //모든 datepicker에 대한 공통 옵션 설정
         $.datepicker.setDefaults({
@@ -707,8 +733,6 @@
 			alert("일정을 확인하여 다시 입력해주세요.");
 		}
     });
-	
-	
 	
 	///////////////////////// 객실 이용안내  ///////////////////////////
 	$(".information_Use").on("click", function() {
@@ -776,7 +800,7 @@
 			}
 		});
 	});
-		
+	
 	//방 이미지 모달창 오른쪽 버튼 클릭 이벤트
 	$(".imgRight").on("click", function() {
 		if(crtPos < crtImgList.length -1) {
@@ -814,11 +838,8 @@
 	});
 	
 	///////////////////////// 양도대기 버튼이벤트  ///////////////////////////
-	var yAdultValue = $("#yAdultValue").text();
-	var yAdultArray = yAdultValue.split("");
-	var yAdult = Number(yAdultArray[0]);
 	
-	var yKidValue = $("#yKidValue").text();
+	/* var yKidValue = $("#yKidValue").text();
 	var yKidArray = yKidValue.split("");
 	var yKid = Number(yKidArray[0]);
 	
@@ -830,54 +851,54 @@
 	var datepicker = $("#datepicker").val();
 	var datepicker2 = $("#datepicker2").val();
 	var pensionNo = $("#pensionNo").val();
-	
-	console.log(yAdult);
-	console.log(typeof yAdult);
-	console.log(yKid);
-	console.log(typeof yKid);
-	console.log(yBaby);
-	console.log(typeof yBaby);
+	 */
 	
 	
-	/* 
-	var list = {
-		standard_people :	${pMap.roomList[0].STANDARD_PEOPLE}
-		
-	} */
-	
-	//console.log(list);
-	
-	
-	var roomArray = new Array();
-	
-	<c:forEach items="${pMap.roomList}" var="roomVo">
-		roomArray.push("${roomVo}");
-	</c:forEach>
-	
-	console.log(roomArray[0]);
 	
 	//양도 버튼 명수 증가 이벤트
-	$("#yAdultPlus").on("click", function() {
-		  
-		var $this = $(this);  
+	$(".yAdultPlus").on("click", function() {
+		var $this = $(this); 
+		console.log($this);
 		var roomNo = Number($this.attr("name"));
-		console.log("방번호 :"+roomNo);
+		var yAdultValue = $(".yAdultValue"+roomNo);
+		var yAdultArray = yAdultValue.text().split("");
+		var yAdult = Number(yAdultArray[0]);
+		var assignmentPrice = $(".assignmentPrice"+roomNo).text();
 		
+		var transP = 0;
+		var adultP = 0;
 		
-		/* 	if(roomArray[i].NO = roomNo ) { */
-				yAdult += 1;
-				$("#yAdultValue").text(yAdult + "명");
-			 //} 
+		/* $this.parents(".defaultForm");  */
+		var max = $this.data("max");
+		console.log("최대인원:"+max);
+		var adultPrice = $this.data("adult_price");
+		var kidPrice = $this.data("kid_price");
+		var babyPrice = $this.data("baby_price");
+		var transPrice = $this.data("trans_price");
 		
+		/* transP = Number(transPrice.replace(/,/g, ""));
+		adultP = Number(adultPrice.replace(/,/g, "")); */
+		
+		if(yAdult < max) {
+			yAdult += 1;
+			
+			yAdultValue.text(yAdult + "명");
+		}
+
 		
 	});
 	
 	
 	//양도 버튼 명수 감소 이벤트
-	$("#yAdultMinus").on("click", function() {
+	$(".yAdultMinus").on("click", function() {
+		var $this = $(this).parents(".defaultForm"); 
+		var min = $this.data("min");
+		console.log("최소인원 :"+ min);
 		
-		yAdult -= 1;
-		$("#yAdultValue").text(yAdult + "명");
+		if(yAdult > min) {
+			yAdult -= 1;
+			$("#yAdultValue").text(yAdult + "명");
+		}
 		
 	});
 
@@ -897,6 +918,16 @@
 		console.log("babymmmm");
 	});
 	
+	$(".aaa").on("click", function() {
+		var $this = $(this).parents(".defaultForm"); 
+		console.log($this.data("min"));
+		console.log($this.data("max"));
+	});
+	$(".bbb").on("click", function() {
+		var $this = $(this).parents(".defaultForm"); 
+		console.log($this.data("min"));
+		console.log($this.data("max"));
+	});
 	
 	
 	// ajax 페이지용 전역변수
@@ -1124,11 +1155,54 @@
 			str += '</div>';
 			str += '<div id="checkList">';
 			str += '	<div class="info">확인사항 및 기타</div>';
-			str += '	<span>'+iMap.ETC+'</span>';	//반복문
+			str += '	<span>'+iMap.ETC+'</span>';
 			str += '</div>';
 			
 			$("#pensionInfo").append(str);
 	};
+	
+	//펜션 별점 옆 리뷰 수 클릭 이벤트(ajax)
+	//클릭 시 리뷰페이지로 전환되며 스크롤 이동
+	$("#pensionReview").on("click", function(event) {
+		var pensionNo = $("#pensionNo").val();
+		iBtn = true;
+		
+		var offset = $("#iconBox").offset();
+		
+		console.log(offset);
+		 $('body,html').animate({scrollTop:offset.top},500);  
+		
+		$("#review").show();
+		$("#pensionInfo").hide();
+		$("#pensionInfo").empty();
+		$("#roomList").hide();
+		$("#var").css("color", "black");
+		$("#var1").css("color", "black");
+		$("#var2").css("color", "red");
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/api/review?pensionNo=" + pensionNo,		
+			type : "post",
+			//contentType : "application/json",
+			//data : ,
+			dataType : "json",
+			success : function(rMap){
+				
+				
+				
+				/*성공시 처리해야될 코드 작성*/
+				if(rBtn == true) {
+					var2Render(rMap);
+					rBtn = false;
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+		
+	});
 	
 	///////////////////////// 리뷰 페이지(ajax)  ///////////////////////////
 	$("#var2").on("click", function() {
