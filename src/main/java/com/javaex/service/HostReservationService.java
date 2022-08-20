@@ -25,9 +25,9 @@ public class HostReservationService {
 		return rList;
 	}
 	
-	public HostReservationVo getReserve(Integer userNo, String reserveid) {
+	public HostReservationVo getReserve(Integer hostNo, String reserveid) {
 		HostReservationVo hVo = new HostReservationVo();
-		hVo.setUserNo(userNo);
+		hVo.setHostNo(hostNo);
 		hVo.setReservationNo(reserveid);
 		return hDao.getReserve(hVo);
 	}

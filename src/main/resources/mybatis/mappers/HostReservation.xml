@@ -28,7 +28,7 @@
 				pension p, rooms r
 			where
 				p.no = r.pension_no
-			and p.no = #{userNo}
+			and p.no = #{hostNo}
 			) info
 		where
 			res.room_no = info.room_no
@@ -43,6 +43,7 @@
 	<![CDATA[
 		select
 			res.no reservationNo
+			,res.user_no guestNo
 	        ,info.room_name roomName
 	        ,res.name guestName
 	        ,res.hp hp
@@ -68,7 +69,7 @@
 				pension p, rooms r
 			where
 				p.no = r.pension_no
-			and p.no = #{userNo}
+			and p.no = #{hostNo}
 			) info
 		where
 			res.room_no = info.room_no
@@ -78,5 +79,23 @@
 
 </select>
 
+
+<insert id= "pointsInsert" parameterType="com.javaex.vo.PointsVo">
+	<![CDATA[
+	
+		INSERT INTO POINTS (
+				NO,
+				RESERVE_NO,
+				POINT,
+				REG_DATE )
+				
+		VALUES (
+			  		SEQ_POINTS_NO.nextval,
+					#{no},
+					#{point},
+					sysdate
+				)
+	]]>
+</insert>
 
 </mapper>
