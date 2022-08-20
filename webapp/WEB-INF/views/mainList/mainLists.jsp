@@ -200,7 +200,7 @@
 				</div>
 				<div id="poduct_list_area">
 					<div class="title">
-						<h3>${pMap.pList[0].LAWNAME}</h3>
+						<h3>${pMap.pList[0].LAW_NAME}</h3>
 					</div>
 					<!-- 
 					<!-- 사진정보 -->
@@ -209,7 +209,7 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGEPATH}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGE_PATH}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
@@ -223,21 +223,21 @@
 											<em>${pList.STARS}</em>
 											<c:choose>
 												<c:when test="${pList.STARS <= 3}">
-													<span>별로에요 (${pList.RCOUNT})</span>
+													<span>별로에요 ()</span>
 												</c:when>
 												<c:when test="${pList.STARS > 3 && pList.STARS < 4}">
-													<span>좋아요 (${pList.RCOUNT})</span>
+													<span>좋아요 ()</span>
 												</c:when>
 												<c:when test="${pList.STARS >= 4 && pList.STARS <= 5}">
-													<span>최고에요 (${pList.RCOUNT})</span>
+													<span>최고에요 ()</span>
 												</c:when>	
 											</c:choose>	
 										</p>
-										<p>${pList.LAWNAME} | ${pList.VISITROAD3}</p>
+										<p>${pList.LAW_NAME} | ${pList.VISIT_ROAD3}</p>
 									</div>
 									<div class="price">
 										<p>
-											<b>${pList.PENPRICE}원</b>
+											<b>${pList.PRICE}원</b>
 										</p>
 									</div>
 								</div>
