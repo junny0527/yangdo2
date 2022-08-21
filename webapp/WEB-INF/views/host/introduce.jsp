@@ -155,7 +155,7 @@
 							<tr>
 								<th> 지역 카테고리
 								</th>
-								<td class="bd_r_none">
+								<td colspan = "2" class="bd_r_none">
 									<div class="area">
 										<span class="form-body">
 											<select class = "select-style middle-size category" name = sido></select>
@@ -179,7 +179,7 @@
 										<p class="order text-normal">* 첫 이미지가 메인 이미지입니다.</p>
 									</div>
 
-									<div class="form-layer mb_15">
+									<div class="form-layer mb_15 hide">
 										<ul id="house-images">
 											<li class="backgrou">
 												<div>
@@ -336,7 +336,7 @@
 				<div id="drag-and-drop-zone" style="height:200px;border:1px dashed gray;border-radius:3px;position:relative">
 					<label style="position:relative;left:50%;margin-left:-100px;top:50%;margin-top:-15px;overflow:hidden">
 						<span class="btn btn-primary">드래그 하시거나 클릭하세요.</span>
-						<input style="position:absolute;left:0;top:0;border-width: 0 0 100px 200px;border:solid transparent;direction: ltr;opacity:.0;cursor:pointer" type="file" name="files[]" multiple="multiple" title="Click to add Files">
+						<input style="position:absolute;left:0;top:0;border-width: 0 0 100px 200px;border:solid transparent;direction: ltr;opacity:.0;cursor:pointer" type="file" name="files" multiple="multiple" title="Click to add Files">
 					</label>
 				</div>
 			<div id="upload-list" style="margin-top:10px"></div>
@@ -421,7 +421,7 @@
 	                console.log(fullname);
 	                console.log(data.zonecode);
 	            }
-	        }).open();
+		 }).open();
 	}
 </script>
 
@@ -478,7 +478,6 @@ $('document').ready(function() {
 
 <script type = "text/javascript">
 
-
 $("#addimage").on("click", function(){
 	$("#img-uploader").modal("show");
 })
@@ -497,6 +496,61 @@ $("#deleteimage").on("click", function(){
 
 </script>
 
+<script type = "text/javascript">
+
+//이미지 - 등록
+$(document).on('click','#img-uploader',function() {
+    $(this).upload(function(res) {
+       if (res.status === 'ok') {
+            $html = '<li>' +
+            '<input type="hidden" name="adino[]" value="' + res.adino + '" />' +
+            '<div><img data-adino="' + res.adino + '" src="' + image_host + res.filename + '" class="img-rounded" /></div>' +
+            '<button data-role="img-changer" data-adino="' + res.adino + '" data-ano="' + res.ano + '" data-armgno="' + res.armgno + '" data-type="' + res.type + '" type="button" class="btn btn-xs">변경</button>' +
+            '<button data-role="img-delete" data-adino="' + res.adino + '" type="button" class="btn btn-xs">삭제</button>' +
+            '</li>';
+            $('.form-layer').removeClass('hide');
+            $($html).appendTo('#house-list');
+            <!--
+            var img_url = image_host + res.filename;
+            $.post('/guest/imgUploadDiff/', 'ano='+res.ano+'&armgno='+res.armgno+'&url='+img_url);
+            -->
+       }
+
+    });
+});
+
+// 이미지 - 수정
+$(document).on('click','[data-role=img-changer]',function() {
+    var img_url_before = $('[data-adino='+$(this).attr('data-adino')+']').closest('li').find('img').attr('src');
+    var ano = $(this).attr('data-ano');
+    var armgno = $(this).attr('data-armgno') ? $(this).attr('data-armgno') : '0';
+
+    $(this).upload(function(res){
+        if (res.status === 'ok') {
+            $('[data-adino='+res.adino+']').closest('li').find('img').attr('src', image_host + res.filename);
+			
+            <!--
+            var img_url_after =  image_host + res.filename;
+            $.post('/guest/imgChangeDiff/', 'ano='+ano+'&armgno='+armgno+'&url_before='+img_url_before+'&url_after='+img_url_after);
+            -->
+        }
+    });
+});
+
+// 이미지 - 삭제
+$(document).on('click', '[data-role=img-delete]',function() {
+    var id = $(this).attr('data-adino')
+    if (confirm('정말 삭제하시겠습니까?')) {
+        $.post('/guest/removeImage/'+ id, function(data) {
+        	alert(data.message);
+        	if(data.code == 200) {
+        		$('[data-adino='+id+']').closest('li').remove();
+        	}
+        });
+    }
+});
+
+</script>
 
 
 </html>
