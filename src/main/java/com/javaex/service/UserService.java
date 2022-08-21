@@ -45,6 +45,12 @@ public class UserService {
 		return hVo;
 	}
 
-	
+	public int idCheck(String id) {
+		System.out.println("UserService > idCheck");
+		
+		int idcount = userDao.idCheck(id);
+		
+		return idcount;
+	}
 
 }

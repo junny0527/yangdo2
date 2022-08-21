@@ -35,7 +35,7 @@
                 <a href="https://www.goodchoice.kr/more/privacyRequire" target="_blank">업주 개인정보 수집에 동의합니다 </a><span> (필수)</span>
             </p>
 			<p>
-				<input type="checkbox" id="privacy_auxiliary_policy" class="inp_chk_02 chk_default terms_checkbox">
+				<input type="checkbox" id="privacy_auxiliary_policy" class="inp_chk_02 chk_default terms_checkbox" require="">
 				<a href="https://www.goodchoice.kr/more/privacySelect" target="_blank">보장사항에 대한 내용에 동의합니다.</a><span> (필수)</span>
 			</p>
             <p>
@@ -47,7 +47,7 @@
                 <a href="https://www.goodchoice.kr/more/terms/location" target="_blank">위치기반 서비스 이용약관 동의</a> (선택)
             </p>
 
-            <button type="button" class="btn_link gra_left_right_red" id="terms_agree_btn" onclick ="location.href='${pageContext.request.contextPath}/host/joinForm';"><span>다음</span></button>
+            <button type="button" class="btn_link gra_left_right_red" id="terms_agree_btn" disabled="disabled" onclick ="location.href='${pageContext.request.contextPath}/host/joinForm';"><span>다음</span></button>
         </div>
     </section>
 
@@ -59,6 +59,7 @@
 
 
 $(function () {
+	
     if ($('.terms_agree').length > 0) {
         $('#checkAll').on('click', function () {
             var checked = false;
@@ -79,13 +80,13 @@ $(function () {
         });
 
         $('.terms_checkbox').on('click', function () {
-            if ($('.terms_checkbox:checked').length > 4) {
+            if ($('.terms_checkbox:checked').length > 6) {
                 $('#checkAll').prop("checked", true);
             } else {
                 $('#checkAll').prop("checked", false);
             }
 
-            if ($('.terms_checkbox[require]:checked').length > 2) {
+            if ($('.terms_checkbox[require]:checked').length > 3) {
                 $('#terms_agree_btn').addClass('gra_left_right_red').attr('disabled',false);
             } else {
                 $('#terms_agree_btn').removeClass('gra_left_right_red').attr('disabled',true);

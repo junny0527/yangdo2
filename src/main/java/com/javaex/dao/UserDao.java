@@ -44,6 +44,12 @@ public class UserDao {
 		return hVo;
 	}
 
-	
+	public int idCheck(String id) {
+		System.out.println("UserDao > idCheck");
+		System.out.println(id);
+		int idcount = sqlSession.selectOne("users.idCheck", id);
+		System.out.println(idcount);
+		return idcount;
+	}
 
 }

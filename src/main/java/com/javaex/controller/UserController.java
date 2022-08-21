@@ -61,7 +61,7 @@ public class UserController {
 		session.removeAttribute("authUser");
 		session.invalidate();
 		
-		return "redirect:/main";
+		return "redirect:/loginForm";
 	}
 	
 	//회원가입

@@ -80,7 +80,7 @@
 	        });
 
 	        $('.terms_checkbox').on('click', function () {
-	            if ($('.terms_checkbox:checked').length > 4) {
+	            if ($('.terms_checkbox:checked').length > 5) {
 	                $('#checkAll').prop("checked", true);
 	            } else {
 	                $('#checkAll').prop("checked", false);
