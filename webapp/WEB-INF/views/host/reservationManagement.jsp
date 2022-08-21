@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
     	  console.log(reserveid);
     	  
     	  $.ajax({
-    			url : "${pageContext.request.contextPath }/api/getReserve",
+    			url : "${pageContext.request.contextPath}/host/api/getReserve",
     			type : "post",
     			contentType : "application/json",
     			data : JSON.stringify(reserveid),	// js객체를 문자열로 변경
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".roomcheckin").off("click").on("click", function(){
         					var reserveNum = result.reservationNo;
        						$.ajax({
-       							url : "${pageContext.request.contextPath}/api/changestatusRoomCheckin",
+       							url : "${pageContext.request.contextPath}/host/api/changestatusRoomCheckin",
        							type : "post",
        							data : JSON.stringify(reserveNum),
        							contentType : 'application/json',
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservecancel").off("click").on("click", function(){
         					var reserveNum = result.reservationNo;
        						$.ajax({
-       							url : "${pageContext.request.contextPath}/api/changestatusReserveCancel",
+       							url : "${pageContext.request.contextPath}/host/api/changestatusReserveCancel",
        							type : "post",
        							data : JSON.stringify(reserveNum),
        							contentType : 'application/json',
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
         					console.log(pVo);
         					
        						$.ajax({
-       							url : "${pageContext.request.contextPath}/api/givepoints",
+       							url : "${pageContext.request.contextPath}/host/api/givepoints",
        							type : "post",
        							data : JSON.stringify(pVo),
        							contentType : 'application/json',
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
        								console.log("포인트 부여");
        								
        								$.ajax({
-       	       							url : "${pageContext.request.contextPath}/api/changestatusUsed",
+       	       							url : "${pageContext.request.contextPath}/host/api/changestatusUsed",
        	       							type : "post",
        	       							data : JSON.stringify(reserveNum),
        	       							contentType : 'application/json',
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".roomcheckin").off("click").on("click", function(){
         					var reserveNum = result.reservationNo;
        						$.ajax({
-       							url : "${pageContext.request.contextPath}/api/changestatusRoomCheckin",
+       							url : "${pageContext.request.contextPath}/host/api/changestatusRoomCheckin",
        							type : "post",
        							data : JSON.stringify(reserveNum),
        							contentType : 'application/json',
@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservecancel").off("click").on("click", function(){
         					var reserveNum = result.reservationNo;
        						$.ajax({
-       							url : "${pageContext.request.contextPath}/api/changestatusReserveCancel",
+       							url : "${pageContext.request.contextPath}/host/api/changestatusReserveCancel",
        							type : "post",
        							data : JSON.stringify(reserveNum),
        							contentType : 'application/json',
@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservecancel").off("click").on("click", function(){
         					var reserveNum = result.reservationNo;
        						$.ajax({
-       							url : "${pageContext.request.contextPath}/api/changestatusReserveCancel",
+       							url : "${pageContext.request.contextPath}/host/api/changestatusReserveCancel",
        							type : "post",
        							data : JSON.stringify(reserveNum),
        							contentType : 'application/json',
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
       events:function(info, successCallback, failureCallback){
     	  
     	  $.ajax({
-    		  	url: "${pageContext.request.contextPath}/api/getReserveList",
+    		  	url: "${pageContext.request.contextPath}/host/api/getReserveList",
     			dataType : "json",
     			success : function(result){
     				

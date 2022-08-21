@@ -14,6 +14,7 @@ import com.javaex.vo.HostReservationVo;
 import com.javaex.vo.PointsVo;
 
 @Controller
+@RequestMapping(value = "host")
 public class HostReservationApiController {
 	
 	@Autowired
