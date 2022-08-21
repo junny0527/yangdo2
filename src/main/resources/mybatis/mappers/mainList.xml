@@ -3,7 +3,7 @@
 <mapper namespace = "MainList">
 	
 	<!-- 펜션 리스트 -->
-	  
+	   
 	<select id="penList" resultType="Map" parameterType="int">
 		<![CDATA[
 			select p.name,
@@ -24,59 +24,85 @@
 			and p.law_code = #{areaNo}
 		]]>
 	</select>
-		
-	<!-- 날짜 검색시 리스트 -->
-	<select id="dateList" resultType="Map" parameterType="Map">
+	<!--  
+	<select id="searchList" resultType="Map" parameterType="com.javaex.vo.MainSearchVo">
 		<![CDATA[
-			select          
-					        ri.rcount,
-					        p.no pNo,
-					        p.name pName,
-					        p.law_name lawName,
-					        p.law_code lawCode,
-					        p.visit_road3  visitRoad3,
-					        pi.image_path imagePath,
-					        pr.price penPrice,
-					        ri.stars stars ,
-					        re.status status
-					from pension p, (select rownum
-					                        ,rn.image_path image_path
-					                        ,rn.pension_no
-					                from(select 
-					                        image_path
-					                        ,pension_no
-					                from pension_image
-					                order by no asc) rn) pi, rooms r, (select min(p.price) price
-					                                                    from prices p, rooms r
-					                                                    where p.room_no = r.no
-					                                                    and r.pension_no = 1) pr, reservations re,(select round(avg(ri.stars),1) stars
-					                                                                                                        ,count(review_no) rcount
-					                                                                                                from reviews ri, reservations re, rooms r
-					                                                                                                where ri.no = re.no
-					                                                                                                and re.room_no = r.no
-					                                                                                                and r.pension_no = 1) ri    
-					where p.no = pi.pension_no
-					and p.company_no = r.pension_no
-					and r.no = re.no
-					and rownum = 1
-					GROUP by p.name ,
-					         p.law_name ,
-					         p.law_code ,
-					         p.visit_road3 ,
-					         pi.image_path ,
-					         pr.price ,
-					         ri.stars ,
-					         ri.rcount,
-					         re.status,
-					         p.no,
-                             re.check_in,
-                             re.check_out
-					having p.law_code = #{areaNo}
-                    and re.check_in = #{datepicker}
-                    and re.check_out = #{datepicker2}
+			select p.name,
+			       p.law_name,
+			       p.law_code,
+			       p.visit_road3,
+			       pi.image_path,
+			       pr.price,
+			       re.status,
+			       pa.s_amenities_no,
+			       pp.s_public_no
+			from pension p, reservations re, reviews ri, p_amenities pa, p_public pp, (select image_path 
+			                    from pension_image  
+			                    where RoWNUM = 1) pi, rooms rm, (select pr.price,
+			                                                            pr.no
+			                                                    from prices pr
+			                                                    GROUP BY pr.no, pr.price
+			                                                    having pr.price = min(pr.price)) pr
+			where p.no = rm.no
+			and rm.no = pr.no
+			and re.no = rm.no
+			and re.no = ri.review_no
+			and p.no = pa.pension_no
+			and p.no = pp.pension_no
+			and pa.s_amenities_no BETWEEN #{searchFirst} and #{searchLast}
+			
 		]]>
 	</select>
-	
-	
+	-->
+	<select id="searchList" resultType="Map" parameterType="com.javaex.vo.MainSearchVo">
+		<![CDATA[
+			select  p.name,
+			        p.law_name,
+			        p.law_code,
+			        p.visit_road3,
+			        pi.image_path,
+			        pr.price,
+			        re.status,
+			        pa.s_amenities_no,
+			        pp.s_public_no,
+			        rm.standard_people
+			        
+			 from pension p, reservations re, reviews ri, gugun gu, sido si, p_amenities pa, p_public pp,
+		 			(select image_path 
+	                  from pension_image  
+	                  where RoWNUM = 1) pi,
+	                 rooms rm, (select pr.price,
+                                       pr.no
+                               from prices pr
+                               GROUP BY pr.no, pr.price
+                               having pr.price = min(pr.price)) pr
+			 where p.no = rm.no
+			 and rm.no = pr.no
+			 and re.no = rm.no
+			 and re.no = ri.review_no
+			 and p.no = si.no
+			 and si.no = gu.no
+			 and p.no = pa.pension_no
+			 and p.no = pp.pension_no
+			 and rm.standard_people = #{persons}
+			 
+			 and re.check_in = #{datepicker}
+			 and re.check_out = #{datepicker2}
+		 ]]>
+		 <foreach collection="pensionItem1" item="pensionItems1">
+			<![CDATA[
+				and pa.s_amenities_no = #{pensionItems1}
+			]]>
+		</foreach>
+		
+		 <foreach collection="pensionItem2" item="pensionItems2">
+			<![CDATA[
+				 and pp.s_public_no = #{pensionItems2}
+			]]>
+		</foreach>
+		 	 
+		
+		
+	</select>
 	
 </mapper>

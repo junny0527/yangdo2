@@ -39,12 +39,11 @@
 		<div class="sub_top_wrap">
 			<div class="sub_top">
 				<h2>펜션</h2>
-				<div class="area">
 						<select name="sido1" id="sido1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
-						border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
+							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
 						</select>
 						<select name="gugun1" id="gugun1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
-						border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
+							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
 						</select>
 				</div>
 			</div>
@@ -55,10 +54,11 @@
 		<div id="content" class="sub_wrap">
 			<!-- fillter -->
 			<div class="filter_wrap">
+					<form action = "main/search" method = "get">
 				<section class="date_wrap">
-					<h3>날짜</h3>
-						<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center;">
-						<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center;">
+						<h3>날짜</h3>
+							<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center; z-index : 100;">
+							<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center; z-index : 100;">
 					
 				</section>
 				<h3>상세조건</h3>
@@ -69,13 +69,13 @@
 				<section>
 					<ul>
 						<li>
-							<input type="checkbox" id="yangdo" name="pensionItem" class="inp_chk" value="">
+							<input type="checkbox" id="yangdo" name="yangdo" class="inp_chk" value="1">
 							<label for="yangdo" class="label_chk">양도 중</label>
 						</li>
 					</ul>
 				</section>
 				<section>
-					<input type="hidden" id="persons" name="persons">
+					<input type="hidden" id="persons" name="persons" value = "2">
 					<strong>인원</strong>
 					<div class="cnt_people">
 						<button type="button" class="disable dn" onclick="count('minus')" value="-">-</button>
@@ -87,39 +87,39 @@
 					<strong>공용시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="swimming_pool" name="pensionItem" class="inp_chk" value="swimmingPool">
+							<input type="checkbox" id="swimming_pool" name="pensionItem1" class="inp_chk" value="1">
 							<label for="swimming_pool" class="label_chk">수영장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="football" name="pensionItem"  class="inp_chk" value="football">
+							<input type="checkbox" id="football" name="pensionItem1"  class="inp_chk" value="2">
 							<label for="football" class="label_chk">족구장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cafe" name="pensionItem" class="inp_chk" value="cafe">
+							<input type="checkbox" id="cafe" name="pensionItem1" class="inp_chk" value="3">
 							<label for="cafe" class="label_chk">카페</label>
 						</li>
 						<li>
-							<input type="checkbox" id="singroom" name="pensionItem" class="inp_chk" value="singroom">
+							<input type="checkbox" id="singroom" name="pensionItem1" class="inp_chk" value="4">
 							<label for="singroom" class="label_chk">노래방</label>
 						</li>
 						<li>
-							<input type="checkbox" id="store" name="pensionItem" class="inp_chk" value="store">
+							<input type="checkbox" id="store" name="pensionItem1" class="inp_chk" value="5">
 							<label for="store" class="label_chk">편의점</label>
 						</li>
 						<li>
-							<input type="checkbox" id="parking" name="pensionItem" class="inp_chk" value="parking">
+							<input type="checkbox" id="parking" name="pensionItem1" class="inp_chk" value="6">
 							<label for="parking" class="label_chk">주차장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bbq" name="pensionItem" class="inp_chk" value="bbq">
+							<input type="checkbox" id="bbq" name="pensionItem1" class="inp_chk" value="7">
 							<label for="bbq" class="label_chk">BBQ</label>
 						</li>
 						<li>
-							<input type="checkbox" id="restaurant" name="pensionItem" class="inp_chk" value="restaurant">
+							<input type="checkbox" id="restaurant" name="pensionItem1" class="inp_chk" value="8">
 							<label for="restaurant" class="label_chk">주방/식당</label>
 						</li>
 						<li>
-							<input type="checkbox" id="smoking_room" name="pensionItem" class="inp_chk" value="smokingRoom">
+							<input type="checkbox" id="smoking_room" name="pensionItem1" class="inp_chk" value="9">
 							<label for="smoking_room" class="label_chk">흡연부스</label>
 						</li>
 					</ul>
@@ -128,51 +128,52 @@
 					<strong>객실 내 시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="refrigerator" name="pensionItem" class="inp_chk" value="refrigerator">
+							<input type="checkbox" id="refrigerator" name="pensionItem2" class="inp_chk" value="1">
 							<label for="refrigerator" class="label_chk">냉장고</label>
 						</li>
 						<li>
-							<input type="checkbox" id="aircon" name="pensionItem" class="inp_chk" value="aircon">
+							<input type="checkbox" id="aircon" name="pensionItem2" class="inp_chk" value="2">
 							<label for="aircon" class="label_chk">에어컨</label>
 						</li>
 						<li>
-							<input type="checkbox" id="tv" name="pensionItem" class="inp_chk" value="tv">
+							<input type="checkbox" id="tv" name="pensionItem2" class="inp_chk" value="3">
 							<label for="tv" class="label_chk">TV</label>
 						</li>
 						<li>
-							<input type="checkbox" id="wifi" name="pensionItem" class="inp_chk" value="wifi">
+							<input type="checkbox" id="wifi" name="pensionItem2" class="inp_chk" value="4">
 							<label for="wifi" class="label_chk">와이파이</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathroom_ware" name="pensionItem" class="inp_chk" value="bathroomWare">
+							<input type="checkbox" id="bathroom_ware" name="pensionItem2" class="inp_chk" value="5">
 							<label for="bathroom_ware" class="label_chk">욕실용품</label>
 						</li>
 						<li>
-							<input type="checkbox" id="washing_mu" name="pensionItem" class="inp_chk" value="washingMu">
+							<input type="checkbox" id="washing_mu" name="pensionItem2" class="inp_chk" value="6">
 							<label for="washing_mu" class="label_chk">세탁기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dry_mu" name="pensionItem" class="inp_chk" value="dryMu">
+							<input type="checkbox" id="dry_mu" name="pensionItem2" class="inp_chk" value="7">
 							<label for="dry_mu" class="label_chk">드라이기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathtub" name="pensionItem" class="inp_chk" value="bathtub">
+							<input type="checkbox" id="bathtub" name="pensionItem2" class="inp_chk" value="8">
 							<label for="bathtub" class="label_chk">욕조</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cook_ok" name="pensionItem" class="inp_chk" value="cookOk">
+							<input type="checkbox" id="cook_ok" name="pensionItem2" class="inp_chk" value="9">
 							<label for="cook_ok" class="label_chk">취사가능</label>
 						</li>
 						<li>
-							<input type="checkbox" id="room_smoking" name="pensionItem" class="inp_chk" value="roomSmoking">
+							<input type="checkbox" id="room_smoking" name="pensionItem2" class="inp_chk" value="10">
 							<label for="room_smoking" class="label_chk">객실 내 흡연</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dog" name="pensionItem" class="inp_chk" value="dog">
-							<label for="dog" class="label_chk" value="반려견동반">반려견 동반</label>
+							<input type="checkbox" id="dog" name="pensionItem2" class="inp_chk" value="11">
+							<label for="dog" class="label_chk">반려견 동반</label>
 						</li>
 					</ul>
 				</section>
+				</form>
 			</div>
 			<!-- fillter -->
 			<!-- List -->
@@ -213,12 +214,12 @@
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${pList.STATUS == '양도대기'}">									
+										<c:if test="${pList.STATUS == 6}">									
 											<span>양도중</span>
 										</c:if>	
 									</div>
 									<div class="name">
-										<strong>${pList.PNAME}</strong>
+										<strong>${pList.NAME}</strong>
 										<p class="score">
 											<em>${pList.STARS}</em>
 											<c:choose>
@@ -421,6 +422,7 @@
 		
 		//현재 화면에 표시된 값
 		var number = resultElement.innerText;
+		$("#persons").val(number);
 		
 		//더하기
 		if(type === 'plus'){
@@ -442,6 +444,7 @@
 		
 			//결과 
 			resultElement.innerText = number;
+			$("#persons").val(number);
 		}
 	
 		//체크박스 선택 초기화

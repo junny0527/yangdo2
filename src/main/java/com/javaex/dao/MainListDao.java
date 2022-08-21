@@ -7,12 +7,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.MainSearchVo;
+
 @Repository
 public class MainListDao {
 	@Autowired
 	private SqlSession sqlSession;
-	
-	
 	
 	//펜션정보 리스트 가져오기
 	public List<Map<String, Object>> select(int areaNo){
@@ -24,21 +24,16 @@ public class MainListDao {
 		return pList;
 	}
 	
-	/*
-	//날짜로 리스트 가져오기
-	public List<Map<String, Object>> dateSelect(int areaNo, String datepicker, String datepicker2){
-		System.out.println("Dao>dateSelect");
+	
+	//체크박스로 리스트 가져오기
+	public List<Map<String, Object>> selectSearch(MainSearchVo searchVo){
+		System.out.println("Dao>search");
 		
-		Map<String, Object> dMap = new HashMap<String, Object>();
+		List<Map<String, Object>> searchList = sqlSession.selectList("MainList.searchList", searchVo);
+			
+		System.out.println("searchList"+searchList);
 		
-		dMap.put("datepicker2", datepicker2);
-		dMap.put("datepicker", datepicker);
-		dMap.put("areaNo", areaNo);
+		return searchList;
 		
-		List<Map<String,Object>> dList = sqlSession.selectList("MainList.dateList", dMap);
-		System.out.println("dateDao" + dList);
-		
-		return dList;
 	}
-	*/
 }
