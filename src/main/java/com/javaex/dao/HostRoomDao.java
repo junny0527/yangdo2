@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,9 +39,9 @@ public class HostRoomDao {
 
 	public int roomPriceWeekInsert(WeekVo wVo) {
 		System.out.println("HostRoomDao  > roomPriceWeekInsert");
-		
+
 		int count = sqlSession.insert("HostRooms.roomPriceWeekInsert", wVo);
-		
+
 		return count;
 	}
 
@@ -48,5 +50,36 @@ public class HostRoomDao {
 		int pNo = sqlSession.selectOne("HostIntroduce.getPensionNoBySession", userNo);
 
 		return pNo;
+	}
+
+	public HostRoomsVo getRoom(HostRoomsVo rVo) {
+		System.out.println("HostRoomDao  > getRoom");
+		HostRoomsVo hVo = sqlSession.selectOne("HostRooms.getRoom", rVo);
+		
+		return hVo;
+	}
+
+	public List<PriceVo> getPrice(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		
+		List<PriceVo> pList = sqlSession.selectList("HostRooms.getRoomPrices", roomNo);
+		
+		return pList;
+	}
+
+	public List<WeekVo> getWeek(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		System.out.println(roomNo);
+		List<WeekVo> wList = sqlSession.selectList("HostRooms.getRoomWeek", roomNo);
+		
+		return wList;
+	}
+	
+	public List<HostRoomsVo> roomList(int userNo) {
+		System.out.println("HostRoomDao  > roomList");
+		
+		List<HostRoomsVo> rList = sqlSession.selectList("HostRooms.roomNoList", userNo);
+		
+		return rList;
 	}
 }

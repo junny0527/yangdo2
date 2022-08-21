@@ -131,3 +131,16 @@
 	font-size: 16px;
 	float: right;
 }
+
+#calendar > .fc-view-harness > .fc-daygrid > table > thead{
+	font-size: 16px;
+}
+
+#calendar > .fc-view-harness > .fc-daygrid > table > tbody{
+	font-size: 16px;
+}
+
+.fc-event-title-container{
+	cursor: pointer;
+}
+

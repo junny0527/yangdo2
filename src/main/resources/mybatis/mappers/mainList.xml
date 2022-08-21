@@ -4,7 +4,29 @@
 	
 	<!-- 펜션 리스트 -->
 	  
-	<select id="penList" resultType="com.javaex.vo.MainListVo" parameterType="int">
+	<select id="penList" resultType="Map" parameterType="int">
+		<![CDATA[
+			select p.name,
+			       p.law_name,
+			       p.law_code,
+			       p.visit_road3,
+			       pi.image_path,
+			       pr.price
+			from pension p, (select image_path 
+			                    from pension_image  
+			                    where RoWNUM = 1) pi, rooms rm, (select pr.price,
+			                                                            pr.no
+			                                                    from prices pr
+			                                                    GROUP BY pr.no, pr.price
+			                                                    having pr.price = min(pr.price)) pr
+			where p.no = rm.no
+			and rm.no = pr.no
+			and p.law_code = #{areaNo}
+		]]>
+	</select>
+		
+	<!-- 날짜 검색시 리스트 -->
+	<select id="dateList" resultType="Map" parameterType="Map">
 		<![CDATA[
 			select          
 					        ri.rcount,
@@ -46,57 +68,12 @@
 					         ri.stars ,
 					         ri.rcount,
 					         re.status,
-					         p.no
+					         p.no,
+                             re.check_in,
+                             re.check_out
 					having p.law_code = #{areaNo}
-		]]>
-	</select>
-		<!--
-		<select id="penList" resultType="com.javaex.vo.MainListVo" parameterType="int">
-		<![CDATA[
-			select          
-                COUNT(p.no) rCount,
-                p.no pNo,
-			    p.name pName,
-			    p.law_name lawName,
-			    p.law_code lawCode,
-			    p.visit_road3  visitRoad3,
-			    pi.image_path imagePath,
-			    pr.price penPrice,
-			    ri.stars stars,
-			    re.status status
-			from pension p, pension_image pi, rooms r, prices pr,
-			     reservations re, reviews ri    
-			where p.no = pi.pension_no
-			and p.company_no = r.pension_no
-			and r.no = pr.no
-			and r.no = re.no
-			and re.no = ri.review_no
-            GROUP by p.name ,
-			    p.law_name ,
-			    p.law_code ,
-			    p.visit_road3 ,
-			    pi.image_path ,
-			    pr.price ,
-			    ri.stars ,
-			    re.status,
-                p.no
-                having p.law_code = #{areaNo}
-		]]>
-	</select>
-	-->	
-	<!-- 리뷰 수 가져오기 -->
-	<select id="selectTotalCnt" resultType="com.javaex.vo.MainListVo">
-		<![CDATA[
-			select  COUNT(*)
-			   
-			from pension p, pension_image pi, rooms r, prices pr,
-			reservations re, reviews ri   
-			where p.no = pi.pension_no
-			and p.company_no = r.pension_no
-			and r.no = pr.no
-			and r.no = re.no
-			and re.no = ri.review_no
-			and p.no = #{pNo}
+                    and re.check_in = #{datepicker}
+                    and re.check_out = #{datepicker2}
 		]]>
 	</select>
 	

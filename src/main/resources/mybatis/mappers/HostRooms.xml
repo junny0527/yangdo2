@@ -1,39 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "HostRooms">
+<mapper namespace="HostRooms">
 
 	<insert id="roomInsert" parameterType="com.javaex.vo.HostRoomsVo">
-			<selectKey keyProperty="no" resultType="int" order="BEFORE">
-					select seq_rooms_no.nextval from dual
-			</selectKey>
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_rooms_no.nextval from dual
+		</selectKey>
 		<![CDATA[
 			insert into rooms
 			values(#{no},#{pensionNo},#{roomName},#{standardPeople},#{maxPeople},#{roomAmenities},#{addInfo},#{reserveAvai})
 		]]>
 	</insert>
-	
+
 	<insert id="roomImgInsert" parameterType="com.javaex.vo.HostRoomsVo">
 		<![CDATA[
 			insert into room_image
 			values(seq_room_image_no.nextval,#{no},#{imagePath})		
 		]]>
 	</insert>
-	
+
 	<insert id="roomPriceInsert" parameterType="com.javaex.vo.PriceVo">
-			<selectKey keyProperty="no" resultType="int" order="BEFORE">
-					select seq_prices_no.nextval from dual
-			</selectKey>
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_prices_no.nextval from dual
+		</selectKey>
 		<![CDATA[
 			insert into prices
 			values(#{no},#{roomNo},#{sortation},#{price})
 		]]>
 	</insert>
-	
+
 	<insert id="roomPriceWeekInsert" parameterType="com.javaex.vo.WeekVo">
 		<![CDATA[
 			insert into week
 			values(SEQ_WEEK_NO.nextval,#{priceNo},#{weekName})
 		]]>
 	</insert>
-	
+
+
+	<select id="getRoom" resultType="com.javaex.vo.HostRoomsVo" parameterType="com.javaex.vo.HostRoomsVo">
+		<![CDATA[
+			select  r.no no
+			        ,r.room_name roomName
+			        ,r.standard_people standardPeople
+			        ,r.max_people maxPeople
+			        ,r.room_amenities roomAmenities
+			        ,r.add_info addInfo
+			        ,r.reserve_avai reserveAvai
+			        ,c.user_no userNo
+			from rooms r, pension p , company c
+			where c.no = p.company_no
+			and p.no = r.pension_no
+			and c.user_no = #{userNo}
+			and r.no = #{no}
+		]]>
+	</select>
+
+	<select id="roomNoList" resultType="com.javaex.vo.HostRoomsVo" parameterType="int">
+		<![CDATA[
+			select  r.no  
+			        ,r.room_name roomName
+			from rooms r,pension p  , company c
+			where c.no = p.company_no
+			and p.no = r.pension_no
+			and c.user_no = #{userNo}
+		]]>
+	</select>
+	<!-- <select id="getRoomImg">
+		<![CDATA[
+			
+		]]>
+	</select> -->
+
+	<select id="getRoomPrices" resultType="com.javaex.vo.PriceVo" parameterType="int">
+		<![CDATA[
+			select  no
+			        ,room_no
+			        ,sortation
+			        ,price
+			from prices
+			where room_no = #{roomNo}
+		]]>
+	</select>
+
+	<select id="getRoomWeek" resultType="com.javaex.vo.WeekVo" parameterType="int">
+		<![CDATA[
+			select  w.no no
+			        ,w.name weekName
+			        ,w.price_no priceNo
+			        ,p.price price
+			from week w , prices p
+			where p.no = w.price_no
+			and p.room_no = #{roomNo}
+			
+		]]>
+	</select>
 </mapper>

@@ -7,32 +7,38 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.javaex.vo.MainListVo;
-
 @Repository
 public class MainListDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 펜션정보
 	
-	public List<MainListVo> select(int areaNo){
-		System.out.println("mainDao>select");
+	
+	//펜션정보 리스트 가져오기
+	public List<Map<String, Object>> select(int areaNo){
+		System.out.println("Dao>selectList");
 		
-		List<MainListVo> mainList =  sqlSession.selectList("MainList.penList", areaNo);
-		System.out.println(mainList);
+		List<Map<String, Object>> pList = sqlSession.selectList("MainList.penList", areaNo);
+		System.out.println("pListDao"+pList);
 		
-		return mainList;
+		return pList;
 	}
 	
-	//댓글 수
-	public int selectTotalCnt() {
-		System.out.println("mainDao>selectTotqalCnt");
+	/*
+	//날짜로 리스트 가져오기
+	public List<Map<String, Object>> dateSelect(int areaNo, String datepicker, String datepicker2){
+		System.out.println("Dao>dateSelect");
 		
-		int totalCnt = sqlSession.selectOne("MainList.selectTotalCnt");
+		Map<String, Object> dMap = new HashMap<String, Object>();
 		
-		return totalCnt;
+		dMap.put("datepicker2", datepicker2);
+		dMap.put("datepicker", datepicker);
+		dMap.put("areaNo", areaNo);
 		
+		List<Map<String,Object>> dList = sqlSession.selectList("MainList.dateList", dMap);
+		System.out.println("dateDao" + dList);
+		
+		return dList;
 	}
-	
+	*/
 }

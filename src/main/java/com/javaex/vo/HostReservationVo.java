@@ -3,8 +3,10 @@ package com.javaex.vo;
 public class HostReservationVo {
 	
 	private String reservationNo;
+	private int hostNo;
 	private String roomName;
 	private String guestName;
+	private int guestNo;
 	private String hp;
 	private String checkin;
 	private String checkout;
@@ -15,12 +17,13 @@ public class HostReservationVo {
 	
 	public HostReservationVo() {}
 
-	public HostReservationVo(String reservationNo, String roomName, String guestName, String hp, String checkin,
-			String checkout, String adult, String kid, String baby, String status) {
-		super();
+	public HostReservationVo(String reservationNo, int hostNo, String roomName, String guestName, int guestNo,
+			String hp, String checkin, String checkout, String adult, String kid, String baby, String status) {
 		this.reservationNo = reservationNo;
+		this.hostNo = hostNo;
 		this.roomName = roomName;
 		this.guestName = guestName;
+		this.guestNo = guestNo;
 		this.hp = hp;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -38,6 +41,14 @@ public class HostReservationVo {
 		this.reservationNo = reservationNo;
 	}
 
+	public int getHostNo() {
+		return hostNo;
+	}
+
+	public void setHostNo(int hostNo) {
+		this.hostNo = hostNo;
+	}
+
 	public String getRoomName() {
 		return roomName;
 	}
@@ -52,6 +63,14 @@ public class HostReservationVo {
 
 	public void setGuestName(String guestName) {
 		this.guestName = guestName;
+	}
+
+	public int getGuestNo() {
+		return guestNo;
+	}
+
+	public void setGuestNo(int guestNo) {
+		this.guestNo = guestNo;
 	}
 
 	public String getHp() {
@@ -112,10 +131,10 @@ public class HostReservationVo {
 
 	@Override
 	public String toString() {
-		return "HostReservationVo [reservationNo=" + reservationNo + ", roomName=" + roomName + ", guestName="
-				+ guestName + ", hp=" + hp + ", checkin=" + checkin + ", checkout=" + checkout + ", adult=" + adult
-				+ ", kid=" + kid + ", baby=" + baby + ", status=" + status + "]";
+		return "HostReservationVo [reservationNo=" + reservationNo + ", hostNo=" + hostNo + ", roomName=" + roomName
+				+ ", guestName=" + guestName + ", guestNo=" + guestNo + ", hp=" + hp + ", checkin=" + checkin
+				+ ", checkout=" + checkout + ", adult=" + adult + ", kid=" + kid + ", baby=" + baby + ", status="
+				+ status + "]";
 	}
-
 	
 }

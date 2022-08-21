@@ -4,6 +4,7 @@
 	<typeAliases>
 		<!-- <typeAlias alias="ReservationVo" type="com.javaex.vo.ReservationVo" /> -->
 		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
+		
 		<typeAlias alias="pImgVo" type="com.javaex.vo.PensionImageVo" />
 	</typeAliases>
 	<mappers>
@@ -21,5 +22,6 @@
 		<mapper resource="mybatis/mappers/HostIntroduce.xml" />
 		<mapper resource="mybatis/mappers/HostRooms.xml" />
 		<mapper resource="mybatis/mappers/HostRules.xml" />
+		<mapper resource="mybatis/mappers/HostReservation.xml" />
 	</mappers>
 </configuration>	

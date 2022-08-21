@@ -110,7 +110,7 @@ html, body {
 	width: 296px;
 	margin: 0 32px 0 31px;
 	padding-bottom: 10px;
-	border: 1px solid rgba(0, 0, 0, 0.08);
+	border: 2px solid #545454;
 	border-radius: 4px;
 	background: #fff;
 }
@@ -160,7 +160,7 @@ address, caption, em, var {
 	padding-left: 22px;
 	margin: 0 1px;
 	padding-top: 31px;
-	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	border-top: 2px solid #545454;
 }
 
 .filter_wrap h3 {
@@ -228,10 +228,12 @@ input[type=checkbox].inp_chk+label.label_chk {
 }
 input[type=checkbox]{
 	accent-color:#F7323F;
+	
 }
 .inp_chk{
 	width: 21px;
 	height: 21px;
+	border: 5px solid #545454;
 	
 }
 /* checkbox persons */
@@ -287,6 +289,7 @@ input[type=checkbox]{
 	background-size: 20px auto;
 }
 
+
 /* List */
 /* button */
 .list_wrap {
@@ -319,10 +322,12 @@ input[type=checkbox]{
 
 .top_sort .width_4 button {
 	width: 25%;
+
 }
 
 .top_sort button.on {
 	color: rgba(0, 0, 0, 0.87);
+	
 }
 
 .top_sort .btn_wrap button {
@@ -337,6 +342,7 @@ input[type=checkbox]{
 	background: rgba(250, 250, 250, 0.6);
 	font-size: 16px;
 	line-height: 40px;
+
 }
 
 .top_sort .btn_map {
