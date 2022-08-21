@@ -875,7 +875,7 @@
 		var kidPrice = $this.data("kid_price");
 		var babyPrice = $this.data("baby_price");
 		var transPrice = $this.data("trans_price");
-		
+		 
 		/* transP = Number(transPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, "")); */
 		
