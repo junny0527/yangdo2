@@ -6,18 +6,20 @@ public class PriceVo {
 	private int roomNo;
 	private int price;
 	private int sortation;
+	private int divide;
+
 	public PriceVo() {
 		super();
 	}
 
-	public PriceVo(int no, int roomNo, int price, int sortation) {
+	public PriceVo(int no, int roomNo, int price, int sortation, int divide) {
 		super();
 		this.no = no;
 		this.roomNo = roomNo;
 		this.price = price;
 		this.sortation = sortation;
+		this.divide = divide;
 	}
-
 
 	public int getRoomNo() {
 		return roomNo;
@@ -43,7 +45,6 @@ public class PriceVo {
 		this.no = no;
 	}
 
-	
 	public int getSortation() {
 		return sortation;
 	}
@@ -52,13 +53,18 @@ public class PriceVo {
 		this.sortation = sortation;
 	}
 
-	@Override
-	public String toString() {
-		return "PriceVo [no=" + no + ", roomNo=" + roomNo + ", price=" + price + ", sortation=" + sortation + "]";
+	public int getDivide() {
+		return divide;
 	}
 
+	public void setDivide(int divide) {
+		this.divide = divide;
+	}
 
-
-	
+	@Override
+	public String toString() {
+		return "PriceVo [no=" + no + ", roomNo=" + roomNo + ", price=" + price + ", sortation=" + sortation
+				+ ", divide=" + divide + "]";
+	}
 
 }

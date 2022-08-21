@@ -67,12 +67,49 @@ public class HostRoomDao {
 		return pList;
 	}
 
-	public List<WeekVo> getWeek(int roomNo) {
+	public List<WeekVo> getgb1Week(int roomNo) {
 		System.out.println("HostRoomDao  > getPrice");
-		System.out.println(roomNo);
-		List<WeekVo> wList = sqlSession.selectList("HostRooms.getRoomWeek", roomNo);
 		
-		return wList;
+		List<WeekVo> gb1List = sqlSession.selectList("HostRooms.getgb1Week", roomNo);
+		
+		return gb1List;
+	}
+
+	public List<WeekVo> getgb2Week(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		
+		List<WeekVo> gb2List = sqlSession.selectList("HostRooms.getgb2Week", roomNo);
+		
+		return gb2List;
+	}
+	public List<WeekVo> getjs1Week(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		
+		List<WeekVo> js1List = sqlSession.selectList("HostRooms.getjs1Week", roomNo);
+		
+		return js1List;
+	}
+	public List<WeekVo> getjs2Week(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		
+		List<WeekVo> js2List = sqlSession.selectList("HostRooms.getjs2Week", roomNo);
+		
+		return js2List;
+	}
+	public List<WeekVo> gets1Week(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		
+		List<WeekVo> s1List = sqlSession.selectList("HostRooms.gets1Week", roomNo);
+		
+		return s1List;
+	}
+	
+	public List<WeekVo> gets2Week(int roomNo) {
+		System.out.println("HostRoomDao  > getPrice");
+		
+		List<WeekVo> s2List = sqlSession.selectList("HostRooms.gets2Week", roomNo);
+		
+		return s2List;
 	}
 	
 	public List<HostRoomsVo> roomList(int userNo) {

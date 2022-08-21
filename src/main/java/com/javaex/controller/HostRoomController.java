@@ -30,6 +30,7 @@ public class HostRoomController {
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int userNo = uVo.getNo();
 		rVo.setUserNo(userNo);
+		
 		Map<String,Object> rMap = hostRoomSerivce.getRoomInfo(rVo);
 		
 		model.addAttribute("rMap", rMap);

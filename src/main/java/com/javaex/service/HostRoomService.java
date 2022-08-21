@@ -42,14 +42,26 @@ public class HostRoomService {
 		List<PriceVo> pList = hostRoomDao.getPrice(roomNo);
 		
 		
-		List<WeekVo> wList = hostRoomDao.getWeek(roomNo);
+		List<WeekVo> gb1List = hostRoomDao.getgb1Week(roomNo);
+		List<WeekVo> gb2List = hostRoomDao.getgb2Week(roomNo);
+		List<WeekVo> js1List = hostRoomDao.getjs1Week(roomNo);
+		List<WeekVo> js2List = hostRoomDao.getjs2Week(roomNo);
+		List<WeekVo> s1List = hostRoomDao.gets1Week(roomNo);
+		List<WeekVo> s2List = hostRoomDao.gets2Week(roomNo);
 		
-		System.out.println(wList);
+		
 		
 		rMap.put("rVo", rVo);
 		rMap.put("pList", pList);
-		rMap.put("wList", wList);
+		rMap.put("gb1List", gb1List);
+		rMap.put("gb2List", gb2List);
+		rMap.put("js1List", js1List);
+		rMap.put("js2List", js2List);
+		rMap.put("s1List", s1List);
+		rMap.put("s2List", s2List);
 		rMap.put("rNoList", rNoList);
+		
+		System.out.println(rMap);
 		
 		return rMap;
 	}
@@ -102,8 +114,6 @@ public class HostRoomService {
 		
 		
 		
-		
-		
 		////////////////////요금저장
 		// 요금(기본비수기1)
 		// vo꺼내기
@@ -113,6 +123,7 @@ public class HostRoomService {
 
 		// Vo에 값 넣어주기
 		pVo.setSortation(3); // 비수기
+		pVo.setDivide(1);	//비수기 1라서 1
 		pVo.setRoomNo(roomNo); // 룸넘버
 		pVo.setPrice(price); // 요금
 
@@ -137,6 +148,7 @@ public class HostRoomService {
 		price = rVo.getGbPrice2();
 
 		pVo.setSortation(3); // 비수기
+		pVo.setDivide(2);	//pNo 비수기 2라서 2
 		pVo.setRoomNo(roomNo); // 룸넘버
 		pVo.setPrice(price); // 요금
 
@@ -156,6 +168,7 @@ public class HostRoomService {
 		price = rVo.getJsPrice1();
 
 		pVo.setSortation(2); // 비수기
+		pVo.setDivide(1);
 		pVo.setRoomNo(roomNo); // 룸넘버
 		pVo.setPrice(price); // 요금
 
@@ -175,6 +188,7 @@ public class HostRoomService {
 		price = rVo.getJsPrice2();
 
 		pVo.setSortation(2); // 비수기
+		pVo.setDivide(2);
 		pVo.setRoomNo(roomNo); // 룸넘버
 		pVo.setPrice(price); // 요금
 
@@ -196,6 +210,7 @@ public class HostRoomService {
 		price = rVo.getsPrice1();
 
 		pVo.setSortation(1); // 비수기
+		pVo.setDivide(1);
 		pVo.setRoomNo(roomNo); // 룸넘버
 		pVo.setPrice(price); // 요금
 
@@ -217,6 +232,7 @@ public class HostRoomService {
 		price = rVo.getsPrice2();
 
 		pVo.setSortation(1); // 비수기
+		pVo.setDivide(2);
 		pVo.setRoomNo(roomNo); // 룸넘버
 		pVo.setPrice(price); // 요금
 
