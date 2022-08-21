@@ -25,7 +25,7 @@ public class HostIntroduceController {
 	
 	@RequestMapping(value = "introsave", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introsave(HttpSession session, @ModelAttribute HostIntroduceVo iVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
+		int userNo = (Integer) session.getAttribute("authUser");
 		System.out.println("session: " + userNo);
 		int companyNo = iService.getCompanyNo(userNo);
 		iVo.setCompanyNo(companyNo);
@@ -41,7 +41,7 @@ public class HostIntroduceController {
 	
 	@RequestMapping(value="introoptsave", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introroptsave(HttpSession session, @ModelAttribute HostIntroduceVo iVo){
-		int userNo = (Integer) session.getAttribute("userNo");
+		int userNo = (Integer) session.getAttribute("authUser");
 		System.out.println(userNo);
 		int pensionNo = iService.getPensionNoBySession(userNo);
 		System.out.println("pensionNo : " + pensionNo);

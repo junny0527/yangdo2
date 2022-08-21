@@ -22,7 +22,7 @@ public class HostCompanyregController {
 	@RequestMapping(value="companyreg", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companyreg(HttpSession session, Model model, String id) {
 		
-		int userNo = (Integer) session.getAttribute("userNo");
+		int userNo = (Integer) session.getAttribute("authUser");
 		System.out.println(userNo);
 		HostCompanyregVo cVo = new HostCompanyregVo();
 		String email = cregService.getEmail(userNo);

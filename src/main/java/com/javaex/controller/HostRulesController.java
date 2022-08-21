@@ -25,7 +25,7 @@ public class HostRulesController {
 	
 	@RequestMapping(value="rulessave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String rulessave(HttpSession session, @ModelAttribute HostRulesVo hVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
+		int userNo = (Integer) session.getAttribute("authUser");
 		System.out.println(userNo);
 		int pensionNo = rService.getPensionNoBySession(userNo);
 		System.out.println("pensionNo : " + pensionNo);
