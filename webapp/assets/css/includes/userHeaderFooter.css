@@ -145,6 +145,7 @@ a:active {
 #header ul {
 	margin: 15px 0px 0px 0px;
 	float: right;
+	line-height: 1;
 }
 /* 헤더 li */
 #header ul>li {
