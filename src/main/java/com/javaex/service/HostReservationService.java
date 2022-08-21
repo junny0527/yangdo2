@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.javaex.dao.HostReservationDao;
 import com.javaex.vo.HostReservationVo;
+import com.javaex.vo.PointsVo;
 
 @Service
 public class HostReservationService {
@@ -14,8 +15,8 @@ public class HostReservationService {
 	@Autowired
 	private HostReservationDao hDao;
 	
-	public int getPensionNo(int userNo) {
-		return hDao.getPensionNo(userNo);
+	public int getPensionNo(int hostNo) {
+		return hDao.getPensionNo(hostNo);
 	}
 	
 	public List<HostReservationVo> getList(int userNo){
@@ -30,6 +31,26 @@ public class HostReservationService {
 		hVo.setHostNo(hostNo);
 		hVo.setReservationNo(reserveid);
 		return hDao.getReserve(hVo);
+	}
+	
+	public int givePoint(PointsVo pVo) {
+		System.out.println("service" + pVo);
+		return hDao.givePoint(pVo);
+	}
+	
+	public int changestatusUsed(String reserveNum) {
+		int reserveNo = Integer.parseInt(reserveNum);
+		return hDao.changestatusUsed(reserveNo);
+	}
+	
+	public int changestatusReserveCancel(String reserveNum) {
+		int reserveNo = Integer.parseInt(reserveNum);
+		return hDao.changestatusReserveCancel(reserveNo);
+	}
+	
+	public int changestatusRoomCheckin(String reserveNum) {
+		int reserveNo = Integer.parseInt(reserveNum);
+		return hDao.changestatusRoomCheckin(reserveNo);
 	}
 	
 	

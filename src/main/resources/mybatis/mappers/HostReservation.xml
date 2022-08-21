@@ -46,6 +46,7 @@
 			,res.user_no guestNo
 	        ,info.room_name roomName
 	        ,res.name guestName
+	        ,res.total_price totalPrice
 	        ,res.hp hp
 	        ,res.check_in checkin
 	        ,res.check_out checkout
@@ -91,11 +92,35 @@
 				
 		VALUES (
 			  		SEQ_POINTS_NO.nextval,
-					#{no},
+					#{reserveNo},
 					#{point},
 					sysdate
 				)
 	]]>
 </insert>
+
+<update id = "changestatusUsed" parameterType = "int">
+	<![CDATA[
+		update reservations
+		set status = 3
+		where no = #{reserveNo}
+	]]>
+</update>
+
+<update id = "changestatusReserveCancel" parameterType = "int">
+	<![CDATA[
+		update reservations
+		set status = 4
+		where no = #{reserveNo}
+	]]>
+</update>
+
+<update id = "changestatusRoomCheckin" parameterType = "int">
+	<![CDATA[
+		update reservations
+		set status = 2
+		where no = #{reserveNo}
+	]]>
+</update>
 
 </mapper>

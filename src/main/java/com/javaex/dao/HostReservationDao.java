@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.HostReservationVo;
+import com.javaex.vo.PointsVo;
 
 @Repository
 public class HostReservationDao {
@@ -28,6 +29,22 @@ public class HostReservationDao {
 		return sqlSession.selectOne("HostReservation.getReserve", hVo);
 	}
 	
+	public int givePoint(PointsVo pVo) {
+		System.out.println("dao" + pVo);
+		return sqlSession.insert("HostReservation.pointsInsert", pVo);
+	}
+	
+	public int changestatusUsed(int reserveNo) {
+		return sqlSession.update("HostReservation.changestatusUsed", reserveNo);
+	}
+	
+	public int changestatusReserveCancel(int reserveNo) {
+		return sqlSession.update("HostReservation.changestatusReserveCancel", reserveNo);
+	}
+	
+	public int changestatusRoomCheckin(int reserveNo) {
+		return sqlSession.update("HostReservation.changestatusRoomCheckin", reserveNo);
+	}
 	
 	
 }

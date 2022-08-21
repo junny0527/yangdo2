@@ -87,8 +87,8 @@
 				<br>
 				<div>
 					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
-					<button class = "btn btn-danger">예약취소</button>
-					<button class = "btn btn-primary">체크인</button>
+					<button class = "btn btn-danger reservecancel">예약취소</button>
+					<button class = "btn btn-primary roomcheckin">체크인</button>
 				</div>
 			</div>
 			
@@ -189,7 +189,7 @@
 				<br>
 				<div>
 					<button class = "btn btn-close" data-dismiss="modal" aria-label="Close">닫기</button>
-					<button class = "btn btn-danger">예약 취소</button>
+					<button class = "btn btn-danger reservecancel">예약취소</button>
 				</div>
 			</div>
 			
@@ -201,7 +201,6 @@
 <!-- event modal -->	
 
 <script type = "text/javascript">
-
 
 document.addEventListener('DOMContentLoaded', function() {
 	var initialLocaleCode = 'ko';
@@ -249,7 +248,49 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservebaby").html('유아 : '+result.baby+'명');
         				
         				$("#roomreserved").modal("show");
-    				}
+        				
+        				$(".roomcheckin").off("click").on("click", function(){
+        					var reserveNum = result.reservationNo;
+       						$.ajax({
+       							url : "${pageContext.request.contextPath}/api/changestatusRoomCheckin",
+       							type : "post",
+       							data : JSON.stringify(reserveNum),
+       							contentType : 'application/json',
+       							dataType : "json",
+       							success : function(good){
+       								console.log("change status");
+       								window.location.href = "${pageContext.request.contextPath}/host/reservemanage";
+       							},
+       							error : function(XHR, status, error) {
+       								console.log(status + ' : ' + error);
+       							}
+       						});
+       						
+       						$("#roomreserved").modal("hide");
+    					});
+        				
+        				
+        				$(".reservecancel").off("click").on("click", function(){
+        					var reserveNum = result.reservationNo;
+       						$.ajax({
+       							url : "${pageContext.request.contextPath}/api/changestatusReserveCancel",
+       							type : "post",
+       							data : JSON.stringify(reserveNum),
+       							contentType : 'application/json',
+       							dataType : "json",
+       							success : function(good){
+       								console.log("change status");
+       								window.location.href = "${pageContext.request.contextPath}/host/reservemanage";
+       							},
+       							error : function(XHR, status, error) {
+       								console.log(status + ' : ' + error);
+       							}
+       						});
+       						
+       						$("#roomreserved").modal("hide");
+    					});
+       					
+   					};
     				
     				if(result.status == 2){
     					console.log(result.status);
@@ -272,6 +313,54 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".used").css('color', 'white');
         				
         				$("#roominuse").modal("show");
+        				
+        				$(".used").off("click").on("click", function(){
+        					console.log(result.guestNo);
+        					console.log(result.totalPrice);
+        					
+        					var point = (result.totalPrice) * 0.01;
+        					console.log(point);
+        					var pVo = {
+        							reserveNo: result.reservationNo,
+        							point: point
+        						};
+        					
+        					var reserveNum = result.reservationNo;
+        					
+        					console.log(pVo);
+        					
+       						$.ajax({
+       							url : "${pageContext.request.contextPath}/api/givepoints",
+       							type : "post",
+       							data : JSON.stringify(pVo),
+       							contentType : 'application/json',
+       							dataType : "json",
+       							success : function(good){
+       								console.log("포인트 부여");
+       								
+       								$.ajax({
+       	       							url : "${pageContext.request.contextPath}/api/changestatusUsed",
+       	       							type : "post",
+       	       							data : JSON.stringify(reserveNum),
+       	       							contentType : 'application/json',
+       	       							dataType : "json",
+       	       							success : function(good){
+       	       								console.log("change status");
+       	       								window.location.href = "${pageContext.request.contextPath}/host/reservemanage";
+       	       							},
+       	       							error : function(XHR, status, error) {
+       	       								console.log(status + ' : ' + error);
+       	       							}
+       	       						});
+       								
+       							},
+       							error : function(XHR, status, error) {
+       								console.log(status + ' : ' + error);
+       							}
+       						});
+       						
+        					$("#roominuse").modal("hide");
+   						});
     				}
     				
     				if(result.status == 3){
@@ -293,10 +382,9 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservebaby").html('유아 : '+result.baby+'명');
         				
         				$("#roomchecking").modal("show");
-    					
     				}
     				
-    				if(result.status ==4){
+    				if(result.status == 4){
     					
     					$(".reserveroom").html(result.roomName);
     					$(".reserveroom").css('text-align', 'center');
@@ -316,6 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
         				$("#roomchecking").modal("show");
     					
     				}
+    				
     				if(result.status == 5){
     					
     					$(".reserveroom").html(result.roomName);
@@ -334,8 +423,52 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservebaby").html('유아 : '+result.baby+'명');
         				
         				$("#roomreserved").modal("show");
-    					
+        				
+        				$(".roomcheckin").off("click").on("click", function(){
+        					var reserveNum = result.reservationNo;
+       						$.ajax({
+       							url : "${pageContext.request.contextPath}/api/changestatusRoomCheckin",
+       							type : "post",
+       							data : JSON.stringify(reserveNum),
+       							contentType : 'application/json',
+       							dataType : "json",
+       							success : function(good){
+       								console.log("change status");
+       								window.location.href = "${pageContext.request.contextPath}/host/reservemanage";
+       							},
+       							error : function(XHR, status, error) {
+       								console.log(status + ' : ' + error);
+       							}
+       						});
+       						
+       						$("#roomreserved").modal("hide");
+    					});
+        				
+        				
+        				$(".reservecancel").off("click").on("click", function(){
+        					var reserveNum = result.reservationNo;
+       						$.ajax({
+       							url : "${pageContext.request.contextPath}/api/changestatusReserveCancel",
+       							type : "post",
+       							data : JSON.stringify(reserveNum),
+       							contentType : 'application/json',
+       							dataType : "json",
+       							success : function(good){
+       								console.log("change status");
+       								window.location.href = "${pageContext.request.contextPath}/host/reservemanage";
+       							},
+       							error : function(XHR, status, error) {
+       								console.log(status + ' : ' + error);
+       							}
+       						});
+       						
+       						$("#roomreserved").modal("hide");
+    					});
+        				
+        				
+        				
     				}
+    				
     				if(result.status == 6){
     					console.log(result.status);
     					
@@ -355,15 +488,40 @@ document.addEventListener('DOMContentLoaded', function() {
         				$(".reservebaby").html('유아 : '+result.baby+'명');
         				
         				$("#roomstandby").modal("show");
+        				
+        				$(".reservecancel").off("click").on("click", function(){
+        					var reserveNum = result.reservationNo;
+       						$.ajax({
+       							url : "${pageContext.request.contextPath}/api/changestatusReserveCancel",
+       							type : "post",
+       							data : JSON.stringify(reserveNum),
+       							contentType : 'application/json',
+       							dataType : "json",
+       							success : function(good){
+       								console.log("change status");
+       								window.location.href = "${pageContext.request.contextPath}/host/reservemanage";
+       							},
+       							error : function(XHR, status, error) {
+       								console.log(status + ' : ' + error);
+       							}
+       						});
+       						
+       						$("#roomstandby").modal("hide");
+    					});
+        				
+        				
+        				
     				}
     				
-    				
     			},
+    			
     			error : function(XHR, status, error) {
     				console.log(status + ' : ' + error);
-    			} });
+    			}
+  			});
     	  
       },
+      
       editable: false,
       dayMaxEvents: false, // allow "more" link when too many events
       events:function(info, successCallback, failureCallback){

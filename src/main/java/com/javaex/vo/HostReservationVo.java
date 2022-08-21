@@ -7,6 +7,7 @@ public class HostReservationVo {
 	private String roomName;
 	private String guestName;
 	private int guestNo;
+	private int totalPrice;
 	private String hp;
 	private String checkin;
 	private String checkout;
@@ -18,12 +19,14 @@ public class HostReservationVo {
 	public HostReservationVo() {}
 
 	public HostReservationVo(String reservationNo, int hostNo, String roomName, String guestName, int guestNo,
-			String hp, String checkin, String checkout, String adult, String kid, String baby, String status) {
+			int totalPrice, String hp, String checkin, String checkout, String adult, String kid, String baby,
+			String status) {
 		this.reservationNo = reservationNo;
 		this.hostNo = hostNo;
 		this.roomName = roomName;
 		this.guestName = guestName;
 		this.guestNo = guestNo;
+		this.totalPrice = totalPrice;
 		this.hp = hp;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -71,6 +74,14 @@ public class HostReservationVo {
 
 	public void setGuestNo(int guestNo) {
 		this.guestNo = guestNo;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public String getHp() {
@@ -132,9 +143,9 @@ public class HostReservationVo {
 	@Override
 	public String toString() {
 		return "HostReservationVo [reservationNo=" + reservationNo + ", hostNo=" + hostNo + ", roomName=" + roomName
-				+ ", guestName=" + guestName + ", guestNo=" + guestNo + ", hp=" + hp + ", checkin=" + checkin
-				+ ", checkout=" + checkout + ", adult=" + adult + ", kid=" + kid + ", baby=" + baby + ", status="
-				+ status + "]";
+				+ ", guestName=" + guestName + ", guestNo=" + guestNo + ", totalPrice=" + totalPrice + ", hp=" + hp
+				+ ", checkin=" + checkin + ", checkout=" + checkout + ", adult=" + adult + ", kid=" + kid + ", baby="
+				+ baby + ", status=" + status + "]";
 	}
 	
 }
