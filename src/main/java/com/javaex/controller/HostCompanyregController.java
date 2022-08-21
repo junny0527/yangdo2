@@ -22,7 +22,6 @@ public class HostCompanyregController {
 	
 	@RequestMapping(value="companyreg", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companyreg(HttpSession session, Model model, String id) {
-		
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int userNo = uVo.getNo();
 		System.out.println(userNo);
@@ -35,7 +34,8 @@ public class HostCompanyregController {
 
 	@RequestMapping(value="companysave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companysave(HttpSession session, @ModelAttribute HostCompanyregVo cVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
 		cVo.setUserNo(userNo);
 		cregService.insertCompany(cVo);
 		return "/host/introduce";
