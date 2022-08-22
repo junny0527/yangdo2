@@ -1,5 +1,6 @@
 package com.javaex.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,9 @@ public class JiwoongController {
 	
 	//검색시 체크박스 리스트
 	@RequestMapping(value="main/search", method = {RequestMethod.POST, RequestMethod.GET})
-	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo) {
+	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo,
+			@RequestParam(value="pensionitem2") List<Integer> itemList
+			) {
 		System.out.println("Controller>search");
 		System.out.println(searchVo);
 		

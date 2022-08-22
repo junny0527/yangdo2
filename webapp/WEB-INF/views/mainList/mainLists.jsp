@@ -203,10 +203,21 @@
 					<!-- 
 					<!-- 사진정보 -->
 					<ul>
-					<c:forEach var="pList" items="${pMap.pList}">
-					<div class="title">
-						<h3>${pList.GUNAME}</h3>
-					</div>
+					<c:forEach var="pList" items="${pMap.pList}" varStatus="i">
+					<c:choose>
+						<c:when test="${i.index == 0 }">
+						<div class="title">
+							<h3>${pList.GUNAME}</h3>
+						</div>
+						</c:when>
+						<c:otherwise>
+						<c:if test="${pMap.pList[i.index].GUNAME != pMap.pList[i.index-1].GUNAME }">
+						<div class="title">
+							<h3>${pList.GUNAME}</h3>
+						</div>
+						</c:if>
+						</c:otherwise>
+					</c:choose>
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
