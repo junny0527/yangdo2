@@ -12,16 +12,16 @@ public class MainListVo {
 	private String status;
 	private int pNo;
 	private String rCount;
+	private String gugunName;
 	
 	
 	public MainListVo() {
 		super();
 	}
 
-	
-	
+
 	public MainListVo(String pName, String lawName, int lawCode, String visitRoad3, String imagePath, int penPrice,
-			int stars, String status, int pNo, String rCount) {
+			int stars, String status, int pNo, String rCount, String gugunName) {
 		super();
 		this.pName = pName;
 		this.lawName = lawName;
@@ -33,41 +33,9 @@ public class MainListVo {
 		this.status = status;
 		this.pNo = pNo;
 		this.rCount = rCount;
+		this.gugunName = gugunName;
 	}
 
-	
-	
-	public String getrCount() {
-		return rCount;
-	}
-
-
-
-	public void setrCount(String rCount) {
-		this.rCount = rCount;
-	}
-
-
-
-	public int getpNo() {
-		return pNo;
-	}
-
-
-
-	public void setpNo(int pNo) {
-		this.pNo = pNo;
-	}
-
-
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public String getpName() {
 		return pName;
@@ -139,14 +107,52 @@ public class MainListVo {
 	}
 
 
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public int getpNo() {
+		return pNo;
+	}
+
+
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
+
+
+	public String getrCount() {
+		return rCount;
+	}
+
+
+	public void setrCount(String rCount) {
+		this.rCount = rCount;
+	}
+
+
+	public String getGugunName() {
+		return gugunName;
+	}
+
+
+	public void setGugunName(String gugunName) {
+		this.gugunName = gugunName;
+	}
+
 
 	@Override
 	public String toString() {
 		return "MainListVo [pName=" + pName + ", lawName=" + lawName + ", lawCode=" + lawCode + ", visitRoad3="
 				+ visitRoad3 + ", imagePath=" + imagePath + ", penPrice=" + penPrice + ", stars=" + stars + ", status="
-				+ status + ", pNo=" + pNo + ", rCount=" + rCount + "]";
+				+ status + ", pNo=" + pNo + ", rCount=" + rCount + ", gugunName=" + gugunName + "]";
 	}
-
 
 	
 	

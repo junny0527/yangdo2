@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.MainListVo;
 import com.javaex.vo.MainSearchVo;
 
 @Repository
@@ -15,10 +16,10 @@ public class MainListDao {
 	private SqlSession sqlSession;
 	
 	//펜션정보 리스트 가져오기
-	public List<Map<String, Object>> select(int areaNo){
+	public List<Map<String, Object>> select(String guguninfo){
 		System.out.println("Dao>selectList");
 		
-		List<Map<String, Object>> pList = sqlSession.selectList("MainList.penList", areaNo);
+		List<Map<String, Object>> pList = sqlSession.selectList("MainList.penList", guguninfo);
 		System.out.println("pListDao"+pList);
 		
 		return pList;
@@ -36,4 +37,7 @@ public class MainListDao {
 		return searchList;
 		
 	}
+	
+	
+	
 }

@@ -39,12 +39,14 @@
 		<div class="sub_top_wrap">
 			<div class="sub_top">
 				<h2>펜션</h2>
+					<form action = "${pageContext.request.contextPath}/main/search" method = "get">
 						<select name="sido1" id="sido1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
-							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
+							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="">
 						</select>
 						<select name="gugun1" id="gugun1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
-							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="categoryChange(this)">
+							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="">
 						</select>
+						<input id ="guguninfo" type = "hidden" value = "">
 				</div>
 			</div>
 		</div>
@@ -54,7 +56,6 @@
 		<div id="content" class="sub_wrap">
 			<!-- fillter -->
 			<div class="filter_wrap">
-					<form action = "main/search" method = "get">
 				<section class="date_wrap">
 						<h3>날짜</h3>
 							<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center; z-index : 100;">
@@ -201,7 +202,7 @@
 				</div>
 				<div id="poduct_list_area">
 					<div class="title">
-						<h3>${pMap.pList[0].LAW_NAME}</h3>
+						<h3>${pMap.pList[0].GUNAME}</h3>
 					</div>
 					<!-- 
 					<!-- 사진정보 -->
@@ -210,7 +211,7 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGE_PATH}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGEPATH}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
@@ -219,22 +220,22 @@
 										</c:if>	
 									</div>
 									<div class="name">
-										<strong>${pList.NAME}</strong>
+										<strong>${pList.PNAME}</strong>
 										<p class="score">
 											<em>${pList.STARS}</em>
 											<c:choose>
 												<c:when test="${pList.STARS <= 3}">
-													<span>별로에요 ()</span>
+													<span>별로에요 (${pList.RCOUNT})</span>
 												</c:when>
 												<c:when test="${pList.STARS > 3 && pList.STARS < 4}">
-													<span>좋아요 ()</span>
+													<span>좋아요 (${pList.RCOUNT})</span>
 												</c:when>
 												<c:when test="${pList.STARS >= 4 && pList.STARS <= 5}">
-													<span>최고에요 ()</span>
+													<span>최고에요 (${pList.RCOUNT})</span>
 												</c:when>	
 											</c:choose>	
 										</p>
-										<p>${pList.LAW_NAME} | ${pList.VISIT_ROAD3}</p>
+										<p>${pList.GUNAME} | ${pList.VISITROAD3}</p>
 									</div>
 									<div class="price">
 										<p>
@@ -480,8 +481,9 @@
 		   var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 		 
 		 // 시/도 선택 박스 초기화
-		 $("select[name^=sido]").each(function() {
+		 $("select[name^=sido1]").each(function() {
 		  	 	$selsido = $(this);
+		  	 	
 		  	 	$.each(eval(area0), function() {
 		  	 	$selsido.append("<option value='"+this+"'>"+this+"</option>");
 		  	});
@@ -490,23 +492,45 @@
 		
 		 // 시/도 선택시 구/군 설정
 		
-		 $("select[name^=sido]").change(function() {
+		 $("select[name^=sido1]").change(function() {
 		 	 var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
 		 	 var $gugun = $(this).next(); // 선택영역 군구 객체
+		 	 
+		 	 var sido = $("#sido1 option:selected");
+		 	 console.log(sido);
+		 	 
+		 	 var sidoName = sido.val();
+		 	 console.log(sidoName);
+		 	 
+		 	
+		 	 
 		  $("option",$gugun).remove(); // 구군 초기화
 		
 			  if(area == "area0")
-			   $gugun.append("<option value=''>구/군 선택</option>");
+			   $gugun.append("<option class = 'gugunpick' value=''>구/군 선택</option>");
 			  else {
 			   $.each(eval(area), function() {
-			    $gugun.append("<option value='"+this+"'>"+this+"</option>");
+			    $gugun.append("<option class = 'gugunpick' value='"+this+"'>"+this+"</option>");
+			    
+			    
 			   });
 		  }
+		  
 		 });
 		
-		
 		});
-		
+		//군구 선택시 선택값 출력
+		$("#gugun1").on("click",function(){
+			var gugun = $("#gugun1 option:selected");
+			console.log("뒤질래")
+			console.log(gugun);
+			
+			var gugunName = gugun.text();
+			console.log(gugunName);
+			
+			$("#guguninfo").val(gugunName);
+			
+		});
 	
 	</script>
 </html>

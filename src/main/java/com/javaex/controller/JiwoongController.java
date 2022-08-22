@@ -1,6 +1,5 @@
 package com.javaex.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,31 +19,15 @@ public class JiwoongController {
 	@Autowired
 	private MainListService mainService;
 	
-	/*
-	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @RequestParam("areaNo") int areaNo, HttpServletRequest request) {
-		System.out.println("jiwoongController>mainList");
-		System.out.println(areaNo);
-		
-		
-		List<MainListVo> mainList = mainService.select(areaNo);
-		System.out.println(mainList);
-		
-		//펜션 정보 
-		model.addAttribute("mainList",mainList);
-		
-		
-		return "/mainList/mainLists";
-	}
-	*/
 	
-	//전체 리스트
+	
+	//전체 리스트 (지역선택시)
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @RequestParam("areaNo") int areaNo) {
+	public String mainList(Model model, @RequestParam("guguninfo") String guguninfo) {
 		System.out.println("jiwoongController>mainList");
-		System.out.println(areaNo);
+		System.out.println(guguninfo);
 		
-		Map<String, Object> pMap =  mainService.select(areaNo);
+		Map<String, Object> pMap =  mainService.select(guguninfo);
 		
 		model.addAttribute("pMap",pMap);
 		
@@ -67,15 +50,8 @@ public class JiwoongController {
 		/*
 		List<MainSearchVo> searchList = mainService.selectSearch(searchVo);
 		*/
-		return "/mainList/mainLists"; 
+		return "mainList/mainLists"; 
 	}
 	
-	//지역선택시 리스트
-	@RequestMapping(value="main/region", method = {RequestMethod.GET, RequestMethod.POST})
-	public String regionList(Model model, @RequestParam("sido") String sido,
-								@RequestParam("gugun") String gugun) {
-		System.out.println("Controller>region");
-		
-		return "/mainList/mainLists";
-	}
+	
 }
