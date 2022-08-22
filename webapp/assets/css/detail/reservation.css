@@ -62,18 +62,6 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
     background-color: #F7323F;
 }
 
-#search-icon {
-    width: 30px;
-    height: 30px;
-    background-color: #F7323F;
-}
-
-
-
-#header ul {
-    margin: 10.5px 0px 0px 0px;
-}
-
 #wrap > #area {
    padding: 10px 0px 10px 0px;
    background-color:   #f7323f;
@@ -92,12 +80,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
    float: right;
    
 }
-/* 헤더 li */
-#header ul>li {
-   margin: 0px 0px 0px 20px;
-   float: left;
-   font-size: 20px;
-}
+
 
 /* 헤더 펜션글자 */
 #area h2{

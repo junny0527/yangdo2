@@ -434,7 +434,7 @@
 								<span class="roomName">${roomVo.ROOM_NAME}</span>
 								<div class="infoBtn">
 									<span>객실 이용안내</span>
-									<button class="information_Use${roomVo.NO}" name="${roomVo.NO}">보기</button>
+									<button class="information_Use" name="${roomVo.NO}">보기</button>
 								</div>
 								<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 								<div class="defaultForm">
