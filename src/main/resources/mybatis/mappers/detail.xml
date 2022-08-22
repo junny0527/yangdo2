@@ -55,16 +55,16 @@
 				select  ort.rn RN
 				        ,ort.no
 				        ,ort.pension_no
-				        ,ort.image_path
+				        ,ort.SAVE_NAME
 				        ,ort.orders
 				from    (select  rownum rn
 				                 ,ot.no
 				                 ,ot.pension_no
-				                 ,ot.image_path
+				                 ,ot.SAVE_NAME
 				                 ,ot.orders
 				         from    (select  p.no
 				                          ,p.pension_no
-				                          ,p.image_path
+				                          ,p.SAVE_NAME
 				                          ,p.orders
 				                  from    pension_image p
 				                  order by no asc) ot
@@ -118,8 +118,8 @@
 			from    reservations res, rooms r, pension p
 			where   res.room_no = r.no
 			and     r.pension_no = p.no
-			and     status = '예약완료'
-			or      status = '양도대기'
+			and     status = 3
+			or      status = 6
 			and     p.no = #{pensionNo}
 			group by res.room_no
 			order by res.room_no asc
@@ -147,7 +147,7 @@
                           ,to_char(r.trans_price, 'FM999,999') TRANS_PRICE
                           ,to_char(p.price, 'FM999,999') PRICE
                           ,w.name WEEK_NAME
-                          ,ri.image_path
+                          ,ri.SAVE_NAME
                           ,to_char(pe.add_adult_price, 'FM99,999') ADULT_PRICE
                           ,to_char(pe.add_kid_price, 'FM99,999') KID_PRICE
                           ,to_char(pe.add_baby_price, 'FM99,999') BABY_PRICE
@@ -174,12 +174,12 @@
                                       or check_out > #{datepicker}
                                       and check_out <= #{datepicker2}) r ,prices p , pension pe, week w, (select	a.img_no,
 				                                                                                                  	b.rooms_no,
-				                                                                                                 	b.image_path
+				                                                                                                 	b.save_name
 				                                                                                          from (select      min(rim.no) img_no,
 				                                                                                                            rim.rooms_no
 				                                                                                                from        room_image rim
 				                                                                                                group by    rim.rooms_no) a,
-				                                                                                               (select   	image_path, rooms_no, no img_no
+				                                                                                               (select   	save_name, rooms_no, no img_no
 				                                                                                                from   		room_image) b
 				                                                                                          where a.img_no = b.img_no) ri
             where   ro.no = r.room_no(+)
@@ -190,8 +190,8 @@
             and		pe.no = ro.pension_no
             and     p.sortation =   (select gubun
                                     from peck p, p_peck pp 
-                                    where peck_start < #{datepicker}
-                                    and peck_end > #{datepicker}
+                                    where peck_start <= #{datepicker}
+                                    and peck_end >= #{datepicker}
                                     and p.no = pp.peck_no
                                     and pp.pension_no = #{pensionNo})
             and w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
@@ -246,7 +246,7 @@
 			select  r.pension_no
 					,rImg.no RIMGNO
 					,rImg.rooms_no
-					,rImg.image_path
+					,rImg.SAVE_NAME
 			from    rooms r, room_image rImg
 			where   r.no = rImg.rooms_no
 			and     r.pension_no = #{pensionNo}
@@ -258,11 +258,11 @@
 	<select id ="pensionRoomImg" parameterType="int" resultType="map">
 		<![CDATA[
 			select  rImg.rooms_no
-			        ,rImg.image_path
+			        ,rImg.SAVE_NAME
 			from    rooms r, room_image RIMG
 			where   r.no = rImg.rooms_no
 			and     r.pension_no = #{pensionNo}
-			group by rImg.rooms_no,     rImg.IMAGE_PATH
+			group by rImg.rooms_no,     rImg.SAVE_NAME
 			order by rImg.rooms_no asc
 		]]>
 	</select>
@@ -276,7 +276,7 @@
 			        ,re.image1
 			        ,re.image2
 			        ,re.content
-			        --,re.reg_date REG_DATE
+			        ,re.reg_date REG_DATE
                     ,CASE    WHEN to_char(sysdate-1,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('1일 전')
                              WHEN to_char(sysdate-2,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('2일 전')        
                              WHEN to_char(sysdate-3,'yy/mm/dd') = to_char(re.reg_date,'yy/mm/dd') THEN to_char('3일 전')        
@@ -337,7 +337,7 @@
 			                                                                and         r.no = res.room_no
 			                                                                and         res.no = re.no
 			                                                                and         p.no = #{pensionNo}
-			                                                                and         res.status = '이용완료'
+			                                                                and         res.status = 3
 			                                                                group by    re.review_no
 			                                                                            ,r.room_name
 			                                                                            ,res.name) re2
