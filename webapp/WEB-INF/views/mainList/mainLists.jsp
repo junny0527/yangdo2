@@ -46,7 +46,6 @@
 						<select name="gugun1" id="gugun1" style="width: 150px; height: 40px; font-size: 18px; text-align: center; color:#0000008F; font-weight: bold;
 							border-radius: 4px;	background-color: #fff; border: 1px solid #ed0918;" onchange="">
 						</select>
-						<input id ="guguninfo" type = "hidden" value = "">
 				</div>
 			</div>
 		</div>
@@ -182,32 +181,32 @@
 				<div class="top_sort">
 					<div class="pc">
 						<div class="btn_wrap width_4">
-							<button type="button" data-sort="HIT" class="on">
-								<span>추천 순</span>
-							</button>
-							<button type="button" data-sort="DISTANCE" class="">
-								<span>거리 순</span>
-							</button>
-							<button type="button" data-sort="LOWPRICE" class="">
-								<span>낮은 가격 순</span>
-							</button>
-							<button type="button" data-sort="HIGHPRICE" class="">
-								<span>높은 가격 순</span>
-							</button>
+								<button type="button" data-sort="HIT" class="on" id="hit" value="추천순">
+									<span>추천 순</span>
+								</button>
+								<button type="button" data-sort="DISTANCE" class="" id="distance" value="">
+									<span>거리 순</span>
+								</button>
+								<button type="button" data-sort="LOWPRICE" class="" id="lowprice" value="">
+									<span>낮은 가격 순</span>
+								</button>
+								<button type="button" data-sort="HIGHPRICE" class="" id="highprice" value="">
+									<span>높은 가격 순</span>
+								</button>
 						</div>
-						<button type="button" id="btn_map" class="btn_map text-center" ">
+						<button type="button" id="btn_map" class="btn_map text-center">
 						지도
 						</button>
 					</div>
 				</div>
 				<div id="poduct_list_area">
-					<div class="title">
-						<h3>${pMap.pList[0].GUNAME}</h3>
-					</div>
 					<!-- 
 					<!-- 사진정보 -->
 					<ul>
 					<c:forEach var="pList" items="${pMap.pList}">
+					<div class="title">
+						<h3>${pList.GUNAME}</h3>
+					</div>
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
@@ -311,6 +310,17 @@
 			</div><!-- /.modal -->
 	
 		<script type="text/javascript">
+			
+			//추천순 버튼들 클릭시
+			$("#hit").on("click",function(){
+				
+				var hit = $("#hit").text();
+				
+				console.log(hit);
+				
+		
+				
+			});
 			
 			//적용버튼 클릭시
 			$("#btn_child2").on("click",function(){

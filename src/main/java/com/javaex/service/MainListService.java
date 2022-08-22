@@ -20,14 +20,14 @@ public class MainListService {
 	
 	
 	//지역 조건으로 펜션리스트
-	public Map<String, Object> select(String guguninfo){
+	public Map<String, Object> select( ){
 		System.out.println("Service>select");
 		
 		Map<String, Object> pMap = new HashMap<String, Object>();
 		System.out.println("pMap"+pMap);
 		
 		//펜션 정보 리스트 가져오기
-		List<Map<String, Object>> pList = mainDao.select(guguninfo);
+		List<Map<String, Object>> pList = mainDao.select();
 		System.out.println("test"+pList);
 		
 		pMap.put("pList", pList);

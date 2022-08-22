@@ -3,8 +3,9 @@
 <mapper namespace = "MainList">
 	
 	
+	
 		<!-- 지역 검색시 리스트 -->
-		<select id="penList" resultType="Map" parameterType="String">
+		<select id="penList" resultType="Map">
 		<![CDATA[
 				select             p.name pName,
 							       p.law_code lawCode,
@@ -33,63 +34,12 @@
 				            and rm.no = re.no
 				            and p.no = sd.pension_no
 				            and sd.no = gg.sido_no
-							and gg.name = #{guguninfo}
 		]]>
 	</select>			
 	 
+	
 	<!-- 체크박스 선택시 리스트 -->
-	<!--  
-	<select id="searchList" resultType="Map" parameterType="com.javaex.vo.MainSearchVo">
-		<![CDATA[
-			select  p.name pName,
-			        p.law_name lawName,
-			        p.law_code lawCode,
-			        p.visit_road3 visitRoad3,
-			        pi.image_path imagePath,
-			        pr.price price,
-			        re.status status,
-			        pa.s_amenities_no sAmenities,
-			        pp.s_public_no sPublic,
-			        rm.standard_people standardPeople,
-			        gu.name guName
-			        
-			 from pension p, reservations re, reviews ri, gugun gu, sido si, p_amenities pa, p_public pp,
-		 			(select image_path 
-	                  from pension_image  
-	                  where RoWNUM = 1) pi,
-	                 rooms rm, (select pr.price,
-                                       pr.no
-                               from prices pr
-                               GROUP BY pr.no, pr.price
-                               having pr.price = min(pr.price)) pr
-			 where p.no = rm.no
-			 and rm.no = pr.no
-			 and re.no = rm.no
-			 and re.no = ri.review_no
-			 and p.no = si.no
-			 and si.no = gu.no
-			 and p.no = pa.pension_no
-			 and p.no = pp.pension_no
-			 and rm.standard_people = #{persons}
-			 
-			 and re.check_in = #{datepicker}
-			 and re.check_out = #{datepicker2}
-		 ]]>
-		 <foreach collection="pensionItem1" item="pensionItems1">
-			<![CDATA[
-				and pa.s_amenities_no = #{pensionItems1}
-			]]>
-		</foreach>
-		
-		 <foreach collection="pensionItem2" item="pensionItems2">
-			<![CDATA[
-				 and pp.s_public_no = #{pensionItems2}
-			]]>
-		</foreach>
-		
-	</select>
-	-->
-	<!-- 체크박스 선택시 리스트 -->
+	  
 	<select id="searchList" resultType="Map" parameterType="com.javaex.vo.MainSearchVo">
 		<![CDATA[
 			select  p.name pNAme,
@@ -146,5 +96,6 @@
 			]]>
 		</foreach>
 	</select>
+	
 	
 </mapper>

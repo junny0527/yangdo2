@@ -23,11 +23,10 @@ public class JiwoongController {
 	
 	//전체 리스트 (지역선택시)
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @RequestParam("guguninfo") String guguninfo) {
+	public String mainList(Model model ) {
 		System.out.println("jiwoongController>mainList");
-		System.out.println(guguninfo);
 		
-		Map<String, Object> pMap =  mainService.select(guguninfo);
+		Map<String, Object> pMap =  mainService.select();
 		
 		model.addAttribute("pMap",pMap);
 		
