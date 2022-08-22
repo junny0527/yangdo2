@@ -5,7 +5,7 @@
 	
 	
 		<!-- 지역 검색시 리스트 -->
-		<select id="penList" resultType="Map">
+		<select id="penList" parameterType="map" resultType="Map">
 		<![CDATA[
 				select             p.name pName,
 							       p.law_code lawCode,
@@ -34,6 +34,7 @@
 				            and rm.no = re.no
 				            and p.no = sd.pension_no
 				            and sd.no = gg.sido_no
+				            order by gg.name --guName
 		]]>
 	</select>			
 	 
@@ -83,6 +84,7 @@
 			 and re.check_out = #{datepicker2}
              and si.name = #{sido1}
              and gu.name = #{gugun1}
+             
 		]]>
 		 <foreach collection="pensionItem1" item="pensionItems1">
 			<![CDATA[

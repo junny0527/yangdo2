@@ -43,6 +43,9 @@ public class MainListService {
 		
 		Map<String, Object> pMap = new HashMap<String,Object>();
 		
+		Map<String, Object> map = new HashMap<>();
+		
+		
 		List<Map<String, Object>> pList = mainDao.selectSearch(searchVo);
 		System.out.println(pList);
 		
