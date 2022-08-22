@@ -49,13 +49,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 						<div class="right" data-v-33033856="" data-v-f785cca6="">
 							<section class="info" data-v-33033856="">
 								<p class="name" data-v-33033856="">
-									<strong data-v-33033856="">예약번호</strong>NO.${rpMap.NO }
-								</p>
-								<p data-v-33033856="">
 									<strong data-v-33033856="">펜션이름</strong>${rpMap.PNAME }
 								</p>
+								
 								<p data-v-33033856="">
-									<strong data-v-33033856="">객실명/기간</strong>${rpMap.ROOM_NAME } /
+									<strong data-v-33033856="">객실명/기간</strong>${rpMap.RNAME } /
 									${rpMap.DDay}박
 								</p>
 								<p data-v-33033856="">
@@ -119,14 +117,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">상세 결제 내역</strong> <br>
+											<strong data-v-3ce5aaac="">구매 총액 내역</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
 													${rpMap.ADULT}명</span><b data-v-3ce5aaac=""class="">${rpMap.ADULT_KID_PRICE*rpMap.ADULT}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${rpMap.KID}명</span><b data-v-3ce5aaac="" class="kidss">${rpMap.ADD_KID_PRICE*rpMap.KID}원</b>
+													${rpMap.KID}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
+														value="${rpMap.ADD_KID_PRICE*rpMap.KID}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
@@ -183,8 +182,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 									<option data-minprice="0" value="KAKAO" data-v-f785cca6="">카카오페이</option>
 									<option data-minprice="0" value="NAVER" data-v-f785cca6="">
 										네이버페이</option>
-									<option data-minprice="0" value="CARD" data-v-f785cca6=""
-										name="CARD">신용/체크카드</option>
+									<option data-minprice="0" value="CARD" data-v-f785cca6="">신용/체크카드</option>
 								</select>
 								<!---->
 								<!---->
@@ -293,6 +291,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 	function requestPay(form) {
 		console.log("클릭")
+		
 		 IMP.request_pay({ // param
 	          pg: "html5_inicis",
 	          pay_method: "card",
@@ -306,38 +305,68 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	      }, function (rsp) { // callback
 	    	  if ( rsp.success ) { 
 	    		  console.log("결제")
-	    	       /*  msg += '고유ID : ' + rsp.imp_uid;
-	    	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-	    	        msg += '결제 금액 : ' + rsp.paid_amount;
-	    	        msg += '카드 승인번호 : ' + rsp.apply_num;  */
-	    	        // todo 예약테이블에 insert
+	    	        // 예약테이블에 insert
 	    	        // post요청 submit();
-	    	        
-	    	        const data = {
+	    	        var repayVo ={
+	    	        		no: '${rpMap.NO}',
+		    	        	name: $('#userName').val(),
+		    	        	hp: $('#hp').val(),
+		    	        	point:$('#point').val(),
+		    	        	userNo:"${rpMap.USERNO}",
+		    	        	roomNo:"${rpMap.ROOMNO}",
+		    	        	pointNo:"${rpMap.POINTNO}",
+		    	        	checkIn:"${rpMap.CHECK_IN }",
+		    	        	checkOut:"${rpMap.CHECK_OUT }",
+		    	        	pName : "${rpMap.PNAME}",
+		    	        	rName : "${rpMap.RNAME}",
+		    	        	status: '1',
+		    	        	payWay: '1',
+		    	        	payStatus: '2',
+		    	        	//null 값인거 일단 넣어보기
+		    	        	adult: '${rpMap.ADULT}',
+		    	        	kid: '${rpMap.KID}',
+		    	        	baby: '${rpMap.BABY}',
+		    	        	id: '${authUser.id}',
+		    	        	pw: '${authUser.pw}',
+		    	        	regDate:'${rpMap.REG_DATE}',
+		    	        	//////////////////////////////
+		    	        	
+		    	        	totalPrice: '${rpMap.TOTAL_PRICE}'
+	    	        }
+	    	       /*  const data = {
 	    	        	no: '${rpMap.NO}',
 	    	        	name: $('#userName').val(),
 	    	        	hp: $('#hp').val(),
-	    	        	status: '${rpMap.STATUS}',
+	    	        	status: '1',
+	    	        	//null 값인거 일단 넣어보기
+	    	        	adult: '${rpMap.ADULT}',
+	    	        	kid: '${rpMap.KID}',
+	    	        	baby: '${rpMap.BABY}',	
+	    	        	checkin:"${rpMap.CHECKIN}",
+	    	        	checkout:"${rpMap.CHECKOUT}",
+	    	        	//////////////////////////////
 	    	        	point:$('#point').val(),
 	    	        	totalprice: '${rpMap.TOTAL_PRICE}'
-	    	        };
+	    	        }; */
 	    	        
-	    	        console.log("data ::: >> ", data);
+	    	       /*  console.log("data ::: >> ", data); */
+	    	        console.log("repayVo ::: >> ", repayVo);
 	    	        
-	    	    	$.ajax({
+	    	    	 $.ajax({
 	    	    		type : "POST",
 	    	    		url : "/yangdo/res/repay", //요청 할 URL
 	    	    		contentType : "application/json; charset=utf-8",
-	    	    		data : JSON.stringify(data), //넘길 파라미터
-	    	    		success : function(data) {
-	    	    			console.log("data: ", data);
+	    	    		data : JSON.stringify(repayVo), //넘길 파라미터
+	    	    		dataType : "json",
+	    	    		success : function(repayVo) {
+	    	    			console.log("repayVo: ", repayVo);
 	    	    			alert("결제가 성공되었습니다.");
 	    	    			// location.href = '주소'
 	    	    		},
 	    	    		error : function(err) {
 	    	    			console.log(err + "접속 도중 오류가 발생했습니다."); //에러시 실행 할 내용
 	    	    		}
-	    	    	});
+	    	    	}); 
 	    	        
 	    	    } else {
 	    	        alert("결제가 실패되었습니다.")

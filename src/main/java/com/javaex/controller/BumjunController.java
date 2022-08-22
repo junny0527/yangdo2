@@ -36,7 +36,7 @@ public class BumjunController {
 	public String reserve(@PathVariable int no, Model model, HttpSession session) {
 		System.out.println("\t\t BumJunController::reserve() invoked...");
 
-		System.out.println(no);
+		System.out.println("no:"+no);
 		Map<String, Object> rpMap = rePayService.getRePay(no);
 		
 		model.addAttribute("rpMap", rpMap);
@@ -49,6 +49,10 @@ public class BumjunController {
 		
 		model.addAttribute("gajidaPoints", gajidaPoints);
 		
+		System.out.println("==================================");
+		System.out.println(rpMap);
+		System.out.println("==================================");
+		
 		return "/pay/reserve";
 	}
 
@@ -57,10 +61,17 @@ public class BumjunController {
 	public String yangdoreserve(@PathVariable int no, Model model, HttpSession session) {
 		System.out.println("\t\t BumJunController::yangdoreserve() invoked...");
 
-		session.getAttribute("authUser");
-		Map<String, Object> rpMap = rePayService.getRePay(no);
+		
+		Map<String, Object> rpMap = rePayService.getyangdoRePay(no);
 
 		model.addAttribute("rpMap", rpMap);
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		int userNo = userVo.getNo();
+		Map<String, Object> gajidaPoints = pointsService.getpoints(userNo);
+		System.out.println(gajidaPoints);
+		
+		model.addAttribute("gajidaPoints", gajidaPoints);
 
 		return "/pay/yangdoReserve";
 	}
@@ -68,23 +79,23 @@ public class BumjunController {
 	// 일반 결제 인서트
 	@PostMapping("/repay")
 	@ResponseBody
-	public void reInsert(@RequestBody RePayVo bean) {
+	public int reInsert(@RequestBody RePayVo bean) {
 
 		System.out.println("\t\t BumJunController::reInsert() invoked...");
 		System.out.println("Controller RePayVo::" + bean);
 //		System.out.println("Controller pointsVo::"+ pointsVo);
-
-		rePayService.PayInsert(bean);
+		
+		return rePayService.PayInsert(bean);
 	}
 
 	// 양도 결제 인서트+업데이트
 	@PostMapping("/yangdoUpdateInsert")
 	@ResponseBody
-	public void yangdoUpdateInsert(@RequestBody RePayVo bean) {
+	public int yangdoUpdateInsert(@RequestBody RePayVo bean) {
 		System.out.println("\t\t BumJunController::yangdoPayUpdate() invoked...");
 		System.out.println("RePayVo::" + bean);
 
-		rePayService.yangdoUpdateInsert(bean);
+		return rePayService.yangdoUpdateInsert(bean);
 
 	}
 

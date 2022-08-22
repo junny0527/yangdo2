@@ -14,7 +14,7 @@ public class RePayDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 예약+양도예약 정보 가져오기
+	// 예약 정보 가져오기
 	public Map<String, Object> getRePay(int no) {
 		System.out.println("\t\t RePayDao::getRePay() invoked...");
 
@@ -23,21 +23,34 @@ public class RePayDao {
 
 		return rpMap;
 	}
+	//양도예약 정보 가져오기
+	public Map<String, Object> getyangdoRePay(int no) {
+		System.out.println("\t\t RePayDao::getRePay() invoked...");
+
+		Map<String, Object> rpMap = sqlSession.selectOne(SQLMAP + "getyangdoRePay", no);
+		System.out.println(rpMap);
+
+		return rpMap;
+	}
+	
 	
 	// 저장
-	public void PayInsert(RePayVo bean) {
+	public int PayInsert(RePayVo bean) {
 		System.out.println("\t\t RePayService::PayInsert() invoked...");
-		 sqlSession.insert(SQLMAP + "PayInsert", bean);
+		return sqlSession.insert(SQLMAP + "PayInsert", bean);
 	}
 	
-	public void yangdoUpdate(RePayVo bean) {
+	
+	
+	// 양도 저장+업데이트
+	public int yangdoUpdate(RePayVo bean) {
 		System.out.println("\t\t RePayService::yangdoUpdate() invoked...");
-		sqlSession.update(SQLMAP+ "yangdoPayUpdate", bean);
+		return sqlSession.update(SQLMAP+ "yangdoPayUpdate", bean);
 	}
 	
-	public void yangdoInsert(RePayVo bean) {
+	public int yangdoInsert(RePayVo bean) {
 		System.out.println("\t\t RePayService::yangdoInsert() invoked...");
-		 sqlSession.insert(SQLMAP+ "yangdoPayInsert", bean);
+		return  sqlSession.insert(SQLMAP+ "yangdoPayInsert", bean);
 	}
 	
 }
