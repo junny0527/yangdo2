@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "HostReviews">
+
+
+<select id = "getReviewsList" parameterType = "int" resultType = "com.javaex.vo.HostReviewsVo">
+
+	<![CDATA[
+		select
+			revi.review_no reviewNo
+	        ,revi.no reserveNo
+	        ,revi.title title
+	        ,revi.stars stars
+	        ,rm.room_name roomName
+	        ,res.name guestName
+	        ,revi.image1 image1
+	        ,revi.image2 image2
+	        ,revi.content guestContent
+	        ,to_char(revi.reg_date, 'YYYY-MM-DD') guestRegdate
+		from
+			reviews revi, reservations res, rooms rm
+		where
+			revi.no = res.no
+			and res.room_no = rm.no
+			and rm.pension_no = #{pensionNo}
+		order by revi.reg_date desc
+	]]>
+
+
+</select>
+
+
+</mapper>
