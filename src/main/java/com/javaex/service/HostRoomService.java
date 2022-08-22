@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.HostRoomDao;
 import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.PriceVo;
+import com.javaex.vo.RoomImageVo;
 import com.javaex.vo.WeekVo;
 
 @Service
@@ -49,9 +50,11 @@ public class HostRoomService {
 		List<WeekVo> s1List = hostRoomDao.gets1Week(roomNo);
 		List<WeekVo> s2List = hostRoomDao.gets2Week(roomNo);
 		
-		
+		List<RoomImageVo> riList= hostRoomDao.getRoomImg2(roomNo);
+		System.out.println(riList);
 		
 		rMap.put("rVo", rVo);
+		rMap.put("riList", riList);
 		rMap.put("pList", pList);
 		rMap.put("gb1List", gb1List);
 		rMap.put("gb2List", gb2List);
@@ -61,14 +64,13 @@ public class HostRoomService {
 		rMap.put("s2List", s2List);
 		rMap.put("rNoList", rNoList);
 		
-		System.out.println(rMap);
 		
 		return rMap;
 	}
 	
 	
 	// 방저장
-	public int roomSave(HostRoomsVo rVo ) {
+	public int roomSave(HostRoomsVo rVo) {
 		System.out.println("HostRoomService > roomSave");
 		
 		//////////////////////////////방저장
@@ -82,37 +84,10 @@ public class HostRoomService {
 		// 룸넘버꺼내기
 		int roomNo = rVo.getNo();
 		
-		/////////////////파일저장
-		//이미지 파일 꺼내기
-		/*
-		 * List<String> imgFile = rVo.getImgfile(); for(int i=0; i<imgFile.size(); i++)
-		 * {
-		 * 
-		 * String saveDir = "C:\\javaStudy\\upload";
-		 * 
-		 * String orgName = file.getOriginalFilename();
-		 * 
-		 * String exName = orgName.substring(orgName.lastIndexOf("."));
-		 * 
-		 * String saveName =
-		 * System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
-		 * 
-		 * String filePath = saveDir +"\\"+ saveName;
-		 * 
-		 * rVo.setNo(roomNo); hostRoomDao.roomImgInsert(rVo);
-		 * 
-		 * try { byte[] fileData = file.getBytes(); OutputStream os = new
-		 * FileOutputStream(filePath); BufferedOutputStream bos = new
-		 * BufferedOutputStream(os);
-		 * 
-		 * bos.write(fileData); bos.close();
-		 * 
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 * 
-		 * }
-		 */
 		
-		
+		//이미지파일은 업데이트
+		System.out.println(roomNo);
+		hostRoomDao.roomImgUpdate(roomNo);
 		
 		////////////////////요금저장
 		// 요금(기본비수기1)
@@ -252,5 +227,65 @@ public class HostRoomService {
 		
 		return count;
 	}
+	
+	public List<RoomImageVo> imgUpload(List<MultipartFile> fileList) {
+		System.out.println("HostRoomService > imgUpload()");
+		String saveDir = "C:\\javaStudy\\upload";
+		
+		for(int i=0; i<fileList.size(); i++) {
+			MultipartFile file = fileList.get(i);
+			if(file == null) {
+				return null;
+			}else if(file.getSize() == 0) {
+				return null;
+			}else {
+				//오리지널 파일명
+				String orgName = file.getOriginalFilename();
+				System.out.println(orgName);
+				//확장자
+				String exName = orgName.substring(orgName.lastIndexOf("."));
+				
+				//저장파일명
+				String saveName = System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
+				
+				//파일 경로(디렉토리+저장파일명)
+				String filePath = saveDir + "\\" + saveName;
+				
+				RoomImageVo roomImgVo = new RoomImageVo();
+				roomImgVo.setSaveName(saveName);
+				roomImgVo.setImgPath(filePath);
+				//다오--DB저장
+				
+				hostRoomDao.roomImgInsert(roomImgVo);
+				
+				//(2)파일 저장
+				try {
+					byte[] fileData = file.getBytes();
+					OutputStream os = new FileOutputStream(filePath);
+					BufferedOutputStream bos = new BufferedOutputStream(os);
+					
+					bos.write(fileData);
+					bos.close();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
 
+		
+		List<RoomImageVo> riList= hostRoomDao.getRoomImg();
+		
+		
+		return riList;
+	}
+
+	public int imgDelete(int no) {
+		System.out.println("HostRoomService > imgDelete()");
+		
+		int count = hostRoomDao.roomImgDelete(no);
+		
+		return count;
+	}
 }

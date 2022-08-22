@@ -44,7 +44,6 @@ public class HostRoomController {
 		int userNo = uVo.getNo();
 
 		rVo.setUserNo(userNo);
-		
 		hostRoomSerivce.roomSave(rVo);
 		
 		return "redirect:/host/main";

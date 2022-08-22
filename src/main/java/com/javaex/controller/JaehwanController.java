@@ -39,11 +39,6 @@ public class JaehwanController {
 		return "/host/reservationManagement";
 	}
 	
-	@RequestMapping(value="reviews", method= {RequestMethod.GET, RequestMethod.POST})
-	public String reviews() {
-		return "/host/reviews";
-	}
-	
 	@RequestMapping(value="customerservice", method = {RequestMethod.GET, RequestMethod.POST})
 	public String customerservice() {
 		return "/host/customerService";

@@ -4,16 +4,18 @@ public class RoomImageVo {
 
 	private int no;
 	private int roomNo;
+	private String saveName;
 	private String imgPath;
 
 	public RoomImageVo() {
 		super();
 	}
 
-	public RoomImageVo(int no, int roomNo, String imgPath) {
+	public RoomImageVo(int no, int roomNo, String saveName, String imgPath) {
 		super();
 		this.no = no;
 		this.roomNo = roomNo;
+		this.saveName = saveName;
 		this.imgPath = imgPath;
 	}
 
@@ -33,6 +35,14 @@ public class RoomImageVo {
 		this.roomNo = roomNo;
 	}
 
+	public String getSaveName() {
+		return saveName;
+	}
+
+	public void setSaveName(String saveName) {
+		this.saveName = saveName;
+	}
+
 	public String getImgPath() {
 		return imgPath;
 	}
@@ -43,7 +53,7 @@ public class RoomImageVo {
 
 	@Override
 	public String toString() {
-		return "RoomImageVo [no=" + no + ", roomNo=" + roomNo + ", imgPath=" + imgPath + "]";
+		return "RoomImageVo [no=" + no + ", roomNo=" + roomNo + ", saveName=" + saveName + ", imgPath=" + imgPath + "]";
 	}
 
 }

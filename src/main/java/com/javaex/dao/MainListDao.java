@@ -16,10 +16,10 @@ public class MainListDao {
 	private SqlSession sqlSession;
 	
 	//펜션정보 리스트 가져오기
-	public List<Map<String, Object>> select(String guguninfo){
+	public List<Map<String, Object>> select(){
 		System.out.println("Dao>selectList");
 		
-		List<Map<String, Object>> pList = sqlSession.selectList("MainList.penList", guguninfo);
+		List<Map<String, Object>> pList = sqlSession.selectList("MainList.penList");
 		System.out.println("pListDao"+pList);
 		
 		return pList;
