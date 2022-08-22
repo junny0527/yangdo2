@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.HostRoomDao;
 import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.PriceVo;
+import com.javaex.vo.RoomImageVo;
 import com.javaex.vo.WeekVo;
 
 @Service
@@ -68,7 +69,7 @@ public class HostRoomService {
 	
 	
 	// 방저장
-	public int roomSave(HostRoomsVo rVo ) {
+	public int roomSave(HostRoomsVo rVo) {
 		System.out.println("HostRoomService > roomSave");
 		
 		//////////////////////////////방저장
@@ -251,6 +252,59 @@ public class HostRoomService {
 		
 		
 		return count;
+	}
+	
+	public List<RoomImageVo> imgUpload(List<MultipartFile> fileList) {
+		System.out.println("HostRoomService > imgUpload()");
+		String saveDir = "C:\\javaStudy\\upload";
+		
+		for(int i=0; i<fileList.size(); i++) {
+			MultipartFile file = fileList.get(i);
+			if(file == null) {
+				return null;
+			}else if(file.getSize() == 0) {
+				return null;
+			}else {
+				//오리지널 파일명
+				String orgName = file.getOriginalFilename();
+				System.out.println(orgName);
+				//확장자
+				String exName = orgName.substring(orgName.lastIndexOf("."));
+				
+				//저장파일명
+				String saveName = System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
+				
+				//파일 경로(디렉토리+저장파일명)
+				String filePath = saveDir + "\\" + saveName;
+				
+				RoomImageVo roomImgVo = new RoomImageVo();
+				roomImgVo.setSaveName(saveName);
+				roomImgVo.setImgPath(filePath);
+				//다오--DB저장
+				
+				hostRoomDao.roomImgInsert(roomImgVo);
+				
+				//(2)파일 저장
+				try {
+					byte[] fileData = file.getBytes();
+					OutputStream os = new FileOutputStream(filePath);
+					BufferedOutputStream bos = new BufferedOutputStream(os);
+					
+					bos.write(fileData);
+					bos.close();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+
+		
+		List<RoomImageVo> riList= hostRoomDao.getRoomImg();
+		
+		
+		return riList;
 	}
 
 }

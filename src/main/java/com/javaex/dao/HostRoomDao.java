@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.PriceVo;
+import com.javaex.vo.RoomImageVo;
 import com.javaex.vo.WeekVo;
 
 @Repository
@@ -22,10 +23,10 @@ public class HostRoomDao {
 		return count;
 	}
 
-	public int roomImgInsert(HostRoomsVo rVo) {
+	public int roomImgInsert(RoomImageVo roomImgVo) {
 		System.out.println("HostRoomDao  > roomImgInsert");
-
-		int count = sqlSession.insert("HostRooms.roomImgInsert", rVo);
+		System.out.println(roomImgVo);
+		int count = sqlSession.insert("HostRooms.roomImgInsert", roomImgVo);
 		return count;
 	}
 
@@ -57,6 +58,14 @@ public class HostRoomDao {
 		HostRoomsVo hVo = sqlSession.selectOne("HostRooms.getRoom", rVo);
 		
 		return hVo;
+	}
+	
+	public List<RoomImageVo> getRoomImg() {
+		System.out.println("HostRoomDao  > getRoomImg");
+		
+		List<RoomImageVo> rI = sqlSession.selectList("HostRooms.getRoomImg");
+		
+		return rI;
 	}
 
 	public List<PriceVo> getPrice(int roomNo) {

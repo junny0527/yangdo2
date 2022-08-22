@@ -15,10 +15,10 @@
 	</insert>
 
 	<insert id="roomImgInsert"
-		parameterType="com.javaex.vo.HostRoomsVo">
+		parameterType="com.javaex.vo.RoomImageVo">
 		<![CDATA[
-			insert into room_image
-			values(seq_room_image_no.nextval,#{no},#{imagePath})		
+			insert into room_image (no,SAVE_NAME,image_path)
+			values(seq_room_image_no.nextval,#{saveName},#{imgPath})		
 		]]>
 	</insert>
 
@@ -73,7 +73,15 @@
 			and c.user_no = #{userNo}
 		]]>
 	</select>
-	<!-- <select id="getRoomImg"> <![CDATA[ ]]> </select> -->
+	<select id="getRoomImg" resultType="com.javaex.vo.RoomImageVo"> 
+		<![CDATA[ 
+			select  no
+					,save_name saveName
+			        ,image_path imgPath
+			from room_image
+			where rooms_no is null
+		]]> 
+	</select> 
 
 	<select id="getRoomPrices" resultType="com.javaex.vo.PriceVo"
 		parameterType="int">
