@@ -30,6 +30,82 @@
 	
 	<div>
 		<ul>
+			<c:forEach items = "${rList}" var = "rVo">
+				<li>
+					<div id="reviewBox">
+						<div id="guestContainer">
+			                <div class="box">
+			                    <img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">
+			                </div>
+			                <div id="guestBox">
+			                    <span id="guestReview">${rVo.title}</span>
+			                    <div id="reviewStar">
+			                    	<c:choose>
+				                        <c:when test = "${rVo.stars >= 5}">
+				                       		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                       		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                       		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                       		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                       		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        </c:when>
+				                        <c:when test = "${rVo.stars >= 4}">
+				                       		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        </c:when>
+				                        <c:when test = "${rVo.stars >= 3}">
+			                         		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+			                         		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        </c:when>
+				                        <c:when test = "${rVo.stars >= 2}">
+				                        	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+				                        	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+			                         	</c:when>
+			                         	<c:otherwise>
+			                         		<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+			                         	</c:otherwise>
+			                        </c:choose>
+			                        <span id="starScore">${rVo.stars}</span>
+			                    </div>
+			                    <div id="guestInfo">
+			                        <span id="roomName">${rVo.roomName} 객실 이용</span>
+			                        <span> | ${rVo.guestName}</span>
+			                    </div>
+			                    <span id="reviewContent">${rVo.guestContent}</span>                
+			                    <div id="roomImg">
+			                        <ul>
+			                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/1.jpg"></li>
+			                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/10.jpg"></li>
+			                        </ul>
+			                    </div>
+			                    <span id="guestRegDate">${rVo.guestRegdate}</span>
+			                    
+			                    <button id="addreply" type="button" class="btn btn-default btn_add">+ 답글 달기</button>
+			                    
+			                    <c:choose>
+			                    	<c:when test = "">
+					                    <div id="ceoInfo">
+				                            <span id="ceoReview">제휴점 답변</span>
+				                            <span id="ceoContent">지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.지웅잉님 안녕하세요. 소중한 후기 감사드립니다.</span>
+				                            <span id="ceoRegDate">1개월 전</span>
+				                        </div>
+				                    </c:when>
+				                    <c:otherwise>
+					                     <div id = "reply">
+					                    	<textarea class = "form-control"></textarea>
+					                    	<button id = "cancel" type = "button" class="btn">취소</button>
+					                    	<button id = "sendreply" type = "button" class="btn btn-primary">등록</button>
+					                    </div>
+			                        </c:otherwise>
+			                    </c:choose>
+			                </div>
+			            </div>
+			        </div>
+				</li>
+			</c:forEach>
+			
 			<li>
 				<div id="reviewBox">
 					<div id="guestContainer">
@@ -39,11 +115,11 @@
 		                <div id="guestBox">
 		                    <span id="guestReview">여기만한 곳은 어디에도 없을 거예요.</span>
 		                    <div id="reviewStar">
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
+		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
+		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>
 		                        <span id="starScore">5.0</span>
 		                    </div>
 		                    <div id="guestInfo">
@@ -53,49 +129,8 @@
 		                    <span id="reviewContent">진심으로 가는길에 카페를 들렀다가 숙소로 갔는데 진짜 카페가지말고 바로 숙소로 갈껄 하는 생각이 들만큼 너무너무 좋은 숙소였습니다 ㅎㅎ 불멍도 야무지게 하고 맛있는 음식도 잘 먹고 갑니다 ㅎㅎ 사장님도 너무 좋고 시설도 너무 좋아서 완전 힐링 하고 가네요 ㅎㅎ 다음에는 2박을 하고싶을정도로 너무 좋은 하루였습니다!!!</span>                
 		                    <div id="roomImg">
 		                        <ul>
-		                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/img.PNG"></li>
-		                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/img2.PNG"></li>
-		                        </ul>
-		                    </div>
-		                    <span id="guestRegDate">1개월 전</span>
-		                    
-		                    <button id="addreply" type="button" class="btn btn-default btn_add">+ 답글 달기</button>
-		                    
-		                    <div id = "reply">
-		                    	<textarea class = "form-control"></textarea>
-		                    	<button id = "cancel" type = "button" class="btn">취소</button>
-		                    	<button id = "sendreply" type = "button" class="btn btn-primary">등록</button>
-		                    </div>
-		                    
-		                </div>
-		            </div>
-		        </div>
-			</li>
-			<li>
-				<div id="reviewBox">
-					<div id="guestContainer">
-		                <div class="box">
-		                    <img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">
-		                </div>
-		                <div id="guestBox">
-		                    <span id="guestReview">여기만한 곳은 어디에도 없을 거예요.</span>
-		                    <div id="reviewStar">
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/star.png"></span>
-		                        <span id="starScore">5.0</span>
-		                    </div>
-		                    <div id="guestInfo">
-		                        <span id="roomName">풍뎅이 객실 이용</span>
-		                        <span> | 지웅잉</span>
-		                    </div>
-		                    <span id="reviewContent">진심으로 가는길에 카페를 들렀다가 숙소로 갔는데 진짜 카페가지말고 바로 숙소로 갈껄 하는 생각이 들만큼 너무너무 좋은 숙소였습니다 ㅎㅎ 불멍도 야무지게 하고 맛있는 음식도 잘 먹고 갑니다 ㅎㅎ 사장님도 너무 좋고 시설도 너무 좋아서 완전 힐링 하고 가네요 ㅎㅎ 다음에는 2박을 하고싶을정도로 너무 좋은 하루였습니다!!!</span>                
-		                    <div id="roomImg">
-		                        <ul>
-		                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/img.PNG"></li>
-		                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/img2.PNG"></li>
+		                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/15.jpg"></li>
+		                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/20.jpg"></li>
 		                        </ul>
 		                    </div>
 		                    <span id="guestRegDate">1개월 전</span>
