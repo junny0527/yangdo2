@@ -38,13 +38,12 @@ public class HostRoomController {
 	}
 	
 	@RequestMapping(value="roomsave",method= {RequestMethod.GET,RequestMethod.POST})
-	public String roomSave(HttpSession session , @ModelAttribute HostRoomsVo rVo, @RequestParam("imgfile") MultipartFile file) {
+	public String roomSave(HttpSession session , @ModelAttribute HostRoomsVo rVo) {
 		System.out.println("HostRoomController > roomSave ");
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int userNo = uVo.getNo();
 
 		rVo.setUserNo(userNo);
-		System.out.println(file);
 		hostRoomSerivce.roomSave(rVo);
 		
 		return "redirect:/host/main";

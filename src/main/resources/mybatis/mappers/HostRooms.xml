@@ -22,6 +22,14 @@
 		]]>
 	</insert>
 
+	<update id="updateRoomImg" parameterType="int">
+		<![CDATA[
+			update room_image
+			set rooms_no = #{roomNo}
+			where rooms_no is null
+		]]>
+	</update>
+	
 	<insert id="roomPriceInsert"
 		parameterType="com.javaex.vo.PriceVo">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
@@ -82,7 +90,24 @@
 			where rooms_no is null
 		]]> 
 	</select> 
-
+	
+	<select id="getRoomImg2" resultType="com.javaex.vo.RoomImageVo" parameterType="int"> 
+		<![CDATA[ 
+			select  no
+					,save_name saveName
+			        ,image_path imgPath
+			from room_image
+			where rooms_no = #{roomNo}
+		]]> 
+	</select> 
+	
+	<delete id="roomImgDelete" parameterType="int">
+		<![CDATA[
+			delete from room_image
+			where no = #{no}
+		]]>
+	</delete>
+	
 	<select id="getRoomPrices" resultType="com.javaex.vo.PriceVo"
 		parameterType="int">
 		<![CDATA[

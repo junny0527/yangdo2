@@ -30,6 +30,14 @@ public class HostRoomDao {
 		return count;
 	}
 
+	public int roomImgUpdate(int roomNo) {
+		System.out.println("HostRoomDao  > roomImgUpdate");
+		
+		int count = sqlSession.update("HostRooms.updateRoomImg",roomNo);
+		
+		return count;
+	}
+	
 	public int roomPriceInsert(PriceVo pVo) {
 		System.out.println("HostRoomDao  > roomPriceInsert");
 
@@ -66,6 +74,15 @@ public class HostRoomDao {
 		List<RoomImageVo> rI = sqlSession.selectList("HostRooms.getRoomImg");
 		
 		return rI;
+	}
+	
+	
+	public List<RoomImageVo> getRoomImg2(int roomNo) {
+		System.out.println("HostRoomDao  > getRoomImg2");
+		System.out.println(roomNo);
+		List<RoomImageVo> rIList = sqlSession.selectList("HostRooms.getRoomImg2", roomNo);
+		System.out.println(rIList);
+		return rIList;
 	}
 
 	public List<PriceVo> getPrice(int roomNo) {
@@ -127,5 +144,13 @@ public class HostRoomDao {
 		List<HostRoomsVo> rList = sqlSession.selectList("HostRooms.roomNoList", userNo);
 		
 		return rList;
+	}
+	
+	public int roomImgDelete(int no) {
+		System.out.println("HostRoomDao  > roomImgDelete");
+		
+		int count =sqlSession.delete("HostRooms.roomImgDelete", no);
+		
+		return count;
 	}
 }

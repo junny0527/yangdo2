@@ -50,9 +50,11 @@ public class HostRoomService {
 		List<WeekVo> s1List = hostRoomDao.gets1Week(roomNo);
 		List<WeekVo> s2List = hostRoomDao.gets2Week(roomNo);
 		
-		
+		List<RoomImageVo> riList= hostRoomDao.getRoomImg2(roomNo);
+		System.out.println(riList);
 		
 		rMap.put("rVo", rVo);
+		rMap.put("riList", riList);
 		rMap.put("pList", pList);
 		rMap.put("gb1List", gb1List);
 		rMap.put("gb2List", gb2List);
@@ -62,7 +64,6 @@ public class HostRoomService {
 		rMap.put("s2List", s2List);
 		rMap.put("rNoList", rNoList);
 		
-		System.out.println(rMap);
 		
 		return rMap;
 	}
@@ -83,37 +84,10 @@ public class HostRoomService {
 		// 룸넘버꺼내기
 		int roomNo = rVo.getNo();
 		
-		/////////////////파일저장
-		//이미지 파일 꺼내기
-		/*
-		 * List<String> imgFile = rVo.getImgfile(); for(int i=0; i<imgFile.size(); i++)
-		 * {
-		 * 
-		 * String saveDir = "C:\\javaStudy\\upload";
-		 * 
-		 * String orgName = file.getOriginalFilename();
-		 * 
-		 * String exName = orgName.substring(orgName.lastIndexOf("."));
-		 * 
-		 * String saveName =
-		 * System.currentTimeMillis()+UUID.randomUUID().toString()+exName;
-		 * 
-		 * String filePath = saveDir +"\\"+ saveName;
-		 * 
-		 * rVo.setNo(roomNo); hostRoomDao.roomImgInsert(rVo);
-		 * 
-		 * try { byte[] fileData = file.getBytes(); OutputStream os = new
-		 * FileOutputStream(filePath); BufferedOutputStream bos = new
-		 * BufferedOutputStream(os);
-		 * 
-		 * bos.write(fileData); bos.close();
-		 * 
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 * 
-		 * }
-		 */
 		
-		
+		//이미지파일은 업데이트
+		System.out.println(roomNo);
+		hostRoomDao.roomImgUpdate(roomNo);
 		
 		////////////////////요금저장
 		// 요금(기본비수기1)
@@ -307,4 +281,11 @@ public class HostRoomService {
 		return riList;
 	}
 
+	public int imgDelete(int no) {
+		System.out.println("HostRoomService > imgDelete()");
+		
+		int count = hostRoomDao.roomImgDelete(no);
+		
+		return count;
+	}
 }
