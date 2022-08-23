@@ -181,16 +181,16 @@
 				<div class="top_sort">
 					<div class="pc">
 						<div class="btn_wrap width_4">
-								<button type="button" data-sort="HIT" class="on" id="hit" value="추천순">
+								<button type="button" data-sort="HIT" class="on" id="hit" value="hit">
 									<span>추천 순</span>
 								</button>
-								<button type="button" data-sort="DISTANCE" class="" id="distance" value="">
+								<button type="button" data-sort="DISTANCE" class="on" id="distance" value="distance">
 									<span>거리 순</span>
 								</button>
-								<button type="button" data-sort="LOWPRICE" class="" id="lowprice" value="">
+								<button type="button" data-sort="LOWPRICE" class="on" id="lowprice" value="lowprice">
 									<span>낮은 가격 순</span>
 								</button>
-								<button type="button" data-sort="HIGHPRICE" class="" id="highprice" value="">
+								<button type="button" data-sort="HIGHPRICE" class="on" id="highprice" value="highprice">
 									<span>높은 가격 순</span>
 								</button>
 						</div>
@@ -323,13 +323,11 @@
 		<script type="text/javascript">
 			
 			//추천순 버튼들 클릭시
-			$("#hit").on("click",function(){
+			$(".on").on("click",function(){
 				
-				var hit = $("#hit").text();
+				var button = $(this).val();
 				
-				console.log(hit);
-				
-		
+				console.log(button);
 				
 			});
 			

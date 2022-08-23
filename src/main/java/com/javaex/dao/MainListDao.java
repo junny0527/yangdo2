@@ -15,7 +15,7 @@ public class MainListDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//펜션정보 리스트 가져오기
+	//기본 펜션정보 리스트 가져오기
 	public List<Map<String, Object>> select(){
 		System.out.println("Dao>selectList");
 		

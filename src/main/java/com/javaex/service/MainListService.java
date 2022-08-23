@@ -19,7 +19,7 @@ public class MainListService {
 	
 	
 	
-	//지역 조건으로 펜션리스트
+	//기본 펜션리스트
 	public Map<String, Object> select( ){
 		System.out.println("Service>select");
 		

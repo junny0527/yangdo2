@@ -22,9 +22,9 @@ public class JiwoongController {
 	
 	
 	
-	//전체 리스트 (지역선택시)
+	//기본 리스트
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model ) {
+	public String mainList(Model model) {
 		System.out.println("jiwoongController>mainList");
 		
 		Map<String, Object> pMap =  mainService.select();
@@ -36,13 +36,25 @@ public class JiwoongController {
 		return "/mainList/mainLists";
 	}
 	
+	//추천 순 리스트
+	@RequestMapping(value="/main/hit", method = {RequestMethod.GET, RequestMethod.POST})
+	public String chuList(Model model, @RequestParam("hit") String hit) {
+		System.out.println("Controller>chu");
+		System.out.println(hit);
+		
+		return "/mainList/mainLists";
+	}
+	
 	//검색시 체크박스 리스트
 	@RequestMapping(value="main/search", method = {RequestMethod.POST, RequestMethod.GET})
 	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo,
-			@RequestParam(value="pensionitem2") List<Integer> itemList
-			) {
+							 @RequestParam(value="pensionitem2") List<Integer> itemList2,
+							 @RequestParam(value="pensionitem1") List<Integer> itemList1) {
 		System.out.println("Controller>search");
-		System.out.println(searchVo);
+		System.out.println("searchVo"+searchVo);
+		System.out.println("pensionitem2"+itemList2);
+		System.out.println("pensionitem1"+itemList1);
+		
 		
 		Map<String, Object> pMap = mainService.selectSearch(searchVo);
 		
