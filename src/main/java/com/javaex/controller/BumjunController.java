@@ -1,12 +1,10 @@
 package com.javaex.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javaex.service.PointsService;
 import com.javaex.service.RePayService;
 //import com.javaex.vo.PointsVo;
@@ -43,10 +39,8 @@ public class BumjunController {
 		System.out.println("\t\t BumJunController::reserve() invoked...");
 		
 		System.out.println("no:"+ params);
-		model.addAttribute("test", params);
-//		Map<String, Object> rpMap = rePayService.getRePay();
-		
-//		model.addAttribute("rpMap", rpMap);
+		model.addAttribute("rpMap", params);
+
 		
 		//총합포인트 가져오기 
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
@@ -57,7 +51,7 @@ public class BumjunController {
 		model.addAttribute("gajidaPoints", gajidaPoints);
 		
 		System.out.println("==================================");
-//		System.out.println(rpMap);
+		System.out.println(params);
 		System.out.println("==================================");
 		
 		return "/pay/reserve";
@@ -90,7 +84,6 @@ public class BumjunController {
 
 		System.out.println("\t\t BumJunController::reInsert() invoked...");
 		System.out.println("Controller RePayVo::" + bean);
-//		System.out.println("Controller pointsVo::"+ pointsVo);
 		rePayService.PayInsert(bean);
 		
 		return rePayService.PayInsert(bean);
