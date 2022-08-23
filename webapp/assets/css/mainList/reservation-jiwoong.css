@@ -70,9 +70,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 
 
 
-#header ul {
-    margin: 10.5px 0px 0px 0px;
-}
+
 
 #wrap > #area {
    padding: 10px 0px 10px 0px;
@@ -94,8 +92,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 }
 /* 헤더 li */
 #header ul>li {
-   margin: 0px 0px 0px 20px;
-   float: left;
+
    font-size: 20px;
 }
 
