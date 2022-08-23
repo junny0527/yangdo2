@@ -69,7 +69,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 							<section class="total_price_pc" data-v-33033856="">
 								<p data-v-33033856="">
 									<strong data-v-33033856=""><b data-v-33033856="">총
-											결제 금액</b>(VAT포함)</strong><span class="in_price total" data-v-33033856=""><fmt:formatNumber
+											결제 금액</b>(VAT포함)</strong><span class="in_price total" id="totalPrice" data-v-33033856=""><fmt:formatNumber
 														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원</span>
 								</p>
 								<ul data-v-33033856="">
@@ -232,8 +232,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		<!-- //footer -->
 		<c:import url="/WEB-INF/views/includes/userFooter.jsp"></c:import>
 	</div>
-
-</body>
 <script type="text/javascript">
 	$(function() {
 		const IMP = window.IMP; // 생략 가능
@@ -308,7 +306,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	        // 예약테이블에 insert
 	    	        // post요청 submit();
 	    	        var repayVo ={
-	    	        		no: '${rpMap.NO}',
+	    	        		
 		    	        	name: $('#userName').val(),
 		    	        	hp: $('#hp').val(),
 		    	        	point:$('#point').val(),
@@ -330,26 +328,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		    	        	pw: '${authUser.pw}',
 		    	        	regDate:'${rpMap.REG_DATE}',
 		    	        	//////////////////////////////
-		    	        	
-		    	        	totalPrice: '${rpMap.TOTAL_PRICE}'
+		    	        	totalPrice: $('#totalPrice').val()
 	    	        }
-	    	       /*  const data = {
-	    	        	no: '${rpMap.NO}',
-	    	        	name: $('#userName').val(),
-	    	        	hp: $('#hp').val(),
-	    	        	status: '1',
-	    	        	//null 값인거 일단 넣어보기
-	    	        	adult: '${rpMap.ADULT}',
-	    	        	kid: '${rpMap.KID}',
-	    	        	baby: '${rpMap.BABY}',	
-	    	        	checkin:"${rpMap.CHECKIN}",
-	    	        	checkout:"${rpMap.CHECKOUT}",
-	    	        	//////////////////////////////
-	    	        	point:$('#point').val(),
-	    	        	totalprice: '${rpMap.TOTAL_PRICE}'
-	    	        }; */
-	    	        
-	    	       /*  console.log("data ::: >> ", data); */
+	    	      
 	    	        console.log("repayVo ::: >> ", repayVo);
 	    	        
 	    	    	 $.ajax({
@@ -358,10 +339,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    		contentType : "application/json; charset=utf-8",
 	    	    		data : JSON.stringify(repayVo), //넘길 파라미터
 	    	    		dataType : "json",
-	    	    		success : function(repayVo) {
-	    	    			console.log("repayVo: ", repayVo);
+	    	    		success : function(res) {
+	    	    			console.log("res: ",res );
+	    	    			if(res.count === 1) {
+	    	    			// res 
 	    	    			alert("결제가 성공되었습니다.");
-	    	    			// location.href = '주소'
+	    	    			location.href = `/mypage?no=${res.no}`;
+	    	    			} else {
+	    	    				alert("실패")
+	    	    			}
+	    	    			
 	    	    		},
 	    	    		error : function(err) {
 	    	    			console.log(err + "접속 도중 오류가 발생했습니다."); //에러시 실행 할 내용
@@ -400,4 +387,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		}
 	});
 </script>
+</body>
+
 </html>

@@ -1,10 +1,13 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.HostIntroduceVo;
+import com.javaex.vo.PensionImageVo;
 
 @Repository
 public class HostIntroduceDao {
@@ -46,6 +49,27 @@ public class HostIntroduceDao {
 	
 	public int getPensionNoBySession(int userNo) {
 		return sqlSession.selectOne("HostIntroduce.getPensionNoBySession", userNo);
+	}
+	
+	public List<PensionImageVo> getPensionImg() {
+		
+		List<PensionImageVo> pI = sqlSession.selectList("HostIntroduce.getPensionImg");
+		
+		return pI;
+	}
+	
+	public int PensionImgInsert(PensionImageVo pVo) {
+		
+		int count = sqlSession.insert("HostIntroduce.PensionImgInsert", pVo);
+		
+		return count;
+	}
+	
+	public int PensionImgUpdate(int pensionNo) {
+		
+		int count = sqlSession.update("HostIntroduce.updatePensionImg", pensionNo);
+		
+		return count;
 	}
 	
 }

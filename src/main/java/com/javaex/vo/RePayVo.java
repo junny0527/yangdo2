@@ -25,7 +25,10 @@ public class RePayVo {
 	private int prNo;
 	private String id;
 	private String pw;
-
+	
+	
+	
+	
 	public RePayVo() {
 		super();
 	}
