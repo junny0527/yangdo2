@@ -183,6 +183,17 @@
 
 								<div class="form-layer mb_15">
 									<ul id="room-images">
+										<c:forEach items="${rMap.riList}" var="riList">
+											<li id="rList${riList.no}"  class="backgrou">
+												<div class="thumb">
+													<img alt="" src="${pageContext.request.contextPath}/upload/${riList.saveName}" class="img-rounded preview">
+												</div>
+												<button type="button" class="btn btn-xs btn-success changeimage">변경</button>
+												<button type="button" class="btn btn-xs btn-deleete deleteimage">삭제</button>
+												<input type="hidden" name="imgNo" value="${riList.no}">
+											</li>
+										</c:forEach>
+										
 									</ul>
 
 								</div>
@@ -231,20 +242,20 @@
 									</span> <span id="pricewidth" class="form-body">
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="gbWeeks1" value="sunday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'sunday'}">checked</c:if> </c:forEach>> 일
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="gbWeeks1" value="monday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'monday'}">checked</c:if> </c:forEach>> 월
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="gbWeeks1" value="tuesday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'tuesday'}">checked</c:if> </c:forEach>> 화
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="gbWeeks1" value="wednesday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'wednesday'}">checked</c:if> </c:forEach>> 수
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="gbWeeks1" value="thursday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'thursday'}">checked</c:if> </c:forEach>> 목
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="gbWeeks1" value="friday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'friday'}">checked</c:if> </c:forEach>> 금
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="gbWeeks1" value="saturday"
-													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == 'saturday'}">checked</c:if> </c:forEach>> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="gbWeeks1" value="일"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '일'}">checked</c:if> </c:forEach>> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="gbWeeks1" value="월"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '월'}">checked</c:if> </c:forEach>> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="gbWeeks1" value="화"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '화'}">checked</c:if> </c:forEach>> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="gbWeeks1" value="수"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '수'}">checked</c:if> </c:forEach>> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="gbWeeks1" value="목"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '목'}">checked</c:if> </c:forEach>> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="gbWeeks1" value="금"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '금'}">checked</c:if> </c:forEach>> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="gbWeeks1" value="토"
+													<c:forEach items="${rMap.gb1List}" var="gb1List"> <c:if test="${gb1List.WEEKNAME == '토'}">checked</c:if> </c:forEach>> 토
 												</label>
 											</div>
 
@@ -256,26 +267,26 @@
 
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="gbWeeks2" value="sunday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'sunday'}">checked</c:if> </c:forEach>> 일
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="gbWeeks2" value="일"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '일'}">checked</c:if> </c:forEach>> 일
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="gbWeeks2" value="monday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'monday'}">checked</c:if> </c:forEach>> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="gbWeeks2" value="월"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '월'}">checked</c:if> </c:forEach>> 월
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="gbWeeks2" value="tuesday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'tuesday'}">checked</c:if> </c:forEach>> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="gbWeeks2" value="화"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '화'}">checked</c:if> </c:forEach>> 화
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="gbWeeks2" value="wednesday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'wednesday'}">checked</c:if> </c:forEach>> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="gbWeeks2" value="수"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '수'}">checked</c:if> </c:forEach>> 수
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="gbWeeks2" value="thursday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'thursday'}">checked</c:if> </c:forEach>> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="gbWeeks2" value="목"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '목'}">checked</c:if> </c:forEach>> 목
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="gbWeeks2" value="friday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'friday'}">checked</c:if> </c:forEach>> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="gbWeeks2" value="금"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '금'}">checked</c:if> </c:forEach>> 금
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="gbWeeks2" value="saturday"
-													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == 'saturday'}">checked</c:if> </c:forEach>> 토
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="gbWeeks2" value="토"
+													<c:forEach items="${rMap.gb2List}" var="gb2List"> <c:if test="${gb2List.WEEKNAME == '토'}">checked</c:if> </c:forEach>> 토
 												</label>
 											</div>
 
@@ -295,29 +306,29 @@
 						<tr>
 							<td class="bd_r_none">
 								<div class="form-layer">
-									<span class="form-title large"> 준성수기 </span> <span id="pricewidth" class="form-body" s>
+									<span class="form-title large"> 준성수기 </span> <span id="pricewidth" class="form-body">
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
-												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="jsWeeks1" value="sunday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'sunday'}">checked</c:if> </c:forEach>> 일
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="jsWeeks1" value="monday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'monday'}">checked</c:if> </c:forEach>> 월
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="jsWeeks1" value="일"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '일'}">checked</c:if> </c:forEach>> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="jsWeeks1" value="월"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '월'}">checked</c:if> </c:forEach>> 월
 
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="jsWeeks1" value="tuesday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'tuesday'}">checked</c:if> </c:forEach>> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="jsWeeks1" value="화"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '화'}">checked</c:if> </c:forEach>> 화
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="jsWeeks1" value="wednesday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'wednesday'}">checked</c:if> </c:forEach>> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="jsWeeks1" value="수"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '수'}">checked</c:if> </c:forEach>> 수
 
-												</label> <label class="checkbox-inline icon-label"> < <input type="checkbox" class="NORMAL-thu" name="jsWeeks1" value="thursday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'thursday'}">checked</c:if> </c:forEach>> 목
+												</label> <label class="checkbox-inline icon-label"> < <input type="checkbox" class="NORMAL-thu" name="jsWeeks1" value="목"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '목'}">checked</c:if> </c:forEach>> 목
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="jsWeeks1" value="friday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'friday'}">checked</c:if> </c:forEach>> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="jsWeeks1" value="금"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '금'}">checked</c:if> </c:forEach>> 금
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="jsWeeks1" value="saturday"
-													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == 'saturday'}">checked</c:if> </c:forEach>> 토
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="jsWeeks1" value="토"
+													<c:forEach items="${rMap.js1List}" var="js1List"> <c:if test="${js1List.WEEKNAME == '토'}">checked</c:if> </c:forEach>> 토
 
 												</label>
 											</div>
@@ -331,22 +342,22 @@
 										<div class="room-price room-price-wrap">
 											<div class="chk_date">
 
-												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="jsWeeks2" value="sunday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'sunday'}">checked</c:if> </c:forEach>> 일
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="jsWeeks2" value="일"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '일'}">checked</c:if> </c:forEach>> 일
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="jsWeeks2" value="monday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'monday'}">checked</c:if> </c:forEach>> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="jsWeeks2" value="월"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '월'}">checked</c:if> </c:forEach>> 월
 
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="jsWeeks2" value="tuesday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'tuesday'}">checked</c:if> </c:forEach>> 화
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="jsWeeks2" value="wednesday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'wednesday'}">checked</c:if> </c:forEach>> 수
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="jsWeeks2" value="thursday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'thursday'}">checked</c:if> </c:forEach>> 목
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="jsWeeks2" value="friday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'friday'}">checked</c:if> </c:forEach>> 금
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="jsWeeks2" value="saturday"
-													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == 'saturday'}">checked</c:if> </c:forEach>> 토
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="jsWeeks2" value="화"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '화'}">checked</c:if> </c:forEach>> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="jsWeeks2" value="수"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '수'}">checked</c:if> </c:forEach>> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="jsWeeks2" value="목"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '목'}">checked</c:if> </c:forEach>> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="jsWeeks2" value="금"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '금'}">checked</c:if> </c:forEach>> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="jsWeeks2" value="토"
+													<c:forEach items="${rMap.js2List}" var="js2List"> <c:if test="${js2List.WEEKNAME == '토'}">checked</c:if> </c:forEach>> 토
 												</label>
 
 											</div>
@@ -373,20 +384,20 @@
 
 											<div class="chk_date">
 
-												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="sWeeks1" value="sunday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'sunday'}">checked</c:if> </c:forEach>> 일
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="sWeeks1" value="monday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'monday'}">checked</c:if> </c:forEach>> 월
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="sWeeks1" value="tuesday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'tuesday'}">checked</c:if> </c:forEach>> 화
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="sWeeks1" value="wednesday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'wednesday'}">checked</c:if> </c:forEach>> 수
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="sWeeks1" value="thursday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'thursday'}">checked</c:if> </c:forEach>> 목
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="sWeeks1" value="friday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'friday'}">checked</c:if> </c:forEach>> 금
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="sWeeks1" value="saturday"
-													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == 'saturday'}">checked</c:if> </c:forEach>> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="sWeeks1" value="일"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '일'}">checked</c:if> </c:forEach>> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="sWeeks1" value="월"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '월'}">checked</c:if> </c:forEach>> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="sWeeks1" value="화"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '화'}">checked</c:if> </c:forEach>> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="sWeeks1" value="수"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '수'}">checked</c:if> </c:forEach>> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="sWeeks1" value="목"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '목'}">checked</c:if> </c:forEach>> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="sWeeks1" value="금"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '금'}">checked</c:if> </c:forEach>> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="sWeeks1" value="토"
+													<c:forEach items="${rMap.s1List}" var="s1List"> <c:if test="${s1List.WEEKNAME == '토'}">checked</c:if> </c:forEach>> 토
 												</label>
 											</div>
 
@@ -401,20 +412,20 @@
 
 											<div class="chk_date">
 
-												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="sWeeks2" value="sunday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'sunday'}">checked</c:if> </c:forEach>> 일
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="sWeeks2" value="monday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'monday'}">checked</c:if> </c:forEach>> 월
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="sWeeks2" value="tuesday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'tuesday'}">checked</c:if> </c:forEach>> 화
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="sWeeks2" value="wednesday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'wednesday'}">checked</c:if> </c:forEach>> 수
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="sWeeks2" value="thursday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'thursday'}">checked</c:if> </c:forEach>> 목
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="sWeeks2" value="friday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'friday'}">checked</c:if> </c:forEach>> 금
-												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="sWeeks2" value="saturday"
-													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == 'saturday'}">checked</c:if> </c:forEach>> 토
+												<label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sun" name="sWeeks2" value="일"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '일'}">checked</c:if> </c:forEach>> 일
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-mon" name="sWeeks2" value="월"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '월'}">checked</c:if> </c:forEach>> 월
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-tue" name="sWeeks2" value="화"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '화'}">checked</c:if> </c:forEach>> 화
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-wed" name="sWeeks2" value="수"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '수'}">checked</c:if> </c:forEach>> 수
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-thu" name="sWeeks2" value="목"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '목'}">checked</c:if> </c:forEach>> 목
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-fri" name="sWeeks2" value="금"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '금'}">checked</c:if> </c:forEach>> 금
+												</label> <label class="checkbox-inline icon-label"> <input type="checkbox" class="NORMAL-sat" name="sWeeks2" value="토"
+													<c:forEach items="${rMap.s2List}" var="s2List"> <c:if test="${s2List.WEEKNAME == '토'}">checked</c:if> </c:forEach>> 토
 												</label>
 
 											</div>
@@ -503,6 +514,24 @@
 	</div>
 </div>
 
+<!-- 이미지 삭제 modal -->
+<div id = "img-delete" class="modal fade in" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">삭제 확인</h4>
+      </div>
+      <div class="modal-body">
+        <p>정말 삭제하시겠습니까?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button id="imgDelete" type="button" class="btn btn-danger">삭제</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 이미지 삭제 modal -->
 <script type="text/javascript">
 	var fileList = []; 
 	
@@ -521,10 +550,41 @@
 
 	$(".deleteimage").on("click", function() {
 		$("#img-delete").modal("show");
-
+		
+		
 		$("#cancel").on("click", function() {
 			$("#img-delete").modal("hide");
 		})
+	});
+	
+	$("#imgDelete").on("click",function(){
+
+		var no = $("[name='imgNo']").val();
+		$.ajax({
+			url : "${pageContext.request.contextPath }/api/host/room/imgDelete",		
+			type : "post",
+			contentType : "application/json",
+			data :	JSON.stringify(no),
+			dataType : "json",
+			success : function(result){
+				
+				if(result == 'success'){
+					$("#img-delete").modal("hide");
+					
+					alert("사진이 삭제되었습니다.");
+					
+					$("#rList"+no).remove();
+				}else{
+					alert("오류입니다");
+				}
+
+				 
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+
 	});
 	
 	// 파일 드롭 다운
@@ -599,16 +659,18 @@
             success:function(riList){
                 alert("저장에 성공하셨습니다.");
                 console.log(riList);
-                var div = '';
                 
-                for(var i = 0; i<riList.size; i++){
+                
+                for(var i = 0; i<riList.length; i++){
+                	var div = '';
             		div += '<li class="backgrou">'
             		div += '	<div class="thumb"> '
-            		div += '		<img src="${pageContext.request.contextPath}/upload/'+${riList[i].saveName}+'"class="img-rounded preview">'
+            		div += '		<img src="${pageContext.request.contextPath}/upload/'+riList[i].saveName+'"class="img-rounded preview">'
             		div += '    </div>'
             		div += '	<button type="button" class="btn btn-xs btn-success changeimage">변경</button>'
             		div += '    <button type="button" class="btn btn-xs btn-deleete deleteimage">삭제</button>'
             		div += '</li>';
+            		
             		$("#room-images").append(div);
                 }
                 
