@@ -4,15 +4,15 @@
 
 	<select id="getpoint" parameterType="int" resultType="Map">
 		SELECT
-			sum(POINT) POINTS
+			NVL(sum(POINT), 0) POINTS
 		FROM
 			POINTS POINTS,
 			RESERVATIONS RESERVATIONS,
 			USERS USERS
-		WHERE
-			POINTS.RESERVE_NO = RESERVATIONS."NO"
-			AND POINTS."NO" = USERS."NO"
-			AND RESERVATIONS.user_no = #{userNo}
+		WHERE 1 = 1
+		 AND POINTS.RESERVE_NO = RESERVATIONS.NO
+		 AND POINTS.NO = USERS.NO
+		 AND RESERVATIONS.user_no = #{userNo}
 
 	</select> 
 
@@ -23,7 +23,7 @@
 						POINT,
 						REG_DATE )
 				VALUES (
-				  		SEQ_POINTS_NO.nextval,
+				  		SEQ_POINTS_NO.NEXTVAL,
 						#{no}, <!-- RESERVE_NO입니다 -->
 						TO_NUMBER('-'||#{point}),
 						SYSDATE

@@ -123,6 +123,9 @@
 	</insert>
 	<!-- 양도결제 인서트 -->
 	<insert id="yangdoPayInsert" parameterType="com.javaex.vo.RePayVo">
+				<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			    	select SEQ_RESERVATIONS_NO.nextval FROM DUAL
+			  	</selectKey>
 				INSERT INTO RESERVATIONS (
 						NO,
 						ROOM_NO,
@@ -142,7 +145,7 @@
 						P_R_NO
 						)
 				VALUES (
-						SEQ_RESERVATIONS_NO.nextval,
+						#{no},
 						#{roomNo},
 						#{userNo},
 						#{name},
@@ -164,7 +167,7 @@
 	<update id="yangdoPayUpdate" parameterType="com.javaex.vo.RePayVo"> 
 		UPDATE RESERVATIONS
 			SET 
-			  STATUS = #{status}
+			  STATUS = #{status},
 			WHERE 
 			  NO = #{no}
 	</update>

@@ -14,15 +14,15 @@ public class RePayDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 예약 정보 가져오기
-	public Map<String, Object> getRePay(int no) {
-		System.out.println("\t\t RePayDao::getRePay() invoked...");
-
-		Map<String, Object> rpMap = sqlSession.selectOne(SQLMAP + "getRePay", no);
-		System.out.println(rpMap);
-
-		return rpMap;
-	}
+	/*
+	 * // 예약 정보 가져오기 public Map<String, Object> getRePay(int no) {
+	 * System.out.println("\t\t RePayDao::getRePay() invoked...");
+	 * 
+	 * Map<String, Object> rpMap = sqlSession.selectOne(SQLMAP + "getRePay", no);
+	 * System.out.println(rpMap);
+	 * 
+	 * return rpMap; }
+	 */
 	//양도예약 정보 가져오기
 	public Map<String, Object> getyangdoRePay(int no) {
 		System.out.println("\t\t RePayDao::getRePay() invoked...");

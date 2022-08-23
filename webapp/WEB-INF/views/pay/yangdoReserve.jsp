@@ -307,7 +307,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    		  console.log("결제")
 	    		  
 		    	      var repayVo ={
-		    	        		no: '${rpMap.NO}',
 			    	        	name: $('#userName').val(),
 			    	        	hp: $('#hp').val(),
 			    	        	point:$('#point').val(),
@@ -328,7 +327,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	id: '${authUser.id}',
 			    	        	pw: '${authUser.pw}',
 			    	        	regDate:'${rpMap.REG_DATE}',
-			    	        	prNo:'${rpMap.P_R_NO}'
+			    	        	prNo:'${rpMap.NO}'
 			    	        	//////////////////////////////
 			    	        	
 			    	        	transPrice: '${rpMap.TRANS_PRICE}'
