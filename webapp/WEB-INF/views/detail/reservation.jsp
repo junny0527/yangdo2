@@ -371,14 +371,14 @@
 									<div>
 										<span class="people">성인</span>
 										<div>
-											<button class="minus yAdultMinus" data-min="0" data-y_adult="${roomVo.ADULT_PRICE}"
+											<button class="minus yAdultMinus" data-min="0" data-price="${roomVo.PRICE}" data-y_adult="${roomVo.ADULT_PRICE}"
 											data-trans="${roomVo.TRANS_PRICE}" data-kid="${roomVo.KID}" data-adult="${roomVo.ADULT}"
 											data-totalprice="${roomVo.TOTAL_PRICE}" data-y_kid="${roomVo.KID_PRICE}" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
 											<span class="yAdultValue${roomVo.NO}">${roomVo.ADULT}명</span>
 											<button class="plus yAdultPlus" data-max="${roomVo.MAX_PEOPLE}" data-y_adult="${roomVo.ADULT_PRICE}"
-											data-trans="${roomVo.TRANS_PRICE}" data-kid="${roomVo.KID}" data-adult="${roomVo.ADULT}"
+											data-trans="${roomVo.TRANS_PRICE}" data-kid="${roomVo.KID}" data-price="${roomVo.PRICE}" data-adult="${roomVo.ADULT}"
 											data-totalprice="${roomVo.TOTAL_PRICE}" data-y_kid="${roomVo.KID_PRICE}" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 											</button>
@@ -387,13 +387,14 @@
 									<div>
 										<span class="people">아동</span>
 										<div>
-											<button class="minus yKidMinus" data-min="0" data-y_kid="${roomVo.KID_PRICE}"
-											data-trans="${roomVo.TRANS_PRICE}" data-adult="${roomVo.ADULT}" data-kid="${roomVo.KID}"
+											<button class="minus yKidMinus" data-min="0" data-y_kid="${roomVo.KID_PRICE}" data-price="${roomVo.PRICE}"
+											data-trans="${roomVo.TRANS_PRICE}" data-y_adult="${roomVo.ADULT_PRICE}" data-adult="${roomVo.ADULT}" data-kid="${roomVo.KID}"
 											data-totalprice="${roomVo.TOTAL_PRICE}" data-adultprice="${roomVo.ADULT_PRICE}" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 											</button>
 											<span class="yKidValue${roomVo.NO}">${roomVo.KID}명</span>
-											<button class="plus yKidPlus" data-max="${roomVo.MAX_PEOPLE}" data-y_kid="${roomVo.KID_PRICE}"
+											<button class="plus yKidPlus" data-max="${roomVo.MAX_PEOPLE}" data-y_adult="${roomVo.ADULT_PRICE}"
+											 data-y_kid="${roomVo.KID_PRICE}" data-totalprice="${roomVo.TOTAL_PRICE}" data-price="${roomVo.PRICE}"
 											data-trans="${roomVo.TRANS_PRICE}" data-adult="${roomVo.ADULT}" data-kid="${roomVo.KID}"
 											data-totalprice="${roomVo.TOTAL_PRICE}" data-adult="${roomVo.ADULT}" name="${roomVo.NO}">
 												<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
@@ -864,6 +865,7 @@
 	var plusP;
 	var minusP
 	
+	
 	//양도 성인버튼 명수 증가 이벤트
 	$(".yAdultPlus").on("click", function() {
 		var $this = $(this); 
@@ -871,8 +873,14 @@
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
+		var yBabyValue = $(".yBabyValue"+roomNo);
+		var yBabyArray = yBabyValue.text().split("");
+		var yBaby = Number(yBabyArray[0]);
+		
+		
 		var adult = $this.data("adult");
 		var kid = $this.data("kid");
+		
 		
 		var yKidValue = $(".yKidValue"+roomNo);
 		var yKidArray = yKidValue.text().split("");
@@ -888,13 +896,15 @@
 		var transPrice = $this.data("trans");
 		var totalPrice = $this.data("totalprice");
 		var transPrice = $this.data("trans");
-		
+		var price = $this.data("price");
 		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		totalP = Number(totalPrice.replace(/,/g, ""));
 		transP = Number(transPrice.replace(/,/g, ""));
+		priceP = Number(price.replace(/,/g, ""));
+		
 		console.log("펜션금액:"+totalP);
 		console.log("추가성인금액:"+adultP);
 		console.log("추가아동금액:"+kidP);
@@ -902,48 +912,29 @@
 		console.log("아동인원:"+kid);
 		console.log("최대인원:"+max);
 		console.log("양도금액:"+transP);
+		console.log("펜션원래금액:"+priceP);
 		console.log("-------------------");
 		
 		
-		console.log("real금액:"+realPrice);
-		console.log("성인인원:::"+yAdult);
-		if(yAdult < max) {
+		
+		if(yAdult <= max) {
 			
 			yAdult += 1;
-			console.log("성인인원:::"+yAdult);	
-			if(realPrice >= ((yAdult -2) * adultP) + (yKid * kidP) + totalP || yAdult < max )  {
-				console.log("추가된금액"+((yAdult -2) * adultP) + (yKid * kidP) + totalP);
+			
+			if((yAdult + yKid + yBaby) > max){
+				alert("최대인원을 초과하였습니다. 다시 선택해주세요.");
+			}else if(((yAdult - adult) * adultP) + (yKid * kidP) + priceP <= totalP)  {
 				yAdultValue.text(yAdult + "명");
 				assignmentValue.text(assignment + "원");
-			}else if(realPrice < ( ((yAdult -2) * adultP) + (yKid * kidP) + totalP ) || yAdult < max ) {
-				console.log("추가된금액"+((yAdult -2) * adultP) + (yKid * kidP) + totalP);
-				plusP = String(transP += adultP);
+			}else if(((yAdult - adult) * adultP) + (yKid * kidP) + priceP > totalP) {
+				plusP = String(transP += ((yAdult- adult) * adultP + (yKid - kid) * kidP));
 				assignment = plusP.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				yAdultValue.text(yAdult + "명");
-				assignmentValue.text(assignment + "원");	
+				assignmentValue.text(assignment + "원");
+				console.log(plusP);
 			}else{
 				console.log("조건없음");
 			}
-			
-			
-			/* if(max < (yAdult + yKid)){ 
-				alert("인원이 초과되었습니다. 다시 입력해주세요.");
-
-			}else if(adult >= yAdult || adult <= yAdult && yKid < kid ) {
-				// 2는 3보다 크거나같다 그리고 1은 3보다 크다
-				yAdultValue.text(yAdult + "명");
-				assignmentValue.text(assignment + "원");
-				console.log("증가X");
-			}else if(adult <= yAdult) {
-				console.log("증가");
-				//문자변환
-				var plusP = String(transP += adultP);
-				assignment = plusP.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				yAdultValue.text(yAdult + "명");
-				assignmentValue.text(assignment + "원");	
-			}else {
-				console.log("변화없음");
-			} */
 			
 		}
 	});
@@ -973,57 +964,45 @@
 		var kidPrice = $this.data("y_kid");
 		var transPrice = $this.data("trans");
 		var totalPrice = $this.data("totalprice");
+		var price = $this.data("price");
 		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		totalP = Number(totalPrice.replace(/,/g, ""));
 		transP = Number(transPrice.replace(/,/g, ""));
-		console.log("펜션금액:"+totalP);
-		console.log("추가성인금액:"+adultP);
-		console.log("추가아동금액:"+kidP);
-		console.log("성인인원:"+adult);
-		console.log("아동인원:"+kid);
-		console.log("양도금액:"+transP);
-		var realPrice = (adult * adultP) + (kid * kidP) + totalP;
-		
+		priceP = Number(price.replace(/,/g, ""));
+		plusP = Number(assignment.replace(/,/g, ""));
 		if(yAdult > min) {
 			yAdult -= 1;
 			console.log("성인인원:::"+yAdult);	
-			if(realPrice >= ( ((yAdult -2) * adultP) + (yKid * kidP) + totalP ) && yAdult > min ) {
-				
+			if(((yAdult - adult ) * adultP) + (yKid * kidP) + priceP >= totalP ) {
 				yAdultValue.text(yAdult + "명");
 				assignmentValue.text(assignment + "원");
-			}else if(realPrice < ( ((yAdult -2) * adultP) + (yKid * kidP) + totalP ) ) {
+				console.log("???");
+				if((yAdult - adult) == 0 && (yKid - kid ) <= 0 ) {
+					yAdultValue.text(yAdult + "명");
+					assignmentValue.text(assignment + "원");
+				}
 				
-				minusP = String(plusP -= adultP );
+			}else if(((yAdult - adult) * adultP) + (yKid * kidP) + priceP < totalP) {
+				if((yAdult - adult) == 0 && (yKid - kid ) > 0 ) {
+					minusP = String(plusP -= 20000);
+					console.log("???111");
+				}else if((yAdult - adult) == 0 && (yKid - kid ) < 0){
+					
+					assignment = String(plusP -= ((yAdult - adult) * adultP) + (-(yKid - kid) * kidP) );
+					console.log(minusP);
+					console.log("???2222");
+				}
+				minusP = assignment;
 				assignment = minusP.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				yAdultValue.text(yAdult + "명");
 				assignmentValue.text(assignment + "원");	
 			}else{
 				console.log("조건없음");
 			}
-			
-			
-			
-			
-			
-			
-			/* if(adult >= yAdult && yKid < kid || yAdult < (adult + kid)) {
-				yAdultValue.text(yAdult + "명");
-				assignmentValue.text(assignment + "원");
-				console.log("증가X");
-			}else if(yAdult >= adult && yKid >= kid) {
-				//문자변환
- 				var minusP = String(transP -= adultP);
-				assignment = minusP.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-				yAdultValue.text(yAdult + "명");
-				assignmentValue.text(assignment + "원");
-				console.log("증가O");
-			}else {
-				console.log("조건없음");
-			} */
-			
+		
 		}
 	});
 	
@@ -1039,6 +1018,9 @@
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
+		var yBabyValue = $(".yBabyValue"+roomNo);
+		var yBabyArray = yBabyValue.text().split("");
+		var yBaby = Number(yBabyArray[0]);
 		
 		
 		var assignmentValue = $(".assignmentPrice"+roomNo);
@@ -1048,25 +1030,42 @@
 		var max = $this.data("max");
 		var kidPrice = $this.data("y_kid");
 		var transPrice = $this.data("trans");
-
+		var adultPrice = $this.data("y_adult");
+		var price = $this.data("price");
+		var totalPrice = $this.data("totalprice");
+		
+		console.log(adultPrice);
 		//숫자변환
-		transP = Number(assignment.replace(/,/g, ""));
 		kidP = Number(kidPrice.replace(/,/g, ""));
+		adultP = Number(adultPrice.replace(/,/g, ""));
+		totalP = Number(totalPrice.replace(/,/g, ""));
+		transP = Number(transPrice.replace(/,/g, ""));
+		priceP = Number(price.replace(/,/g, ""));
+		
+		
+		console.log("펜션금액:"+totalP);
+		console.log("추가성인금액:"+adultP);
+		console.log("추가아동금액:"+kidP);
+		console.log("성인인원:"+adult);
+		console.log("아동인원:"+kid);
+		console.log("최대인원:"+max);
+		console.log("양도금액:"+transP);
+		console.log("펜션원래금액:"+priceP);
+		console.log("-------------------");
 		
 		if(yKid < max) {
 			yKid += 1;
-			if(max < (yAdult + yKid)){ 
-				alert("인원이 초과되었습니다. 다시 입력해주세요.");
-
-			}else if( yKid < kid && yKid < max ) {
+			if((yKid + yAdult + yBaby) > max){
+				alert("최대인원을 초과하였습니다. 다시 선택해주세요.");
+			}else if(((yAdult - adult) * adultP) + (yKid * kidP) + priceP <= totalP) {
 				yKidValue.text(yKid + "명");
 				assignmentValue.text(assignment + "원");
 				console.log("변화X yKid:"+yKid);
 				console.log("변화X adult:"+yAdult);
 				console.log("변화X kid:"+kid);
-			}else if(kid < yKid && yKid < (adult + kid) || kid < yKid ) {
+			}else if(((yAdult - adult) * adultP) + (yKid * kidP) + priceP > totalP) {
 				//문자변환
-				var plusP = String(transP += kidP);
+				var plusP = String(transP += (yKid- kid) * kidP);
 				assignment = plusP.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				yKidValue.text(yKid + "명");
 				assignmentValue.text(assignment + "원");	
@@ -1136,6 +1135,12 @@
 		var yBabyValue = $(".yBabyValue"+roomNo);
 		var yBabyArray = yBabyValue.text().split("");
 		var yBaby = Number(yBabyArray[0]);
+		var yKidValue = $(".yKidValue"+roomNo);
+		var yKidArray = yKidValue.text().split("");
+		var yKid = Number(yKidArray[0]);
+		var yAdultValue = $(".yAdultValue"+roomNo);
+		var yAdultArray = yAdultValue.text().split("");
+		var yAdult = Number(yAdultArray[0]);
 		
 		var assignmentValue = $(".assignmentPrice"+roomNo);
 		var assignmentArray = assignmentValue.text().split("원");
@@ -1149,8 +1154,11 @@
 		transP = Number(assignment.replace(/,/g, ""));
 		babyP = Number(babyPrice);
 		
-		if(yBaby < max) {
+		if(yBaby <= max) {
 			yBaby += 1;
+			if((yKid + yAdult + yBaby) > max) {
+				alert("최대인원을 초과하였습니다. 다시 선택해주세요.");
+			}
 			//문자변환
 			var plusP = String(transP += babyP);
 			assignment = plusP.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -1158,6 +1166,8 @@
 			assignmentValue.text(assignment + "원");
 		}
 	});
+	
+	
 	
 	//양도 유아버튼 명수 감소 이벤트
 	$(".yBabyMinus").on("click", function() {

@@ -56,16 +56,16 @@
 				        ,ort.no
 				        ,ort.pension_no
 				        ,ort.SAVE_NAME
-				        ,ort.orders
+				        
 				from    (select  rownum rn
 				                 ,ot.no
 				                 ,ot.pension_no
 				                 ,ot.SAVE_NAME
-				                 ,ot.orders
+				        
 				         from    (select  p.no
 				                          ,p.pension_no
 				                          ,p.SAVE_NAME
-				                          ,p.orders
+				        
 				                  from    pension_image p
 				                  order by no asc) ot
 				         )ort
