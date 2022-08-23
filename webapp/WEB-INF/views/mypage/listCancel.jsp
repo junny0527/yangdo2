@@ -62,14 +62,14 @@
 												alt="삼산 도브" class="align">
 										</p>
 										<a
-											href="${pageContext.request.contextPath}/my/canceled?resNo=${list.resNo}"
-											class="product-title"><i class="bg_w">${list.pName }</i>
-											<strong>${list.pName}</strong> <span>체크인:
-												${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃:
-												${list.checkOut} ㆍ ${list.outTime}
+											href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}"
+											class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
+											<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br>
+												체크아웃: ${list.checkOut} ㆍ ${list.outTime}
 										</span></a>
 										<p class="btn_re">
-											<a href=""> 다시 예약 </a>
+											<a href="${pageContext.request.contextPath}/infomation">
+												다시 예약 </a>
 										</p>
 									</div></li>
 							</ul>

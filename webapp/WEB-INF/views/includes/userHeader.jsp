@@ -8,7 +8,7 @@
 		</h1>
 		<ul class="clearfix gnb_pc">
 			<li><a href="" class="color-sub">내주변</a></li>
-			<li><a href="" class="color-sub">예약내역</a></li>
+			<li><a href="${pageContext.request.contextPath}/my/reservation" class="color-sub">예약내역</a></li>
 			<li class="over">
 				<button type="button">
 					<span>더보기</span>

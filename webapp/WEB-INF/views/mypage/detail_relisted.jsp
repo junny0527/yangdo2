@@ -51,74 +51,33 @@
 			<div class="align_rt">
 				<div class="reserve_detail">
 					<!---->
-					<c:forEach var="dlist" items="${dlist}">
-						<div class="info" style="">
-							<div>
-								<i>${dlist.status}</i> <strong>${dlist.pName}</strong> <span>${dlist.rName}(기준
-									${dlist.sPple}인 최대 ${dlist.mPple}인)</span>
-							</div>
+					<div class="info" style="">
+						<div>
+							<i>${dlist.status}</i> <strong>${dlist.pName}</strong> <span>${dlist.rName}(기준
+								${dlist.sPple}인 최대 ${dlist.mPple}인)</span>
 						</div>
-						<section class="detail">
-							<div>
-								<p>
-									<strong>체크인</strong>${dlist.checkIn} ㆍ ${dlist.inTime}
-								</p>
-								<p>
-									<strong>체크아웃</strong>${dlist.checkOut} ㆍ ${dlist.outTime}
-								</p>
-								<p>
-									<strong>인원</strong>기준 ${dlist.sPple}인 / 최대 ${dlist.mPple}인
-								</p>
-							</div>
-							<div>
-								<p>
-									<strong>예약번호</strong>${dlist.resNo}
-								</p>
-								<p>
-									<strong>예약자 이름</strong>${dlist.name}
-								</p>
-								<p>
-									<strong>휴대폰 번호</strong>${dlist.hp} <span class="safety_txt_2">휴대폰
-										번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
-								</p>
-							</div>
-							<div class="sub_total">
-								<p>
-									<strong>결제정보</strong>
-								</p>
-								<p>
-									<strong class="sub_info"> 주문금액 </strong> <b>
-										${dlist.tPrice}원</b>
-								</p>
-								<p>
-									<strong class="sub_info"> 할인금액 </strong> <b>- 원</b>
-								</p>
-							</div>
-							<div class="total">
-								<p>
-									<strong>총 결제금액</strong> <b> ${dlist.tPrice}원</b>
-								</p>
-							</div>
-						</section>
-						<a href="" class="btn_call">전화로 문의하기</a>
-						<section>
-							<div style="padding-top: 0; padding-bottom: 0">
-								<div
-									class="booking_detail_section_layout_wrap booking-cancel__section"
-									style="border-bottom: none;">
-									<div class="booking-detail-section-title__wrap">
-										<!---->
-									</div>
-									<button type="button"
-										class="btn_flat btn-green booking_detail_flat_button color-green-long">양도내역
-										확인하기</button>
-									<!---->
+					</div>
+					<!-- mydetail -->
+					<c:import url="/WEB-INF/views/mypage/includes/mydetail.jsp"></c:import>
+					<!-- //mydetail -->
+					<a href="" class="btn_call">전화로 문의하기</a>
+					<section>
+						<div style="padding-top: 0; padding-bottom: 0">
+							<div
+								class="booking_detail_section_layout_wrap booking-cancel__section"
+								style="border-bottom: none;">
+								<div class="booking-detail-section-title__wrap">
 									<!---->
 								</div>
+								<button type="button"
+									class="btn_flat btn-green booking_detail_flat_button color-green-long">양도내역
+									확인하기</button>
+								<!---->
+								<!---->
 							</div>
-							<!---->
-						</section>
-					</c:forEach>
+						</div>
+						<!---->
+					</section>
 				</div>
 			</div>
 			<div>

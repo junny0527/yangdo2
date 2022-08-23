@@ -1,6 +1,8 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,38 @@ public class MyService {
 	@Autowired
 	private MyDao myDao;
 
+	// 유저번호로 예약내역 출력하기
+	public Map<String, List<MyListVo>> reservationList(int no) {
+		System.out.println("MyService>reservationList()");
+
+		Map<String, List<MyListVo>> myMap = new HashMap<String, List<MyListVo>>();
+
+		myMap.put("rList", myDao.getReserveList(no));
+		myMap.put("uList", myDao.getUsedList(no));
+		myMap.put("cList", myDao.getCancelList(no));
+
+		return myMap;
+	}
+
+	// 유저번호로 양도내역 출력하기
+	public Map<String, List<MyListVo>> yangdoList(int no) {
+		System.out.println("MyService>yangdoList()");
+
+		Map<String, List<MyListVo>> myMap2 = new HashMap<String, List<MyListVo>>();
+
+		myMap2.put("yList", myDao.getRelistList(no));
+		myMap2.put("tList", myDao.getTransferList(no));
+
+		return myMap2;
+	}
+
 	// 유저번호로 전체 리스트 불러오기
-	public List<MyListVo> getUserList(int no) {
+	public List<Map<String, Object>> getUserList(int no, int sNo) {
 		System.out.println("MyService>getUserList()");
 
-		return myDao.getUserList(no);
+		List<Map<String, Object>> userList = myDao.getUserList(no, sNo);
+
+		return userList;
 	};
 
 	// 유저번호로 예약완료 리스트 불러오기
@@ -61,6 +90,13 @@ public class MyService {
 		System.out.println("MyService>getDetail()");
 
 		return myDao.getDetail(resNo);
+	}
+
+	// 예약취소시 -> 예약상태 업데이트
+	public int cancelUpdate(MyListVo myVo) {
+		System.out.println("MyService>cancelUpdate");
+
+		return myDao.cancelUpdate(myVo);
 	}
 
 }

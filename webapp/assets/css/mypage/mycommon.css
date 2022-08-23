@@ -290,7 +290,7 @@ label {
 }
 
 .menu_bottom .item .sub-menu {
-	display: block;
+	display: none;
 }
 
 .menu_bottom .item .sub-menu a {

@@ -29,6 +29,7 @@
 		<![CDATA[
 			select r.user_no no,
 				   r.no resNo,
+				   p.no pNo,
 				   r.status status,
                    p.name pName,
                    to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
@@ -42,7 +43,7 @@
 			and p.no = ro.pension_no
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			and r.status = '예약완료'
+			and r.status = 1
 			and pImg.orders = 1
 			order by r.no desc
 		]]>
@@ -54,6 +55,7 @@
 		<![CDATA[
 			select r.user_no no,
 				   r.no resNo,
+				   p.no pNo,
 				   r.status status,
                    p.name pName,
                    to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
@@ -67,7 +69,7 @@
 			and p.no = ro.pension_no
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			and r.status = '이용완료'
+			and r.status = 3
 			and pImg.orders = 1
 			order by r.no desc
 		]]>
@@ -79,6 +81,7 @@
 		<![CDATA[
 			select r.user_no no,
 				   r.no resNo,
+				   p.no pNo,
 				   r.status status,
                    p.name pName,
                    to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
@@ -92,7 +95,7 @@
 			and p.no = ro.pension_no
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			and r.status = '예약취소'
+			and r.status = 4
 			and pImg.orders = 1
 			order by r.no desc
 		]]>
@@ -104,6 +107,7 @@
 		<![CDATA[
 			select r.user_no no,
 				   r.no resNo,
+				   p.no pNo,
 				   r.status status,
                    p.name pName,
                    to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
@@ -117,7 +121,7 @@
 			and p.no = ro.pension_no
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			and r.status = '양도대기'
+			and r.status = 6
 			and pImg.orders = 1
 			order by r.no desc
 		]]>
@@ -129,6 +133,7 @@
 		<![CDATA[
 			select r.user_no no,
 				   r.no resNo,
+				   p.no pNo,
 				   r.status status,
                    p.name pName,
                    to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
@@ -142,7 +147,7 @@
 			and p.no = ro.pension_no
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
-			and r.status = '양도완료'
+			and r.status = 5
 			and pImg.orders = 1
 			order by r.no desc
 		]]>
@@ -152,16 +157,16 @@
 	<delete id="deleteOne" parameterType="int">
 		<![CDATA[
 			delete from reservations
-			where resNo = #{resNo}
+			where no = #{resNo}
 		]]>
 	</delete>
 
 	<!-- 예약상태 업데이트 하기 -->
-	<update id="updateStatus" parameterType="int">
+	<update id="updateOne" parameterType="int">
 		<![CDATA[
 			update reservations
-			set status=#{status}
-			where resNo = #{resNo}
+			set status = 4
+			where no = #{resNo}
 		]]>
 	</update>
 
@@ -171,6 +176,7 @@
 		<![CDATA[
  			select r.status status,
  					p.name pName,
+ 					p.no pNo,
  					ro.room_name rName,
  					to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
                     to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
@@ -186,16 +192,12 @@
  					r.pay_status pStatus,
  					p.refund_no refNo,
  					co.company_hp comHp,
- 					pImg.image_path imgPath,
  					r.p_r_no pRno
- 			from reservations r, pension p, rooms ro, company co,pension_image pImg
+ 			from reservations r, pension p, rooms ro, company co
  			where r.room_no = ro.no
  			and p.no = ro.pension_no
             and co.no = p.company_no
-            and p.no = pImg.pension_no
-            and pImg.orders = 1
  			and r.no = #{resNo}
- 			order by r.no desc
 		]]>
 	</select>
 </mapper>

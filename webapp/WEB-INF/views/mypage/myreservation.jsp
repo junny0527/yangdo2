@@ -55,21 +55,26 @@
 							예약완료 내역 <a class="more_info" style="display: block"
 								href="${pageContext.request.contextPath}/my/list/reserve">더보기>></a>
 						</h3>
-						<c:forEach var="rlist" items="${rlist}" begin="0" end="1">
+						<c:forEach var="rList" items="${myMap.rList}" begin="0" end="1">
 							<ul class="list_wrap">
 								<li class="reservation-detail">
 									<div>
+										<!-- 이미지 -->
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${rlist.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${rList.imgPath}"
 												alt="양평 스마일카라반펜션" class="align">
 										</p>
+										<!-- 이미지 -->
+
+										<!-- 예약상세 -->
 										<a
-											href="${pageContext.request.contextPath}/my/reserved?resNo=${rlist.resNo}"
-											class="product-title"><i class="">예약완료</i> <strong>${rlist.pName}</strong>
-											<span>체크인: ${rlist.checkIn} ㆍ ${rlist.inTime}<br>
-												체크아웃: ${rlist.checkOut} ㆍ ${rlist.outTime}
+											href="${pageContext.request.contextPath}/my/detail?resNo=${rList.resNo}"
+											class="product-title"><i class="">예약완료</i> <strong>${rList.pName}</strong>
+											<span>체크인: ${rList.checkIn} ㆍ ${rList.inTime}<br>
+												체크아웃: ${rList.checkOut} ㆍ ${rList.outTime}
 										</span></a>
+										<!-- 예약상세 -->
 									</div>
 								</li>
 							</ul>
@@ -80,23 +85,39 @@
 							이용완료 내역 <a class="more_info"
 								href="${pageContext.request.contextPath}/my/list/used">더보기>></a>
 						</h3>
-						<c:forEach var="ulist" items="${ulist}" begin="0" end="1">
+						<c:forEach var="uList" items="${myMap.uList}" begin="0" end="1">
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
-										<button type="button" class="btn_del">삭제</button>
+
+										<!-- 삭제버튼 -->
+										<button type="button" class="btn_del btn btn-primary"
+											data-toggle="modal" data-target="#btnPop">삭제</button>
+
+										<button type="button" class="btn_del btn-primary"
+											data-toggle="modal" data-target=".bd-example-modal-sm">삭제</button>
+
+										<!-- 삭제버튼 -->
+
+										<!-- 이미지 -->
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${ulist.imgPath}"
-												alt="삼산 도브" class="align">
+												src="${pageContext.request.contextPath}/upload/${uList.imgPath}"
+												alt="${uList.pName}" class="align">
 										</p>
+										<!-- 이미지 -->
+
+										<!-- 예약상세 -->
 										<a
-											href="${pageContext.request.contextPath}/my/used?resNo=${ulist.resNo}"
-											class="product-title"><i class="bg_w">이용완료</i> <strong>${ulist.pName}</strong>
-											<span>체크인: ${ulist.checkIn} ㆍ ${ulist.inTime}<br>
-												체크아웃: ${ulist.checkOut} ㆍ ${ulist.outTime}
+											href="${pageContext.request.contextPath}/my/detail?resNo=${uList.resNo}"
+											class="product-title"><i class="bg_w">이용완료</i> <strong>${uList.pName}</strong>
+											<span>체크인: ${uList.checkIn} ㆍ ${uList.inTime}<br>
+												체크아웃: ${uList.checkOut} ㆍ ${uList.outTime}
 										</span></a>
+										<!-- 예약상세 -->
 										<p class="btn_re">
-											<a href=""> 리뷰 남기기 </a>
+											<a
+												href="${pageContext.request.contextPath}/my/detail?resNo=${ulist.resNo}">
+												리뷰 남기기 </a>
 										</p>
 									</div></li>
 							</ul>
@@ -108,23 +129,36 @@
 							예약취소 내역 <a class="more_info"
 								href="${pageContext.request.contextPath}/my/list/cancel">더보기>></a>
 						</h3>
-						<c:forEach var="clist" items="${clist}" begin="0" end="1">
+						<c:forEach var="cList" items="${myMap.cList}" begin="0" end="1">
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
-										<button type="button" class="btn_del">삭제</button>
+
+										<!-- 삭제버튼 -->
+										<button type="button" class="btn_del btn btn-primary"
+											data-toggle="modal" data-target="#btnPop">삭제</button>
+										<!-- 삭제버튼 -->
+
+										<!-- 이미지 -->
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${clist.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${cList.imgPath}"
 												alt="삼산 도브" class="align">
 										</p>
+										<!-- 이미지 -->
+
+										<!-- 예약상세 -->
 										<a
-											href="${pageContext.request.contextPath}/my/canceled?resNo=${clist.resNo}"
-											class="product-title"><i class="bg_w">예약취소</i> <strong>${clist.pName}</strong>
-											<span>체크인: ${clist.checkIn} ㆍ ${clist.inTime}<br>
-												체크아웃: ${clist.checkOut} ㆍ ${clist.outTime}
+											href="${pageContext.request.contextPath}/my/detail?resNo=${cList.resNo}"
+											class="product-title"><i class="bg_w">예약취소</i> <strong>${cList.pName}</strong>
+											<span>체크인: ${cList.checkIn} ㆍ ${cList.inTime}<br>
+												체크아웃: ${cList.checkOut} ㆍ ${cList.outTime}
 										</span></a>
+										<!-- 예약상세 -->
+
 										<p class="btn_re">
-											<a href=""> 다시 예약 </a>
+											<a
+												href="${pageContext.request.contextPath}/my/detail?resNo=${clist.resNo}">
+												다시 예약 </a>
 										</p>
 									</div></li>
 							</ul>
@@ -139,5 +173,40 @@
 		<!-- Footer -->
 	</div>
 	<!---->
+
+	<!-- Modal -->
+	<div class="modal fade" id="btnPop" tabindex="-1" role="dialog"
+		aria-labelledby="btnPopLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="btnPopLabel">삭제하기</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">내역을 삭제하시겠습니까?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">삭제</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
+<script>
+	$(document).ready(function() {
+		$('#myModal').on('shown.bs.modal', function() {
+			$('#myInput').trigger('focus')
+		});
+		
+		$(".btn-primary").on("click", function(){
+			$(this).
+		});
+	});
+</script>
+
 </html>

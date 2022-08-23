@@ -51,20 +51,18 @@
 				<div class="reserve_list">
 					<section>
 						<h3>예약완료 내역</h3>
-						<c:forEach items="${list}" var="rlist">
+						<c:forEach items="${list}" var="list" varStatus="status">
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${rlist.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${list.imgPath}"
 												alt="" class="align">
 										</p>
-										<a
-											href="${pageContext.request.contextPath}/my/reserved?resNo=${rlist.resNo}"
-											class="product-title"><i class="${rlist.status }">예약완료</i>
-											<strong>${rlist.pName }</strong> <span>체크인:
-												${rlist.checkIn} ㆍ ${rlist.inTime}<br> 체크아웃:
-												${rlist.checkOut} ㆍ ${rlist.outTime}
+										<a class="product-title" 
+											href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}"><i>예약완료</i> <strong>${list.pName }</strong>
+											<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br>
+												체크아웃: ${list.checkOut} ㆍ ${list.outTime}
 										</span></a>
 									</div></li>
 							</ul>

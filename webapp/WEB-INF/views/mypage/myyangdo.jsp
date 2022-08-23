@@ -52,21 +52,21 @@
 				<div class="reserve_list">
 					<section class="list_wrap">
 						<h3>
-							양도대기 내역 <a class="more_info" style="display: none"
+							양도대기 내역 <a class="more_info" style="display: block"
 								href="${pageContext.request.contextPath}/my/list/relisted">더보기>></a>
 						</h3>
-						<c:forEach var="ylist" items="${ylist}" begin="0" end="1">
+						<c:forEach var="yList" items="${myMap2.yList}" begin="0" end="1">
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-												alt="삼산 도브" class="align">
+												src="${pageContext.request.contextPath}/upload/${yList.imgPath}"
+												alt="${yList.pName}" class="align">
 										</p>
 										<a href="${pageContext.request.contextPath}/my/list/relisted"
-											class="product-title"><i class="">양도대기</i> <strong>${ylist.pName}</strong>
-											<span> 체크인: ${ylist.checkIn} <br> 체크아웃:
-												${ylist.checkOut}
+											class="product-title"><i class="">양도대기</i> <strong>${yList.pName}</strong>
+											<span> 체크인: ${yList.checkIn} ㆍ ${yList.inTime}<br>
+												체크아웃: ${yList.checkOut} ㆍ ${yList.outTime}
 										</span> <b>예약 상세 &gt;</b></a>
 									</div></li>
 							</ul>
@@ -78,22 +78,22 @@
 							양도완료 내역<a class="more_info"
 								href="${pageContext.request.contextPath}/my/list/transferred">더보기>></a>
 						</h3>
-						<c:forEach var="tlist" items="${tlist}" begin="0" end="1">
+						<c:forEach var="tList" items="${myMap2.tList}" begin="0" end="1">
 
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
 										<button type="button" class="btn_del">삭제</button>
 										<p class="pic">
 											<img
-												src="https://image.goodchoice.kr/resize_354x184/adimg_new/5942/36281/5907d34b8ddb9ce6ecac4edf865b6528.jpg"
-												alt="삼산 도브" class="align">
+												src="${pageContext.request.contextPath}/upload/${tList.imgPath}"
+												alt="${tList.pName}" class="align">
 										</p>
 										<a
 											href="${pageContext.request.contextPath}/my/detail/transferred"
-											class="product-title"><i class="bg_w">양도완료</i> <strong>${tlist.pName}</strong>
-											<span> 체크인: ${tlist.checkIn} <br> 체크아웃:
-												${tlist.checkOut}
-										</span> <b>예약 상세 &gt;</b></a>
+											class="product-title"><i class="bg_w">양도완료</i> <strong>${tList.pName}</strong>
+											<span> 체크인: ${tList.checkIn} ㆍ ${tList.inTime}<br>
+												체크아웃: ${tList.checkOut} ㆍ ${tList.outTime}
+										</span></a>
 									</div></li>
 							</ul>
 						</c:forEach>

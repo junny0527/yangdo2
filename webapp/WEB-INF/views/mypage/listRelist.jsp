@@ -61,8 +61,8 @@
 												alt="삼산 도브" class="align">
 										</p>
 										<a
-											href="${pageContext.request.contextPath}/my/relisted?resNo=${list.resNo}"
-											class="product-title"><i class="">${list.pName }</i> <strong>${list.pName }</strong>
+											href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}"
+											class="product-title"><i class="">양도대기</i> <strong>${list.pName }</strong>
 											<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br>
 												체크아웃: ${list.checkOut} ㆍ ${list.outTime}
 										</span></a>
