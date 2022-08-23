@@ -29,8 +29,11 @@ public class HostIntroduceApiController {
 			List<MultipartFile> fileList = mtfRequest.getFiles("fileList");
 			
 			List<PensionImageVo> riList = hostIntroService.imgUpload(fileList);
+			
 			System.out.println(riList);
+			
 			return riList;
+			
 		}else {
 			return null;
 		}

@@ -41,6 +41,9 @@ public class HostIntroduceService {
 		int pensionNo = iDao.getPensionNo();
 		iVo.setPensionNo(pensionNo);
 		
+		iDao.PensionImgUpdate(pensionNo);
+		
+		
 		iDao.insertsido(iVo);
 		iDao.insertgugun(iVo);
 		

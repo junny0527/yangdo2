@@ -30,7 +30,9 @@ public class HostRoomRegApiController {
 			List<MultipartFile> fileList = mtfRequest.getFiles("fileList");
 			
 			List<RoomImageVo> riList = hostRoomService.imgUpload(fileList);
+			
 			System.out.println(riList);
+			
 			return riList;
 		}else {
 		

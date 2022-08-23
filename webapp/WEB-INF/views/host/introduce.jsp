@@ -179,7 +179,7 @@
 										<p class="order text-normal">* 첫 이미지가 메인 이미지입니다.</p>
 									</div>
 
-									<div class="form-layer mb_15 hide">
+									<div class="form-layer mb_15">
 										<ul id="house-images">
 											<%-- <li class="backgrou">
 												<div>
@@ -187,7 +187,7 @@
 												</div>
 												<button id = "changeimage" type="button" class="btn btn-xs btn-success">변경</button>
 												<button id = "deleteimage" type="button" class="btn btn-xs btn-deleete">삭제</button>
-											</li> --%>
+											</li>  --%>
 										</ul>
 									</div>
 
@@ -501,7 +501,7 @@ $(".deleteimage").on("click", function() {
 	})
 });
 
-$("#imgDelete").on("click",function(){
+/* $("#imgDelete").on("click",function(){
 
 	var no = $("[name='imgNo']").val();
 	$.ajax({
@@ -530,7 +530,7 @@ $("#imgDelete").on("click",function(){
 	});
 
 });
-
+ */
 // 파일 드롭 다운
 function fileDropDown(){
     var dropZone = $("#drop-zone");
@@ -605,10 +605,10 @@ function uploadFile(fileList){
             console.log(piList);
             
             
-            for(var i = 0; i<riList.length; i++){
+            for(var i = 0; i<piList.length; i++){
             	var div = '';
         		div += '<li class="backgrou">'
-        		div += '	<div class="thumb"> '
+        		div += '	<div class="thumb">'
         		div += '		<img src="${pageContext.request.contextPath}/upload/'+piList[i].saveName+'"class="img-rounded preview">'
         		div += '    </div>'
         		div += '	<button type="button" class="btn btn-xs btn-success changeimage">변경</button>'

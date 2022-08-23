@@ -114,10 +114,26 @@
 <insert id="PensionImgInsert" parameterType="com.javaex.vo.PensionImageVo">
 	<![CDATA[
 		insert into pension_image (no,SAVE_NAME,image_path)
-		values(seq_pension_image_no.nextval,#{saveName},#{imgPath})		
+		values(SEQ_PENSION_IMG_NO.nextval,#{saveName},#{imagePath})		
 	]]>
 </insert>
 
+<select id="getPensionImg" resultType="com.javaex.vo.PensionImageVo"> 
+		<![CDATA[ 
+			select  no
+			        ,save_name saveName
+			        ,image_path imagePath
+			from pension_image
+			where pension_no is null
+		]]> 
+</select> 
 
+<update id="updatePensionImg" parameterType="int">
+	<![CDATA[
+		update pension_image
+		set pension_no = #{pensionNo}
+		where pension_no is null
+	]]>
+</update>
 
 </mapper>
