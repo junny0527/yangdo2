@@ -181,13 +181,13 @@
 
 									<div class="form-layer mb_15 hide">
 										<ul id="house-images">
-											<li class="backgrou">
+											<%-- <li class="backgrou">
 												<div>
 													<img src="${pageContext.request.contextPath}/assets/image/host/logout.png" class="img-rounded">
 												</div>
 												<button id = "changeimage" type="button" class="btn btn-xs btn-success">변경</button>
 												<button id = "deleteimage" type="button" class="btn btn-xs btn-deleete">삭제</button>
-											</li>
+											</li> --%>
 										</ul>
 									</div>
 
@@ -320,9 +320,8 @@
 <!-- footer -->
 <c:import url="/WEB-INF/views/includes/hostFooter.jsp"></c:import>
 <!-- footer -->
-	
-<!-- 이미지 업로드 modal -->
-<div id = "img-uploader" class = "modal fade in" aria-hidden="false">
+	<!-- 이미지 업로드 modal -->
+<div id="img-uploader" class="modal fade in" aria-hidden="false">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -331,27 +330,25 @@
 				</button>
 				<h4 class="modal-title">이미지 업로드</h4>
 			</div>
-			
-			<div class="modal-body" style="height:300px">
-				<div id="drag-and-drop-zone" style="height:200px;border:1px dashed gray;border-radius:3px;position:relative">
-					<label style="position:relative;left:50%;margin-left:-100px;top:50%;margin-top:-15px;overflow:hidden">
-						<span class="btn btn-primary">드래그 하시거나 클릭하세요.</span>
-						<input style="position:absolute;left:0;top:0;border-width: 0 0 100px 200px;border:solid transparent;direction: ltr;opacity:.0;cursor:pointer" type="file" name="files" multiple="multiple" title="Click to add Files">
-					</label>
-				</div>
-			<div id="upload-list" style="margin-top:10px"></div>
-			<span>
-				* 여러장을 한꺼번에 드래그하여 업로드 할 수 있습니다. <br><strong>&nbsp;&nbsp;<font color="#ff0000">최대 20장 까지 등록이 가능합니다.</font></strong>
-				<br>
-				<strong>&nbsp;&nbsp;사진 권장사이즈 : 1920 * 1080 또는 960 * 540</strong>
-			</span>
-			<span class="btn btn-success" data-dismiss="modal" aria-label="Close" style="float: right; margin-top:-25px;">확인</span>
+
+			<div class="modal-body">
+				<form id="uploadForm" action="" enctype="multipart/form-data" method="post">
+					<div id="drop-zone" style="height: 200px; border: 1px dashed gray; border-radius: 3px; position: relative">
+						<label style="position: relative; left: 50%; margin-left: -100px; top: 50%; margin-top: -15px; overflow: hidden"> <span class="btn btn-primary">드래그 하시거나 클릭하세요.</span> <input id="file"
+							style="position: absolute; left: 0; top: 0; border-width: 0 0 100px 200px; border: solid transparent; direction: ltr; opacity: .0; cursor: pointer" type="file" multiple="multiple"
+							name="imgfile">
+						</label>
+					</div>
+				</form>
+				<div id="upload-list" style="margin-top: 10px"></div>
+				<span> * 여러장을 한꺼번에 드래그하여 업로드 할 수 있습니다. <br> <strong>&nbsp;&nbsp;<font color="#ff0000">최대 15장 까지 등록이 가능합니다.</font></strong> <br> <strong>&nbsp;&nbsp;사진 권장사이즈 : 1920 *
+						1080 또는 960 * 540</strong>
+				</span> <span class="btn btn-success" id="succes" data-dismiss="modal" aria-label="Close" style="float: right; margin-top: -25px;">확인</span>
 			</div>
+
 		</div>
 	</div>
 </div>
-<div class="modal-backdrop fade in"></div>
-<!-- 이미지 업로드 modal -->	
 
 <!-- 이미지 삭제 modal -->
 <div id = "img-delete" class="modal fade in" tabindex="-1">
@@ -364,8 +361,8 @@
         <p>정말 삭제하시겠습니까?</p>
       </div>
       <div class="modal-footer">
-        <button id = "cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-danger">삭제</button>
+        <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button id="imgDelete" type="button" class="btn btn-danger">삭제</button>
       </div>
     </div>
   </div>
@@ -476,79 +473,158 @@ $('document').ready(function() {
 
 </script>
 
+
+
 <script type = "text/javascript">
 
-$("#addimage").on("click", function(){
-	$("#img-uploader").modal("show");
-})
+var fileList = []; 
 
-$("#changeimage").on("click", function(){
-	$("#img-uploader").modal("show");
-})
+$(function (){
+    // 파일 드롭 다운
+    fileDropDown();
+});
 
-$("#deleteimage").on("click", function(){
+$("#addimage").on("click", function() {
+	$("#img-uploader").modal("show");
+});
+
+$(".changeimage").on("click", function() {
+	$("#img-uploader").modal("show");
+});
+
+$(".deleteimage").on("click", function() {
 	$("#img-delete").modal("show");
 	
-	$("#cancel").on("click", function(){
+	
+	$("#cancel").on("click", function() {
 		$("#img-delete").modal("hide");
 	})
-})
-
-</script>
-
-<script type = "text/javascript">
-
-//이미지 - 등록
-$(document).on('click','#img-uploader',function() {
-    $(this).upload(function(res) {
-       if (res.status === 'ok') {
-            $html = '<li>' +
-            '<input type="hidden" name="adino[]" value="' + res.adino + '" />' +
-            '<div><img data-adino="' + res.adino + '" src="' + image_host + res.filename + '" class="img-rounded" /></div>' +
-            '<button data-role="img-changer" data-adino="' + res.adino + '" data-ano="' + res.ano + '" data-armgno="' + res.armgno + '" data-type="' + res.type + '" type="button" class="btn btn-xs">변경</button>' +
-            '<button data-role="img-delete" data-adino="' + res.adino + '" type="button" class="btn btn-xs">삭제</button>' +
-            '</li>';
-            $('.form-layer').removeClass('hide');
-            $($html).appendTo('#house-list');
-            <!--
-            var img_url = image_host + res.filename;
-            $.post('/guest/imgUploadDiff/', 'ano='+res.ano+'&armgno='+res.armgno+'&url='+img_url);
-            -->
-       }
-
-    });
 });
 
-// 이미지 - 수정
-$(document).on('click','[data-role=img-changer]',function() {
-    var img_url_before = $('[data-adino='+$(this).attr('data-adino')+']').closest('li').find('img').attr('src');
-    var ano = $(this).attr('data-ano');
-    var armgno = $(this).attr('data-armgno') ? $(this).attr('data-armgno') : '0';
+$("#imgDelete").on("click",function(){
 
-    $(this).upload(function(res){
-        if (res.status === 'ok') {
-            $('[data-adino='+res.adino+']').closest('li').find('img').attr('src', image_host + res.filename);
+	var no = $("[name='imgNo']").val();
+	$.ajax({
+		url : "${pageContext.request.contextPath }/api/host/",		
+		type : "post",
+		contentType : "application/json",
+		data :	JSON.stringify(no),
+		dataType : "json",
+		success : function(result){
 			
-            <!--
-            var img_url_after =  image_host + res.filename;
-            $.post('/guest/imgChangeDiff/', 'ano='+ano+'&armgno='+armgno+'&url_before='+img_url_before+'&url_after='+img_url_after);
-            -->
+			if(result == 'success'){
+				$("#img-delete").modal("hide");
+				
+				alert("사진이 삭제되었습니다.");
+				
+				$("#rList"+no).remove();
+			}else{
+				alert("오류입니다");
+			}
+
+			 
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+
+});
+
+// 파일 드롭 다운
+function fileDropDown(){
+    var dropZone = $("#drop-zone");
+    //Drag기능
+    dropZone.on('dragenter',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        // 드롭다운 영역 css
+        dropZone.css('background-color','#E3F2FC');
+    });
+    dropZone.on('dragleave',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        // 드롭다운 영역 css
+        dropZone.css('background-color','#FFFFFF');
+    });
+    dropZone.on('dragover',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        // 드롭다운 영역 css
+        dropZone.css('background-color','#E3F2FC');
+    });
+    dropZone.on('drop',function(e){
+    	console.log("드롭!");
+        e.preventDefault();
+        // 드롭다운 영역 css
+        dropZone.css('background-color','#FFFFFF');
+         
+        var files = e.originalEvent.dataTransfer.files;
+        var str = '';
+        for(i=0; i<files.length; i++){
+            var f = files[i];
+            fileList.push(f);
+            var fileName = f.name;
+            var fileSize = f.size / 1024 / 1024;
+            fileSize = fileSize < 1 ? fileSize.toFixed(3) : fileSize.toFixed(1);
+			str += '<div class="details">';
+			str += '	<span class="name">' + fileName + '</span>';
+			str += '	<span class="size">' + fileSize + 'MB</span>';
+			str += '	<div class="progress">';
+			str += '		<div class="bar"></div>';
+			str += '	</div>';
+			str += '</div>';
+      	 }
+         $("#upload-list").append(str);
+         
+         uploadFile(fileList);
+    });
+}
+
+
+// 파일 등록
+function uploadFile(fileList){
+	
+    var formData = new FormData($("#uploadForm")[0]);
+    if(fileList.length > 0){
+        fileList.forEach(function(f){
+            formData.append("fileList", f);
+        });
+    }         
+	    $.ajax({
+        url : "${pageContext.request.contextPath}/api/host/introduce/imgUpload",
+        data : formData,
+        type:'POST',
+        enctype:'multipart/form-data',
+        processData:false,
+        contentType:false,
+        dataType:'json',
+        cache:false,
+        success:function(piList){
+            alert("저장에 성공하셨습니다.");
+            console.log(piList);
+            
+            
+            for(var i = 0; i<riList.length; i++){
+            	var div = '';
+        		div += '<li class="backgrou">'
+        		div += '	<div class="thumb"> '
+        		div += '		<img src="${pageContext.request.contextPath}/upload/'+piList[i].saveName+'"class="img-rounded preview">'
+        		div += '    </div>'
+        		div += '	<button type="button" class="btn btn-xs btn-success changeimage">변경</button>'
+        		div += '    <button type="button" class="btn btn-xs btn-deleete deleteimage">삭제</button>'
+        		div += '</li>';
+        		
+        		$("#house-images").append(div);
+            }
+            
+            
+        },error:function(XHR, status, error){
+            alert("오류 발생.\n관리자에게 문의해주세요.");
         }
     });
-});
-
-// 이미지 - 삭제
-$(document).on('click', '[data-role=img-delete]',function() {
-    var id = $(this).attr('data-adino')
-    if (confirm('정말 삭제하시겠습니까?')) {
-        $.post('/guest/removeImage/'+ id, function(data) {
-        	alert(data.message);
-        	if(data.code == 200) {
-        		$('[data-adino='+id+']').closest('li').remove();
-        	}
-        });
-    }
-});
+    
+}
 
 </script>
 

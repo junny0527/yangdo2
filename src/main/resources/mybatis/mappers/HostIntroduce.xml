@@ -111,5 +111,13 @@
 	]]>
 </update>
 
+<insert id="PensionImgInsert" parameterType="com.javaex.vo.PensionImageVo">
+	<![CDATA[
+		insert into pension_image (no,SAVE_NAME,image_path)
+		values(seq_pension_image_no.nextval,#{saveName},#{imgPath})		
+	]]>
+</insert>
+
+
 
 </mapper>
