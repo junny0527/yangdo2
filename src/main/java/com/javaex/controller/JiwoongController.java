@@ -36,24 +36,50 @@ public class JiwoongController {
 		return "/mainList/mainLists";
 	}
 	
-	//추천 순 리스트
+	//낮은가격 순 리스트
+	@RequestMapping(value="/main/lowprice", method = {RequestMethod.GET, RequestMethod.POST})
+	public String selectLowprice(Model model) {
+		System.out.println("Controller>lowprice");
+		
+		Map<String, Object> pMap = mainService.selectLowprice();
+		
+		model.addAttribute("pMap",pMap);
+		System.out.println("hitController>lowList");
+		
+		return "/mainList/mainLists";
+	}
+	
+	//높은가격 순 리스트
+	@RequestMapping(value="/main/highprice", method = {RequestMethod.GET, RequestMethod.POST})
+	public String selectHighprice(Model model) {
+		System.out.println("Controller>highprice");
+		
+		Map<String, Object> pMap = mainService.selectHighprice();
+		
+		model.addAttribute("pMap",pMap);
+		System.out.println("Controller>highList");
+		
+		return "/mainList/mainLists";
+		
+	}
+	
+	//추천별 리스트
 	@RequestMapping(value="/main/hit", method = {RequestMethod.GET, RequestMethod.POST})
-	public String chuList(Model model, @RequestParam("hit") String hit) {
-		System.out.println("Controller>chu");
-		System.out.println(hit);
+	public String selectHit(Model model) {
+		System.out.println("Controller>hitList");
+		
+		Map<String, Object> pMap = mainService.selectHit();
+		
+		model.addAttribute("pMap",pMap);
 		
 		return "/mainList/mainLists";
 	}
 	
 	//검색시 체크박스 리스트
 	@RequestMapping(value="main/search", method = {RequestMethod.POST, RequestMethod.GET})
-	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo,
-							 @RequestParam(value="pensionitem2") List<Integer> itemList2,
-							 @RequestParam(value="pensionitem1") List<Integer> itemList1) {
+	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("Controller>search");
 		System.out.println("searchVo"+searchVo);
-		System.out.println("pensionitem2"+itemList2);
-		System.out.println("pensionitem1"+itemList1);
 		
 		
 		Map<String, Object> pMap = mainService.selectSearch(searchVo);

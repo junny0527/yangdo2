@@ -181,16 +181,16 @@
 				<div class="top_sort">
 					<div class="pc">
 						<div class="btn_wrap width_4">
-								<button type="button" data-sort="HIT" class="on" id="hit" value="hit">
+								<button type="button" data-sort="HIT" class="on" id="hit" value="hit" onclick="location.href='${pageContext.request.contextPath}/main/hit'">
 									<span>추천 순</span>
 								</button>
-								<button type="button" data-sort="DISTANCE" class="on" id="distance" value="distance">
+								<button type="button" data-sort="DISTANCE" class="on" id="distance" value="distance" onclick="location.href=''">
 									<span>거리 순</span>
 								</button>
-								<button type="button" data-sort="LOWPRICE" class="on" id="lowprice" value="lowprice">
+								<button type="button" data-sort="LOWPRICE" class="on" id="lowprice" value="lowprice" onclick="location.href='${pageContext.request.contextPath}/main/lowprice'">
 									<span>낮은 가격 순</span>
 								</button>
-								<button type="button" data-sort="HIGHPRICE" class="on" id="highprice" value="highprice">
+								<button type="button" data-sort="HIGHPRICE" class="on" id="highprice" value="highprice" onclick="location.href='${pageContext.request.contextPath}/main/highprice'">
 									<span>높은 가격 순</span>
 								</button>
 						</div>
