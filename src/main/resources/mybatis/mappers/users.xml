@@ -21,7 +21,7 @@
 			select  no
 					,id
 					,pw
-					,nick_name
+					,nick_name nickName
 	       			,identify
 			from users
 			where id = #{id}

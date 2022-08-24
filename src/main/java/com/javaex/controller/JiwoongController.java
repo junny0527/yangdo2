@@ -22,9 +22,9 @@ public class JiwoongController {
 	
 	
 	
-	//전체 리스트 (지역선택시)
+	//기본 리스트
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model ) {
+	public String mainList(Model model) {
 		System.out.println("jiwoongController>mainList");
 		
 		Map<String, Object> pMap =  mainService.select();
@@ -36,13 +36,53 @@ public class JiwoongController {
 		return "/mainList/mainLists";
 	}
 	
+	//낮은가격 순 리스트
+	@RequestMapping(value="/main/lowprice", method = {RequestMethod.GET, RequestMethod.POST})
+	public String selectLowprice(Model model) {
+		System.out.println("Controller>lowprice");
+		
+		Map<String, Object> pMap = mainService.selectLowprice();
+		
+		model.addAttribute("pMap",pMap);
+		System.out.println("hitController>lowList");
+		
+		return "/mainList/mainLists";
+	}
+	
+	//높은가격 순 리스트
+	@RequestMapping(value="/main/highprice", method = {RequestMethod.GET, RequestMethod.POST})
+	public String selectHighprice(Model model) {
+		System.out.println("Controller>highprice");
+		
+		Map<String, Object> pMap = mainService.selectHighprice();
+		
+		model.addAttribute("pMap",pMap);
+		System.out.println("Controller>highList");
+		
+		return "/mainList/mainLists";
+		
+	}
+	
+	//추천별 리스트
+	@RequestMapping(value="/main/hit", method = {RequestMethod.GET, RequestMethod.POST})
+	public String selectHit(Model model) {
+		System.out.println("Controller>hitList");
+		
+		Map<String, Object> pMap = mainService.selectHit();
+		
+		model.addAttribute("pMap",pMap);
+		
+		return "/mainList/mainLists";
+	}
+	
 	//검색시 체크박스 리스트
 	@RequestMapping(value="main/search", method = {RequestMethod.POST, RequestMethod.GET})
 	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo,
-			@RequestParam(value="pensionitem2") List<Integer> itemList
-			) {
+								@RequestParam(value="pensionItem2") List<Integer> pensionItem2,
+								@RequestParam(value="pensionItem1") List<Integer> pensionItem1) {
 		System.out.println("Controller>search");
-		System.out.println(searchVo);
+		System.out.println("searchVo"+searchVo);
+		
 		
 		Map<String, Object> pMap = mainService.selectSearch(searchVo);
 		

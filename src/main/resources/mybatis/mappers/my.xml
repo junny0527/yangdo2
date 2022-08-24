@@ -46,7 +46,6 @@
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = 1
-			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -72,7 +71,6 @@
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = 3
-			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -98,7 +96,6 @@
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = 4
-			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -124,7 +121,6 @@
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = 6
-			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>
@@ -150,7 +146,6 @@
 			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			and r.status = 5
-			and pImg.orders = 1
 			order by r.no desc
 		]]>
 	</select>

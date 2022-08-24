@@ -28,6 +28,7 @@ public class HostIntroduceService {
 	
 	public int insertPension(HostIntroduceVo iVo) {
 		
+		/*
 		String editName = iVo.getLawName();
 		String[] editArray = editName.split(" ");
 		
@@ -36,6 +37,7 @@ public class HostIntroduceService {
 		}else {
 			iVo.setLawName(editArray[1]);
 		}
+		*/
 		
 		iDao.insertPension(iVo);
 		int pensionNo = iDao.getPensionNo();

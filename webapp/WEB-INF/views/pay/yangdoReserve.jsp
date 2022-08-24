@@ -327,7 +327,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	id: '${authUser.id}',
 			    	        	pw: '${authUser.pw}',
 			    	        	regDate:'${rpMap.REG_DATE}',
-			    	        	prNo:'${rpMap.NO}'
+			    	        	prNo:'${rpMap.NO}',
 			    	        	//////////////////////////////
 			    	        	
 			    	        	transPrice: '${rpMap.TRANS_PRICE}'
@@ -340,10 +340,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    		url : "/yangdo/res/yangdoUpdateInsert", //요청 할 URL
 	    	    		contentType : "application/json; charset=utf-8",
 	    	    		data : JSON.stringify(repayVo), //넘길 파라미터
-	    	    		success : function(repayVo) {
-	    	    			console.log("repayVo: ", repayVo);
+	    	    		success : function(res) {
+	    	    			console.log("res: ",res );
+	    	    			if(res.count === 1) {
+	    	    			// res 
 	    	    			alert("결제가 성공되었습니다.");
-	    	    			// location.href = '주소'
+	    	    			location.href = `/mypage?no=${res.no}`;
+	    	    			} else {
+	    	    				alert("실패")
+	    	    			}
+	    	    			
 	    	    		},
 	    	    		error : function(err) {
 	    	    			console.log(err + "접속 도중 오류가 발생했습니다."); //에러시 실행 할 내용

@@ -29,7 +29,6 @@ public class HostReviewsController {
 		int pensionNo = revService.getPensionNo(userNo);
 		List<HostReviewsVo> rList = revService.getReviewsList(pensionNo);
 		model.addAttribute("rList", rList);
-		
 		System.out.println(rList);
 		
 		return "/host/reviews";

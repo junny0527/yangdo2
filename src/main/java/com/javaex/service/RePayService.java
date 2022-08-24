@@ -99,9 +99,9 @@ public class RePayService  {
 		// PointsVo pointsVo => 포인트 정보
 		// 여기서 int points -로 바꿔 다시 set해
 		Map<String, Object> result = new HashMap<>();
-		pointsDao.pointsInsert(bean);
-		result.put("count", rePayDao.PayInsert(bean));
-		result.put("no", bean.getNo());
+		pointsDao.pointsInsert(bean);//포인트 인서트
+		result.put("count", rePayDao.PayInsert(bean));//인서트 해주고
+		result.put("no", bean.getNo());//예약번호
 		return result; // map key 2개 count, no 
 		
 	 
@@ -112,12 +112,12 @@ public class RePayService  {
 	public Map<String, Object> yangdoUpdateInsert(RePayVo bean) {
 		System.out.println("\t\t RePayService::yangdoUpdateInsert() invoked...");
 		Map<String, Object> result = new HashMap<>();
-		pointsDao.pointsInsert(bean);
-		rePayDao.yangdoInsert(bean);
-		result.put("no", bean.getNo());
-		bean.setNo(bean.getPrNo());
-		bean.setStatus("5");
-		result.put("count", rePayDao.yangdoUpdate(bean));
+		pointsDao.pointsInsert(bean); //포인트 인서트
+		rePayDao.yangdoInsert(bean); //양도인서트
+		result.put("no", bean.getNo()); //일반예약번호를
+		bean.setNo(bean.getPrNo());//부모번호에 넣어주기
+		bean.setStatus("5");//상태값 양도에의한취소로 넣어주고
+		result.put("count", rePayDao.yangdoUpdate(bean));//업데이트 시켜줌
 		return result;
 		
 	}

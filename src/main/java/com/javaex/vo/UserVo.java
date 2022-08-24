@@ -9,14 +9,13 @@ public class UserVo {
 	private String hp;
 	private String nickName;
 	private String email;
-	private String nick;
 	private String identify;
 	//생성자
 	public UserVo() {
 		super();
 	}
 
-	public UserVo(int no, String id, String pw, String hp, String nickName, String email, String nick,
+	public UserVo(int no, String id, String pw, String hp, String nickName, String email, 
 			String identify) {
 		super();
 		this.no = no;
@@ -25,7 +24,6 @@ public class UserVo {
 		this.hp = hp;
 		this.nickName = nickName;
 		this.email = email;
-		this.nick = nick;
 		this.identify = identify;
 	}
 
@@ -73,13 +71,6 @@ public class UserVo {
 		this.identify = identify;
 	}
 	
-	public String getNick() {
-		return nick;
-	}
-
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
 
 	//메소듸 일반
 	@Override

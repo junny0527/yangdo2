@@ -181,16 +181,16 @@
 				<div class="top_sort">
 					<div class="pc">
 						<div class="btn_wrap width_4">
-								<button type="button" data-sort="HIT" class="on" id="hit" value="추천순">
+								<button type="button" data-sort="HIT" class="on" id="hit" value="hit" onclick="location.href='${pageContext.request.contextPath}/main/hit'">
 									<span>추천 순</span>
 								</button>
-								<button type="button" data-sort="DISTANCE" class="" id="distance" value="">
+								<button type="button" data-sort="DISTANCE" class="on" id="distance" value="distance" onclick="location.href=''">
 									<span>거리 순</span>
 								</button>
-								<button type="button" data-sort="LOWPRICE" class="" id="lowprice" value="">
+								<button type="button" data-sort="LOWPRICE" class="on" id="lowprice" value="lowprice" onclick="location.href='${pageContext.request.contextPath}/main/lowprice'">
 									<span>낮은 가격 순</span>
 								</button>
-								<button type="button" data-sort="HIGHPRICE" class="" id="highprice" value="">
+								<button type="button" data-sort="HIGHPRICE" class="on" id="highprice" value="highprice" onclick="location.href='${pageContext.request.contextPath}/main/highprice'">
 									<span>높은 가격 순</span>
 								</button>
 						</div>
@@ -221,7 +221,7 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGEPATH}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.SAVENAME}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
@@ -323,13 +323,11 @@
 		<script type="text/javascript">
 			
 			//추천순 버튼들 클릭시
-			$("#hit").on("click",function(){
+			$(".on").on("click",function(){
 				
-				var hit = $("#hit").text();
+				var button = $(this).val();
 				
-				console.log(hit);
-				
-		
+				console.log(button);
 				
 			});
 			
@@ -381,8 +379,43 @@
        		 });
 		
 			/* kakaoMap */
-		
-		
+			
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+ 			    mapOption = { center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        					  level: 3 }; // 지도의 확대 레벨  
+	
+			// 지도를 생성합니다    
+			var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch('${pMAp.pList.}', function(result, status) {
+	
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+	
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+	        });
+	        infowindow.open(map, marker);
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+			    } 
+			});    
+			
+			/*
 			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
 			var options = { //지도를 생성할 때 필요한 기본 옵션
 			   center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -435,7 +468,7 @@
 			$(".btn-secondary").on("click", function() {
 				$(".modal").hide();
 			});
-	
+			*/
 		//////////////////////////인원추가 버튼 ////////////////////////////
 		function count(type){
 		

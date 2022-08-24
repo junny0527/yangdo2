@@ -4,41 +4,170 @@
 	
 	
 	
-		<!-- 지역 검색시 리스트 -->
+		<!-- 기본 리스트 -->
 		<select id="penList" parameterType="map" resultType="Map">
 		<![CDATA[
-				select             p.name pName,
-							       p.law_code lawCode,
-							       p.visit_road3 visitRoad3,
-							       pi.image_path imagePath,
-							       pr.price price,
-				                   gg.name guName,
-				                   re.status status,
-				                   ri.stars stars,
-				                   ri.rCount
-							from pension p, (select round(avg(stars),1) stars,
-                                    				count(ri.review_no) rCount
-				                                from pension p, rooms rm, reservations re, reviews ri
-				                                where p.no = rm.no
-				                                and re.no = re.room_no
-				                                and re.no = ri.review_no
-				                                and p.no = 1) ri, sido sd, reservations re, gugun gg, (select image_path 
-							                    from pension_image  
-							                    where RoWNUM = 1) pi, rooms rm, (select pr.price,
-							                                                            pr.no
-							                                                    from prices pr
-							                                                    GROUP BY pr.no, pr.price
-							                                                    having pr.price = min(pr.price)) pr
-							where p.no = rm.no
-							and rm.no = pr.no
-				            and rm.no = re.no
-				            and p.no = sd.pension_no
-				            and sd.no = gg.sido_no
-				            order by gg.name --guName
+				 select        pe.name pName,
+				               pe.visit_road3 visitRoad3,
+				               pe.address address
+				               gu.name guName,
+				               ro.price price,
+				               stars.status status,
+				               stars.stars stars,
+				               stars.rcount rcount,
+               				   pi.save_name saveName
+				from pension pe, sido si, gugun gu, (select  ro.pension_no 
+				                                            ,min(p.price) price
+				                                    from rooms ro , prices p
+				                                    where ro.no = p.room_no
+				                                    group by ro.pension_no) ro , (select  r.pension_no
+				                                                                         ,res.status
+				                                                                         ,round(avg(re.stars),1) stars
+				                                                                         ,count(re.no) rcount
+				                                                                 from reviews re , reservations res, rooms r
+				                                                                 where r.no = res.room_no
+				                                                                 and res.no = re.no
+				                                                                 group by r.pension_no,res.status) stars ,(select   a.img_no,
+				                                                                                                                    b.pension_no,
+				                                                                                                                    b.save_name
+				                                                                                                            from (select      min(pim.no) img_no,
+				                                                                                                                                 pim.pension_no
+				                                                                                                                from        pension_image pim
+				                                                                                                                group by    pim.pension_no) a,
+				                                                                                                                                            (select      save_name, pension_no, no img_no
+				                                                                                                                                           from         pension_image) b
+				                                                                                                            where a.img_no = b.img_no) pi
+				where pe.no = si.pension_no
+				and si.no = gu.no
+				and pe.no = ro.pension_no
+				and ro.pension_no = stars.pension_no(+)
+				and pi.pension_no = pe.no
+				order by gu.name --guName
 		]]>
 	</select>			
 	 
+	<!-- 낮은가격순 리스트 -->
+	<select id="lowpriceList" resultType="Map" parameterType="Map">
+		<![CDATA[
+			select       	   pe.name pName,
+				               pe.visit_road3 visitRoad3,
+				               gu.name guName,
+				               ro.price price,
+				               stars.status status,
+				               stars.stars stars,
+				               stars.rcount rcount,
+               				   pi.save_name saveName
+				from pension pe, sido si, gugun gu, (select  ro.pension_no 
+				                                            ,min(p.price) price
+				                                    from rooms ro , prices p
+				                                    where ro.no = p.room_no
+				                                    group by ro.pension_no) ro , (select  r.pension_no
+				                                                                         ,res.status
+				                                                                         ,round(avg(re.stars),1) stars
+				                                                                         ,count(re.no) rcount
+				                                                                 from reviews re , reservations res, rooms r
+				                                                                 where r.no = res.room_no
+				                                                                 and res.no = re.no
+				                                                                 group by r.pension_no,res.status) stars ,(select   a.img_no,
+				                                                                                                                    b.pension_no,
+				                                                                                                                    b.save_name
+				                                                                                                            from (select      min(pim.no) img_no,
+				                                                                                                                                 pim.pension_no
+				                                                                                                                from        pension_image pim
+				                                                                                                                group by    pim.pension_no) a,
+				                                                                                                                                            (select      save_name, pension_no, no img_no
+				                                                                                                                                           from         pension_image) b
+				                                                                                                            where a.img_no = b.img_no) pi
+				where pe.no = si.pension_no
+				and si.no = gu.no
+				and pe.no = ro.pension_no
+				and ro.pension_no = stars.pension_no(+)
+				and pi.pension_no = pe.no
+				order by ro.price asc
+		]]>
+	</select>
 	
+	<!-- 높은가격순 리스트 -->
+	<select id="highpriceList" resultType="Map" parameterType="Map">
+		<![CDATA[
+			select       	   pe.name pName,
+				               pe.visit_road3 visitRoad3,
+				               gu.name guName,
+				               ro.price price,
+				               stars.status status,
+				               stars.stars stars,
+				               stars.rcount rcount,
+               				   pi.save_name saveName
+				from pension pe, sido si, gugun gu, (select  ro.pension_no 
+				                                            ,min(p.price) price
+				                                    from rooms ro , prices p
+				                                    where ro.no = p.room_no
+				                                    group by ro.pension_no) ro , (select  r.pension_no
+				                                                                         ,res.status
+				                                                                         ,round(avg(re.stars),1) stars
+				                                                                         ,count(re.no) rcount
+				                                                                 from reviews re , reservations res, rooms r
+				                                                                 where r.no = res.room_no
+				                                                                 and res.no = re.no
+				                                                                 group by r.pension_no,res.status) stars ,(select   a.img_no,
+				                                                                                                                    b.pension_no,
+				                                                                                                                    b.save_name
+				                                                                                                            from (select      min(pim.no) img_no,
+				                                                                                                                                 pim.pension_no
+				                                                                                                                from        pension_image pim
+				                                                                                                                group by    pim.pension_no) a,
+				                                                                                                                                            (select      save_name, pension_no, no img_no
+				                                                                                                                                           from         pension_image) b
+				                                                                                                            where a.img_no = b.img_no) pi
+				where pe.no = si.pension_no
+				and si.no = gu.no
+				and pe.no = ro.pension_no
+				and ro.pension_no = stars.pension_no(+)
+				and pi.pension_no = pe.no
+				order by ro.price desc
+		]]>
+	</select>
+	
+	<!-- 평점 높은순  리스트 -->
+	<select id="hitList" resultType="Map" parameterType="Map">
+		<![CDATA[
+			select        	   pe.name pName,
+				               pe.visit_road3 visitRoad3,
+				               gu.name guName,
+				               ro.price price,
+				               stars.status status,
+				               stars.stars stars,
+				               stars.rcount rcount,
+               				   pi.save_name saveName
+				from pension pe, sido si, gugun gu, (select  ro.pension_no 
+				                                            ,min(p.price) price
+				                                    from rooms ro , prices p
+				                                    where ro.no = p.room_no
+				                                    group by ro.pension_no) ro , (select  r.pension_no
+				                                                                         ,res.status
+				                                                                         ,round(avg(re.stars),1) stars
+				                                                                         ,count(re.no) rcount
+				                                                                 from reviews re , reservations res, rooms r
+				                                                                 where r.no = res.room_no
+				                                                                 and res.no = re.no
+				                                                                 group by r.pension_no,res.status) stars ,(select   a.img_no,
+				                                                                                                                    b.pension_no,
+				                                                                                                                    b.save_name
+				                                                                                                            from (select      min(pim.no) img_no,
+				                                                                                                                                 pim.pension_no
+				                                                                                                                from        pension_image pim
+				                                                                                                                group by    pim.pension_no) a,
+				                                                                                                                                            (select      save_name, pension_no, no img_no
+				                                                                                                                                           from         pension_image) b
+				                                                                                                            where a.img_no = b.img_no) pi
+				where pe.no = si.pension_no
+				and si.no = gu.no
+				and pe.no = ro.pension_no
+				and ro.pension_no = stars.pension_no(+)
+				and pi.pension_no = pe.no
+				order by stars.stars desc
+		]]>
+	</select>
 	<!-- 체크박스 선택시 리스트 -->
 	  
 	<select id="searchList" resultType="Map" parameterType="com.javaex.vo.MainSearchVo">

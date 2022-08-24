@@ -179,10 +179,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 								<select id="payment-select" class="select_type_1">
 									<option data-minprice="0" selected="selected" value="CARD"
 										data-v-f785cca6="">선택해주세요</option>
-									<option data-minprice="0" value="KAKAO" data-v-f785cca6="">카카오페이</option>
-									<option data-minprice="0" value="NAVER" data-v-f785cca6="">
+									<option data-minprice="1" value="1" data-v-f785cca6="">카카오페이</option>
+									<option data-minprice="2" value="2" data-v-f785cca6="">
 										네이버페이</option>
-									<option data-minprice="0" value="CARD" data-v-f785cca6="">신용/체크카드</option>
+									<option data-minprice="3" value="3" data-v-f785cca6="">신용/체크카드</option>
 								</select>
 								<!---->
 								<!---->

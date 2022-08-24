@@ -26,13 +26,12 @@
 				</c:when>
 				<c:otherwise>
 					<li class="over pic clearfix">
-						<a href="${pageContext.request.contextPath}/my/info"><img id="user-icon" src="https://image.goodchoice.kr/profile/ico/ico_21.png" alt=""></a>
+						<a href="${pageContext.request.contextPath}/my/info?no=${authUser.no}"><img id="user-icon" src="https://image.goodchoice.kr/profile/ico/ico_21.png" alt=""></a>
 						<ul class="list_04 clearfix" style="display: none;">
-							<li><b>나주머리빗</b></li>
-							<li><a href="${pageContext.request.contextPath}/my/info">내정보</a></li>
-							<li><a href="${pageContext.request.contextPath}/my/point" data-point="0">포인트<!-- span>0P</span --></a></li>
-							<li><a href="${pageContext.request.contextPath}/my/reservation">예약내역<!-- span>0건</span --></a></li>
-							<li><a href="">알림설정</a></li>
+							<li><b>${authUser.nickName}</b></li>
+							<li><a href="${pageContext.request.contextPath}/my/info?no=${authUser.no}">내정보</a></li>
+							<li><a href="${pageContext.request.contextPath}/my/point?no=${authUser.no}" data-point="0">포인트<!-- span>0P</span --></a></li>
+							<li><a href="${pageContext.request.contextPath}/my/reservation?no=${authUser.no}">예약내역<!-- span>0건</span --></a></li>
 							<li><a href="${pageContext.request.contextPath}/logout"><button type="button" class="pop_logout_open">로그아웃</button></a></li>
 						</ul>
 					</li>
