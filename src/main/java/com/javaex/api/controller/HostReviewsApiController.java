@@ -1,5 +1,7 @@
 package com.javaex.api.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.HostReviewsService;
 import com.javaex.vo.HostReplyVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "host")
@@ -19,8 +22,10 @@ public class HostReviewsApiController {
 	
 	@ResponseBody
 	@RequestMapping(value = "api/replyInsert", method = {RequestMethod.GET, RequestMethod.POST})
-	public int replyInsert(@RequestBody HostReplyVo replyVo) {
-		replyVo.setHostNo(3);
+	public int replyInsert(HttpSession session, @RequestBody HostReplyVo replyVo) {
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int hostNo = uVo.getNo();
+		replyVo.setHostNo(hostNo);
 		System.out.println("controller>");
 		System.out.println(replyVo);
 		System.out.println(replyVo.getReviewNo());
