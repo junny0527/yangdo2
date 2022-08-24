@@ -20,14 +20,10 @@ public class PointsService {
 		return poMap;
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	public List<MyPointVo> getUserPoint(int userNo){
 		
 		List<MyPointVo> pList = pointsDao.getUserPoint(userNo);
 		
 		return pList;
 	}
->>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 }

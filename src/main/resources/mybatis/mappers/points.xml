@@ -16,8 +16,6 @@
 
 	</select> 
 	
-<<<<<<< HEAD
-=======
 	<select id="getUserPoint" resultType="com.javaex.vo.MyPointVo" parameterType="int">
 		<![CDATA[
 			select  p.no no
@@ -35,7 +33,6 @@
 			order by p.reg_date desc
 		]]>
 	</select>
->>>>>>> branch 'master' of https://github.com/minnnnnk/yangdo.git
 
 	 <insert id="pointsInsert" parameterType="com.javaex.vo.RePayVo">
 			 <selectKey keyProperty="pointNo" resultType="int" order="BEFORE">
