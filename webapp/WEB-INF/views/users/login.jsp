@@ -19,7 +19,7 @@
 			<form id="loginForm" action="${pageContext.request.contextPath}/login" autocomplete="off" method="post" novalidate="novalidate">
 				<input type="hidden" name="yeogi_token" value="59259f5ff4a5bcd52e61c8e7edb53374">
 				<div class="fix_title">
-					<strong><a class="col_red" href="">양도 어때</a></strong>
+					<strong><a class="col_red" href="${pageContext.request.contextPath}/main">양도 어때</a></strong>
 				</div>
 				<button type="button" id="kakao-login-btn" class="btn_start btn_kakao" data-device-type="W">
 					<span><img id="kakaoLogo" src="${pageContext.request.contextPath}/assets/image/users/kakao.png">카카오톡으로 로그인</span>
