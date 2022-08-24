@@ -31,4 +31,10 @@ public class HostReviewsDao {
 		return count;
 	}
 	
+	public int updateReply(HostReplyVo replyVo) {
+		System.out.println("dao");
+		int count = sqlSession.update("HostReviews.updateReply", replyVo);
+		return count;
+	}
+	
 }

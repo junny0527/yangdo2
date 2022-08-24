@@ -83,6 +83,7 @@
 			                    <span id="guestRegDate">${rList.guestRegdate}</span>
 			                    <c:choose>
 		                    		<c:when test = "${rList.replyNo != null && rList.hostContent != null && rList.hostRegdate != null}">
+		                    			
 			                    		<div id="ceoContainer">
 					                        <div class="box">
 					                       		<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">
@@ -92,15 +93,21 @@
 					                            <span id="ceoContent">${rList.hostContent}</span>
 					                            <span id="ceoRegDate">${rList.hostRegdate}</span>
 					                        </div>
-			                    		</div>   
+			                    		</div>
+			                    		<input type = "hidden" value = "${rList.reviewNo}">
 										<button type ="button" class = "btn editreply">수정</button>
+										<div class = "replyedit">
+											<textarea class = "form-control"></textarea>
+											<button class = "btn editcancel" type = "button">취소</button>
+											<button class = "btn btn-primary sendeditreply" type = "button">등록</button>
+										</div>
 									</c:when>
 									<c:otherwise>
 										<div class = "addreplyarea">
-											<input id = "replyId${status.index}" type = "hidden" value = "${rList.reviewNo}">
+											<input type = "hidden" value = "${rList.reviewNo}">
 											<button type = "button" class = "btn addreply"> + 답글달기</button>
 											<div class = "reply">
-												<textarea id = "replyContent${status.index}" class = "form-control"></textarea>
+												<textarea class = "form-control"></textarea>
 												<button class = "btn cancel" type = "button">취소</button>
 												<button class = "btn btn-primary sendreply" type = "button">등록</button>
 											</div>
@@ -137,39 +144,84 @@
 
 <script type ="text/javascript">
 
-$(".addreplyarea").off("click").on("click", function(){
+$(".addreplyarea").on("click", function(){
 	$(".reply").css("display", "block");
+});
+
+$(".editreply").on("click", function(){
+	$(this).siblings(".replyedit").css("display", "block");
+	$(this).siblings("#ceoContainer").css("display", "none");
+	$(this).css("display", "none");
+});
 	
-	var reviewNo = $(this).children('input').val();
-	var hostContent = $(this).children('div').children('textarea').val();
+$(".sendreply").on("click", function(){
+	var reviewNo = $(this).parent().parent().children('input').val();
+	var hostContent = $(this).siblings('textarea').val();
 	console.log(reviewNo);
 	console.log(hostContent);
 	
-	$(".sendreply").off("click").on("click", function(){
-		var replyVo = {
-			reviewNo: reviewNo,
-			hostContent: hostContent
+	var replyVo = {
+		reviewNo: reviewNo,
+		hostContent: hostContent
+	}
+	
+	console.log(replyVo);
+		
+	$.ajax({
+		url : "${pageContext.request.contextPath}/host/api/replyInsert",
+		type : "post",
+		data : JSON.stringify(replyVo),
+		contentType : 'application/json',
+		dataType : "json",
+		success : function(good){
+			alert("등록되었습니다.");
+			window.location.href = "${pageContext.request.contextPath}/host/reviews";
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
 		}
-			
-		$.ajax({
-			url : "${pageContext.request.contextPath}/host/api/replyInsert",
-			type : "post",
-			data : JSON.stringify(replyVo),
-			contentType : 'application/json',
-			dataType : "json",
-			success : function(good){
-				alert("등록되었습니다.");
-				window.location.href = "${pageContext.request.contextPath}/host/reviews";
-			},
-			error : function(XHR, status, error) {
-				console.log(status + ' : ' + error);
-			}
-		});
-	})
+	});
 });
 
-$(".cancel").off("click").on("click", function(){
+$(".sendeditreply").on("click", function(){
+	var reviewNo = $(this).parent().parent().children('input').val();
+	var hostContent = $(this).siblings('textarea').val();
+	console.log(reviewNo);
+	console.log(hostContent);
+	
+	var replyVo = {
+		reviewNo: reviewNo,
+		hostContent: hostContent
+	}
+	
+	console.log(replyVo);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/host/api/replyUpdate",
+		type : "post",
+		data : JSON.stringify(replyVo),
+		contentType : 'application/json',
+		dataType : "json",
+		success : function(good){
+			alert("수정되었습니다.");
+			window.location.href = "${pageContext.request.contextPath}/host/reviews";
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+});
+
+
+
+$(".cancel").on("click", function(){
 	$(".reply").css("display", "none");
+})
+
+$(".editcancel").on("click", function(){
+	$(this).parent(".replyedit").css("display", "none");
+	$(this).parent().siblings("#ceoContainer").css("display", "flex");
+	$(this).parent().siblings(".editreply").css("display", "block");
 })
 
 
