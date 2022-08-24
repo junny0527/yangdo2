@@ -9,6 +9,7 @@
 		<![CDATA[
 				 select        pe.name pName,
 				               pe.visit_road3 visitRoad3,
+				               pe.address address,
 				               gu.name guName,
 				               ro.price price,
 				               stars.status status,
