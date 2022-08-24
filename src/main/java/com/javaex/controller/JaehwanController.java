@@ -25,7 +25,7 @@ public class JaehwanController {
 		System.out.println("로그아웃");
 		session.removeAttribute("authUser");
 		session.invalidate();
-		return "redirect:/host/newhost";
+		return "redirect:/loginForm";
 	}
 	
 	@RequestMapping(value="main", method= {RequestMethod.GET, RequestMethod.POST})
