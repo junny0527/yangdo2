@@ -77,7 +77,9 @@ public class JiwoongController {
 	
 	//검색시 체크박스 리스트
 	@RequestMapping(value="main/search", method = {RequestMethod.POST, RequestMethod.GET})
-	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo) {
+	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo,
+								@RequestParam(value="pensionItem2") List<Integer> pensionItem2,
+								@RequestParam(value="pensionItem1") List<Integer> pensionItem1) {
 		System.out.println("Controller>search");
 		System.out.println("searchVo"+searchVo);
 		

@@ -221,7 +221,7 @@
 						<li class="list_2 adcno3">
 							<a href="">
 								<p class="pic">
-									<img class="lazy align" src="${pageContext.request.contextPath }/assets/image/mainList/${pList.IMAGEPATH}" style="margin-top: -159px; display: block;">
+									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${pList.SAVENAME}" style="margin-top: -159px; display: block;">
 								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
@@ -379,8 +379,8 @@
        		 });
 		
 			/* kakaoMap */
-		
-		
+			
+			
 			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
 			var options = { //지도를 생성할 때 필요한 기본 옵션
 			   center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -433,7 +433,7 @@
 			$(".btn-secondary").on("click", function() {
 				$(".modal").hide();
 			});
-	
+			
 		//////////////////////////인원추가 버튼 ////////////////////////////
 		function count(type){
 		
