@@ -67,11 +67,11 @@
 				                          ,p.SAVE_NAME
 				        
 				                  from    pension_image p
+				                  where   p.pension_no = #{pensionNo}
 				                  order by no asc) ot
 				         )ort
 				where   ort.rn >= #{startRnum}
 				and     ort.rn <= #{endRnum}
-				and		pension_no = #{pensionNo}
 		]]>
 	</select>
 	

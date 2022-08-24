@@ -52,7 +52,6 @@ public class DetailService {
 		
 		//현재페이지
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
-		
 		//페이지 글개수
 		int listCnt = 6;
 		//시작 글번호
