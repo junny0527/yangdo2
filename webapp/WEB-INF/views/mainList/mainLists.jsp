@@ -56,8 +56,8 @@
 			<div class="filter_wrap">
 				<section class="date_wrap">
 						<h3>날짜</h3>
-							<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center; z-index : 100;">
-							<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center; z-index : 100;">
+							<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center; z-index : 100;" value="${datepicker}">
+							<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center; z-index : 100;" value="${datepicker2}">
 					
 				</section>
 				<h3>상세조건</h3>
@@ -367,13 +367,13 @@
            		 //input을 datepicker로 선언
            		 $("#datepicker").datepicker();                    
            		 $("#datepicker2").datepicker();
-            	 
+				 
            		 //From의 초기값을 오늘 날짜로 설정
             	$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
             	//To의 초기값을 내일로 설정
            		 $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
        		 });
-		
+				
 			
 		//////////////////////////인원추가 버튼 ////////////////////////////
 		function count(type){

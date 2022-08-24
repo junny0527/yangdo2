@@ -24,8 +24,8 @@ public class JiwoongController {
 	
 	//기본 리스트
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @RequestParam("datepicker") String datepicker,
-							@RequestParam("datepicker2") String datepicker2) {
+	public String mainList(Model model, @RequestParam(value= "datepicker", defaultValue = "",required = false)String datepicker,
+										@RequestParam(value= "datepicker2", defaultValue = "",required = false)String datepicker2) {
 		System.out.println("jiwoongController>mainList");
 		
 		Map<String, Object> pMap =  mainService.select();
