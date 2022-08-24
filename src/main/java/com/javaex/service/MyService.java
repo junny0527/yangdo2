@@ -21,7 +21,6 @@ public class MyService {
 		System.out.println("MyService>reservationList()");
 
 		Map<String, List<MyListVo>> myMap = new HashMap<String, List<MyListVo>>();
-
 		myMap.put("rList", myDao.getReserveList(no));
 		myMap.put("uList", myDao.getUsedList(no));
 		myMap.put("cList", myDao.getCancelList(no));
@@ -34,7 +33,6 @@ public class MyService {
 		System.out.println("MyService>yangdoList()");
 
 		Map<String, List<MyListVo>> myMap2 = new HashMap<String, List<MyListVo>>();
-
 		myMap2.put("yList", myDao.getRelistList(no));
 		myMap2.put("tList", myDao.getTransferList(no));
 
@@ -42,12 +40,10 @@ public class MyService {
 	}
 
 	// 유저번호로 전체 리스트 불러오기
-	public List<Map<String, Object>> getUserList(int no, int sNo) {
+	public List<MyListVo> getUserList(int no) {
 		System.out.println("MyService>getUserList()");
 
-		List<Map<String, Object>> userList = myDao.getUserList(no, sNo);
-
-		return userList;
+		return myDao.getUserList(no);
 	};
 
 	// 유저번호로 예약완료 리스트 불러오기
@@ -97,6 +93,13 @@ public class MyService {
 		System.out.println("MyService>cancelUpdate");
 
 		return myDao.cancelUpdate(myVo);
+	}
+
+	// 예약내역 삭제하기
+	public int remove(int resNo) {
+		System.out.println("MyService>remove()");
+
+		return myDao.remove(resNo);
 	}
 
 }

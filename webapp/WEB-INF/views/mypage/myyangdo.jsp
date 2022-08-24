@@ -60,7 +60,7 @@
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${yList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${yList.saveName}"
 												alt="${yList.pName}" class="align">
 										</p>
 										<a href="${pageContext.request.contextPath}/my/list/relisted"
@@ -82,10 +82,12 @@
 
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
-										<button type="button" class="btn_del">삭제</button>
+										<button type="button" class="btn_del btn btn-primary"
+											data-toggle="modal" data-target=".bd-example-modal-sm"
+											data-no="${uList.resNo}">삭제</button>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${tList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${tList.saveName}"
 												alt="${tList.pName}" class="align">
 										</p>
 										<a

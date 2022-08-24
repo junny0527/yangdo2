@@ -57,7 +57,7 @@
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${list.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${list.saveName}"
 												alt="삼산 도브" class="align">
 										</p>
 										<a

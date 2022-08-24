@@ -34,8 +34,6 @@ public class HostRulesDao {
 		return peckNo;
 	}
 	
-	public int insertPensionPeck(HostRulesVo peckVo) {
-		return sqlSession.insert("HostRules.insertPensionPeck", peckVo);
-	}
+
 	
 }

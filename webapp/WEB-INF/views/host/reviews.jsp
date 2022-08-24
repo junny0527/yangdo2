@@ -30,7 +30,7 @@
 	
 	<div>
 		<ul>
-			<c:forEach items = "${rList}" var = "rList">
+			<c:forEach items = "${rList}" var = "rList" varStatus = "status">
 				<li>
 					<div id="reviewBox">
 						<div id="guestContainer">
@@ -96,11 +96,14 @@
 										<button type ="button" class = "btn editreply">수정</button>
 									</c:when>
 									<c:otherwise>
-										<button type = "button" class = "btn addreply"> + 답글달기</button>
-										<div class = "reply">
-											<textarea class = "form-control"></textarea>
-											<button class = "btn cancel" type = "button">취소</button>
-											<button class = "btn btn-primary sendreply" type = "button">등록</button>
+										<div class = "addreplyarea">
+											<input id = "replyId${status.index}" type = "hidden" value = "${rList.reviewNo}">
+											<button type = "button" class = "btn addreply"> + 답글달기</button>
+											<div class = "reply">
+												<textarea id = "replyContent${status.index}" class = "form-control"></textarea>
+												<button class = "btn cancel" type = "button">취소</button>
+												<button class = "btn btn-primary sendreply" type = "button">등록</button>
+											</div>
 										</div>
 									</c:otherwise>
 								</c:choose>
@@ -111,6 +114,7 @@
 			</c:forEach>
 		</ul>
 	</div>
+	
 	<nav aria-label="Page navigation" class = "justify-content-center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item"><a class="page-link" href="#">◀</a></li>
@@ -133,20 +137,38 @@
 
 <script type ="text/javascript">
 
-$(document).ready(function(){
-		
+$(".addreplyarea").off("click").on("click", function(){
+	$(".reply").css("display", "block");
+	
+	var reviewNo = $(this).children('input').val();
+	var hostContent = $(this).children('div').children('textarea').val();
+	console.log(reviewNo);
+	console.log(hostContent);
+	
+	$(".sendreply").off("click").on("click", function(){
+		var replyVo = {
+			reviewNo: reviewNo,
+			hostContent: hostContent
+		}
+			
+		$.ajax({
+			url : "${pageContext.request.contextPath}/host/api/replyInsert",
+			type : "post",
+			data : JSON.stringify(replyVo),
+			contentType : 'application/json',
+			dataType : "json",
+			success : function(good){
+				alert("등록되었습니다.");
+				window.location.href = "${pageContext.request.contextPath}/host/reviews";
+			},
+			error : function(XHR, status, error) {
+				console.log(status + ' : ' + error);
+			}
+		});
+	})
 });
 
-$(".addreply").on("click", function(){
-	$(".reply").css("display", "block");
-})
-
-$(".sendreply").on("click", function(){
-	$(".addreply").css("display", "none");
-	$(".reply").css("display", "none");
-})
-
-$(".cancel").on("click", function(){
+$(".cancel").off("click").on("click", function(){
 	$(".reply").css("display", "none");
 })
 

@@ -56,21 +56,17 @@
 				<input type="hidden" name="page" value="1">
 				<div>
 					<div class="point_show gra_red">
-						<span>사용 가능 포인트</span> <strong id="point-page-show">500 P</strong>
+						<span>사용 가능 포인트</span> <strong id="point-page-show">${psMap.POINTS}P</strong>
 					</div>
-					<ul class="point_list">
-						<li>"삼산 도브(90P)"<span>2022.07.28</span>
-							<p class="col_mint">-190</p></li>
-					</ul>
-					<ul class="point_list">
-						<li>"도전룰렛 이벤트(100P)"<span>2022.07.20</span>
-							<p class="col_red">+100</p></li>
-					</ul>
-					<ul class="point_list">
-						<li>"스마일카라반펜션(590P)"<span>2022.07.17</span>
-							<p class="col_red">+590</p></li>
-					</ul>
-
+					
+					<c:forEach items="${pList}" var="pList">
+						<ul class="point_list">
+							<li>"${pList.pName}(${pList.point})"<span>${pList.regDate }</span>
+								<c:if test="${pList.point < 0}"><p class="col_mint">${pList.point}</p></c:if>
+								<c:if test="${pList.point > 0}"><p class="col_red">+${pList.point}</p></c:if>
+							</li>
+						</ul>
+					</c:forEach>
 				</div>
 
 				<!-- 리스트 없을시 -->

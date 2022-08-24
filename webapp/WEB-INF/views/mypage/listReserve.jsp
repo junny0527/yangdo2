@@ -56,7 +56,7 @@
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${list.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${list.saveName}"
 												alt="" class="align">
 										</p>
 										<a class="product-title" 
