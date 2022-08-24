@@ -82,7 +82,9 @@
 
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
-										<button type="button" class="btn_del">삭제</button>
+										<button type="button" class="btn_del btn btn-primary"
+											data-toggle="modal" data-target=".bd-example-modal-sm"
+											data-no="${uList.resNo}">삭제</button>
 										<p class="pic">
 											<img
 												src="${pageContext.request.contextPath}/upload/${tList.imgPath}"

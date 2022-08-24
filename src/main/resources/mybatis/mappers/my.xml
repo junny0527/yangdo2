@@ -14,10 +14,12 @@
                    to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
                    p.check_in inTime,
                    p.check_out outTime,
+                   pImg.image_path imgPath,
                    r.reg_date regDate
-            from reservations r, pension p, rooms ro
+            from reservations r, pension p, rooms ro, pension_image pImg
 			where r.room_no = ro.no
 			and p.no = ro.pension_no
+			and p.no = pImg.pension_no
 			and r.user_no = #{no}
 			order by r.no desc
 		]]>
@@ -153,23 +155,6 @@
 		]]>
 	</select>
 
-	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
-	<delete id="deleteOne" parameterType="int">
-		<![CDATA[
-			delete from reservations
-			where no = #{resNo}
-		]]>
-	</delete>
-
-	<!-- 예약상태 업데이트 하기 -->
-	<update id="updateOne" parameterType="int">
-		<![CDATA[
-			update reservations
-			set status = 4
-			where no = #{resNo}
-		]]>
-	</update>
-
 	<!-- 예약상세 페이지 예약번호로 불러오기 -->
 	<select id="getDetail" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
@@ -187,8 +172,8 @@
  					r.no resNo,
  					r.name,
  					r.hp,
- 					r.total_price tPrice,
- 					r.trans_price trPrice,
+ 					to_char(r.total_price, 'FM999,999') tPrice,
+ 					to_char(r.trans_price, 'FM999,999') trPrice,
  					r.pay_status pStatus,
  					p.refund_no refNo,
  					co.company_hp comHp,
@@ -200,4 +185,22 @@
  			and r.no = #{resNo}
 		]]>
 	</select>
+
+	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
+	<delete id="deleteOne" parameterType="int">
+		<![CDATA[
+			delete from reservations
+			where no = #{resNo}
+		]]>
+	</delete>
+
+	<!-- 예약상태 업데이트 하기 -->
+	<update id="updateOne" parameterType="int">
+		<![CDATA[
+			update reservations
+			set status = 4
+			where no = #{resNo}
+		]]>
+	</update>
+
 </mapper>

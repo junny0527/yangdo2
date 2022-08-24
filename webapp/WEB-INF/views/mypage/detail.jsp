@@ -50,380 +50,9 @@
 
 			<div class="align_rt">
 				<div class="reserve_detail">
-					<c:forEach var="myVo" items="${myVo}">
-						<!-- 예약완료이면 -->
-						<c:if test="${myVo.status==1}">
-							<!-- info -->
-							<div class="info">
-								<div>
-									<i>예약완료</i> <strong>${myVo.pName}</strong> <span>${myVo.rName}(기준
-										${myVo.sPple}인 ㆍ 최대 ${myVo.mPple}인)</span>
-								</div>
-							</div>
-							<!-- info -->
 
-							<!-- detail -->
-							<section class="detail">
-								<div>
-									<p>
-										<strong>체크인</strong>${myVo.checkIn} ㆍ ${myVo.inTime}
-									</p>
-									<p>
-										<strong>체크아웃</strong>${myVo.checkOut} ㆍ ${myVo.outTime}
-									</p>
-									<p>
-										<strong>인원</strong>기준 ${myVo.sPple}인 ㆍ 최대 ${myVo.mPple}인
-									</p>
-								</div>
-								<div>
-									<p>
-										<strong>예약번호</strong>${myVo.resNo}
-									</p>
-									<p>
-										<strong>예약자 이름</strong>${myVo.name}
-									</p>
-									<p>
-										<strong>휴대폰 번호</strong>${myVo.hp} <span class="safety_txt_2">휴대폰
-											번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
-									</p>
-								</div>
-								<div class="sub_total">
-									<p>
-										<strong>결제정보</strong>
-									</p>
-									<p>
-										<strong class="sub_info"> 주문금액 </strong> <b>
-											${myVo.tPrice}원</b>
-									</p>
-									<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
-								</div>
-								<div class="total">
-									<p>
-										<strong>총 결제금액</strong> <b> ${myVo.tPrice}원</b>
-									</p>
-								</div>
-							</section>
+					<c:import url="/WEB-INF/views/mypage/includes/mydetail.jsp"></c:import>
 
-							<a href="" class="btn_call">전화로 문의하기</a>
-
-							<section>
-								<div style="padding-top: 0; padding-bottom: 0">
-									<div
-										class="booking_detail_section_layout_wrap booking-cancel__section"
-										style="border-bottom: none;">
-										<div class="booking-detail-section-title__wrap">
-											<div>
-												<!---->
-												<div class="sub-title">
-													<div class="color-green">2022년 08월 28일 23:59까지 양도
-														가능합니다.</div>
-													<div class="color-red">2022년 08월 24일 23:59까지 무료 취소
-														가능합니다.</div>
-													<!---->
-												</div>
-											</div>
-											<!---->
-										</div>
-										<a
-											href="${pageContext.request.contextPath}/sale?no=${myVo.resNo}">
-											<button type="button" id="btn_relist_confirm"
-												class="btn_flat booking_detail_flat_button color-green"
-												data-toggle="modal" data-target="#relist-modal">양도하기</button>
-										</a>
-										<button type="button" id="btn_cancel_confirm"
-											class="btn_flat booking_detail_flat_button color-red btn-danger btn btn-primary"
-											data-toggle="modal" data-target="#cancel_modal">예약취소
-										</button>
-										<!---->
-									</div>
-									<!---->
-								</div>
-								<!---->
-							</section>
-							<!-- detail -->
-						</c:if>
-						<c:if test="${myVo.status==3}">
-							<div class="info" style="">
-								<div>
-									<i class="bg_w">이용완료</i> <strong>${myVo.pName}</strong> <span>${myVo.rName}(기준
-										${myVo.sPple}인 / 최대 ${myVo.mPple}인)</span>
-								</div>
-							</div>
-							<section class="detail">
-								<div>
-									<p>
-										<strong>체크인</strong>${myVo.checkIn} ㆍ ${myVo.inTime}
-									</p>
-									<p>
-										<strong>체크아웃</strong>${myVo.checkOut} ㆍ ${myVo.outTime}
-									</p>
-									<p>
-										<strong>인원</strong>기준 ${myVo.sPple}인 ㆍ 최대 ${myVo.mPple}인
-									</p>
-								</div>
-								<div>
-									<p>
-										<strong>예약번호</strong>${myVo.resNo}
-									</p>
-									<p>
-										<strong>예약자 이름</strong>${myVo.name}
-									</p>
-									<p>
-										<strong>휴대폰 번호</strong>${myVo.hp} <span class="safety_txt_2">휴대폰
-											번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
-									</p>
-								</div>
-								<div class="sub_total">
-									<p>
-										<strong>결제정보</strong>
-									</p>
-									<p>
-										<strong class="sub_info"> 주문금액 </strong> <b>
-											${myVo.tPrice}원</b>
-									</p>
-									<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
-								</div>
-								<div class="total">
-									<p>
-										<strong>총 결제금액</strong> <b> ${myVo.tPrice}원</b>
-									</p>
-								</div>
-							</section>
-							<section>
-								<div style="padding-top: 0; padding-bottom: 0">
-									<div
-										class="booking_detail_section_layout_wrap booking-cancel__section"
-										style="border-bottom: none;">
-										<button type="button"
-											class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰
-											남기기</button>
-									</div>
-								</div>
-							</section>
-						</c:if>
-						<c:if test="${myVo.status==4}">
-							<div class="info" style="">
-								<div>
-									<i class="bg_w">예약취소</i> <strong>${myVo.pName}</strong> <span>${myVo.rName}(기준
-										${myVo.sPple}인 / 최대 ${myVo.mPple}인)</span>
-								</div>
-							</div>
-
-							<section class="detail">
-								<div>
-									<p>
-										<strong>체크인</strong>${myVo.checkIn} ㆍ ${myVo.inTime}
-									</p>
-									<p>
-										<strong>체크아웃</strong>${myVo.checkOut} ㆍ ${myVo.outTime}
-									</p>
-									<p>
-										<strong>인원</strong>기준 ${myVo.sPple}인 ㆍ 최대 ${myVo.mPple}인
-									</p>
-								</div>
-								<div>
-									<p>
-										<strong>예약번호</strong>${myVo.resNo}
-									</p>
-									<p>
-										<strong>예약자 이름</strong>${myVo.name}
-									</p>
-									<p>
-										<strong>휴대폰 번호</strong>${myVo.hp} <span class="safety_txt_2">휴대폰
-											번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
-									</p>
-								</div>
-								<div class="sub_total">
-									<p>
-										<strong>결제정보</strong>
-									</p>
-									<p>
-										<strong class="sub_info"> 취소금액 </strong> <b>
-											${myVo.tPrice}원</b>
-									</p>
-									<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
-								</div>
-								<div class="total">
-									<p>
-										<strong>총 결제금액</strong> <b> ${myVo.tPrice}원</b>
-									</p>
-								</div>
-							</section>
-							<section>
-								<div style="padding-top: 0; padding-bottom: 0">
-									<div
-										class="booking_detail_section_layout_wrap booking-cancel__section"
-										style="border-bottom: none;">
-										<!---->
-										<button type="button"
-											class="btn_flat btn-green booking_detail_flat_button color-green-long">다시
-											예약</button>
-									</div>
-									<!---->
-									<!---->
-								</div>
-							</section>
-						</c:if>
-						<c:if test="${myVo.status==6}">
-							<div class="info" style="">
-								<div>
-									<i>양도대기</i> <strong>${myVo.pName}</strong> <span>${myVo.rName}(기준
-										${myVo.sPple}인 최대 ${myVo.mPple}인)</span>
-								</div>
-							</div>
-
-							<section class="detail">
-								<div>
-									<p>
-										<strong>체크인</strong>${myVo.checkIn} ㆍ ${myVo.inTime}
-									</p>
-									<p>
-										<strong>체크아웃</strong>${myVo.checkOut} ㆍ ${myVo.outTime}
-									</p>
-									<p>
-										<strong>인원</strong>기준 ${myVo.sPple}인 ㆍ 최대 ${myVo.mPple}인
-									</p>
-								</div>
-								<div>
-									<p>
-										<strong>예약번호</strong>${myVo.resNo}
-									</p>
-									<p>
-										<strong>예약자 이름</strong>${myVo.name}
-									</p>
-									<p>
-										<strong>휴대폰 번호</strong>${myVo.hp} <span class="safety_txt_2">휴대폰
-											번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
-									</p>
-								</div>
-								<div class="sub_total">
-									<p>
-										<strong>결제정보</strong>
-									</p>
-									<p>
-										<strong class="sub_info"> 주문금액 </strong> <b>
-											${myVo.tPrice}원</b>
-									</p>
-									<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
-								</div>
-								<div class="total">
-									<p>
-										<strong>총 결제금액</strong> <b> ${myVo.tPrice}원</b>
-									</p>
-								</div>
-							</section>
-
-							<a href="" class="btn_call">전화로 문의하기</a>
-							<section>
-								<div style="padding-top: 0; padding-bottom: 0">
-									<div
-										class="booking_detail_section_layout_wrap booking-cancel__section"
-										style="border-bottom: none;">
-										<div class="booking-detail-section-title__wrap">
-											<!---->
-										</div>
-										<button type="button"
-											class="btn_flat btn-green booking_detail_flat_button color-green-long">양도내역
-											확인하기</button>
-										<!---->
-										<!---->
-									</div>
-								</div>
-								<!---->
-							</section>
-						</c:if>
-						<c:if test="${myVo.status==5}">
-							<div class="info" style="">
-								<div>
-									<i class="bg_w">양도완료</i> <strong>${myVo.pName}</strong> <span>${myVo.rName}(기준
-										${myVo.sPple}인 최대 ${myVo.mPple}인)</span>
-								</div>
-							</div>
-							<section class="detail">
-								<div>
-									<p>
-										<strong>체크인</strong>${myVo.checkIn} ㆍ ${myVo.inTime}
-									</p>
-									<p>
-										<strong>체크아웃</strong>${myVo.checkOut} ㆍ ${myVo.outTime}
-									</p>
-									<p>
-										<strong>인원</strong>기준 ${myVo.sPple}인 ㆍ 최대 ${myVo.mPple}인
-									</p>
-								</div>
-								<div>
-									<p>
-										<strong>예약번호</strong>${myVo.resNo}
-									</p>
-									<p>
-										<strong>예약자 이름</strong>${myVo.name}
-									</p>
-									<p>
-										<strong>휴대폰 번호</strong>${myVo.hp} <span class="safety_txt_2">휴대폰
-											번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
-									</p>
-								</div>
-								<div class="sub_total">
-									<p>
-										<strong>결제정보</strong>
-									</p>
-									<p>
-										<strong class="sub_info"> 주문금액 </strong> <b>
-											${myVo.tPrice}원</b>
-									</p>
-									<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
-								</div>
-								<div class="total">
-									<p>
-										<strong>총 결제금액</strong> <b> ${myVo.tPrice}원</b>
-									</p>
-								</div>
-							</section>
-							<a href="" class="btn_call">전화로 문의하기</a>
-							<section>
-								<div style="padding-top: 0; padding-bottom: 0">
-									<div
-										class="booking_detail_section_layout_wrap booking-cancel__section"
-										style="border-bottom: none;">
-										<div class="booking-detail-section-title__wrap">
-											<!---->
-										</div>
-										<button type="button"
-											class="btn_flat btn-green booking_detail_flat_button color-green-long">메인으로
-											이동하기</button>
-										<!---->
-										<!---->
-									</div>
-								</div>
-								<!---->
-							</section>
-						</c:if>
-					</c:forEach>
 				</div>
 			</div>
 			<div>
@@ -434,65 +63,6 @@
 			<!-- Footer -->
 		</div>
 	</div>
-
-	<!----------------------------------삭제 모달---------------------------------------------->
-	<!-- Modal -->
-	<div class="modal fade" id="btnPop" tabindex="-1" role="dialog"
-		aria-labelledby="btnPopLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="btnPopLabel">삭제하기</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">내역을 삭제하시겠습니까?</div>
-				<form action="${pageContext.request.contextPath}/my/delete"
-					method="get">
-					<div class="modal-footer">
-						<input type="hidden" name="no" value="${myVo.resNo}">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">삭제</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!----------------------------------//삭제 모달---------------------------------------------->
-
-	<!----------------------------------//양도확인 모달---------------------------------------------->
-	<div id="relist-modal" class="modal fade">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">양도하기</h4>
-				</div>
-				<div class="modal-body">
-					<div class="con">
-						양도하시겠습니까?
-						<div class="con color-dan">
-							가격: <span id="modalPrice" class="con color-dan"></span>원
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="hidden" name="no" value="${myVo.resNo}">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					<button id="relist" type="submit" class="btn btn-danger">확인</button>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 
 	<!----------------------------------취소 환불 모달---------------------------------------------->
 	<!-- 취소환불 프로세스 모달창 -->
@@ -608,48 +178,59 @@
 				</div>
 			</div>
 		</div>
-		<!----------------------------------//취소 환불 모달---------------------------------------------->
-		<!-- 취소진행 모달 -->
-		<div class="modal fade" id="cancel_confirm_modal" data-bs-backdrop="static"
-			data-bs-keyboard="false" aria-hidden="true" tabindex="-1">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-body m-2">
-						<p>환불 예정금액을 모두 확인하셨나요?</p>
-						<p>예약을 정말 취소하시겠습니까 ?</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light" data-bs-toggle="modal"
-							data-bs-dismiss="modal">닫기</button>
-						<button class="btn btn-success"
-							data-bs-target="#cancelconfirmModal" data-bs-toggle="modal">확인</button>
-					</div>
+	</div>
+	<!----------------------------------//취소 환불 모달---------------------------------------------->
+	<!-- 취소진행 모달 -->
+	<div class="modal fade" id="cancel_confirm_modal"
+		data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true"
+		tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body m-2">
+					<p>환불 예정금액을 모두 확인하셨나요?</p>
+					<p>예약을 정말 취소하시겠습니까 ?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light" data-bs-toggle="modal"
+						data-bs-dismiss="modal">닫기</button>
+					<button class="btn btn-success"
+						data-bs-target="#cancelconfirmModal" data-bs-toggle="modal">확인</button>
 				</div>
 			</div>
 		</div>
-		<!-- 취소확인 모달 -->
-		<div class="modal fade" id="cancelconfirmModal"
-			data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true"
-			tabindex="-1">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-body m-2">예약취소 되었습니다.</div>
-					<div class="modal-footer">
-						<form action="" id="reservationNoForm">
-							<a class="btn btn-danger" data-bs-toggle="modal" role="button">확인</a> <input
-								type="hidden" id="resNo" name="no"
-								value="${myVo.resNo}">
-						</form>
-					</div>
+	</div>
+	<!-- 취소확인 모달 -->
+	<div class="modal fade" id="cancelconfirmModal"
+		data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true"
+		tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body m-2">예약취소 되었습니다.</div>
+				<div class="modal-footer">
+					<form action="" id="reservationNoForm">
+						<a class="btn btn-danger" data-bs-toggle="modal" role="button">확인</a>
+						<input type="hidden" id="resNo" name="no" value="${myVo.resNo}">
+					</form>
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 
 <script>
 	$(document).ready(function() {
 		$("#btn_relist_confirm").on("click", function() {
 			$("#relist-modal").modal("show");
+		});
+		
+		$(document).ready(function() {
+			$('#myModal').on('shown.bs.modal', function() {
+				$('#myInput').trigger('focus')
+			});
+			
+			$(".btn-primary").on("click", function(){
+				$(this).
+			});
 		});
 	});
 </script>

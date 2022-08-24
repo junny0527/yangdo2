@@ -87,15 +87,12 @@
 						</h3>
 						<c:forEach var="uList" items="${myMap.uList}" begin="0" end="1">
 							<ul class="list_wrap">
-								<li class="reservation-detail"><div>
+								<li class="reservation-detail li-${uList.resNo}"><div>
 
 										<!-- 삭제버튼 -->
 										<button type="button" class="btn_del btn btn-primary"
-											data-toggle="modal" data-target="#btnPop">삭제</button>
-
-										<button type="button" class="btn_del btn-primary"
-											data-toggle="modal" data-target=".bd-example-modal-sm">삭제</button>
-
+											data-toggle="modal" data-target=".bd-example-modal-sm"
+											data-no="${uList.resNo}">삭제</button>
 										<!-- 삭제버튼 -->
 
 										<!-- 이미지 -->
@@ -131,11 +128,12 @@
 						</h3>
 						<c:forEach var="cList" items="${myMap.cList}" begin="0" end="1">
 							<ul class="list_wrap">
-								<li class="reservation-detail"><div>
+								<li class="reservation-detail li-${uList.resNo}"><div>
 
 										<!-- 삭제버튼 -->
 										<button type="button" class="btn_del btn btn-primary"
-											data-toggle="modal" data-target="#btnPop">삭제</button>
+											data-toggle="modal" data-target=".bd-example-modal-sm"
+											data-no="${cList.resNo}">삭제</button>
 										<!-- 삭제버튼 -->
 
 										<!-- 이미지 -->
@@ -175,22 +173,24 @@
 	<!---->
 
 	<!-- Modal -->
-	<div class="modal fade" id="btnPop" tabindex="-1" role="dialog"
-		aria-labelledby="btnPopLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div id="btn-del-modal" class="modal fade bd-example-modal-sm"
+		tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="btnPopLabel">삭제하기</h5>
+					<h5 class="modal-title" id="btn-del-label">삭제하기</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">내역을 삭제하시겠습니까?</div>
+				<input type="text" name="delNo" value="" id="delNo">
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">삭제</button>
+					<button id="btnDel" type="button" class="btn btn-primary">삭제</button>
 				</div>
 			</div>
 		</div>
@@ -199,12 +199,40 @@
 
 <script>
 	$(document).ready(function() {
-		$('#myModal').on('shown.bs.modal', function() {
-			$('#myInput').trigger('focus')
+
+		$('.btn_del').on('shown.bs.modal', function() {
+
+			var no = $(this).data("no");
+			$("#delNo").val(no);
+			$('btn-del-modal').trigger('focus');
 		});
-		
-		$(".btn-primary").on("click", function(){
-			$(this).
+
+		$('#btnDel').on("click", function() {
+
+			var no = $("#delNo").val();
+
+			//데이터 전송
+			$.ajax({
+				url : "${pageContext.request.contextPath}/my/api/remove",
+				type : "post",
+				/* contentType : "application/json", */
+				data : {
+					no : no
+				},
+				dataType : "json",
+				success : function(count) {
+					console.log(count);
+					if (count == 1) {
+						$(".li-" + no).remove();
+						$("#btn-del-modal").modal("hide");
+					} else {
+						$("#btn-del-modal").modal("hide");
+					}
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
 		});
 	});
 </script>

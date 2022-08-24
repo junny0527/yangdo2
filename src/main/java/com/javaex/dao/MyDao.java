@@ -1,8 +1,6 @@
 package com.javaex.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +15,10 @@ public class MyDao {
 	private SqlSession sqlSession;
 
 	// 유저번호로 전체 리스트 불러오기
-	public List<Map<String, Object>> getUserList(int no, int sNo) {
+	public List<MyListVo> getUserList(int no) {
 		System.out.println("MyDao>getUserList()");
 
-		Map<String, Object> userMap = new HashMap<String, Object>();
-		userMap.put("no", no);
-		userMap.put("sNo", sNo);
-
-		List<Map<String, Object>> userList = sqlSession.selectList("my.getUserList", userMap);
-
-		return userList;
+		return sqlSession.selectList("my.getUserList", no);
 	}
 
 	// 유저번호로 예약완료 리스트 불러오기
@@ -76,5 +68,12 @@ public class MyDao {
 
 		return sqlSession.update("my.updateOne", myVo);
 	}
+
+	// 예약내역 삭제하기
+	public int remove(int resNo) {
+		System.out.println("MyService>remove()");
+
+		return sqlSession.delete("my.deleteOne", resNo);
+	};
 
 }

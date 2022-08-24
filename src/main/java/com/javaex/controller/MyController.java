@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.MyService;
+import com.javaex.service.PointsService;
 import com.javaex.vo.MyListVo;
 import com.javaex.vo.UserVo;
 
@@ -23,6 +25,9 @@ public class MyController {
 
 	@Autowired
 	private MyService myService;
+
+	@Autowired
+	private PointsService pService;
 
 	/********* main item **********/
 
@@ -76,6 +81,22 @@ public class MyController {
 	}
 
 	/********* main item **********/
+
+	/********* list (ajax) **********/
+	@ResponseBody
+	@RequestMapping(value = "api/list", method = { RequestMethod.GET, RequestMethod.POST })
+	public List<MyListVo> getUserList(HttpSession session) {
+		System.out.println("MyReservationApiController>getUserList()");
+
+		// 유저번호 세션에서 불러오기
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		List<MyListVo> myList = myService.getUserList(no);
+
+		return myList;
+	}
+
+	/********* list (ajax) **********/
 
 	/********* sub item (reservation) 나중에 다시 정리 **********/
 
@@ -163,8 +184,7 @@ public class MyController {
 
 	/********* sub item (yangdo) **********/
 
-	/********* detail () **********/
-
+	/********* detail (all) **********/
 	@RequestMapping(value = "/detail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String detail(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo, Model model) {
 		System.out.println("MyController>detail()");
@@ -177,14 +197,21 @@ public class MyController {
 		return "mypage/detail";
 	}
 
-	/********* detail () **********/
-	
-	@RequestMapping(value="/updateStatus", method= {RequestMethod.GET, RequestMethod.POST})
+	/********* detail (all) **********/
+	@ResponseBody
+	@RequestMapping(value = "/remove", method = { RequestMethod.GET, RequestMethod.POST })
+	public int remove(@RequestParam("no") int resNo) {
+		System.out.println("MyController>remove()");
+
+		return myService.remove(resNo);
+	}
+
+	@RequestMapping(value = "/updateStatus", method = { RequestMethod.GET, RequestMethod.POST })
 	public String cancelUpdate(@ModelAttribute MyListVo myVo) {
 		System.out.println("MyController>cancelUpdate()");
-		
+
 		myService.cancelUpdate(myVo);
-		
+
 		return "redirect: /reservation";
 	}
 
