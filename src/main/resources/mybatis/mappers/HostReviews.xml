@@ -8,6 +8,7 @@
 	<![CDATA[
 		select
 			revi.review_no reviewNo
+            ,rp.reply_no replyNo
 	        ,revi.no reserveNo
 	        ,revi.title title
 	        ,revi.stars stars
@@ -16,18 +17,42 @@
 	        ,revi.image1 image1
 	        ,revi.image2 image2
 	        ,revi.content guestContent
+            ,rp.content hostContent
 	        ,to_char(revi.reg_date, 'YYYY-MM-DD') guestRegdate
+            ,to_char(rp.reg_date, 'YYYY-MM-DD') hostRegdate
 		from
-			reviews revi, reservations res, rooms rm
+			reviews revi, reservations res, rooms rm, replys rp
 		where
 			revi.no = res.no
 			and res.room_no = rm.no
 			and rm.pension_no = #{pensionNo}
+            and revi.review_no = rp.review_no(+)
 		order by revi.reg_date desc
 	]]>
 
+</select>
+
+
+<select id = "getReply" resultType = "com.javaex.vo.HostReplyVo">
+	
+	<![CDATA[
+		select
+			rv.review_no reviewNo
+	        ,rp.content hostContent
+	        ,to_char(rp.reg_date, 'YYYY-MM-DD') hostRegdate
+		from reviews rv, replys rp
+		where rv.review_no = rp.review_no
+	]]>
 
 </select>
+
+<insert id = "insertReply" parameterType = "com.javaex.vo.HostReplyVo">
+
+	<![CDATA[
+		insert into replys
+		values(SEQ_REPLYS_NO.nextval, #{reviewNo}, #{hostContent}, sysdate, #{hostNo})
+	]]>
+</insert>
 
 
 </mapper>
