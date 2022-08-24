@@ -3,10 +3,9 @@ package com.javaex.vo;
 public class HostReviewsVo {
 	
 	private int reviewNo;
+	private int replyNo;
 	private int reserveNo;
 	private double stars;
-	private int replyNo;
-	private int ownerNo;
 	private String title;
 	private String roomName;
 	private String guestName;
@@ -15,18 +14,18 @@ public class HostReviewsVo {
 	private String guestContent;
 	private String guestRegdate;
 	private String hostContent;
-	private String hostRegDate;
+	private String hostRegdate;
+	
 	
 	public HostReviewsVo() {}
 
-	public HostReviewsVo(int reviewNo, int reserveNo, double stars, int replyNo, int ownerNo, String title,
-			String roomName, String guestName, String image1, String image2, String guestContent, String guestRegdate,
-			String hostContent, String hostRegDate) {
+	public HostReviewsVo(int reviewNo, int replyNo, int reserveNo, double stars, String title, String roomName,
+			String guestName, String image1, String image2, String guestContent, String guestRegdate,
+			String hostContent, String hostRegdate) {
 		this.reviewNo = reviewNo;
+		this.replyNo = replyNo;
 		this.reserveNo = reserveNo;
 		this.stars = stars;
-		this.replyNo = replyNo;
-		this.ownerNo = ownerNo;
 		this.title = title;
 		this.roomName = roomName;
 		this.guestName = guestName;
@@ -35,7 +34,7 @@ public class HostReviewsVo {
 		this.guestContent = guestContent;
 		this.guestRegdate = guestRegdate;
 		this.hostContent = hostContent;
-		this.hostRegDate = hostRegDate;
+		this.hostRegdate = hostRegdate;
 	}
 
 	public int getReviewNo() {
@@ -44,6 +43,14 @@ public class HostReviewsVo {
 
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
+	}
+
+	public int getReplyNo() {
+		return replyNo;
+	}
+
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
 	}
 
 	public int getReserveNo() {
@@ -60,22 +67,6 @@ public class HostReviewsVo {
 
 	public void setStars(double stars) {
 		this.stars = stars;
-	}
-
-	public int getReplyNo() {
-		return replyNo;
-	}
-
-	public void setReplyNo(int replyNo) {
-		this.replyNo = replyNo;
-	}
-
-	public int getOwnerNo() {
-		return ownerNo;
-	}
-
-	public void setOwnerNo(int ownerNo) {
-		this.ownerNo = ownerNo;
 	}
 
 	public String getTitle() {
@@ -142,21 +133,20 @@ public class HostReviewsVo {
 		this.hostContent = hostContent;
 	}
 
-	public String getHostRegDate() {
-		return hostRegDate;
+	public String getHostRegdate() {
+		return hostRegdate;
 	}
 
-	public void setHostRegDate(String hostRegDate) {
-		this.hostRegDate = hostRegDate;
+	public void setHostRegdate(String hostRegdate) {
+		this.hostRegdate = hostRegdate;
 	}
 
 	@Override
 	public String toString() {
-		return "HostReviewsVo [reviewNo=" + reviewNo + ", reserveNo=" + reserveNo + ", stars=" + stars + ", replyNo="
-				+ replyNo + ", ownerNo=" + ownerNo + ", title=" + title + ", roomName=" + roomName + ", guestName="
-				+ guestName + ", image1=" + image1 + ", image2=" + image2 + ", guestContent=" + guestContent
-				+ ", guestRegdate=" + guestRegdate + ", hostContent=" + hostContent + ", hostRegDate=" + hostRegDate
-				+ "]";
+		return "HostReviewsVo [reviewNo=" + reviewNo + ", replyNo=" + replyNo + ", reserveNo=" + reserveNo + ", stars="
+				+ stars + ", title=" + title + ", roomName=" + roomName + ", guestName=" + guestName + ", image1="
+				+ image1 + ", image2=" + image2 + ", guestContent=" + guestContent + ", guestRegdate=" + guestRegdate
+				+ ", hostContent=" + hostContent + ", hostRegdate=" + hostRegdate + "]";
 	}
-	
+
 }

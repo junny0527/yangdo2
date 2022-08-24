@@ -181,23 +181,26 @@
 }
 
 #reviewBox > #guestContainer > #guestBox > #ceoContainer > .box {
-    width:150px;
-    height:50px;
+    width: 50px;
+    height: 50px;
     border-radius: 70%;
     background-color: rgb(233, 109, 73);
     margin-right:30px;
 }
 
 #reviewBox > #guestContainer > #guestBox > #ceoContainer > .box > img {
-    width:100%;
-    height:100%;
+    width: 50px;
+    height: 50px;
 }
 
-#addreply{
+.addreply{
 	width: 200px;
 	height: 50px;
 	background-color: #f2114c;
 	color: white;
+	border: 0px;
+	border-radius : 4px;
+	font-size : 15px;
 }
 
 .pagination > li > a{
@@ -220,23 +223,23 @@
 	text-align: center;
 }
 
-#reply{
+.reply{
 	display: none;
 }
 
-#reply > textarea{
+.reply > textarea{
 	width: 926px;
 	height: 150px;
 	resize: none;
 }
 
-#reply > button:first-of-type{
+.reply > button:first-of-type{
 	margin-right: 20px;
 	width: 80px;
 	float: right;
 }
 
-#reply > button:last-of-type{
+.reply > button:last-of-type{
 	margin-right: 5px;
 	width: 80px;
 	float: right;
