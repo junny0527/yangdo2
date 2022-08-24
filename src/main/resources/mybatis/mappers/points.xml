@@ -15,15 +15,19 @@
 		 AND RESERVATIONS.user_no = #{userNo}
 
 	</select> 
+	
 
 	 <insert id="pointsInsert" parameterType="com.javaex.vo.RePayVo">
+			 <selectKey keyProperty="pointNo" resultType="int" order="BEFORE">
+			    	select SEQ_POINTS_NO.NEXTVAL FROM DUAL
+		  	 </selectKey>
 				INSERT INTO POINTS (
 						NO,
 						RESERVE_NO,
 						POINT,
 						REG_DATE )
 				VALUES (
-				  		SEQ_POINTS_NO.NEXTVAL,
+				  		#{pointNo},
 						#{no}, <!-- RESERVE_NO입니다 -->
 						TO_NUMBER('-'||#{point}),
 						SYSDATE
