@@ -46,7 +46,7 @@ public class UserController {
 					return "redirect:/host/main";
 				}
 			}else {
-				return "redirect:/main?areaNo=123456";
+				return "redirect:/main";
 			}
 		}else {
 			System.out.println("로그인 실패");
