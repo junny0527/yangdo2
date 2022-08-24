@@ -2,16 +2,26 @@ package com.javaex.vo;
 
 public class HostReplyVo {
 	
+	private int hostNo;
 	private int reviewNo;
 	private String hostContent;
 	private String hostRegdate;
 	
 	public HostReplyVo() {}
-	
-	public HostReplyVo(int reviewNo, String hostContent, String hostRegdate) {
+
+	public HostReplyVo(int hostNo, int reviewNo, String hostContent, String hostRegdate) {
+		this.hostNo = hostNo;
 		this.reviewNo = reviewNo;
 		this.hostContent = hostContent;
 		this.hostRegdate = hostRegdate;
+	}
+
+	public int getHostNo() {
+		return hostNo;
+	}
+
+	public void setHostNo(int hostNo) {
+		this.hostNo = hostNo;
 	}
 
 	public int getReviewNo() {
@@ -40,9 +50,9 @@ public class HostReplyVo {
 
 	@Override
 	public String toString() {
-		return "HostReplyVo [reviewNo=" + reviewNo + ", hostContent=" + hostContent + ", hostRegdate=" + hostRegdate
-				+ "]";
+		return "HostReplyVo [hostNo=" + hostNo + ", reviewNo=" + reviewNo + ", hostContent=" + hostContent
+				+ ", hostRegdate=" + hostRegdate + "]";
 	}
-	
+
 	
 }
