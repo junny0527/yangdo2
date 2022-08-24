@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.javaex.service.MyService;
 import com.javaex.service.PointsService;
 import com.javaex.vo.MyListVo;
+import com.javaex.vo.MyPointVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -33,9 +34,17 @@ public class MyController {
 
 	// 포인트 페이지
 	@RequestMapping(value = "/point", method = { RequestMethod.GET, RequestMethod.POST })
-	public String point() {
+	public String point(HttpSession session, Model model) {
 		System.out.println("MyController>point()");
 
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int userNo = authUser.getNo();
+		
+		List<MyPointVo> pList = pService.getUserPoint(userNo);
+		Map<String,Object> psMap = pService.getpoints(userNo);
+		model.addAttribute("pList", pList);
+		model.addAttribute("psMap", psMap);
+		
 		return "mypage/mypoint";
 	}
 

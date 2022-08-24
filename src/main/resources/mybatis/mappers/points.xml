@@ -15,6 +15,24 @@
 		 AND RESERVATIONS.user_no = #{userNo}
 
 	</select> 
+	
+	<select id="getUserPoint" resultType="com.javaex.vo.MyPointVo" parameterType="int">
+		<![CDATA[
+			select  p.no no
+			        ,p.point point
+			        ,to_char(p.reg_date,'YYYY-MM-DD') regDate
+			        ,re.no resNo
+			        ,re.user_no userNo
+			        ,ro.no userNo
+			        ,pe.name pName
+			from points p, reservations re, rooms ro, pension pe
+			where p.reserve_no = re.no
+			and re.room_no = ro.no
+			and ro.pension_no = pe.no
+			and re.user_no = #{userNo}
+			order by p.reg_date desc
+		]]>
+	</select>
 
 	 <insert id="pointsInsert" parameterType="com.javaex.vo.RePayVo">
 				INSERT INTO POINTS (
