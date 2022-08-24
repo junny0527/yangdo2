@@ -509,6 +509,8 @@
 										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
 										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
 										<input type="hidden"  name=nickName value="${userVo.nickName}">
+										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
+										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
 							<div class="room noReservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button type="button" class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
@@ -1151,8 +1153,10 @@
 		priceP = Number(price.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		kidP = Number(kidPrice.replace(/,/g, ""));
+
 		
-		if(adult < max) {
+		
+		if((adult + kid + baby) < max) {
 			adult += 1;
 			adultValue.text(adult + "명");
 			priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo);
@@ -1239,7 +1243,7 @@
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		
-		if(kid < max) {
+		if((adult + kid + baby) < max) {
 			kid += 1;
 			kidValue.text(kid + "명");
 			priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo);
@@ -1324,7 +1328,7 @@
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		
-		if(baby < max) {
+		if((adult + kid + baby) < max) {
 			baby += 1;
 			babyValue.text(baby + "명");
 			priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo);
@@ -1379,21 +1383,27 @@
 	function priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo) {
 		
 		if( (adult+kid+baby) <= standard ) {
-			roomPriceValue.text(priceP + "원");
+			const pricePNum = priceP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			roomPriceValue.text(pricePNum + "원");
 		}else if(adult >= standard ) {
 			var realPrice = (adult - standard) * adultP + (kid * kidP) + priceP;
-			roomPriceValue.text(realPrice + "원");
+			const realPriceNum = realPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			
+			roomPriceValue.text(realPriceNum + "원");
+			console.log("ddd");
 			$(".price"+roomNo).attr("value", realPrice);
 		}else if(adult < standard) {
 			if( (adult + kid) - standard < 0 ) {
 				adult = 0;
 				kid = 0;
 				standard = 0;
-				roomPriceValue.text(priceP + "원");
+				const pricePNum2 = priceP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				roomPriceValue.text(pricePNum2 + "원");
 			}
 			else {
 				priceP = ( ((adult + kid) - standard ) * kidP) + priceP;
-				roomPriceValue.text(priceP + "원");
+				const pricePNum3 = priceP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				roomPriceValue.text(pricePNum3 + "원");
 			}
 		}
 	}
