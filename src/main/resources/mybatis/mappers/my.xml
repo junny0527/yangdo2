@@ -29,24 +29,51 @@
 	<select id="getReserveList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select r.user_no no,
-				   r.no resNo,
-				   p.no pNo,
-				   r.status status,
-                   p.name pName,
-                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
-                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
-                   p.check_in inTime,
-                   p.check_out outTime,
-                   pImg.image_path imgPath,
-                   r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
-			where r.room_no = ro.no
-			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
-			and r.user_no = #{no}
-			and r.status = 1
-			order by r.no desc
+			select  pe.no no
+			        ,pe.resNo resNo 
+			        ,pe.pNo pNo
+			        ,pe.status status
+			        ,pe.pName pName
+			        ,pe.checkIn checkIn
+			        ,pe.checkOut checkOut
+			        ,pe.inTime inTime
+			        ,pe.outTime outTime
+			        ,pe.regDate regDate
+			        ,img.savename saveName
+			from
+			    (select r.user_no no,
+			           r.no resNo,
+			           p.no pNo,
+			           r.status status,
+			           p.name pName,
+			           to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+			           to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
+			           p.check_in inTime,
+			           p.check_out outTime,
+			           r.reg_date regDate
+			    from reservations r, pension p, rooms ro
+			    where r.room_no = ro.no
+			    and p.no = ro.pension_no
+			    and r.user_no = #{no}
+			    and r.status = 1
+			    order by r.no desc) pe,
+			    
+			    (select  pi.no imageNo
+			            ,mPi.pension_no pensionNo
+			            ,pi.save_name saveName
+			    from 
+			        (select  min(no) no
+			                ,pension_no
+			         from pension_image
+			         group by pension_no) mPi,
+			        (select  no
+			                ,pension_no
+			                ,save_name
+			         from pension_image) pi
+			    where mPi.no = pi.no
+			    and mPi.pension_no = pi.pension_no) img
+			
+			where pe.pNo = img.pensionno
 		]]>
 	</select>
 
@@ -54,24 +81,51 @@
 	<select id="getUsedList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select r.user_no no,
-				   r.no resNo,
-				   p.no pNo,
-				   r.status status,
-                   p.name pName,
-                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
-                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
-                   p.check_in inTime,
-                   p.check_out outTime,
-                   pImg.image_path imgPath,
-                   r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
-			where r.room_no = ro.no
-			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
-			and r.user_no = #{no}
-			and r.status = 3
-			order by r.no desc
+			select  pe.no no
+			        ,pe.resNo resNo 
+			        ,pe.pNo pNo
+			        ,pe.status status
+			        ,pe.pName pName
+			        ,pe.checkIn checkIn
+			        ,pe.checkOut checkOut
+			        ,pe.inTime inTime
+			        ,pe.outTime outTime
+			        ,pe.regDate regDate
+			        ,img.savename saveName
+			from
+			    (select r.user_no no,
+			           r.no resNo,
+			           p.no pNo,
+			           r.status status,
+			           p.name pName,
+			           to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+			           to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
+			           p.check_in inTime,
+			           p.check_out outTime,
+			           r.reg_date regDate
+			    from reservations r, pension p, rooms ro
+			    where r.room_no = ro.no
+			    and p.no = ro.pension_no
+			    and r.user_no = #{no}
+			    and r.status = 3
+			    order by r.no desc) pe,
+			    
+			    (select  pi.no imageNo
+			            ,mPi.pension_no pensionNo
+			            ,pi.save_name saveName
+			    from 
+			        (select  min(no) no
+			                ,pension_no
+			         from pension_image
+			         group by pension_no) mPi,
+			        (select  no
+			                ,pension_no
+			                ,save_name
+			         from pension_image) pi
+			    where mPi.no = pi.no
+			    and mPi.pension_no = pi.pension_no) img
+			
+			where pe.pNo = img.pensionno
 		]]>
 	</select>
 
@@ -79,24 +133,51 @@
 	<select id="getCancelList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select r.user_no no,
-				   r.no resNo,
-				   p.no pNo,
-				   r.status status,
-                   p.name pName,
-                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
-                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
-                   p.check_in inTime,
-                   p.check_out outTime,
-                   pImg.image_path imgPath,
-                   r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
-			where r.room_no = ro.no
-			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
-			and r.user_no = #{no}
-			and r.status = 4
-			order by r.no desc
+			select  pe.no no
+			        ,pe.resNo resNo 
+			        ,pe.pNo pNo
+			        ,pe.status status
+			        ,pe.pName pName
+			        ,pe.checkIn checkIn
+			        ,pe.checkOut checkOut
+			        ,pe.inTime inTime
+			        ,pe.outTime outTime
+			        ,pe.regDate regDate
+			        ,img.savename saveName
+			from
+			    (select r.user_no no,
+			           r.no resNo,
+			           p.no pNo,
+			           r.status status,
+			           p.name pName,
+			           to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+			           to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
+			           p.check_in inTime,
+			           p.check_out outTime,
+			           r.reg_date regDate
+			    from reservations r, pension p, rooms ro
+			    where r.room_no = ro.no
+			    and p.no = ro.pension_no
+			    and r.user_no = #{no}
+			    and r.status = 4
+			    order by r.no desc) pe,
+			    
+			    (select  pi.no imageNo
+			            ,mPi.pension_no pensionNo
+			            ,pi.save_name saveName
+			    from 
+			        (select  min(no) no
+			                ,pension_no
+			         from pension_image
+			         group by pension_no) mPi,
+			        (select  no
+			                ,pension_no
+			                ,save_name
+			         from pension_image) pi
+			    where mPi.no = pi.no
+			    and mPi.pension_no = pi.pension_no) img
+			
+			where pe.pNo = img.pensionno
 		]]>
 	</select>
 
@@ -104,24 +185,51 @@
 	<select id="getRelistList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select r.user_no no,
-				   r.no resNo,
-				   p.no pNo,
-				   r.status status,
-                   p.name pName,
-                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
-                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
-                   p.check_in inTime,
-                   p.check_out outTime,
-                   pImg.image_path imgPath,
-                   r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
-			where r.room_no = ro.no
-			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
-			and r.user_no = #{no}
-			and r.status = 6
-			order by r.no desc
+			select  pe.no no
+			        ,pe.resNo resNo 
+			        ,pe.pNo pNo
+			        ,pe.status status
+			        ,pe.pName pName
+			        ,pe.checkIn checkIn
+			        ,pe.checkOut checkOut
+			        ,pe.inTime inTime
+			        ,pe.outTime outTime
+			        ,pe.regDate regDate
+			        ,img.savename saveName
+			from
+			    (select r.user_no no,
+			           r.no resNo,
+			           p.no pNo,
+			           r.status status,
+			           p.name pName,
+			           to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+			           to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
+			           p.check_in inTime,
+			           p.check_out outTime,
+			           r.reg_date regDate
+			    from reservations r, pension p, rooms ro
+			    where r.room_no = ro.no
+			    and p.no = ro.pension_no
+			    and r.user_no = #{no}
+			    and r.status = 6
+			    order by r.no desc) pe ,
+			    
+			    (select  pi.no imageNo
+			            ,mPi.pension_no pensionNo
+			            ,pi.save_name saveName
+			    from 
+			        (select  min(no) no
+			                ,pension_no
+			         from pension_image
+			         group by pension_no) mPi,
+			        (select  no
+			                ,pension_no
+			                ,save_name
+			         from pension_image) pi
+			    where mPi.no = pi.no
+			    and mPi.pension_no = pi.pension_no) img
+			
+			where pe.pNo = img.pensionno
 		]]>
 	</select>
 
@@ -129,24 +237,51 @@
 	<select id="getTransferList" resultType="com.javaex.vo.MyListVo"
 		parameterType="int">
 		<![CDATA[
-			select r.user_no no,
-				   r.no resNo,
-				   p.no pNo,
-				   r.status status,
-                   p.name pName,
-                   to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
-                   to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
-                   p.check_in inTime,
-                   p.check_out outTime,
-                   pImg.image_path imgPath,
-                   r.reg_date regDate
-            from reservations r, pension p, rooms ro, pension_image pImg
-			where r.room_no = ro.no
-			and p.no = ro.pension_no
-			and p.no = pImg.pension_no
-			and r.user_no = #{no}
-			and r.status = 5
-			order by r.no desc
+			select  pe.no no
+			        ,pe.resNo resNo 
+			        ,pe.pNo pNo
+			        ,pe.status status
+			        ,pe.pName pName
+			        ,pe.checkIn checkIn
+			        ,pe.checkOut checkOut
+			        ,pe.inTime inTime
+			        ,pe.outTime outTime
+			        ,pe.regDate regDate
+			        ,img.savename saveName
+			from
+			    (select r.user_no no,
+			           r.no resNo,
+			           p.no pNo,
+			           r.status status,
+			           p.name pName,
+			           to_char(r.check_in, 'yyyy-mm-dd DY') checkIn,
+			           to_char(r.check_out, 'yyyy-mm-dd DY') checkOut,
+			           p.check_in inTime,
+			           p.check_out outTime,
+			           r.reg_date regDate
+			    from reservations r, pension p, rooms ro
+			    where r.room_no = ro.no
+			    and p.no = ro.pension_no
+			    and r.user_no = #{no}
+			    and r.status = 5
+			    order by r.no desc) pe,
+			    
+			    (select  pi.no imageNo
+			            ,mPi.pension_no pensionNo
+			            ,pi.save_name saveName
+			    from 
+			        (select  min(no) no
+			                ,pension_no
+			         from pension_image
+			         group by pension_no) mPi,
+			        (select  no
+			                ,pension_no
+			                ,save_name
+			         from pension_image) pi
+			    where mPi.no = pi.no
+			    and mPi.pension_no = pi.pension_no) img
+			
+			where pe.pNo = img.pensionno
 		]]>
 	</select>
 

@@ -14,7 +14,7 @@ public class MyListVo {
 	public String checkOut; // 체크아웃 일자
 	public String inTime; // 체크인 시간
 	public String outTime; // 체크아웃 시간
-	public String imgPath; // 이미지경로
+	public String saveName; // 이미지경로
 	public Date regDate; // 등록일
 	////////////////////////////////
 	public String rName; // 방이름

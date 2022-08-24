@@ -62,7 +62,7 @@
 										<!-- 이미지 -->
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${rList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${rList.saveName}"
 												alt="양평 스마일카라반펜션" class="align">
 										</p>
 										<!-- 이미지 -->
@@ -98,7 +98,7 @@
 										<!-- 이미지 -->
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${uList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${uList.saveName}"
 												alt="${uList.pName}" class="align">
 										</p>
 										<!-- 이미지 -->
@@ -139,7 +139,7 @@
 										<!-- 이미지 -->
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${cList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${cList.saveName}"
 												alt="삼산 도브" class="align">
 										</p>
 										<!-- 이미지 -->

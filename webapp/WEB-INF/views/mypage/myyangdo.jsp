@@ -60,7 +60,7 @@
 								<li class="reservation-detail"><div>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${yList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${yList.saveName}"
 												alt="${yList.pName}" class="align">
 										</p>
 										<a href="${pageContext.request.contextPath}/my/list/relisted"
@@ -87,7 +87,7 @@
 											data-no="${uList.resNo}">삭제</button>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${tList.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${tList.saveName}"
 												alt="${tList.pName}" class="align">
 										</p>
 										<a

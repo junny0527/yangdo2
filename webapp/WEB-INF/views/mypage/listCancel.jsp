@@ -58,7 +58,7 @@
 										<button type="button" class="btn_del">삭제</button>
 										<p class="pic">
 											<img
-												src="${pageContext.request.contextPath}/upload/${list.imgPath}"
+												src="${pageContext.request.contextPath}/upload/${list.saveName}"
 												alt="삼산 도브" class="align">
 										</p>
 										<a
