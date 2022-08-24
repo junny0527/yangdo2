@@ -7,7 +7,7 @@ public class MyListVo {
 	// field
 	public int no; // 유저번호
 	public int resNo; // 예약번호
-	public int pNo; //펜션번호
+	public int pNo; // 펜션번호
 	public String status; // 예약상태
 	public String pName; // 펜션이름
 	public String checkIn; // 체크인 일자
@@ -33,7 +33,7 @@ public class MyListVo {
 	}
 
 	public MyListVo(int no, int resNo, int pNo, String status, String pName, String checkIn, String checkOut,
-			String inTime, String outTime, String imgPath, Date regDate, String rName, int sPple, int mPple,
+			String inTime, String outTime, String saveName, Date regDate, String rName, int sPple, int mPple,
 			String name, String hp, String tPrice, int trPrice, String pStatus, int refNo, String comHp, int pRno) {
 		super();
 		this.no = no;
@@ -45,7 +45,7 @@ public class MyListVo {
 		this.checkOut = checkOut;
 		this.inTime = inTime;
 		this.outTime = outTime;
-		this.imgPath = imgPath;
+		this.saveName = saveName;
 		this.regDate = regDate;
 		this.rName = rName;
 		this.sPple = sPple;
@@ -132,12 +132,12 @@ public class MyListVo {
 		this.outTime = outTime;
 	}
 
-	public String getImgPath() {
-		return imgPath;
+	public String getSaveName() {
+		return saveName;
 	}
 
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
+	public void setSaveName(String saveName) {
+		this.saveName = saveName;
 	}
 
 	public Date getRegDate() {
@@ -240,11 +240,9 @@ public class MyListVo {
 	public String toString() {
 		return "MyListVo [no=" + no + ", resNo=" + resNo + ", pNo=" + pNo + ", status=" + status + ", pName=" + pName
 				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", inTime=" + inTime + ", outTime=" + outTime
-				+ ", imgPath=" + imgPath + ", regDate=" + regDate + ", rName=" + rName + ", sPple=" + sPple + ", mPple="
-				+ mPple + ", name=" + name + ", hp=" + hp + ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", pStatus="
-				+ pStatus + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno=" + pRno + "]";
+				+ ", saveName=" + saveName + ", regDate=" + regDate + ", rName=" + rName + ", sPple=" + sPple
+				+ ", mPple=" + mPple + ", name=" + name + ", hp=" + hp + ", tPrice=" + tPrice + ", trPrice=" + trPrice
+				+ ", pStatus=" + pStatus + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno=" + pRno + "]";
 	}
-
-	
 
 }
