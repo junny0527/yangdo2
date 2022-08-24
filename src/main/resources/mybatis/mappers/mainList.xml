@@ -15,7 +15,8 @@
 				               stars.status status,
 				               stars.stars stars,
 				               stars.rcount rcount,
-               				   pi.save_name saveName
+               				   pi.save_name saveName,
+               				   pe.no pNo
 				from pension pe, sido si, gugun gu, (select  ro.pension_no 
 				                                            ,min(p.price) price
 				                                    from rooms ro , prices p

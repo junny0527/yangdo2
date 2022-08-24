@@ -24,14 +24,19 @@ public class JiwoongController {
 	
 	//기본 리스트
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model) {
+	public String mainList(Model model, @RequestParam("datepicker") String datepicker,
+							@RequestParam("datepicker2") String datepicker2) {
 		System.out.println("jiwoongController>mainList");
 		
 		Map<String, Object> pMap =  mainService.select();
 		
 		model.addAttribute("pMap",pMap);
+		model.addAttribute("datepicker",datepicker);
+		model.addAttribute("datepicker2",datepicker2);
 		
 		System.out.println("contorller"+pMap);
+		System.out.println("datepicker"+datepicker);
+		System.out.println("datepicker2"+datepicker2);
 		
 		return "/mainList/mainLists";
 	}

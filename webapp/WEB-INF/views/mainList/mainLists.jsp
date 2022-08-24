@@ -16,9 +16,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 <!-- kakaoMap -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b67b7601c934be1e54baa80b6f1a7de0"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b67b7601c934be1e54baa80b6f1a7de0&libraries=services">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b67b7601c934be1e54baa80b6f1a7de0&libraries=LIBRARY"></script>
-
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainList/reservation-jiwoong.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
@@ -219,10 +218,8 @@
 						</c:otherwise>
 					</c:choose>
 						<li class="list_2 adcno3">
-							<a href="">
-								<p class="pic">
+							<a href="${pageContext.request.contextPath}/reservation?pensionNo=${pList.PNO}&datepicker=${datepicker}&datepicker2=${datepicker2}">
 									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${pList.SAVENAME}" style="margin-top: -159px; display: block;">
-								</p>
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
 										<c:if test="${pList.STATUS == 6}">									
@@ -320,8 +317,7 @@
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 	
-		<script type="text/javascript">
-			
+			<script type="text/javascript">			
 			//추천순 버튼들 클릭시
 			$(".on").on("click",function(){
 				
@@ -343,7 +339,7 @@
 				}
 				
 			});
-		
+			
 			
 		
 			///////////////////////// 일정선택 ///////////////////////////
@@ -378,61 +374,6 @@
            		 $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
        		 });
 		
-			/* kakaoMap */
-			
-			
-			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
-			var options = { //지도를 생성할 때 필요한 기본 옵션
-			   center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			   level: 13 //지도의 레벨(확대, 축소 정도)
-			};
-			
-			var map = new kakao.maps.Map(container, options);
-			
-			var container = document.getElementById('map1'); //지도를 담을 영역의 DOM 레퍼런스
-			var options = { //지도를 생성할 때 필요한 기본 옵션
-			   center: new kakao.maps.LatLng(37.4917397537238, 127.48756458504242), //지도의 중심좌표.
-			   level: 8 //지도의 레벨(확대, 축소 정도)
-			};
-			var map = new kakao.maps.Map(container, options);
-			const center = map.getCenter();
-			
-			// 마커가 표시될 위치입니다 
-			var markerPosition  = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); 
-			
-			// 마커를 생성합니다
-			var marker = new kakao.maps.Marker({
-			    position: markerPosition
-			});
-			
-			// 마커가 지도 위에 표시되도록 설정합니다
-			marker.setMap(map);
-			
-			var iwContent = 
-				'<div ><a href=""><img style="width:25px; height:21px;" src="./assets/image/mainList/62e1e83e21944.jpg"></a><a style="color:black;" href="">양평 그린펜션</a>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		    iwPosition = new kakao.maps.LatLng(37.5478130824694, 127.620673562908); //인포윈도우 표시 위치입니다
-			// 인포윈도우를 생성합니다
-			var infowindow = new kakao.maps.InfoWindow({
-		    	position : iwPosition, 
-		    	content : iwContent 
-			});
-		  
-			// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-			infowindow.open(map, marker);
-				
-				$("#btn_map").on("click", function() {
-		
-				$("#local").modal("show");
-				
-				//지도 사이즈 변경 후 재 출력
-				map.relayout();
-				//지도 사이즈 변경 후 위치 재 출력
-				map.setCenter(center);
-			});
-		
-			$(".btn-secondary").on("click", function() {
-				$(".modal").hide();
-			});
 			
 		//////////////////////////인원추가 버튼 ////////////////////////////
 		function count(type){
@@ -550,6 +491,63 @@
 			$("#guguninfo").val(gugunName);
 			
 		});
+		
+		/* kakaoMap */
+		
+		var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 8 // 지도의 확대 레벨
+		    };  
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('경기도 용인시 기흥구 동백동 611-8', function(result, status) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+		        });
+		        infowindow.open(map, marker);
+
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		    
+		});    
+		
+		$("#btn_map").on("click", function() {
+
+	 		$("#local").modal("show");
+	 		
+	 		//지도 사이즈 변경 후 재 출력
+	 		map.relayout();
+	 		//지도 사이즈 변경 후 위치 재 출력
+	 		map.setCenter(center);
+	 		
+	 		});
+	 	
+	 		$(".btn-secondary").on("click", function() {
+	 			$(".modal").hide();
+	 		});
+		</script>
 	
-	</script>
+			
+			
 </html>
