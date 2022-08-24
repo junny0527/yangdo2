@@ -24,6 +24,7 @@ public class DetailController {
 	DetailService detailService;
 	
 	
+	
 	//펜션 사이트
 	@RequestMapping(value="/reservation", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pensionList(HttpSession session,
@@ -35,12 +36,14 @@ public class DetailController {
 		
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 		
+		
 		Map<String, Object> pMap = detailService.select(pensionNo, crtPage, datepicker, datepicker2);
 		model.addAttribute("pMap",pMap);
 		model.addAttribute("crtPage", crtPage);
 		model.addAttribute("datepicker", datepicker);
 		model.addAttribute("datepicker2", datepicker2);
 		model.addAttribute("userVo", userVo);
+		System.out.println(userVo);
 		
 		return "detail/reservation";
 	}
