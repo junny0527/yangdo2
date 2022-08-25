@@ -44,8 +44,7 @@
 
 	<![CDATA[
 		select
-			to_char(sysdate, 'YYYY-MM-DD') today
-	        ,to_char((trunc(sysdate, 'iw')), 'YYYY-MM-DD') weekFirst
+			to_char((trunc(sysdate, 'iw')), 'YYYY-MM-DD') weekFirst
 	        ,to_char((trunc(sysdate, 'iw')+6), 'YYYY-MM-DD') weekLast
 	        ,to_char(sysdate,'YYYY-MM') || '-01' monthFirst
 	        ,to_char(LAST_DAY(sysdate),'YYYY-MM-DD') monthLast
@@ -142,16 +141,16 @@
 		and
 		    res.status = 3
 		and
-		    res.check_out = to_date(sysdate, 'YYYY-MM-DD')
+		    to_date(res.check_out, 'YYYY-MM-DD') = to_date(sysdate, 'YYYY-MM-DD')
 	]]>
 	
 </select>
 
-<select id = "countSalesWeek" parameterType = "com.javaex.vo.HostCountVo" resultType = "com.javaex.vo.HostCountVo">
+<select id = "countSalesWeek" parameterType = "com.javaex.vo.HostCountVo" resultType = "int">
 	
 	<![CDATA[
 		select
-	    	count(*) saleWeek
+	    	count(*)
 		from
 		    reservations res
 	
@@ -185,11 +184,11 @@
 	
 </select>
 
-<select id = "countSalesMonth" parameterType = "com.javaex.vo.HostCountVo" resultType = "com.javaex.vo.HostCountVo">
+<select id = "countSalesMonth" parameterType = "com.javaex.vo.HostCountVo" resultType = "int">
 	
 	<![CDATA[
 		select
-	    	count(*) saleMonth
+	    	count(*)
 		from
 		    reservations res
 	
