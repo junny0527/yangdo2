@@ -5,7 +5,7 @@
 	<insert id="userJoin" parameterType="com.javaex.vo.UserVo">
 	  	<![CDATA[
 	  		insert into users
-			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},#{nick},#{email},#{identify})
+			values(SEQ_USERS_NO.nextval,#{id},#{pw},#{hp},#{nickName},#{email},#{identify})
 	  	]]>
 	</insert>
 
