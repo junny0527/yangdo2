@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -11,23 +10,17 @@
 <title>여행할때 양도어때</title>
 
 <!-- css -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/mypage/mycommon.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/mypage/my.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mypage/mycommon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mypage/my.css">
 
 <!-- //css -->
 </head>
 
 <!-- js -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <!-- //js -->
 <body class="pc and">
 	<!-- Wrap -->
@@ -52,21 +45,16 @@
 				<div class="reserve_list">
 					<section class="list_wrap">
 						<h3>
-							양도대기 내역 <a class="more_info" style="display: block"
-								href="${pageContext.request.contextPath}/my/list/relisted">더보기>></a>
+							양도대기 내역 <a class="more_info" style="display: block" href="${pageContext.request.contextPath}/my/list/relisted">더보기>></a>
 						</h3>
 						<c:forEach var="yList" items="${myMap2.yList}" begin="0" end="1">
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
 										<p class="pic">
-											<img
-												src="${pageContext.request.contextPath}/upload/${yList.saveName}"
-												alt="${yList.pName}" class="align">
+											<img src="${pageContext.request.contextPath}/upload/${yList.saveName}" alt="${yList.pName}" class="align">
 										</p>
-										<a href="${pageContext.request.contextPath}/my/list/relisted"
-											class="product-title"><i class="">양도대기</i> <strong>${yList.pName}</strong>
-											<span> 체크인: ${yList.checkIn} ㆍ ${yList.inTime}<br>
-												체크아웃: ${yList.checkOut} ㆍ ${yList.outTime}
+										<a href="${pageContext.request.contextPath}/my/list/relisted" class="product-title"><i class="">양도대기</i> <strong>${yList.pName}</strong>
+											<span> 체크인: ${yList.checkIn} ㆍ ${yList.inTime}<br> 체크아웃: ${yList.checkOut} ㆍ ${yList.outTime}
 										</span> <b>예약 상세 &gt;</b></a>
 									</div></li>
 							</ul>
@@ -75,26 +63,18 @@
 					</section>
 					<section class="list_cancel">
 						<h3>
-							양도완료 내역<a class="more_info"
-								href="${pageContext.request.contextPath}/my/list/transferred">더보기>></a>
+							양도완료 내역<a class="more_info" href="${pageContext.request.contextPath}/my/list/transferred">더보기>></a>
 						</h3>
 						<c:forEach var="tList" items="${myMap2.tList}" begin="0" end="1">
 
 							<ul class="list_wrap">
 								<li class="reservation-detail"><div>
-										<button type="button" class="btn_del btn btn-primary"
-											data-toggle="modal" data-target=".bd-example-modal-sm"
-											data-no="${uList.resNo}">삭제</button>
+										<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uList.resNo}">삭제</button>
 										<p class="pic">
-											<img
-												src="${pageContext.request.contextPath}/upload/${tList.saveName}"
-												alt="${tList.pName}" class="align">
+											<img src="${pageContext.request.contextPath}/upload/${tList.saveName}" alt="${tList.pName}" class="align">
 										</p>
-										<a
-											href="${pageContext.request.contextPath}/my/detail/transferred"
-											class="product-title"><i class="bg_w">양도완료</i> <strong>${tList.pName}</strong>
-											<span> 체크인: ${tList.checkIn} ㆍ ${tList.inTime}<br>
-												체크아웃: ${tList.checkOut} ㆍ ${tList.outTime}
+										<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>${tList.pName}</strong>
+											<span> 체크인: ${tList.checkIn} ㆍ ${tList.inTime}<br> 체크아웃: ${tList.checkOut} ㆍ ${tList.outTime}
 										</span></a>
 									</div></li>
 							</ul>
@@ -109,6 +89,66 @@
 		<!-- Footer -->
 	</div>
 
-	<!---->
+	<!-- Modal -->
+	<div id="btn-del-modal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="btn-del-label">삭제하기</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">내역을 삭제하시겠습니까?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button id="btnDel" type="button" class="btn btn-primary">삭제</button>
+				</div>
+				<input type="hidden" name="no" value="" id="delNo">
+			</div>
+		</div>
+	</div>
 </body>
+
+<!---->
+</body>
+
+<script>
+$(document).ready(function() {
+
+	$('.btn_del').on('click', function() {
+
+		var no = $(this).data("no");
+		$("#delNo").val(no);
+
+		$('#btn-del-modal').trigger('focus');
+
+	});
+
+	$('#btnDel').on("click", function() {
+
+		var no = $("#delNo").val();
+
+		$.ajax({
+			type : 'POST',
+			url : '${pageContext.request.contextPath}/my/remove',
+			dataType : 'json',
+			data : {
+				no : no
+			},
+			success : function(count) {
+				if (count == 1) {
+					$("#li-" + no).remove();
+					$("#btn-del-modal").modal("hide");
+					location.reload();
+				} else {
+					$("#btn-del-modal").modal("hide");
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+</script>
 </html>

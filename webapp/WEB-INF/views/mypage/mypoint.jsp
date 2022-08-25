@@ -61,9 +61,9 @@
 					
 					<c:forEach items="${pList}" var="pList">
 						<ul class="point_list">
-							<li>"${pList.pName}(${pList.point})"<span>${pList.regDate }</span>
-								<c:if test="${pList.point < 0}"><p class="col_mint">${pList.point}</p></c:if>
-								<c:if test="${pList.point > 0}"><p class="col_red">+${pList.point}</p></c:if>
+							<li>"${pList.pName}(${pList.point}P)"<span>${pList.regDate }</span>
+								<c:if test="${pList.point < 0}"><p class="col_mint">- ${pList.point}P</p></c:if>
+								<c:if test="${pList.point > 0}"><p class="col_red">+ ${pList.point}P</p></c:if>
 							</li>
 						</ul>
 					</c:forEach>

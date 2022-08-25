@@ -83,7 +83,8 @@
 							class="btn_flat booking_detail_flat_button color-green">양도하기</button>
 					</a>
 					<button type="button" id="btn_cancel_confirm"
-						class="btn_flat booking_detail_flat_button color-red btn-danger">예약취소
+						class="btn_flat booking_detail_flat_button color-red btn-danger btn btn-primary"
+						data-toggle="modal" data-target="#btn-cancel-modal">예약취소
 					</button>
 					<!---->
 				</div>

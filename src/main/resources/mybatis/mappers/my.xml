@@ -316,16 +316,55 @@
 		]]>
 	</select>
 
-	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
-	<delete id="deleteOne" parameterType="int">
+	<!-- 내정보관리 // 유저 정보 불러오기 -->
+	<select id="getUserInfo" resultType="com.javaex.vo.UserVo"
+		parameterType="int">
 		<![CDATA[
-			delete from reservations
-			where no = #{resNo}
+			select no,
+				   nick_name nickName,
+				   hp,
+				   pw
+			from users
+			where no = #{no}
+		]]>
+	</select>
+
+	<!-- 내정보관리 // 유저 닉네임 업데이트하기 -->
+	<update id="updateNickName" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set nick_name = #{nickName}
+			where no = #{no}
+		]]>
+	</update>
+	<!-- 내정보관리 // 유저 핸드폰번호 업데이트하기 -->
+	<update id="updateHp" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set hp = #{hp}
+			where no = #{no}
+		]]>
+	</update>
+	<!-- 내정보관리 // 유저 비밀번호 업데이트하기 -->
+	<update id="updatePw" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set pw = #{pw}
+			where no = #{no}
+		]]>
+	</update>
+
+	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
+	<delete id="updateRemove" parameterType="int">
+		<![CDATA[
+			update reservations
+			set status = 7
+			where no = #{no}
 		]]>
 	</delete>
 
 	<!-- 예약상태 업데이트 하기 -->
-	<update id="updateOne" parameterType="int">
+	<update id="updateStatus" parameterType="int">
 		<![CDATA[
 			update reservations
 			set status = 4
