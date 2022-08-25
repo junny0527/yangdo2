@@ -302,24 +302,26 @@
 	        and ro.pension_no = stars.pension_no(+)
 	        and pi.pension_no = pe.no
 	        and peck.pension_no = pe.no
+	        and resv.pension_no(+) = pe.no
 	        and ao.pension_no = pe.no
 	        and pu.pension_no = pe.no
 	        and ro.sortation = peck.gubun
              
 		]]>
-		 <foreach collection="pensionItem1" item="pensionItem1">
-			<![CDATA[
-				 and ao.amOpts like #{pensionItem2}
-			]]>
-		</foreach>
-		
-		 <foreach collection="pensionItem2" item="pensionItem2">
-			<![CDATA[
-				 and pu.puOpts like #{pensionItem1}
-			]]>
-		</foreach>
 		
 		
+		
+		<if test="puOpt != ''  and  puOpt != null ">
+			<foreach collection="puOpt" item="pVo">
+			    and pu.puOpts like '%'||#{pVo}||'%'
+			</foreach> 
+		</if>
+	
+		<if test="anOpt != ''  and  anOpt != null ">
+			<foreach collection="anOpt" item="aVo">
+				and ao.amOpts like  '%'||#{aVo}||'%' 
+			</foreach>
+      	</if>
 		
 		<![CDATA[
 			 order by gu.name
