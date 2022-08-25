@@ -28,7 +28,10 @@ public class HostReservationApiController {
 	public List<HostReservationVo> getList(HttpSession session){
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int hostNo = uVo.getNo();
-		List<HostReservationVo> rList = hService.getList(hostNo);
+		System.out.println("세션 : " + hostNo);
+		int pensionNo = hService.getPensionNo(hostNo);
+		System.out.println("펜션번호" + pensionNo);
+		List<HostReservationVo> rList = hService.getList(pensionNo);
 		System.out.println(rList);
 		return rList;
 	}
@@ -38,7 +41,8 @@ public class HostReservationApiController {
 	public HostReservationVo getReserve(HttpSession session, @RequestBody String reserveid) {
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int hostNo = uVo.getNo();
-		HostReservationVo hVo = hService.getReserve(hostNo, reserveid);
+		int pensionNo = hService.getPensionNo(hostNo);
+		HostReservationVo hVo = hService.getReserve(pensionNo, reserveid);
 		System.out.println("hVo 결과: " + hVo);
 		return hVo;
 	}

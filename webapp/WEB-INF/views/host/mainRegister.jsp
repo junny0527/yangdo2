@@ -40,24 +40,14 @@
 			</thead>
 			
 			<tbody>
-				<tr>
-					<td>1번방</td>
-					<td>민조장</td>
-					<td>2022.07.31.</td>
-					<td>010-3333-2222</td>
-				</tr>
-				<tr>
-					<td>2번방</td>
-					<td>포톤캐논</td>
-					<td>2022.08.02.</td>
-					<td>010-2222-9999</td>
-				</tr>
-				<tr>
-					<td>3번방</td>
-					<td>배틀크루저</td>
-					<td>2022.08.14.</td>
-					<td>016-111-2222</td>
-				</tr>
+				<c:forEach items = "${rList}" var = "rList">
+					<tr>
+						<td>${rList.roomName}</td>
+						<td>${rList.guestName}</td>
+						<td>${rList.checkin}</td>
+						<td>${rList.hp}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -68,9 +58,9 @@
 			<a href = "${pageContext.request.contextPath}/host/hostsales"><span>예약 객실 판매</span></a>
 			<span>
 				<ul>
-					<li>0</li>
-					<li>0</li>
-					<li>0</li>
+					<li>${eleVo.saleToday}</li>
+					<li>${eleVo.saleWeek}</li>
+					<li>${eleVo.saleMonth}</li>
 				</ul>
 				<ul>
 					<li>오늘</li>
@@ -84,9 +74,9 @@
 			<a href = "${pageContext.request.contextPath}/host/reviews"><span>등록된 리뷰 수(총 N개)</span></a>
 			<span>
 				<ul>
-					<li>0</li>
-					<li>0</li>
-					<li>0</li>
+					<li>${eleVo.reviewToday}</li>
+					<li>${eleVo.reviewWeek}</li>
+					<li>${eleVo.reviewMonth}</li>
 				</ul>
 				<ul>
 					<li>오늘</li>
