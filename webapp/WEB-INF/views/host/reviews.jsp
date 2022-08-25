@@ -76,8 +76,8 @@
 			                    <span id="reviewContent">${rList.guestContent}</span>                
 			                    <div id="roomImg">
 			                        <ul>
-			                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/1.jpg"></li>
-			                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/10.jpg"></li>
+			                            <li><img src="${rList.image1}"></li>
+			                            <li><img src="${rList.image2}"></li>
 			                        </ul>
 			                    </div>
 			                    <span id="guestRegDate">${rList.guestRegdate}</span>
