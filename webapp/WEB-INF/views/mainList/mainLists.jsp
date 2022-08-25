@@ -54,12 +54,11 @@
 		<div id="content" class="sub_wrap">
 			<!-- fillter -->
 			<div class="filter_wrap">
-				<section class="date_wrap">
-						<h3>날짜</h3>
-							<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center; z-index : 100;" value="${datepicker}">
-							<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center; z-index : 100;" value="${datepicker2}">
-					
-				</section>
+					<section class="date_wrap">
+							<h3>날짜</h3>
+								<input type="text" id="datepicker" name="datepicker" style="height: 30px; margin: 10px 6px 10px 3px; width: 100px; text-align: center; z-index : 100;" value="">
+								<input type="text" id="datepicker2" name="datepicker2" style="height: 30px; margin: 10px 6px 22px 8px; width: 100px; text-align: center; z-index : 100;" value="">
+					</section>
 				<h3>상세조건</h3>
 				<div class="btn_wrap">
 					<button id="btn_child1" type="button" onclick="initCheckBtn()">초기화</button>
@@ -86,39 +85,39 @@
 					<strong>공용시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="swimming_pool" name="pensionItem1" class="inp_chk" value="1">
+							<input type="checkbox" id="swimming_pool" name="pensionItem1" class="inp_chk" value="P01">
 							<label for="swimming_pool" class="label_chk">수영장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="football" name="pensionItem1"  class="inp_chk" value="2">
+							<input type="checkbox" id="football" name="pensionItem1"  class="inp_chk" value="P02">
 							<label for="football" class="label_chk">족구장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cafe" name="pensionItem1" class="inp_chk" value="3">
+							<input type="checkbox" id="cafe" name="pensionItem1" class="inp_chk" value="P03">
 							<label for="cafe" class="label_chk">카페</label>
 						</li>
 						<li>
-							<input type="checkbox" id="singroom" name="pensionItem1" class="inp_chk" value="4">
+							<input type="checkbox" id="singroom" name="pensionItem1" class="inp_chk" value="P04">
 							<label for="singroom" class="label_chk">노래방</label>
 						</li>
 						<li>
-							<input type="checkbox" id="store" name="pensionItem1" class="inp_chk" value="5">
+							<input type="checkbox" id="store" name="pensionItem1" class="inp_chk" value="P05">
 							<label for="store" class="label_chk">편의점</label>
 						</li>
 						<li>
-							<input type="checkbox" id="parking" name="pensionItem1" class="inp_chk" value="6">
+							<input type="checkbox" id="parking" name="pensionItem1" class="inp_chk" value="P06">
 							<label for="parking" class="label_chk">주차장</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bbq" name="pensionItem1" class="inp_chk" value="7">
+							<input type="checkbox" id="bbq" name="pensionItem1" class="inp_chk" value="P07">
 							<label for="bbq" class="label_chk">BBQ</label>
 						</li>
 						<li>
-							<input type="checkbox" id="restaurant" name="pensionItem1" class="inp_chk" value="8">
+							<input type="checkbox" id="restaurant" name="pensionItem1" class="inp_chk" value="P08">
 							<label for="restaurant" class="label_chk">주방/식당</label>
 						</li>
 						<li>
-							<input type="checkbox" id="smoking_room" name="pensionItem1" class="inp_chk" value="9">
+							<input type="checkbox" id="smoking_room" name="pensionItem1" class="inp_chk" value="P09">
 							<label for="smoking_room" class="label_chk">흡연부스</label>
 						</li>
 					</ul>
@@ -127,47 +126,47 @@
 					<strong>객실 내 시설</strong>
 					<ul class="hide_type half">
 						<li>
-							<input type="checkbox" id="refrigerator" name="pensionItem2" class="inp_chk" value="1">
+							<input type="checkbox" id="refrigerator" name="pensionItem2" class="inp_chk" value="A01">
 							<label for="refrigerator" class="label_chk">냉장고</label>
 						</li>
 						<li>
-							<input type="checkbox" id="aircon" name="pensionItem2" class="inp_chk" value="2">
+							<input type="checkbox" id="aircon" name="pensionItem2" class="inp_chk" value="A02">
 							<label for="aircon" class="label_chk">에어컨</label>
 						</li>
 						<li>
-							<input type="checkbox" id="tv" name="pensionItem2" class="inp_chk" value="3">
+							<input type="checkbox" id="tv" name="pensionItem2" class="inp_chk" value="A03">
 							<label for="tv" class="label_chk">TV</label>
 						</li>
 						<li>
-							<input type="checkbox" id="wifi" name="pensionItem2" class="inp_chk" value="4">
+							<input type="checkbox" id="wifi" name="pensionItem2" class="inp_chk" value="A04">
 							<label for="wifi" class="label_chk">와이파이</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathroom_ware" name="pensionItem2" class="inp_chk" value="5">
+							<input type="checkbox" id="bathroom_ware" name="pensionItem2" class="inp_chk" value="A05">
 							<label for="bathroom_ware" class="label_chk">욕실용품</label>
 						</li>
 						<li>
-							<input type="checkbox" id="washing_mu" name="pensionItem2" class="inp_chk" value="6">
+							<input type="checkbox" id="washing_mu" name="pensionItem2" class="inp_chk" value="A06">
 							<label for="washing_mu" class="label_chk">세탁기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dry_mu" name="pensionItem2" class="inp_chk" value="7">
+							<input type="checkbox" id="dry_mu" name="pensionItem2" class="inp_chk" value="A07">
 							<label for="dry_mu" class="label_chk">드라이기</label>
 						</li>
 						<li>
-							<input type="checkbox" id="bathtub" name="pensionItem2" class="inp_chk" value="8">
+							<input type="checkbox" id="bathtub" name="pensionItem2" class="inp_chk" value="A08">
 							<label for="bathtub" class="label_chk">욕조</label>
 						</li>
 						<li>
-							<input type="checkbox" id="cook_ok" name="pensionItem2" class="inp_chk" value="9">
+							<input type="checkbox" id="cook_ok" name="pensionItem2" class="inp_chk" value="A09">
 							<label for="cook_ok" class="label_chk">취사가능</label>
 						</li>
 						<li>
-							<input type="checkbox" id="room_smoking" name="pensionItem2" class="inp_chk" value="10">
+							<input type="checkbox" id="room_smoking" name="pensionItem2" class="inp_chk" value="A10">
 							<label for="room_smoking" class="label_chk">객실 내 흡연</label>
 						</li>
 						<li>
-							<input type="checkbox" id="dog" name="pensionItem2" class="inp_chk" value="11">
+							<input type="checkbox" id="dog" name="pensionItem2" class="inp_chk" value="A11">
 							<label for="dog" class="label_chk">반려견 동반</label>
 						</li>
 					</ul>
@@ -202,51 +201,51 @@
 					<!-- 
 					<!-- 사진정보 -->
 					<ul>
-					<c:forEach var="pList" items="${pMap.pList}" varStatus="i">
+					<c:forEach var="pList" items="${pList}" varStatus="i">
 					<c:choose>
 						<c:when test="${i.index == 0 }">
 						<div class="title">
-							<h3>${pList.GUNAME}</h3>
+							<h3>${pList.gugunName}</h3>
 						</div>
 						</c:when>
 						<c:otherwise>
-						<c:if test="${pMap.pList[i.index].GUNAME != pMap.pList[i.index-1].GUNAME }">
+						<c:if test="${pList[i.index].gugunName != pList[i.index-1].gugunName}">
 						<div class="title">
-							<h3>${pList.GUNAME}</h3>
+							<h3>${pList.gugunName}</h3>
 						</div>
 						</c:if>
 						</c:otherwise>
 					</c:choose>
 						<li class="list_2 adcno3">
-							<a href="${pageContext.request.contextPath}/reservation?pensionNo=${pList.PNO}&datepicker=${datepicker}&datepicker2=${datepicker2}">
-									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${pList.SAVENAME}" style="margin-top: -159px; display: block;">
+							<a href="${pageContext.request.contextPath}/reservation?pensionNo=${pList.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
+									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${pList.saveName}" style="margin-top: -159px; display: block;">
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${pList.STATUS == 6}">									
+										<c:if test="${pList.status == 6}">									
 											<span>양도중</span>
 										</c:if>	
 									</div>
 									<div class="name">
-										<strong>${pList.PNAME}</strong>
+										<strong>${pList.pName}</strong>
 										<p class="score">
-											<em>${pList.STARS}</em>
+											<em>${pList.stars}</em>
 											<c:choose>
-												<c:when test="${pList.STARS <= 3}">
-													<span>별로에요 (${pList.RCOUNT})</span>
+												<c:when test="${pList.stars <= 3}">
+													<span>별로에요 (${pList.rCount})</span>
 												</c:when>
-												<c:when test="${pList.STARS > 3 && pList.STARS < 4}">
-													<span>좋아요 (${pList.RCOUNT})</span>
+												<c:when test="${pList.stars > 3 && pList.stars < 4}">
+													<span>좋아요 (${pList.rCount})</span>
 												</c:when>
-												<c:when test="${pList.STARS >= 4 && pList.STARS <= 5}">
-													<span>최고에요 (${pList.RCOUNT})</span>
+												<c:when test="${pList.stars >= 4 && pList.stars <= 5}">
+													<span>최고에요 (${pList.rCount})</span>
 												</c:when>	
 											</c:choose>	
 										</p>
-										<p>${pList.GUNAME} | ${pList.VISITROAD3}</p>
+										<p>${pList.gugunName} | ${pList.visitRoad3}</p>
 									</div>
 									<div class="price">
 										<p>
-											<b>${pList.PRICE}원</b>
+											<b>${pList.penPrice}원</b>
 										</p>
 									</div>
 								</div>
@@ -367,7 +366,8 @@
            		 //input을 datepicker로 선언
            		 $("#datepicker").datepicker();                    
            		 $("#datepicker2").datepicker();
-				 
+           		 
+           		 
            		 //From의 초기값을 오늘 날짜로 설정
             	$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
             	//To의 초기값을 내일로 설정
@@ -422,7 +422,7 @@
 	
 	////////////////////////// 지역선택 ////////////////////////////
 		$('document').ready(function() {
-		   var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+		   var area0 = ["시/도선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
 		   var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
 		   var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
 		   var area3 = ["대덕구","동구","서구","유성구","중구"];
@@ -440,6 +440,7 @@
 		   var area15 = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
 		   var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 		 
+		   
 		 // 시/도 선택 박스 초기화
 		 $("select[name^=sido1]").each(function() {
 		  	 	$selsido = $(this);
@@ -447,7 +448,7 @@
 		  	 	$.each(eval(area0), function() {
 		  	 	$selsido.append("<option value='"+this+"'>"+this+"</option>");
 		  	});
-		  $selsido.next().append("<option value=''>구/군 선택</option>");
+		  $selsido.next().append("<option value=''>구/군선택</option>");
 		 });
 		
 		 // 시/도 선택시 구/군 설정
@@ -467,7 +468,7 @@
 		  $("option",$gugun).remove(); // 구군 초기화
 		
 			  if(area == "area0")
-			   $gugun.append("<option class = 'gugunpick' value=''>구/군 선택</option>");
+			   $gugun.append("<option class = 'gugunpick' value=''>구/군선택</option>");
 			  else {
 			   $.each(eval(area), function() {
 			    $gugun.append("<option class = 'gugunpick' value='"+this+"'>"+this+"</option>");
@@ -507,8 +508,8 @@
 		var geocoder = new kakao.maps.services.Geocoder();
 		
 		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('경기도 용인시 기흥구 동백동 611-8', function(result, status) {
-
+		
+			geocoder.addressSearch("경기도 용인시 동백동 611-8", function(result, status) {
 		    // 정상적으로 검색이 완료됐으면 
 		     if (status === kakao.maps.services.Status.OK) {
 

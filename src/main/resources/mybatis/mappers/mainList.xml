@@ -5,7 +5,9 @@
 	
 	
 		<!-- 기본 리스트 -->
-		<select id="penList" parameterType="map" resultType="Map">
+		<!--  
+		<select id="penList" parameterType="Map" resultType="Map">
+		  
 		<![CDATA[
 				 select        pe.name pName,
 				               pe.visit_road3 visitRoad3,
@@ -43,10 +45,58 @@
 				and pe.no = ro.pension_no
 				and ro.pension_no = stars.pension_no(+)
 				and pi.pension_no = pe.no
-				order by gu.name --guName
+				order by gu.name 
 		]]>
-	</select>			
+	</select>	
+	-->		
 	 
+		<select id="penList" parameterType="com.javaex.vo.MainSearchVo" resultType="com.javaex.vo.MainListVo">
+			<![CDATA[
+				select         pe.name pName,
+				               pe.visit_road3 visitRoad3,
+				               pe.address address,
+				               gu.name gugunName,
+				               ro.price penPrice,
+				               stars.status status,
+				               stars.stars stars,
+				               stars.rcount rcount,
+               				   pi.save_name saveName,
+               				   pe.no pNo,
+               				   pe.law_name lawName
+				from pension pe, sido si, gugun gu, (select  ro.pension_no 
+				                                            ,min(p.price) price
+				                                    from rooms ro , prices p
+				                                    where ro.no = p.room_no
+				                                    group by ro.pension_no) ro , (select  r.pension_no
+				                                                                         ,res.status
+				                                                                         ,round(avg(re.stars),1) stars
+				                                                                         ,count(re.no) rcount
+                                                                                         ,res.check_in
+                                                                                         ,res.check_out
+				                                                                 from reviews re , reservations res, rooms r
+				                                                                 where r.no = res.room_no
+				                                                                 and res.no = re.no
+				                                                                 group by r.pension_no,res.status,res.check_in,res.check_out) stars ,(select   a.img_no,
+				                                                                                                                    b.pension_no,
+				                                                                                                                    b.save_name
+				                                                                                                            from (select      min(pim.no) img_no,
+				                                                                                                                                 pim.pension_no
+				                                                                                                                from        pension_image pim
+				                                                                                                                group by    pim.pension_no) a,
+				                                                                                                                                            (select      save_name, pension_no, no img_no
+				                                                                                                                                           from         pension_image) b
+				                                                                                                            where a.img_no = b.img_no) pi
+				where pe.no = si.pension_no
+				and si.no = gu.no
+				and pe.no = ro.pension_no
+				and ro.pension_no = stars.pension_no(+)
+				and pi.pension_no = pe.no
+                and si.name = #{sido1}
+                and gu.name = #{gugun1}
+				order by gu.name
+			]]>
+		</select>
+		
 	<!-- 낮은가격순 리스트 -->
 	<select id="lowpriceList" resultType="Map" parameterType="Map">
 		<![CDATA[
@@ -171,63 +221,110 @@
 	</select>
 	<!-- 체크박스 선택시 리스트 -->
 	  
-	<select id="searchList" resultType="Map" parameterType="com.javaex.vo.MainSearchVo">
+	<select id="searchList" resultType="com.javaex.vo.MainListVo" parameterType="com.javaex.vo.MainSearchVo">
 		<![CDATA[
-			select  p.name pNAme,
-			        p.law_name lawName,
-			        p.law_code lawCode,
-			        p.visit_road3 visitRoad3,
-			        pi.image_path imagePath,
-			        pr.price price,
-			        re.status status,
-			        pa.s_amenities_no sAmenities,
-			        pp.s_public_no sPublic,
-			        rm.standard_people standardPeople,
-                    ri.stars stars,
-                    si.name siName,
-                    gu.name guNAme,
-			        ri.rCount rCount
-			 from pension p, reservations re, (select round(avg(stars),1) stars,
-                                                      count(ri.review_no) rCount
-                                                      from pension p, rooms rm, reservations re, reviews ri
-                                                      where p.no = rm.no
-                                                      and re.no = re.room_no
-                                                      and re.no = ri.review_no
-                                                      and p.no = 1) ri, gugun gu, sido si, p_amenities pa, p_public pp,
-		 			(select image_path 
-	                  from pension_image  
-	                  where RoWNUM = 1) pi,
-	                 rooms rm, (select pr.price,
-                                       pr.no
-                               from prices pr
-                               GROUP BY pr.no, pr.price
-                               having pr.price = min(pr.price)) pr
-			 where p.no = rm.no
-			 and rm.no = pr.no
-			 and re.no = rm.no
-			 and p.no = si.no
-			 and si.no = gu.no
-			 and p.no = pa.pension_no
-			 and p.no = pp.pension_no
-			 and rm.standard_people = #{persons}
-			 and re.check_in = #{datepicker}
-			 and re.check_out = #{datepicker2}
-             and si.name = #{sido1}
-             and gu.name = #{gugun1}
+			select pe.name pName,
+	               pe.visit_road3 visitRoad3,
+	               pe.address address,
+	               gu.name gugunName,
+	               ro.price penPrice,
+	               stars.stars stars,
+	               stars.rcount rcount,
+	               pi.save_name saveName,
+	               pe.no pNo,
+	               pe.law_name lawName,
+	               ao.amOpts amOpt,
+	               pu.puOpts puOpt,
+	               peck.gubun gubun,
+	               resv.yCount yCount
+	        from  pension pe, 
+	              sido si, 
+	              gugun gu, 
+	              
+	             (select  ro.pension_no                             
+	                     ,min(p.price) price
+	                     ,p.sortation
+	              from rooms ro , prices p
+	              where ro.no = p.room_no
+	              group by ro.pension_no, p.sortation) ro, 
+	             
+	             (select p.no pension_no,
+	                     nvl(g.gubun,3) gubun
+	              from pension p,
+	                  (select max(gubun) gubun, pension_no
+	                   from peck
+	                   where peck_start < #{datepicker}
+	                   and peck_end > #{datepicker}
+	                   group by pension_no) g
+	              where p.no = g.pension_no(+)) peck ,
+	              
+	             (select  r.pension_no
+	                     ,round(avg(re.stars),1) stars
+	                     ,count(re.no) rcount
+	              from reviews re , reservations res, rooms r
+	              where r.no = res.room_no
+	              and res.no = re.no
+	              group by r.pension_no) stars ,
+	              
+	             (select   count(re.no) yCount
+	                       ,r.pension_no
+	              from reservations re, rooms r
+	              where re.room_no = r.no
+	              and   check_in = #{datepicker}
+	              and   check_out = #{datepicker2}
+	              and   status = 6
+	              group by r.pension_no) resv,
+	              
+	             (select a.img_no,
+	                     b.pension_no,
+	                     b.save_name
+	              from (select min(pim.no) img_no,
+	                           pim.pension_no
+	                    from   pension_image pim
+	                    group by  pim.pension_no) a,
+	                   (select save_name, pension_no, no img_no
+	                    from pension_image) b
+	              where a.img_no = b.img_no) pi,
+	              
+	             (select pension_no,
+	                     LISTAGG(s_amenities_no, ',') within group (order by s_amenities_no asc) amOpts
+	              from p_amenities
+	              group by pension_no) ao,
+	              
+	             (select pension_no,
+	                     LISTAGG(s_public_no, ',') within group (order by s_public_no asc) puOpts
+	              from p_public
+	              group by pension_no) pu
+	              
+	        where pe.no = si.pension_no
+	        and si.no = gu.no
+	        and pe.no = ro.pension_no
+	        and ro.pension_no = stars.pension_no(+)
+	        and pi.pension_no = pe.no
+	        and peck.pension_no = pe.no
+	        and ao.pension_no = pe.no
+	        and pu.pension_no = pe.no
+	        and ro.sortation = peck.gubun
              
 		]]>
-		 <foreach collection="pensionItem1" item="pensionItems1">
+		 <foreach collection="pensionItem1" item="pensionItem1">
 			<![CDATA[
-				and pa.s_amenities_no = #{pensionItems1}
+				 and ao.amOpts like #{pensionItem2}
 			]]>
 		</foreach>
 		
-		 <foreach collection="pensionItem2" item="pensionItems2">
+		 <foreach collection="pensionItem2" item="pensionItem2">
 			<![CDATA[
-				 and pp.s_public_no = #{pensionItems2}
+				 and pu.puOpts like #{pensionItem1}
 			]]>
 		</foreach>
+		
+		
+		
+		<![CDATA[
+			 order by gu.name
+		]]>
 	</select>
+
+</mapper>	
 	
-	
-</mapper>

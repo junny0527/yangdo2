@@ -7,22 +7,30 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.MainListVo;
 import com.javaex.vo.MainSearchVo;
 
 @Repository
 public class MainListDao {
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
 	//기본 펜션정보 리스트 가져오기
-	public List<Map<String, Object>> select(){
-		System.out.println("Dao>selectList");
+	
+	public List<MainSearchVo> main(MainSearchVo searchVo){
+		System.out.println("Dao>select");
 		
-		List<Map<String, Object>> pList = sqlSession.selectList("MainList.penList");
-		System.out.println("pListDao"+pList);
+		List<MainSearchVo> pList = sqlSession.selectList("MainList.penList", searchVo);
+		System.out.println("MainDao"+pList);
+		System.out.println("MainDao"+searchVo);
 		
 		return pList;
+		
 	}
+	
+	
+	
 	
 	//낮은 가격 순 리스트
 	public List<Map<String, Object>> selectLowprice(){
@@ -56,14 +64,14 @@ public class MainListDao {
 	}
 	
 	//체크박스로 리스트 가져오기
-	public List<Map<String, Object>> selectSearch(MainSearchVo searchVo){
-		System.out.println("Dao>search");
+	public List<MainListVo> selectSearch(MainSearchVo searchVo){
+		System.out.println("searchDao>search");
 		
-		List<Map<String, Object>> searchList = sqlSession.selectList("MainList.searchList", searchVo);
-			
-		System.out.println("searchList"+searchList);
+		List<MainListVo> pList = sqlSession.selectList("MainList.searchList", searchVo);
 		
-		return searchList;
+		System.out.println("SearchDaoPLIST"+pList);
+		
+		return pList;
 		
 	}
 	
