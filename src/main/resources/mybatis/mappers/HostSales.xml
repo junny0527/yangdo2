@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "HostSales">
+
+<select id = "getList" parameterType = "int" resultType = "com.javaex.vo.HostSalesVo">
+	<![CDATA[
+		select
+		    info.room_name roomName
+		    ,to_char(res.check_in, 'YYYY-MM-DD') checkin
+		    ,to_char(res.check_out, 'YYYY-MM-DD') checkout
+		    ,res.name guestName
+		    ,res.hp hp
+		    ,(res.adult + res.kid + res.baby) people
+		    ,res.total_price totalPrice
+		    ,to_char(res.reg_date, 'YYYY-MM-DD') paidDay
+		    ,res.pay_way payWay
+		from
+		    reservations res
+		
+		    , 
+		    
+		    (
+		    select
+		        p.no pension_no
+		        ,p.name pension_name
+		        ,r.no  room_no
+		        ,r.room_name room_name
+		    from
+		        pension p, rooms r
+		    where
+		        p.no = r.pension_no
+		    and p.no = #{pensionNo}
+		    ) info
+		where
+		    res.room_no = info.room_no
+		and
+		    res.status = 3
+	]]>
+</select>
+
+</mapper>

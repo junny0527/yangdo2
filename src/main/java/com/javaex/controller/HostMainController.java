@@ -60,10 +60,4 @@ public class HostMainController {
 		return "/host/customerService";
 	}
 	
-	@RequestMapping(value="hostsales", method = {RequestMethod.GET, RequestMethod.POST})
-	public String hostsale() {
-		return "/host/hostsales";
-	}
-	
-	
 }
