@@ -4,7 +4,7 @@
 <div id="header" class="clearfix recommend_header">
 	<div id="section" class="clearfix">
 		<h1>
-			<a href="${pageContext.request.contextPath}/main?areaNo=123456">양도어때</a>
+			<a href="${pageContext.request.contextPath}/main">양도어때</a>
 		</h1>
 		<ul class="clearfix gnb_pc">
 			<li><a href="" class="color-sub">내주변</a></li>
