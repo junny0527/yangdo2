@@ -369,19 +369,18 @@
 										<button class="information_Use" name="${roomVo.NO}">보기</button>
 									</div>
 									<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
-									<div class="defaultForm">
+									<div class="defaultForm" id="y-room${roomVo.NO}" data-min="0" data-price="${roomVo.PRICE}" data-y_adult="${roomVo.ADULT_PRICE}"
+												data-trans="${roomVo.TRANS_PRICE}" data-kid="${roomVo.KID}" data-adult="${roomVo.ADULT}" data-baby="${roomVo.BABY}" 
+												data-max="${roomVo.MAX_PEOPLE}" data-totalprice="${roomVo.TOTAL_PRICE}" data-roomno="${roomVo.NO}" 
+												data-standard="${roomVo.STANDARD_PEOPLE}" data-y_kid="${roomVo.KID_PRICE}">
 										<div>
 											<span class="people">성인</span>
 											<div>
-												<button class="minus yAdultMinus" data-min="0" data-price="${roomVo.PRICE}" data-y_adult="${roomVo.ADULT_PRICE}"
-												data-trans="${roomVo.TRANS_PRICE}" data-kid="${roomVo.KID}" data-adult="${roomVo.ADULT}"
-												data-totalprice="${roomVo.TOTAL_PRICE}" data-y_kid="${roomVo.KID_PRICE}" name="${roomVo.NO}">
+												<button type="button" class="minus yAdultMinus" data-yno="${roomVo.NO}">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span class="yAdultValue${roomVo.NO}">${roomVo.ADULT}명</span>
-												<button class="plus yAdultPlus" data-max="${roomVo.MAX_PEOPLE}" data-y_adult="${roomVo.ADULT_PRICE}"
-												data-trans="${roomVo.TRANS_PRICE}" data-kid="${roomVo.KID}" data-price="${roomVo.PRICE}" data-adult="${roomVo.ADULT}"
-												data-totalprice="${roomVo.TOTAL_PRICE}" data-y_kid="${roomVo.KID_PRICE}" name="${roomVo.NO}">
+												<button type="button" class="plus yAdultPlus" data-yno="${roomVo.NO}">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -389,16 +388,11 @@
 										<div>
 											<span class="people">아동</span>
 											<div>
-												<button class="minus yKidMinus" data-min="0" data-y_kid="${roomVo.KID_PRICE}" data-price="${roomVo.PRICE}"
-												data-trans="${roomVo.TRANS_PRICE}" data-y_adult="${roomVo.ADULT_PRICE}" data-adult="${roomVo.ADULT}" data-kid="${roomVo.KID}"
-												data-totalprice="${roomVo.TOTAL_PRICE}" data-adultprice="${roomVo.ADULT_PRICE}" name="${roomVo.NO}">
+												<button type="button" class="minus yKidMinus" data-yno="${roomVo.NO}">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span class="yKidValue${roomVo.NO}">${roomVo.KID}명</span>
-												<button class="plus yKidPlus" data-max="${roomVo.MAX_PEOPLE}" data-y_adult="${roomVo.ADULT_PRICE}"
-												 data-y_kid="${roomVo.KID_PRICE}" data-totalprice="${roomVo.TOTAL_PRICE}" data-price="${roomVo.PRICE}"
-												data-trans="${roomVo.TRANS_PRICE}" data-adult="${roomVo.ADULT}" data-kid="${roomVo.KID}"
-												data-totalprice="${roomVo.TOTAL_PRICE}" data-adult="${roomVo.ADULT}" name="${roomVo.NO}">
+												<button type="button" class="plus yKidPlus" data-yno="${roomVo.NO}">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -406,13 +400,11 @@
 										<div>
 											<span class="people">유아</span>
 											<div>
-												<button class="minus yBabyMinus" data-min="0" data-y_baby="${roomVo.BABY_PRICE}"
-												data-trans="${roomVo.TRANS_PRICE}" name="${roomVo.NO}">
+												<button type="button" class="minus yBabyMinus" data-yno="${roomVo.NO}">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span class="yBabyValue${roomVo.NO}">${roomVo.BABY}명</span>
-												<button class="plus yBabyPlus" data-max="${roomVo.MAX_PEOPLE}" data-y_baby="${roomVo.BABY_PRICE}"
-												data-trans="${roomVo.TRANS_PRICE}" name="${roomVo.NO}">
+												<button type="button" class="plus yBabyPlus" data-yno="${roomVo.NO}">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -877,18 +869,27 @@
 		
 		
 		var $this = $(this);
+		var yno = $this.data("yno");
+		var roomNo = $("#y-room"+yno).data("roomno");
+		var standard = $("#y-room"+yno).data("standard");
+		var max = $("#y-room"+yno).data("max");
+		var adult = $("#y-room"+yno).data("adult");
+		var kid = $("#y-room"+yno).data("kid");
+		var baby = $("#y-room"+yno).data("baby");
+		var price = $("#y-room"+yno).data("price");
+		var min = $("#y-room"+yno).data("min");
+		var adultPrice = $("#y-room"+yno).data("y_adult");
+		var kidPrice = $("#y-room"+yno).data("y_kid");
+		var transPrice = $("#y-room"+yno).data("trans");
+		var totalPrice = $("#y-room"+yno).data("totalprice");
 		
-		var roomNo = Number($this.attr("name"));
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
+		
 		var yBabyValue = $(".yBabyValue"+roomNo);
 		var yBabyArray = yBabyValue.text().split("");
 		var yBaby = Number(yBabyArray[0]);
-		
-		var adult = $this.data("adult");
-		var kid = $this.data("kid");
-		
 		
 		var yKidValue = $(".yKidValue"+roomNo);
 		var yKidArray = yKidValue.text().split("");
@@ -898,13 +899,6 @@
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		var max = $this.data("max");
-		var kidPrice = $this.data("y_kid");
-		var adultPrice = $this.data("y_adult");
-		var transPrice = $this.data("trans");
-		var totalPrice = $this.data("totalprice");
-		var transPrice = $this.data("trans");
-		var price = $this.data("price");
 		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
@@ -913,38 +907,41 @@
 		transP = Number(transPrice.replace(/,/g, ""));
 		priceP = Number(price.replace(/,/g, ""));
 		
-		console.log("펜션금액:"+totalP);
-		console.log("추가성인금액:"+adultP);
-		console.log("추가아동금액:"+kidP);
-		console.log("성인인원:"+adult);
-		console.log("아동인원:"+kid);
-		console.log("최대인원:"+max);
-		console.log("양도금액:"+transP);
-		console.log("펜션원래금액:"+priceP);
-		console.log("-------------------");
 		
 		
-		
-		if(yAdult <= max) {
+		if((yAdult + yKid + yBaby) < max) {
 			
 			yAdult += 1;
-			
-			
+			yAdultValue.text(yAdult + "명");
+			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 			
 		}
 	});
 	
 	//양도 성인버튼 명수 감소 이벤트
 	$(".yAdultMinus").on("click", function() {
-		var $this = $(this); 
-		var roomNo = Number($this.attr("name"));
+		var $this = $(this);
+		var yno = $this.data("yno");
+		var roomNo = $("#y-room"+yno).data("roomno");
+		var standard = $("#y-room"+yno).data("standard");
+		var max = $("#y-room"+yno).data("max");
+		var adult = $("#y-room"+yno).data("adult");
+		var kid = $("#y-room"+yno).data("kid");
+		var baby = $("#y-room"+yno).data("baby");
+		var price = $("#y-room"+yno).data("price");
+		var min = $("#y-room"+yno).data("min");
+		var adultPrice = $("#y-room"+yno).data("y_adult");
+		var kidPrice = $("#y-room"+yno).data("y_kid");
+		var transPrice = $("#y-room"+yno).data("trans");
+		var totalPrice = $("#y-room"+yno).data("totalprice");
+		
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
 		
-		var adult = $this.data("adult");
-		var kid = $this.data("kid");
-		var totalPrice = $this.data("totalprice");
+		var yBabyValue = $(".yBabyValue"+roomNo);
+		var yBabyArray = yBabyValue.text().split("");
+		var yBaby = Number(yBabyArray[0]);
 		
 		var yKidValue = $(".yKidValue"+roomNo);
 		var yKidArray = yKidValue.text().split("");
@@ -953,13 +950,7 @@
 		var assignmentValue = $(".assignmentPrice"+roomNo);
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
-		var min = $this.data("min");
 		
-		var adultPrice = $this.data("y_adult");
-		var kidPrice = $this.data("y_kid");
-		var transPrice = $this.data("trans");
-		var totalPrice = $this.data("totalprice");
-		var price = $this.data("price");
 		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
@@ -967,157 +958,224 @@
 		totalP = Number(totalPrice.replace(/,/g, ""));
 		transP = Number(transPrice.replace(/,/g, ""));
 		priceP = Number(price.replace(/,/g, ""));
-		plusP = Number(assignment.replace(/,/g, ""));
 		
 		if(yAdult > 1) {
 			yAdult -= 1;
-			
-			
+			yAdultValue.text(yAdult + "명");
+			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 			
 		}
 	});
 	
 	//양도 아동버튼 명수 증가 이벤트
 	$(".yKidPlus").on("click", function() {
-		var $this = $(this); 
-		var roomNo = Number($this.attr("name"));
-		var yKidValue = $(".yKidValue"+roomNo);
-		var yKidArray = yKidValue.text().split("");
-		var yKid = Number(yKidArray[0]);
-		var kid = $this.data("kid");
-		var adult = $this.data("adult");
+		var $this = $(this);
+		var yno = $this.data("yno");
+		var roomNo = $("#y-room"+yno).data("roomno");
+		var standard = $("#y-room"+yno).data("standard");
+		var max = $("#y-room"+yno).data("max");
+		var adult = $("#y-room"+yno).data("adult");
+		var kid = $("#y-room"+yno).data("kid");
+		var baby = $("#y-room"+yno).data("baby");
+		var price = $("#y-room"+yno).data("price");
+		var min = $("#y-room"+yno).data("min");
+		var adultPrice = $("#y-room"+yno).data("y_adult");
+		var kidPrice = $("#y-room"+yno).data("y_kid");
+		var transPrice = $("#y-room"+yno).data("trans");
+		var totalPrice = $("#y-room"+yno).data("totalprice");
+		
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
+		
 		var yBabyValue = $(".yBabyValue"+roomNo);
 		var yBabyArray = yBabyValue.text().split("");
 		var yBaby = Number(yBabyArray[0]);
 		
+		var yKidValue = $(".yKidValue"+roomNo);
+		var yKidArray = yKidValue.text().split("");
+		var yKid = Number(yKidArray[0]);
 		
 		var assignmentValue = $(".assignmentPrice"+roomNo);
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		var max = $this.data("max");
-		var kidPrice = $this.data("y_kid");
-		var transPrice = $this.data("trans");
-		var adultPrice = $this.data("y_adult");
-		var price = $this.data("price");
-		var totalPrice = $this.data("totalprice");
 		
-		console.log(adultPrice);
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		totalP = Number(totalPrice.replace(/,/g, ""));
 		transP = Number(transPrice.replace(/,/g, ""));
 		priceP = Number(price.replace(/,/g, ""));
-		plusP = Number(assignment.replace(/,/g, ""));
 		
-		if(yKid < max) {
+		if((yAdult + yKid + yBaby) < max) {
 			yKid += 1;
-			
-			
+			yKidValue.text(yKid + "명");
+			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}
 	});
 	
 	//양도 아동버튼 명수 감소 이벤트
 	$(".yKidMinus").on("click", function() {
-		var $this = $(this); 
-		var roomNo = Number($this.attr("name"));
-		var yKidValue = $(".yKidValue"+roomNo);
-		var yKidArray = yKidValue.text().split("");
-		var yKid = Number(yKidArray[0]);
-		var kid = $this.data("kid");
-		var adult = $this.data("adult");
+		var $this = $(this);
+		var yno = $this.data("yno");
+		var roomNo = $("#y-room"+yno).data("roomno");
+		var standard = $("#y-room"+yno).data("standard");
+		var max = $("#y-room"+yno).data("max");
+		var adult = $("#y-room"+yno).data("adult");
+		var kid = $("#y-room"+yno).data("kid");
+		var baby = $("#y-room"+yno).data("baby");
+		var price = $("#y-room"+yno).data("price");
+		var min = $("#y-room"+yno).data("min");
+		var adultPrice = $("#y-room"+yno).data("y_adult");
+		var kidPrice = $("#y-room"+yno).data("y_kid");
+		var transPrice = $("#y-room"+yno).data("trans");
+		var totalPrice = $("#y-room"+yno).data("totalprice");
+		
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
+		
+		var yBabyValue = $(".yBabyValue"+roomNo);
+		var yBabyArray = yBabyValue.text().split("");
+		var yBaby = Number(yBabyArray[0]);
+		
+		var yKidValue = $(".yKidValue"+roomNo);
+		var yKidArray = yKidValue.text().split("");
+		var yKid = Number(yKidArray[0]);
 		
 		var assignmentValue = $(".assignmentPrice"+roomNo);
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		var min = $this.data("min");
-		var max = $this.data("max");
-		var kidPrice = $this.data("y_kid");
-		var transPrice = $this.data("trans");
-		var adultPrice = $this.data("y_adult");
-		var price = $this.data("price");
-		var totalPrice = $this.data("totalprice");
-
+		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		totalP = Number(totalPrice.replace(/,/g, ""));
 		transP = Number(transPrice.replace(/,/g, ""));
 		priceP = Number(price.replace(/,/g, ""));
-		plusP = Number(assignment.replace(/,/g, ""));
 		
 		
 		if(yKid > min) {
 			yKid -= 1;
-			
-			
+			yKidValue.text(yKid + "명");
+			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}
 	});
 	
 	//양도 유아버튼 명수 증가 이벤트
 	$(".yBabyPlus").on("click", function() {
-		var $this = $(this); 
-		var roomNo = Number($this.attr("name"));
-		var yBabyValue = $(".yBabyValue"+roomNo);
-		var yBabyArray = yBabyValue.text().split("");
-		var yBaby = Number(yBabyArray[0]);
-		var yKidValue = $(".yKidValue"+roomNo);
-		var yKidArray = yKidValue.text().split("");
-		var yKid = Number(yKidArray[0]);
+		var $this = $(this);
+		var yno = $this.data("yno");
+		var roomNo = $("#y-room"+yno).data("roomno");
+		var standard = $("#y-room"+yno).data("standard");
+		var max = $("#y-room"+yno).data("max");
+		var adult = $("#y-room"+yno).data("adult");
+		var kid = $("#y-room"+yno).data("kid");
+		var baby = $("#y-room"+yno).data("baby");
+		var price = $("#y-room"+yno).data("price");
+		var min = $("#y-room"+yno).data("min");
+		var adultPrice = $("#y-room"+yno).data("y_adult");
+		var kidPrice = $("#y-room"+yno).data("y_kid");
+		var transPrice = $("#y-room"+yno).data("trans");
+		var totalPrice = $("#y-room"+yno).data("totalprice");
+		
 		var yAdultValue = $(".yAdultValue"+roomNo);
 		var yAdultArray = yAdultValue.text().split("");
 		var yAdult = Number(yAdultArray[0]);
+		
+		var yBabyValue = $(".yBabyValue"+roomNo);
+		var yBabyArray = yBabyValue.text().split("");
+		var yBaby = Number(yBabyArray[0]);
+		
+		var yKidValue = $(".yKidValue"+roomNo);
+		var yKidArray = yKidValue.text().split("");
+		var yKid = Number(yKidArray[0]);
 		
 		var assignmentValue = $(".assignmentPrice"+roomNo);
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		var max = $this.data("max");
-		var babyPrice = $this.data("y_baby");
-		var transPrice = $this.data("trans");
-
-		//숫자변환
-		transP = Number(assignment.replace(/,/g, ""));
-		babyP = Number(babyPrice);
 		
-		if(yBaby <= max) {
+		//숫자변환
+		kidP = Number(kidPrice.replace(/,/g, ""));
+		adultP = Number(adultPrice.replace(/,/g, ""));
+		totalP = Number(totalPrice.replace(/,/g, ""));
+		transP = Number(transPrice.replace(/,/g, ""));
+		priceP = Number(price.replace(/,/g, ""));
+		
+		if((yAdult + yKid + yBaby) < max) {
 			yBaby += 1;
+			yBabyValue.text(yBaby + "명");
+			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}	
 	});
 	
 	//양도 유아버튼 명수 감소 이벤트
 	$(".yBabyMinus").on("click", function() {
-		var $this = $(this); 
-		var roomNo = Number($this.attr("name"));
+		var $this = $(this);
+		var yno = $this.data("yno");
+		var roomNo = $("#y-room"+yno).data("roomno");
+		var standard = $("#y-room"+yno).data("standard");
+		var max = $("#y-room"+yno).data("max");
+		var adult = $("#y-room"+yno).data("adult");
+		var kid = $("#y-room"+yno).data("kid");
+		var baby = $("#y-room"+yno).data("baby");
+		var price = $("#y-room"+yno).data("price");
+		var min = $("#y-room"+yno).data("min");
+		var adultPrice = $("#y-room"+yno).data("y_adult");
+		var kidPrice = $("#y-room"+yno).data("y_kid");
+		var transPrice = $("#y-room"+yno).data("trans");
+		var totalPrice = $("#y-room"+yno).data("totalprice");
+		
+		var yAdultValue = $(".yAdultValue"+roomNo);
+		var yAdultArray = yAdultValue.text().split("");
+		var yAdult = Number(yAdultArray[0]);
+		
 		var yBabyValue = $(".yBabyValue"+roomNo);
 		var yBabyArray = yBabyValue.text().split("");
 		var yBaby = Number(yBabyArray[0]);
+		
+		var yKidValue = $(".yKidValue"+roomNo);
+		var yKidArray = yKidValue.text().split("");
+		var yKid = Number(yKidArray[0]);
 		
 		var assignmentValue = $(".assignmentPrice"+roomNo);
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		var min = $this.data("min");
-		var babyPrice = $this.data("y_baby");
-		var transPrice = $this.data("trans");
-
+		
 		//숫자변환
-		transP = Number(assignment.replace(/,/g, ""));
-		babyP = Number(babyPrice);
+		kidP = Number(kidPrice.replace(/,/g, ""));
+		adultP = Number(adultPrice.replace(/,/g, ""));
+		totalP = Number(totalPrice.replace(/,/g, ""));
+		transP = Number(transPrice.replace(/,/g, ""));
+		priceP = Number(price.replace(/,/g, ""));
 		
 		if(yBaby > min) {
 			yBaby -= 1;
-			
+			yBabyValue.text(yBaby + "명");
+			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}
 	});
+	
+	
+	//펜션 양도 시 +-인원 금액 구하는 함수
+	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
+		
+		if( ((adult+kid+baby) - standard) >= 0 ) {
+			const transNum = transP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			assignmentValue.text(transNum + "원");
+		}
+		
+		
+		
+		
+		
+		
+	}
+		
 	
 	///////////////////////// 예약하러가기 버튼이벤트  ///////////////////////////
 	
@@ -1132,7 +1190,7 @@
 		var kidPrice = $("#room-"+rno).data("kid");
 		var babyPrice = $("#room-"+rno).data("baby");
 		var price = $("#room-"+rno).data("price");
-	
+		
 		var adultValue = $(".adultValue"+roomNo);
 		var adultArray = adultValue.text().split("");
 		var adult = Number(adultArray[0]);
@@ -1379,7 +1437,7 @@
 	});
 	
 	
-	//펜션 금액 구하는 함수
+	//펜션 예약금액 구하는 함수
 	function priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo) {
 		
 		if( (adult+kid+baby) <= standard ) {
