@@ -3,7 +3,7 @@ package com.javaex.vo;
 public class HostReservationVo {
 	
 	private String reservationNo;
-	private int hostNo;
+	private int pensionNo;
 	private String roomName;
 	private String guestName;
 	private int guestNo;
@@ -18,11 +18,11 @@ public class HostReservationVo {
 	
 	public HostReservationVo() {}
 
-	public HostReservationVo(String reservationNo, int hostNo, String roomName, String guestName, int guestNo,
+	public HostReservationVo(String reservationNo, int pensionNo, String roomName, String guestName, int guestNo,
 			int totalPrice, String hp, String checkin, String checkout, String adult, String kid, String baby,
 			String status) {
 		this.reservationNo = reservationNo;
-		this.hostNo = hostNo;
+		this.pensionNo = pensionNo;
 		this.roomName = roomName;
 		this.guestName = guestName;
 		this.guestNo = guestNo;
@@ -44,12 +44,12 @@ public class HostReservationVo {
 		this.reservationNo = reservationNo;
 	}
 
-	public int getHostNo() {
-		return hostNo;
+	public int getPensionNo() {
+		return pensionNo;
 	}
 
-	public void setHostNo(int hostNo) {
-		this.hostNo = hostNo;
+	public void setPensionNo(int pensionNo) {
+		this.pensionNo = pensionNo;
 	}
 
 	public String getRoomName() {
@@ -142,10 +142,11 @@ public class HostReservationVo {
 
 	@Override
 	public String toString() {
-		return "HostReservationVo [reservationNo=" + reservationNo + ", hostNo=" + hostNo + ", roomName=" + roomName
-				+ ", guestName=" + guestName + ", guestNo=" + guestNo + ", totalPrice=" + totalPrice + ", hp=" + hp
-				+ ", checkin=" + checkin + ", checkout=" + checkout + ", adult=" + adult + ", kid=" + kid + ", baby="
-				+ baby + ", status=" + status + "]";
+		return "HostReservationVo [reservationNo=" + reservationNo + ", pensionNo=" + pensionNo + ", roomName="
+				+ roomName + ", guestName=" + guestName + ", guestNo=" + guestNo + ", totalPrice=" + totalPrice
+				+ ", hp=" + hp + ", checkin=" + checkin + ", checkout=" + checkout + ", adult=" + adult + ", kid=" + kid
+				+ ", baby=" + baby + ", status=" + status + "]";
 	}
+	
 	
 }
