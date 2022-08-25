@@ -27,6 +27,7 @@ public class HostReviewsController {
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int userNo = uVo.getNo();
 		int pensionNo = revService.getPensionNo(userNo);
+		
 		List<HostReviewsVo> rList = revService.getReviewsList(pensionNo);
 		model.addAttribute("rList", rList);
 		System.out.println(rList);

@@ -30,7 +30,7 @@
 	
 	<div>
 		<ul>
-			<c:forEach items = "${rList}" var = "rList">
+			<c:forEach items = "${rList}" var = "rList" varStatus = "status">
 				<li>
 					<div id="reviewBox">
 						<div id="guestContainer">
@@ -76,13 +76,14 @@
 			                    <span id="reviewContent">${rList.guestContent}</span>                
 			                    <div id="roomImg">
 			                        <ul>
-			                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/1.jpg"></li>
-			                            <li><img src="${pageContext.request.contextPath}/assets/image/detail/10.jpg"></li>
+			                            <li><img src="${rList.image1}"></li>
+			                            <li><img src="${rList.image2}"></li>
 			                        </ul>
 			                    </div>
 			                    <span id="guestRegDate">${rList.guestRegdate}</span>
 			                    <c:choose>
 		                    		<c:when test = "${rList.replyNo != null && rList.hostContent != null && rList.hostRegdate != null}">
+		                    			
 			                    		<div id="ceoContainer">
 					                        <div class="box">
 					                       		<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">
@@ -92,15 +93,24 @@
 					                            <span id="ceoContent">${rList.hostContent}</span>
 					                            <span id="ceoRegDate">${rList.hostRegdate}</span>
 					                        </div>
-			                    		</div>   
+			                    		</div>
+			                    		<input type = "hidden" value = "${rList.reviewNo}">
 										<button type ="button" class = "btn editreply">수정</button>
+										<div class = "replyedit">
+											<textarea class = "form-control"></textarea>
+											<button class = "btn editcancel" type = "button">취소</button>
+											<button class = "btn btn-primary sendeditreply" type = "button">등록</button>
+										</div>
 									</c:when>
 									<c:otherwise>
-										<button type = "button" class = "btn addreply"> + 답글달기</button>
-										<div class = "reply">
-											<textarea class = "form-control"></textarea>
-											<button class = "btn cancel" type = "button">취소</button>
-											<button class = "btn btn-primary sendreply" type = "button">등록</button>
+										<div class = "addreplyarea">
+											<input type = "hidden" value = "${rList.reviewNo}">
+											<button type = "button" class = "btn addreply"> + 답글달기</button>
+											<div class = "reply">
+												<textarea class = "form-control"></textarea>
+												<button class = "btn cancel" type = "button">취소</button>
+												<button class = "btn btn-primary sendreply" type = "button">등록</button>
+											</div>
 										</div>
 									</c:otherwise>
 								</c:choose>
@@ -111,6 +121,7 @@
 			</c:forEach>
 		</ul>
 	</div>
+	
 	<nav aria-label="Page navigation" class = "justify-content-center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item"><a class="page-link" href="#">◀</a></li>
@@ -133,21 +144,84 @@
 
 <script type ="text/javascript">
 
-$(document).ready(function(){
-		
+$(".addreplyarea").on("click", function(){
+	$(".reply").css("display", "block");
 });
 
-$(".addreply").on("click", function(){
-	$(".reply").css("display", "block");
-})
-
+$(".editreply").on("click", function(){
+	$(this).siblings(".replyedit").css("display", "block");
+	$(this).siblings("#ceoContainer").css("display", "none");
+	$(this).css("display", "none");
+});
+	
 $(".sendreply").on("click", function(){
-	$(".addreply").css("display", "none");
-	$(".reply").css("display", "none");
-})
+	var reviewNo = $(this).parent().parent().children('input').val();
+	var hostContent = $(this).siblings('textarea').val();
+	console.log(reviewNo);
+	console.log(hostContent);
+	
+	var replyVo = {
+		reviewNo: reviewNo,
+		hostContent: hostContent
+	}
+	
+	console.log(replyVo);
+		
+	$.ajax({
+		url : "${pageContext.request.contextPath}/host/api/replyInsert",
+		type : "post",
+		data : JSON.stringify(replyVo),
+		contentType : 'application/json',
+		dataType : "json",
+		success : function(good){
+			alert("등록되었습니다.");
+			window.location.href = "${pageContext.request.contextPath}/host/reviews";
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+});
+
+$(".sendeditreply").on("click", function(){
+	var reviewNo = $(this).parent().parent().children('input').val();
+	var hostContent = $(this).siblings('textarea').val();
+	console.log(reviewNo);
+	console.log(hostContent);
+	
+	var replyVo = {
+		reviewNo: reviewNo,
+		hostContent: hostContent
+	}
+	
+	console.log(replyVo);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/host/api/replyUpdate",
+		type : "post",
+		data : JSON.stringify(replyVo),
+		contentType : 'application/json',
+		dataType : "json",
+		success : function(good){
+			alert("수정되었습니다.");
+			window.location.href = "${pageContext.request.contextPath}/host/reviews";
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+});
+
+
 
 $(".cancel").on("click", function(){
 	$(".reply").css("display", "none");
+})
+
+$(".editcancel").on("click", function(){
+	$(this).parent(".replyedit").css("display", "none");
+	$(this).parent().siblings("#ceoContainer").css("display", "flex");
+	$(this).parent().siblings(".editreply").css("display", "block");
 })
 
 

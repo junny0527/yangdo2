@@ -25,4 +25,16 @@ public class HostReviewsDao {
 		return getReply;
 	}
 	
+	public int insertReply(HostReplyVo replyVo) {
+		System.out.println("dao");
+		int count = sqlSession.insert("HostReviews.insertReply", replyVo);
+		return count;
+	}
+	
+	public int updateReply(HostReplyVo replyVo) {
+		System.out.println("dao");
+		int count = sqlSession.update("HostReviews.updateReply", replyVo);
+		return count;
+	}
+	
 }

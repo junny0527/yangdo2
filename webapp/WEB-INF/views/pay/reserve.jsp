@@ -49,28 +49,28 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 						<div class="right" data-v-33033856="" data-v-f785cca6="">
 							<section class="info" data-v-33033856="">
 								<p class="name" data-v-33033856="">
-									<strong data-v-33033856="">펜션이름</strong>${rpMap.PNAME }
+									<strong data-v-33033856="">펜션이름</strong>${rpMap.name }
 								</p>
 								
 								<p data-v-33033856="">
-									<strong data-v-33033856="">객실명/기간</strong>${rpMap.RNAME } /
+									<strong data-v-33033856="">객실명/기간</strong>${rpMap.roomName } /
 									${rpMap.DDay}박
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">인원수</Strong>${rpMap.ADULT+rpMap.KID+rpMap.BABY}명
+									<strong data-v-33033856="">인원수</Strong>${rpMap.adult+rpMap.kid+rpMap.baby}명
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크인</strong>${rpMap.CHECK_IN }
+									<strong data-v-33033856="">체크인</strong>${rpMap.datepicker } / ${rpMap.check_in }
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크아웃</strong>${rpMap.CHECK_OUT }
+									<strong data-v-33033856="">체크아웃</strong>${rpMap.datepicker2 } / ${rpMap.check_out }
 								</p>
 							</section>
 							<section class="total_price_pc" data-v-33033856="">
 								<p data-v-33033856="">
 									<strong data-v-33033856=""><b data-v-33033856="">총
 											결제 금액</b>(VAT포함)</strong><span class="in_price total" id="totalPrice" data-v-33033856=""><fmt:formatNumber
-														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원</span>
+														value="${rpMap.price}" pattern="#,###" />원</span>
 								</p>
 								<ul data-v-33033856="">
 									<li data-v-33033856="">해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -113,23 +113,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
 										<div class="product-amount " data-v-3ce5aaac="">
 											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac=""><fmt:formatNumber
-														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원</b>
+														value="${rpMap.price}" pattern="#,###" />원</b>
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
 											<strong data-v-3ce5aaac="">구매 총액 내역</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${rpMap.ADULT}명</span><b data-v-3ce5aaac=""class="">${rpMap.ADULT_KID_PRICE*rpMap.ADULT}원</b>
+													${rpMap.adult}명</span><b data-v-3ce5aaac=""class="">${rpMap.ADD_ADULT_PRICE*rpMap.adult}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${rpMap.KID}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="${rpMap.ADD_KID_PRICE*rpMap.KID}" pattern="#,###" />원</b>
+													${rpMap.kid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
+														value="${rpMap.kid*rpMap.kid}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
-													${rpMap.BABY}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*rpMap.BABY}원</b>
+													${rpMap.baby}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*rpMap.baby}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
@@ -139,7 +139,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">합계</span><b
 													class="total" data-v-3ce5aaac=""> <fmt:formatNumber
-														value="${rpMap.TOTAL_PRICE}" pattern="#,###" />원
+														value="${rpMap.price}" pattern="#,###" />원
 												</b>
 											</div>
 										</div>
@@ -241,15 +241,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			//---포인트
 			let point = Number($("#point").val());
 			let minPoint = Number('${gajidaPoints.POINTS}'); //보유포인트
-			let totalPrice = Number('${rpMap.TOTAL_PRICE}');
+			let totalPrice = Number('${rpMap.price}');
 			if (minPoint < point) {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
 				return false;
 			}
 			//------어른,아이,유아계산---
-			let adult = Number('${rpMap.ADULT}');
-			let kid = Number('${rpMap.KID}');
-			let baby = Number('${rpMap.BABY}');
+			let adult = Number('${rpMap.adult}');
+			let kid = Number('${rpMap.kid}');
+			let baby = Number('${rpMap.baby}');
 			let adultpri = Number('${rpMap.ADULT_KID_PRICE}');
 			let kidpri = Number('${rpMap.ADD_KID_PRICE}');
 			let babypri = Number('${rpMap.ADD_BABY_PRICE}');
@@ -294,11 +294,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	          pg: "html5_inicis",
 	          pay_method: "card",
 	          merchant_uid: "YANGDO"+ new Date().getTime(),
-	          name: '${rpMap.PNAME}',
-	          amount: 100,
-	          buyer_email: "bonjun03@naver.com",
+	          name: '${rpMap.name}',
+	          amount: 100, //실제로 계산해야하는 가격이지만 테스트이기때문에 100원으로 가격함 $('#totalPrice').val()
+	         // buyer_email: "bonjun03@naver.com",
 	          buyer_name: $('#userName').val(),
-	          buyer_tel: "${rpMap.RHP}"
+	          //buyer_tel: "${rpMap.RHP}"
 	          
 	      }, function (rsp) { // callback
 	    	  if ( rsp.success ) { 
@@ -310,25 +310,25 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		    	        	name: $('#userName').val(),
 		    	        	hp: $('#hp').val(),
 		    	        	point:$('#point').val(),
-		    	        	userNo:"${rpMap.USERNO}",
-		    	        	roomNo:"${rpMap.ROOMNO}",
+		    	        	userNo:"${authUser.no}",
+		    	        	roomNo:"${rpMap.roomNo}",
 		    	        	pointNo:"${rpMap.POINTNO}",
-		    	        	checkIn:"${rpMap.CHECK_IN }",
-		    	        	checkOut:"${rpMap.CHECK_OUT }",
-		    	        	pName : "${rpMap.PNAME}",
-		    	        	rName : "${rpMap.RNAME}",
+		    	        	checkIn:"${rpMap.datepicker }",
+		    	        	checkOut:"${rpMap.datepicker2 }",
+		    	        	pName : "${rpMap.name}",
+		    	        	rName : "${rpMap.roomName}",
 		    	        	status: '1',
 		    	        	payWay: '1',
 		    	        	payStatus: '2',
 		    	        	//null 값인거 일단 넣어보기
-		    	        	adult: '${rpMap.ADULT}',
-		    	        	kid: '${rpMap.KID}',
-		    	        	baby: '${rpMap.BABY}',
+		    	        	adult: '${rpMap.adult}',
+		    	        	kid: '${rpMap.kid}',
+		    	        	baby: '${rpMap.baby}',
 		    	        	id: '${authUser.id}',
 		    	        	pw: '${authUser.pw}',
 		    	        	regDate:'${rpMap.REG_DATE}',
 		    	        	//////////////////////////////
-		    	        	totalPrice: $('#totalPrice').val()
+		    	        	totalPrice: '${rpMap.price}'
 	    	        }
 	    	      
 	    	        console.log("repayVo ::: >> ", repayVo);

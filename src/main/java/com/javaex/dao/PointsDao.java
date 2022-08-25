@@ -27,6 +27,7 @@ public class PointsDao {
 		
 		return poMap;
 	}
+	
 
 	// 포인트 가져오기
 	public List<MyPointVo> getUserPoint(int userNo){

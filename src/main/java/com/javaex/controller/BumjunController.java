@@ -52,6 +52,8 @@ public class BumjunController {
 		
 		System.out.println("==================================");
 		System.out.println(params);
+		System.out.println(userNo);
+		System.out.println(gajidaPoints);
 		System.out.println("==================================");
 		
 		return "/pay/reserve";
@@ -73,6 +75,11 @@ public class BumjunController {
 		System.out.println(gajidaPoints);
 		
 		model.addAttribute("gajidaPoints", gajidaPoints);
+		System.out.println("==================================");
+		System.out.println(rpMap);
+		System.out.println(userNo);
+		System.out.println(gajidaPoints);
+		System.out.println("==================================");
 
 		return "/pay/yangdoReserve";
 	}

@@ -2,6 +2,8 @@ package com.javaex.api.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.javaex.service.HostReservationService;
 import com.javaex.vo.HostReservationVo;
 import com.javaex.vo.PointsVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "host")
@@ -22,18 +25,24 @@ public class HostReservationApiController {
 	
 	@ResponseBody
 	@RequestMapping(value = "api/getReserveList", method = {RequestMethod.GET, RequestMethod.POST})
-	public List<HostReservationVo> getList(){
-		int hostNo = 1;
-		List<HostReservationVo> rList = hService.getList(hostNo);
+	public List<HostReservationVo> getList(HttpSession session){
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int hostNo = uVo.getNo();
+		System.out.println("세션 : " + hostNo);
+		int pensionNo = hService.getPensionNo(hostNo);
+		System.out.println("펜션번호" + pensionNo);
+		List<HostReservationVo> rList = hService.getList(pensionNo);
 		System.out.println(rList);
 		return rList;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "api/getReserve", method= {RequestMethod.GET, RequestMethod.POST})
-	public HostReservationVo getReserve(Integer hostNo, @RequestBody String reserveid) {
-		hostNo = 1;
-		HostReservationVo hVo = hService.getReserve(hostNo, reserveid);
+	public HostReservationVo getReserve(HttpSession session, @RequestBody String reserveid) {
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int hostNo = uVo.getNo();
+		int pensionNo = hService.getPensionNo(hostNo);
+		HostReservationVo hVo = hService.getReserve(pensionNo, reserveid);
 		System.out.println("hVo 결과: " + hVo);
 		return hVo;
 	}
