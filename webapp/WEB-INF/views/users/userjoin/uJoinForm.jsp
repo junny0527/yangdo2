@@ -55,7 +55,7 @@
 
             <b>닉네임</b>
             <div class="inp_type_2 form-errors">
-                <input type="text" id="unick" name="nick" required="" class="required" placeholder="닉네임을 입력하세요.">
+                <input type="text" id="unick" name="nickName" required="" class="required" placeholder="닉네임을 입력하세요.">
             </div>
             
             
