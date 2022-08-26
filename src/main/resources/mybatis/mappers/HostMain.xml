@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "HostMain">
+
+<select id = "getrevList" parameterType = "int" resultType = "com.javaex.vo.HostReservationVo">
+
+	<![CDATA[
+		select
+			info.room_name roomName
+	        ,res.name guestName
+	        ,to_char(res.check_in, 'YYYY-MM-DD') checkin
+	        ,res.hp hp
+	        
+		from
+			reservations res
+		
+			, 
+			
+			(
+			select
+				p.no pension_no
+		        ,p.name pension_name
+		        ,r.no  room_no
+		        ,r.room_name room_name
+			from
+				pension p, rooms r
+			where
+				p.no = r.pension_no
+			and p.no = #{pensionNo}
+			) info
+		where
+			res.room_no = info.room_no
+		and
+			(
+			res.status = 1
+			or
+			res.status = 5
+			)
+	]]>
+
+</select>
+
+<select id = "getDays" resultType = "com.javaex.vo.HostCountVo">
+
+	<![CDATA[
+		select
+			to_char((trunc(sysdate, 'iw')), 'YYYY-MM-DD') weekFirst
+	        ,to_char((trunc(sysdate, 'iw')+6), 'YYYY-MM-DD') weekLast
+	        ,to_char(sysdate,'YYYY-MM') || '-01' monthFirst
+	        ,to_char(LAST_DAY(sysdate),'YYYY-MM-DD') monthLast
+		from dual
+	]]>
+
+</select>
+
+
+<select id = "countReviewsWeek" parameterType = "com.javaex.vo.HostCountVo" resultType = "int">
+
+	<![CDATA[
+		select
+		    count(*)
+		from
+		    reviews revi, reservations res, rooms rm
+		where
+		    revi.no = res.no
+		    and res.room_no = rm.no
+		    and rm.pension_no = #{pensionNo}
+		    and
+		        revi.reg_date
+		        between to_date(#{weekFirst},'YYYY-MM-DD')
+		        and to_date(#{weekLast}, 'YYYY-MM-DD')
+	]]>
+
+
+</select>
+
+<select id = "countReviewsMonth" parameterType = "com.javaex.vo.HostCountVo" resultType = "int">
+
+	<![CDATA[
+		select
+		    count(*)
+		from
+		    reviews revi, reservations res, rooms rm
+		where
+		    revi.no = res.no
+		    and res.room_no = rm.no
+		    and rm.pension_no = #{pensionNo}
+		    and
+		        revi.reg_date
+		        between to_date(#{monthFirst},'YYYY-MM-DD')
+		        and to_date(#{monthLast}, 'YYYY-MM-DD')
+	]]>
+
+
+</select>
+
+
+
+<select id = "countReviewsToday" parameterType = "int" resultType = "int">
+	
+	<![CDATA[
+		select
+		    count(*)
+		from
+		    reviews revi, reservations res, rooms rm
+		where
+		    revi.no = res.no
+		    and res.room_no = rm.no
+		    and rm.pension_no = #{pensionNo}
+		    and to_char(revi.reg_date, 'YYYY-MM-DD') = to_char(sysdate, 'YYYY-MM-DD')
+	]]>
+
+</select>
+
+
+<select id = "countSalesToday" parameterType = "int" resultType = "int">
+	
+	<![CDATA[
+		select
+	    	count(*)
+		from
+		    reservations res
+		
+		    , 
+	    
+		    (
+		    select
+		        p.no pension_no
+		        ,p.name pension_name
+		        ,r.no  room_no
+		        ,r.room_name room_name
+		    from
+		        pension p, rooms r
+		    where
+		        p.no = r.pension_no
+		    and p.no = #{pensionNo}
+		    ) info
+		    
+		where
+		    res.room_no = info.room_no
+		and
+		    res.status = 3
+		and
+		    to_date(res.check_out, 'YYYY-MM-DD') = to_date(sysdate, 'YYYY-MM-DD')
+	]]>
+	
+</select>
+
+<select id = "countSalesWeek" parameterType = "com.javaex.vo.HostCountVo" resultType = "int">
+	
+	<![CDATA[
+		select
+	    	count(*)
+		from
+		    reservations res
+	
+	    	, 
+	    
+	    (
+	    select
+	        p.no pension_no
+	        ,p.name pension_name
+	        ,r.no  room_no
+	        ,r.room_name room_name
+	    from
+	        pension p, rooms r
+	    where
+	        p.no = r.pension_no
+	    and p.no = #{pensionNo}
+	    ) info
+	    
+		where
+		    res.room_no = info.room_no
+		and
+		    res.status = 3
+		and
+		    res.check_out
+	    
+		    between
+		        to_date(#{weekFirst}, 'YYYY-MM-DD')
+		    and
+		        to_date(#{weekLast}, 'YYYY-MM-DD')
+	]]>
+	
+</select>
+
+<select id = "countSalesMonth" parameterType = "com.javaex.vo.HostCountVo" resultType = "int">
+	
+	<![CDATA[
+		select
+	    	count(*)
+		from
+		    reservations res
+	
+	    	, 
+	    
+	    (
+	    select
+	        p.no pension_no
+	        ,p.name pension_name
+	        ,r.no  room_no
+	        ,r.room_name room_name
+	    from
+	        pension p, rooms r
+	    where
+	        p.no = r.pension_no
+	    and p.no = #{pensionNo}
+	    ) info
+	    
+		where
+		    res.room_no = info.room_no
+		and
+		    res.status = 3
+		and
+		    res.check_out
+	    
+		    between
+		        to_date(#{monthFirst}, 'YYYY-MM-DD')
+		    and
+		        to_date(#{monthLast}, 'YYYY-MM-DD')
+	]]>
+	
+</select>
+
+
+
+</mapper>

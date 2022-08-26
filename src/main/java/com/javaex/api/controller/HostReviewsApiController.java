@@ -31,15 +31,22 @@ public class HostReviewsApiController {
 		System.out.println(replyVo.getReviewNo());
 		System.out.println(replyVo.getHostContent());
 		int count = revService.insertReply(replyVo);
-		
 		return count;
 	}
 	
-	
-	
-	
-	
-	
+	@ResponseBody
+	@RequestMapping(value = "api/replyUpdate", method = {RequestMethod.GET, RequestMethod.POST})
+	public int replyUpdate(HttpSession session, @RequestBody HostReplyVo replyVo) {
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int hostNo = uVo.getNo();
+		replyVo.setHostNo(hostNo);
+		System.out.println("controller>");
+		System.out.println(replyVo);
+		System.out.println(replyVo.getReviewNo());
+		System.out.println(replyVo.getHostContent());
+		int count = revService.updateReply(replyVo);
+		return count;
+	}
 	
 	
 }

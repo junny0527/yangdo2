@@ -250,3 +250,26 @@
 	background-color: #f2114c;
 	color: white;
 }
+
+
+.replyedit{
+	display: none;
+}
+
+.replyedit > textarea{
+	width: 926px;
+	height: 150px;
+	resize: none;
+}
+
+.replyedit > button:first-of-type{
+	margin-right: 20px;
+	width: 80px;
+	float: right;
+}
+
+.replyedit > button:last-of-type{
+	margin-right: 5px;
+	width: 80px;
+	float: right;
+}

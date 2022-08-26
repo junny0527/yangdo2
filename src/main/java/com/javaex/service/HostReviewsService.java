@@ -35,5 +35,12 @@ public class HostReviewsService {
 		
 		return count;
 	}
+	
+	public int updateReply(HostReplyVo replyVo) {
+		
+		System.out.println("service");
+		int count = revDao.updateReply(replyVo);
+		return count;
+	}
 
 }

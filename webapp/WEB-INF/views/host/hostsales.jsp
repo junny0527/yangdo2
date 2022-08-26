@@ -42,35 +42,22 @@
 					<th>입금액</th>
 					<th>입금 일자</th>
 					<th>결제 수단</th>
-					<th>은행명</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>풍뎅이</td>
-					<td>20220801</td>
-					<td>20220803</td>
-					<td>민조장님</td>
-					<td>010-2298-3391</td>
-					<td>4</td>
-					<td>150,000</td>
-					<td>20220731</td>
-					<td>카드</td>
-					<td>국민</td>
-				</tr>
-				
-				<tr>
-					<td>곱등이</td>
-					<td>20220724</td>
-					<td>20220725</td>
-					<td>바퀴벌레님</td>
-					<td>010-5564-1143</td>
-					<td>2</td>
-					<td>100,000</td>
-					<td>20220710</td>
-					<td>계좌이체</td>
-					<td>신한</td>
-				</tr>
+				<c:forEach items = "${sList}" var = "sList">
+					<tr>
+						<td>${sList.roomName}</td>
+						<td>${sList.checkin}</td>
+						<td>${sList.checkout}</td>
+						<td>${sList.guestName}</td>
+						<td>${sList.hp}</td>
+						<td>${sList.people}</td>
+						<td>${sList.totalPrice}</td>
+						<td>${sList.paidDay}</td>
+						<td>${sList.payWay}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -83,9 +70,6 @@
 	    <li class="page-item"><a class="page-link" href="#">3</a></li>
 	    <li class="page-item"><a class="page-link" href="#">4</a></li>
 	    <li class="page-item"><a class="page-link" href="#">5</a></li>
-	    <li class="page-item"><a class="page-link" href="#">6</a></li>
-	    <li class="page-item"><a class="page-link" href="#">7</a></li>
-	    <li class="page-item"><a class="page-link" href="#">8</a></li>
 	    <li class="page-item"><a class="page-link" href="#">▶</a></li>
 	  </ul>
 	</nav>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.MainListDao;
+import com.javaex.vo.MainListVo;
 import com.javaex.vo.MainSearchVo;
 
 @Service
@@ -17,24 +18,18 @@ public class MainListService {
 	private MainListDao mainDao;
 	
 	
-	
 	//기본 펜션리스트
-	public Map<String, Object> select( ){
+	
+	public List<MainSearchVo> main(MainSearchVo searchVo){
 		System.out.println("Service>select");
 		
-		Map<String, Object> pMap = new HashMap<String, Object>();
-		System.out.println("pMap"+pMap);
+		List<MainSearchVo> pList = mainDao.main(searchVo);
+		System.out.println("MainService"+pList);
 		
-		//펜션 정보 리스트 가져오기
-		List<Map<String, Object>> pList = mainDao.select();
-		System.out.println("test"+pList);
+		return pList;
 		
-		pMap.put("pList", pList);
-		System.out.println("pList"+pList);
-		
-		
-		return pMap;
 	}
+	
 	
 	//낮은 가격순 리스트
 	public Map<String, Object> selectLowprice(){
@@ -79,19 +74,15 @@ public class MainListService {
 	}
 	
 	//체크박스
-	public Map<String, Object> selectSearch(MainSearchVo searchVo){
-		System.out.println("Service>search");
+	public List<MainListVo> selectSearch(MainSearchVo searchVo){
+		System.out.println("service>search");
 		
-		Map<String, Object> pMap = new HashMap<String,Object>();
+		List<MainListVo> pList = mainDao.selectSearch(searchVo);
 		
-		Map<String, Object> map = new HashMap<>();
+		System.out.println("searchServicePLIST"+pList);
 		
+		return pList;
 		
-		List<Map<String, Object>> pList = mainDao.selectSearch(searchVo);
-		System.out.println(pList);
-		
-		pMap.put("pList", pList);
-		return pMap;
 	}
 	
 }

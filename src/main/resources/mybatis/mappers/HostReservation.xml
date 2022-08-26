@@ -9,8 +9,8 @@
 			res.no reservationNo
 	        ,info.room_name roomName
 	        ,res.name guestName
-	        ,res.check_in checkin
-	        ,res.check_out checkout
+	        ,to_char(res.check_in, 'YYYY-MM-DD') checkin
+	        ,to_char(res.check_out, 'YYYY-MM-DD') checkout
 	        ,res.status status
 	        
 		from

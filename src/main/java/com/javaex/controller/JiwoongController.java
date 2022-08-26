@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.MainListService;
+import com.javaex.vo.MainListVo;
 import com.javaex.vo.MainSearchVo;
 
 @Controller
@@ -24,19 +24,27 @@ public class JiwoongController {
 	
 	//기본 리스트
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @RequestParam(value= "datepicker", defaultValue = "",required = false)String datepicker,
-										@RequestParam(value= "datepicker2", defaultValue = "",required = false)String datepicker2) {
+	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("jiwoongController>mainList");
+		System.out.println(searchVo);
 		
-		Map<String, Object> pMap =  mainService.select();
+		List<MainSearchVo> pList = mainService.main(searchVo);
+		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
+		model.addAttribute("pList",pList);
+		
+		/*
+		Map<String, Object> pMap =  mainService.select(searchVo);
 		
 		model.addAttribute("pMap",pMap);
-		model.addAttribute("datepicker",datepicker);
-		model.addAttribute("datepicker2",datepicker2);
-		
-		System.out.println("contorller"+pMap);
-		System.out.println("datepicker"+datepicker);
-		System.out.println("datepicker2"+datepicker2);
+		*/
+		System.out.println("datePicker:"+datePicker);
+		System.out.println("datePicker2:"+datePicker2);
+		System.out.println("contorller"+pList);
 		
 		return "/mainList/mainLists";
 	}
@@ -80,23 +88,20 @@ public class JiwoongController {
 		return "/mainList/mainLists";
 	}
 	
-	//검색시 체크박스 리스트
+	
+	
+	
 	@RequestMapping(value="main/search", method = {RequestMethod.POST, RequestMethod.GET})
-	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo,
-								@RequestParam(value="pensionItem2") List<Integer> pensionItem2,
-								@RequestParam(value="pensionItem1") List<Integer> pensionItem1) {
+	public String searchList(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("Controller>search");
 		System.out.println("searchVo"+searchVo);
 		
+		List<MainListVo> pList = mainService.selectSearch(searchVo);
 		
-		Map<String, Object> pMap = mainService.selectSearch(searchVo);
+		model.addAttribute("pList",pList);
 		
-		model.addAttribute("pMap",pMap);
+		System.out.println("ControllerSearch"+pList);
 		
-		System.out.println(pMap);
-		/*
-		List<MainSearchVo> searchList = mainService.selectSearch(searchVo);
-		*/
 		return "mainList/mainLists"; 
 	}
 	
