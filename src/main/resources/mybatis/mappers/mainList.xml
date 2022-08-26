@@ -223,7 +223,7 @@
 	  
 	<select id="searchList" resultType="com.javaex.vo.MainListVo" parameterType="com.javaex.vo.MainSearchVo">
 		<![CDATA[
-			select pe.name pName,
+			select             pe.name pName,
 	               pe.visit_road3 visitRoad3,
 	               pe.address address,
 	               gu.name gugunName,
@@ -236,7 +236,8 @@
 	               ao.amOpts amOpt,
 	               pu.puOpts puOpt,
 	               peck.gubun gubun,
-	               resv.yCount yCount
+	               resv.yCount yCount,
+                   rstan.standard_people persons
 	        from  pension pe, 
 	              sido si, 
 	              gugun gu, 
@@ -253,8 +254,8 @@
 	              from pension p,
 	                  (select max(gubun) gubun, pension_no
 	                   from peck
-	                   where peck_start < #{datepicker}
-	                   and peck_end > #{datepicker}
+	                   where peck_start < '2022-08-05'
+	                   and peck_end >  '2022-08-05'
 	                   group by pension_no) g
 	              where p.no = g.pension_no(+)) peck ,
 	              
@@ -270,8 +271,8 @@
 	                       ,r.pension_no
 	              from reservations re, rooms r
 	              where re.room_no = r.no
-	              and   check_in = #{datepicker}
-	              and   check_out = #{datepicker2}
+	              and   check_in =  '2022-08-05'
+	              and   check_out = '2022-08-06'
 	              and   status = 6
 	              group by r.pension_no) resv,
 	              
@@ -294,18 +295,27 @@
 	             (select pension_no,
 	                     LISTAGG(s_public_no, ',') within group (order by s_public_no asc) puOpts
 	              from p_public
-	              group by pension_no) pu
+	              group by pension_no) pu,
 	              
+                   (select rm.standard_people,
+                           rm.pension_no 
+                    from rooms rm, pension pe
+                    where pe.no = rm.pension_no
+                    and rm.standard_people = #{persons}
+                    group by rm.standard_people, rm.pension_no) rstan
+                  
 	        where pe.no = si.pension_no
 	        and si.no = gu.no
+            and pe.no = rstan.pension_no
 	        and pe.no = ro.pension_no
 	        and ro.pension_no = stars.pension_no(+)
 	        and pi.pension_no = pe.no
 	        and peck.pension_no = pe.no
-	        and resv.pension_no(+) = pe.no
+            and resv.pension_no(+) = pe.no
 	        and ao.pension_no = pe.no
 	        and pu.pension_no = pe.no
 	        and ro.sortation = peck.gubun
+	        and rstan.standard_people = #{persons}
              
 		]]>
 		
