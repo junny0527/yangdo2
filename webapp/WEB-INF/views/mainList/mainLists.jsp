@@ -200,12 +200,12 @@
 				<div id="poduct_list_area">
 					<!-- 
 					<!-- 사진정보 -->
-					<div class="title">
-							<h3>${pLists[0].gugunName}</h3>
-					</div>
 					<ul>
 					<c:forEach var="pensionVo" items="${pList}" varStatus="i">
 					
+					<div class="title">
+							<h3>${pensionVo.gugunName}</h3>
+					</div>
 						<li class="list_2 adcno3">
 							<a href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
 									<img class="lazy align" src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}" style="margin-top: -159px; display: block;">

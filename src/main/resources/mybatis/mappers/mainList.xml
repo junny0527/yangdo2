@@ -52,48 +52,44 @@
 	 
 		<select id="penList" parameterType="com.javaex.vo.MainSearchVo" resultType="com.javaex.vo.MainListVo">
 			<![CDATA[
-				select         pe.name pName,
-				               pe.visit_road3 visitRoad3,
-				               pe.address address,
-				               gu.name gugunName,
-				               ro.price penPrice,
-				               stars.status status,
-				               stars.stars stars,
-				               stars.rcount rcount,
-               				   pi.save_name saveName,
-               				   pe.no pNo,
-               				   pe.law_name lawName
-				from pension pe, sido si, gugun gu, (select  ro.pension_no 
-				                                            ,min(p.price) price
-				                                    from rooms ro , prices p
-				                                    where ro.no = p.room_no
-				                                    group by ro.pension_no) ro , (select  r.pension_no
-				                                                                         ,res.status
-				                                                                         ,round(avg(re.stars),1) stars
-				                                                                         ,count(re.no) rcount
-                                                                                         ,res.check_in
-                                                                                         ,res.check_out
-				                                                                 from reviews re , reservations res, rooms r
-				                                                                 where r.no = res.room_no
-				                                                                 and res.no = re.no
-				                                                                 group by r.pension_no,res.status,res.check_in,res.check_out) stars ,(select   a.img_no,
-				                                                                                                                    b.pension_no,
-				                                                                                                                    b.save_name
-				                                                                                                            from (select      min(pim.no) img_no,
-				                                                                                                                                 pim.pension_no
-				                                                                                                                from        pension_image pim
-				                                                                                                                group by    pim.pension_no) a,
-				                                                                                                                                            (select      save_name, pension_no, no img_no
-				                                                                                                                                           from         pension_image) b
-				                                                                                                            where a.img_no = b.img_no) pi
-				where pe.no = si.pension_no
-				and si.no = gu.no
-				and pe.no = ro.pension_no
-				and ro.pension_no = stars.pension_no(+)
-				and pi.pension_no = pe.no
-                and si.name = #{sido1}
-                and gu.name = #{gugun1}
-				order by gu.name
+					select         pe.name pName,
+					               pe.visit_road3 visitRoad3,
+					               pe.address address,
+					               gu.name gugunName,
+					               ro.price penPrice,
+					               stars.status status,
+					               stars.stars stars,
+					               stars.rcount rcount,
+					               pi.save_name saveName,
+					               pe.no pNo,
+					               pe.law_name lawName
+					from pension pe, sido si, gugun gu, (select  ro.pension_no 
+	                                            ,min(p.price) price
+	                                    from rooms ro , prices p
+	                                    where ro.no = p.room_no
+	                                    group by ro.pension_no) ro , (select  r.pension_no
+	                                                                         ,res.status
+	                                                                         ,round(avg(re.stars),1) stars
+	                                                                         ,count(re.no) rcount
+	                                                                 from reviews re , reservations res, rooms r
+	                                                                 where r.no = res.room_no
+	                                                                 and res.no = re.no
+	                                                                 group by r.pension_no,res.status) stars ,(select   a.img_no,
+	                                                                                                                    b.pension_no,
+	                                                                                                                    b.save_name
+	                                                                                                            from (select min(pim.no) img_no,
+	                                                                                                                         pim.pension_no
+	                                                                                                                from     pension_image pim
+	                                                                                                                group by pim.pension_no) a,
+                                                                                                                                            (select save_name, pension_no, no img_no
+                                                                                                                                           	 from pension_image) b
+	                                                                                                            where a.img_no = b.img_no) pi
+					where pe.no = si.pension_no
+					and si.no = gu.no
+					and pe.no = ro.pension_no
+					and ro.pension_no = stars.pension_no(+)
+					and pi.pension_no = pe.no
+					order by gu.name
 			]]>
 		</select>
 		
@@ -332,6 +328,8 @@
 				and ao.amOpts like  '%'||#{aVo}||'%' 
 			</foreach>
       	</if>
+      	
+      	
 		
 		<![CDATA[
 			 order by gu.name

@@ -27,8 +27,6 @@ public class MainSearchVo {
 		cal.add(cal.DATE, +1); // 날짜를 하루 더한다.
 		this.datepicker2 = sdf.format(cal.getTime());
 
-		this.sido1 = "서울특별시";
-		this.gugun1 = "강남구";
 
 	}
 
