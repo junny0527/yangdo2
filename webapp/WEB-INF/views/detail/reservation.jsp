@@ -912,6 +912,8 @@
 		if((yAdult + yKid + yBaby) < max) {
 			
 			yAdult += 1;
+			console.log(yAdult);
+			console.log(adult);
 			yAdultValue.text(yAdult + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 			
@@ -1164,10 +1166,81 @@
 	//펜션 양도 시 +-인원 금액 구하는 함수
 	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
 		
-		if( ((adult+kid+baby) - standard) >= 0 ) {
-			const transNum = transP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-			assignmentValue.text(transNum + "원");
+		console.log("adult :"+adult);
+		console.log("kid :"+kid);
+		console.log("baby :"+baby);
+		console.log("standard :"+standard);
+		console.log("yAdult :"+yAdult);
+		console.log("yKid :"+yKid);
+		console.log("yBaby :"+yBaby);
+		console.log("adultP :"+adultP);
+		console.log("kidP :"+kidP);
+		console.log("transP :"+transP);
+		
+		var min = transP;
+		
+		
+		var newPrice = min - ((adult *adultP) + (kid * kidP)) + ((yAdult *adultP) + (yKid * kidP));
+		
+		console.log(newPrice);
+		
+		if(newPrice < min) {
+			newPrice = min;
+			assignmentValue.text(newPrice + "원");
 		}
+		
+		assignmentValue.text(newPrice + "원");
+		
+		/* //예약인원이 입력한 인원보다 클때 
+		if( (yAdult + yKid + yBaby) < (adult + kid + baby) ) {
+			console.log("조건1");
+			assignmentValue.text(transP + "원");
+		}else if( adult >= yAdult ) {
+			if( (yAdult + yKid) <= (adult + kid) ) {
+				console.log("조건2");
+				assignmentValue.text(transP + "원");
+			}else {
+				console.log("조건3");
+				var yPrice = ((yAdult + yKid) - (adult + kid)) * kidP + transP;
+				assignmentValue.text(yPrice + "원");
+			}
+		}else if(yAdult > adult && yAdult < standard) {
+			console.log("조건4");
+			assignmentValue.text(transP + "원");
+		}else if(yAdult > adult && yAdult == standard) {
+			console.log("조건4-1");
+			var yPrice2 = ((yAdult + yKid) - (adult + kid)) * kidP + transP;
+			assignmentValue.text(yPrice2 + "원");
+		}else if(yAdult > adult && yAdult > standard) {
+			
+			if(yKid == 0) {
+				console.log("조건4-2");
+				var yPrice5 = (yAdult - (adult+kid)) * adultP + transP;
+				assignmentValue.text(yPrice5 + "원");
+			}else {
+				console.log("조건4-3");
+				var yPrice1 = ((yAdult * adultP) - (standard * adultP)) + ((yKid * kidP) - (kid * kidP)) + transP;
+				assignmentValue.text(yPrice1 + "원");
+				/* var yPrice6 = (yAdult - (adult+kid)) * adultP + (yKid * kidP) + transP;
+				assignmentValue.text(yPrice6 + "원"); 
+			}
+			
+			
+			
+		}else if ( kid >= yKid ) {
+			console.log("조건5");
+			assignmentValue.text(transP + "원");
+		}else if ( kid < yKid) {
+			console.log("조건6");
+			var yPrice3 = ((yAdult * adultP) - (adult * adultP)) + ((yKid * kidP) - (kid * kidP)) + transP;
+			assignmentValue.text(yPrice3 + "원");
+		}else {
+			console.log("조건없음");
+		} 
+	
+		
+		*/
+		
 		
 		
 		
@@ -1448,7 +1521,6 @@
 			const realPriceNum = realPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 			
 			roomPriceValue.text(realPriceNum + "원");
-			console.log("ddd");
 			$(".price"+roomNo).attr("value", realPrice);
 		}else if(adult < standard) {
 			if( (adult + kid) - standard < 0 ) {
