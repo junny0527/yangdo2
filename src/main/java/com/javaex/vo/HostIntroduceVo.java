@@ -25,18 +25,18 @@ public class HostIntroduceVo {
 	private String parkingInfo;
 	private String etc;
 	
-	private int[] publicArrays;
-	private int[] amenitiesArrays;
-	private int publics;
-	private int amanities;
+	private String[] publicArrays;
+	private String[] amenitiesArrays;
+	private String publics;
+	private String amanities;
 	
 	public HostIntroduceVo() {}
 
 	public HostIntroduceVo(int companyNo, int pensionNo, String pensionName, String postalCode, String pensionAddress,
 			String detailAddress, String lawCode, String lawName, String sido, String gugun, String visitRoad1,
 			String visitRoad2, String visitRoad3, String areaInfo1, String areaInfo2, String areaInfo3, String rules,
-			String livePay, String parkingInfo, String etc, int[] publicArrays, int[] amenitiesArrays, int publics,
-			int amanities) {
+			String livePay, String parkingInfo, String etc, String[] publicArrays, String[] amenitiesArrays,
+			String publics, String amanities) {
 		this.companyNo = companyNo;
 		this.pensionNo = pensionNo;
 		this.pensionName = pensionName;
@@ -223,35 +223,35 @@ public class HostIntroduceVo {
 		this.etc = etc;
 	}
 
-	public int[] getPublicArrays() {
+	public String[] getPublicArrays() {
 		return publicArrays;
 	}
 
-	public void setPublicArrays(int[] publicArrays) {
+	public void setPublicArrays(String[] publicArrays) {
 		this.publicArrays = publicArrays;
 	}
 
-	public int[] getAmenitiesArrays() {
+	public String[] getAmenitiesArrays() {
 		return amenitiesArrays;
 	}
 
-	public void setAmenitiesArrays(int[] amenitiesArrays) {
+	public void setAmenitiesArrays(String[] amenitiesArrays) {
 		this.amenitiesArrays = amenitiesArrays;
 	}
 
-	public int getPublics() {
+	public String getPublics() {
 		return publics;
 	}
 
-	public void setPublics(int publics) {
+	public void setPublics(String publics) {
 		this.publics = publics;
 	}
 
-	public int getAmanities() {
+	public String getAmanities() {
 		return amanities;
 	}
 
-	public void setAmanities(int amanities) {
+	public void setAmanities(String amanities) {
 		this.amanities = amanities;
 	}
 

@@ -52,6 +52,7 @@ public class HostIntroduceDao {
 	}
 	
 	public List<PensionImageVo> getPensionImg() {
+		System.out.println("HostRoomDao  > getPensionImg");
 		
 		List<PensionImageVo> pI = sqlSession.selectList("HostIntroduce.getPensionImg");
 		
@@ -59,17 +60,12 @@ public class HostIntroduceDao {
 	}
 	
 	public int PensionImgInsert(PensionImageVo pVo) {
+		System.out.println("HostRoomDao  > PensionImgInsert");
 		
 		int count = sqlSession.insert("HostIntroduce.PensionImgInsert", pVo);
 		
 		return count;
 	}
 	
-	public int PensionImgUpdate(int pensionNo) {
-		
-		int count = sqlSession.update("HostIntroduce.updatePensionImg", pensionNo);
-		
-		return count;
-	}
 	
 }
