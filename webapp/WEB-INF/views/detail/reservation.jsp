@@ -1178,78 +1178,44 @@
 		console.log("transP :"+transP);
 		
 		var min = transP;
+		var newPrice = min;
 		
-		
-		var newPrice = min - ((adult *adultP) + (kid * kidP)) + ((yAdult *adultP) + (yKid * kidP));
-		
-		console.log(newPrice);
-		
-		if(newPrice < min) {
-			newPrice = min;
-			assignmentValue.text(newPrice + "원");
+		if(adult + kid < standard) {
+			adult = standard;
+			kid = 0;
+		} else if (adult < standard) {
+			adult = standard;
+			kid = standard - adult;
 		}
 		
+		if(standard >= yAdult + yKid) {
+			newPrice = min;
+			assignmentValue.text(newPrice + "원");
+		} else { //standard < yAdult + yKid
+			if(adult + kid >= yAdult + yKid) {
+				if(adult >= yAdult) {
+					newPrice = min;
+				} else { //adult < yAdult
+					newPrice = min + (yAdult-adult) * adultP + (yKid-kid) * kidP;
+				}
+				
+				assignmentValue.text(newPrice + "원");
+			} else { //adult + kid < yAdult + yKid
+				if(adult > yAdult) { //kid < yKid
+					newPrice = min + ((yKid+yAdult)-(kid+adult)) * kidP;
+				} else if(adult == yAdult) { //kid < yKid
+					newPrice = min + (yKid-kid) * kidP;
+				} else { //adult < yAdult
+					newPrice = min + (yAdult-adult) * adultP + (yKid-kid) * kidP;
+				}
+			}
+		}
+		if(newPrice < min) {
+			newPrice = min;
+		}
 		assignmentValue.text(newPrice + "원");
-		
-		/* //예약인원이 입력한 인원보다 클때 
-		if( (yAdult + yKid + yBaby) < (adult + kid + baby) ) {
-			console.log("조건1");
-			assignmentValue.text(transP + "원");
-		}else if( adult >= yAdult ) {
-			if( (yAdult + yKid) <= (adult + kid) ) {
-				console.log("조건2");
-				assignmentValue.text(transP + "원");
-			}else {
-				console.log("조건3");
-				var yPrice = ((yAdult + yKid) - (adult + kid)) * kidP + transP;
-				assignmentValue.text(yPrice + "원");
-			}
-		}else if(yAdult > adult && yAdult < standard) {
-			console.log("조건4");
-			assignmentValue.text(transP + "원");
-		}else if(yAdult > adult && yAdult == standard) {
-			console.log("조건4-1");
-			var yPrice2 = ((yAdult + yKid) - (adult + kid)) * kidP + transP;
-			assignmentValue.text(yPrice2 + "원");
-		}else if(yAdult > adult && yAdult > standard) {
-			
-			if(yKid == 0) {
-				console.log("조건4-2");
-				var yPrice5 = (yAdult - (adult+kid)) * adultP + transP;
-				assignmentValue.text(yPrice5 + "원");
-			}else {
-				console.log("조건4-3");
-				var yPrice1 = ((yAdult * adultP) - (standard * adultP)) + ((yKid * kidP) - (kid * kidP)) + transP;
-				assignmentValue.text(yPrice1 + "원");
-				/* var yPrice6 = (yAdult - (adult+kid)) * adultP + (yKid * kidP) + transP;
-				assignmentValue.text(yPrice6 + "원"); 
-			}
-			
-			
-			
-		}else if ( kid >= yKid ) {
-			console.log("조건5");
-			assignmentValue.text(transP + "원");
-		}else if ( kid < yKid) {
-			console.log("조건6");
-			var yPrice3 = ((yAdult * adultP) - (adult * adultP)) + ((yKid * kidP) - (kid * kidP)) + transP;
-			assignmentValue.text(yPrice3 + "원");
-		}else {
-			console.log("조건없음");
-		} 
-	
-		
-		*/
-		
-		
-		
-		
-		
-		
-		
 	}
 		
-	
 	///////////////////////// 예약하러가기 버튼이벤트  ///////////////////////////
 	
 	//예약 전 성인버튼 명수 증가 이벤트
