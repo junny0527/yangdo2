@@ -1322,6 +1322,7 @@ reserve_detail .info {
 
 /***** 알림 팝업 모달창  *****/
 .alert_msg {
+	z-index: 500;
 	display: none;
 	position: fixed;
 	top: 0;
