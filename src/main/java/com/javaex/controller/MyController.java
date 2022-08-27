@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.MyService;
 import com.javaex.service.PointsService;
+import com.javaex.service.SaleService;
 import com.javaex.vo.MyListVo;
 import com.javaex.vo.MyPointVo;
 import com.javaex.vo.UserVo;
@@ -29,6 +30,9 @@ public class MyController {
 
 	@Autowired
 	private PointsService pService;
+
+	@Autowired
+	private SaleService saleService;
 
 	/********* main item **********/
 
@@ -44,7 +48,6 @@ public class MyController {
 		Map<String, Object> psMap = pService.getpoints(userNo);
 		model.addAttribute("pList", pList);
 		model.addAttribute("psMap", psMap);
-
 		return "mypage/mypoint";
 	}
 
@@ -204,11 +207,12 @@ public class MyController {
 	@RequestMapping(value = "/detail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String detail(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo, Model model) {
 		System.out.println("MyController>detail()");
-		System.out.println("resNo" + resNo);
 
 		List<MyListVo> myVo = myService.getDetail(resNo);
+		//Map<String, Object> sMap = saleService.getReservation(resNo);
 
 		model.addAttribute("myVo", myVo);
+		//model.addAttribute("sMap", sMap);
 
 		return "mypage/detail";
 	}
@@ -222,15 +226,15 @@ public class MyController {
 		return myService.remove(no);
 	}
 
-	@RequestMapping(value = "/update/status", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cancelUpdate(@ModelAttribute MyListVo myVo) {
+	@ResponseBody
+	@RequestMapping(value = "/update/cancel", method = { RequestMethod.GET, RequestMethod.POST })
+	public int cancelUpdate(@RequestParam("no") int no) {
 		System.out.println("MyController>cancelUpdate()");
 
-		myService.cancelUpdate(myVo);
-
-		return "redirect: /reservation";
+		return myService.cancelUpdate(no);
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "update/nickname", method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateNickName(@ModelAttribute UserVo uVo, HttpSession session) {
 		System.out.println("MyController>updateNickName()");

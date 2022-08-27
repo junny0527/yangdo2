@@ -8,6 +8,7 @@ public class MyListVo {
 	public int no; // 유저번호
 	public int resNo; // 예약번호
 	public int pNo; // 펜션번호
+	public String point; // 포인트
 	public String status; // 예약상태
 	public String pName; // 펜션이름
 	public String checkIn; // 체크인 일자
@@ -33,14 +34,15 @@ public class MyListVo {
 	public MyListVo() {
 	}
 
-	public MyListVo(int no, int resNo, int pNo, String status, String pName, String checkIn, String checkOut,
-			String inTime, String outTime, String saveName, Date regDate, String rName, int sPple, int mPple,
-			String name, String nickName, String hp, String tPrice, int trPrice, String pStatus, int refNo,
+	public MyListVo(int no, int resNo, int pNo, String point, String status, String pName, String checkIn,
+			String checkOut, String inTime, String outTime, String saveName, Date regDate, String rName, int sPple,
+			int mPple, String name, String nickName, String hp, String tPrice, int trPrice, String pStatus, int refNo,
 			String comHp, int pRno) {
 		super();
 		this.no = no;
 		this.resNo = resNo;
 		this.pNo = pNo;
+		this.point = point;
 		this.status = status;
 		this.pName = pName;
 		this.checkIn = checkIn;
@@ -85,6 +87,14 @@ public class MyListVo {
 
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
+	}
+
+	public String getPoint() {
+		return point;
+	}
+
+	public void setPoint(String point) {
+		this.point = point;
 	}
 
 	public String getStatus() {
@@ -249,12 +259,12 @@ public class MyListVo {
 
 	@Override
 	public String toString() {
-		return "MyListVo [no=" + no + ", resNo=" + resNo + ", pNo=" + pNo + ", status=" + status + ", pName=" + pName
-				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", inTime=" + inTime + ", outTime=" + outTime
-				+ ", saveName=" + saveName + ", regDate=" + regDate + ", rName=" + rName + ", sPple=" + sPple
-				+ ", mPple=" + mPple + ", name=" + name + ", nickName=" + nickName + ", hp=" + hp + ", tPrice=" + tPrice
-				+ ", trPrice=" + trPrice + ", pStatus=" + pStatus + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno="
-				+ pRno + "]";
+		return "MyListVo [no=" + no + ", resNo=" + resNo + ", pNo=" + pNo + ", point=" + point + ", status=" + status
+				+ ", pName=" + pName + ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", inTime=" + inTime
+				+ ", outTime=" + outTime + ", saveName=" + saveName + ", regDate=" + regDate + ", rName=" + rName
+				+ ", sPple=" + sPple + ", mPple=" + mPple + ", name=" + name + ", nickName=" + nickName + ", hp=" + hp
+				+ ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", pStatus=" + pStatus + ", refNo=" + refNo
+				+ ", comHp=" + comHp + ", pRno=" + pRno + "]";
 	}
 
 }

@@ -104,7 +104,6 @@
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button id="btnDel" type="button" class="btn btn-primary">삭제</button>
 				</div>
-				<input type="hidden" name="no" value="" id="delNo">
 			</div>
 		</div>
 	</div>
@@ -114,15 +113,15 @@
 </body>
 
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
+		$('.btn_del').on('click', function() {
 
-	$('.btn_del').on('click', function() {
+			var no = $(this).data("no");
+			$("#delNo").val(no);
 
-		var no = $(this).data("no");
-		$("#delNo").val(no);
+			$('#btn-del-modal').show('focus');
 
-		$('#btn-del-modal').trigger('focus');
-
+		});
 	});
 
 	$('#btnDel').on("click", function() {
@@ -150,5 +149,22 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	function isEmpty(value) {
+		if (value.length == 0 || value == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function isNumeric(value) {
+		var regExp = /^[0-9]+$/g;
+		return regExp.test(value);
+	}
+
+	function currencyFormatter(amount) {
+		return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
 </script>
 </html>

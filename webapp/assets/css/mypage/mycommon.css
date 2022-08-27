@@ -2,7 +2,8 @@
 
 @font-face {
 	font-family: "TTCrownMychewR";
-	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2")
+	src:
+		url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2")
 		format("woff2");
 	font-weight: normal;
 	font-style: normal;
@@ -34,16 +35,20 @@ img {
 a, input, button, div, li, textarea, form, label, select {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 } /* 하이라이트 제거 */
-/* 아래의 경우 block으로 처리 -> block : width, height, margin, padding 속성이 모두 반영됨 */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+b
+	/* 아래의 경우 block으로 처리 -> block : width, height, margin, padding 속성이 모두 반영됨 */
+	
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
 	display: block;
 }
 /* 여백 초기화 (margin/padding/border/box-sizing) -> border-box : 테두리 안쪽 여백의 크기도 요소의 크기로 고려함 */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address,
-	cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd,
-	ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article,
-	aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
-	time, mark, audio, video {
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd,
+	q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+	th, td, article, aside, canvas, details, figcaption, figure, footer,
+	header, hgroup, menu, nav, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -107,7 +112,8 @@ label {
 	width: 100%; /* 해당 블록 넓이 100% 처리 */
 	background: #fff; /* 배경은 흰색 */
 	opacity: 0; /* 불투명도 : 0 */
-	visibility: hidden; /* hidden : The element is hidden (but still takes up space) */
+	visibility: hidden;
+	/* hidden : The element is hidden (but still takes up space) */
 }
 
 .wrap.show, footer.show {
@@ -380,7 +386,8 @@ label {
 	height: 18px;
 	text-indent: -9999px;
 	background-color: #00A2AD;
-	-webkit-mask-image: url(https://image.goodchoice.kr/images/30/svg/ic_check.svg);
+	-webkit-mask-image:
+		url(https://image.goodchoice.kr/images/30/svg/ic_check.svg);
 	mask-image: url(https://image.goodchoice.kr/images/30/svg/ic_check.svg);
 	-webkit-mask-size: 18px 18px;
 	mask-size: 18px 18px;
@@ -388,26 +395,79 @@ label {
 
 /************ random ***************/
 .list_none {
-	display: none;
-	text-align: center;
+	display: block;
 	height: 373px;
 	padding-top: 103px;
 	background: rgb(235, 235, 235);
 	font-size: 16px;
+	text-align: center;
 }
 
 .list_none {
-	background: #fff;
+	background: none;
 	padding-top: 125px;
 	font-size: 18px;
 	font-weight: bold;
 }
 
+.list_none p a {
+	width: 200px;
+	height: 48px;
+	margin-top: 44px;
+	line-height: 48px;
+	background: none;
+	text-decoration: none;
+}
+
+.btn_red {
+	display: inline-block;
+	border: 1px solid rgb(242, 17, 76);
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: normal;
+	color: rgb(230, 28, 81);
+	text-align: center;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+
+.btn_flat {
+	border: none;
+	width: 100%;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.btn_flat.btn-grey {
+	background-color: #ebebeb;
+	color: rgba(0, 0, 0, .8);
+}
+
+.multiple_btns {
+	display: flex;
+}
+
+.multiple_btns .btn_flat:first-child {
+	margin-right: 8px;
+	color: rgba(0, 0, 0, .8);
+	background-color: #ebebeb;
+}
+
+.btn_flat.btn-red {
+	background-color: #f45858;
+	color: #fff;
+}
+
 .gra_red {
 	background: rgb(243, 61, 105);
-	background: -moz-linear-gradient(left, rgba(243, 61, 105, 1) 0%, rgba(248, 98, 95, 1) 100%);
-	background: -webkit-linear-gradient(left, rgba(243, 61, 105, 1) 0%, rgba(248, 98, 95, 1) 100%);
-	background: linear-gradient(to right, rgba(243, 61, 105, 1) 0%, rgba(248, 98, 95, 1) 100%);
+	background: -moz-linear-gradient(left, rgba(243, 61, 105, 1) 0%,
+		rgba(248, 98, 95, 1) 100%);
+	background: -webkit-linear-gradient(left, rgba(243, 61, 105, 1) 0%,
+		rgba(248, 98, 95, 1) 100%);
+	background: linear-gradient(to right, rgba(243, 61, 105, 1) 0%,
+		rgba(248, 98, 95, 1) 100%);
 	/* background: #ff0055; */
 	/* background: -webkit-linear-gradient(left, #ff0055 0%,#e62243 100%); */
 	/* background: linear-gradient(to right, #ff0055 0%,#e62243 100%); */

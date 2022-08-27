@@ -87,13 +87,14 @@ public class MyService {
 		System.out.println("MyService>getDetail()");
 
 		return myDao.getDetail(resNo);
+
 	}
 
 	// 예약취소시 -> 예약상태 업데이트
-	public int cancelUpdate(MyListVo myVo) {
+	public int cancelUpdate(int no) {
 		System.out.println("MyService>cancelUpdate");
 
-		return myDao.cancelUpdate(myVo);
+		return myDao.cancelUpdate(no);
 	}
 
 	// 예약내역 삭제하기

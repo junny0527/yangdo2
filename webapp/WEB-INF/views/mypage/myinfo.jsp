@@ -52,8 +52,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 					<form name="form1" action="${pageContext.request.contextPath}/my/update/nickname" autocomplete="off" method="post" data-form="nickName">
 						<!-- 폼전송시 전달되는 data target element -->
 						<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
-							<input type="text" name="nickName" id="test1" aria-hidden="true" value="${info.nickName}" /> <input type="text" name="pw" aria-hidden="true"
-								value="" /> <input type="tel" name="hp" aria-hidden="true" value="${info.hp}" />
+							<input type="text" name="nickName" id="test1" aria-hidden="true" value="${info.nickName}" />
 						</div>
 
 						<input type="hidden" name="no" value="${info.no}">
@@ -72,12 +71,11 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 										<input type="text" value="${uVo.nickName}" placeholder="체크인시 필요한 정보입니다." data-input="nickName" data-msg-required="닉네임을 입력하세요."
 											data-rule-minlength="2" data-rule-maxlength="14" data-rule-spaceChar="true" data-rule-specialChar="true" />
 									</p>
-									<!-- <button type="button" class="btn_etc btn_confirm active" onclick="changeNickname();">딴거할래요</button> -->
-									<!-- 활성화 클래스 'active' -->
+									
 								</section>
 								<div class="pw_input__btns-wrap ">
-									<button class="btns-wrap__edit-btn" type="button">수정</button>
-									<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
+									<button class="btns-wrap__edit-btn" type="button" id="modify-nickName">수정</button>
+									<button class="btns-wrap__submit-btn btn-primary" type="button" data-toggle="modal" data-target=".bd-example-modal-sm" data-form="${uVo.nickName}">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
 							</div>
@@ -86,8 +84,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 					<form name="form2" action="${pageContext.request.contextPath}/my/update/pw" autocomplete="off" method="post" data-form="pw">
 						<!-- 폼전송시 전달되는 data target element -->
 						<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
-							<input type="hidden" name="no" value="${info.no}"> <input type="text" name="nickName" aria-hidden="true" value="${info.nickName}" /> <input
-								type="text" name="pw" aria-hidden="true" value="" /> <input type="tel" name="hp" aria-hidden="true" value="${info.hp}" />
+							<input type="text" name="pw" aria-hidden="true" value="">
 						</div>
 
 						<section class="top_area">
@@ -97,12 +94,13 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 								</div>
 								<section class="modifying-section">
 									<p class="inp_wrap remove form-errors">
-										<input type="text" id="pw" value="" placeholder="새 비밀번호를 입력해주세요." data-input="pw" data-rule-spaceChar="true" data-rule-specialChar="true" />
+										<input type="text" id="pw" value="" placeholder="새 비밀번호를 입력해주세요." data-input="pw" data-rule-spaceChar="true" data-rule-specialChar="true"
+											required />
 									</p>
 								</section>
 								<div class="pw_input__btns-wrap ">
-									<button class="btns-wrap__edit-btn" type="button">수정</button>
-									<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
+									<button class="btns-wrap__edit-btn" id="modify-pw" type="button">수정</button>
+									<button class="btns-wrap__submit-btn btn-primary" type="button" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uVo.resNo}">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
 							</div>
@@ -113,8 +111,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 						<section>
 							<!-- 폼전송시 전달되는 data target element -->
 							<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
-								<input type="hidden" name="no" value="${info.no}"> <input type="text" name="nickName" aria-hidden="true" value="${info.nickName}" />
-								<input type="text" name="pw" aria-hidden="true" value="" /> <input type="tel" name="hp" aria-hidden="true" value="${info.hp}" />
+								<input type="tel" name="hp" aria-hidden="true" value="${info.hp}" />
 							</div>
 							<div class="pw_input phone_confirm">
 								<div class="pw_input__title">
@@ -125,27 +122,15 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 									<div id="sendCode">
 										<section>
 											<div class="inp_wrap remove form-errors">
-												<input type="tel" id="phone_number" value="" placeholder="체크인시 필요한 정보입니다." maxlength="13" data-input="hp"
-													data-msg-required="휴대폰 번호를 인증받으세요." data-rule-phonenumber="true" />
+												<input type="tel" id="phone_number" value="" placeholder="체크인시 필요한 정보입니다." maxlength="13" data-input="hp" data-rule-phonenumber="true" required />
 												<button type="button" class="btn_checked">확인</button>
 											</div>
-											<button type="button" class="btn_send btn_confirm">인증번호 전송</button>
-											<!-- 활성화 클래스 'active' -->
 										</section>
 									</div>
-									<div id="verificationCode" style="display: none;">
-										<b>인증 번호</b>
-										<section>
-											<div class="inp_wrap remove">
-												<input type="tel" id="digit" minlength="4" maxlength="4"> <span class="timer">&nbsp;</span>
-											</div>
-											<button type="button" class="btn_ok btn_confirm" data-verification-type="call" data-verification-next="mypageVerify">확인</button>
-										</section>
-									</div>
-									<input type="hidden" id="phone_certification_point" value="MYPAGE" style="display: none;">
+				
 								</div>
 								<div class="pw_input__btns-wrap ">
-									<button class="btns-wrap__edit-btn" type="button">수정</button>
+									<button class="btns-wrap__edit-btn" type="button" id="modify-hp">수정</button>
 									<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
@@ -153,7 +138,6 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 						</section>
 					</form>
 					<!-- <button class="btn_submit disabled btn_one" type="submit">저장</button>-->
-
 				</div>
 
 				<div class="bot_btn">
@@ -174,22 +158,64 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 	</div>
 	<!-- //Wrap -->
 
+	<!-- 수정완료 클릭 모달창 -->
+	<div id="btn-modify-modal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="btn-modify-label">수정하기</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">정보를 수정하시겠습니까?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">아니요</button>
+					<button id="btnMod" type="button" class="btn btn-primary">예</button>
+				</div>
+				<input type="hidden" name="no" value="" id="modify-data">
+			</div>
+		</div>
+	</div>
+
 </body>
 
 <script>
 	$(document).ready(function() {
-		rendered();
+		console.log('ready');
+
+		$(".modifying-section").hide();
+		$("#verificationCode").hide();
+		$(".pw_input__btns-wrap").removeClass("modifying");
+
 	});
 
-	//렌더링 후 실행된다
-	function rendered() {
-		$('.modifying-section').hide();
+	// 수정 버튼 클릭 시 
+	$('.btns-wrap__edit-btn').on('click', function() {
 
-		//폼 각각을 검사
-		$('form').each(function() {
-			validateForm(this);
-		});
-		bindEvents();
-	}
+		$(this).parent().addClass("modifying");
+		$(this).parent().prev(".modifying-section").toggle();
+
+	});
+
+	// 수정완료 버튼 클릭 시 
+	$('.btns-wrap__submit-btn').on('click', function() {
+
+		//데이터 담기
+		var data = $(this).data("form");
+		$("#modify-data").val(data);
+
+		$('#btn-modify-modal').show('fast');
+
+	});
+
+	// 수정취소 버튼 클릭 시 
+
+	$('#btnMod').on("click", function() {
+
+		var data = $("#modify-data").val();
+
+		
+	});
 </script>
 </html>

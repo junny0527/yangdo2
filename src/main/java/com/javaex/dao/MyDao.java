@@ -64,10 +64,10 @@ public class MyDao {
 	}
 
 	// 예약취소하기 -> 예약상태 업데이트하기
-	public int cancelUpdate(MyListVo myVo) {
+	public int cancelUpdate(int no) {
 		System.out.println("MyDao>cancelUpdate");
 
-		return sqlSession.update("my.updateStatus", myVo);
+		return sqlSession.update("my.updateCancel", no);
 	}
 
 	// 예약내역 삭제하기

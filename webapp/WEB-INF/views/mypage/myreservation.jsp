@@ -165,16 +165,16 @@
 
 		$('.btn_del').on('click', function() {
 
-			var no = $(this).data("no");
-			$("#delNo").val(no);
+			var no = $(this).data('no');
+			$('#delNo').val(no);
 
-			$('#btn-del-modal').trigger('focus');
+			$('#btn-del-modal').show('fast');
 
 		});
 
-		$('#btnDel').on("click", function() {
+		$('#btnDel').on('click', function() {
 
-			var no = $("#delNo").val();
+			var no = $('#delNo').val();
 
 			$.ajax({
 				type : 'POST',
@@ -186,10 +186,10 @@
 				success : function(count) {
 					if (count == 1) {
 						$("#li-" + no).remove();
-						$("#btn-del-modal").modal("hide");
-						location.reload();
+						$("#btn-del-modal").hide('fast');
+						location.reload('fast');
 					} else {
-						$("#btn-del-modal").modal("hide");
+						$("#btn-del-modal").hide('fast');
 					}
 				},
 				error : function(XHR, status, error) {
