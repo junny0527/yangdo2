@@ -280,7 +280,7 @@
 						<c:forEach items="${pMap.imgList}" var="imgList" varStatus="status">
 							<c:if test="${status.count <= 6}">
 								<li>
-									<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.NO}">
+									<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
 								</li>
 							</c:if>
 						</c:forEach>
@@ -358,7 +358,23 @@
 			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == 6}">
-						<form action="">
+						<form action="${pageContext.request.contextPath}/res/reserve">
+										<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
+										<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
+										<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
+										<input type="hidden" class="yPrice${roomVo.NO}" name=transPrice value="${roomVo.TRANS_PRICE}">
+										<input type="hidden"  name=reservationsNo value="${roomVo.RESERVATIONSNO}">
+										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
+										<input type="hidden"  name=datepicker value="${pMap.datepicker}">
+										<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
+										<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
+										<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
+										<input type="hidden"  name=roomNo value="${roomVo.NO}">
+										<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
+										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
+										<input type="hidden"  name=nickName value="${userVo.nickName}">
+										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
+										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
 							<div class="room">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
@@ -415,7 +431,7 @@
 										</div>
 									</div>
 									<!-- //defaultForm -->
-									<a href="#"><button>양도받으러가기</button></a>
+									<button>양도받으러가기</button>
 								</div>
 								<!-- //roomInfo -->
 							</div>
@@ -485,20 +501,18 @@
 						</form>
 					</c:when>
 					<c:otherwise>
-						<form class="formClass" action="${pageContext.request.contextPath}/res/reserve">
-										<input type="hidden" class="adult${roomVo.NO}" name=adult value="0">
+						<form action="${pageContext.request.contextPath}/res/reserve">
+										<input type="hidden" class="adult${roomVo.NO}" name=adult value="${roomVo.STANDARD_PEOPLE}">
 										<input type="hidden" class="kid${roomVo.NO}" name=kid value="0">
 										<input type="hidden" class="baby${roomVo.NO}" name=baby value="0">
-										<input type="hidden" class="price${roomVo.NO}" name=price value="0">
+										<input type="hidden" class="price${roomVo.NO}" name=price value="${roomVo.PRICE}">
 										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
 										<input type="hidden"  name=datepicker value="${pMap.datepicker}">
 										<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
 										<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
 										<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
-										<input type="hidden"  name=price value="${roomVo.PRICE}">
 										<input type="hidden"  name=roomNo value="${roomVo.NO}">
 										<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
-										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
 										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
 										<input type="hidden"  name=nickName value="${userVo.nickName}">
 										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
@@ -867,7 +881,6 @@
 	//양도 성인버튼 명수 증가 이벤트
 	$(".yAdultPlus").on("click", function() {
 		
-		
 		var $this = $(this);
 		var yno = $this.data("yno");
 		var roomNo = $("#y-room"+yno).data("roomno");
@@ -899,7 +912,6 @@
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
@@ -907,17 +919,14 @@
 		transP = Number(transPrice.replace(/,/g, ""));
 		priceP = Number(price.replace(/,/g, ""));
 		
-		
-		
 		if((yAdult + yKid + yBaby) < max) {
-			
 			yAdult += 1;
 			console.log(yAdult);
 			console.log(adult);
 			yAdultValue.text(yAdult + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
-			
 		}
+		$(".yAdult"+roomNo).attr("value", yAdult);
 	});
 	
 	//양도 성인버튼 명수 감소 이벤트
@@ -965,8 +974,8 @@
 			yAdult -= 1;
 			yAdultValue.text(yAdult + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
-			
 		}
+		$(".yAdult"+roomNo).attr("value", yAdult);
 	});
 	
 	//양도 아동버튼 명수 증가 이벤트
@@ -1002,7 +1011,6 @@
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
@@ -1015,6 +1023,7 @@
 			yKidValue.text(yKid + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}
+		$(".yKid"+roomNo).attr("value", yKid);
 	});
 	
 	//양도 아동버튼 명수 감소 이벤트
@@ -1050,7 +1059,6 @@
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
@@ -1064,6 +1072,7 @@
 			yKidValue.text(yKid + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}
+		$(".yKid"+roomNo).attr("value", yKid);
 	});
 	
 	//양도 유아버튼 명수 증가 이벤트
@@ -1099,7 +1108,6 @@
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
@@ -1111,7 +1119,8 @@
 			yBaby += 1;
 			yBabyValue.text(yBaby + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
-		}	
+		}
+		$(".yBaby"+roomNo).attr("value", yBaby);
 	});
 	
 	//양도 유아버튼 명수 감소 이벤트
@@ -1147,7 +1156,6 @@
 		var assignmentArray = assignmentValue.text().split("원");
 		var assignment = assignmentArray[0];
 		
-		
 		//숫자변환
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		adultP = Number(adultPrice.replace(/,/g, ""));
@@ -1160,22 +1168,12 @@
 			yBabyValue.text(yBaby + "명");
 			yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby);
 		}
+		$(".yBaby"+roomNo).attr("value", yBaby);
 	});
 	
 	
 	//펜션 양도 시 +-인원 금액 구하는 함수
 	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
-		
-		console.log("adult :"+adult);
-		console.log("kid :"+kid);
-		console.log("baby :"+baby);
-		console.log("standard :"+standard);
-		console.log("yAdult :"+yAdult);
-		console.log("yKid :"+yKid);
-		console.log("yBaby :"+yBaby);
-		console.log("adultP :"+adultP);
-		console.log("kidP :"+kidP);
-		console.log("transP :"+transP);
 		
 		var min = transP;
 		var newPrice = min;
@@ -1187,10 +1185,11 @@
 			adult = standard;
 			kid = standard - adult;
 		}
-		
 		if(standard >= yAdult + yKid) {
 			newPrice = min;
-			assignmentValue.text(newPrice + "원");
+			var newPriceNum = newPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			assignmentValue.text(newPriceNum + "원");
+			$(".yPrice"+roomNo).attr("value", newPriceNum);
 		} else { //standard < yAdult + yKid
 			if(adult + kid >= yAdult + yKid) {
 				if(adult >= yAdult) {
@@ -1198,8 +1197,9 @@
 				} else { //adult < yAdult
 					newPrice = min + (yAdult-adult) * adultP + (yKid-kid) * kidP;
 				}
-				
-				assignmentValue.text(newPrice + "원");
+				var newPriceNum1 = newPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				assignmentValue.text(newPriceNum1 + "원");
+				$(".yPrice"+roomNo).attr("value", newPriceNum1);
 			} else { //adult + kid < yAdult + yKid
 				if(adult > yAdult) { //kid < yKid
 					newPrice = min + ((yKid+yAdult)-(kid+adult)) * kidP;
@@ -1213,7 +1213,9 @@
 		if(newPrice < min) {
 			newPrice = min;
 		}
-		assignmentValue.text(newPrice + "원");
+		var newPriceNum2 = newPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		assignmentValue.text(newPriceNum2 + "원");
+		$(".yPrice"+roomNo).attr("value", newPriceNum2);
 	}
 		
 	///////////////////////// 예약하러가기 버튼이벤트  ///////////////////////////
@@ -1482,12 +1484,13 @@
 		if( (adult+kid+baby) <= standard ) {
 			const pricePNum = priceP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 			roomPriceValue.text(pricePNum + "원");
+			$(".price"+roomNo).attr("value", pricePNum);
 		}else if(adult >= standard ) {
 			var realPrice = (adult - standard) * adultP + (kid * kidP) + priceP;
 			const realPriceNum = realPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-			
 			roomPriceValue.text(realPriceNum + "원");
-			$(".price"+roomNo).attr("value", realPrice);
+			/* $(".price"+roomNo).attr("value", realPrice); */
+			$(".price"+roomNo).attr("value", realPriceNum);
 		}else if(adult < standard) {
 			if( (adult + kid) - standard < 0 ) {
 				adult = 0;
@@ -1495,11 +1498,13 @@
 				standard = 0;
 				const pricePNum2 = priceP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 				roomPriceValue.text(pricePNum2 + "원");
+				$(".price"+roomNo).attr("value", pricePNum2);
 			}
 			else {
 				priceP = ( ((adult + kid) - standard ) * kidP) + priceP;
 				const pricePNum3 = priceP.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 				roomPriceValue.text(pricePNum3 + "원");
+				$(".price"+roomNo).attr("value", pricePNum3);
 			}
 		}
 	}
@@ -2024,9 +2029,7 @@
 				str += '		</div>';
 				str += '	</div>';
 			}
-			
 			str += '</div>';
-			
 			$("#review").append(str);
 	}	
 	

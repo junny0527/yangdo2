@@ -135,6 +135,7 @@
 			              ,ro.standard_people STANDARD_PEOPLE
 			              ,ro.max_people MAX_PEOPLE
 			              ,ro.add_info ADD_INFO
+			              ,r.no RESERVATIONSNO
 			              ,r.user_no USER_NO
 			              ,r.name NAME
 			              ,r.check_in CHECK_IN

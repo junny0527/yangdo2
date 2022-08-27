@@ -38,6 +38,7 @@ public class DetailController {
 		
 		
 		Map<String, Object> pMap = detailService.select(pensionNo, crtPage, datepicker, datepicker2);
+		System.out.println("pMap:" +pMap);
 		model.addAttribute("pMap",pMap);
 		model.addAttribute("crtPage", crtPage);
 		model.addAttribute("datepicker", datepicker);
