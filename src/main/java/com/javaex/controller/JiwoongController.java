@@ -47,12 +47,13 @@ public class JiwoongController {
 	
 	//낮은가격 순 리스트
 	@RequestMapping(value="/main/lowprice", method = {RequestMethod.GET, RequestMethod.POST})
-	public String selectLowprice(Model model) {
+	public String selectLowprice(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("Controller>lowprice");
 		
-		Map<String, Object> pMap = mainService.selectLowprice();
+		List<MainSearchVo> pList = mainService.selectLowprice(searchVo);
 		
-		model.addAttribute("pMap",pMap);
+		
+		model.addAttribute("pList",pList);
 		System.out.println("hitController>lowList");
 		
 		return "/mainList/mainLists";
@@ -60,12 +61,12 @@ public class JiwoongController {
 	
 	//높은가격 순 리스트
 	@RequestMapping(value="/main/highprice", method = {RequestMethod.GET, RequestMethod.POST})
-	public String selectHighprice(Model model) {
+	public String selectHighprice(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("Controller>highprice");
 		
-		Map<String, Object> pMap = mainService.selectHighprice();
+		List<MainSearchVo> pList = mainService.selectHighprice(searchVo);
 		
-		model.addAttribute("pMap",pMap);
+		model.addAttribute("pList",pList);
 		System.out.println("Controller>highList");
 		
 		return "/mainList/mainLists";
@@ -74,12 +75,12 @@ public class JiwoongController {
 	
 	//추천별 리스트
 	@RequestMapping(value="/main/hit", method = {RequestMethod.GET, RequestMethod.POST})
-	public String selectHit(Model model) {
+	public String selectHit(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("Controller>hitList");
 		
-		Map<String, Object> pMap = mainService.selectHit();
+		List<MainSearchVo> pList = mainService.selectHit(searchVo);
 		
-		model.addAttribute("pMap",pMap);
+		model.addAttribute("pList",pList);
 		
 		return "/mainList/mainLists";
 	}
@@ -92,14 +93,13 @@ public class JiwoongController {
 		System.out.println("Controller>search");
 		System.out.println("searchVo"+searchVo);
 		
+		
 		List<MainListVo> pList = mainService.selectSearch(searchVo);
 		
 		model.addAttribute("pList",pList);
-		String datePicker = searchVo.getDatepicker();
-		String datePicker2 = searchVo.getDatepicker2();
 		
-		model.addAttribute("datePicker",datePicker);
-		model.addAttribute("datePicker2",datePicker2);
+		model.addAttribute("searchVo",searchVo);
+
 		
 		System.out.println("ControllerSearch"+pList);
 		

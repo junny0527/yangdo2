@@ -13,7 +13,7 @@ public class MainSearchVo {
 
 	private String[] puOpt;
 	private String[] anOpt;
-	private int yangdo;
+	private int yCount;
 	private int persons;
 
 	public MainSearchVo() {
@@ -26,12 +26,12 @@ public class MainSearchVo {
 
 		cal.add(cal.DATE, +1); // 날짜를 하루 더한다.
 		this.datepicker2 = sdf.format(cal.getTime());
-
-
+		
+		this.persons = 2;
 	}
 
 	public MainSearchVo(String datepicker, String datepicker2, String gugun1, String sido1, String[] puOpt,
-			String[] anOpt, int yangdo, int persons) {
+			String[] anOpt, int yCount, int persons) {
 		super();
 		this.datepicker = datepicker;
 		this.datepicker2 = datepicker2;
@@ -39,7 +39,7 @@ public class MainSearchVo {
 		this.sido1 = sido1;
 		this.puOpt = puOpt;
 		this.anOpt = anOpt;
-		this.yangdo = yangdo;
+		this.yCount = yCount;
 		this.persons = persons;
 	}
 
@@ -91,12 +91,12 @@ public class MainSearchVo {
 		this.anOpt = anOpt;
 	}
 
-	public int getYangdo() {
-		return yangdo;
+	public int getyCount() {
+		return yCount;
 	}
 
-	public void setYangdo(int yangdo) {
-		this.yangdo = yangdo;
+	public void setyCount(int yCount) {
+		this.yCount = yCount;
 	}
 
 	public int getPersons() {
@@ -111,7 +111,7 @@ public class MainSearchVo {
 	public String toString() {
 		return "MainSearchVo [datepicker=" + datepicker + ", datepicker2=" + datepicker2 + ", gugun1=" + gugun1
 				+ ", sido1=" + sido1 + ", puOpt=" + Arrays.toString(puOpt) + ", anOpt=" + Arrays.toString(anOpt)
-				+ ", yangdo=" + yangdo + ", persons=" + persons + "]";
+				+ ", yCount=" + yCount + ", persons=" + persons + "]";
 	}
 
 }

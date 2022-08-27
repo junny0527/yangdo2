@@ -16,16 +16,17 @@ public class MainListVo {
 	private String amOpt;
 	private String puOpt;
 	private int yCount;
-
+	private int persons;
+	
 	public MainListVo() {
 		super();
-
+		
+		this.persons = 2;
 	}
 
-	
 	public MainListVo(String pName, String lawName, int lawCode, String visitRoad3, String saveName, int penPrice,
-			int stars, String status, int pNo, String rCount, String gugunName, String amOpt, String puOpt,
-			int yCount) {
+			int stars, String status, int pNo, String rCount, String gugunName, String amOpt, String puOpt, int yCount,
+			int persons) {
 		super();
 		this.pName = pName;
 		this.lawName = lawName;
@@ -41,8 +42,8 @@ public class MainListVo {
 		this.amOpt = amOpt;
 		this.puOpt = puOpt;
 		this.yCount = yCount;
+		this.persons = persons;
 	}
-
 
 	public String getpName() {
 		return pName;
@@ -132,27 +133,21 @@ public class MainListVo {
 		this.gugunName = gugunName;
 	}
 
-
-
 	public String getAmOpt() {
 		return amOpt;
 	}
-
 
 	public void setAmOpt(String amOpt) {
 		this.amOpt = amOpt;
 	}
 
-
 	public String getPuOpt() {
 		return puOpt;
 	}
 
-
 	public void setPuOpt(String puOpt) {
 		this.puOpt = puOpt;
 	}
-
 
 	public int getyCount() {
 		return yCount;
@@ -162,14 +157,23 @@ public class MainListVo {
 		this.yCount = yCount;
 	}
 
+	public int getPersons() {
+		return persons;
+	}
+
+	public void setPersons(int persons) {
+		this.persons = persons;
+	}
 
 	@Override
 	public String toString() {
 		return "MainListVo [pName=" + pName + ", lawName=" + lawName + ", lawCode=" + lawCode + ", visitRoad3="
 				+ visitRoad3 + ", saveName=" + saveName + ", penPrice=" + penPrice + ", stars=" + stars + ", status="
 				+ status + ", pNo=" + pNo + ", rCount=" + rCount + ", gugunName=" + gugunName + ", amOpt=" + amOpt
-				+ ", puOpt=" + puOpt + ", yCount=" + yCount + "]";
+				+ ", puOpt=" + puOpt + ", yCount=" + yCount + ", persons=" + persons + "]";
 	}
 
+	
+	
 	
 }
