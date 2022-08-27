@@ -32,44 +32,32 @@ public class MainListService {
 	
 	
 	//낮은 가격순 리스트
-	public Map<String, Object> selectLowprice(){
+	public List<MainSearchVo> selectLowprice(MainSearchVo searchVo){
 		System.out.println("service>lowprice");
 		
-		Map<String, Object> pMap = new HashMap<String, Object>();
+		List<MainSearchVo> pList = mainDao.selectLowprice(searchVo);
 		
-		List<Map<String, Object>> pList = mainDao.selectLowprice();
-		
-		pMap.put("pList", pList);
-		
-		return pMap;
+		return pList;
 		
 	}
 	
 	//높은 가격순 리스트
-	public Map<String, Object> selectHighprice(){
+	public List<MainSearchVo> selectHighprice(MainSearchVo searchVo){
 		System.out.println("service>highprice");
 		
-		Map<String, Object> pMap = new HashMap<String, Object>();
+		List<MainSearchVo> pList = mainDao.selectHighprice(searchVo);
 		
-		List<Map<String, Object>> pList = mainDao.selectHighprice();
-		
-		pMap.put("pList", pList);
-		
-		return pMap;
+		return pList;
 		
 	}
 	
 	//추천별 리스트
-	public Map<String, Object> selectHit(){
+	public List<MainSearchVo> selectHit(MainSearchVo searchVo){
 		System.out.println("service>selectHit");
 		
-		Map<String, Object> pMap = new HashMap<String, Object>();
+		List<MainSearchVo> pList = mainDao.selectHit(searchVo);
 		
-		List<Map<String, Object>> pList = mainDao.selectHit();
-		
-		pMap.put("pList", pList);
-		
-		return pMap;
+		return pList;
 		
 	}
 	
