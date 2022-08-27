@@ -60,10 +60,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 									<strong data-v-33033856="">인원수</Strong>${rpMap.adult+rpMap.kid+rpMap.baby}명
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크인</strong>${rpMap.datepicker } / ${rpMap.check_in }
+									<strong data-v-33033856="">체크인</strong>${rpMap.datepicker }  ${rpMap.check_in }
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크아웃</strong>${rpMap.datepicker2 } / ${rpMap.check_out }
+									<strong data-v-33033856="">체크아웃</strong>${rpMap.datepicker2 }  ${rpMap.check_out }
 								</p>
 							</section>
 							<section class="total_price_pc" data-v-33033856="">
@@ -112,24 +112,24 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										data-v-f785cca6="">
 										<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
 										<div class="product-amount " data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac=""><fmt:formatNumber
+											<strong data-v-3ce5aaac="">구매가격</strong><b data-v-3ce5aaac=""><fmt:formatNumber
 														value="${rpMap.price}" pattern="#,###" />원</b>
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">구매 총액 내역</strong> <br>
+											<strong data-v-3ce5aaac="">추가인원수 가격 및 포인트 사용 내역</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${rpMap.adult}명</span><b data-v-3ce5aaac=""class="">${rpMap.ADD_ADULT_PRICE*rpMap.adult}원</b>
+													${rpMap.adult}명</span><b data-v-3ce5aaac=""class="">0원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
 													${rpMap.kid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="${rpMap.kid*rpMap.kid}" pattern="#,###" />원</b>
+														value="0" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
-													${rpMap.baby}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*rpMap.baby}원</b>
+													${rpMap.baby}명</span><b data-v-3ce5aaac="">0원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
@@ -137,7 +137,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 														value="0" pattern="#,###" />P</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
-												<span class="addprice" data-v-2c1e3bcc="">합계</span><b
+												<span class="addprice" data-v-2c1e3bcc="">총 결제 금액</span><b
 													class="total" data-v-3ce5aaac=""> <fmt:formatNumber
 														value="${rpMap.price}" pattern="#,###" />원
 												</b>
@@ -250,9 +250,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			let adult = Number('${rpMap.adult}');
 			let kid = Number('${rpMap.kid}');
 			let baby = Number('${rpMap.baby}');
-			let adultpri = Number('${rpMap.ADULT_KID_PRICE}');
-			let kidpri = Number('${rpMap.ADD_KID_PRICE}');
-			let babypri = Number('${rpMap.ADD_BABY_PRICE}');
+			let adultpri = Number('${rpMap.adultPrice}');
+			let kidpri = Number('${rpMap.kidPrice}');
+			
 			
 			const user = '${authUser}';
 			console.log("user: ", user);
@@ -312,9 +312,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		    	        	point:$('#point').val(),
 		    	        	userNo:"${authUser.no}",
 		    	        	roomNo:"${rpMap.roomNo}",
-		    	        	pointNo:"${rpMap.POINTNO}",
-		    	        	checkIn:"${rpMap.datepicker }",
-		    	        	checkOut:"${rpMap.datepicker2 }",
+		    	        	//pointNo:"${rpMap.POINTNO}",
+		    	        	checkInDt:"${rpMap.datepicker }",
+		    	        	checkOutDt:"${rpMap.datepicker2 }",
+		    	        	checkInHr:"${rpMap.check_in }",
+		    	        	checkOutHr:"${rpMap.check_out }",
 		    	        	pName : "${rpMap.name}",
 		    	        	rName : "${rpMap.roomName}",
 		    	        	status: '1',
@@ -326,7 +328,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 		    	        	baby: '${rpMap.baby}',
 		    	        	id: '${authUser.id}',
 		    	        	pw: '${authUser.pw}',
-		    	        	regDate:'${rpMap.REG_DATE}',
+		    	        	// regDate:'${rpMap.REG_DATE}',
 		    	        	//////////////////////////////
 		    	        	totalPrice: '${rpMap.price}'
 	    	        }

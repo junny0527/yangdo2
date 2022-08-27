@@ -9,10 +9,10 @@
 			POINTS POINTS,
 			RESERVATIONS RESERVATIONS,
 			USERS USERS
-		WHERE 1 = 1
-		 AND POINTS.RESERVE_NO = RESERVATIONS.NO
-		 AND POINTS.NO = USERS.NO
-		 AND RESERVATIONS.user_no = #{userNo}
+		WHERE 
+			POINTS.RESERVE_NO = RESERVATIONS.NO
+			AND RESERVATIONS.USER_NO = USERS.NO
+			AND RESERVATIONS.user_no = #{userNo};
 
 	</select> 
 	
@@ -45,7 +45,14 @@
 						REG_DATE )
 				VALUES (
 				  		#{pointNo},
-						#{no}, <!-- RESERVE_NO입니다 -->
+				  		<if test="no == 0">
+				  			(SELECT LAST_NUMBER - 1
+							FROM all_sequences
+							WHERE sequence_name = 'SEQ_RESERVATIONS_NO'),
+				  		</if>
+				  		<if test="no != 0">
+				  			#{no},
+				  		</if>
 						TO_NUMBER('-'||#{point}),
 						SYSDATE
 						)

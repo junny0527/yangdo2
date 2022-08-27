@@ -49,13 +49,13 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 						<div class="right" data-v-33033856="" data-v-f785cca6="">
 							<section class="info" data-v-33033856="">
 								<p class="name" data-v-33033856="">
-									<strong data-v-33033856="">예약번호</strong>NO.${rpMap.P_R_NO}
+									<strong data-v-33033856="">예약번호</strong>NO.${rpMap.NO}
 								</p>
 								<p data-v-33033856="">
 									<strong data-v-33033856="">펜션이름</strong>${rpMap.PNAME }
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">객실명/기간</strong>${rpMap.ROOM_NAME } /
+									<strong data-v-33033856="">객실명/기간</strong>${rpMap.RNAME } /
 									${rpMap.DDay}박
 								</p>
 								<p data-v-33033856="">
@@ -71,7 +71,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 							<section class="total_price_pc" data-v-33033856="">
 								<p data-v-33033856="">
 									<strong data-v-33033856=""><b data-v-33033856="">총
-											결제 금액</b>(VAT포함)</strong><span class="in_price total" data-v-33033856="">${rpMap.TRANS_PRICE}원</span>
+											결제 금액</b>(VAT포함)</strong><span class="in_price total" data-v-33033856=""><fmt:formatNumber
+														value="${rpMap.TRANS_PRICE}" pattern="#,###" />원</span>
 								</p>
 								<ul data-v-33033856="">
 									<li data-v-33033856="">해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -307,14 +308,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    		  console.log("결제")
 	    		  
 		    	      var repayVo ={
+	    			  			no: "${rpMap.NO}",
 			    	        	name: $('#userName').val(),
 			    	        	hp: $('#hp').val(),
 			    	        	point:$('#point').val(),
 			    	        	userNo:"${rpMap.USERNO}",
 			    	        	roomNo:"${rpMap.ROOMNO}",
 			    	        	pointNo:"${rpMap.POINTNO}",
-			    	        	checkIn:"${rpMap.CHECK_IN }",
-			    	        	checkOut:"${rpMap.CHECK_OUT }",
+			    	        	checkInDt:"${rpMap.CHECKIN }",
+			    	        	checkOutDt:"${rpMap.CHECKOUT }",
+			    	        	checkInHr:"${rpMap.CHECKINTIME }",
+			    	        	checkOutHr:"${rpMap.CHECKOUTTIME }",
 			    	        	pName : "${rpMap.PNAME}",
 			    	        	rName : "${rpMap.RNAME}",
 			    	        	status: '5',
@@ -328,6 +332,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	pw: '${authUser.pw}',
 			    	        	regDate:'${rpMap.REG_DATE}',
 			    	        	prNo:'${rpMap.NO}',
+			    	        	totalPrice: '${rpMap.TOTAL_PRICE}',
 			    	        	//////////////////////////////
 			    	        	
 			    	        	transPrice: '${rpMap.TRANS_PRICE}'
