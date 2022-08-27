@@ -46,7 +46,7 @@ public class DetailService {
 		
 		//날짜에 따른 객실정보 가져오기(예약 후, 양도, 예약 전)
 		List<Map<String, Object>> roomList = detailDao.roomList(pensionNo, datepicker, datepicker2);
-		System.out.println("이거다이;거 ::::"+roomList);
+		
 		//펜션 별 객실 메인사진 보여주기
 		List<Map<String, Object>> pensionRoomImg = detailDao.pensionRoomImg(pensionNo);
 		

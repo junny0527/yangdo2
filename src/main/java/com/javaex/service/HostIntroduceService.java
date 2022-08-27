@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.HostIntroduceDao;
 import com.javaex.vo.HostIntroduceVo;
 import com.javaex.vo.PensionImageVo;
-import com.javaex.vo.RoomImageVo;
 
 @Service
 public class HostIntroduceService {
@@ -30,6 +29,7 @@ public class HostIntroduceService {
 		
 		/*
 		String editName = iVo.getLawName();
+		
 		String[] editArray = editName.split(" ");
 		
 		if(editArray[0].equals("세종특별자치시")) {
@@ -43,17 +43,14 @@ public class HostIntroduceService {
 		int pensionNo = iDao.getPensionNo();
 		iVo.setPensionNo(pensionNo);
 		
-		iDao.PensionImgUpdate(pensionNo);
-		
-		
 		iDao.insertsido(iVo);
 		iDao.insertgugun(iVo);
 		
 		HostIntroduceVo arrayVo = new HostIntroduceVo();
 		arrayVo.setPensionNo(pensionNo);
 		
-		int[] publicArray = iVo.getPublicArrays();
-		int[] amenitiesArray = iVo.getAmenitiesArrays();
+		String[] publicArray = iVo.getPublicArrays();
+		String[] amenitiesArray = iVo.getAmenitiesArrays();
 		
 		if(publicArray != null) {
 			for(int i=0; i<publicArray.length; i++) {

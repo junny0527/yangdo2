@@ -54,7 +54,7 @@ public class SaleService {
         System.out.println(dDay);
         //if로 refundNo 10 --> 10일기준 7 --> 7일 기준 6--> 6일기준으로 수수료계산
         //결제값 꺼내주기
-        String dotTotalPrice = (String) sMap.get("TOTAL_PRICE");
+        String dotTotalPrice = String.valueOf(sMap.get("TOTAL_PRICE"));
         //나눠서 붙여서 170000만들기
         String[] price = dotTotalPrice.split(",");
         String StotalPrice = "";

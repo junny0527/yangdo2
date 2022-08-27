@@ -99,8 +99,13 @@ public class RePayService  {
 		// PointsVo pointsVo => 포인트 정보
 		// 여기서 int points -로 바꿔 다시 set해
 		Map<String, Object> result = new HashMap<>();
-		pointsDao.pointsInsert(bean);//포인트 인서트
-		result.put("count", rePayDao.PayInsert(bean));//인서트 해주고
+		
+		// 1. 예약 테이블 인서트
+		int payInsertCnt = rePayDao.PayInsert(bean);
+		// 2. 포인트 인서트
+		pointsDao.pointsInsert(bean);
+
+		result.put("count", payInsertCnt);
 		result.put("no", bean.getNo());//예약번호
 		return result; // map key 2개 count, no 
 		
@@ -109,17 +114,26 @@ public class RePayService  {
 	
 	//양도 결제 포인트 
 	
-	public Map<String, Object> yangdoUpdateInsert(RePayVo bean) {
+	public Map<String, Object> yangdoUpdateInsert(RePayVo bean ) {
 		System.out.println("\t\t RePayService::yangdoUpdateInsert() invoked...");
 		Map<String, Object> result = new HashMap<>();
-		pointsDao.pointsInsert(bean); //포인트 인서트
-		rePayDao.yangdoInsert(bean); //양도인서트
-		result.put("no", bean.getNo()); //일반예약번호를
-		bean.setNo(bean.getPrNo());//부모번호에 넣어주기
-		bean.setStatus("5");//상태값 양도에의한취소로 넣어주고
-		result.put("count", rePayDao.yangdoUpdate(bean));//업데이트 시켜줌
-		return result;
 		
+		System.out.println("양도 업데이트 >>>> " + bean.toString());
+		
+		int yangdoUpdateCnt = rePayDao.yangdoUpdate(bean);
+		// 1.부모 번호에 넣어주기
+		bean.setPrNo(bean.getNo());
+		// 양도 새롭게 insert
+		rePayDao.yangdoInsert(bean);
+		// 포인트 내역 insert
+		pointsDao.pointsInsert(bean);
+
+		System.out.println("양도 완료 후 >> " + bean.toString());
+		
+		result.put("count", yangdoUpdateCnt);//업데이트 시켜줌
+		result.put("no", bean.getNo()); //일반예약번호를
+
+		return result;
 	}
 	
 }

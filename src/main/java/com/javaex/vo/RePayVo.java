@@ -8,8 +8,10 @@ public class RePayVo {
 	private String point;
 	private String name;
 	private String hp;
-	private String checkIn;
-	private String checkOut;
+	private String checkInDt;
+	private String checkOutDt;
+	private String checkInHr;
+	private String checkOutHr;
 	private String pName;
 	private String rName;
 	private int adult;
@@ -18,7 +20,7 @@ public class RePayVo {
 	private String totalPrice;
 	private String transPrice;
 	private String paySatatus;
-	private String status;
+	private int status;
 	private String payWay;
 	private String payStatus;
 	private String regDate;
@@ -97,20 +99,36 @@ public class RePayVo {
 		this.hp = hp;
 	}
 
-	public String getCheckIn() {
-		return checkIn;
+	public String getCheckInDt() {
+		return checkInDt;
 	}
 
-	public void setCheckIn(String checkIn) {
-		this.checkIn = checkIn;
+	public void setCheckInDt(String checkInDt) {
+		this.checkInDt = checkInDt;
 	}
 
-	public String getCheckOut() {
-		return checkOut;
+	public String getCheckOutDt() {
+		return checkOutDt;
 	}
 
-	public void setCheckOut(String checkOut) {
-		this.checkOut = checkOut;
+	public void setCheckOutDt(String checkOutDt) {
+		this.checkOutDt = checkOutDt;
+	}
+
+	public String getCheckInHr() {
+		return checkInHr;
+	}
+
+	public void setCheckInHr(String checkInHr) {
+		this.checkInHr = checkInHr;
+	}
+
+	public String getCheckOutHr() {
+		return checkOutHr;
+	}
+
+	public void setCheckOutHr(String checkOutHr) {
+		this.checkOutHr = checkOutHr;
 	}
 
 	public String getpName() {
@@ -217,22 +235,22 @@ public class RePayVo {
 		this.paySatatus = paySatatus;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "RePayVo [no=" + no + ", userNo=" + userNo + ", roomNo=" + roomNo + ", pointNo=" + pointNo + ", point="
-				+ point + ", name=" + name + ", hp=" + hp + ", checkIn=" + checkIn + ", checkOut=" + checkOut
-				+ ", pName=" + pName + ", rName=" + rName + ", adult=" + adult + ", kid=" + kid + ", baby=" + baby
-				+ ", totalPrice=" + totalPrice + ", transPrice=" + transPrice + ", paySatatus=" + paySatatus
-				+ ", status=" + status + ", payWay=" + payWay + ", payStatus=" + payStatus + ", regDate=" + regDate
-				+ ", prNo=" + prNo + ", id=" + id + ", pw=" + pw + "]";
+				+ point + ", name=" + name + ", hp=" + hp + ", checkInDt=" + checkInDt + ", checkOutDt=" + checkOutDt
+				+ ", checkInHr=" + checkInHr + ", checkOutHr=" + checkOutHr + ", pName=" + pName + ", rName=" + rName
+				+ ", adult=" + adult + ", kid=" + kid + ", baby=" + baby + ", totalPrice=" + totalPrice
+				+ ", transPrice=" + transPrice + ", paySatatus=" + paySatatus + ", status=" + status + ", payWay="
+				+ payWay + ", payStatus=" + payStatus + ", regDate=" + regDate + ", prNo=" + prNo + ", id=" + id
+				+ ", pw=" + pw + "]";
 	}
-
 }
