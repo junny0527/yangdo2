@@ -117,7 +117,7 @@ a:active {
 	margin-top: 20px;
 	margin-left: 50px;
 	width: 150px;
-	position: fixed;
+	position: absolute;
 	font-size : 16px;
 	text-align : center;
 	background-color: white;
