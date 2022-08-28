@@ -269,8 +269,8 @@
 					</c:forEach>
 					<c:choose>
 						<c:when test="${crtPage == 1}">
-							<a href="#">
-								<button id="left">
+							<a href="#" style="cursor:default;">
+								<button style="visibility:hidden;" id="left">
 									<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
 								</button>
 							</a>
@@ -286,25 +286,27 @@
 						</c:forEach>
 					</ul>
 					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
-						<c:choose>
-							<c:when test="${crtPage == page && crtPage < 4}">
-								<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
-									<button id="right">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-									</button>
-								</a>
-							</c:when>
-						</c:choose>
+						<c:if test="${ (pMap.totalCnt - (pMap.imgSize * page )) > 0 && pMap.imgSize == 6}">	
+							<c:choose>
+								<c:when test="${crtPage == page && crtPage < 4}">
+									<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
+										<button id="right">
+											<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+										</button>
+									</a>
+								</c:when>
+							</c:choose>
+						</c:if>
+						
 					</c:forEach>
-					<c:choose>
-						<c:when test="${crtPage == 4}">
-							<a href="#">
-								<button id="right">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-								</button>
-							</a>
-						</c:when>
-					</c:choose>
+					
+					
+					
+					
+					
+					
+					
+					
 				</div>
 			</div>
 			<!-- //gallery -->
