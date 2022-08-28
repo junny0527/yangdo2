@@ -54,7 +54,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 								
 								<p data-v-33033856="">
 									<strong data-v-33033856="">객실명/기간</strong>${rpMap.roomName } /
-									${rpMap.datepicker2} - {rpMap.datepicker}박
+									${rpMap.DDay }박
 								</p>
 								<p data-v-33033856="">
 									<strong data-v-33033856="">인원수</Strong>${rpMap.adult+rpMap.kid+rpMap.baby}명

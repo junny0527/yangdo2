@@ -43,19 +43,32 @@ public class RepayController {
 	public String reserve(Model model, HttpSession session, @RequestParam Map<String, Object> params) {
 		System.out.println("\t\t BumJunController::reserve() invoked...");
 		
+		//1.펜션가격 스트링으로 넘어온거 숫자로 바꿔주고 넣어주기
+		String trans = (String) params.get("price");
+		String price = trans.replaceAll(",","");
+		int get = Integer.parseInt(price);
+		params.put("price",get);
+		
+		//2.몇박 구해주기
+		rePayService.getRePay(params);
+		
+		//3.받아온 파라미터 데이터 jsp 로보내주기
 		System.out.println("no:"+ params);
 		model.addAttribute("rpMap", params);
-
 		
-		//총합포인트 가져오기 
+		//3.유저 번호 가져오기 
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 		int userNo = userVo.getNo();
-		Map<String, Object> gajidaPoints = pointsService.getpoints(userNo);
 		
+		//4.총합포인트 가져오기
+		Map<String, Object> gajidaPoints = pointsService.getpoints(userNo);
 		model.addAttribute("gajidaPoints", gajidaPoints);
 		
+		//5.데이터 확인해주기
 		System.out.println("==================================");
+		System.out.println(params.get("price"));
 		System.out.println(params);
+		System.out.println("컴마뺸가격:" + price);
 		System.out.println(userNo);
 		System.out.println(gajidaPoints);
 		System.out.println("==================================");
@@ -65,25 +78,38 @@ public class RepayController {
 	
 	
 	
-	
 
 	// 양도예약
 	@GetMapping("/yangdoreserve/{no}")
-	public String yangdoreserve(@PathVariable int no, Model model, HttpSession session) {
+	public String yangdoreserve(@PathVariable int no, Model model, HttpSession session,@RequestParam Map<String, Object> params) {
 		System.out.println("\t\t BumJunController::yangdoreserve() invoked...");
 		
+		//1.펜션가격 스트링으로 넘어온거 숫자로 바꿔주고 넣어주기
+		String trans = (String) params.get("transPrice");
+		String transprice = trans.replaceAll(",","");
+		int get = Integer.parseInt(transprice);
+		params.put("transPrice",get);
 		
+		//2.받아온 파라미터 데이터 jsp 로보내주기
+		model.addAttribute("params", params);
+		
+		//3.일반예약된 데이터 가져오기
 		Map<String, Object> rpMap = rePayService.getyangdoRePay(no);
-
 		model.addAttribute("rpMap", rpMap);
 		
+		//4.유저 번호 가져오기 
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 		int userNo = userVo.getNo();
-		Map<String, Object> gajidaPoints = pointsService.getpoints(userNo);
 		
+		//5.총합포인트 가져오기
+		Map<String, Object> gajidaPoints = pointsService.getpoints(userNo);
 		model.addAttribute("gajidaPoints", gajidaPoints);
+		
+		//6.데이터 확인해주기
 		System.out.println("==================================");
+		System.out.println(params);
 		System.out.println(rpMap);
+		System.out.println(transprice);
 		System.out.println(userNo);
 		System.out.println(gajidaPoints);
 		System.out.println("==================================");

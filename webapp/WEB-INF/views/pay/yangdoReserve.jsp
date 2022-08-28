@@ -59,20 +59,20 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 									${rpMap.DDay}박
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">인원수</Strong>${rpMap.ADULT+rpMap.KID+rpMap.BABY}명
+									<strong data-v-33033856="">인원수</Strong>${params.yAdult+params.yKid+params.yBaby}명
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크인</strong>${rpMap.CHECK_IN }
+									<strong data-v-33033856="">체크인</strong>${params.datepicker }/${params.check_in }
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크아웃</strong>${rpMap.CHECK_OUT }
+									<strong data-v-33033856="">체크아웃</strong>${params.datepicker2}/${params.check_out }
 								</p>
 							</section>
 							<section class="total_price_pc" data-v-33033856="">
 								<p data-v-33033856="">
 									<strong data-v-33033856=""><b data-v-33033856="">총
 											결제 금액</b>(VAT포함)</strong><span class="in_price total" data-v-33033856=""><fmt:formatNumber
-														value="${rpMap.TRANS_PRICE}" pattern="#,###" />원</span>
+														value="${params.transPrice}" pattern="#,###" />원</span>
 								</p>
 								<ul data-v-33033856="">
 									<li data-v-33033856="">해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
@@ -114,23 +114,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										data-v-f785cca6="">
 										<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
 										<div class="product-amount" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">${rpMap.TRANS_PRICE}원</b>
+											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">${params.transPrice}원</b>
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
 											<strong data-v-3ce5aaac="">(인원 추가비용 및 포인트사용 내역)</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${rpMap.ADULT}명</span><b data-v-3ce5aaac="">${rpMap.ADULT_KID_PRICE*rpMap.ADULT}원</b>
+													${params.yAdult}명</span><b data-v-3ce5aaac="">${rpMap.ADULT_KID_PRICE*params.yAdult}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${rpMap.KID}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="${rpMap.ADD_KID_PRICE*rpMap.KID}" pattern="#,###" />원</b>
+													${params.yKid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
+														value="${rpMap.ADD_KID_PRICE*rpMap.yKid}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
-													${rpMap.BABY}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*rpMap.BABY}원</b>
+													${params.yBaby}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*params.yBaby}원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
@@ -139,7 +139,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">합계</span><b
 													class="total" data-v-3ce5aaac=""> <fmt:formatNumber
-														value="${rpMap.TRANS_PRICE}" pattern="#,###" /> 원
+														value="${params.transPrice}" pattern="#,###" /> 원
 												</b>
 											</div>
 										</div>
@@ -245,7 +245,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			//---포인트
 			let point = Number($("#point").val());
 			let minPoint = Number('${gajidaPoints.POINTS}'); //보유포인트
-			let totalPrice = Number('${rpMap.TRANS_PRICE}');
+			let totalPrice = Number('${params.transPrice}');
 			if (minPoint < point) {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
 				return false;
@@ -335,7 +335,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	totalPrice: '${rpMap.TOTAL_PRICE}',
 			    	        	//////////////////////////////
 			    	        	
-			    	        	transPrice: '${rpMap.TRANS_PRICE}'
+			    	        	transPrice: '${params.transPrice}'
 		    	        }
 	    	        
 	    	        console.log("repayVo ::: >> ", repayVo);
