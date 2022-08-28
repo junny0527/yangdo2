@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.MyListVo;
+import com.javaex.vo.UserVo;
 
 @Repository
 public class MyDao {
@@ -63,17 +64,45 @@ public class MyDao {
 	}
 
 	// 예약취소하기 -> 예약상태 업데이트하기
-	public int cancelUpdate(MyListVo myVo) {
+	public int cancelUpdate(int no) {
 		System.out.println("MyDao>cancelUpdate");
 
-		return sqlSession.update("my.updateOne", myVo);
+		return sqlSession.update("my.updateCancel", no);
 	}
 
 	// 예약내역 삭제하기
-	public int remove(int resNo) {
-		System.out.println("MyService>remove()");
+	public int remove(int no) {
+		System.out.println("MyDao>remove()");
 
-		return sqlSession.delete("my.deleteOne", resNo);
+		return sqlSession.delete("my.updateRemove", no);
 	};
+
+	// 유저 정보 관리하기
+	public UserVo getUserInfo(int no) {
+		System.out.println("MyDao>getUserInfo()");
+
+		return sqlSession.selectOne("my.getUserInfo", no);
+	}
+
+	// 유저 정보 -> 닉네임 업데이트
+	public int updateNickName(UserVo uVo) {
+		System.out.println("MyDao>updateNickName()");
+
+		return sqlSession.update("my.updateNickName", uVo);
+	}
+
+	// 유저 정보 -> 핸드폰번호 업데이트
+	public int updateHp(UserVo uVo) {
+		System.out.println("MyDao>updateHp()");
+
+		return sqlSession.update("my.updateHp", uVo);
+	}
+
+	// 유저 정보 -> 비밀번호 업데이트
+	public int updatePw(UserVo uVo) {
+		System.out.println("MyDao>updatePw()");
+
+		return sqlSession.update("my.updatePw", uVo);
+	}
 
 }

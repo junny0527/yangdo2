@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.javaex.dao.MyDao;
 import com.javaex.vo.MyListVo;
+import com.javaex.vo.UserVo;
 
 @Service
 public class MyService {
@@ -86,20 +87,49 @@ public class MyService {
 		System.out.println("MyService>getDetail()");
 
 		return myDao.getDetail(resNo);
+
 	}
 
 	// 예약취소시 -> 예약상태 업데이트
-	public int cancelUpdate(MyListVo myVo) {
+	public int cancelUpdate(int no) {
 		System.out.println("MyService>cancelUpdate");
 
-		return myDao.cancelUpdate(myVo);
+		return myDao.cancelUpdate(no);
 	}
 
 	// 예약내역 삭제하기
-	public int remove(int resNo) {
+	public int remove(int no) {
 		System.out.println("MyService>remove()");
 
-		return myDao.remove(resNo);
+		return myDao.remove(no);
+	}
+
+	// 유저 정보 관리하기
+	public UserVo getUserInfo(int no) {
+		System.out.println("MyService>getUserInfo()");
+
+		return myDao.getUserInfo(no);
+	}
+
+	// 유저 정보 -> 닉네임 업데이트
+	public int updateNickName(UserVo uVo) {
+		System.out.println("MyService>updateNickName()");
+
+		return myDao.updateNickName(uVo);
+	}
+
+	// 유저 정보 -> 핸드폰번호 업데이트
+	public int updateHp(UserVo uVo) {
+		System.out.println("MyService>updateHp()");
+
+		return myDao.updateHp(uVo);
+	}
+
+	// 유저 정보 -> 비밀번호 업데이트
+	public int updatePw(UserVo uVo) {
+		System.out.println("MyService>updatePw()");
+
+		return myDao.updatePw(uVo);
 	}
 
 }

@@ -300,13 +300,13 @@
  					ro.standard_people sPple,
  					ro.max_people mPple,
  					r.no resNo,
- 					r.name,
- 					r.hp,
+ 					r.name name,
+ 					regexp_replace(r.hp, '(.{3})(.+)(.{4})', '\1-\2-\3') hp,
  					to_char(r.total_price, 'FM999,999') tPrice,
  					to_char(r.trans_price, 'FM999,999') trPrice,
  					r.pay_status pStatus,
  					p.refund_no refNo,
- 					co.company_hp comHp,
+                    regexp_replace(co.company_hp, '(.{2})(.+)(.{4})', '\1-\2-\3') comHp,
  					r.p_r_no pRno
  			from reservations r, pension p, rooms ro, company co
  			where r.room_no = ro.no
@@ -316,20 +316,59 @@
 		]]>
 	</select>
 
-	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
-	<delete id="deleteOne" parameterType="int">
+	<!-- 내정보관리 // 유저 정보 불러오기 -->
+	<select id="getUserInfo" resultType="com.javaex.vo.UserVo"
+		parameterType="int">
 		<![CDATA[
-			delete from reservations
-			where no = #{resNo}
+			select no,
+				   nick_name nickName,
+				   hp,
+				   pw
+			from users
+			where no = #{no}
+		]]>
+	</select>
+
+	<!-- 내정보관리 // 유저 닉네임 업데이트하기 -->
+	<update id="updateNickName" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set nick_name = #{nickName}
+			where no = #{no}
+		]]>
+	</update>
+	<!-- 내정보관리 // 유저 핸드폰번호 업데이트하기 -->
+	<update id="updateHp" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set hp = #{hp}
+			where no = #{no}
+		]]>
+	</update>
+	<!-- 내정보관리 // 유저 비밀번호 업데이트하기 -->
+	<update id="updatePw" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set pw = #{pw}
+			where no = #{no}
+		]]>
+	</update>
+
+	<!-- 예약내역(이용완료/예약취소/양도완료) 삭제 (예약번호->no) -->
+	<delete id="updateRemove" parameterType="int">
+		<![CDATA[
+			update reservations
+			set status = 7
+			where no = #{no}
 		]]>
 	</delete>
 
 	<!-- 예약상태 업데이트 하기 -->
-	<update id="updateOne" parameterType="int">
+	<update id="updateCancel" parameterType="int">
 		<![CDATA[
 			update reservations
 			set status = 4
-			where no = #{resNo}
+			where no = #{no}
 		]]>
 	</update>
 

@@ -33,10 +33,10 @@ public class MainListDao {
 	
 	
 	//낮은 가격 순 리스트
-	public List<Map<String, Object>> selectLowprice(){
+	public List<MainSearchVo> selectLowprice(MainSearchVo searchVo){
 		System.out.println("Dao>lowprice");
 		
-		List<Map<String, Object>> pList = sqlSession.selectList("MainList.lowpriceList");
+		List<MainSearchVo> pList = sqlSession.selectList("MainList.lowpriceList",searchVo);
 		System.out.println("DaolowList --->"+pList);
 		
 		return pList;
@@ -44,20 +44,20 @@ public class MainListDao {
 	}
 	
 	//높은 가격 순 리스트
-	public List<Map<String, Object>> selectHighprice(){
+	public List<MainSearchVo> selectHighprice(MainSearchVo searchVo){
 		System.out.println("Dao>highprice");
 		
-		List<Map<String, Object>> pList = sqlSession.selectList("MainList.highpriceList");
+		List<MainSearchVo> pList = sqlSession.selectList("MainList.highpriceList",searchVo);
 		System.out.println("DaohighList --->"+pList);
 		return pList;
 		
 	}
 	
 	//추천별 리스트
-	public List<Map<String, Object>> selectHit(){
+	public List<MainSearchVo> selectHit(MainSearchVo searchVo){
 		System.out.println("Dao>selectHit");
 		
-		List<Map<String, Object>> pList = sqlSession.selectList("MainList.hitList");
+		List<MainSearchVo> pList = sqlSession.selectList("MainList.hitList",searchVo);
 		
 		return pList;
 		

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.MyService;
 import com.javaex.service.PointsService;
+import com.javaex.service.SaleService;
 import com.javaex.vo.MyListVo;
 import com.javaex.vo.MyPointVo;
 import com.javaex.vo.UserVo;
@@ -30,6 +31,9 @@ public class MyController {
 	@Autowired
 	private PointsService pService;
 
+	@Autowired
+	private SaleService saleService;
+
 	/********* main item **********/
 
 	// 포인트 페이지
@@ -39,19 +43,25 @@ public class MyController {
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		int userNo = authUser.getNo();
-		
+
 		List<MyPointVo> pList = pService.getUserPoint(userNo);
-		Map<String,Object> psMap = pService.getpoints(userNo);
+		Map<String, Object> psMap = pService.getpoints(userNo);
 		model.addAttribute("pList", pList);
 		model.addAttribute("psMap", psMap);
-		
 		return "mypage/mypoint";
 	}
 
 	// 내정보 페이지
 	@RequestMapping(value = "/info", method = { RequestMethod.GET, RequestMethod.POST })
-	public String info() {
+	public String info(@RequestParam("no") int no, HttpSession session, Model model) {
 		System.out.println("MyController>info()");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int userNo = authUser.getNo();
+
+		UserVo uVo = myService.getUserInfo(userNo);
+
+		model.addAttribute("uVo", uVo);
 
 		return "mypage/myinfo";
 	}
@@ -197,11 +207,12 @@ public class MyController {
 	@RequestMapping(value = "/detail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String detail(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo, Model model) {
 		System.out.println("MyController>detail()");
-		System.out.println("resNo" + resNo);
 
 		List<MyListVo> myVo = myService.getDetail(resNo);
+		//Map<String, Object> sMap = saleService.getReservation(resNo);
 
 		model.addAttribute("myVo", myVo);
+		//model.addAttribute("sMap", sMap);
 
 		return "mypage/detail";
 	}
@@ -209,19 +220,59 @@ public class MyController {
 	/********* detail (all) **********/
 	@ResponseBody
 	@RequestMapping(value = "/remove", method = { RequestMethod.GET, RequestMethod.POST })
-	public int remove(@RequestParam("no") int resNo) {
+	public int remove(@RequestParam("no") int no) {
 		System.out.println("MyController>remove()");
 
-		return myService.remove(resNo);
+		return myService.remove(no);
 	}
 
-	@RequestMapping(value = "/updateStatus", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cancelUpdate(@ModelAttribute MyListVo myVo) {
+	@ResponseBody
+	@RequestMapping(value = "/update/cancel", method = { RequestMethod.GET, RequestMethod.POST })
+	public int cancelUpdate(@RequestParam("no") int no) {
 		System.out.println("MyController>cancelUpdate()");
 
-		myService.cancelUpdate(myVo);
+		return myService.cancelUpdate(no);
+	}
 
-		return "redirect: /reservation";
+	@ResponseBody
+	@RequestMapping(value = "update/nickname", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateNickName(@ModelAttribute UserVo uVo, HttpSession session) {
+		System.out.println("MyController>updateNickName()");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
+
+		myService.updateNickName(uVo);
+
+		return "redirect: /info";
+	}
+
+	@RequestMapping(value = "update/hp", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateHp(@ModelAttribute UserVo uVo, HttpSession session) {
+		System.out.println("MyController>updateHp()");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
+
+		myService.updateHp(uVo);
+
+		return "redirect: /info";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "update/pw", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updatePw(@ModelAttribute UserVo uVo, HttpSession session) {
+		System.out.println("MyController>updatePw()");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		System.out.println(no);
+
+		myService.updatePw(uVo);
+
+		return "redirect: /info";
 	}
 
 }

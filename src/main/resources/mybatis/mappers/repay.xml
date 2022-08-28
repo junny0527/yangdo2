@@ -4,7 +4,7 @@
 
 
 	<!-- 예약폼 가져오기 -->
-	<select id="getRePay" parameterType="int" resultType="Map">
+	<!-- <select id="getRePay" parameterType="int" resultType="Map">
 		SELECT
 			 r.no NO
 			,ro.no ROOMNO
@@ -42,14 +42,13 @@
 		LEFT JOIN points po ON r.no = po.reserve_no
 		WHERE 1 = 1
 		AND ro.no = #{no}
-	</select>
+	</select> -->
 	
 	<!-- 양도폼 가져오기 -->
 	<select id="getyangdoRePay" parameterType="int" resultType="Map">
 		SELECT
 			r.no NO
 			,ro.no ROOMNO
-			,u.no
 			,u.email
 			,r.user_no USERNO
 			,po.no POINTNO
@@ -109,8 +108,8 @@
 						#{userNo},
 						#{name},
 						#{hp},
-						SYSDATE,
-						SYSDATE,
+						TO_DATE(#{checkInDt} || #{checkInHr}, 'yyyy-mm-dd HH24:MI:SS'),
+						TO_DATE(#{checkOutDt} || #{checkOutHr}, 'yyyy-mm-dd HH24:MI:SS'),
 						#{adult},
 						#{kid},
 						#{baby},
@@ -137,6 +136,7 @@
 						ADULT,
 						KID,
 						BABY,
+						TOTAL_PRICE,
 						TRANS_PRICE,
 						REG_DATE,
 						STATUS,
@@ -150,11 +150,12 @@
 						#{userNo},
 						#{name},
 						#{hp},
-						SYSDATE,
-						SYSDATE,
+						TO_DATE(#{checkInDt} || #{checkInHr}, 'yyyy-mm-dd HH24:MI:SS'),
+						TO_DATE(#{checkOutDt} || #{checkOutHr}, 'yyyy-mm-dd HH24:MI:SS'),
 						#{adult},
 						#{kid},
 						#{baby},
+						#{totalPrice},
 						#{transPrice},
 						SYSDATE,
 						#{status},
@@ -167,7 +168,7 @@
 	<update id="yangdoPayUpdate" parameterType="com.javaex.vo.RePayVo"> 
 		UPDATE RESERVATIONS
 			SET 
-			  STATUS = #{status},
+			  STATUS = #{status}
 			WHERE 
 			  NO = #{no}
 	</update>
