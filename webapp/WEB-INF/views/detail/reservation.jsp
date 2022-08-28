@@ -425,6 +425,7 @@
 										<input type="hidden"  name=nickName value="${userVo.nickName}">
 										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
 										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
@@ -488,7 +489,7 @@
 							<!-- //room -->
 						</form>
 					</c:when>
-					<c:when test="${roomVo.STATUS == 3}">
+					<c:when test="${roomVo.STATUS == 1}">
 						<form action="#">
 							<div class="room reservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
@@ -567,6 +568,7 @@
 										<input type="hidden"  name=nickName value="${userVo.nickName}">
 										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
 										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room noReservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button type="button" class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
