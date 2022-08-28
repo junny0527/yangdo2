@@ -11,6 +11,8 @@ public class MyListVo {
 	public String point; // 포인트
 	public String status; // 예약상태
 	public String pName; // 펜션이름
+	public String inDate; // 체크인 일자
+	public String outDate; // 체크아웃 일자
 	public String checkIn; // 체크인 일자
 	public String checkOut; // 체크아웃 일자
 	public String inTime; // 체크인 시간
@@ -24,20 +26,32 @@ public class MyListVo {
 	public String name; // 예약자이름
 	public String nickName; // 유저닉네임
 	public String hp; // 예약자핸드폰
+	public int totalP; // 총금액 (int)
+	public int transP; // 양도가격 (int)
 	public String tPrice; // 총금액
-	public int trPrice; // 양도가격
-	public String pStatus; // 결제상태
+	public String trPrice; // 양도가격
+	public int adultP; // 어른추가금액(int)
+	public int kidP; // 아이추가금액(int)
+	public int babyP; // 아동추가금액 (int)
+	public String addPrice; // 추가금액
+	public String orgPrice; // 기존금액 (예약내역)
+	public String initPrice; // 기존금액 (취소내역)
+	public int initialP; // 기존금액 (int)
+	public int addP; // 추가금액 (int)
 	public int refNo; // 환불번호
 	public String comHp; // 회사번호
 	public int pRno; // 부모예약번호
+	//////////////////////////////
+	
 
 	public MyListVo() {
 	}
 
-	public MyListVo(int no, int resNo, int pNo, String point, String status, String pName, String checkIn,
-			String checkOut, String inTime, String outTime, String saveName, Date regDate, String rName, int sPple,
-			int mPple, String name, String nickName, String hp, String tPrice, int trPrice, String pStatus, int refNo,
-			String comHp, int pRno) {
+	public MyListVo(int no, int resNo, int pNo, String point, String status, String pName, String inDate,
+			String outDate, String checkIn, String checkOut, String inTime, String outTime, String saveName,
+			Date regDate, String rName, int sPple, int mPple, String name, String nickName, String hp, int totalP,
+			int transP, String tPrice, String trPrice, int adultP, int kidP, int babyP, String addPrice,
+			String orgPrice, String initPrice, int initialP, int addP, int refNo, String comHp, int pRno) {
 		super();
 		this.no = no;
 		this.resNo = resNo;
@@ -45,6 +59,8 @@ public class MyListVo {
 		this.point = point;
 		this.status = status;
 		this.pName = pName;
+		this.inDate = inDate;
+		this.outDate = outDate;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.inTime = inTime;
@@ -57,9 +73,18 @@ public class MyListVo {
 		this.name = name;
 		this.nickName = nickName;
 		this.hp = hp;
+		this.totalP = totalP;
+		this.transP = transP;
 		this.tPrice = tPrice;
 		this.trPrice = trPrice;
-		this.pStatus = pStatus;
+		this.adultP = adultP;
+		this.kidP = kidP;
+		this.babyP = babyP;
+		this.addPrice = addPrice;
+		this.orgPrice = orgPrice;
+		this.initPrice = initPrice;
+		this.initialP = initialP;
+		this.addP = addP;
 		this.refNo = refNo;
 		this.comHp = comHp;
 		this.pRno = pRno;
@@ -111,6 +136,22 @@ public class MyListVo {
 
 	public void setpName(String pName) {
 		this.pName = pName;
+	}
+
+	public String getInDate() {
+		return inDate;
+	}
+
+	public void setInDate(String inDate) {
+		this.inDate = inDate;
+	}
+
+	public String getOutDate() {
+		return outDate;
+	}
+
+	public void setOutDate(String outDate) {
+		this.outDate = outDate;
 	}
 
 	public String getCheckIn() {
@@ -209,6 +250,22 @@ public class MyListVo {
 		this.hp = hp;
 	}
 
+	public int getTotalP() {
+		return totalP;
+	}
+
+	public void setTotalP(int totalP) {
+		this.totalP = totalP;
+	}
+
+	public int getTransP() {
+		return transP;
+	}
+
+	public void setTransP(int transP) {
+		this.transP = transP;
+	}
+
 	public String gettPrice() {
 		return tPrice;
 	}
@@ -217,20 +274,76 @@ public class MyListVo {
 		this.tPrice = tPrice;
 	}
 
-	public int getTrPrice() {
+	public String getTrPrice() {
 		return trPrice;
 	}
 
-	public void setTrPrice(int trPrice) {
+	public void setTrPrice(String trPrice) {
 		this.trPrice = trPrice;
 	}
 
-	public String getpStatus() {
-		return pStatus;
+	public int getAdultP() {
+		return adultP;
 	}
 
-	public void setpStatus(String pStatus) {
-		this.pStatus = pStatus;
+	public void setAdultP(int adultP) {
+		this.adultP = adultP;
+	}
+
+	public int getKidP() {
+		return kidP;
+	}
+
+	public void setKidP(int kidP) {
+		this.kidP = kidP;
+	}
+
+	public int getBabyP() {
+		return babyP;
+	}
+
+	public void setBabyP(int babyP) {
+		this.babyP = babyP;
+	}
+
+	public String getAddPrice() {
+		return addPrice;
+	}
+
+	public void setAddPrice(String addPrice) {
+		this.addPrice = addPrice;
+	}
+
+	public String getOrgPrice() {
+		return orgPrice;
+	}
+
+	public void setOrgPrice(String orgPrice) {
+		this.orgPrice = orgPrice;
+	}
+
+	public String getInitPrice() {
+		return initPrice;
+	}
+
+	public void setInitPrice(String initPrice) {
+		this.initPrice = initPrice;
+	}
+
+	public int getInitialP() {
+		return initialP;
+	}
+
+	public void setInitialP(int initialP) {
+		this.initialP = initialP;
+	}
+
+	public int getAddP() {
+		return addP;
+	}
+
+	public void setAddP(int addP) {
+		this.addP = addP;
 	}
 
 	public int getRefNo() {
@@ -260,11 +373,13 @@ public class MyListVo {
 	@Override
 	public String toString() {
 		return "MyListVo [no=" + no + ", resNo=" + resNo + ", pNo=" + pNo + ", point=" + point + ", status=" + status
-				+ ", pName=" + pName + ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", inTime=" + inTime
-				+ ", outTime=" + outTime + ", saveName=" + saveName + ", regDate=" + regDate + ", rName=" + rName
-				+ ", sPple=" + sPple + ", mPple=" + mPple + ", name=" + name + ", nickName=" + nickName + ", hp=" + hp
-				+ ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", pStatus=" + pStatus + ", refNo=" + refNo
-				+ ", comHp=" + comHp + ", pRno=" + pRno + "]";
+				+ ", pName=" + pName + ", inDate=" + inDate + ", outDate=" + outDate + ", checkIn=" + checkIn
+				+ ", checkOut=" + checkOut + ", inTime=" + inTime + ", outTime=" + outTime + ", saveName=" + saveName
+				+ ", regDate=" + regDate + ", rName=" + rName + ", sPple=" + sPple + ", mPple=" + mPple + ", name="
+				+ name + ", nickName=" + nickName + ", hp=" + hp + ", totalP=" + totalP + ", transP=" + transP
+				+ ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", adultP=" + adultP + ", kidP=" + kidP + ", babyP="
+				+ babyP + ", addPrice=" + addPrice + ", orgPrice=" + orgPrice + ", initPrice=" + initPrice
+				+ ", initialP=" + initialP + ", addP=" + addP + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno="
+				+ pRno + "]";
 	}
-
 }

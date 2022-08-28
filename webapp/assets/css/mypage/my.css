@@ -128,7 +128,7 @@
 	margin-bottom: 8px;
 	font-size: 14px;
 	font-weight: normal;
-	color: rgba(0, 0, 0, 0.87)
+	color: rgba(0, 0, 0, 0.87);
 }
 
 .mypage .pw_input section {
@@ -137,7 +137,7 @@
 	padding-right: 110px;
 }
 
-.mypage form[data-form="uname"] .pw_input section {
+.mypage form .pw_input section {
 	padding-right: 0;
 }
 
@@ -586,6 +586,7 @@
 	width: 100%;
 	height: auto;
 	padding-bottom: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
 	border: none;
 	background: #fff;
 	text-align: center;
@@ -959,6 +960,10 @@ reserve_detail .info {
 
 .booking-detail-section-title__wrap>div .color-green {
 	color: rgb(33, 154, 163);
+	padding: 0 !important;
+}
+.color-grey {
+	color: rgba(0, 0, 0, .8);
 	padding: 0 !important;
 }
 
@@ -1389,17 +1394,100 @@ reserve_detail .info {
 	border: none;
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
-.review_form  .rating>input:checked ~ label,
-	/* show gold star when clicked */ .rating:not(:checked)>label:hover,
-	/* hover current star */ .review_form  .rating:not(:checked)>label:hover 
-	 ~ label {
+.user-review {
+	display: block;
+	background: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	padding: 20px;
+	width: 100%;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.user-review .review-header {
+	display: block;
+	padding: 0 0 25px 0;
+	background: #fff;
+	font-size: 18px;
+}
+
+.user-review .review-body b {
+	margin: 0px 20px 0px 0px;
+	font-weight: normal;
+	width: 28%;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.user-review .review-content {
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	flex-direction: row;
+	padding-bottom: 25px;
+}
+
+.review-body .inp_wrap {
+	width: 550px;
+}
+
+.review-body .review-content-detail {
+	display: inline-block;
+	width: 550px;
+	padding: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	resize: none;
+	overflow: auto;
+}
+
+.upload-img-wrap {
+	display: block;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	width: 250px;
+	height: 200px;
+	margin-right: 40px;
+}
+/* ***************star rating//*************** */
+.review-body .rating-title {
+	padding-top: 12px;
+}
+
+.review-body .rating {
+	border: none;
+	float: left;
+}
+
+.rating>input {
+	display: none;
+}
+
+.rating>label:before {
+	margin: 5px;
+	font-size: 30px;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.rating>.half:before {
+	content: "\f089";
+	position: absolute;
+}
+
+.rating>label {
+	color: #ebebeb;
+	float: right;
+}
+
+.rating>input:checked ~ label, /* show gold star when clicked */ .rating:not(:checked)>label:hover,
+	/* hover current star */ .rating:not(:checked)>label:hover ~ label {
 	color: #FFD700;
 } /* hover previous stars in list */
-.review_form  .rating>input:checked+label:hover,
-	/* hover current star when changing rating */ .rating>input:checked 
-	 ~ label:hover, .review_form  .rating>label:hover ~ input:checked ~
-	label, /* lighten current selection */ .review_form  .rating>input:checked 
-	 ~ label:hover ~ label {
+.rating>input:checked+label:hover,
+	/* hover current star when changing rating */ .rating>input:checked ~
+	label:hover, .rating>label:hover ~ input:checked ~ label,
+	/* lighten current selection */ .rating>input:checked ~ label:hover ~
+	label {
 	color: #FFED85;
 }

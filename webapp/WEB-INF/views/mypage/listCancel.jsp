@@ -45,25 +45,25 @@
 				<div class="reserve_list">
 					<section>
 						<h3>예약취소 내역</h3>
-					<c:choose>
+						<c:choose>
 							<c:when test="${!empty list}">
-							<c:forEach var="list" items="${list}">
-								<ul class="list_wrap">
-									<li class="reservation-detail"><div>
-											<button type="button" class="btn_del">삭제</button>
-											<p class="pic">
-												<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="삼산 도브" class="align">
-											</p>
-											<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
-												<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}
-											</span></a>
-											<p class="btn_re">
-												<a href="${pageContext.request.contextPath}/infomation"> 다시 예약 </a>
-											</p>
-										</div></li>
-								</ul>
-							</c:forEach>
-						</c:when>
+								<c:forEach var="list" items="${list}">
+									<ul class="list_wrap">
+										<li class="reservation-detail"><div>
+												<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${cList.resNo}">삭제</button>
+												<p class="pic">
+													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="삼산 도브" class="align">
+												</p>
+												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
+													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}
+												</span></a>
+												<p class="btn_re">
+													<a href="${pageContext.request.contextPath}/reservation?pensionNo=${myVo.pNo}&datepicker=${myVo.inDate}&datepicker2="> 다시 예약 </a>
+												</p>
+											</div></li>
+									</ul>
+								</c:forEach>
+							</c:when>
 							<c:otherwise>
 								<div class="list_none">예약취소 내역이 없습니다.</div>
 							</c:otherwise>
@@ -89,7 +89,7 @@
 				</div>
 				<div class="modal-body">내역을 삭제하시겠습니까?</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-secondary btn-grey" data-dismiss="modal">취소</button>
 					<button id="btnDel" type="button" class="btn btn-primary">삭제</button>
 				</div>
 				<input type="hidden" name="no" value="" id="delNo">

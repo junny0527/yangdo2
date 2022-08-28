@@ -1,7 +1,12 @@
 package com.javaex.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.MyService;
 import com.javaex.service.PointsService;
 import com.javaex.service.SaleService;
 import com.javaex.vo.MyListVo;
 import com.javaex.vo.MyPointVo;
+import com.javaex.vo.UserReviewVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -209,15 +216,50 @@ public class MyController {
 		System.out.println("MyController>detail()");
 
 		List<MyListVo> myVo = myService.getDetail(resNo);
-		//Map<String, Object> sMap = saleService.getReservation(resNo);
+		Map<String, Object> sMap = saleService.getReservation(resNo);
 
 		model.addAttribute("myVo", myVo);
-		//model.addAttribute("sMap", sMap);
+		model.addAttribute("sMap", sMap);
 
 		return "mypage/detail";
 	}
 
 	/********* detail (all) **********/
+
+	/********* reviews **********/
+	@RequestMapping(value = "/review", method = { RequestMethod.GET, RequestMethod.POST })
+	public String reviewForm(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo,
+			@RequestParam(value = "pNo", required = false, defaultValue = "0") int pNo, HttpSession session,
+			Model model) {
+		System.out.println("MyController>writeReview");
+
+		return "mypage/myreview";
+	}
+
+	@RequestMapping(value = "/review/write", method = { RequestMethod.GET, RequestMethod.POST })
+	public String writeReview(@RequestParam(value = "resNo", required = true, defaultValue = "0") int resNo,
+			@RequestParam(value = "title", required = true, defaultValue = "0") String title,
+			@RequestParam(value = "stars", required = true, defaultValue = "0") double stars,
+			@RequestParam(value = "image1", required = false, defaultValue = "0") MultipartFile img1,
+			@RequestParam(value = "image2", required = false, defaultValue = "0") MultipartFile img2,
+			@RequestParam(value = "content", required = false, defaultValue = "0") String content,
+			@ModelAttribute UserReviewVo uRvo, HttpSession session) {
+		System.out.println("MyController>writeReview");
+
+		uRvo.setImg1(img1);
+		uRvo.setImg2(img2);
+		uRvo.setStars(stars);
+		uRvo.setResNo(resNo);
+		uRvo.setTitle(title);
+		uRvo.setContent(content);
+
+		int count = myService.writeReview(uRvo);
+		System.out.println(count);
+
+		return "redirect:/my/reservation";
+	}
+
+	/********* action (all) **********/
 	@ResponseBody
 	@RequestMapping(value = "/remove", method = { RequestMethod.GET, RequestMethod.POST })
 	public int remove(@RequestParam("no") int no) {

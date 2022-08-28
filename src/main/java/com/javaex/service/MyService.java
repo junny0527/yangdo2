@@ -1,14 +1,21 @@
 package com.javaex.service;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.MyDao;
 import com.javaex.vo.MyListVo;
+import com.javaex.vo.UserReviewVo;
 import com.javaex.vo.UserVo;
 
 @Service
@@ -132,4 +139,52 @@ public class MyService {
 		return myDao.updatePw(uVo);
 	}
 
+	// 리뷰 작성하기
+	public int writeReview(UserReviewVo uRvo) {
+		System.out.println("MyService>writeReview()");
+
+		String saveDir = "C:\\javaStudy\\upload";
+		MultipartFile img1 = uRvo.getImg1();
+		MultipartFile img2 = uRvo.getImg2();
+
+		if (!img1.equals(null)) {
+			String exName = img1.getOriginalFilename().substring(img1.getOriginalFilename().lastIndexOf("."));
+			System.out.println(exName);
+			String image1 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			String filePath1 = saveDir + "\\" + image1;
+
+			uRvo.setImage1(image1);
+			uRvo.setFilePath1(filePath1);
+
+			try {
+				byte[] fileData = img1.getBytes();
+				OutputStream out = new FileOutputStream(filePath1);
+				BufferedOutputStream bOut = new BufferedOutputStream(out);
+				bOut.write(fileData);
+				bOut.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if (!img1.equals(null)) {
+			String exName = img2.getOriginalFilename().substring(img2.getOriginalFilename().lastIndexOf("."));
+			String image2 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			String filePath2 = saveDir + "\\" + image2;
+
+			uRvo.setImage2(image2);
+			uRvo.setFilePath2(filePath2);
+
+			try {
+				byte[] fileData = img2.getBytes();
+				OutputStream out = new FileOutputStream(filePath2);
+				BufferedOutputStream bOut = new BufferedOutputStream(out);
+
+				bOut.write(fileData);
+				bOut.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return myDao.writeReview(uRvo);
+	}
 }

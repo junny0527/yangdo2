@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,7 @@
 <title>여행할때 양도어때</title>
 
 <!-- css -->
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/includes/userHeaderFooter.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mypage/mycommon.css">
@@ -19,6 +21,7 @@
 </head>
 
 <!-- js -->
+<script src="https://use.fontawesome.com/800a23ce81.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <!-- //js -->
@@ -60,7 +63,7 @@
 	<!----------------------------------취소 환불 모달---------------------------------------------->
 	<!-- Modal -->
 	<div class="modal fade" id="btn-cancel-modal" tabindex="-1" role="dialog" aria-labelledby="btn-cancel-modalTitle" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog" role="document">
 			<div class="modal-cancel-dialog">
 				<div class="modal-content">
 					<div class="modal-nav">
@@ -77,7 +80,7 @@
 							</p>
 						</div>
 						<div class="modal-guide-msg">
-							지금 예약 취소 시 <br> 취소 수수료 <b>0원</b> 이 발생합니다.
+							지금 예약 취소 시 <br> 취소 수수료 <b>${sMap.cancelPRICE}원</b> 이 발생합니다.
 						</div>
 					</div>
 					<div class="modal-body">
@@ -90,55 +93,23 @@
 									<div class="modal-body-top-content-detail">
 										<div class="body-left-content">결제금액</div>
 										<div class="body-right-content">
-											<div class="body-right-content-detail">
-												<p class="body-top-detail">40000원</p>
-											</div>
+											<div class="body-right-content-detail">${sMap.totalPRICE}원</div>
 										</div>
 									</div>
 									<div class="modal-body-top-content">
-										<div class="body-left-content">취소 수수료 발생</div>
+										<div class="body-left-content">취소 수수료</div>
 										<div class="body-right-content">
-											<div class="body-right-content-detail">
-												<p class="body-top-detail">0원</p>
-											</div>
-										</div>
-									</div>
-									<div class="modal-body-top-content">
-										<div class="body-left-content">ㄴ 포인트에서 차감</div>
-										<div class="body-right-content">
-											<div class="body-right-content-detail">
-												<p class="body-top-detail">0원</p>
-											</div>
-										</div>
-									</div>
-									<div class="modal-body-top-content">
-										<div class="body-left-content">ㄴ 현금에서 차감</div>
-										<div class="body-right-content">
-											<div class="body-right-content-detail">
-												<p class="body-top-detail">0원</p>
-											</div>
+											<div class="body-right-content-detail">${sMap.cancelPRICE}원</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="modal-body-top-bottom">
-								<div class="modal-body-top-content">
-									<div class="modal-body-top-content-detail">
-										<div class="body-left-content">포인트 환금</div>
-										<div class="body-right-content">
-											<div class="body-right-content-detail">
-												<p class="body-top-detail">0P</p>
-											</div>
-										</div>
-									</div>
-								</div>
 								<div class="modal-body-top-content cancel-total-wrap">
 									<div class="body-left-content">최종 환불금액</div>
 									<div class="body-right-content">
-										<div class="body-right-content-detail">
-											<p class="body-top-detail">4000원</p>
-										</div>
+										<div class="body-right-content-detail">${sMap.REFUND_PRICE}원</div>
 									</div>
 								</div>
 							</div>
@@ -157,10 +128,10 @@
 							</ul>
 							<div class="modal-cancel-footer">
 								<div class="modal-btns-wrap multiple_btns">
+									<input type="hidden" name="no" value="" id="cancelNo"> <input type="hidden" name="no" value="" id="cancelNo">
 									<button type="button" class="btn_flat btn-grey" data-dismiss="modal">닫기</button>
 									<button type="button" class="btn_flat btn-red" id="btnCancel" data-toggle="modal" data-target="#cancel-alert-modal">취소진행</button>
 								</div>
-								<input type="hidden" name="no" value="" id="cancelNo">
 							</div>
 						</div>
 					</div>
@@ -168,7 +139,8 @@
 			</div>
 		</div>
 	</div>
-
+	<!----------------------------------//취소 환불 모달---------------------------------------------->
+	<!----------------------------------취소 환불 완료 알림창---------------------------------------------->
 	<div class="alert_msg box_shadow" id="cancel-alert-modal">
 		<div class="msg popup_cont">
 			<div class="alert-contents">
@@ -177,11 +149,45 @@
 				</div>
 			</div>
 			<div class="btn_center">
-				<a href=# data-dismiss="modal" id="cancel-alert-modal-confirm">확인</a>
+				<a href=# data-dismiss="modal" id="alertConfirm">확인</a>
 			</div>
 		</div>
 	</div>
+	<!----------------------------------//취소 환불 완료 알림창---------------------------------------------->
+	<!----------------------------------리뷰 이미지 업로드 모달창 ---------------------------------------------->
+	<!-- 이미지등록 팝업(모달)창 -->
+	<div class="modal fade" id="addModal" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">이미지등록</h4>
+				</div>
+
+				<form action="${pageContext.request.contextPath }/gallery/upload" method="post" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="form-text">글작성</label> <input id="addModalContent" type="text" name="content" value="">
+						</div>
+						<div class="form-group">
+							<label class="form-text">이미지선택</label> <input id="file" type="file" name="file" value="">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn" id="btnUpload">등록</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!----------------------------------리뷰 이미지 업로드 모달창 ---------------------------------------------->
+
+
+
 </body>
+
 
 <script>
 	$(document).ready(function() {
@@ -211,7 +217,7 @@
 				if (count == 1) {
 					console.log("cancellation success");
 					$("#btn-cancel-modal").hide();
-					$("#cancel-alert-modal").show();
+					$("#cancel-alert-modal").show("fast");
 				} else {
 					console.log("cancellation failed to proceed");
 				}
@@ -221,10 +227,11 @@
 			}
 		});
 	});
-	
-	$("#cancel-alert-modal-confirm").on("click", function() {
+
+	$("#alertConfirm").on("click", function() {
 		console.log("confirm");
-		
+		location.href = "${pageContext.request.contextPath}/my/reservation"
+
 	});
 </script>
 </html>

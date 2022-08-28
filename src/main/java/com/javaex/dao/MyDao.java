@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.MyListVo;
+import com.javaex.vo.UserReviewVo;
 import com.javaex.vo.UserVo;
 
 @Repository
@@ -103,6 +104,12 @@ public class MyDao {
 		System.out.println("MyDao>updatePw()");
 
 		return sqlSession.update("my.updatePw", uVo);
+	}
+
+	public int writeReview(UserReviewVo uRvo) {
+		System.out.println("MyDao>updatePw()");
+
+		return sqlSession.insert("my.insertReview", uRvo);
 	}
 
 }

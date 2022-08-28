@@ -45,7 +45,7 @@
 				<div class="reserve_list">
 					<section class="list_wrap">
 						<h3>
-							양도대기 내역 <a class="more_info" style="display: block" href="${pageContext.request.contextPath}/my/list/relisted">더보기>></a>
+							양도대기 내역 <a class="more_info" style="display: block" href="${pageContext.request.contextPath}/my/list/relist">더보기>></a>
 						</h3>
 						<c:forEach var="yList" items="${myMap2.yList}" begin="0" end="1">
 							<ul class="list_wrap">
@@ -63,7 +63,7 @@
 					</section>
 					<section class="list_cancel">
 						<h3>
-							양도완료 내역<a class="more_info" href="${pageContext.request.contextPath}/my/list/transferred">더보기>></a>
+							양도완료 내역<a class="more_info" href="${pageContext.request.contextPath}/my/list/transfer">더보기>></a>
 						</h3>
 						<c:forEach var="tList" items="${myMap2.tList}" begin="0" end="1">
 
