@@ -58,7 +58,7 @@
 		</div>
 	</div>
 	<!-- header 지역선택 -->
-
+	
 	<!-- content -->
 	<div id="content" class="sub_wrap">
 		<!-- fillter -->
@@ -571,10 +571,23 @@
 				 // 시/도 선택 박스 초기화
 				 $("select[name^=sido1]").each(function() {
 				  	 	$selsido = $(this);
+				  	 	console.log($selsido);
+				  	 	var sido1 = '${searchVo.sido1}';
 				  	 	
-				  	 	$.each(eval(area0), function() {
-				  	 	$selsido.append("<option value='"+this+"'>"+this+"</option>");
-				  	});
+				  	 	if(sido1 == '') {
+						  	 	$.each(eval(area0), function() {
+						  	 	$selsido.append("<option value='"+this+"'>"+this+"</option>");
+						  	});
+				  	 		
+				  	 	}else {
+				  	 			$.each(eval(area0), function() {
+			  	 				$selsido.append("<option value='"+this+"' >"+sido1+"</option>");
+				  	 				
+						  	});
+				  	 	}
+				  	 	
+				  	 	
+				  	 	
 				  $selsido.next().append("<option value=''>구/군선택</option>");
 				 });
 				
@@ -584,12 +597,14 @@
 				 	 var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
 				 	 var $gugun = $(this).next(); // 선택영역 군구 객체
 				 	 
-				 	 
 				 	 var sido = $("#sido1 option:selected");
 				 	 console.log(sido);
+				 	
 				 	 
 				 	 var sidoName = sido.val();
 				 	 console.log(sidoName);
+				 	 
+				 	console.log($("#sido1").val(sidoName).prop("selected", true));
 				 	 
 				  $("option",$gugun).remove(); // 구군 초기화
 				
