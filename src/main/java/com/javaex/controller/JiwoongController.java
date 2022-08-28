@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.MainListService;
 import com.javaex.vo.MainListVo;
@@ -99,7 +100,11 @@ public class JiwoongController {
 		model.addAttribute("pList",pList);
 		
 		model.addAttribute("searchVo",searchVo);
-
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		
 		System.out.println("ControllerSearch"+pList);
 		

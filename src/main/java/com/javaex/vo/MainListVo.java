@@ -17,6 +17,8 @@ public class MainListVo {
 	private String puOpt;
 	private int yCount;
 	private int persons;
+	private String datepicker;
+	private String datepicker2;
 	
 	public MainListVo() {
 		super();
@@ -24,9 +26,11 @@ public class MainListVo {
 		this.persons = 2;
 	}
 
+	
+
 	public MainListVo(String pName, String lawName, int lawCode, String visitRoad3, String saveName, int penPrice,
 			int stars, String status, int pNo, String rCount, String gugunName, String amOpt, String puOpt, int yCount,
-			int persons) {
+			int persons, String datepicker, String datepicker2) {
 		super();
 		this.pName = pName;
 		this.lawName = lawName;
@@ -43,7 +47,35 @@ public class MainListVo {
 		this.puOpt = puOpt;
 		this.yCount = yCount;
 		this.persons = persons;
+		this.datepicker = datepicker;
+		this.datepicker2 = datepicker2;
 	}
+
+	
+	
+	public String getDatepicker() {
+		return datepicker;
+	}
+
+
+
+	public void setDatepicker(String datepicker) {
+		this.datepicker = datepicker;
+	}
+
+
+
+	public String getDatepicker2() {
+		return datepicker2;
+	}
+
+
+
+	public void setDatepicker2(String datepicker2) {
+		this.datepicker2 = datepicker2;
+	}
+
+
 
 	public String getpName() {
 		return pName;
@@ -165,15 +197,17 @@ public class MainListVo {
 		this.persons = persons;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "MainListVo [pName=" + pName + ", lawName=" + lawName + ", lawCode=" + lawCode + ", visitRoad3="
 				+ visitRoad3 + ", saveName=" + saveName + ", penPrice=" + penPrice + ", stars=" + stars + ", status="
 				+ status + ", pNo=" + pNo + ", rCount=" + rCount + ", gugunName=" + gugunName + ", amOpt=" + amOpt
-				+ ", puOpt=" + puOpt + ", yCount=" + yCount + ", persons=" + persons + "]";
+				+ ", puOpt=" + puOpt + ", yCount=" + yCount + ", persons=" + persons + ", datepicker=" + datepicker
+				+ ", datepicker2=" + datepicker2 + "]";
 	}
 
-	
 	
 	
 }

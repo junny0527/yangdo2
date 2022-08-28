@@ -250,19 +250,19 @@
 					<!-- 사진정보 -->
 				<ul>
 					<c:forEach var="pensionVo" items="${pList}" varStatus="i">
-						<input type= "hidden" class = "lawNames" value = "${pensionVo.lawName}">
-						<input type= "hidden" class = "pName" value = "${pensionVo.pName}">
+						<input type= "hidden" class = "lawNames" name="lawNames" value = "${pensionVo.lawName}">
+						<input type= "hidden" class = "pName" name="pNames" value = "${pensionVo.pName}">
 						<div class="title">
 							<h3>${pensionVo.gugunName}</h3>
 						</div>
 						<li class="list_2 adcno3"><a
-							href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${searchVo.datepicker}&datepicker2=${searchVo.datepicker2}">
+							href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
 								<img class="lazy align"
 								src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}"
 								style="margin-top: -159px; display: block;">
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${pensionVo.yCount ge 1}">
+										<c:if test="${pensionVo.status == 6}">
 											<span>양도중</span>
 										</c:if>
 									</div>
@@ -375,22 +375,33 @@
 		var addressArray = [];
 		var addressName = [];
 		var addresslist = $('.lawNames');
+		var pNamelist = $('.pName');
 		
 		for(var i=0; i<addresslist.length; i++){
 			addressArray.push({
-				'groupAddress' : $(".lawNames").eq(i).val()
-			});
-			
-			addressName.push({
-				'groupName' : $('.pName').eq(i).val()
+				'groupAddress' : $("input[name='lawNames']").eq(i).val(),
+				'groupName' : $("input[name='pNames']").eq(i).val()
 			});
 			
 		}
 		
+		for(var i=0; i<pNamelist.length; i++){
+			addressName.push({
+				'groupName' : $("input[name='pNames']").eq(i).val()
+			});
+		}
+		
+		
+		
 		for(var i=0; i<addressArray.length; i++){
+			
+			var arr = [];
+			arr[i] = addressArray[i].groupName;
+			console.log(arr.length);
 			// 주소로 좌표를 검색합니다
 			geocoder.addressSearch(
 					addressArray[i].groupAddress,
+					
 					function(result, status, data) {
 				    	// 정상적으로 검색이 완료됐으면 
 				    	if (status === kakao.maps.services.Status.OK) {
@@ -400,13 +411,9 @@
 				            map: map,
 				            position: coords
 				        });
-				        
 				        marker.setMap(map);
+			        	var content = '<div style="width:150px;text-align:center;padding:6px 0;">'+ arr[0]  +'</div>'
 				        
-				        console.log(addressName);
-				        
-			        	var content = '<div style="width:150px;text-align:center;padding:6px 0;">'+ $(".pName").val() +'</div>'
-					        
 				        var customOverlay = new daum.maps.CustomOverlay({
 				        	position: coords,
 				        	content: content
