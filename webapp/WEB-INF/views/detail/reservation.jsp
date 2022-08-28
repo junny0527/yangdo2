@@ -269,8 +269,8 @@
 					</c:forEach>
 					<c:choose>
 						<c:when test="${crtPage == 1}">
-							<a href="#">
-								<button id="left">
+							<a href="#" style="cursor:default;">
+								<button style="visibility:hidden;" id="left">
 									<img src="${pageContext.request.contextPath}/assets/image/detail/left.png">
 								</button>
 							</a>
@@ -278,33 +278,83 @@
 					</c:choose>
 					<ul>
 						<c:forEach items="${pMap.imgList}" var="imgList" varStatus="status">
-							<c:if test="${status.count <= 6}">
-								<li>
-									<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
-								</li>
-							</c:if>
+							<c:choose>
+								<c:when test="${pMap.imgSize == 1}">
+									<li style="position:relative; top:-33.2%; left:-24.5%;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 2}">
+									<li style="position:relative; top:-33.2%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 3 && status.count < 3}">
+									<li style="position:relative; top:-8.3%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 3 && status.count == 3}">
+									<li style="position:relative; top:-25%; left:-24.5%;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 4 && status.count < 3}">
+									<li style="position:relative; top:-8.3%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 4 && status.count == 3}">
+									<li style="position:relative; top:-25%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 4 && status.count == 4}">
+									<li style="position:relative; top:-25%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count < 3}">
+									<li style="position:relative; top:0; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count == 3}">
+									<li style="position:relative; top:0; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count == 4}">
+									<li style="position:relative; top:0; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count == 5}">
+									<li style="position:relative; top:0; left:-24.5%;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 6}">
+									<li>
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+							</c:choose>
 						</c:forEach>
 					</ul>
 					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
-						<c:choose>
-							<c:when test="${crtPage == page && crtPage < 4}">
-								<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
-									<button id="right">
-										<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-									</button>
-								</a>
-							</c:when>
-						</c:choose>
+						<c:if test="${ (pMap.totalCnt - (pMap.imgSize * page )) > 0 && pMap.imgSize == 6}">	
+							<c:choose>
+								<c:when test="${crtPage == page && crtPage < 4}">
+									<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
+										<button id="right">
+											<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
+										</button>
+									</a>
+								</c:when>
+							</c:choose>
+						</c:if>
 					</c:forEach>
-					<c:choose>
-						<c:when test="${crtPage == 4}">
-							<a href="#">
-								<button id="right">
-									<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
-								</button>
-							</a>
-						</c:when>
-					</c:choose>
 				</div>
 			</div>
 			<!-- //gallery -->
@@ -358,7 +408,7 @@
 			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == 6}">
-						<form action="${pageContext.request.contextPath}/res/reserve">
+						<form action="${pageContext.request.contextPath}/res/yangdoreserve/${roomVo.NO}">
 										<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
 										<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
 										<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
@@ -375,14 +425,15 @@
 										<input type="hidden"  name=nickName value="${userVo.nickName}">
 										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
 										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
-								<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
+								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
 								<div class="roomInfo">
 									<span class="roomName">${roomVo.ROOM_NAME}</span>
 									<div class="infoBtn">
 										<span>객실 이용안내</span>
-										<button class="information_Use" name="${roomVo.NO}">보기</button>
+										<button type="button" class="information_Use" name="${roomVo.NO}">보기</button>
 									</div>
 									<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 									<div class="defaultForm" id="y-room${roomVo.NO}" data-min="0" data-price="${roomVo.PRICE}" data-y_adult="${roomVo.ADULT_PRICE}"
@@ -438,27 +489,27 @@
 							<!-- //room -->
 						</form>
 					</c:when>
-					<c:when test="${roomVo.STATUS == 3}">
+					<c:when test="${roomVo.STATUS == 1}">
 						<form action="#">
 							<div class="room reservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
-								<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
+								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
 								<div class="roomInfo">
 									<span class="roomName">${roomVo.ROOM_NAME}</span>
 									<div class="infoBtn">
 										<span>객실 이용안내</span>
-										<button class="information_Use" name="${roomVo.NO}">보기</button>
+										<button class="information_Use" type="button" name="${roomVo.NO}">보기</button>
 									</div>
 									<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 									<div class="defaultForm">
 										<div>
 											<span class="people">성인</span>
 											<div>
-												<button class="minus">
+												<button type="button" class="minus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span>${roomVo.ADULT}명</span>
-												<button class="plus">
+												<button type="button" class="plus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -466,11 +517,11 @@
 										<div>
 											<span class="people">아동</span>
 											<div>
-												<button class="minus">
+												<button type="button" class="minus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span>${roomVo.KID}명</span>
-												<button class="plus">
+												<button type="button" class="plus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -478,11 +529,11 @@
 										<div>
 											<span class="people">유아</span>
 											<div>
-												<button class="minus">
+												<button type="button" class="minus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span>${roomVo.BABY}명</span>
-												<button class="plus">
+												<button type="button" class="plus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -493,7 +544,7 @@
 										</div>
 									</div>
 									<!-- //defaultForm -->
-									<button>예약완료</button>
+									<button type="button">예약완료</button>
 								</div>
 								<!-- //roomInfo -->
 							</div>
@@ -517,6 +568,7 @@
 										<input type="hidden"  name=nickName value="${userVo.nickName}">
 										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
 										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room noReservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button type="button" class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>

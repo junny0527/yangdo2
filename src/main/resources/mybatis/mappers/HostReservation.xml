@@ -28,7 +28,7 @@
 				pension p, rooms r
 			where
 				p.no = r.pension_no
-			and p.no = #{hostNo}
+			and p.no = #{pensionNo}
 			) info
 		where
 			res.room_no = info.room_no
@@ -70,7 +70,7 @@
 				pension p, rooms r
 			where
 				p.no = r.pension_no
-			and p.no = #{hostNo}
+			and p.no = #{pensionNo}
 			) info
 		where
 			res.room_no = info.room_no

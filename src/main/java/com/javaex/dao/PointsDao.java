@@ -15,11 +15,15 @@ public class PointsDao {
 	private static final String SQLMAP = "points.";
 	@Autowired
 	private SqlSession sqlSession;
+	
+//===========================================================================================================	
 
 	// 사용포인트 넣어주기
 	public void pointsInsert(RePayVo bean) {
 		sqlSession.insert(SQLMAP + "pointsInsert", bean);
 	}
+	
+//===========================================================================================================	
 
 	// 썸포인트 뽑아오기
 	public Map<String, Object> getpoints(int userNo) {
@@ -28,7 +32,8 @@ public class PointsDao {
 		return poMap;
 	}
 	
-
+//===========================================================================================================	
+	
 	// 포인트 가져오기
 	public List<MyPointVo> getUserPoint(int userNo){
 		

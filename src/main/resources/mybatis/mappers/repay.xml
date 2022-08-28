@@ -2,47 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="repay">
 
-
-	<!-- 예약폼 가져오기 -->
-	<!-- <select id="getRePay" parameterType="int" resultType="Map">
-		SELECT
-			 r.no NO
-			,ro.no ROOMNO
-			,u.no
-			,u.email
-			,r.user_no USERNO
-			,po.no POINTNO
-			,po.point POINTS
-			,r.name 
-			,r.hp RHP
-			,TO_CHAR(r.check_in ,'YYYY-MM-DD') CHECKIN 
-		    ,TO_CHAR(TO_DATE(r.check_in, 'YYYY-MM-DD'), 'DY') AS CHECKINDAY
-	        ,TO_CHAR(r.check_out ,'YYYY-MM-DD') CHECKOUT
-	        ,TO_CHAR(TO_DATE(r.check_out, 'YYYY-MM-DD'), 'DY') AS CHECKOUTDAY
-	        ,p.check_in CHECKINTIME
-	        ,p.check_out CHECKOUTTIME
-			,ro.room_name RNAME
-			,p.name PNAME
-			,p.add_adult_price
-			,p.add_kid_price
-			,p.add_baby_price
-			,r.adult
-			,r.kid
-			,r.baby
-			,r.total_price
-			,r.trans_price
-			,r.status
-			,r.reg_date
-			,r.p_r_no
-			,r.pay_status
-		FROM reservations r
-		JOIN rooms ro ON r.room_no = ro.NO
-		JOIN pension p ON p.no = ro.pension_no
-		JOIN users u ON u.no =r.user_no
-		LEFT JOIN points po ON r.no = po.reserve_no
-		WHERE 1 = 1
-		AND ro.no = #{no}
-	</select> -->
 	
 	<!-- 양도폼 가져오기 -->
 	<select id="getyangdoRePay" parameterType="int" resultType="Map">
@@ -56,9 +15,7 @@
 			,r.name 
 			,r.hp RHP
 			,TO_CHAR(r.check_in ,'YYYY-MM-DD') CHECKIN 
-		    ,TO_CHAR(TO_DATE(r.check_in, 'YYYY-MM-DD'), 'DY') AS CHECKINDAY
 	        ,TO_CHAR(r.check_out ,'YYYY-MM-DD') CHECKOUT
-	        ,TO_CHAR(TO_DATE(r.check_out, 'YYYY-MM-DD'), 'DY') AS CHECKOUTDAY
 	        ,p.check_in CHECKINTIME
 	        ,p.check_out CHECKOUTTIME
 			,ro.room_name RNAME
