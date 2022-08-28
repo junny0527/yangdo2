@@ -350,7 +350,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    			if(res.count === 1) {
 	    	    			// res 
 	    	    			alert("결제가 성공되었습니다.");
-	    	    			location.href = `/yangdo/my/reservation?no=${res.no}`;
+	    	    			location.href = `/yangdo/my/reservation`; //?no=${res.no} 예약번호 필요시 넣어주며됨
 	    	    			} else {
 	    	    				alert("실패")
 	    	    			}
