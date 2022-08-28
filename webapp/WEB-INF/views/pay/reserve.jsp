@@ -54,16 +54,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 								
 								<p data-v-33033856="">
 									<strong data-v-33033856="">객실명/기간</strong>${rpMap.roomName } /
-									${rpMap.DDay}박
+									${rpMap.datepicker2} - {rpMap.datepicker}박
 								</p>
 								<p data-v-33033856="">
 									<strong data-v-33033856="">인원수</Strong>${rpMap.adult+rpMap.kid+rpMap.baby}명
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크인</strong>${rpMap.datepicker }  ${rpMap.check_in }
+									<strong data-v-33033856="">체크인</strong>${rpMap.datepicker } / ${rpMap.check_in }
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크아웃</strong>${rpMap.datepicker2 }  ${rpMap.check_out }
+									<strong data-v-33033856="">체크아웃</strong>${rpMap.datepicker2 } / ${rpMap.check_out }
 								</p>
 							</section>
 							<section class="total_price_pc" data-v-33033856="">

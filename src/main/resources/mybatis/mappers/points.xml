@@ -12,7 +12,7 @@
 		WHERE 
 			POINTS.RESERVE_NO = RESERVATIONS.NO
 			AND RESERVATIONS.USER_NO = USERS.NO
-			AND RESERVATIONS.user_no = #{userNo};
+			AND RESERVATIONS.user_no = #{userNo}
 
 	</select> 
 	
