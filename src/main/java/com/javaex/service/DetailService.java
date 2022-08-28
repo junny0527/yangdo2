@@ -62,6 +62,8 @@ public class DetailService {
 		//이미지 리스트 가져오기
 		List<PensionImageVo> imgList = detailDao.imgList(pensionNo, startRnum, endRnum);
 		
+		
+		
 		//전체 사진 개수
 		int totalCnt = detailDao.selectTotalCnt(pensionNo);	
 		
@@ -103,7 +105,7 @@ public class DetailService {
 		pMap.put("datepicker2", datepicker2);
 		pMap.put("crtPage", crtPage);
 		pMap.put("area", area);
-		
+		pMap.put("imgSize", imgList.size());
 		return pMap;
 	}
 	
