@@ -117,15 +117,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">추가인원수 가격 및 포인트 사용 내역</strong> <br>
+											<strong data-v-3ce5aaac="">(인원 추가 정보 및 포인트사용 내역)</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${rpMap.adult}명</span><b data-v-3ce5aaac=""class="">0원</b>
+													${rpMap.adult-rpMap.standard}명</span><b data-v-3ce5aaac=""class="adultss"><fmt:formatNumber
+														value="${(rpMap.adult-rpMap.standard)*rpMap.priceadult}" pattern="#,###" />원</b>
 											</div>
+											
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
 													${rpMap.kid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="0" pattern="#,###" />원</b>
+														value="${rpMap.kid * rpMap.pricekid}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
@@ -249,21 +251,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			//------어른,아이,유아계산---
 			let adult = Number('${rpMap.adult}');
 			let kid = Number('${rpMap.kid}');
-			let baby = Number('${rpMap.baby}');
-			let adultpri = Number('${rpMap.adultPrice}');
-			let kidpri = Number('${rpMap.kidPrice}');
+			let standard = Number('${rpMap.standard}')
+			let adultpri = Number('${rpMap.priceadult}');
+			let kidpri = Number('${rpMap.pricekid}');
 			
 			
-			const user = '${authUser}';
-			console.log("user: ", user);
 			$("#pointBtn").text(pBtnFormat("포인트 사용 " + point + "P"));
 			$('#savePoint').text(pointFormat(minPoint - point+"P"));
 			$("#usedPoint").text(upointFormat("-" + point + " P"))
 			$('.total').text(moneyFormat(totalPrice - point +"원"));
 			$('#product-amount').text(stFormat("구매총액"+totalPrice - point +"원"));
 			$('#kidss').text(stFormat(kid * kidpri +"원"));
+			$('#adultss').text(stFormat((adult-standard) * adultpri +"원"));
 			
-
+			//---유저
+			const user = '${authUser}';
+			console.log("user: ", user);
+			
 		});
 	});
 	
@@ -346,7 +350,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    			if(res.count === 1) {
 	    	    			// res 
 	    	    			alert("결제가 성공되었습니다.");
-	    	    			location.href = `/mypage?no=${res.no}`;
+	    	    			location.href = `/yangdo/my/reservation?no=${res.no}`;
 	    	    			} else {
 	    	    				alert("실패")
 	    	    			}

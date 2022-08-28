@@ -114,23 +114,24 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 										data-v-f785cca6="">
 										<h3 data-v-3ce5aaac="">할인 수단 선택</h3>
 										<div class="product-amount" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">구매총액</strong><b data-v-3ce5aaac="">${params.transPrice}원</b>
+											<strong data-v-3ce5aaac="">구매가격</strong><b data-v-3ce5aaac="">${params.transPrice}원</b>
 										</div>
 										<hr>
 										<div class="product-total-service" data-v-3ce5aaac="">
-											<strong data-v-3ce5aaac="">(인원 추가비용 및 포인트사용 내역)</strong> <br>
+											<strong data-v-3ce5aaac="">(인원 추가 정보 및 포인트사용 내역)</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${params.yAdult}명</span><b data-v-3ce5aaac="">${rpMap.ADULT_KID_PRICE*params.yAdult}원</b>
+													${rpMap.adult-rpMap.standard}명</span><b data-v-3ce5aaac=""class="adultss"><fmt:formatNumber
+														value="${(rpMap.adult-rpMap.standard)*rpMap.priceadult}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${params.yKid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="${rpMap.ADD_KID_PRICE*rpMap.yKid}" pattern="#,###" />원</b>
+													${rpMap.kid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
+														value="${rpMap.kid * rpMap.pricekid}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
-													${params.yBaby}명</span><b data-v-3ce5aaac="">${rpMap.ADD_BABY_PRICE*params.yBaby}원</b>
+													${rpMap.baby}명</span><b data-v-3ce5aaac="">0원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
@@ -251,22 +252,24 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 				return false;
 			}
 			//------어른,아이,유아계산---
-			let adult = Number('${rpMap.ADULT}');
-			let kid = Number('${rpMap.KID}');
-			let baby = Number('${rpMap.BABY}');
-			let adultpri = Number('${rpMap.ADULT_KID_PRICE}');
-			let kidpri = Number('${rpMap.ADD_KID_PRICE}');
-			let babypri = Number('${rpMap.ADD_BABY_PRICE}');
+				let adult = Number('${rpMap.adult}');
+			let kid = Number('${rpMap.kid}');
+			let standard = Number('${rpMap.standard}')
+			let adultpri = Number('${rpMap.priceadult}');
+			let kidpri = Number('${rpMap.pricekid}');
 			
-			const user = '${authUser}';
-			console.log("user: ", user);
+
 			$("#pointBtn").text(pBtnFormat("포인트 사용 " + point + "P"));
 			$('#savePoint').text(pointFormat(minPoint - point+"P"));
 			$("#usedPoint").text(upointFormat("-" + point + " P"))
 			$('.total').text(moneyFormat(totalPrice - point +"원"));
 			$('#product-amount').text(stFormat("구매총액"+totalPrice - point +"원"));
 			$('#kidss').text(stFormat(kid * kidpri +"원"));
+			$('#adultss').text(stFormat((adult-standard) * adultpri +"원"));
 			
+			//---유저
+			const user = '${authUser}';
+			console.log("user: ", user);
 
 		});
 	});
@@ -350,7 +353,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    			if(res.count === 1) {
 	    	    			// res 
 	    	    			alert("결제가 성공되었습니다.");
-	    	    			location.href = `/mypage?no=${res.no}`;
+	    	    			location.href = `/yangdo/my/reservation?no=${res.no}`;
 	    	    			} else {
 	    	    				alert("실패")
 	    	    			}
@@ -365,11 +368,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	        alert("결제가 실패되었습니다.")
 	    	    }
 	      }); 
-		/* let data = '${rpMap}';
-		console.log("rpMap:", data);
-		console.log("requestPay invoked......")
-		console.log("roomPay: ", document.roomPay);
-		console.log("allItems: ", $("#roomPay").serialize()); */
 	}
 
 	//동의버튼

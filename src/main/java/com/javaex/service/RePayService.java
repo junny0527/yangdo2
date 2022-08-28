@@ -71,13 +71,11 @@ public class RePayService {
 				//맵에서 꺼내기
 				String checkIn = (String)rpMap.get("CHECKIN");
 				String checkOut = (String)rpMap.get("CHECKOUT");
-				String checkInDay = (String)rpMap.get("CHECKINDAY");
-				String checkOutDay = (String)rpMap.get("CHECKOUTDAY");
 				String checkInTime = (String)rpMap.get("CHECKINTIME");
 				String checkOutTime = (String)rpMap.get("CHECKOUTTIME");
 		// 스플릿으로 짤라주기
-				String CheckIn = checkIn +" "+checkInDay+" "+checkInTime ;
-				String CheckOut = checkOut +" "+checkOutDay+" "+checkOutTime;
+				String CheckIn = checkIn +" "+checkInTime ;
+				String CheckOut = checkOut +" "+checkOutTime;
 				Date dt1 = null;
 				//데이트형으로 바꿔주기
 				try {

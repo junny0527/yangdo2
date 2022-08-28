@@ -15,9 +15,7 @@
 			,r.name 
 			,r.hp RHP
 			,TO_CHAR(r.check_in ,'YYYY-MM-DD') CHECKIN 
-		    ,TO_CHAR(TO_DATE(r.check_in, 'YYYY-MM-DD'), 'DY') AS CHECKINDAY
 	        ,TO_CHAR(r.check_out ,'YYYY-MM-DD') CHECKOUT
-	        ,TO_CHAR(TO_DATE(r.check_out, 'YYYY-MM-DD'), 'DY') AS CHECKOUTDAY
 	        ,p.check_in CHECKINTIME
 	        ,p.check_out CHECKOUTTIME
 			,ro.room_name RNAME
