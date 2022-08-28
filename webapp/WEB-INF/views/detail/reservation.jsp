@@ -278,13 +278,68 @@
 					</c:choose>
 					<ul>
 						<c:forEach items="${pMap.imgList}" var="imgList" varStatus="status">
-							<c:if test="${status.count <= 6}">
-								<c:if test="${status.count == 1}">
-									<li style="position:relative; top:-33%; right:28%;">
+							<c:choose>
+								<c:when test="${pMap.imgSize == 1}">
+									<li style="position:relative; top:-33.2%; left:-24.5%;">
 										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
 									</li>
-								</c:if>
-							</c:if>
+								</c:when>
+								<c:when test="${pMap.imgSize == 2}">
+									<li style="position:relative; top:-33.2%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 3 && status.count < 3}">
+									<li style="position:relative; top:-8.3%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 3 && status.count == 3}">
+									<li style="position:relative; top:-25%; left:-24.5%;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 4 && status.count < 3}">
+									<li style="position:relative; top:-8.3%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 4 && status.count == 3}">
+									<li style="position:relative; top:-25%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 4 && status.count == 4}">
+									<li style="position:relative; top:-25%; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count < 3}">
+									<li style="position:relative; top:0; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count == 3}">
+									<li style="position:relative; top:0; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count == 4}">
+									<li style="position:relative; top:0; left:0;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 5 && status.count == 5}">
+									<li style="position:relative; top:0; left:-24.5%;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+								<c:when test="${pMap.imgSize == 6}">
+									<li>
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:when>
+							</c:choose>
 						</c:forEach>
 					</ul>
 					<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
@@ -299,16 +354,7 @@
 								</c:when>
 							</c:choose>
 						</c:if>
-						
 					</c:forEach>
-					
-					
-					
-					
-					
-					
-					
-					
 				</div>
 			</div>
 			<!-- //gallery -->
@@ -381,12 +427,12 @@
 										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
 							<div class="room">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
-								<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
+								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
 								<div class="roomInfo">
 									<span class="roomName">${roomVo.ROOM_NAME}</span>
 									<div class="infoBtn">
 										<span>객실 이용안내</span>
-										<button class="information_Use" name="${roomVo.NO}">보기</button>
+										<button type="button" class="information_Use" name="${roomVo.NO}">보기</button>
 									</div>
 									<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 									<div class="defaultForm" id="y-room${roomVo.NO}" data-min="0" data-price="${roomVo.PRICE}" data-y_adult="${roomVo.ADULT_PRICE}"
@@ -446,23 +492,23 @@
 						<form action="#">
 							<div class="room reservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
-								<button class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
+								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
 								<div class="roomInfo">
 									<span class="roomName">${roomVo.ROOM_NAME}</span>
 									<div class="infoBtn">
 										<span>객실 이용안내</span>
-										<button class="information_Use" name="${roomVo.NO}">보기</button>
+										<button class="information_Use" type="button" name="${roomVo.NO}">보기</button>
 									</div>
 									<div class="settingPeople">기준 ${roomVo.STANDARD_PEOPLE}인 / 최대 ${roomVo.MAX_PEOPLE}인</div>
 									<div class="defaultForm">
 										<div>
 											<span class="people">성인</span>
 											<div>
-												<button class="minus">
+												<button type="button" class="minus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span>${roomVo.ADULT}명</span>
-												<button class="plus">
+												<button type="button" class="plus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -470,11 +516,11 @@
 										<div>
 											<span class="people">아동</span>
 											<div>
-												<button class="minus">
+												<button type="button" class="minus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span>${roomVo.KID}명</span>
-												<button class="plus">
+												<button type="button" class="plus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -482,11 +528,11 @@
 										<div>
 											<span class="people">유아</span>
 											<div>
-												<button class="minus">
+												<button type="button" class="minus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/minus.png">
 												</button>
 												<span>${roomVo.BABY}명</span>
-												<button class="plus">
+												<button type="button" class="plus" style="cursor:not-allowed;">
 													<img src="${pageContext.request.contextPath}/assets/image/detail/plus.png">
 												</button>
 											</div>
@@ -497,7 +543,7 @@
 										</div>
 									</div>
 									<!-- //defaultForm -->
-									<button>예약완료</button>
+									<button type="button">예약완료</button>
 								</div>
 								<!-- //roomInfo -->
 							</div>

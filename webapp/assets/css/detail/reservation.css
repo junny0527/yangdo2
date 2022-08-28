@@ -783,7 +783,7 @@ a:active  {color: #ffffff; text-decoration: none;}   /* 클릭했을때 빨간�
 	background-color:#9ea7aa;
 }
 
-#roomList >  form > .reservation > .roomInfo > a > button:hover {
+#roomList > form > .reservation > .roomInfo > button:hover {
 	cursor:not-allowed;
 }
 
