@@ -28,6 +28,10 @@ public class HostCompanyregDao {
 		return sqlSession.selectOne("HostCompanyreg.getCompanyNo");
 	}
 	
+	public int getCompanyNoBySession(int userNo) {
+		return sqlSession.selectOne("HostCompanyreg.getCompanyNoBySession", userNo);
+	}
+	
 	public int insertBTArray(HostCompanyregVo newVo) {
 		return sqlSession.insert("HostCompanyreg.insertBTA", newVo);
 	}
@@ -36,6 +40,17 @@ public class HostCompanyregDao {
 		return sqlSession.insert("HostCompanyreg.insertBGA", newVo);
 	}
 	
+	public HostCompanyregVo getCompanyinfo(int userNo) {
+		return sqlSession.selectOne("HostCompanyreg.getCompanyinfo", userNo);
+	}
+	/*
+	public List<HostCompanyregVo> getBusinesstype(int companyNo) {
+		return sqlSession.selectList("HostCompanyreg.getBusinesstype", companyNo);
+	}
 	
+	public List<HostCompanyregVo> getBusinessgroup(int companyNo) {
+		return sqlSession.selectList("Hostcompanyreg.getBusinessgroup", companyNo);
+	}
+	*/
 	
 }

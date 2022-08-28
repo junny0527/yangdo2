@@ -94,7 +94,7 @@
 			</li>
 		</ul>
 	</div>
-	<form class="form-horizontal" action="${pageContext.request.contextPath}/host/companyupdate" method="get">
+	<form class="form-horizontal" action="${pageContext.request.contextPath}/host/updatesave" method="get">
 		<table class="table table-bordered resize">
 			<thead></thead>
 			<tbody>
@@ -118,8 +118,8 @@
 										<option value="019">019</option>
 									</select>
 								</div>
-								<input class="form-control small-size" type="text" name="phone2">
-								<input class="form-control small-size" type="text" name="phone3">
+								<input class="form-control small-size" type="text" name="phone2" value = "${cVo.phone2}">
+								<input class="form-control small-size" type="text" name="phone3" value = "${cVo.phone3}">
 							</span>
 						</div>
 						<div class="form-layer mb_24">
@@ -151,8 +151,8 @@
 										<option value="019">019</option>
 									</select>
 								</div>
-								<input class="form-control small-size" type="text" name="tel2">
-								<input class="form-control small-size" type="text" name="tel3">
+								<input class="form-control small-size" type="text" name="tel2" value = "${cVo.tel2}">
+								<input class="form-control small-size" type="text" name="tel3" value = "${cVo.tel3}">
 							</span>
 						</div>
 					</td>
@@ -172,7 +172,7 @@
                                            <option value="없음">선택</option>
                                            <option value="한국은행">한국은행</option>
                                            <option value="산업은행">산업은행</option>
-                                           <option value="기업은행">기업은행</option>
+                                           	<option value="기업은행">기업은행</option>
                                            <option value="국민은행">국민은행</option>
                                            <option value="외환은행">외환은행</option>
                                            <option value="수협중앙회">수협중앙회</option>
@@ -197,6 +197,87 @@
                                            <option value="산림조합중앙회">산림조합중앙회</option>
                                            <option value="케이뱅크">케이뱅크</option>
                                            <option value="카카오뱅크">카카오뱅크</option>
+                                           <c:if test = "${cVo.bankName eq '한국은행'}">
+                                           	<option value="한국은행" selected="selected">한국은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '산업은행'}">
+                                          	<option value="산업은행" selected="selected">산업은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '기업은행'}">
+                                           	<option value="기업은행" selected="selected">기업은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '국민은행'}">
+                                           	<option value="국민은행" selected="selected">국민은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '외환은행'}">
+                                           	<option value="외환은행" selected="selected">외환은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '수협중앙회'}">
+                                           	<option value="수협중앙회" selected="selected">수협중앙회</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '수출입은행'}">
+                                           	<option value="수출입은행" selected="selected">수출입은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '농협중앙회'}">
+                                           	<option value="농협중앙회" selected="selected">농협중앙회</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '단위농협(축협)'}">
+                                           	<option value="단위농협(축협)" selected="selected">단위농협(축협)</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '우리은행'}">
+ 	                                       	<option value="우리은행" selected="selected">우리은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq 'SC제일은행'}">
+                                           	<option value="SC제일은행" selected="selected">SC제일은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '한국씨티은행'}">
+                                           	<option value="한국씨티은행" selected="selected">한국씨티은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '새마을금고'}">
+                                           	<option value="새마을금고" selected="selected">새마을금고</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '신협중앙회'}">
+                                           	<option value="신협중앙회" selected="selected">신협중앙회</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '우체국'}">
+                                          	 <option value="우체국" selected="selected">우체국</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '하나은행'}">
+                                           	<option value="하나은행" selected="selected">하나은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '신한은행'}">
+                                           	<option value="신한은행" selected="selected">신한은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '대구은행'}">
+                                           	<option value="대구은행" selected="selected">대구은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '부산은행'}">
+                                           	<option value="부산은행" selected="selected">부산은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '광주은행'}">
+                                           	<option value="광주은행" selected="selected">광주은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '제주은행'}">
+                                           	<option value="제주은행" selected="selected">제주은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '전북은행'}">
+                                           	<option value="전북은행" selected="selected">전북은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '경남은행'}">
+                                           	<option value="경남은행" selected="selected">경남은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '상호저축은행'}">
+                                           	<option value="상호저축은행" selected="selected">상호저축은행</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '산림조합중앙회'}">
+                                          	<option value="산림조합중앙회" selected="selected">산림조합중앙회</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '케이뱅크'}">
+                                           	<option value="케이뱅크" selected="selected">케이뱅크</option>
+                                           </c:if>
+                                           <c:if test = "${cVo.bankName eq '카카오뱅크'}">
+                                           	<option value="카카오뱅크" selected="selected">카카오뱅크</option>
+                                           </c:if>
                                        </select>
                                    </div>
                                </span>
@@ -205,22 +286,22 @@
                            <div class="form-layer mb_24">
                                <span class="form-title">예금주</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name = "accountHolder" placeholder="이름을 입력하세요." value="">
+                                   <input class="form-control normal-size" type="text" name = "accountHolder" placeholder="이름을 입력하세요." value="${cVo.accountHolder}">
                                </span>
                            </div>
                            
                            <div class="form-layer mb_08">
                                <span class="form-title">계좌 번호</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name = "account" placeholder="숫자만 입력하세요." value="">
+                                   <input class="form-control normal-size" type="text" name = "account" placeholder="숫자만 입력하세요." value="${cVo.account}">
                                </span>
                            </div>
                            
                            <div class="form-layer mb_08">
                                <span class="form-title">정산 주기</span>
                                <span class="form-body label-layer">
-                                   <label for="W"><input id="W" name="settlementCycle" type="radio" value="week"> 주정산</label>
-                                   <label for="M"><input id="M" name="settlementCycle" type="radio" value="month"> 월정산</label>
+                                   <label for="W"><input id="W" name="settlementCycle" type="radio" value="week"<c:if test="${cVo.settlementCycle eq 'week'}">checked</c:if>> 주정산</label>
+                                   <label for="M"><input id="M" name="settlementCycle" type="radio" value="month"<c:if test="${cVo.settlementCycle eq 'month'}">checked</c:if>> 월정산</label>
                                </span>
                            </div>
                            
@@ -239,8 +320,8 @@
                        <td>
                            <div id = "tax" class="form-layer label-layer mb_24">
                            	<br>
-                               <label for="Y"><input id="Y" name = "taxInvoice" type="radio" value="2"> 발행</label>
-                               <label for="N"><input id="N" name = "taxInvoice" type="radio" value="1" checked> 미발행</label>
+                               <label for="Y"><input id="Y" name = "taxInvoice" type="radio" value="2"<c:if test="${cVo.taxInvoice == 2}">checked</c:if>> 발행</label>
+                               <label for="N"><input id="N" name = "taxInvoice" type="radio" value="1"<c:if test="${cVo.taxInvoice == 1}">checked</c:if>> 미발행</label>
                            </div>
                        </td>
                    </tr>
@@ -251,7 +332,7 @@
                            <div class="form-layer mb_08">
                                <span class="form-title">상호명<br>(법인명)</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="companyName" placeholder="사업자 등록증상 상호명" value="" disabled="disabled">
+                                   <input class="form-control normal-size" type="text" name="companyName" placeholder="사업자 등록증상 상호명" value="${cVo.companyName}" disabled="disabled">
                                </span>
                            </div>
                           
@@ -261,7 +342,7 @@
                            <div class="form-layer mb_24">
                                <span class="form-title">등록증상<br>대표명</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="ceoName" placeholder="대표자 명을 입력하세요." value="" disabled="disabled">
+                                   <input class="form-control normal-size" type="text" name="ceoName" placeholder="대표자 명을 입력하세요." value="${cVo.ceoName}" disabled="disabled">
                                </span>
                            </div>
                            
@@ -301,7 +382,7 @@
                            <div class="form-layer mb_24">
                                <span class="form-title">사업자<br>등록번호</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="businessLicensenumber" placeholder="숫자만 입력하세요." value="" disabled="disabled">
+                                   <input class="form-control normal-size" type="text" name="businessLicensenumber" placeholder="숫자만 입력하세요." value="${cVo.businessLicensenumber}" disabled="disabled">
                                </span>
                            </div>
                           
@@ -310,20 +391,20 @@
                            <div class="form-layer mb_24">
                                <span class="form-title">업체 주소</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" id="input_roadAddress" name = "companyAddress" type="text" readonly placeholder="사업자 등록증상 업체 주소를 입력하세요." value="">
+                                   <input class="form-control normal-size" id="input_roadAddress" name = "companyAddress" type="text" readonly placeholder="사업자 등록증상 업체 주소를 입력하세요." value="${cVo.companyAddress}">
                                    <button type="button" class="btn btn-yeogi btn-normal-layer" id="postCode" onclick="daumPostCode()" disabled="disabled">주소 검색</button>
                                </span>
                            </div>
                            <div class="form-layer newline">
                                <span class="form-body">
-                                   <input id = "leftaddress" class="form-control normal-size" type="text" name="detailAddress" placeholder="나머지 주소를 입력하세요." value="" disabled="disabled">
+                                   <input id = "leftaddress" class="form-control normal-size" type="text" name="detailAddress" placeholder="나머지 주소를 입력하세요." value="${cVo.detailAddress}" disabled="disabled">
                                    <input id = "postcodenum" name = "postalCode" type = "hidden">
                                </span>
                            </div>
                            <div class="form-layer mb_24">
                                <span class="form-title">세금계산서<br>이메일</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="taxInvoiceEmail" placeholder="이메일을 입력하세요." value="" disabled="disabled">
+                                   <input class="form-control normal-size" type="text" name="taxInvoiceEmail" placeholder="이메일을 입력하세요." value="${cVo.taxInvoiceEmail}" disabled="disabled">
                                </span>
                            </div>
                        </td>
@@ -335,7 +416,7 @@
                            <div class="form-layer mb_08">
                                <span class="form-title">홈페이지</span>
                                <span class="form-body">
-                                   <input class="form-control normal-size" type="text" name="homepage" placeholder="홈페이지 주소" value="">
+                                   <input class="form-control normal-size" type="text" name="homepage" placeholder="홈페이지 주소" value="${cVo.homepage}">
                                </span>
                            </div>
                        </td>
@@ -359,6 +440,17 @@
 
 <script type = "text/javascript">
 
+if($("#Y").val() == 2){
+	$('input[name="companyName"]').removeAttr('disabled');
+    $('input[name="ceoName"]').removeAttr('disabled');
+    $("input[class='businessType']").removeAttr('disabled');
+    $("input[class='businessGroup']").removeAttr('disabled');
+    $('input[name="businessLicensenumber"]').removeAttr('disabled');
+    $('input[name="detailAddress"]').removeAttr('disabled');
+    $('input[name="taxInvoiceEmail"]').removeAttr('disabled');
+    $('#postCode').removeAttr('disabled');
+};
+
 $("#Y").on("click", function(){
 	$('input[name="companyName"]').removeAttr('disabled');
     $('input[name="ceoName"]').removeAttr('disabled');
@@ -372,13 +464,21 @@ $("#Y").on("click", function(){
 
 $("#N").on("click", function(){
 	$('input[name="companyName"]').attr('disabled', true);
+	$('input[name="companyName"]').val('');
     $('input[name="ceoName"]').attr('disabled', true);
+    $('input[name="ceoName"]').val('');
     $("input[class='businessType']").attr('disabled', true);
+    $("input[class='businessType']").val('');
     $("input[class='businessGroup']").attr('disabled', true);
+    $("input[class='businessGroup']").val('');
     $('input[name="businessLicensenumber"]').attr('disabled', true);
+    $('input[name="businessLicensenumber"]').val('');
     $('input[name="detailAddress"]').attr('disabled', true);
+    $('input[name="detailAddress"]').val('');
     $('input[name="taxInvoiceEmail"]').attr('disabled', true);
+    $('input[name="taxInvoiceEmail"]').val('');
     $('#postCode').attr('disabled', true);
+    $('#postCode').val('');
 });
 
 </script>

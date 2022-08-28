@@ -38,6 +38,15 @@
 		]]>
 	</select>
 	
+	<select id = "getCompanyNoBySession" resultType = "int">
+		<![CDATA[
+			select	no
+			from company
+			where user_no = #{userNo}
+		]]>
+	</select>
+	
+	
 	<insert id = "insertBTA" parameterType = "com.javaex.vo.HostCompanyregVo">
 
 		<![CDATA[
@@ -55,5 +64,53 @@
 		]]>
 		
 	</insert>
+	
+	<select id = "getCompanyinfo" parameterType = "int" resultType = "com.javaex.vo.HostCompanyregVo">
+	
+		<![CDATA[
+			select
+				company_hp companyHp
+		        ,ceo_hp ceoHp
+		        ,bank_name bankName
+		        ,account_holder accountHolder
+		        ,account account
+		        ,settlement_cycle settlementCycle
+		        ,tax_invoice taxInvoice
+		        ,company_name companyName
+		        ,ceo_name ceoName
+		        ,business_licensenumber businessLicensenumber
+		        ,company_address companyAddress
+		        ,detail_address detailAddress
+		        ,homepage homepage
+		        ,tax_invoice_email taxInvoiceEmail
+			from company
+			where user_no = #{userNo}
+		]]>
+	
+	</select>
+	
+	<!-- 
+	<select id = "getBusinesstype" parameterType = "int" resultType = "com.javaex.vo.HostCompanyregVo">
+	
+		<![CDATA[
+			select cbt.b_type_no businessType
+			from company co, c_b_type cbt
+			where co.no = cbt.c_no
+			and co.no = #{companyNo}
+		]]>
+	
+	</select>
+	
+	<select id = "getBusinessgroup" parameterType = "int" resultType = "com.javaex.vo.HostCompanyregVo">
+		
+		<![CDATA[
+			select cbg.b_group_no businessGroup
+			from company co, c_b_group cbg
+			where co.no = cbg.c_no
+			and co.no = #{companyNo}
+		]]>
+		
+	</select>
+	 -->
 	
 </mapper>
