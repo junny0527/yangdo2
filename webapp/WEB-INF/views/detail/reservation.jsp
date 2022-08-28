@@ -279,9 +279,11 @@
 					<ul>
 						<c:forEach items="${pMap.imgList}" var="imgList" varStatus="status">
 							<c:if test="${status.count <= 6}">
-								<li>
-									<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
-								</li>
+								<c:if test="${status.count == 1}">
+									<li style="position:relative; top:-33%; right:28%;">
+										<img class="list" src="${pageContext.request.contextPath}/upload/${imgList.SAVE_NAME}" alt="${imgList.RN}">
+									</li>
+								</c:if>
 							</c:if>
 						</c:forEach>
 					</ul>
@@ -360,7 +362,7 @@
 			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == 6}">
-						<form action="${pageContext.request.contextPath}/res/reserve">
+						<form action="${pageContext.request.contextPath}/res/yangdoreserve/${roomVo.NO}">
 										<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
 										<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
 										<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
