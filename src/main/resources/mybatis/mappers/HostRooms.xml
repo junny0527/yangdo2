@@ -98,6 +98,7 @@
 			        ,image_path imgPath
 			from room_image
 			where rooms_no = #{roomNo}
+			order by no asc
 		]]> 
 	</select> 
 	

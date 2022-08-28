@@ -21,6 +21,7 @@ public class HostIntroduceController {
 	
 	@RequestMapping(value="introreg", method= {RequestMethod.GET, RequestMethod.POST})
 	public String introreg() {
+		
 		return "/host/introduce";
 	}
 	

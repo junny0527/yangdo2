@@ -34,12 +34,14 @@
 #house-images> li{
 	float:left;
 	width: 200px;
+	height: 135px;
 	margin:10px
 }
 
 
 #house-images > li > div >img{
 	width: 200px;
+	height: 115px;
 }
 
 #tooltip{
