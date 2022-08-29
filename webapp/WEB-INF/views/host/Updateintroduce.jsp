@@ -144,11 +144,6 @@
 										</div>
 									</div>
 								</td>
-								<td id = "firstline">
-									<a href="javascript:void(0)" data-toggle="popover" data-original-title="" title="">
-										<img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png">
-									</a>
-								</td>
 							</tr>
 							<!--// 기본정보 -->
 							
@@ -171,7 +166,7 @@
 							<tr>
 								<th>업체 이미지<br>(최대 20장)
 								</th>
-								<td class="bd_r_none">
+								<td class="bd_r_none" colspan="2">
 									<div class="form-layer mb_15 text-left">
 										<p class="order text-normal">* 객실 및 업체 전경, 로비, 주차장 등 업체의 전반적인 이미지를 업로드해주시기 바랍니다.</p>
 										<p class="order text-normal">* 이미지 교체를 원하시면 "변경"을 선택하시고 삭제를 원하시면 우측 "삭제"를 선택하시기 바랍니다.</p>
@@ -202,7 +197,7 @@
 							<tr id="target_host">
 								<th>공용시설<br>서비스 안내
 								</th>
-								<td class="bd_r_none">
+								<td class="bd_r_none" colspan="2">
 									<div class="form-layer align_chk">
 										<label for="theme0" class="checkbox-inline icon-label"> <input type="checkbox" id="theme0" name="publicArrays" value="P01">수영장</label>
 										<label for="theme1" class="checkbox-inline icon-label"> <input type="checkbox" id="theme1" name="publicArrays" value="P02">족구장</label>
@@ -219,7 +214,7 @@
 							<tr id="target_host1">
 								<th>편의시설<br>서비스 안내
 								</th>
-								<td class="bd_r_none">
+								<td class="bd_r_none" colspan="2">
 									<div class="form-layer align_chk">
 										<label for="theme9" class="checkbox-inline icon-label"> <input type="checkbox" id="theme9" name="amenitiesArrays" value="A01">냉장고</label>
 										<label for="theme10" class="checkbox-inline icon-label"> <input type="checkbox" id="theme10" name="amenitiesArrays" value="A02">에어컨</label>
@@ -234,10 +229,6 @@
 										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="amenitiesArrays" value="A11">취사가능</label>
 									</div>
 								</td>
-								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
-									<div class="hide">
-										<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
-									</div></td>
 							</tr>
 
 							<!-- 오시는길 -->
