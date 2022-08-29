@@ -19,6 +19,7 @@ public class MainListVo {
 	private int persons;
 	private String datepicker;
 	private String datepicker2;
+	private String address;
 	
 	public MainListVo() {
 		super();
@@ -27,10 +28,10 @@ public class MainListVo {
 	}
 
 	
-
+	
 	public MainListVo(String pName, String lawName, int lawCode, String visitRoad3, String saveName, int penPrice,
 			int stars, String status, int pNo, String rCount, String gugunName, String amOpt, String puOpt, int yCount,
-			int persons, String datepicker, String datepicker2) {
+			int persons, String datepicker, String datepicker2, String address) {
 		super();
 		this.pName = pName;
 		this.lawName = lawName;
@@ -49,10 +50,24 @@ public class MainListVo {
 		this.persons = persons;
 		this.datepicker = datepicker;
 		this.datepicker2 = datepicker2;
+		this.address = address;
 	}
+
 
 	
 	
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
 	public String getDatepicker() {
 		return datepicker;
 	}
@@ -205,8 +220,9 @@ public class MainListVo {
 				+ visitRoad3 + ", saveName=" + saveName + ", penPrice=" + penPrice + ", stars=" + stars + ", status="
 				+ status + ", pNo=" + pNo + ", rCount=" + rCount + ", gugunName=" + gugunName + ", amOpt=" + amOpt
 				+ ", puOpt=" + puOpt + ", yCount=" + yCount + ", persons=" + persons + ", datepicker=" + datepicker
-				+ ", datepicker2=" + datepicker2 + "]";
+				+ ", datepicker2=" + datepicker2 + ", address=" + address + "]";
 	}
+
 
 	
 	
