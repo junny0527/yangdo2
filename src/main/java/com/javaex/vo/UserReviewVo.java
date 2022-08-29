@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserReviewVo {
 
 	// field
-	private int reviewNo;
+	private int no;
 	private int pNo;
 	private int resNo;
 	private String title;
@@ -26,11 +26,11 @@ public class UserReviewVo {
 		super();
 	}
 
-	public UserReviewVo(int reviewNo, int pNo, int resNo, String title, double stars, MultipartFile img1,
+	public UserReviewVo(int no, int pNo, int resNo, String title, double stars, MultipartFile img1,
 			MultipartFile img2, String image1, String image2, String content, Date regDate, String filePath1,
 			String filePath2) {
 		super();
-		this.reviewNo = reviewNo;
+		this.no = no;
 		this.pNo = pNo;
 		this.resNo = resNo;
 		this.title = title;
@@ -45,12 +45,12 @@ public class UserReviewVo {
 		this.filePath2 = filePath2;
 	}
 
-	public int getReviewNo() {
-		return reviewNo;
+	public int getno() {
+		return no;
 	}
 
-	public void setReviewNo(int reviewNo) {
-		this.reviewNo = reviewNo;
+	public void setno(int no) {
+		this.no = no;
 	}
 
 	public int getpNo() {
@@ -151,7 +151,7 @@ public class UserReviewVo {
 
 	@Override
 	public String toString() {
-		return "UserReviewVo [reviewNo=" + reviewNo + ", pNo=" + pNo + ", resNo=" + resNo + ", title=" + title
+		return "UserReviewVo [no=" + no + ", pNo=" + pNo + ", resNo=" + resNo + ", title=" + title
 				+ ", stars=" + stars + ", img1=" + img1 + ", img2=" + img2 + ", image1=" + image1 + ", image2=" + image2
 				+ ", content=" + content + ", regDate=" + regDate + ", filePath1=" + filePath1 + ", filePath2="
 				+ filePath2 + "]";

@@ -1,12 +1,7 @@
 package com.javaex.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -228,8 +224,7 @@ public class MyController {
 
 	/********* reviews **********/
 	@RequestMapping(value = "/review", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewForm(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo,
-			@RequestParam(value = "pNo", required = false, defaultValue = "0") int pNo, HttpSession session,
+	public String reviewForm(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo, HttpSession session,
 			Model model) {
 		System.out.println("MyController>writeReview");
 
@@ -237,21 +232,8 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/review/write", method = { RequestMethod.GET, RequestMethod.POST })
-	public String writeReview(@RequestParam(value = "resNo", required = true, defaultValue = "0") int resNo,
-			@RequestParam(value = "title", required = true, defaultValue = "0") String title,
-			@RequestParam(value = "stars", required = true, defaultValue = "0") double stars,
-			@RequestParam(value = "image1", required = false, defaultValue = "0") MultipartFile img1,
-			@RequestParam(value = "image2", required = false, defaultValue = "0") MultipartFile img2,
-			@RequestParam(value = "content", required = false, defaultValue = "0") String content,
-			@ModelAttribute UserReviewVo uRvo, HttpSession session) {
+	public String writeReview(@ModelAttribute UserReviewVo uRvo, HttpSession session) {
 		System.out.println("MyController>writeReview");
-
-		uRvo.setImg1(img1);
-		uRvo.setImg2(img2);
-		uRvo.setStars(stars);
-		uRvo.setResNo(resNo);
-		uRvo.setTitle(title);
-		uRvo.setContent(content);
 
 		int count = myService.writeReview(uRvo);
 		System.out.println(count);

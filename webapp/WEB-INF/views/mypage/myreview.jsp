@@ -54,15 +54,15 @@
 							<input type="hidden" name="resNo" value="${param.resNo}">
 							<div class="review-body">
 								<div class="review-content">
-									<b class="rating-title">별점주기 : </b>
+									<b class="rating-title">별점주기(필수 선택) : </b>
 									<div class="rating">
-										<input type="radio" id="star5" name="stars" value="5" /><label class="full" for="star5" title="5 stars"></label> <input type="radio"
-											id="star4half" name="stars" value="4.5" /><label class="half" for="star4half" title="4.5 stars"></label> <input type="radio" id="star4"
-											name="stars" value="4" /><label class="full" for="star4" title="4 stars"></label> <input type="radio" id="star3half" name="stars"
-											value="3.5" /><label class="half" for="star3half" title="3.5 stars"></label> <input type="radio" id="star3" name="stars" value="3" /><label
-											class="full" for="star3" title="3 stars"></label> <input type="radio" id="star2half" name="stars" value="2.5" /><label class="half"
-											for="star2half" title="2.5 stars"></label> <input type="radio" id="star2" name="stars" value="2" /><label class="full" for="star2"
-											title="2 stars"></label> <input type="radio" id="star1half" name="stars" value="1.5" /><label class="half" for="star1half"
+										<input type="radio" id="star5" name="stars" value="5" required /><label class="full" for="star5" title="5 stars"></label> <input
+											type="radio" id="star4half" name="stars" value="4.5" /><label class="half" for="star4half" title="4.5 stars"></label> <input type="radio"
+											id="star4" name="stars" value="4" /><label class="full" for="star4" title="4 stars"></label> <input type="radio" id="star3half"
+											name="stars" value="3.5" /><label class="half" for="star3half" title="3.5 stars"></label> <input type="radio" id="star3" name="stars"
+											value="3" /><label class="full" for="star3" title="3 stars"></label> <input type="radio" id="star2half" name="stars" value="2.5" /><label
+											class="half" for="star2half" title="2.5 stars"></label> <input type="radio" id="star2" name="stars" value="2" /><label class="full"
+											for="star2" title="2 stars"></label> <input type="radio" id="star1half" name="stars" value="1.5" /><label class="half" for="star1half"
 											title="1.5 stars"></label> <input type="radio" id="star1" name="stars" value="1" /><label class="full" for="star1" title="1 star"></label>
 										<input type="radio" id="starhalf" name="stars" value="0.5" /><label class="half" for="starhalf" title="0.5 stars"></label>
 									</div>
@@ -72,7 +72,7 @@
 										<b>리뷰제목 : </b>
 									</p>
 									<div class="inp_wrap">
-										<input type="text" name="title" placeholder="리뷰 제목을 입력해주세요." value="">
+										<input type="text" name="title" placeholder="리뷰 제목을 입력해주세요." value="" required>
 									</div>
 								</div>
 
@@ -81,28 +81,28 @@
 										<b>리뷰내용 : </b>
 									</p>
 									<div class="">
-										<textarea class="review-content-detail" rows="10" name="content" placeholder="리뷰 상세내용을 입력해주세요."></textarea>
+										<textarea class="review-content-detail" rows="10" name="content" placeholder="리뷰 상세내용을 입력해주세요." required></textarea>
 									</div>
 								</div>
 								<div class="review-content">
 									<p>
 										<b>첨부파일1 : </b>
 									</p>
-									<input class="upload-img-btn" id="rv_img1" type="file" name="image1" value="" accept="image/*" multiple>
+									<input class="upload-img-btn" id="rv_img1" type="file" name="img1" value="" accept="image/*">
 								</div>
 								<div class="review-content">
 									<p>
 										<b>첨부파일2 : </b>
 									</p>
-									<input class="upload-img-btn" id="rv_img1" type="file" name="image2" value="" accept="image/*" multiple>
+									<input class="upload-img-btn" id="rv_img2" type="file" name="img2" value="" accept="image/*">
 								</div>
 
 							</div>
 							<div>
-								<a href="${pageContext.request.contextPath }/my/detail?resNo=${param.resNo}&datepicker=&datepicker2=">
+								<a href="${pageContext.request.contextPath }/my/detail?resNo=${param.resNo}">
 									<button type="button" class="btn_flat btn-grey">리뷰 취소</button>
-								</a> <a href="${pageContext.request.contextPath }/reservation?pensionNo=${param.pNo}&datepicker=&datepicker2="><button type="submit"
-										class="btn_flat btn-red">리뷰 등록</button> </a>
+								</a>
+								<button type="submit" id="save" class="btn_flat btn-red">리뷰 등록</button>
 							</div>
 						</form>
 					</div>
@@ -112,6 +112,31 @@
 	</div>
 </body>
 <script type="text/javascript">
+$(document).ready(function(){
 	
+	$(form).on("submit", function(event){
+		event.preventDefault();
+		
+		var formValues = $(this).serialize();
+		
+		$.ajax({
+	        url : "${pageContext.request.contextPath}/my/review/write",
+	        data : formData,
+	        type:'POST',
+	        enctype:'multipart/form-data',
+	        processData:false,
+	        contentType:false,
+	        dataType:'json',
+	        cache:false,
+	        success:function(data){
+	            alert("저장에 성공하셨습니다.");
+	            console.log(data);
+	            
+	        },error:function(XHR, status, error){
+	            alert("오류 발생.\n관리자에게 문의해주세요.");
+	        }
+		
+	});
+});
 </script>
 </html>

@@ -147,14 +147,14 @@ public class MyService {
 		MultipartFile img1 = uRvo.getImg1();
 		MultipartFile img2 = uRvo.getImg2();
 
-		if (!img1.equals(null)) {
+		if (img1.isEmpty()) {
+			uRvo.setImage1(null);
+		} else if (!img1.isEmpty()) {
+
 			String exName = img1.getOriginalFilename().substring(img1.getOriginalFilename().lastIndexOf("."));
 			System.out.println(exName);
 			String image1 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
 			String filePath1 = saveDir + "\\" + image1;
-
-			uRvo.setImage1(image1);
-			uRvo.setFilePath1(filePath1);
 
 			try {
 				byte[] fileData = img1.getBytes();
@@ -165,14 +165,16 @@ public class MyService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			uRvo.setImage1(image1);
 		}
-		if (!img1.equals(null)) {
+
+		if (img2.isEmpty()) {
+			uRvo.setImage2(null);
+		} else if (!img2.isEmpty()) {
+
 			String exName = img2.getOriginalFilename().substring(img2.getOriginalFilename().lastIndexOf("."));
 			String image2 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
 			String filePath2 = saveDir + "\\" + image2;
-
-			uRvo.setImage2(image2);
-			uRvo.setFilePath2(filePath2);
 
 			try {
 				byte[] fileData = img2.getBytes();
@@ -183,7 +185,9 @@ public class MyService {
 				bOut.close();
 			} catch (IOException e) {
 				e.printStackTrace();
+
 			}
+			uRvo.setImage2(image2);
 		}
 		return myDao.writeReview(uRvo);
 	}

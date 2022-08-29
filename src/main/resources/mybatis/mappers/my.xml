@@ -387,7 +387,7 @@
 		</selectKey>
 		<![CDATA[
 			insert into reviews
-			values(#{no}, #{resNo}, #{title},#{stars},#{image1}, #{image2}, #{content}, sysdate)
+			values(#{no}, #{resNo}, #{title},#{stars},#{image1, jdbcType=VARCHAR}, #{image2, jdbcType=VARCHAR}, #{content}, sysdate)
 		]]>
 	</insert>
 

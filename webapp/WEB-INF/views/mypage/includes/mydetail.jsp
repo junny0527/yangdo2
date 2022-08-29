@@ -141,7 +141,7 @@
 		<section>
 			<div style="padding-top: 0; padding-bottom: 0">
 				<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
-					<a href="${pageContext.request.contextPath}/my/review?resNo=${myVo.resNo}&pNo=${myVo.pNo}">
+					<a href="${pageContext.request.contextPath}/my/review?resNo=${myVo.resNo}">
 						<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰 남기기</button>
 					</a>
 				</div>
