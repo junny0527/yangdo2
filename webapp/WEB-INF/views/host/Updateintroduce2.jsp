@@ -98,11 +98,7 @@
 	
 	<div id="content">
 			<div class="list-layer">
-				<form class="form-horizontal" id="intro-form" method="post" action="/guest/intro" name="intro" enctype="multipart/form-data">
-					<input type="hidden" name="ano" value="3309">
-					<input type="hidden" name="uno" value="18212587">
-					<input class="form-control normal-size" id="input_jibunAddress" type="hidden" name="jibun_address1">
-					
+				<form class="form-horizontal" method="get" action="introoptsave">
 					<div id = "design">
 						<h3 class="guest-h3">[선택 기입 정보]</h3>
 						<p id = "choice" class = "description"> - 내용이 없으면 작성하지 않으셔도 되지만, 보다 많은 정보를 제공하여 매출 증대에 도움이 될 수 있는 메뉴입니다.</p>
@@ -115,7 +111,7 @@
 								<th id = "firstline">현장요금 추가정보</th>
 								<td id = "firstline" colspan="2">
 									<div class="form-layer">
-										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="숙소에서 제공되는 숙박비 외의 유료 서비스가 있을 경우 가격정보와 함께 항목을 기재해주세요."></textarea>
+										<textarea class="form-control textarea-layer" rows="6" name="livePay" placeholder="숙소에서 제공되는 숙박비 외의 유료 서비스가 있을 경우 가격정보와 함께 항목을 기재해주세요.">${pMap.hVo.livePay}</textarea>
 									</div>
 								</td>
 							</tr>
@@ -123,7 +119,7 @@
 								<th>주차장 정보</th>
 								<td colspan="2">
 									<div class="form-layer">
-										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="주차장의 유/무료 정보 및 시간당 요금을 기재해주세요."></textarea>
+										<textarea class="form-control textarea-layer" rows="6" name="parkingInfo" placeholder="주차장의 유/무료 정보 및 시간당 요금을 기재해주세요.">${pMap.hVo.parkingInfo}</textarea>
 									</div>
 								</td>
 							</tr>
@@ -131,8 +127,8 @@
 								<th>확인사항 및 기타</th>
 								<td colspan="2">
 									<div class="form-layer">
-										<textarea class="form-control textarea-layer" rows="6" name="detail[]" placeholder="기재된 숙소 정보 외에 게스트 숙지 사항을 기재해주세요."></textarea>
-									</div> <span class="exam-button"> <i class="fa fa-angle-up" aria-hidden="true"></i></span>
+										<textarea class="form-control textarea-layer" rows="6" name="etc" placeholder="기재된 숙소 정보 외에 게스트 숙지 사항을 기재해주세요.">${pMap.hVo.etc}</textarea>
+									</div>
 									<div class="exam-layer-guide4">
 										<div id="detail" class="exam-detail-layer">
 											<ul>

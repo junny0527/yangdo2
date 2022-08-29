@@ -179,7 +179,7 @@
 										<p class="order text-normal">* 첫 이미지가 메인 이미지입니다.</p>
 									</div>
 
-									<div class="form-layer mb_15">
+									<div class="form-layer mb_15 hide">
 										<ul id="house-images">
 											<%-- <li class="backgrou">
 												<div>
@@ -187,7 +187,7 @@
 												</div>
 												<button id = "changeimage" type="button" class="btn btn-xs btn-success">변경</button>
 												<button id = "deleteimage" type="button" class="btn btn-xs btn-deleete">삭제</button>
-											</li>  --%>
+											</li> --%>
 										</ul>
 									</div>
 
@@ -210,15 +210,15 @@
 								</th>
 								<td class="bd_r_none">
 									<div class="form-layer align_chk">
-										<label for="theme0" class="checkbox-inline icon-label"> <input type="checkbox" id="theme0" name="publicArrays" value="1">수영장</label>
-										<label for="theme1" class="checkbox-inline icon-label"> <input type="checkbox" id="theme1" name="publicArrays" value="2">족구장</label>
-										<label for="theme2" class="checkbox-inline icon-label"> <input type="checkbox" id="theme2" name="publicArrays" value="3">카페</label>
-										<label for="theme3" class="checkbox-inline icon-label"> <input type="checkbox" id="theme3" name="publicArrays" value="4">노래방</label>
-										<label for="theme4" class="checkbox-inline icon-label"> <input type="checkbox" id="theme4" name="publicArrays" value="5">편의점</label>
-										<label for="theme5" class="checkbox-inline icon-label"> <input type="checkbox" id="theme5" name="publicArrays" value="6">주차장</label>
-										<label for="theme6" class="checkbox-inline icon-label"> <input type="checkbox" id="theme6" name="publicArrays" value="7">BBQ</label>
-										<label for="theme7" class="checkbox-inline icon-label"> <input type="checkbox" id="theme7" name="publicArrays" value="8">주방/식당</label>
-										<label for="theme8" class="checkbox-inline icon-label"> <input type="checkbox" id="theme8" name="publicArrays" value="9">흡연부스</label>
+										<label for="theme0" class="checkbox-inline icon-label"> <input type="checkbox" id="theme0" name="publicArrays" value="P01">수영장</label>
+										<label for="theme1" class="checkbox-inline icon-label"> <input type="checkbox" id="theme1" name="publicArrays" value="P02">족구장</label>
+										<label for="theme2" class="checkbox-inline icon-label"> <input type="checkbox" id="theme2" name="publicArrays" value="P03">카페</label>
+										<label for="theme3" class="checkbox-inline icon-label"> <input type="checkbox" id="theme3" name="publicArrays" value="P04">노래방</label>
+										<label for="theme4" class="checkbox-inline icon-label"> <input type="checkbox" id="theme4" name="publicArrays" value="P05">편의점</label>
+										<label for="theme5" class="checkbox-inline icon-label"> <input type="checkbox" id="theme5" name="publicArrays" value="P06">주차장</label>
+										<label for="theme6" class="checkbox-inline icon-label"> <input type="checkbox" id="theme6" name="publicArrays" value="P07">BBQ</label>
+										<label for="theme7" class="checkbox-inline icon-label"> <input type="checkbox" id="theme7" name="publicArrays" value="P08">주방/식당</label>
+										<label for="theme8" class="checkbox-inline icon-label"> <input type="checkbox" id="theme8" name="publicArrays" value="P09">흡연부스</label>
 									</div>
 								</td>
 								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
@@ -231,17 +231,17 @@
 								</th>
 								<td class="bd_r_none">
 									<div class="form-layer align_chk">
-										<label for="theme9" class="checkbox-inline icon-label"> <input type="checkbox" id="theme9" name="amenitiesArrays" value="1">냉장고</label>
-										<label for="theme10" class="checkbox-inline icon-label"> <input type="checkbox" id="theme10" name="amenitiesArrays" value="2">에어컨</label>
-										<label for="theme11" class="checkbox-inline icon-label"> <input type="checkbox" id="theme11" name="amenitiesArrays" value="3">TV</label>
-										<label for="theme12" class="checkbox-inline icon-label"> <input type="checkbox" id="theme12" name="amenitiesArrays" value="4">와이파이</label>
-										<label for="theme13" class="checkbox-inline icon-label"> <input type="checkbox" id="theme13" name="amenitiesArrays" value="5">욕실용품</label>
-										<label for="theme14" class="checkbox-inline icon-label"> <input type="checkbox" id="theme14" name="amenitiesArrays" value="6">세탁기</label>
-										<label for="theme15" class="checkbox-inline icon-label"> <input type="checkbox" id="theme15" name="amenitiesArrays" value="7">드라이기</label>
-										<label for="theme16" class="checkbox-inline icon-label"> <input type="checkbox" id="theme16" name="amenitiesArrays" value="8">욕조</label>
-										<label for="theme17" class="checkbox-inline icon-label"> <input type="checkbox" id="theme17" name="amenitiesArrays" value="9">반려견동반</label>
-										<label for="theme18" class="checkbox-inline icon-label"> <input type="checkbox" id="theme18" name="amenitiesArrays" value="10">객실 내 흡연</label>
-										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="amenitiesArrays" value="11">취사가능</label>
+										<label for="theme9" class="checkbox-inline icon-label"> <input type="checkbox" id="theme9" name="amenitiesArrays" value="A01">냉장고</label>
+										<label for="theme10" class="checkbox-inline icon-label"> <input type="checkbox" id="theme10" name="amenitiesArrays" value="A02">에어컨</label>
+										<label for="theme11" class="checkbox-inline icon-label"> <input type="checkbox" id="theme11" name="amenitiesArrays" value="A03">TV</label>
+										<label for="theme12" class="checkbox-inline icon-label"> <input type="checkbox" id="theme12" name="amenitiesArrays" value="A04">와이파이</label>
+										<label for="theme13" class="checkbox-inline icon-label"> <input type="checkbox" id="theme13" name="amenitiesArrays" value="A05">욕실용품</label>
+										<label for="theme14" class="checkbox-inline icon-label"> <input type="checkbox" id="theme14" name="amenitiesArrays" value="A06">세탁기</label>
+										<label for="theme15" class="checkbox-inline icon-label"> <input type="checkbox" id="theme15" name="amenitiesArrays" value="A07">드라이기</label>
+										<label for="theme16" class="checkbox-inline icon-label"> <input type="checkbox" id="theme16" name="amenitiesArrays" value="A08">욕조</label>
+										<label for="theme17" class="checkbox-inline icon-label"> <input type="checkbox" id="theme17" name="amenitiesArrays" value="A09">반려견동반</label>
+										<label for="theme18" class="checkbox-inline icon-label"> <input type="checkbox" id="theme18" name="amenitiesArrays" value="A10">객실 내 흡연</label>
+										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="amenitiesArrays" value="A11">취사가능</label>
 									</div>
 								</td>
 								<td class="help-tooltip popover-container"><a href="javascript:void(0)" data-toggle="popover"><img id="tooltip" src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
@@ -343,7 +343,7 @@
 				<div id="upload-list" style="margin-top: 10px"></div>
 				<span> * 여러장을 한꺼번에 드래그하여 업로드 할 수 있습니다. <br> <strong>&nbsp;&nbsp;<font color="#ff0000">최대 15장 까지 등록이 가능합니다.</font></strong> <br> <strong>&nbsp;&nbsp;사진 권장사이즈 : 1920 *
 						1080 또는 960 * 540</strong>
-				</span> <span class="btn btn-success" id="penSave" data-dismiss="modal" aria-label="Close" style="float: right; margin-top: -25px;">저장</span>
+				</span> <span class="btn btn-success" id="succes" data-dismiss="modal" aria-label="Close" style="float: right; margin-top: -25px;">확인</span>
 			</div>
 
 		</div>
@@ -501,11 +501,11 @@ $(".deleteimage").on("click", function() {
 	})
 });
 
-$(".deleteimage").on("click",function(){
+$("#imgDelete").on("click",function(){
 
 	var no = $("[name='imgNo']").val();
 	$.ajax({
-		url : "${pageContext.request.contextPath}/api/host/introduce/deleteImg",		
+		url : "${pageContext.request.contextPath }/api/host/",		
 		type : "post",
 		contentType : "application/json",
 		data :	JSON.stringify(no),
@@ -517,7 +517,7 @@ $(".deleteimage").on("click",function(){
 				
 				alert("사진이 삭제되었습니다.");
 				
-				$("#hList"+no).remove();
+				$("#rList"+no).remove();
 			}else{
 				alert("오류입니다");
 			}
@@ -530,7 +530,7 @@ $(".deleteimage").on("click",function(){
 	});
 
 });
- 
+
 // 파일 드롭 다운
 function fileDropDown(){
     var dropZone = $("#drop-zone");
@@ -577,11 +577,15 @@ function fileDropDown(){
       	 }
          $("#upload-list").append(str);
          
+         uploadFile(fileList);
     });
 }
 
-$("#penSave").on("click",function(){
-	var formData = new FormData($("#uploadForm")[0]);
+
+// 파일 등록
+function uploadFile(fileList){
+	
+    var formData = new FormData($("#uploadForm")[0]);
     if(fileList.length > 0){
         fileList.forEach(function(f){
             formData.append("fileList", f);
@@ -601,10 +605,10 @@ $("#penSave").on("click",function(){
             console.log(piList);
             
             
-            for(var i = 0; i<piList.length; i++){
+            for(var i = 0; i<riList.length; i++){
             	var div = '';
         		div += '<li class="backgrou">'
-        		div += '	<div class="thumb">'
+        		div += '	<div class="thumb"> '
         		div += '		<img src="${pageContext.request.contextPath}/upload/'+piList[i].saveName+'"class="img-rounded preview">'
         		div += '    </div>'
         		div += '	<button type="button" class="btn btn-xs btn-success changeimage">변경</button>'
@@ -619,10 +623,8 @@ $("#penSave").on("click",function(){
             alert("오류 발생.\n관리자에게 문의해주세요.");
         }
     });
-    	
-})
-
-
+    
+}
 
 </script>
 
