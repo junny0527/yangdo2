@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -43,14 +45,14 @@ public class HostCompanyregDao {
 	public HostCompanyregVo getCompanyinfo(int userNo) {
 		return sqlSession.selectOne("HostCompanyreg.getCompanyinfo", userNo);
 	}
-	/*
+	
 	public List<HostCompanyregVo> getBusinesstype(int companyNo) {
 		return sqlSession.selectList("HostCompanyreg.getBusinesstype", companyNo);
 	}
 	
 	public List<HostCompanyregVo> getBusinessgroup(int companyNo) {
-		return sqlSession.selectList("Hostcompanyreg.getBusinessgroup", companyNo);
+		return sqlSession.selectList("HostCompanyreg.getBusinessgroup", companyNo);
 	}
-	*/
+	
 	
 }

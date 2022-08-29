@@ -1,5 +1,9 @@
 package com.javaex.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,9 +74,12 @@ public class HostCompanyregService {
 		return cregDao.getCompanyNoBySession(userNo);
 	}
 	
-	public HostCompanyregVo getCompanyinfo(int userNo) {
+	public Map<String, Object> getCompanyinfo(int userNo, String email) {
+		
+		Map<String, Object> cMap = new HashMap<>();
 		
 		HostCompanyregVo oldCompany = cregDao.getCompanyinfo(userNo);
+		oldCompany.setEmail(email);
 		
 		String[] phoneSplit = oldCompany.getCeoHp().split("");
 		String[] companySplit = oldCompany.getCompanyHp().split("");
@@ -109,7 +116,7 @@ public class HostCompanyregService {
 				oldCompany.setTel3(companySplit[6] + companySplit[7] + companySplit[8] + companySplit[9]);
 			}
 		}
-		/*
+		
 		int companyNo = cregDao.getCompanyNoBySession(userNo);
 		System.out.println("list service : " + companyNo);
 		
@@ -118,10 +125,14 @@ public class HostCompanyregService {
 		
 		System.out.println(btype);
 		System.out.println(bgroup);
-		*/
 		
-		return oldCompany;
+		cMap.put("cVo", oldCompany);
+		cMap.put("btype", btype);
+		cMap.put("bgroup", bgroup);
+		
+		return cMap;
 	}
-		
+	
+	
 	
 }
