@@ -48,10 +48,10 @@
 				<form action="${pageContext.request.contextPath}/main/search"
 					method="get">
 					<select name="sido1" id="sido1"
-						style="width: 150px; height: 40px; font-size: 18px; text-align: center; color: #0000008F; font-weight: bold; border-radius: 4px; background-color: #fff; border: 1px solid #ed0918;"
+						style="margin-top: 20px; width: 150px; height: 40px; font-size: 18px; text-align: center; color: #0000008F; font-weight: bold; border-radius: 4px; background-color: #fff; border: 1px solid #ed0918;"
 						onchange="">
 					</select> <select name="gugun1" id="gugun1"
-						style="width: 150px; height: 40px; font-size: 18px; text-align: center; color: #0000008F; font-weight: bold; border-radius: 4px; background-color: #fff; border: 1px solid #ed0918;"
+						style="margin-top: 20px; width: 150px; height: 40px; font-size: 18px; text-align: center; color: #0000008F; font-weight: bold; border-radius: 4px; background-color: #fff; border: 1px solid #ed0918;"
 						onchange="">
 					</select>
 			</div>
