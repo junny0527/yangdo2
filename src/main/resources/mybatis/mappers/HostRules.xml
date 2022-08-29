@@ -2,16 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "HostRules">
 
-<select id = "getPensionNoBySession" resultType = "int">
-	<![CDATA[
-		select p.no
-		from pension p, company c
-		where p.company_no = c.no
-		and c.user_no = #{userNo}
-	]]>
-</select>
-
-
 <update id = "updateRules" parameterType = "com.javaex.vo.HostRulesVo">
 
 	<![CDATA[
@@ -32,14 +22,14 @@
 <insert id = "insertpeck" parameterType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
 		insert into peck
-		values(seq_peck_no.nextval,#{pensionNo}, to_date(#{peckStart}, 'mm-dd'), to_date(#{peckEnd}, 'mm-dd'), 1)
+		values(seq_peck_no.nextval, to_date(#{peckStart}, 'mm-dd'), to_date(#{peckEnd}, 'mm-dd'), 1)
 	]]>
 </insert>
 
 <insert id = "insertsubpeck" parameterType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
 		insert into peck
-		values(SEQ_PECK_NO.nextval,#{pensionNo}, to_date(#{subpeckStart}, 'MM-DD'), to_date(#{subpeckEnd}, 'MM-DD'), 2)
+		values(SEQ_PECK_NO.nextval, to_date(#{subpeckStart}, 'MM-DD'), to_date(#{subpeckEnd}, 'MM-DD'), 2)
 	]]>
 </insert>
 
@@ -55,6 +45,48 @@
 	]]>
 </select>
 
+<insert id = "insertPensionPeck" parameterType = "com.javaex.vo.HostRulesVo">
+	<![CDATA[
+		insert into p_peck
+		values(seq_p_peck_no.nextval, #{pensionNo}, #{peckNo})
+	]]>
+</insert>
+
+
+<select id = "getRules" parameterType = "int" resultType = "com.javaex.vo.HostRulesVo">
+	<![CDATA[
+		select  
+			check_in checkin
+	        ,check_out checkout
+	        ,add_adult_price addAdultPrice
+	        ,add_kid_price addKidPrice
+	        ,add_baby_price addBabyPrice
+	        ,refund_no refundNo
+		from pension
+		where no = #{pensionNo}
+	]]>
+</select>
+
+
+<select id = "getPeck" parameterType = "int" resultType = "com.javaex.vo.HostRulesVo">
+	<![CDATA[
+		select  to_char(peck_start, 'MM-DD') peckStart
+		        ,to_char(peck_end, 'MM-DD') peckEnd
+		from peck
+		where pension_no = #{pensionNo}
+		and gubun = 1
+	]]>
+</select>
+
+<select id = "getsubPeck" parameterType = "int" resultType = "com.javaex.vo.HostRulesVo">
+	<![CDATA[
+		select  to_char(peck_start, 'MM-DD') subpeckStart
+        		,to_char(peck_end, 'MM-DD') subpeckEnd
+		from peck
+		where pension_no = #{pensionNo}
+		and gubun = 2
+	]]>
+</select>
 
 
 

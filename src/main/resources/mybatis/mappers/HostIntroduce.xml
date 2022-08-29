@@ -70,8 +70,6 @@
 	]]>
 </select>
 
-
-
 <insert id= "insertPublic" parameterType = "com.javaex.vo.HostIntroduceVo">
 	<![CDATA[
 		insert into p_public
@@ -135,5 +133,52 @@
 		where pension_no is null
 	]]>
 </update>
+
+<select id = "getPensionInfo" parameterType = "int" resultType = "com.javaex.vo.HostIntroduceVo">
+
+	<![CDATA[
+		select
+			name pensionName
+	        ,address pensionAddress
+	        ,detail_address detailAddress
+	        ,law_code lawCode
+	        ,law_name lawName
+	        ,visit_road1 visitRoad1
+	        ,visit_road2 visitRoad2
+	        ,visit_road3 visitRoad3
+	        ,area_info1 areaInfo1
+	        ,area_info2 areaInfo2
+	        ,area_info3 areaInfo3
+	        ,rules rules
+	        ,live_pay livePay
+            ,parking_info parkingInfo
+            ,etc etc
+		from pension
+		where no = #{pensionNo}
+	]]>
+	
+</select>
+
+
+<select id = "getAmenities" parameterType = "int" resultType = "com.javaex.vo.HostIntroduceVo">
+
+	<![CDATA[
+		select s_amenities_no amanities
+		from p_amenities
+		where pension_no = #{pensionNo}
+	]]>
+
+</select>
+
+<select id = "getPublics" parameterType = "int" resultType = "com.javaex.vo.HostIntroduceVo">
+	<![CDATA[
+		select s_public_no publics
+		from p_public
+		where pension_no = #{pensionNo}
+	]]>
+
+</select>
+
+
 
 </mapper>

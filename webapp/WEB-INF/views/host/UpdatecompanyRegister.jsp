@@ -120,19 +120,19 @@
 											<option value="010" selected>010</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.phone1 eq '011'}">
-											<option value="011">011</option>
+											<option value="011" selected>011</option>
 			 							</c:if>
 			 							<c:if test = "${cMap.cVo.phone1 eq '016'}">
-			 								<option value="016">016</option>
+			 								<option value="016" selected>016</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.phone1 eq '017'}">
-											<option value="017">017</option>
+											<option value="017" selected>017</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.phone1 eq '018'}">
-											<option value="018">018</option>
+											<option value="018" selected>018</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.phone1 eq '019'}">
-											<option value="019">019</option>
+											<option value="019" selected>019</option>
 										</c:if>
 									</select>
 								</div>
@@ -171,67 +171,67 @@
 											<option value="02" selected>02</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '031'}">
-											<option value="031">031</option>
+											<option value="031" selected>031</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '032'}">
-											<option value="032">032</option>
+											<option value="032" selected>032</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '033'}">
-											<option value="033">033</option>
+											<option value="033" selected>033</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '041'}">
-											<option value="041">041</option>
+											<option value="041" selected>041</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '051'}">
-											<option value="051">051</option>
+											<option value="051" selected>051</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '052'}">
-											<option value="052">052</option>
+											<option value="052" selected>052</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '053'}">
-											<option value="053">053</option>
+											<option value="053" selected>053</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '054'}">
-											<option value="054">054</option>
+											<option value="054" selected>054</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '055'}">
-											<option value="055">055</option>
+											<option value="055" selected>055</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '061'}">
-											<option value="061">061</option>
+											<option value="061" selected>061</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '062'}">
-											<option value="062">062</option>
+											<option value="062" selected>062</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '063'}">
-											<option value="063">063</option>
+											<option value="063" selected>063</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '064'}">
-											<option value="064">064</option>
+											<option value="064" selected>064</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '0502'}">
-											<option value="0502">0502</option>
+											<option value="0502" selected>0502</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '070'}">
-											<option value="070">070</option>
+											<option value="070" selected>070</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '010'}">
-											<option value="010">010</option>
+											<option value="010" selected>010</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '011'}">
-											<option value="011">011</option>
+											<option value="011" selected>011</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '016'}">
-											<option value="016">016</option>
+											<option value="016" selected>016</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '017'}">
-											<option value="017">017</option>
+											<option value="017" selected>017</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '018'}">
-											<option value="018">018</option>
+											<option value="018" selected>018</option>
 										</c:if>
 										<c:if test = "${cMap.cVo.tel1 eq '019'}">
-											<option value="019">019</option>
+											<option value="019" selected>019</option>
 										</c:if>
 									</select>
 								</div>

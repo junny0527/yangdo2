@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +36,21 @@ public class HostRulesDao {
 		return peckNo;
 	}
 	
-
+	public int insertPensionPeck(HostRulesVo peckVo) {
+		return sqlSession.insert("HostRules.insertPensionPeck", peckVo);
+	}
+	
+	public HostRulesVo getRules(int pensionNo) {
+		return sqlSession.selectOne("HostRules.getRules", pensionNo);
+	}
+	
+	public List<HostRulesVo> getPeck(int pensionNo) {
+		return sqlSession.selectList("HostRules.getPeck", pensionNo);
+	}
+	
+	public List<HostRulesVo> getsubPeck(int pensionNo) {
+		return sqlSession.selectList("HostRules.getsubPeck", pensionNo);
+	}
+	
 	
 }

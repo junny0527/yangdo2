@@ -199,15 +199,33 @@
 								</th>
 								<td class="bd_r_none" colspan="2">
 									<div class="form-layer align_chk">
-										<label for="theme0" class="checkbox-inline icon-label"> <input type="checkbox" id="theme0" name="publicArrays" value="P01">수영장</label>
-										<label for="theme1" class="checkbox-inline icon-label"> <input type="checkbox" id="theme1" name="publicArrays" value="P02">족구장</label>
-										<label for="theme2" class="checkbox-inline icon-label"> <input type="checkbox" id="theme2" name="publicArrays" value="P03">카페</label>
-										<label for="theme3" class="checkbox-inline icon-label"> <input type="checkbox" id="theme3" name="publicArrays" value="P04">노래방</label>
-										<label for="theme4" class="checkbox-inline icon-label"> <input type="checkbox" id="theme4" name="publicArrays" value="P05">편의점</label>
-										<label for="theme5" class="checkbox-inline icon-label"> <input type="checkbox" id="theme5" name="publicArrays" value="P06">주차장</label>
-										<label for="theme6" class="checkbox-inline icon-label"> <input type="checkbox" id="theme6" name="publicArrays" value="P07">BBQ</label>
-										<label for="theme7" class="checkbox-inline icon-label"> <input type="checkbox" id="theme7" name="publicArrays" value="P08">주방/식당</label>
-										<label for="theme8" class="checkbox-inline icon-label"> <input type="checkbox" id="theme8" name="publicArrays" value="P09">흡연부스</label>
+										<label for="theme0" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme0" name="publicArrays" value="P01"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P01'}">checked</c:if></c:forEach>>수영장</label>
+										<label for="theme1" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme1" name="publicArrays" value="P02"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P02'}">checked</c:if></c:forEach>>족구장</label>
+										<label for="theme2" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme2" name="publicArrays" value="P03"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P03'}">checked</c:if></c:forEach>>카페</label>
+										<label for="theme3" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme3" name="publicArrays" value="P04"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P04'}">checked</c:if></c:forEach>>노래방</label>
+										<label for="theme4" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme4" name="publicArrays" value="P05"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P05'}">checked</c:if></c:forEach>>편의점</label>
+										<label for="theme5" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme5" name="publicArrays" value="P06"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P06'}">checked</c:if></c:forEach>>주차장</label>
+										<label for="theme6" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme6" name="publicArrays" value="P07"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P07'}">checked</c:if></c:forEach>>BBQ</label>
+										<label for="theme7" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme7" name="publicArrays" value="P08"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P08'}">checked</c:if></c:forEach>>주방/식당</label>
+										<label for="theme8" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme8" name="publicArrays" value="P09"
+												<c:forEach items="${pMap.pubs}" var = "pubs"><c:if test = "${pubs.publics eq 'P09'}">checked</c:if></c:forEach>>흡연부스</label>
 									</div>
 								</td>
 							</tr>
@@ -216,17 +234,39 @@
 								</th>
 								<td class="bd_r_none" colspan="2">
 									<div class="form-layer align_chk">
-										<label for="theme9" class="checkbox-inline icon-label"> <input type="checkbox" id="theme9" name="amenitiesArrays" value="A01">냉장고</label>
-										<label for="theme10" class="checkbox-inline icon-label"> <input type="checkbox" id="theme10" name="amenitiesArrays" value="A02">에어컨</label>
-										<label for="theme11" class="checkbox-inline icon-label"> <input type="checkbox" id="theme11" name="amenitiesArrays" value="A03">TV</label>
-										<label for="theme12" class="checkbox-inline icon-label"> <input type="checkbox" id="theme12" name="amenitiesArrays" value="A04">와이파이</label>
-										<label for="theme13" class="checkbox-inline icon-label"> <input type="checkbox" id="theme13" name="amenitiesArrays" value="A05">욕실용품</label>
-										<label for="theme14" class="checkbox-inline icon-label"> <input type="checkbox" id="theme14" name="amenitiesArrays" value="A06">세탁기</label>
-										<label for="theme15" class="checkbox-inline icon-label"> <input type="checkbox" id="theme15" name="amenitiesArrays" value="A07">드라이기</label>
-										<label for="theme16" class="checkbox-inline icon-label"> <input type="checkbox" id="theme16" name="amenitiesArrays" value="A08">욕조</label>
-										<label for="theme17" class="checkbox-inline icon-label"> <input type="checkbox" id="theme17" name="amenitiesArrays" value="A09">반려견동반</label>
-										<label for="theme18" class="checkbox-inline icon-label"> <input type="checkbox" id="theme18" name="amenitiesArrays" value="A10">객실 내 흡연</label>
-										<label for="theme19" class="checkbox-inline icon-label"> <input type="checkbox" id="theme19" name="amenitiesArrays" value="A11">취사가능</label>
+										<label for="theme9" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme9" name="amenitiesArrays" value="A01"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A01'}">checked</c:if></c:forEach>>냉장고</label>
+										<label for="theme10" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme10" name="amenitiesArrays" value="A02"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A02'}">checked</c:if></c:forEach>>에어컨</label>
+										<label for="theme11" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme11" name="amenitiesArrays" value="A03"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A03'}">checked</c:if></c:forEach>>TV</label>
+										<label for="theme12" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme12" name="amenitiesArrays" value="A04"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A04'}">checked</c:if></c:forEach>>와이파이</label>
+										<label for="theme13" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme13" name="amenitiesArrays" value="A05"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A05'}">checked</c:if></c:forEach>>욕실용품</label>
+										<label for="theme14" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme14" name="amenitiesArrays" value="A06"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A06'}">checked</c:if></c:forEach>>세탁기</label>
+										<label for="theme15" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme15" name="amenitiesArrays" value="A07"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A07'}">checked</c:if></c:forEach>>드라이기</label>
+										<label for="theme16" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme16" name="amenitiesArrays" value="A08"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A08'}">checked</c:if></c:forEach>>욕조</label>
+										<label for="theme17" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme17" name="amenitiesArrays" value="A09"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A09'}">checked</c:if></c:forEach>>반려견동반</label>
+										<label for="theme18" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme18" name="amenitiesArrays" value="A10"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A10'}">checked</c:if></c:forEach>>객실 내 흡연</label>
+										<label for="theme19" class="checkbox-inline icon-label">
+											<input type="checkbox" id="theme19" name="amenitiesArrays" value="A11"
+												<c:forEach items="${pMap.amen}" var = "amen"><c:if test = "${amen.amanities eq 'A11'}">checked</c:if></c:forEach>>취사가능</label>
 									</div>
 								</td>
 							</tr>
