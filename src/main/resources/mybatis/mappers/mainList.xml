@@ -93,8 +93,6 @@
 				and pu.pension_no = pe.no
 				and ro.sortation = peck.gubun
 				and resv.yCount(+) = #{yCount}
-				and si.name= #{sido1}
-				and gu.name = #{gugun1}
 				order by gu.name
 		]]>
 	</select>	
@@ -478,6 +476,7 @@
 	        and ro.sortation = peck.gubun
             and resv.yCount(+) = #{yCount}
 	        and rstan.standard_people = #{persons}
+	        
              
 		]]>
 		
@@ -552,7 +551,7 @@
 	                       ,r.pension_no
 	              from reservations re, rooms r
 	              where re.room_no = r.no
-	              and   check_in =  #{datepicker}
+	              and   check_in = #{datepicker}
 	              and   check_out = #{datepicker2}
 	              and   status = 6
 	              group by r.pension_no) resv,
@@ -578,12 +577,12 @@
 	              from p_public
 	              group by pension_no) pu,
 	              
-                   (select rm.standard_people,
+                   (select min(rm.standard_people) standard_people,
                            rm.pension_no 
                     from rooms rm, pension pe
                     where pe.no = rm.pension_no
-                    and rm.standard_people = #{persons}
-                    group by rm.standard_people, rm.pension_no) rstan
+                    and rm.standard_people >= #{persons}
+                    group by rm.pension_no) rstan
                   
 	        where pe.no = si.pension_no
 	        and si.no = gu.no
@@ -597,7 +596,9 @@
 	        and pu.pension_no = pe.no
 	        and ro.sortation = peck.gubun
             and resv.yCount(+) = #{yCount}
-	        and rstan.standard_people = #{persons}
+	        and rstan.standard_people >= #{persons}
+			and si.name= #{sido1}
+			and gu.name = #{gugun1}
              
 		]]>
 		

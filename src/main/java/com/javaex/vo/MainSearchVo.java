@@ -29,8 +29,6 @@ public class MainSearchVo {
 		
 		this.persons = 2;
 		
-		this.sido1 = "서울특별시";
-		this.gugun1 = "강남구";
 	}
 
 	public MainSearchVo(String datepicker, String datepicker2, String gugun1, String sido1, String[] puOpt,
