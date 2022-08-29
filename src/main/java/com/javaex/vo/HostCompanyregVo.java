@@ -309,6 +309,5 @@ public class HostCompanyregVo {
 				+ Arrays.toString(businessGroupArrays) + ", businessType=" + businessType + ", businessGroup="
 				+ businessGroup + "]";
 	}
-
-
+	
 }

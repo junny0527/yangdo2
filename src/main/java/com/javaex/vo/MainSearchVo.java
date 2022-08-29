@@ -28,6 +28,7 @@ public class MainSearchVo {
 		this.datepicker2 = sdf.format(cal.getTime());
 		
 		this.persons = 2;
+		
 	}
 
 	public MainSearchVo(String datepicker, String datepicker2, String gugun1, String sido1, String[] puOpt,

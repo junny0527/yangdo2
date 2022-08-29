@@ -129,8 +129,8 @@ public class RepayController {
 
 		// 6.데이터 확인해주기
 		System.out.println("==================================");
-		System.out.println(params);
-		System.out.println(rpMap);
+		System.out.println("params: "+params);
+		System.out.println("rpMAp: "+rpMap);
 		System.out.println("컴마뺸가격:" + transprice);
 		System.out.println("컴마뺸가격:" + getadult);
 		System.out.println("컴마뺸가격:" + getkid);

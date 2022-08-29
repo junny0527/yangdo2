@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,8 @@ public class HostCompanyregController {
 
 	@RequestMapping(value="companysave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companysave(HttpSession session, @ModelAttribute HostCompanyregVo cVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
 		cVo.setUserNo(userNo);
 		cregService.insertCompany(cVo);
 		return "/host/introduce";
@@ -52,10 +55,9 @@ public class HostCompanyregController {
 	public String updatecompanyreg(HttpSession session, Model model, @ModelAttribute HostCompanyregVo cVo) {
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int userNo = uVo.getNo();
-		HostCompanyregVo upVo = cregService.getCompanyinfo(userNo);
 		String email = cregService.getEmail(userNo);
-		upVo.setEmail(email);
-		model.addAttribute("cVo", upVo);
+		Map<String, Object> cMap = cregService.getCompanyinfo(userNo, email);
+		model.addAttribute("cMap", cMap);
 		
 		return "/host/UpdatecompanyRegister";
 	}

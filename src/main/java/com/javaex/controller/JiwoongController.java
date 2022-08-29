@@ -24,6 +24,7 @@ public class JiwoongController {
 	
 	
 	//기본 리스트
+	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
 	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo) {
 		System.out.println("jiwoongController>mainList");

@@ -122,17 +122,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 											<strong data-v-3ce5aaac="">(인원 추가 정보 및 포인트사용 내역)</strong> <br>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">성인:
-													${rpMap.adult-rpMap.standard}명</span><b data-v-3ce5aaac=""class="adultss"><fmt:formatNumber
-														value="${(rpMap.adult-rpMap.standard)*rpMap.priceadult}" pattern="#,###" />원</b>
+													${params.yAdult-params.standard}명</span><b data-v-3ce5aaac=""class="adultss"><fmt:formatNumber
+														value="${(params.yAdult-params.standard)*params.priceadult}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
-													${rpMap.kid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="${rpMap.kid * rpMap.pricekid}" pattern="#,###" />원</b>
+													${params.yKid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
+														value="${rpMap.yKid * params.pricekid}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
-													${rpMap.baby}명</span><b data-v-3ce5aaac="">0원</b>
+													${params.yBaby}명</span><b data-v-3ce5aaac="">0원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">포인트 사용</span><b
@@ -253,11 +253,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 				return false;
 			}
 			//------어른,아이,유아계산---
-			let adult = Number('${rpMap.adult}');
-			let kid = Number('${rpMap.kid}');
-			let standard = Number('${rpMap.standard}')
-			let adultpri = Number('${rpMap.priceadult}');
-			let kidpri = Number('${rpMap.pricekid}');
+			let adult = Number('${params.yAdult}');
+			let kid = Number('${params.yKid}');
+			let standard = Number('${params.standard}')
+			let adultpri = Number('${params.priceadult}');
+			let kidpri = Number('${params.pricekid}');
 			
 
 			$("#pointBtn").text(pBtnFormat("포인트 사용 " + point + "P"));
@@ -325,7 +325,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	checkOutHr:"${rpMap.CHECKOUTTIME }",
 			    	        	pName : "${rpMap.PNAME}",
 			    	        	rName : "${rpMap.RNAME}",
-			    	        	status: '5',
+			    	        	status: '1',
 			    	        	payWay: '1',
 			    	        	payStatus: '2',
 			    	        	//null 값인거 일단 넣어보기
@@ -353,8 +353,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    			console.log("res: ",res );
 	    	    			if(res.count === 1) {
 	    	    			// res 
-	    	    			alert("결제가 성공되었습니다.");
-	    	    			location.href = `/yangdo/my/reservation`; //?no=${res.no} 예약번호 필요시 넣어주며됨
+	    	    			alert("결제가 성공되어 예약내역으로 넘어갑니다.");
+	    	    			setTimeout(function() {
+	    	    				location.href = `/yangdo/my/reservation`; //?no=${res.no} 예약번호 필요시 넣어주며됨
+	    	    				}, 400);
 	    	    			} else {
 	    	    				alert("실패")
 	    	    			}

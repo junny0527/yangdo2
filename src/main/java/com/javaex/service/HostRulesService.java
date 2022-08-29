@@ -1,5 +1,8 @@
 package com.javaex.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +55,7 @@ public class HostRulesService {
 			System.out.println("peckNo : " + peckNo);
 			peckVo.setPeckNo(peckNo);
 			System.out.println("after insert peckVo : " + peckVo);
+			rDao.insertPensionPeck(peckVo);
 		}
 		
 		for(int i = 0; i<editSubpeckStart.length; i++) {
@@ -75,8 +79,64 @@ public class HostRulesService {
 			
 			int peckNo = rDao.getpeckNo();
 			peckVo.setPeckNo(peckNo);
+			rDao.insertPensionPeck(peckVo);
 		}
 		return rDao.updateRules(hVo);
 	}
+	
+	public HostRulesVo getRules(int pensionNo) {
+		return rDao.getRules(pensionNo);
+	}
+	
+	public List<HostRulesVo> getPeck(int pensionNo){
+		List<HostRulesVo> pVo = rDao.getPeck(pensionNo);
+		List<HostRulesVo> newpVo = new ArrayList<>();
+		System.out.println("service : " + pVo);
+		
+		for(int i=0; i<pVo.size(); i++) {
+			String newStart = pVo.get(i).getPeckStart();
+			String newEnd = pVo.get(i).getPeckEnd();
+			String day = "일";
+			
+			String newPs = newStart.replace("-", "월 ");
+			newPs = newPs.concat(day);
+			String newPe = newEnd.replace("-", "월 ");
+			newPe = newPe.concat(day);
+			
+			HostRulesVo tempVo = new HostRulesVo();
+			tempVo.setPeckStart(newPs);
+			tempVo.setPeckEnd(newPe);
+			
+			newpVo.add(tempVo);
+		}
+		System.out.println("service : " + newpVo);
+		return newpVo;
+	}
+	
+	public List<HostRulesVo> getsubPeck(int pensionNo){
+		List<HostRulesVo> spVo = rDao.getsubPeck(pensionNo);
+		List<HostRulesVo> newspVo = new ArrayList<>();
+		System.out.println("service : " + spVo);
+		
+		for(int i=0; i<spVo.size(); i++) {
+			String newStart = spVo.get(i).getSubpeckStart();
+			String newEnd = spVo.get(i).getSubpeckEnd();
+			String day = "일";
+			
+			String newPs = newStart.replace("-", "월 ");
+			newPs = newPs.concat(day);
+			String newPe = newEnd.replace("-", "월 ");
+			newPe = newPe.concat(day);
+			
+			HostRulesVo tempVo = new HostRulesVo();
+			tempVo.setSubpeckStart(newPs);
+			tempVo.setSubpeckEnd(newPe);
+			
+			newspVo.add(tempVo);
+		}
+		System.out.println("service : " + newspVo);
+		return newspVo;
+	}
+	
 
 }
