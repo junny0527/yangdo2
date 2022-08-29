@@ -34,12 +34,12 @@
 		<div class="sub_top_wrap">
 			<div class="sub_top">
 				<h2>펜션</h2>
-				<form action="${pageContext.request.contextPath}/main/search" method="get">
+				<form action="${pageContext.request.contextPath}/main/search"
+					method="get">
 					<select name="sido1" id="sido1"
 						style="width: 150px; height: 40px; font-size: 18px; text-align: center; color: #0000008F; font-weight: bold; border-radius: 4px; background-color: #fff; border: 1px solid #ed0918;"
 						onchange="">
-					</select> 
-					<select name="gugun1" id="gugun1"
+					</select> <select name="gugun1" id="gugun1"
 						style="width: 150px; height: 40px; font-size: 18px; text-align: center; color: #0000008F; font-weight: bold; border-radius: 4px; background-color: #fff; border: 1px solid #ed0918;"
 						onchange="">
 					</select>
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<!-- header 지역선택 -->
-	
+
 	<!-- content -->
 	<div id="content" class="sub_wrap">
 		<!-- fillter -->
@@ -377,11 +377,35 @@
 					
 				}
 				
+				var ps = new kakao.maps.services.Places();
 				
-				for(var i=0; i<addressArray.length; i++){
+				var gugunName = '${pList[0].gugunName}'
+				
+				ps.keywordSearch('gugunName', placesSearchCB);
+				
+				
+				function placesSearchCB (data, status, pagination) {
+				    if (status === kakao.maps.services.Status.OK) {
+						console.log(data);
+				        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+				        // LatLngBounds 객체에 좌표를 추가합니다
+				        var bounds = new kakao.maps.LatLngBounds();
+
+				        for (var i=0; i<data.length; i++) {
+				            displayMarker(data[i]);    
+				            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+				        }       
+
+				        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+				        map.setBounds(bounds);
+				    } 
+				}
+				
+				
+				/* for(var i=0; i<addressArray.length; i++){
 					
 					var arr = [];
-					arr[i] = addressArray[i].groupName;
+					arr = addressArray[i].groupName;
 					
 					// 주소로 좌표를 검색합니다
 					geocoder.addressSearch(
@@ -413,7 +437,7 @@
 						       
 				    		} 
 					});    
-				}
+				} */
 				
 				$("#btn_map").on("click", function() {
 		 			$("#local").modal("show");
@@ -531,148 +555,80 @@
 					checkbox.checked = false;
 					 })
 				}
+			
 				////////////////////////// 지역선택 ////////////////////////////
 				$('document').ready(function() {
-	               var area99= ["서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
-	               var area0 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
-	               var area1 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
-	               var area2 = ["대덕구","동구","서구","유성구","중구"];
-	               var area3 = ["광산구","남구","동구","북구","서구"];
-	               var area4 = ["남구","달서구","동구","북구","서구","수성구","중구","달성군"];
-	               var area5 = ["남구","동구","북구","중구","울주군"];
-	               var area6 = ["강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
-	               var area7 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
-	               var area8 = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
-	               var area9 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","청원군"];
-	               var area10 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","당진군","부여군","서천군","연기군","예산군","청양군","태안군","홍성군"];
-	               var area11 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군"];
-	               var area12 = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
-	               var area13 = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
-	               var area14 = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
-	               var area15 = ["서귀포시","제주시","남제주군","북제주군"];
-	          
-	            
-	             // 시/도 선택 박스 초기화
-	             $("select[name^=sido1]").each(function() {
-	                  $selsido = $(this);
-	                  console.log($selsido);
-	                  var sido1 = '${searchVo.sido1}';
-	                  console.log(sido1);
-	                  if(sido1 == '') {
-	                        $.each(eval(area99), function() {
-	                        $selsido.append("<option value='"+this+"'>"+this+"</option>");
-	                    });
-	                     
-	                  }else {
-	                        $.each(eval(area99), function() {
-	                        $selsido.append("<option value='"+this+"' >"+sido1+"</option>");
-	                           
-	                    });
-	                  }
-	                     
-	                  var str = '';
-	                  str += '<option class = "gugunpick" name="gugun1"value="강남구">강남구</option>';
-	                  str += '<option class = "gugunpick" value="강동구">강동구</option>';
-	                  str += '<option class = "gugunpick" value="강북구">강북구</option>';
-	                  str += '<option class = "gugunpick" value="강서구">강서구</option>';
-	                  str += '<option class = "gugunpick" value="관악구">관악구</option>';
-	                  str += '<option class = "gugunpick" value="광진구">광진구</option>';
-	                  str += '<option class = "gugunpick" value="구로구">구로구</option>';
-	                  str += '<option class = "gugunpick" value="금천구">금천구</option>';
-	                  str += '<option class = "gugunpick" value="노원구">노원구</option>';
-	                  str += '<option class = "gugunpick" value="도봉구">도봉구</option>';
-	                  str += '<option class = "gugunpick" value="동대문구">동대문구</option>';
-	                  str += '<option class = "gugunpick" value="동작구">동작구</option>';
-	                  str += '<option class = "gugunpick" value="마포구">마포구</option>';
-	                  str += '<option class = "gugunpick" value="서대문구">서대문구</option>';
-	                  str += '<option class = "gugunpick" value="서초구">서초구</option>';
-	                  str += '<option class = "gugunpick" value="성동구">성동구</option>';
-	                  str += '<option class = "gugunpick" value="성북구">성북구</option>';
-	                  str += '<option class = "gugunpick" value="송파구">송파구</option>';
-	                  str += '<option class = "gugunpick" value="양천구">양천구</option>';
-	                  str += '<option class = "gugunpick" value="영등포구">영등포구</option>';
-	                  str += '<option class = "gugunpick" value="용산구">용산구</option>';
-	                  str += '<option class = "gugunpick" value="은평구">은평구</option>';
-	                  str += '<option class = "gugunpick" value="종로구">종로구</option>';
-	                  str += '<option class = "gugunpick" value="중구">중구</option>';
-	                  str += '<option class = "gugunpick" value="중랑구">중랑구</option>';       
-	                      
-	                $selsido.next().append(str);
-	             });
-	            
-	             // 시/도 선택시 구/군 설정
-	            
-	             $("select[name^=sido1]").change(function() {
-	               var $this = $(this);
-	                
-	                var area = "area"+$("option",$this).index($("option:selected",$this)); // 선택지역의 구군 Array
-	                console.log(area);
-	                var $gugun = $(this).next(); // 선택영역 군구 객체
-	                 
-	                var sido = $("#sido1 option:selected");
-	                console.log(sido);
-	                 
-	                var sidoName = sido.val();
-	                console.log(sidoName);
-	                 
-	                console.log($("#sido1").val(sidoName).prop("selected", true));
-	                 
-	              $("option",$gugun).remove(); // 구군 초기화
-	            
-	                 if(area == "area0"){
-	                  var str = '';
-	                    str += '<option class = "gugunpick" value="강남구">강남구</option>';
-	                    str += '<option class = "gugunpick" value="강동구">강동구</option>';
-	                    str += '<option class = "gugunpick" value="강북구">강북구</option>';
-	                    str += '<option class = "gugunpick" value="강서구">강서구</option>';
-	                    str += '<option class = "gugunpick" value="관악구">관악구</option>';
-	                    str += '<option class = "gugunpick" value="광진구">광진구</option>';
-	                    str += '<option class = "gugunpick" value="구로구">구로구</option>';
-	                    str += '<option class = "gugunpick" value="금천구">금천구</option>';
-	                    str += '<option class = "gugunpick" value="노원구">노원구</option>';
-	                    str += '<option class = "gugunpick" value="도봉구">도봉구</option>';
-	                    str += '<option class = "gugunpick" value="동대문구">동대문구</option>';
-	                    str += '<option class = "gugunpick" value="동작구">동작구</option>';
-	                    str += '<option class = "gugunpick" value="마포구">마포구</option>';
-	                    str += '<option class = "gugunpick" value="서대문구">서대문구</option>';
-	                    str += '<option class = "gugunpick" value="서초구">서초구</option>';
-	                    str += '<option class = "gugunpick" value="성동구">성동구</option>';
-	                    str += '<option class = "gugunpick" value="성북구">성북구</option>';
-	                    str += '<option class = "gugunpick" value="송파구">송파구</option>';
-	                    str += '<option class = "gugunpick" value="양천구">양천구</option>';
-	                    str += '<option class = "gugunpick" value="영등포구">영등포구</option>';
-	                    str += '<option class = "gugunpick" value="용산구">용산구</option>';
-	                    str += '<option class = "gugunpick" value="은평구">은평구</option>';
-	                    str += '<option class = "gugunpick" value="종로구">종로구</option>';
-	                    str += '<option class = "gugunpick" value="중구">중구</option>';
-	                    str += '<option class = "gugunpick" value="중랑구">중랑구</option>';
-	                    
-	                  $gugun.append(str);
-	              }
-	                 else {
-	                  $.each(eval(area), function() {
-	                   $gugun.append("<option class = 'gugunpick' value='"+this+"'>"+this+"</option>");
-	                   
-	                  });
-	              }
-	                 var gugun = $("#gugun1 option:selected");
-	                   console.log(gugun);
-	                   var gugunName = gugun.val();
-	                   console.log(gugunName);
-	             });
-	            
-	            });
-	            //군구 선택시 선택값 출력
-	            $("#gugun1").on("click",function(){
-	               var gugun = $("#gugun1 option:selected");
-	               console.log("뒤질래")
-	               console.log(gugun);
-	               
-	               var gugunName = gugun.text();
-	               console.log(gugunName);
-	               
-	               $("#guguninfo").val(gugunName);
-	               
-	            });
+				   var area0 = ["시/도선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+				   var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+				   var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
+				   var area3 = ["대덕구","동구","서구","유성구","중구"];
+				   var area4 = ["광산구","남구","동구","북구","서구"];
+				   var area5 = ["남구","달서구","동구","북구","서구","수성구","중구","달성군"];
+				   var area6 = ["남구","동구","북구","중구","울주군"];
+				   var area7 = ["강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
+				   var area8 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
+				   var area9 = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
+				   var area10 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","청원군"];
+				   var area11 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","당진군","부여군","서천군","연기군","예산군","청양군","태안군","홍성군"];
+				   var area12 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군"];
+				   var area13 = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
+				   var area14 = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
+				   var area15 = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
+				   var area16 = ["서귀포시","제주시","남제주군","북제주군"];
+			 
+			   
+				 // 시/도 선택 박스 초기화
+				 $("select[name^=sido1]").each(function() {
+				  	 	$selsido = $(this);
+				  	 	
+				  	 	$.each(eval(area0), function() {
+				  	 	$selsido.append("<option value='"+this+"'>"+this+"</option>");
+				  	});
+				  $selsido.next().append("<option value=''>구/군선택</option>");
+				 });
+				
+				 // 시/도 선택시 구/군 설정
+				
+				 $("select[name^=sido1]").change(function() {
+				 	 var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
+				 	 var $gugun = $(this).next(); // 선택영역 군구 객체
+				 	 
+				 	 
+				 	 var sido = $("#sido1 option:selected");
+				 	 console.log(sido);
+				 	 
+				 	 var sidoName = sido.val();
+				 	 console.log(sidoName);
+				 	 
+				  $("option",$gugun).remove(); // 구군 초기화
+				
+					  if(area == "area0")
+					   $gugun.append("<option class = 'gugunpick' value=''>구/군선택</option>");
+					  else {
+					   $.each(eval(area), function() {
+					    $gugun.append("<option class = 'gugunpick' value='"+this+"'>"+this+"</option>");
+					    
+					   });
+				  }
+					  var gugun = $("#gugun1 option:selected");
+					 	console.log(gugun);
+					    var gugunName = gugun.val();
+					 	console.log(gugunName);
+				 });
+				
+				});
+				//군구 선택시 선택값 출력
+				$("#gugun1").on("click",function(){
+					var gugun = $("#gugun1 option:selected");
+					console.log("뒤질래")
+					console.log(gugun);
+					
+					var gugunName = gugun.text();
+					console.log(gugunName);
+					
+					$("#guguninfo").val(gugunName);
+					
+				});
+			
 		</script>				
 </html>
