@@ -40,7 +40,7 @@
 	
 	<select id = "getCompanyNoBySession" resultType = "int">
 		<![CDATA[
-			select	no
+			select	nvl(max(no),0)
 			from company
 			where user_no = #{userNo}
 		]]>
@@ -89,7 +89,6 @@
 	
 	</select>
 	
-	<!-- 
 	<select id = "getBusinesstype" parameterType = "int" resultType = "com.javaex.vo.HostCompanyregVo">
 	
 		<![CDATA[
@@ -111,6 +110,5 @@
 		]]>
 		
 	</select>
-	 -->
 	
 </mapper>

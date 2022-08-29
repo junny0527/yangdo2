@@ -44,7 +44,7 @@ public class HostCompanyregController {
 
 	@RequestMapping(value="companysave", method = {RequestMethod.GET, RequestMethod.POST})
 	public String companysave(HttpSession session, @ModelAttribute HostCompanyregVo cVo) {
-		int userNo = (Integer) session.getAttribute("userNo");
+		int userNo = (Integer) session.getAttribute("authUser");
 		cVo.setUserNo(userNo);
 		cregService.insertCompany(cVo);
 		return "/host/introduce";
