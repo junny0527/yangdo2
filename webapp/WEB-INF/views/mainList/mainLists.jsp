@@ -262,7 +262,7 @@
                         style="margin-top: -159px; display: block;">
                         <div class="stage gra_black_vertical clearfix">
                            <div class="evt_info">
-                              <c:if test="${pensionVo.status == 6}">
+                              <c:if test="${pensionVo.yCount <= 1}">
                                  <span>양도중</span>
                               </c:if>
                            </div>
