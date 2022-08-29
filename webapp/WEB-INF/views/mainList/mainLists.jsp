@@ -255,14 +255,13 @@
 						<div class="title">
 							<h3>${pensionVo.gugunName}</h3>
 						</div>
-						<li class="list_2 adcno3"><a
-							href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
+						<li class="list_2 adcno3"><a href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
 								<img class="lazy align"
 								src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}"
 								style="margin-top: -159px; display: block;">
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${pensionVo.status == 6}">
+										<c:if test="${pensionVo.yCount == 1}">
 											<span>양도중</span>
 										</c:if>
 									</div>
