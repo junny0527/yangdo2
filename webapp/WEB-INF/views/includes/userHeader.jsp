@@ -14,10 +14,10 @@
 					<span>더보기</span>
 				</button>
 				<ul class="list_03" style="display: none; opacity: 1;">
-					<li><a href="">공지사항</a></li>
-					<li><a href="">자주 묻는 질문</a></li>
-					<li><a href="">1:1 문의</a></li>
-					<li><a href="">약관 및 정책</a></li>
+					<li class="list_03_1"><a href="">공지사항</a></li>
+					<li class="list_03_1"><a href="">자주 묻는 질문</a></li>
+					<li class="list_03_1"><a href="">1:1 문의</a></li>
+					<li class="list_03_1"><a href="">약관 및 정책</a></li>
 				</ul>
 			</li>
 			<c:choose>
@@ -28,11 +28,11 @@
 					<li class="over pic clearfix">
 						<a href="${pageContext.request.contextPath}/my/info?no=${authUser.no}"><img id="user-icon" src="https://image.goodchoice.kr/profile/ico/ico_21.png" alt=""></a>
 						<ul class="list_04 clearfix" style="display: none;">
-							<li><b>${authUser.nickName}</b></li>
-							<li><a href="${pageContext.request.contextPath}/my/info?no=${authUser.no}">내정보</a></li>
-							<li><a href="${pageContext.request.contextPath}/my/point?no=${authUser.no}" data-point="0">포인트<!-- span>0P</span --></a></li>
-							<li><a href="${pageContext.request.contextPath}/my/reservation?no=${authUser.no}">예약내역<!-- span>0건</span --></a></li>
-							<li><a href="${pageContext.request.contextPath}/logout"><button type="button" class="pop_logout_open">로그아웃</button></a></li>
+							<li class="list_04_1"><b>${authUser.nickName}</b></li>
+							<li class="list_04_1"><a href="${pageContext.request.contextPath}/my/info?no=${authUser.no}">내정보</a></li>
+							<li class="list_04_1"><a href="${pageContext.request.contextPath}/my/point?no=${authUser.no}" data-point="0">포인트<!-- span>0P</span --></a></li>
+							<li class="list_04_1"><a href="${pageContext.request.contextPath}/my/reservation?no=${authUser.no}">예약내역<!-- span>0건</span --></a></li>
+							<li class="list_04_1"><a href="${pageContext.request.contextPath}/logout"><button type="button" class="pop_logout_open">로그아웃</button></a></li>
 						</ul>
 					</li>
 				</c:otherwise>
