@@ -349,14 +349,16 @@ td>div>span>div .room_type{
 }
 
 #room-images> li{
-	float:left;
+	float:left;	
 	width: 200px;
+	height: 135px;
 	margin:10px
 }
 
 
 #room-images > li > div >img{
 	width: 200px;
+	height: 115px;
 }
 
 .btn-deleete{

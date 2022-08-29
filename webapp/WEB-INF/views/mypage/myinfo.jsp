@@ -48,7 +48,6 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 			<div class="align_rt">
 				<div class="mypage">
 
-
 					<form name="form1" action="${pageContext.request.contextPath}/my/update/nickname" autocomplete="off" method="post" data-form="nickName">
 						<!-- 폼전송시 전달되는 data target element -->
 						<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
@@ -100,7 +99,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 								</section>
 								<div class="pw_input__btns-wrap ">
 									<button class="btns-wrap__edit-btn" id="modify-pw" type="button">수정</button>
-									<button class="btns-wrap__submit-btn btn-primary" type="button" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uVo.resNo}">수정완료</button>
+									<button class="btns-wrap__submit-btn btn-primary" type="button" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uVo.no}">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
 							</div>
@@ -198,7 +197,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 
 	});
 
-	// 수정완료 버튼 클릭 시 
+	/* // 수정완료 버튼 클릭 시 
 	$('.btns-wrap__submit-btn').on('click', function() {
 
 		//데이터 담기
@@ -216,6 +215,6 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 		var data = $("#modify-data").val();
 
 		
-	});
+	}); */
 </script>
 </html>

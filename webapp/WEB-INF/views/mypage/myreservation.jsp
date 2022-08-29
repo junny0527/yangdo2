@@ -123,7 +123,7 @@
 										<!-- 예약상세 -->
 
 										<p class="btn_re">
-											<a href="${pageContext.request.contextPath}/my/detail?resNo=${clist.resNo}"> 다시 예약 </a>
+											<a href="${pageContext.request.contextPath}/reservation?pensionNo=${myVo.pNo}&datepicker=${myVo.inDate}&datepicker2="> 다시 예약 </a>
 										</p>
 									</div></li>
 							</ul>

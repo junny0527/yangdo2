@@ -137,7 +137,6 @@ a:active {
 }
 
 #user-icon {
-	
 	width: 30px;
 	height: 30px;
 }
@@ -359,15 +358,17 @@ ul, ol, li {
 .gnb_pc .list_03 {
 	top: 30px;
 	left: -65px;
-	width: 184px
 }
-
+.list_03_1{
+	width: 120px;
+}
 .gnb_pc .list_04 {
 	top: 30px;
 	left: -90px;
-	width: 213px
 }
-
+.list_04_1{
+	width: 149px;
+}
 .gnb_pc li a {
 	display: inline-block;
 	font-size: 18px;

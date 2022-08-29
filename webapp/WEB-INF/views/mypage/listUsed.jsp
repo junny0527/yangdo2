@@ -50,7 +50,9 @@
 								<c:forEach var="list" items="${list}">
 									<ul class="list_wrap">
 										<li class="reservation-detail"><div>
-												<button type="button" class="btn_del">삭제</button>
+												<!-- 삭제버튼 -->
+												<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uList.resNo}">삭제</button>
+												<!-- 삭제버튼 -->
 												<p class="pic">
 													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="삼산 도브" class="align">
 												</p>

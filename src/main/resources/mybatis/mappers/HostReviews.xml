@@ -47,12 +47,20 @@
 </select>
 
 <insert id = "insertReply" parameterType = "com.javaex.vo.HostReplyVo">
-
 	<![CDATA[
 		insert into replys
 		values(SEQ_REPLYS_NO.nextval, #{reviewNo}, #{hostContent}, sysdate, #{hostNo})
 	]]>
 </insert>
+
+<update id = "updateReply" parameterType = "com.javaex.vo.HostReplyVo">
+	<![CDATA[
+		update replys
+		set content = #{hostContent}
+		where review_no = #{reviewNo}
+	]]>
+
+</update>
 
 
 </mapper>

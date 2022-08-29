@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
+<fmt:parseNumber var="refund_price" type="number" value="${sMap.REFUND_PRICE}" />
 <c:forEach var="myVo" items="${myVo}">
 	<!-- 예약완료이면 -->
 	<c:if test="${myVo.status==1}">
@@ -41,12 +44,12 @@
 					<strong>결제정보</strong>
 				</p>
 				<p>
-					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.tPrice}원</b>
-				</p>
-				<%-- <p>
-					<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
+					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.orgPrice}원</b>
 				</p>
 				<p>
+					<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.addPrice}원</b>
+				</p>
+				<%-- <p>
 					<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
 				</p> --%>
 			</div>
@@ -115,20 +118,20 @@
 					<strong>휴대폰 번호</strong>${myVo.hp} <span class="safety_txt_2">휴대폰 번호는 숙소에 전송되며, 퇴실 후 7일간 보관됩니다. </span>
 				</p>
 			</div>
-			<%-- <div class="sub_total">
+			<div class="sub_total">
 				<p>
 					<strong>결제정보</strong>
 				</p>
 				<p>
-					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.tPrice}원</b>
+					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.orgPrice}원</b>
 				</p>
 				<p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
+					<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.addPrice}원</b>
+				</p>
+				<%-- <p>
 			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p>
-			</div> --%>
+		</p> --%>
+			</div>
 			<div class="total">
 				<p>
 					<strong>총 이용금액</strong> <b> ${myVo.tPrice}원</b>
@@ -138,7 +141,9 @@
 		<section>
 			<div style="padding-top: 0; padding-bottom: 0">
 				<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
-					<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰 남기기</button>
+					<a href="${pageContext.request.contextPath}/my/review?resNo=${myVo.resNo}&pNo=${myVo.pNo}">
+						<button type="button" class="btn_flat btn-green booking_detail_flat_button color-red-long">리뷰 남기기</button>
+					</a>
 				</div>
 			</div>
 		</section>
@@ -178,18 +183,21 @@
 					<strong>결제정보</strong>
 				</p>
 				<p>
-					<strong class="sub_info"> 취소금액 </strong> <b> ${sMap.REFUND_PRICE}원</b>
+					<strong class="sub_info"> 결제금액 </strong> <b> ${myVo.tPrice}원</b>
 				</p>
-				<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
+				<p>
+					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.orgPrice}원 </b>
+				</p>
+				<p>
+					<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.addPrice}원</b>
+				</p>
+				<p>
+					<strong class="sub_info"> 취소수수료 </strong> <b> ${sMap.REFUND_PRICE}원</b>
+				</p>
 			</div>
 			<div class="total">
 				<p>
-					<strong>총 결제금액</strong> <b> ${myVo.tPrice}원</b>
+					<strong>총 환불금액</strong> <b class="col_mint"> ${sMap.cancelPRICE}원 </b>
 				</p>
 			</div>
 		</section>
@@ -197,7 +205,9 @@
 			<div style="padding-top: 0; padding-bottom: 0">
 				<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
 					<!---->
-					<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">다시 예약</button>
+					<a href="${pageContext.request.contextPath}/reservation?pensionNo=${myVo.pNo}&datepicker=${myVo.inDate}&datepicker2=">
+						<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">다시 예약</button>
+					</a>
 				</div>
 				<!---->
 				<!---->
@@ -239,19 +249,21 @@
 					<strong>결제정보</strong>
 				</p>
 				<p>
-					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.tPrice}원</b>
+					<strong class="sub_info"> 결제금액 </strong> <b> ${myVo.tPrice}원</b>
 				</p>
 				<p>
-					<strong class="sub_info"> 취소금액 </strong> <b> ${myVo.tPrice - sMap.REFUND_PRICE}원</b>
+					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.orgPrice}원</b>
 				</p>
 				<p>
-					<strong class="sub_info"> 결제금액 </strong> <b> ${sMap.REFUND_PRICE}원</b>
+					<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.addPrice}원</b>
 				</p>
-
+				<p>
+					<strong class="sub_info"> 취소수수료 </strong> <b>${sMap.REFUND_PRICE}원 </b>
+				</p>
 			</div>
 			<div class="total">
 				<p>
-					<strong>총 양도금액</strong> <b> ${myVo.trPrice}원</b>
+					<strong>양도금액</strong> <b class="col_mint"> ${myVo.trPrice}원</b>
 				</p>
 			</div>
 		</section>
@@ -305,18 +317,18 @@
 					<strong>결제정보</strong>
 				</p>
 				<p>
-					<strong class="sub_info"> 취소금액 </strong> <b> ${sMap.REFUND_PRICE}원</b>
+					<strong class="sub_info"> 결제금액 </strong> <b> ${myVo.tPrice}원</b>
 				</p>
-				<%-- <p>
-			<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.exPrice}원</b>
-		</p>
-		<p>
-			<strong class="sub_info"> 할인금액 </strong> <b> ${myVo.dcPrice}원</b>
-		</p> --%>
+				<p>
+					<strong class="sub_info"> 주문금액 </strong> <b> ${myVo.orgPrice}원</b>
+				</p>
+				<p>
+					<strong class="sub_info"> 추가금액 </strong> <b> ${myVo.addPrice}원</b>
+				</p>
 			</div>
 			<div class="total">
 				<p>
-					<strong>총 양도금액</strong> <b> ${myVo.trPrice}원</b>
+					<strong>양도 체결 금액</strong> <b> ${myVo.trPrice}원</b>
 				</p>
 			</div>
 		</section>

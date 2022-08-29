@@ -13,12 +13,16 @@ import com.javaex.vo.MyPointVo;
 public class PointsService {
 	@Autowired
 	private PointsDao pointsDao;
-
+	
+//===========================================================================================================
+	//포인트 가져오기
 	public Map<String, Object> getpoints(int userNo) {
 		Map<String, Object> poMap = pointsDao.getpoints(userNo);
 		
 		return poMap;
 	}
+	
+//===========================================================================================================	
 	
 	public List<MyPointVo> getUserPoint(int userNo){
 		
