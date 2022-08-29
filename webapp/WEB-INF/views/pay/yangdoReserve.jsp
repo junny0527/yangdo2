@@ -62,10 +62,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 									<strong data-v-33033856="">인원수</Strong>${params.yAdult+params.yKid+params.yBaby}명
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크인</strong>${params.datepicker }/${params.check_in }
+									<strong data-v-33033856="">체크인</strong>${params.datepicker } / ${params.check_in }
 								</p>
 								<p data-v-33033856="">
-									<strong data-v-33033856="">체크아웃</strong>${params.datepicker2}/${params.check_out }
+									<strong data-v-33033856="">체크아웃</strong>${params.datepicker2} / ${params.check_out }
 								</p>
 							</section>
 							<section class="total_price_pc" data-v-33033856="">
