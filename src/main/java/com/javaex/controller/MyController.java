@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.MyService;
 import com.javaex.service.PointsService;
@@ -45,6 +43,11 @@ public class MyController {
 		System.out.println("MyController>point()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
 		int userNo = authUser.getNo();
 
 		List<MyPointVo> pList = pService.getUserPoint(userNo);
@@ -56,10 +59,15 @@ public class MyController {
 
 	// 내정보 페이지
 	@RequestMapping(value = "/info", method = { RequestMethod.GET, RequestMethod.POST })
-	public String info(@RequestParam("no") int no, HttpSession session, Model model) {
+	public String info(HttpSession session, Model model) {
 		System.out.println("MyController>info()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
 		int userNo = authUser.getNo();
 
 		UserVo uVo = myService.getUserInfo(userNo);
@@ -76,8 +84,11 @@ public class MyController {
 
 		// 유저번호 세션에서 불러오기
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 		int no = authUser.getNo();
-		System.out.println(no);
 
 		Map<String, List<MyListVo>> myMap = myService.reservationList(no);
 
@@ -92,8 +103,12 @@ public class MyController {
 		System.out.println("MyController>yangdo()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
 		int no = authUser.getNo();
-		System.out.println(no);
 
 		Map<String, List<MyListVo>> myMap2 = myService.yangdoList(no);
 
@@ -104,29 +119,17 @@ public class MyController {
 
 	/********* main item **********/
 
-	/********* list (ajax) **********/
-	@ResponseBody
-	@RequestMapping(value = "api/list", method = { RequestMethod.GET, RequestMethod.POST })
-	public List<MyListVo> getUserList(HttpSession session) {
-		System.out.println("MyReservationApiController>getUserList()");
-
-		// 유저번호 세션에서 불러오기
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		int no = authUser.getNo();
-		List<MyListVo> myList = myService.getUserList(no);
-
-		return myList;
-	}
-
-	/********* list (ajax) **********/
-
-	/********* sub item (reservation) 나중에 다시 정리 **********/
+	/********* sub item **********/
 
 	@RequestMapping(value = "/list/reserve", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reserved(@ModelAttribute MyListVo myListVo, Model model, HttpSession session) {
 		System.out.println("MyController>reserved()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 		int no = authUser.getNo();
 		System.out.println(no);
 
@@ -144,6 +147,10 @@ public class MyController {
 		System.out.println("MyController>list()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 		int no = authUser.getNo();
 		System.out.println(no);
 
@@ -160,6 +167,10 @@ public class MyController {
 		System.out.println("MyController>cancel()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 		int no = authUser.getNo();
 		System.out.println(no);
 
@@ -179,6 +190,10 @@ public class MyController {
 		System.out.println("MyController>relisted()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 		int no = authUser.getNo();
 		System.out.println(no);
 
@@ -194,6 +209,10 @@ public class MyController {
 		System.out.println("MyController>transfer()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 		int no = authUser.getNo();
 		System.out.println(no);
 
@@ -208,8 +227,15 @@ public class MyController {
 
 	/********* detail (all) **********/
 	@RequestMapping(value = "/detail", method = { RequestMethod.GET, RequestMethod.POST })
-	public String detail(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo, Model model) {
+	public String detail(@RequestParam(value = "resNo", required = true, defaultValue = "0") int resNo, Model model,
+			HttpSession session) {
 		System.out.println("MyController>detail()");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 
 		List<MyListVo> myVo = myService.getDetail(resNo);
 		Map<String, Object> sMap = saleService.getReservation(resNo);
@@ -224,9 +250,15 @@ public class MyController {
 
 	/********* reviews **********/
 	@RequestMapping(value = "/review", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewForm(@RequestParam(value = "resNo", required = false, defaultValue = "0") int resNo, HttpSession session,
-			Model model) {
+	public String reviewForm(@RequestParam(value = "resNo", required = true, defaultValue = "0") int resNo,
+			HttpSession session, Model model) {
 		System.out.println("MyController>writeReview");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
 
 		return "mypage/myreview";
 	}
@@ -234,6 +266,14 @@ public class MyController {
 	@RequestMapping(value = "/review/write", method = { RequestMethod.GET, RequestMethod.POST })
 	public String writeReview(@ModelAttribute UserReviewVo uRvo, HttpSession session) {
 		System.out.println("MyController>writeReview");
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
+		uRvo.setno(authUser.getNo());
 
 		int count = myService.writeReview(uRvo);
 		System.out.println(count);
@@ -258,18 +298,21 @@ public class MyController {
 		return myService.cancelUpdate(no);
 	}
 
-	@ResponseBody
 	@RequestMapping(value = "update/nickname", method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateNickName(@ModelAttribute UserVo uVo, HttpSession session) {
 		System.out.println("MyController>updateNickName()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		int no = authUser.getNo();
-		System.out.println(no);
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
+		uVo.setNo(authUser.getNo());
 
 		myService.updateNickName(uVo);
 
-		return "redirect: /info";
+		return "redirect: ../info";
 	}
 
 	@RequestMapping(value = "update/hp", method = { RequestMethod.GET, RequestMethod.POST })
@@ -277,26 +320,33 @@ public class MyController {
 		System.out.println("MyController>updateHp()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		int no = authUser.getNo();
-		System.out.println(no);
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
+		uVo.setNo(authUser.getNo());
 
 		myService.updateHp(uVo);
 
-		return "redirect: /info";
+		return "redirect: ../info";
 	}
 
-	@ResponseBody
 	@RequestMapping(value = "update/pw", method = { RequestMethod.GET, RequestMethod.POST })
 	public String updatePw(@ModelAttribute UserVo uVo, HttpSession session) {
 		System.out.println("MyController>updatePw()");
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		int no = authUser.getNo();
-		System.out.println(no);
+
+		if (authUser == null) {
+			return "redirect:/loginForm";
+		}
+
+		uVo.setNo(authUser.getNo());
 
 		myService.updatePw(uVo);
 
-		return "redirect: /info";
+		return "redirect: ../info";
 	}
 
 }

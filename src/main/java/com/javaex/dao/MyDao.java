@@ -105,11 +105,19 @@ public class MyDao {
 
 		return sqlSession.update("my.updatePw", uVo);
 	}
+	
+	// 유저 정보 -> 비밀번호 업데이트
+	public int updateId(UserVo uVo) {
+		System.out.println("MyDao>updateId()");
+		
+		return sqlSession.update("my.updateId", uVo);
+	}
 
 	public int writeReview(UserReviewVo uRvo) {
 		System.out.println("MyDao>updatePw()");
 
 		return sqlSession.insert("my.insertReview", uRvo);
 	}
+
 
 }

@@ -328,7 +328,7 @@
 		<![CDATA[
 			select no,
 				   nick_name nickName,
-				   hp,
+				   regexp_replace(hp, '(.{3})(.+)(.{4})', '\1-\2-\3') hp,
 				   pw
 			from users
 			where no = #{no}

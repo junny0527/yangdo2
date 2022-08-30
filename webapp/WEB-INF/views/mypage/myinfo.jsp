@@ -50,31 +50,24 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 
 					<form name="form1" action="${pageContext.request.contextPath}/my/update/nickname" autocomplete="off" method="post" data-form="nickName">
 						<!-- 폼전송시 전달되는 data target element -->
-						<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
-							<input type="text" name="nickName" id="test1" aria-hidden="true" value="${info.nickName}" />
-						</div>
-
-						<input type="hidden" name="no" value="${info.no}">
+						<div class="mypageForm__form-inputs-wrap" aria-hidden="true"></div>
+						<input type="hidden" name="no" value="${uVo.no}">
 						<!-- // 폼전송시 전달되는 data target element -->
-
 						<section class="top_area">
 							<strong>내 정보 수정</strong>
-
-
 							<div class="pw_input">
 								<div class="pw_input__title">
 									<b>닉네임</b> <span class="title__uinfo">${uVo.nickName}</span>
 								</div>
 								<section class="modifying-section">
 									<p class="inp_wrap remove form-errors">
-										<input type="text" value="${uVo.nickName}" placeholder="체크인시 필요한 정보입니다." data-input="nickName" data-msg-required="닉네임을 입력하세요."
-											data-rule-minlength="2" data-rule-maxlength="14" data-rule-spaceChar="true" data-rule-specialChar="true" />
+										<input type="text" name="nickName" value="${uVo.nickName}" placeholder="새 닉네임을 입력해주세요." data-msg-required="새 닉네임을 입력하세요."
+											data-rule-minlength="2" data-rule-maxlength="10" data-rule-spaceChar="true" data-rule-specialChar="true" required />
 									</p>
-									
 								</section>
 								<div class="pw_input__btns-wrap ">
 									<button class="btns-wrap__edit-btn" type="button" id="modify-nickName">수정</button>
-									<button class="btns-wrap__submit-btn btn-primary" type="button" data-toggle="modal" data-target=".bd-example-modal-sm" data-form="${uVo.nickName}">수정완료</button>
+									<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
 							</div>
@@ -82,10 +75,8 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 					</form>
 					<form name="form2" action="${pageContext.request.contextPath}/my/update/pw" autocomplete="off" method="post" data-form="pw">
 						<!-- 폼전송시 전달되는 data target element -->
-						<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
-							<input type="text" name="pw" aria-hidden="true" value="">
-						</div>
-
+						<input type="hidden" name="no" value="${uVo.no}">
+						<div class="mypageForm__form-inputs-wrap" aria-hidden="true"></div>
 						<section class="top_area">
 							<div class="pw_input">
 								<div class="pw_input__title">
@@ -93,44 +84,43 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 								</div>
 								<section class="modifying-section">
 									<p class="inp_wrap remove form-errors">
-										<input type="text" id="pw" value="" placeholder="새 비밀번호를 입력해주세요." data-input="pw" data-rule-spaceChar="true" data-rule-specialChar="true"
-											required />
+										<input type="password" name="pw" value="" placeholder="새 비밀번호를 입력해주세요." data-rule-spaceChar="true" data-rule-specialChar="true"
+											minlength="4" maxlength="15" data-msg-required="새로운 비밀번호 최소 4글자를를 입력하세요." required />
 									</p>
 								</section>
 								<div class="pw_input__btns-wrap ">
 									<button class="btns-wrap__edit-btn" id="modify-pw" type="button">수정</button>
-									<button class="btns-wrap__submit-btn btn-primary" type="button" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uVo.no}">수정완료</button>
+									<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
 							</div>
 						</section>
 					</form>
-
 					<form name="form3" action="${pageContext.request.contextPath}/my/update/hp" autocomplete="off" method="post" data-form="hp">
 						<section>
 							<!-- 폼전송시 전달되는 data target element -->
-							<div class="mypageForm__form-inputs-wrap" aria-hidden="true">
-								<input type="tel" name="hp" aria-hidden="true" value="${info.hp}" />
-							</div>
+							<input type="hidden" name="no" value="${uVo.no}">
+							<div class="mypageForm__form-inputs-wrap" aria-hidden="true"></div>
 							<div class="pw_input phone_confirm">
 								<div class="pw_input__title">
-									<b>휴대폰 번호</b> <span class="title__uinfo">${info.hp}</span>
+									<b>휴대폰 번호</b> <span class="title__uinfo">${uVo.hp}</span>
 									<div class="safety_txt">개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.</div>
 								</div>
 								<div class="modifying-section">
 									<div id="sendCode">
 										<section>
 											<div class="inp_wrap remove form-errors">
-												<input type="tel" id="phone_number" value="" placeholder="체크인시 필요한 정보입니다." maxlength="13" data-input="hp" data-rule-phonenumber="true" required />
+												<input type="tel" name="hp" value="" placeholder="숫자만 입력해주세요. (예시: 01011112222)" pattern="[0-9]{10,11}" data-msg-required="숫자만 입력하세요." maxlength="11"
+													data-input="hp" data-rule-phonenumber="true" required />
 												<button type="button" class="btn_checked">확인</button>
 											</div>
 										</section>
 									</div>
-				
+
 								</div>
 								<div class="pw_input__btns-wrap ">
 									<button class="btns-wrap__edit-btn" type="button" id="modify-hp">수정</button>
-									<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
+									<button class="btns-wrap__submit-btn" id="hpMod" type="submit">수정완료</button>
 									<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 								</div>
 							</div>
@@ -178,13 +168,11 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 	</div>
 
 </body>
-
 <script>
 	$(document).ready(function() {
 		console.log('ready');
-
+		// 페이지 준비 시 
 		$(".modifying-section").hide();
-		$("#verificationCode").hide();
 		$(".pw_input__btns-wrap").removeClass("modifying");
 
 	});
@@ -197,24 +185,10 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 
 	});
 
-	/* // 수정완료 버튼 클릭 시 
-	$('.btns-wrap__submit-btn').on('click', function() {
-
-		//데이터 담기
-		var data = $(this).data("form");
-		$("#modify-data").val(data);
-
-		$('#btn-modify-modal').show('fast');
-
-	});
-
 	// 수정취소 버튼 클릭 시 
-
-	$('#btnMod').on("click", function() {
-
-		var data = $("#modify-data").val();
-
-		
-	}); */
+	$('.btns-wrap__cancel-btn').on("click", function() {
+		$(".modifying-section").hide();
+		$(".pw_input__btns-wrap").removeClass("modifying");
+	});
 </script>
 </html>
