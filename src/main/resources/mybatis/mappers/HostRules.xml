@@ -45,7 +45,6 @@
 	]]>
 </select>
 
-<!-- 
 <select id = "getRules" parameterType = "int" resultType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
 		select  
@@ -80,7 +79,6 @@
 		and gubun = 2
 	]]>
 </select>
- -->
 
 
 </mapper>

@@ -35,11 +35,11 @@ public class HostRulesDao {
 		int peckNo = sqlSession.selectOne("HostRules.getpeckNo");
 		return peckNo;
 	}
+	
 	public HostRulesVo getRules(int pensionNo) {
 		return sqlSession.selectOne("HostRules.getRules", pensionNo);
 	}
 	
-	/*
 	public List<HostRulesVo> getPeck(int pensionNo) {
 		return sqlSession.selectList("HostRules.getPeck", pensionNo);
 	}
@@ -47,6 +47,5 @@ public class HostRulesDao {
 	public List<HostRulesVo> getsubPeck(int pensionNo) {
 		return sqlSession.selectList("HostRules.getsubPeck", pensionNo);
 	}
-	*/
 	
 }

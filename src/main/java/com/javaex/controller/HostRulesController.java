@@ -27,8 +27,18 @@ public class HostRulesController {
 	private HostIntroduceService iService;
 	
 	@RequestMapping(value="rules", method= {RequestMethod.GET, RequestMethod.POST})
-	public String rules() {
-		return "/host/rules";
+	public String rules(HttpSession session) {
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
+		System.out.println(userNo);
+		int pensionNo = iService.getPensionNoBySession(userNo);
+		HostRulesVo oldRules = rService.getRules(pensionNo);
+		System.out.println("oldRules : " + oldRules);
+		if(oldRules != null) {
+			return "redirect:/host/updaterules";
+		}else {
+			return "/host/rules";
+		}
 	}
 	
 	@RequestMapping(value="rulessave", method = {RequestMethod.GET, RequestMethod.POST})
@@ -41,6 +51,24 @@ public class HostRulesController {
 		hVo.setPensionNo(pensionNo);
 		rService.updateRules(hVo);
 		return "/host/roomRegister";
+	}
+	
+	@RequestMapping(value="updaterules", method= {RequestMethod.GET,RequestMethod.POST})
+	public String updaterules(HttpSession session, Model model) {
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int userNo = uVo.getNo();
+		System.out.println(userNo);
+		int pensionNo = iService.getPensionNoBySession(userNo);
+		
+		HostRulesVo hVo = rService.getRules(pensionNo);
+		List<HostRulesVo> peck = rService.getPeck(pensionNo);
+		List<HostRulesVo> subpeck = rService.getsubPeck(pensionNo);
+		
+		model.addAttribute("hVo", hVo);
+		model.addAttribute("peck", peck);
+		model.addAttribute("subpeck", subpeck);
+		
+		return "/host/Updaterules";
 	}
 	
 	

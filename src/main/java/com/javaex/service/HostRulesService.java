@@ -1,5 +1,8 @@
 package com.javaex.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,13 +86,12 @@ public class HostRulesService {
 		return rDao.getRules(pensionNo);
 	}
 	
-	/*
-	
 	public List<HostRulesVo> getPeck(int pensionNo){
 		List<HostRulesVo> pVo = rDao.getPeck(pensionNo);
+		System.out.println(pVo);
 		List<HostRulesVo> newpVo = new ArrayList<>();
 		System.out.println("service : " + pVo);
-		
+			
 		for(int i=0; i<pVo.size(); i++) {
 			String newStart = pVo.get(i).getPeckStart();
 			String newEnd = pVo.get(i).getPeckEnd();
@@ -134,6 +136,5 @@ public class HostRulesService {
 		System.out.println("service : " + newspVo);
 		return newspVo;
 	}
-	*/
 
 }
