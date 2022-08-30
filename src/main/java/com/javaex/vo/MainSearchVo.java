@@ -10,6 +10,7 @@ public class MainSearchVo {
 	private String datepicker2;
 	private String gugun1;
 	private String sido1;
+	private int pNo;
 
 	private String[] puOpt;
 	private String[] anOpt;
@@ -31,18 +32,35 @@ public class MainSearchVo {
 		
 	}
 
-	public MainSearchVo(String datepicker, String datepicker2, String gugun1, String sido1, String[] puOpt,
+	
+
+	public MainSearchVo(String datepicker, String datepicker2, String gugun1, String sido1, int pNo, String[] puOpt,
 			String[] anOpt, int yCount, int persons) {
 		super();
 		this.datepicker = datepicker;
 		this.datepicker2 = datepicker2;
 		this.gugun1 = gugun1;
 		this.sido1 = sido1;
+		this.pNo = pNo;
 		this.puOpt = puOpt;
 		this.anOpt = anOpt;
 		this.yCount = yCount;
 		this.persons = persons;
 	}
+
+	
+	
+	public int getpNo() {
+		return pNo;
+	}
+
+
+
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
+
+
 
 	public String getDatepicker() {
 		return datepicker;
@@ -108,11 +126,14 @@ public class MainSearchVo {
 		this.persons = persons;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "MainSearchVo [datepicker=" + datepicker + ", datepicker2=" + datepicker2 + ", gugun1=" + gugun1
-				+ ", sido1=" + sido1 + ", puOpt=" + Arrays.toString(puOpt) + ", anOpt=" + Arrays.toString(anOpt)
-				+ ", yCount=" + yCount + ", persons=" + persons + "]";
+				+ ", sido1=" + sido1 + ", pNo=" + pNo + ", puOpt=" + Arrays.toString(puOpt) + ", anOpt="
+				+ Arrays.toString(anOpt) + ", yCount=" + yCount + ", persons=" + persons + "]";
 	}
 
+	
 }

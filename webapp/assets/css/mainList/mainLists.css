@@ -496,5 +496,6 @@ input[type=checkbox]{
 	word-break: keep-all;
 }
 
-
-
+#infoTitle{
+	color: black;
+}

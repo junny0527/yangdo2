@@ -26,7 +26,7 @@ public class JiwoongController {
 	//기본 리스트
 	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo) {
+	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo, @ModelAttribute MainListVo mainVo) {
 		System.out.println("jiwoongController>mainList");
 		System.out.println(searchVo);
 		
@@ -38,7 +38,6 @@ public class JiwoongController {
 		model.addAttribute("datePicker",datePicker);
 		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
-		
 		
 		System.out.println("datePicker:"+datePicker);
 		System.out.println("datePicker2:"+datePicker2);
@@ -53,7 +52,7 @@ public class JiwoongController {
 		System.out.println("Controller>lowprice");
 		
 		List<MainSearchVo> pList = mainService.selectLowprice(searchVo);
-		
+		model.addAttribute("searchVo",searchVo);
 		
 		model.addAttribute("pList",pList);
 		System.out.println("hitController>lowList");

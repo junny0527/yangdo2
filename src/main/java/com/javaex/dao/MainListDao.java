@@ -31,7 +31,6 @@ public class MainListDao {
 	
 	
 	
-	
 	//낮은 가격 순 리스트
 	public List<MainSearchVo> selectLowprice(MainSearchVo searchVo){
 		System.out.println("Dao>lowprice");
