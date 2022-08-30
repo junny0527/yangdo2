@@ -409,24 +409,24 @@
 			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == 6}">
-						<form action="${pageContext.request.contextPath}/res/yangdoreserve/${roomVo.NO}">
-										<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
-										<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
-										<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
-										<input type="hidden" class="yPrice${roomVo.NO}" name=transPrice value="${roomVo.TRANS_PRICE}">
-										<input type="hidden"  name=reservationsNo value="${roomVo.RESERVATIONSNO}">
-										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
-										<input type="hidden"  name=datepicker value="${pMap.datepicker}">
-										<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
-										<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
-										<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
-										<input type="hidden"  name=roomNo value="${roomVo.NO}">
-										<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
-										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
-										<input type="hidden"  name=nickName value="${userVo.nickName}">
-										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
-										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
-										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
+						<form action="${pageContext.request.contextPath}/res/yangdoreserve/${roomVo.RESERVATIONSNO}">">
+						<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
+						<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
+						<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
+						<input type="hidden" class="yPrice${roomVo.NO}" name=transPrice value="${roomVo.TRANS_PRICE}">
+						<input type="hidden"  name=reservationsNo value="${roomVo.RESERVATIONSNO}">
+						<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
+						<input type="hidden"  name=datepicker value="${pMap.datepicker}">
+						<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
+						<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
+						<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
+						<input type="hidden"  name=roomNo value="${roomVo.NO}">
+						<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
+						<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
+						<input type="hidden"  name=nickName value="${userVo.nickName}">
+						<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
+						<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+						<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
@@ -554,22 +554,22 @@
 					</c:when>
 					<c:otherwise>
 						<form action="${pageContext.request.contextPath}/res/reserve">
-										<input type="hidden" class="adult${roomVo.NO}" name=adult value="${roomVo.STANDARD_PEOPLE}">
-										<input type="hidden" class="kid${roomVo.NO}" name=kid value="0">
-										<input type="hidden" class="baby${roomVo.NO}" name=baby value="0">
-										<input type="hidden" class="price${roomVo.NO}" name=price value="${roomVo.PRICE}">
-										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
-										<input type="hidden"  name=datepicker value="${pMap.datepicker}">
-										<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
-										<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
-										<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
-										<input type="hidden"  name=roomNo value="${roomVo.NO}">
-										<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
-										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
-										<input type="hidden"  name=nickName value="${userVo.nickName}">
-										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
-										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
-										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
+						<input type="hidden" class="adult${roomVo.NO}" name=adult value="${roomVo.STANDARD_PEOPLE}">
+						<input type="hidden" class="kid${roomVo.NO}" name=kid value="0">
+						<input type="hidden" class="baby${roomVo.NO}" name=baby value="0">
+						<input type="hidden" class="price${roomVo.NO}" name=price value="${roomVo.PRICE}">
+						<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
+						<input type="hidden"  name=datepicker value="${pMap.datepicker}">
+						<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
+						<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
+						<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
+						<input type="hidden"  name=roomNo value="${roomVo.NO}">
+						<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
+						<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
+						<input type="hidden"  name=nickName value="${userVo.nickName}">
+						<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
+						<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+						<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room noReservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button type="button" class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
