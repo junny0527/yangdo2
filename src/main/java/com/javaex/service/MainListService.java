@@ -1,8 +1,6 @@
 package com.javaex.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,12 +63,19 @@ public class MainListService {
 	public List<MainListVo> selectSearch(MainSearchVo searchVo){
 		System.out.println("service>search");
 		
-		List<MainListVo> pList = mainDao.selectSearch(searchVo);
+		if(searchVo.getyCount() == 1) {
+			List<MainListVo> pList = mainDao.selectySearch(searchVo);
+			
+			System.out.println("searchServicePLIST"+pList);
+			
+			return pList;
+		}else {
+			List<MainListVo> pList = mainDao.selectSearch(searchVo);
 		
-		System.out.println("searchServicePLIST"+pList);
-		
-		return pList;
-		
+			System.out.println("searchServicePLIST"+pList);
+			
+			return pList;
+		}
 	}
 	
 }

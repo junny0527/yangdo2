@@ -33,8 +33,12 @@ public class HostIntroduceService {
 		int pensionNo = iDao.getPensionNo();
 		iVo.setPensionNo(pensionNo);
 		
+		
+		
 		iDao.insertsido(iVo);
 		iDao.insertgugun(iVo);
+		
+		iDao.updatePensionImg(pensionNo);
 		
 		HostIntroduceVo arrayVo = new HostIntroduceVo();
 		arrayVo.setPensionNo(pensionNo);

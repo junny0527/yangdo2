@@ -55,7 +55,6 @@ public class HostRulesService {
 			System.out.println("peckNo : " + peckNo);
 			peckVo.setPeckNo(peckNo);
 			System.out.println("after insert peckVo : " + peckVo);
-			rDao.insertPensionPeck(peckVo);
 		}
 		
 		for(int i = 0; i<editSubpeckStart.length; i++) {
@@ -79,7 +78,6 @@ public class HostRulesService {
 			
 			int peckNo = rDao.getpeckNo();
 			peckVo.setPeckNo(peckNo);
-			rDao.insertPensionPeck(peckVo);
 		}
 		return rDao.updateRules(hVo);
 	}
@@ -90,9 +88,10 @@ public class HostRulesService {
 	
 	public List<HostRulesVo> getPeck(int pensionNo){
 		List<HostRulesVo> pVo = rDao.getPeck(pensionNo);
+		System.out.println(pVo);
 		List<HostRulesVo> newpVo = new ArrayList<>();
 		System.out.println("service : " + pVo);
-		
+			
 		for(int i=0; i<pVo.size(); i++) {
 			String newStart = pVo.get(i).getPeckStart();
 			String newEnd = pVo.get(i).getPeckEnd();
@@ -137,6 +136,5 @@ public class HostRulesService {
 		System.out.println("service : " + newspVo);
 		return newspVo;
 	}
-	
 
 }

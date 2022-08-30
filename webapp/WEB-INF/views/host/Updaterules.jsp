@@ -99,7 +99,7 @@
 		</ul>
 	</div>
 	
-	<form class="form-horizontal">
+	<form class="form-horizontal" action = "rulessave" method = "get">
 		<div class="guest-title-layer mb_0 pb_0">
 			<ul class = "order">
 				<li>[이용규칙관리] 는 업체 공통적인 정책을 기입하는 란입니다. (체크인, 체크아웃, 성수기 설정 등)</li>
@@ -112,13 +112,13 @@
 			<tbody>
 				<tr>
 					<th>이용시간</th>
-					<td id = "usetime" class="bd_r_none">
+					<td id = "usetime" class="bd_r_none" colspan = "2">
 						<div class="form-layer mb_24">
 							<span id = "design" class="form-title chk">체크인 가능시간</span>
 							<span class="form-body">
 								<div class="select-style middle-size">
 									<select name="checkin">
-										<option value="13:00" selected="">오후 01:00</option>
+										<option value="13:00" selected>오후 01:00</option>
 										<option value="14:00">오후 02:00</option>
 										<option value="15:00">오후 03:00</option>
 										<option value="16:00">오후 04:00</option>
@@ -126,6 +126,30 @@
 										<option value="18:00">오후 06:00</option>
 										<option value="19:00">오후 07:00</option>
 										<option value="20:00">오후 08:00</option>
+										<c:if test = "${hVo.checkin eq '13:00'}">
+											<option value="13:00" selected>오후 01:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '14:00'}">
+											<option value="14:00" selected>오후 02:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '15:00'}">
+											<option value="15:00" selected>오후 03:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '16:00'}">
+											<option value="16:00" selected>오후 04:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '17:00'}">
+											<option value="17:00" selected>오후 05:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '18:00'}">
+											<option value="18:00" selected>오후 06:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '19:00'}">
+											<option value="19:00" selected>오후 07:00</option>
+										</c:if>
+										<c:if test = "${hVo.checkin eq '20:00'}">
+											<option value="20:00" selected>오후 08:00</option>
+										</c:if>
                                     </select>
                                 </div>
                             </span>
@@ -136,7 +160,7 @@
                         	<span class="form-body">
                         		<div class="select-style middle-size">
                         			<select name="checkout">
-                        				<option value="10:00" selected="">오전 10:00</option>
+                        				<option value="10:00" selected>오전 10:00</option>
                         				<option value="11:00">오전 11:00</option>
                         				<option value="12:00">오후 12:00</option>
                         				<option value="13:00">오후 01:00</option>
@@ -144,48 +168,66 @@
                         				<option value="15:00">오후 03:00</option>
                         				<option value="16:00">오후 04:00</option>
                         				<option value="17:00">오후 05:00</option>
+                        				<c:if test = "${hVo.checkout eq '10:00'}">
+                        					<option value="10:00" selected>오전 10:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '11:00'}">
+                        					<option value="11:00">오전 11:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '12:00'}">
+                        					<option value="12:00">오후 12:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '13:00'}">
+                        					<option value="13:00">오후 01:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '14:00'}">
+                        					<option value="14:00">오후 02:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '15:00'}">
+                        					<option value="15:00">오후 03:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '16:00'}">
+                        					<option value="16:00">오후 04:00</option>
+                        				</c:if>
+                        				<c:if test = "${hVo.checkout eq '17:00'}">
+                        					<option value="17:00">오후 05:00</option>
+                        				</c:if>
                        				</select>
                   				</div>
               				</span>
            				</div>
        				</td>
-       				<td class="help-tooltip popover-container">
-                            <!-- BOD-1441
-                            <a href="javascript:void(0)" data-toggle="popover"><img src="/image/host/asset/icn_tooltip_16x16.png" /></a>
-                            <div class="hide">
-                                <span><img src="/image/host/tooltips/detail/img_tooltip05.png" /></span>
-                            </div>
-                            -->
-                    </td>
                 </tr>
                 
                 <tr id="season">
                 	<th>성수기 설정</th>
                 	
-                	<td class="bd_r_none">
+                	<td class="bd_r_none" colspan="2">
                 		<div class="form-layer">
                 			<span class="form-title text-center title_align">준 성수기</span>
                 			<span class="form-body">
-                				<div class="subpeak-item form-inline mb_24">
-									<input class="form-control middle-size datepicker" name = "subpeakStart" type="text" readonly="readonly">
-									<span class="range"> ~ </span>
-									<input class="form-control middle-size datepicker" name = "subpeakEnd" type="text" readonly="readonly">
-									<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
-								</div>
-								
-								<div class="form form-subpeak">
-									<div class="subpeak-item form-inline mb_24 hide">
-										<input class="form-control middle-size datepicker" name = "subpeakStart" type="text" readonly="readonly">
+                				<c:forEach items="${subpeck}" var="subpeck">
+	                				<div class="subpeck-item form-inline mb_24">
+										<input class="form-control middle-size datepicker" name = "subpeckStartArray" type="text" readonly="readonly" value = "${subpeck.subpeckStart}">
 										<span class="range"> ~ </span>
-										<input class="form-control middle-size datepicker" name = "subpeakEnd" type="text" readonly="readonly">
-										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeak">삭제</button>
+										<input class="form-control middle-size datepicker" name = "subpeckEndArray" type="text" readonly="readonly" value = "${subpeck.subpeckEnd}">
+										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeck">삭제</button>
+									</div>
+								</c:forEach>
+								<div class="form form-subpeck">
+									<div class="subpeck-item form-inline mb_24 hide">
+										<input class="form-control middle-size datepicker plussubpeckstart" type="text" readonly="readonly">
+										<span class="range"> ~ </span>
+										<input class="form-control middle-size datepicker plussubpeckend" type="text" readonly="readonly">
+										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeck">삭제</button>
 									</div>
 								</div>
+								
 							</span>
                         </div>
                         
                         <div class="form-layer-text">
-                            <button type="button" class="btn btn-default" data-role="add-subpeak">+ 추가</button>
+                            <button type="button" class="btn btn-default" data-role="add-subpeck">+ 추가</button>
                         </div>
                         
                         <hr>
@@ -193,35 +235,30 @@
                         <div class="form-layer">
                         	<span class="form-title text-center title_align">성수기</span>
                             <span class="form-body">
-                            	<div class="peak-item form-inline mb_24">
-                            		<input class="form-control middle-size datepicker" name = "peakStart" type="text" readonly="readonly">
-                            		<span class="range"> ~ </span>
-                            		<input class="form-control middle-size datepicker" name = "peakEnd" type="text" readonly="readonly">
-                            		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
-                           		</div>
+                            	<c:forEach items = "${peck}" var = "peck">
+	                            	<div class="peck-item form-inline mb_24">
+	                            		<input class="form-control middle-size datepicker" name = "peckStartArray" type="text" readonly="readonly" value = "${peck.peckStart}">
+	                            		<span class="range"> ~ </span>
+	                            		<input class="form-control middle-size datepicker" name = "peckEndArray" type="text" readonly="readonly" value = "${peck.peckEnd}">
+	                            		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peck">삭제</button>
+	                           		</div>
+                           		</c:forEach>
 
-                                <div class="form form-peak">
-                                    <div class="peak-item form-inline mb_24 hide">
-                                        <input class="form-control middle-size datepicker" name = "peakStart" type="text" readonly="readonly">
+                                <div class="form form-peck">
+                                    <div class="peck-item form-inline mb_24 hide">
+                                        <input class="form-control middle-size datepicker pluspeckstart" type="text" readonly="readonly">
                                         <span class="range"> ~ </span>
-                                        <input class="form-control middle-size datepicker" name = "peakEnd" type="text" readonly="readonly">
-                                        <button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peak">삭제</button>
+                                        <input class="form-control middle-size datepicker pluspeckend" type="text" readonly="readonly">
+                                        <button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peck">삭제</button>
                                     </div>
                                 </div>
                             </span>
                         </div>
                         
                         <div class="form-layer-text">
-                            <button type="button" class="btn btn-default" data-role="add-peak">+ 추가</button>
+                            <button type="button" class="btn btn-default" data-role="add-peck">+ 추가</button>
                         </div>
                    	</td>
-                   	
-                    <td id = "qmark" class="help-tooltip popover-container">
-                    	<a href="javascript:void(0)" data-toggle="popover" data-original-title="" title=""><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></a>
-                    	<div class="hide">
-                    		<span><img src="${pageContext.request.contextPath}/assets/image/host/tooltip.png"></span>
-                   		</div>
-               		</td>
                	</tr>
 				<tr>
 					<th>추가인원<br>추가비용</th>
@@ -230,7 +267,7 @@
 							<div class = "decrease">
 								<span class="form-title">성인</span>
 								<span class="form-body">
-									<input class="form-control normal-size" type="text" value="">
+									<input class="form-control normal-size" name = "addAdultPrice" type="text" value="${hVo.addAdultPrice}">
 								</span>
 								<span class="form-body">
 									 원
@@ -240,19 +277,17 @@
 							<div class = "decrease">
 								<span class="form-title">아동</span>
 								<span class="form-body">
-									<input class="form-control normal-size" type="text" value="">
+									<input class="form-control normal-size" name = "addKidPrice" type="text" value="${hVo.addKidPrice}">
 								</span>
 								<span class="form-body">
 									 원
 								</span>
 							</div>
 							
-							
-							
 							<div class = "decrease">
 								<span class="form-title">유아</span>
 								<span class="form-body">
-									<input class="form-control normal-size" type="text" value="">
+									<input class="form-control normal-size" name = "addBabyPrice" type="text" value="${hVo.addBabyPrice}">
 								</span>
 								<span class="form-body">
 									 원
@@ -274,19 +309,19 @@
 						<div class="form-layer mb_24">
 							<span class="form-body">
 								<div class="radio-inline">
-									<input id = "tenday" name = "refundNo" class="form-check-input" type="radio" value = "10">
+									<input id = "tenday" name = "refundNo" class="form-check-input" type="radio" value = "10"<c:if test="${hVo.refundNo == 10}">checked</c:if>>
 									<label for = "tenday" class="form-check-label">
 									10일 전
 									</label>
 								</div>
 								<div class="radio-inline">
-									<input id = "sevenday" name = "refundNo" class="form-check-input" type="radio" value = "7">
+									<input id = "sevenday" name = "refundNo" class="form-check-input" type="radio" value = "7"<c:if test="${hVo.refundNo == 7}">checked</c:if>>
 									<label for = "sevenday" class="form-check-label">
 									7일 전
 									</label>
 								</div>
 								<div class="radio-inline">
-									<input id = "sixday" name = "refundNo" class="form-check-input" type="radio" value = "6">
+									<input id = "sixday" name = "refundNo" class="form-check-input" type="radio" value = "6"<c:if test="${hVo.refundNo == 6}">checked</c:if>>
 									<label for = "sixday" class="form-check-label">
 									6일 전
 									</label>
@@ -362,9 +397,6 @@
                         </div>
                         
        				</td>
-       				
-       				<td id = "qmark2" class="help-tooltip popover-container">
-               		</td>
                 </tr>
        		</tbody>
         </table>
@@ -406,33 +438,37 @@ $(function() {
     
     
     // 준성수기 아이템 제거
-	$('.subpeak-item').on('click','[data-role=remove-subpeak]',function() {
-		$(this).closest('.subpeak-item').remove();
+	$('.subpeck-item').on('click','[data-role=remove-subpeck]',function() {
+		$(this).closest('.subpeck-item').remove();
 	});
 	
-	$('.form-subpeak').on('click','[data-role=remove-subpeak]',function() {
-		$(this).closest('.subpeak-item').remove();
+	$('.form-subpeck').on('click','[data-role=remove-subpeck]',function() {
+		$(this).closest('.subpeck-item').remove();
 	});
 
     // 준성수기 아이템 추가
-    $('[data-role=add-subpeak]').on('click',function() {
-    	$('.form-subpeak').append($('.subpeak-item.hide').clone().removeClass('hide'));
-    	$(".datepicker").removeAttr("id").removeClass('hasDatepicker').datepicker();
+    $('[data-role=add-subpeck]').on('click',function() {
+    	$('.form-subpeck').append($('.subpeck-item.hide').clone().removeClass('hide'));
+    	$('.datepicker').removeAttr('id').removeClass('hasDatepicker').datepicker();
+    	$('.plussubpeckstart').attr('name', 'subpeckStartArray');
+    	$('.plussubpeckend').attr('name', 'subpeckEndArray');
     });
 
     // 성수기 아이템 제거
-    $('.peak-item').on('click','[data-role=remove-peak]',function() {
-    	$(this).closest('.peak-item').remove();
+    $('.peck-item').on('click','[data-role=remove-peck]',function() {
+    	$(this).closest('.peck-item').remove();
     });
 
-	$('.form-peak').on('click','[data-role=remove-peak]',function() {
-		$(this).closest('.peak-item').remove();
+	$('.form-peck').on('click','[data-role=remove-peck]',function() {
+		$(this).closest('.peck-item').remove();
 	});
 
     // 성수기 아이템 추가
-    $('[data-role=add-peak]').on('click',function() {
-    	$('.form-peak').append($('.peak-item.hide').clone().removeClass('hide'));
-    	$(".datepicker").removeAttr("id").removeClass('hasDatepicker').datepicker();
+    $('[data-role=add-peck]').on('click',function() {
+    	$('.form-peck').append($('.peck-item.hide').clone().removeClass('hide'));
+    	$('.datepicker').removeAttr('id').removeClass('hasDatepicker').datepicker();
+    	$('.pluspeckstart').attr('name', 'peckStartArray');
+    	$('.pluspeckend').attr('name', 'peckEndArray');
     });
     
 

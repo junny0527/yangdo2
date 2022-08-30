@@ -564,16 +564,28 @@
 
 <script type = "text/javascript">
 
-if($("#Y").val() == 2){
-	$('input[name="companyName"]').removeAttr('disabled');
-    $('input[name="ceoName"]').removeAttr('disabled');
-    $("input[class='businessType']").removeAttr('disabled');
-    $("input[class='businessGroup']").removeAttr('disabled');
-    $('input[name="businessLicensenumber"]').removeAttr('disabled');
-    $('input[name="detailAddress"]').removeAttr('disabled');
-    $('input[name="taxInvoiceEmail"]').removeAttr('disabled');
-    $('#postCode').removeAttr('disabled');
-};
+$(document).ready(function(){
+	if($("#Y").is(":checked")){
+		$('input[name="companyName"]').removeAttr('disabled');
+	    $('input[name="ceoName"]').removeAttr('disabled');
+	    $("input[class='businessType']").removeAttr('disabled');
+	    $("input[class='businessGroup']").removeAttr('disabled');
+	    $('input[name="businessLicensenumber"]').removeAttr('disabled');
+	    $('input[name="detailAddress"]').removeAttr('disabled');
+	    $('input[name="taxInvoiceEmail"]').removeAttr('disabled');
+	    $('#postCode').removeAttr('disabled');
+	}else{
+	    $('input[name="companyName"]').attr('disabled');
+	    $('input[name="ceoName"]').attr('disabled');
+	    $("input[class='businessType']").attr('disabled');
+	    $("input[class='businessGroup']").attr('disabled');
+	    $('input[name="businessLicensenumber"]').attr('disabled');
+	    $('input[name="detailAddress"]').attr('disabled');
+	    $('input[name="taxInvoiceEmail"]').attr('disabled');
+	    $('#postCode').attr('disabled');
+	}
+})
+
 
 $("#Y").on("click", function(){
 	$('input[name="companyName"]').removeAttr('disabled');

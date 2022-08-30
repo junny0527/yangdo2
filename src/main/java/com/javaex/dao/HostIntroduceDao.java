@@ -65,6 +65,13 @@ public class HostIntroduceDao {
 		return count;
 	}
 	
+	public int updatePensionImg(int pensionNo) {
+		
+		int count = sqlSession.update("HostIntroduce.updatePensionImg", pensionNo);
+		
+		return count;
+	}
+	
 	public HostIntroduceVo getPensionInfo(int pensionNo) {
 		return sqlSession.selectOne("HostIntroduce.getPensionInfo", pensionNo);
 	}

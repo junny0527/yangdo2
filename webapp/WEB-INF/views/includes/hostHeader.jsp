@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- 펜션어때 헤더 -->
 
 <div id="wrap">
 	<div id="header" class="clearfix">
 		<div id="section">
 			<h1>
-				<a href="${pageContext.request.contextPath}/host/newhost">양도어때HOST</a>
+				<a href="${pageContext.request.contextPath}/host/mainchoice">양도어때HOST</a>
 			</h1>
 			<ul class="clearfix">
 				<li><a href="${pageContext.request.contextPath}/host/customerservice"><img src="${pageContext.request.contextPath}/assets/image/host/customercenter.png"> 고객센터</a></li>
@@ -32,6 +34,7 @@
 			<ul class = "sub">
 				<li><a href="${pageContext.request.contextPath}/host/introreg">소개작성(필수)</a></li>
 				<li><a href="${pageContext.request.contextPath}/host/introregopt">소개작성(선택)</a></li>
+				<li><a href="${pageContext.request.contextPath}/host/companyreg">업체관리</a></li>
 			</ul>
 		</li>
 		<li><a href="${pageContext.request.contextPath}/host/rules">이용규칙 관리</a></li>

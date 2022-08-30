@@ -31,7 +31,6 @@ public class MainListDao {
 	
 	
 	
-	
 	//낮은 가격 순 리스트
 	public List<MainSearchVo> selectLowprice(MainSearchVo searchVo){
 		System.out.println("Dao>lowprice");
@@ -75,6 +74,17 @@ public class MainListDao {
 		
 	}
 	
+	//양도 체크박스 리스트
+	public List<MainListVo> selectySearch(MainSearchVo searchVo){
+		System.out.println("searchDao>search");
+		
+		List<MainListVo> pList = sqlSession.selectList("MainList.ySearchList", searchVo);
+		
+		System.out.println("SearchDaoPLIST"+pList);
+		
+		return pList;
+		
+	}
 	
 	
 }

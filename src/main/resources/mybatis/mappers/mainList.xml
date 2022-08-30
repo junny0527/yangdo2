@@ -3,7 +3,7 @@
 <mapper namespace = "MainList">
 	
 	
-	
+		
 		<!-- 기본 리스트 -->
 		
 		<select id="penList" parameterType="com.javaex.vo.MainSearchVo" resultType="com.javaex.vo.MainListVo">
@@ -609,6 +609,128 @@
              
 		]]>
 		
+		
+		
+		<if test="puOpt != ''  and  puOpt != null ">
+			<foreach collection="puOpt" item="pVo">
+			    and pu.puOpts like '%'||#{pVo}||'%'
+			</foreach> 
+		</if>
+	
+		<if test="anOpt != ''  and  anOpt != null ">
+			<foreach collection="anOpt" item="aVo">
+				and ao.amOpts like  '%'||#{aVo}||'%' 
+			</foreach>
+      	</if>
+      	
+		
+		<![CDATA[
+			 order by gu.name
+		]]>
+	</select>
+	<select id="ySearchList" resultType="com.javaex.vo.MainListVo" parameterType="com.javaex.vo.MainSearchVo">
+		<![CDATA[
+			select pe.name pName,
+	               pe.visit_road3 visitRoad3,
+	               pe.address address,
+	               gu.name gugunName,
+	               ro.price penPrice,
+	               stars.stars stars,
+	               stars.rcount rcount,
+	               pi.save_name saveName,
+	               pe.no pNo,
+	               pe.law_name lawName,
+	               ao.amOpts amOpt,
+	               pu.puOpts puOpt,
+	               resv.yCount yCount
+	        from  pension pe, 
+	              sido si, 
+	              gugun gu, 
+	              
+	             (select  ro.pension_no                             
+	                     ,min(p.price) price
+	                     ,p.sortation
+	              from rooms ro , prices p
+	              where ro.no = p.room_no
+	              group by ro.pension_no, p.sortation) ro, 
+	             
+	             (select p.no pension_no,
+	                     nvl(g.gubun,3) gubun
+	              from pension p,
+	                  (select max(gubun) gubun, pension_no
+	                   from peck
+	                   where peck_start < #{datepicker}
+	                   and peck_end >  #{datepicker}
+	                   group by pension_no) g
+	              where p.no = g.pension_no(+)) peck ,
+	              
+	             (select  r.pension_no
+	                     ,round(avg(re.stars),1) stars
+	                     ,count(re.no) rcount
+	              from reviews re , reservations res, rooms r
+	              where r.no = res.room_no
+	              and res.no = re.no
+	              group by r.pension_no) stars ,
+	              
+	             (select   nvl(count(re.no),0) yCount
+	                       ,r.pension_no
+	              from reservations re, rooms r
+	              where re.room_no = r.no
+	              and   check_in = #{datepicker}
+	              and   check_out = #{datepicker2}
+	              and   status = 6
+	              group by r.pension_no) resv,
+	              
+	             (select a.img_no,
+	                     b.pension_no,
+	                     b.save_name
+	              from (select min(pim.no) img_no,
+	                           pim.pension_no
+	                    from   pension_image pim
+	                    group by  pim.pension_no) a,
+	                   (select save_name, pension_no, no img_no
+	                    from pension_image) b
+	              where a.img_no = b.img_no) pi,
+	              
+	             (select pension_no,
+	                     LISTAGG(s_amenities_no, ',') within group (order by s_amenities_no asc) amOpts
+	              from p_amenities
+	              group by pension_no) ao,
+	              
+	             (select pension_no,
+	                     LISTAGG(s_public_no, ',') within group (order by s_public_no asc) puOpts
+	              from p_public
+	              group by pension_no) pu,
+	              
+                   (select min(rm.standard_people) standard_people,
+                           rm.pension_no 
+                    from rooms rm, pension pe
+                    where pe.no = rm.pension_no
+                    and rm.standard_people >= #{persons}
+                    group by rm.pension_no) rstan
+                  
+	        where pe.no = si.pension_no
+	        and si.no = gu.no
+            and pe.no = rstan.pension_no
+	        and pe.no = ro.pension_no
+	        and ro.pension_no = stars.pension_no(+)
+	        and pi.pension_no = pe.no
+	        and peck.pension_no = pe.no
+            and resv.pension_no(+) = pe.no
+	        and ao.pension_no = pe.no
+	        and pu.pension_no = pe.no
+	        and ro.sortation = peck.gubun
+            and resv.yCount >= #{yCount}
+	        and rstan.standard_people >= #{persons}
+	    ]]>
+	    
+	    <if test="sido1 != '' and sido1 != null ">
+	   		and si.name= #{sido1}
+	    </if>
+	    
+	    <if test="gugun1 != '' and gugun1 != null ">
+	    	and gu.name = #{gugun1}
+	    </if>
 		
 		
 		<if test="puOpt != ''  and  puOpt != null ">

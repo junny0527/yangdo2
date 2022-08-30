@@ -346,7 +346,8 @@
 						<c:if test="${ (pMap.totalCnt - (pMap.imgSize * page )) > 0 && pMap.imgSize == 6}">	
 							<c:choose>
 								<c:when test="${crtPage == page && crtPage < 4}">
-									<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
+									<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}
+										&datepicker=${datepicker}&datepicker2=${datepicker2}">
 										<button id="right">
 											<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
 										</button>
@@ -408,24 +409,24 @@
 			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == 6}">
-						<form action="${pageContext.request.contextPath}/res/yangdoreserve/${roomVo.NO}">
-										<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
-										<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
-										<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
-										<input type="hidden" class="yPrice${roomVo.NO}" name=transPrice value="${roomVo.TRANS_PRICE}">
-										<input type="hidden"  name=reservationsNo value="${roomVo.RESERVATIONSNO}">
-										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
-										<input type="hidden"  name=datepicker value="${pMap.datepicker}">
-										<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
-										<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
-										<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
-										<input type="hidden"  name=roomNo value="${roomVo.NO}">
-										<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
-										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
-										<input type="hidden"  name=nickName value="${userVo.nickName}">
-										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
-										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
-										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
+						<form action="${pageContext.request.contextPath}/res/yangdoreserve/${roomVo.RESERVATIONSNO}">">
+						<input type="hidden" class="yAdult${roomVo.NO}" name=yAdult value="${roomVo.ADULT}">
+						<input type="hidden" class="yKid${roomVo.NO}" name=yKid value="${roomVo.KID}">
+						<input type="hidden" class="yBaby${roomVo.NO}" name=yBaby value="${roomVo.BABY}">
+						<input type="hidden" class="yPrice${roomVo.NO}" name=transPrice value="${roomVo.TRANS_PRICE}">
+						<input type="hidden"  name=reservationsNo value="${roomVo.RESERVATIONSNO}">
+						<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
+						<input type="hidden"  name=datepicker value="${pMap.datepicker}">
+						<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
+						<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
+						<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
+						<input type="hidden"  name=roomNo value="${roomVo.NO}">
+						<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
+						<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
+						<input type="hidden"  name=nickName value="${userVo.nickName}">
+						<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
+						<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+						<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button class="roomImgList" type="button" name="${roomVo.NO}">객실 사진보기</button>
@@ -553,22 +554,22 @@
 					</c:when>
 					<c:otherwise>
 						<form action="${pageContext.request.contextPath}/res/reserve">
-										<input type="hidden" class="adult${roomVo.NO}" name=adult value="${roomVo.STANDARD_PEOPLE}">
-										<input type="hidden" class="kid${roomVo.NO}" name=kid value="0">
-										<input type="hidden" class="baby${roomVo.NO}" name=baby value="0">
-										<input type="hidden" class="price${roomVo.NO}" name=price value="${roomVo.PRICE}">
-										<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
-										<input type="hidden"  name=datepicker value="${pMap.datepicker}">
-										<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
-										<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
-										<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
-										<input type="hidden"  name=roomNo value="${roomVo.NO}">
-										<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
-										<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
-										<input type="hidden"  name=nickName value="${userVo.nickName}">
-										<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
-										<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
-										<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
+						<input type="hidden" class="adult${roomVo.NO}" name=adult value="${roomVo.STANDARD_PEOPLE}">
+						<input type="hidden" class="kid${roomVo.NO}" name=kid value="0">
+						<input type="hidden" class="baby${roomVo.NO}" name=baby value="0">
+						<input type="hidden" class="price${roomVo.NO}" name=price value="${roomVo.PRICE}">
+						<input type="hidden"  name=pensionNo value="${pMap.pInfo.NO}">
+						<input type="hidden"  name=datepicker value="${pMap.datepicker}">
+						<input type="hidden"  name=datepicker2 value="${pMap.datepicker2}">
+						<input type="hidden"  name=check_in value="${pMap.pInfo.CHECK_IN}">
+						<input type="hidden"  name=check_out value="${pMap.pInfo.CHECK_OUT}">
+						<input type="hidden"  name=roomNo value="${roomVo.NO}">
+						<input type="hidden"  name=name value="${pMap.pInfo.NAME}">
+						<input type="hidden"  name=roomName value="${roomVo.ROOM_NAME}">
+						<input type="hidden"  name=nickName value="${userVo.nickName}">
+						<input type="hidden"  name=adultPrice value="${roomVo.ADULT_PRICE}">
+						<input type="hidden"  name=kidPrice value="${roomVo.KID_PRICE}">
+						<input type="hidden"  name=standard value="${roomVo.STANDARD_PEOPLE}">
 							<div class="room noReservation">
 								<img class="roomImg" src="${pageContext.request.contextPath}/upload/${roomVo.SAVE_NAME}">
 								<button type="button" class="roomImgList" name="${roomVo.NO}">객실 사진보기</button>
@@ -1225,7 +1226,8 @@
 	
 	
 	//펜션 양도 시 +-인원 금액 구하는 함수
-	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
+	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue,
+						transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
 		
 		var min = transP;
 		var newPrice = min;
@@ -1954,7 +1956,7 @@
 			}
 			str += '<div id="reviewCount">';
 			str += '	<span id="allReview">전체리뷰' + rMap.totalReview.RCOUNT + '</span>';
-			str += '	<span id="pensionReview">제휴점 답변' + rMap.totalReview.REPCOUNT + '</span>';
+			str += '	<span id="pensionReview">제휴점 답변' + rMap.hostReview.REPCOUNT + '</span>';
 			str += '</div>';
 			str += '<div id="reviewBox">';
 
@@ -2068,16 +2070,18 @@
 				str += '				</ul>';
 				str += '			</div>';
 				str += '			<span id="guestRegDate">' + rMap.allReview[i].REG_DATE + '</span>';
-				str += '			<div id="ceoContainer">';
-				str += '				<div class="box">';
-				str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
-				str += '				</div>';
-				str += '				<div id="ceoInfo">';
-				str += '					<span id="ceoReview">제휴점 답변</span>';
-				str += '					<span id="ceoContent">' + rMap.allReview[i].RCONTENT + '</span>';
-				str += '					<span id="ceoRegDate">' + rMap.allReview[i].RREG_DATE + '</span>';
-				str += '				</div>';
-				str += '			</div>';
+				if(rMap.allReview[i].RCONTENT != 'empty' && rMap.allReview[i].RREG_DATE != 'empty') {
+					str += '			<div id="ceoContainer">';
+					str += '				<div class="box">';
+					str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
+					str += '				</div>';
+					str += '				<div id="ceoInfo">';
+					str += '					<span id="ceoReview">제휴점 답변</span>';
+					str += '					<span id="ceoContent">' + rMap.allReview[i].RCONTENT + '</span>';
+					str += '					<span id="ceoRegDate">' + rMap.allReview[i].RREG_DATE + '</span>';
+					str += '				</div>';
+					str += '			</div>';
+				}
 				str += '		</div>';
 				str += '	</div>';
 			}
