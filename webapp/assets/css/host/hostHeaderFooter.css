@@ -209,7 +209,7 @@ footer {
 	height: 220px;
 	font-size: 13px;
 	line-height: 20px;
-	color: rgba(0, 0, 0, 0.38);
+	color: white;
 }
 
 footer .align {
@@ -262,7 +262,7 @@ footer .link li span {
 
 footer .link li a {
 	display: inline-block;
-	color: gray;
+	color: white;
 }
 
 footer p {
