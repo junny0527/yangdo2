@@ -1,4 +1,3 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -253,9 +252,8 @@
 						<input type= "hidden" class = "lawNames" name="lawNames" value = "${pensionVo.lawName}">
 						<input type= "hidden" class = "pName" name="pNames" value = "${pensionVo.pName}">
 						<input type= "hidden" class = "address" name="address" value = "${pensionVo.address}">
-						<div class="title">
-							<h3>${pensionVo.gugunName}</h3>
-						</div>
+					
+						
 						<li class="list_2 adcno3"><a href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
 								<img class="lazy align"
 								src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}"
