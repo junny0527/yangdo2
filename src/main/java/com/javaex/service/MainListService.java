@@ -65,12 +65,19 @@ public class MainListService {
 	public List<MainListVo> selectSearch(MainSearchVo searchVo){
 		System.out.println("service>search");
 		
-		List<MainListVo> pList = mainDao.selectSearch(searchVo);
+		if(searchVo.getyCount() == 1) {
+			List<MainListVo> pList = mainDao.selectySearch(searchVo);
+			
+			System.out.println("searchServicePLIST"+pList);
+			
+			return pList;
+		}else {
+			List<MainListVo> pList = mainDao.selectSearch(searchVo);
 		
-		System.out.println("searchServicePLIST"+pList);
-		
-		return pList;
-		
+			System.out.println("searchServicePLIST"+pList);
+			
+			return pList;
+		}
 	}
 	
 }

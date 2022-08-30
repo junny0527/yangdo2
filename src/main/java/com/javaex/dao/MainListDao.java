@@ -75,6 +75,17 @@ public class MainListDao {
 		
 	}
 	
+	//양도 체크박스 리스트
+	public List<MainListVo> selectySearch(MainSearchVo searchVo){
+		System.out.println("searchDao>search");
+		
+		List<MainListVo> pList = sqlSession.selectList("MainList.ySearchList", searchVo);
+		
+		System.out.println("SearchDaoPLIST"+pList);
+		
+		return pList;
+		
+	}
 	
 	
 }
