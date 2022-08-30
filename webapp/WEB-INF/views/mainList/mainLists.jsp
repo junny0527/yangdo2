@@ -247,12 +247,22 @@
 			<div id="poduct_list_area">
 				<!-- 
 					<!-- 사진정보 -->
+				<c:if test="${param.gugun1 == null}">
+					<div class="title">
+                      		<h3>전국</h3>
+                  	</div>
+				</c:if>
+				<div class="title">
+                       	<h3>${param.gugun1}</h3>
+                </div>
 				<ul>
+					
 					<c:forEach var="pensionVo" items="${pList}" varStatus="i">
 						<input type= "hidden" class = "lawNames" name="lawNames" value = "${pensionVo.lawName}">
 						<input type= "hidden" class = "pName" name="pNames" value = "${pensionVo.pName}">
 						<input type= "hidden" class = "address" name="address" value = "${pensionVo.address}">
-					
+						
+						
 						
 						<li class="list_2 adcno3"><a href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
 								<img class="lazy align"
@@ -260,7 +270,7 @@
 								style="margin-top: -159px; display: block;">
 								<div class="stage gra_black_vertical clearfix">
 									<div class="evt_info">
-										<c:if test="${pensionVo.yCount == 1}">
+										<c:if test="${pensionVo.yCount >= 1}">
 											<span>양도중</span>
 										</c:if>
 									</div>
@@ -290,6 +300,7 @@
 									</div>
 								</div>
 						</a></li>
+						<br>
 					</c:forEach>
 				</ul>
 				<!-- 사진 정보 -->
