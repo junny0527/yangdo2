@@ -504,7 +504,7 @@
 				<div id="upload-list" style="margin-top: 10px"></div>
 				<span> * 여러장을 한꺼번에 드래그하여 업로드 할 수 있습니다. <br> <strong>&nbsp;&nbsp;<font color="#ff0000">최대 15장 까지 등록이 가능합니다.</font></strong> <br> <strong>&nbsp;&nbsp;사진 권장사이즈 : 1920 *
 						1080 또는 960 * 540</strong>
-				</span> <span class="btn btn-success" id="succes" data-dismiss="modal" aria-label="Close" style="float: right; margin-top: -25px;">확인</span>
+				</span> <span class="btn btn-success" id="imgSave" data-dismiss="modal" aria-label="Close" style="float: right; margin-top: -25px;">저장</span>
 			</div>
 
 		</div>
@@ -548,11 +548,11 @@
 	$(".deleteimage").on("click", function() {
 		$("#img-delete").modal("show");
 		
-		
-		$("#cancel").on("click", function() {
-			$("#img-delete").modal("hide");
-		})
 	});
+	
+	$("#cancel").on("click", function() {
+		$("#img-delete").modal("hide");
+	})
 	
 	$("#imgDelete").on("click",function(){
 
@@ -630,7 +630,6 @@
           	 }
 	         $("#upload-list").append(str);
 	         
-	         uploadFile(fileList);
 	    });
 	}
 	
@@ -679,6 +678,9 @@
 	    
 	}
 
+	$("#imgSave").on("click",function(){
+		uploadFile(fileList);
+	});
 
 	function render() {
 		var str = '';
