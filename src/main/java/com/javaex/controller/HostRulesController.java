@@ -1,7 +1,5 @@
 package com.javaex.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +30,12 @@ public class HostRulesController {
 		int userNo = uVo.getNo();
 		int pensionNo = iService.getPensionNoBySession(userNo);
 		HostRulesVo rInfo = rService.getRules(pensionNo);
-		List<HostRulesVo> peck = rService.getPeck(pensionNo);
-		List<HostRulesVo> subpeck = rService.getsubPeck(pensionNo);
+		//List<HostRulesVo> peck = rService.getPeck(pensionNo);
+		//List<HostRulesVo> subpeck = rService.getsubPeck(pensionNo);
 		
 		model.addAttribute("rInfo", rInfo);
-		model.addAttribute("peck", peck);
-		model.addAttribute("subpeck", subpeck);
+		//model.addAttribute("peck", peck);
+		//model.addAttribute("subpeck", subpeck);
 		
 		return "/host/rules";
 	}
