@@ -52,7 +52,6 @@ public class HostRulesService {
 			System.out.println("peckNo : " + peckNo);
 			peckVo.setPeckNo(peckNo);
 			System.out.println("after insert peckVo : " + peckVo);
-			rDao.insertPensionPeck(peckVo);
 		}
 		
 		for(int i = 0; i<editSubpeckStart.length; i++) {
@@ -76,7 +75,6 @@ public class HostRulesService {
 			
 			int peckNo = rDao.getpeckNo();
 			peckVo.setPeckNo(peckNo);
-			rDao.insertPensionPeck(peckVo);
 		}
 		return rDao.updateRules(hVo);
 	}

@@ -35,11 +35,6 @@ public class HostRulesDao {
 		int peckNo = sqlSession.selectOne("HostRules.getpeckNo");
 		return peckNo;
 	}
-	
-	public int insertPensionPeck(HostRulesVo peckVo) {
-		return sqlSession.insert("HostRules.insertPensionPeck", peckVo);
-	}
-	
 	public HostRulesVo getRules(int pensionNo) {
 		return sqlSession.selectOne("HostRules.getRules", pensionNo);
 	}

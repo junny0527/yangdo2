@@ -45,13 +45,6 @@
 	]]>
 </select>
 
-<insert id = "insertPensionPeck" parameterType = "com.javaex.vo.HostRulesVo">
-	<![CDATA[
-		insert into p_peck
-		values(seq_p_peck_no.nextval, #{pensionNo}, #{peckNo})
-	]]>
-</insert>
-
 <!-- 
 <select id = "getRules" parameterType = "int" resultType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
