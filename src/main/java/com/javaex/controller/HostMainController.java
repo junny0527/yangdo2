@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.HostMainService;
+import com.javaex.service.UserService;
 import com.javaex.vo.HostCountVo;
 import com.javaex.vo.HostReservationVo;
+import com.javaex.vo.HostRoomsVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -21,6 +23,9 @@ public class HostMainController {
 	
 	@Autowired
 	private HostMainService mService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value="newhost", method = {RequestMethod.GET, RequestMethod.POST})
 	public String newhost() {
@@ -35,8 +40,22 @@ public class HostMainController {
 		return "redirect:/loginForm";
 	}
 	
+	@RequestMapping(value="mainchoice", method = {RequestMethod.GET, RequestMethod.POST})
+	public String mainchoice(HttpSession session){
+		UserVo uVo = (UserVo) session.getAttribute("authUser");
+		int hostNo = uVo.getNo();
+		HostRoomsVo hVo = userService.hostLogin(hostNo);
+		//나누는거 조금있다가 해야됨
+		if(hVo == null) {
+			return "redirect:/host/newhost";
+		}else {
+			return "redirect:/host/main";
+		}
+	}
+	
 	@RequestMapping(value="main", method= {RequestMethod.GET, RequestMethod.POST})
 	public String main(HttpSession session, Model model) {
+		
 		UserVo uVo = (UserVo) session.getAttribute("authUser");
 		int hostNo = uVo.getNo();
 		int pensionNo = mService.getPensionNoBySession(hostNo);
@@ -59,5 +78,6 @@ public class HostMainController {
 	public String customerservice() {
 		return "/host/customerService";
 	}
+	
 	
 }
