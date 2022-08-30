@@ -134,11 +134,21 @@ public class DetailDao {
 		return pensionInfo;
 	}
 	
-	//리뷰 가져오기(이용자 + 업주)
+	//리뷰 가져오기(이용자)
 	public List<Map<String, Object>> allReview(int pensionNo) {
 		System.out.println("DetailService > allReview");
 		
 		List<Map<String, Object>> allReview = sqlSession.selectList("detail.allReview", pensionNo);
 		return allReview;
 	}
+	
+	
+	//hostReview
+	public Map<String, Object> hostReview(int pensionNo) {
+		System.out.println("DetailService > allReview");
+		
+		Map<String, Object> hostReview = sqlSession.selectOne("detail.hostReview", pensionNo);
+		return hostReview;
+	}
+	
 }

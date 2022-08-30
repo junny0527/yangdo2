@@ -346,7 +346,8 @@
 						<c:if test="${ (pMap.totalCnt - (pMap.imgSize * page )) > 0 && pMap.imgSize == 6}">	
 							<c:choose>
 								<c:when test="${crtPage == page && crtPage < 4}">
-									<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}&datepicker=${datepicker}&datepicker2=${datepicker2}">
+									<a id="next" href="${pageContext.request.contextPath}/reservation?pensionNo=${pMap.pInfo.NO}&crtPage=${page +1}
+										&datepicker=${datepicker}&datepicker2=${datepicker2}">
 										<button id="right">
 											<img src="${pageContext.request.contextPath}/assets/image/detail/right.png">
 										</button>
@@ -1225,7 +1226,8 @@
 	
 	
 	//펜션 양도 시 +-인원 금액 구하는 함수
-	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue, transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
+	function yPriceInfo(adult, kid, baby, standard, priceP, adultP, kidP, yAdultValue, yKidValue, assignmentValue,
+						transP ,yBabyValue, roomNo, yAdult, yKid, yBaby) {
 		
 		var min = transP;
 		var newPrice = min;
@@ -1954,7 +1956,7 @@
 			}
 			str += '<div id="reviewCount">';
 			str += '	<span id="allReview">전체리뷰' + rMap.totalReview.RCOUNT + '</span>';
-			str += '	<span id="pensionReview">제휴점 답변' + rMap.totalReview.REPCOUNT + '</span>';
+			str += '	<span id="pensionReview">제휴점 답변' + rMap.hostReview.REPCOUNT + '</span>';
 			str += '</div>';
 			str += '<div id="reviewBox">';
 

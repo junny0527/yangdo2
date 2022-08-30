@@ -139,9 +139,11 @@ public class DetailService {
 		
 		Map<String, Object> rMap = new HashMap<String, Object>();
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
+		Map<String, Object> hostReview = detailDao.hostReview(pensionNo);
 		List<Map<String, Object>> allReview = detailDao.allReview(pensionNo);
 		rMap.put("totalReview", totalReview);
 		rMap.put("allReview", allReview);
+		rMap.put("hostReview", hostReview);
 		
 		return rMap;
 	}

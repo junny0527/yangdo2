@@ -34,12 +34,22 @@
 		]]>
 	</select>
 	
-	<!-- 평점 및 총 리뷰개수(업주+) -->
+	<!-- 이용자 평점 및 총 리뷰개수 -->
 	<select id = "totalReview" resultType="map" parameterType="int">
 		<![CDATA[
 			select  to_char(avg(re.stars), '0.0') avgStars
 			        ,count(re.review_no) rCount
-			        ,count(rep.reply_no) repCount
+			from    reviews re, users u, company c, pension p
+			where   u.no = c.user_no
+			and     c.no = p.no
+			and     p.no = #{pensionNo}
+		]]>
+	</select>
+	
+	<!-- 업주 리뷰개수 -->
+	<select id = "hostReview" resultType="map" parameterType="int">
+		<![CDATA[
+			select  count(rep.reply_no) repCount
 			from    reviews re, replys rep, users u, company c, pension p
 			where   re.review_no = rep.review_no
 			and     rep.owner = u.no
@@ -48,6 +58,9 @@
 			and     p.no = #{pensionNo}
 		]]>
 	</select>
+	
+	
+	
 	
 	<!-- 이미지 리스트 -->
 	<select id="selectList" resultType="map" parameterType="map">
