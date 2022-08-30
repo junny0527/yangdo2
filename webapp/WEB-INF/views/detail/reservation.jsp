@@ -2070,16 +2070,18 @@
 				str += '				</ul>';
 				str += '			</div>';
 				str += '			<span id="guestRegDate">' + rMap.allReview[i].REG_DATE + '</span>';
-				str += '			<div id="ceoContainer">';
-				str += '				<div class="box">';
-				str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
-				str += '				</div>';
-				str += '				<div id="ceoInfo">';
-				str += '					<span id="ceoReview">제휴점 답변</span>';
-				str += '					<span id="ceoContent">' + rMap.allReview[i].RCONTENT + '</span>';
-				str += '					<span id="ceoRegDate">' + rMap.allReview[i].RREG_DATE + '</span>';
-				str += '				</div>';
-				str += '			</div>';
+				if(rMap.allReview[i].RCONTENT != 'empty' && rMap.allReview[i].RREG_DATE != 'empty') {
+					str += '			<div id="ceoContainer">';
+					str += '				<div class="box">';
+					str += '					<img src="${pageContext.request.contextPath}/assets/image/detail/guest.png">';
+					str += '				</div>';
+					str += '				<div id="ceoInfo">';
+					str += '					<span id="ceoReview">제휴점 답변</span>';
+					str += '					<span id="ceoContent">' + rMap.allReview[i].RCONTENT + '</span>';
+					str += '					<span id="ceoRegDate">' + rMap.allReview[i].RREG_DATE + '</span>';
+					str += '				</div>';
+					str += '			</div>';
+				}
 				str += '		</div>';
 				str += '	</div>';
 			}
