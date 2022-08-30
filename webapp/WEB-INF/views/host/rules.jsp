@@ -126,30 +126,6 @@
 										<option value="18:00">오후 06:00</option>
 										<option value="19:00">오후 07:00</option>
 										<option value="20:00">오후 08:00</option>
-										<c:if test = "${rInfo.checkin eq '13:00'}">
-											<option value="13:00" selected>오후 01:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '14:00'}">
-											<option value="14:00" selected>오후 02:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '15:00'}">
-											<option value="15:00" selected>오후 03:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '16:00'}">
-											<option value="16:00" selected>오후 04:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '17:00'}">
-											<option value="17:00" selected>오후 05:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '18:00'}">
-											<option value="18:00" selected>오후 06:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '19:00'}">
-											<option value="19:00" selected>오후 07:00</option>
-										</c:if>
-										<c:if test = "${rInfo.checkin eq '20:00'}">
-											<option value="20:00" selected>오후 08:00</option>
-										</c:if>
                                     </select>
                                 </div>
                             </span>
@@ -168,30 +144,6 @@
                         				<option value="15:00">오후 03:00</option>
                         				<option value="16:00">오후 04:00</option>
                         				<option value="17:00">오후 05:00</option>
-                        				<c:if test = "${rInfo.checkout eq '10:00'}">
-                        					<option value="10:00" selected>오전 10:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '11:00'}">
-                        					<option value="11:00">오전 11:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '12:00'}">
-                        					<option value="12:00">오후 12:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '13:00'}">
-                        					<option value="13:00">오후 01:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '14:00'}">
-                        					<option value="14:00">오후 02:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '15:00'}">
-                        					<option value="15:00">오후 03:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '16:00'}">
-                        					<option value="16:00">오후 04:00</option>
-                        				</c:if>
-                        				<c:if test = "${rInfo.checkout eq '17:00'}">
-                        					<option value="17:00">오후 05:00</option>
-                        				</c:if>
                        				</select>
                   				</div>
               				</span>
@@ -206,14 +158,12 @@
                 		<div class="form-layer">
                 			<span class="form-title text-center title_align">준 성수기</span>
                 			<span class="form-body">
-                				<c:forEach items="${subpeck}" var="subpeck">
-	                				<div class="subpeck-item form-inline mb_24">
-										<input class="form-control middle-size datepicker" name = "subpeckStartArray" type="text" readonly="readonly" value = "${subpeck.subpeckStart}">
-										<span class="range"> ~ </span>
-										<input class="form-control middle-size datepicker" name = "subpeckEndArray" type="text" readonly="readonly" value = "${subpeck.subpeckEnd}">
-										<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeck">삭제</button>
-									</div>
-								</c:forEach>
+                				<div class="subpeck-item form-inline mb_24">
+									<input class="form-control middle-size datepicker" name = "subpeckStartArray" type="text" readonly="readonly" value = "">
+									<span class="range"> ~ </span>
+									<input class="form-control middle-size datepicker" name = "subpeckEndArray" type="text" readonly="readonly" value = "">
+									<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-subpeck">삭제</button>
+								</div>
 								<div class="form form-subpeck">
 									<div class="subpeck-item form-inline mb_24 hide">
 										<input class="form-control middle-size datepicker plussubpeckstart" type="text" readonly="readonly">
@@ -235,14 +185,12 @@
                         <div class="form-layer">
                         	<span class="form-title text-center title_align">성수기</span>
                             <span class="form-body">
-                            	<c:forEach items = "${peck}" var = "peck">
-	                            	<div class="peck-item form-inline mb_24">
-	                            		<input class="form-control middle-size datepicker" name = "peckStartArray" type="text" readonly="readonly" value = "${peck.peckStart}">
-	                            		<span class="range"> ~ </span>
-	                            		<input class="form-control middle-size datepicker" name = "peckEndArray" type="text" readonly="readonly" value = "${peck.peckEnd}">
-	                            		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peck">삭제</button>
-	                           		</div>
-                           		</c:forEach>
+                            	<div class="peck-item form-inline mb_24">
+                            		<input class="form-control middle-size datepicker" name = "peckStartArray" type="text" readonly="readonly" value = "">
+                            		<span class="range"> ~ </span>
+                            		<input class="form-control middle-size datepicker" name = "peckEndArray" type="text" readonly="readonly" value = "">
+                            		<button type="button" class="btn btn-yeogi remove-layer" data-role="remove-peck">삭제</button>
+                           		</div>
 
                                 <div class="form form-peck">
                                     <div class="peck-item form-inline mb_24 hide">
@@ -267,7 +215,7 @@
 							<div class = "decrease">
 								<span class="form-title">성인</span>
 								<span class="form-body">
-									<input class="form-control normal-size" name = "addAdultPrice" type="text" value="${rInfo.addAdultPrice}">
+									<input class="form-control normal-size" name = "addAdultPrice" type="text" value="">
 								</span>
 								<span class="form-body">
 									 원
@@ -277,7 +225,7 @@
 							<div class = "decrease">
 								<span class="form-title">아동</span>
 								<span class="form-body">
-									<input class="form-control normal-size" name = "addKidPrice" type="text" value="${rInfo.addKidPrice}">
+									<input class="form-control normal-size" name = "addKidPrice" type="text" value="">
 								</span>
 								<span class="form-body">
 									 원
@@ -287,7 +235,7 @@
 							<div class = "decrease">
 								<span class="form-title">유아</span>
 								<span class="form-body">
-									<input class="form-control normal-size" name = "addBabyPrice" type="text" value="${rInfo.addBabyPrice}">
+									<input class="form-control normal-size" name = "addBabyPrice" type="text" value="">
 								</span>
 								<span class="form-body">
 									 원
@@ -309,19 +257,19 @@
 						<div class="form-layer mb_24">
 							<span class="form-body">
 								<div class="radio-inline">
-									<input id = "tenday" name = "refundNo" class="form-check-input" type="radio" value = "10"<c:if test="${rInfo.refundNo == 10}">checked</c:if>>
+									<input id = "tenday" name = "refundNo" class="form-check-input" type="radio" value = "10">
 									<label for = "tenday" class="form-check-label">
 									10일 전
 									</label>
 								</div>
 								<div class="radio-inline">
-									<input id = "sevenday" name = "refundNo" class="form-check-input" type="radio" value = "7"<c:if test="${rInfo.refundNo == 7}">checked</c:if>>
+									<input id = "sevenday" name = "refundNo" class="form-check-input" type="radio" value = "7">
 									<label for = "sevenday" class="form-check-label">
 									7일 전
 									</label>
 								</div>
 								<div class="radio-inline">
-									<input id = "sixday" name = "refundNo" class="form-check-input" type="radio" value = "6"<c:if test="${rInfo.refundNo == 6}">checked</c:if>>
+									<input id = "sixday" name = "refundNo" class="form-check-input" type="radio" value = "6">
 									<label for = "sixday" class="form-check-label">
 									6일 전
 									</label>

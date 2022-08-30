@@ -22,14 +22,14 @@
 <insert id = "insertpeck" parameterType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
 		insert into peck
-		values(seq_peck_no.nextval, to_date(#{peckStart}, 'mm-dd'), to_date(#{peckEnd}, 'mm-dd'), 1)
+		values(seq_peck_no.nextval, #{pensionNo}, to_date(#{peckStart}, 'MM-DD'), to_date(#{peckEnd}, 'MM-DD'), 1)
 	]]>
 </insert>
 
 <insert id = "insertsubpeck" parameterType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
 		insert into peck
-		values(SEQ_PECK_NO.nextval, to_date(#{subpeckStart}, 'MM-DD'), to_date(#{subpeckEnd}, 'MM-DD'), 2)
+		values(SEQ_PECK_NO.nextval, #{pensionNo} , to_date(#{subpeckStart}, 'MM-DD'), to_date(#{subpeckEnd}, 'MM-DD'), 2)
 	]]>
 </insert>
 
@@ -52,7 +52,7 @@
 	]]>
 </insert>
 
-
+<!-- 
 <select id = "getRules" parameterType = "int" resultType = "com.javaex.vo.HostRulesVo">
 	<![CDATA[
 		select  
@@ -87,7 +87,7 @@
 		and gubun = 2
 	]]>
 </select>
-
+ -->
 
 
 </mapper>
