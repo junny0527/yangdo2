@@ -50,8 +50,8 @@
 			<!-- Nav -->
 			<c:import url="/WEB-INF/views/mypage/includes/mynav.jsp"></c:import>
 			<!-- Nav -->
-
-
+	
+		
 			<div class="align_rt">
 				<input type="hidden" name="page" value="1">
 				<div>
@@ -62,8 +62,8 @@
 					<c:forEach items="${pList}" var="pList">
 						<ul class="point_list">
 							<li>"${pList.pName}(${pList.point}P)"<span>${pList.regDate }</span>
-								<c:if test="${pList.point < 0}"><p class="col_mint">- ${pList.point}P</p></c:if>
-								<c:if test="${pList.point > 0}"><p class="col_red">+ ${pList.point}P</p></c:if>
+								<c:if test="${pList.point < 0}"><p class="col_mint"> ${pList.point}P</p></c:if>
+								<c:if test="${pList.point > 0}"><p class="col_red">+${pList.point}P</p></c:if>
 							</li>
 						</ul>
 					</c:forEach>
