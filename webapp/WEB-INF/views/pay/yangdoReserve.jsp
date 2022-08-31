@@ -325,7 +325,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	checkOutHr:"${rpMap.CHECKOUTTIME }",
 			    	        	pName : "${rpMap.PNAME}",
 			    	        	rName : "${rpMap.RNAME}",
-			    	        	status: '1',
+			    	        	status: '5',
 			    	        	payWay: '1',
 			    	        	payStatus: '2',
 			    	        	//null 값인거 일단 넣어보기
@@ -356,7 +356,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    			alert("결제가 성공되어 예약내역으로 넘어갑니다.");
 	    	    			setTimeout(function() {
 	    	    				location.href = `/yangdo/my/reservation`; //?no=${res.no} 예약번호 필요시 넣어주며됨
-	    	    				}, 400);
+	    	    				}, 300);
 	    	    			} else {
 	    	    				alert("실패")
 	    	    			}
