@@ -16,7 +16,7 @@ import com.javaex.vo.MainListVo;
 import com.javaex.vo.MainSearchVo;
 
 @Controller
-public class JiwoongController {
+public class MainListController {
 	
 	@Autowired
 	private MainListService mainService;
