@@ -602,14 +602,19 @@
 	        and ao.pension_no = pe.no
 	        and pu.pension_no = pe.no
 	        and ro.sortation = peck.gubun
-            and resv.yCount(+) = #{yCount}
+	        and resv.yCount(+) = #{yCount}
 	        and rstan.standard_people >= #{persons}
-			and si.name= #{sido1}
-			and gu.name = #{gugun1}
-             
 		]]>
 		
+		<if test="sido1 != '' and sido1 != null ">
+	   		and si.name= #{sido1}
+	    </if>
+	    
+	    <if test="gugun1 != '' and gugun1 != null ">
+	    	and gu.name = #{gugun1}
+	    </if>
 		
+				
 		
 		<if test="puOpt != ''  and  puOpt != null ">
 			<foreach collection="puOpt" item="pVo">
