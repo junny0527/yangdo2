@@ -44,7 +44,6 @@ public class DetailController {
 		model.addAttribute("datepicker", datepicker);
 		model.addAttribute("datepicker2", datepicker2);
 		model.addAttribute("userVo", userVo);
-		System.out.println(userVo);
 		
 		return "detail/reservation";
 	}
