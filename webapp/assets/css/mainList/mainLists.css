@@ -387,6 +387,7 @@ input[type=checkbox]{
 	z-index: -10;
 	width: 100%;
 	min-height: 280px;
+	
 }
 
 .list_2 .stage, .list_3 .stage {
@@ -486,6 +487,7 @@ input[type=checkbox]{
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
+	
 }
 
 .list_2 .stage .evt_info span, .list_3 .stage .evt_info span {
@@ -498,4 +500,14 @@ input[type=checkbox]{
 
 #infoTitle{
 	color: black;
+}
+
+
+ .dis {
+	font-weight:bold;
+	font-size:20px;
+	position:relative;
+	top:5%;
+	left:-1%;
+	color:#ffffff;
 }
