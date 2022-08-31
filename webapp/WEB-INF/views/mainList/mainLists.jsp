@@ -226,10 +226,6 @@
 							onclick="location.href='${pageContext.request.contextPath}/main/hit'">
 							<span>추천 순</span>
 						</button>
-						<button type="button" data-sort="DISTANCE" class="on"
-							id="distance" value="distance">
-							<span>거리 순</span>
-						</button>
 						<button type="button" data-sort="LOWPRICE" class="on"
 							id="lowprice" value="lowprice"
 							onclick="location.href='${pageContext.request.contextPath}/main/lowprice'">
@@ -248,14 +244,22 @@
 			<div id="poduct_list_area">
 				<!-- 
 					<!-- 사진정보 -->
+					
+				<c:if test="${param.gugun1 == null || param.gugun1 == ''}">
+					<div class="title">
+	            		<h3>전국</h3>
+	            	</div>
+				</c:if>
+				<div class="title">
+                	<h3>${param.gugun1}</h3>
+                </div>
+	                
 				<ul>
 					<c:forEach var="pensionVo" items="${pList}" varStatus="i">
 						<input type= "hidden" class = "lawNames" name="lawNames" value = "${pensionVo.lawName}">
 						<input type= "hidden" class = "pName" name="pNames" value = "${pensionVo.pName}">
 						<input type= "hidden" class = "address" name="address" value = "${pensionVo.address}">
-						<div class="title">
-							<h3>${pensionVo.gugunName}</h3>
-						</div>
+						
 						<li class="list_2 adcno3"><a href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
 								<img class="lazy align"
 								src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}"
@@ -294,6 +298,7 @@
 									</div>
 								</div>
 						</a></li>
+						<br>
 					</c:forEach>
 				</ul>
 				<!-- 사진 정보 -->

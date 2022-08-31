@@ -18,21 +18,15 @@
 		<section>
 			<form id="loginForm" action="${pageContext.request.contextPath}/login" autocomplete="off" method="post" novalidate="novalidate">
 				<input type="hidden" name="yeogi_token" value="59259f5ff4a5bcd52e61c8e7edb53374">
+				<br><br>
 				<div class="fix_title">
-					<strong><a class="col_red" href="${pageContext.request.contextPath}/main">양도 어때</a></strong>
+					<strong><a id="logotitle" class="col_red" href="${pageContext.request.contextPath}/main">양도 어때</a></strong>
 				</div>
-				<button type="button" id="kakao-login-btn" class="btn_start btn_kakao" data-device-type="W">
-					<span><img id="kakaoLogo" src="${pageContext.request.contextPath}/assets/image/users/kakao.png">카카오톡으로 로그인</span>
-				</button>
-				<a
-					href="https://nid.naver.com/oauth2.0/authorize?response_type=code&amp;client_id=r3Mjf4OpPMMq8Lib0JKw&amp;redirect_uri=https%3A%2F%2Fwww.goodchoice.kr%2Fuser%2FnaverLoginProcess&amp;state=23c9c5cf664bab5855a3304bfd34a4c6"
-					id="naver_id_login" class="btn_start btn_naver"><span><img id="naverLogo" src="${pageContext.request.contextPath}/assets/image/users/naver.png">네이버로 로그인</span></a>
-				<p class="space_or">
-					<span>또는</span>
-				</p>
+				<br><br>
+				<%-- <img alt="" src="${pageContext.request.contextPath}/assets/image/users/yangdodooo.gif"> --%>
 				<div class="inp_type_1 ico_email form-errors">
 					<!-- focus / err -->
-					<input type="email" name="id" placeholder="이메일 주소" required="" class="required" value="" data-msg-required="이메일 주소를 입력해 주세요.">
+					<input type="email" name="id" placeholder="아이디를 입력해 주세요" required="" class="required" value="" >
 					<button type="button" class="reset_val">초기화</button>
 				</div>
 				<div class="inp_type_1 ico_pw form-errors">

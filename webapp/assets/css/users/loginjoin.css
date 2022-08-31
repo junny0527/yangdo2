@@ -1,4 +1,12 @@
 @charset "UTF-8";
+@font-face {
+	font-family: 'TTCrownMychewR';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
 *{outline:0}
 html,body{font-family:'Pretendard', 'Apple SD Gothic Neo', '맑은 고딕', '맑은고딕', 'Malgun Gothic', sans-serif;font-size:14px;line-height:1;color:rgba(0,0,0,0.87);-webkit-text-size-adjust:none} /* 폰트크기 자동조절 제거 */
 input::-ms-clear, input::-ms-reveal{display:none} /* IE - select arrow remove */
@@ -1185,4 +1193,10 @@ ic_Inactive_account.png
 }
 #btn_hJoin{
 	height: 100px;
+}
+
+#logotitle{
+	font-family: 'TTCrownMychewR';
+	font-size: 70px;
+	margin-bottom: 30px;
 }
