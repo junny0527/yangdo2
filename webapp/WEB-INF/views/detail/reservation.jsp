@@ -1308,8 +1308,9 @@
 		kidP = Number(kidPrice.replace(/,/g, ""));
 
 		
-		
-		if((adult + kid + baby) < max) {
+		if((adult + kid + baby) >= max) {
+			alert("인원이 초과되었습니다. 다시 입력해주세요.");
+		}else if((adult + kid + baby) < max) {
 			adult += 1;
 			adultValue.text(adult + "명");
 			priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo);
@@ -1396,7 +1397,9 @@
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		
-		if((adult + kid + baby) < max) {
+		if((adult + kid + baby) >= max) {
+			alert("인원이 초과되었습니다. 다시 입력해주세요.");
+		}else if((adult + kid + baby) < max) {
 			kid += 1;
 			kidValue.text(kid + "명");
 			priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo);
@@ -1481,7 +1484,9 @@
 		adultP = Number(adultPrice.replace(/,/g, ""));
 		kidP = Number(kidPrice.replace(/,/g, ""));
 		
-		if((adult + kid + baby) < max) {
+		if((adult + kid + baby) >= max) {
+			alert("인원이 초과되었습니다. 다시 입력해주세요.");
+		}else if((adult + kid + baby) < max) {
 			baby += 1;
 			babyValue.text(baby + "명");
 			priceInfo(adult, kid, baby, standard, priceP, adultP, kidP, adultValue, kidValue, roomPriceValue, babyValue, roomNo);
