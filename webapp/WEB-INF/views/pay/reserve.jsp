@@ -352,7 +352,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	    	    			alert("결제가 성공되어 예약내역으로 넘어갑니다.");
 	    	    			setTimeout(function() {
 	    	    				location.href = `/yangdo/my/reservation`; //?no=${res.no} 예약번호 필요시 넣어주며됨
-	    	    				}, 400);
+	    	    				}, 350);
 	    	    			
 	    	    			} else {
 	    	    				alert("실패")
