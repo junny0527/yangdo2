@@ -50,7 +50,7 @@ public class UserController {
 			}
 		}else {
 			System.out.println("로그인 실패");
-		return "redirect:/user/loginForm?result=fail";
+			return "/users/loginfailForm";
 		}
 		
 	}
