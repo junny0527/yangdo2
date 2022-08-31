@@ -6,12 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-	
-	element.style{
-	
-	}
-</style>
+
 <title>Insert title here</title>
 
 <script type="text/javascript"
@@ -85,7 +80,7 @@
 			<section>
 				<ul>
 					<li><input type="checkbox" id="yangdo" name="yCount"
-						class="inp_chk" value="1" <c:if test="${param.yCount == 1}">checked</c:if>> <label for="yangdo"
+						class="inp_chk" value="1"> <label for="yangdo"
 						class="label_chk">양도 중</label></li>
 				</ul>
 			</section>
@@ -228,17 +223,21 @@
 					<div class="btn_wrap width_4">
 						<button type="button" data-sort="HIT" class="on" id="hit"
 							value="hit"
-							onclick="location.href='${pageContext.request.contextPath}/main/hit?sido1=${searchVo.sido1}&gugun1=${searchVo.gugun1}'">
+							onclick="location.href='${pageContext.request.contextPath}/main/hit'">
 							<span>추천 순</span>
+						</button>
+						<button type="button" data-sort="DISTANCE" class="on"
+							id="distance" value="distance">
+							<span>거리 순</span>
 						</button>
 						<button type="button" data-sort="LOWPRICE" class="on"
 							id="lowprice" value="lowprice"
-							onclick="location.href='${pageContext.request.contextPath}/main/lowprice?sido1=${searchVo.sido1}&gugun1=${searchVo.gugun1}'">
+							onclick="location.href='${pageContext.request.contextPath}/main/lowprice'">
 							<span>낮은 가격 순</span>
 						</button>
 						<button type="button" data-sort="HIGHPRICE" class="on"
 							id="highprice" value="highprice"
-							onclick="location.href='${pageContext.request.contextPath}/main/highprice?sido1=${searchVo.sido1}&gugun1=${searchVo.gugun1}'">
+							onclick="location.href='${pageContext.request.contextPath}/main/highprice'">
 							<span>높은 가격 순</span>
 						</button>
 					</div>
@@ -247,25 +246,20 @@
 				</div>
 			</div>
 			<div id="poduct_list_area">
-							<!-- 사진정보 -->
-					<c:if test="${param.gugun1 == null || param.gugun1 == ''}">
-						<div class="title">
-		            		<h3>전국</h3>
-		            	</div>
-					</c:if>
-					<div class="title">
-	                	<h3>${param.gugun1}</h3>
-	                </div>
+				<!-- 
+					<!-- 사진정보 -->
 				<ul>
-					
 					<c:forEach var="pensionVo" items="${pList}" varStatus="i">
 						<input type= "hidden" class = "lawNames" name="lawNames" value = "${pensionVo.lawName}">
 						<input type= "hidden" class = "pName" name="pNames" value = "${pensionVo.pName}">
 						<input type= "hidden" class = "address" name="address" value = "${pensionVo.address}">
-						<input type= "hidden" class = "pNo" name="pNo" value = "${pensionVo.pNo}">
-						
+						<div class="title">
+							<h3>${pensionVo.gugunName}</h3>
+						</div>
 						<li class="list_2 adcno3"><a href="${pageContext.request.contextPath}/reservation?pensionNo=${pensionVo.pNo}&datepicker=${datePicker}&datepicker2=${datePicker2}">
-								<img class="lazy align pImage" src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}" style="margin-top: -159px; display: block;">
+								<img class="lazy align"
+								src="${pageContext.request.contextPath }/upload/${pensionVo.saveName}"
+								style="margin-top: -159px; display: block;">
 								<div class="stage gra_black_vertical clearfix">
 								<span class="dis"></span>
 									<div class="evt_info">
@@ -273,6 +267,7 @@
 											<span>양도중</span>
 										</c:if>
 									</div>
+									
 									<div class="name">
 										<strong>${pensionVo.pName}</strong>
 										<p class="score">
@@ -294,12 +289,11 @@
 									</div>
 									<div class="price">
 										<p>
-											<b>${pensionVo.penPrice}원</b>
+											<b>${pensionVo.penCPrice}원</b>
 										</p>
 									</div>
 								</div>
 						</a></li>
-						<br>
 					</c:forEach>
 				</ul>
 				<!-- 사진 정보 -->
@@ -417,152 +411,179 @@ $("#sido1").change(function() {
 
 
 
-/* kakaoMap */
-var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(37.56668001457865, 126.97849383348301), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
-};  
-	
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption);
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-var addressArray = [];
-var addressName = [];
-var addresslist = $('.lawNames');
-var pNamelist = $('.pName');
-var pNoList = $('.pNo');
-var pensionList = [];
-
-for(var i=0; i<pNamelist.length; i++){
-	pensionList.push({
-	address : $("input[name='address']").eq(i).val(),
-	title : $("input[name='pNames']").eq(i).val(),
-	no : $("input[name='pNo']").eq(i).val()
-	});
-}
-
-for(let i =0; i<pensionList.length; i++){
-	geocoder.addressSearch(pensionList[i].address,function(result, status) {
-		if (status === kakao.maps.services.Status.OK) {
-			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	/* kakaoMap */
+	var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new kakao.maps.LatLng(37.56668001457865, 126.97849383348301), // 지도의 중심좌표
+	        level: 4 // 지도의 확대 레벨
+	};  
 		
-			// 결과값으로 받은 위치를 마커로 표시합니다
-			var marker = new kakao.maps.Marker({
-				map: map,
-				position: coords
-			});
-			// 마커에 표시할 인포윈도우를 생성합니다 
-			var infowindow = new kakao.maps.InfoWindow({
-				//content: positions[i].content // 인포윈도우에 표시할 내용
-				content: '<div style="width:150px;text-align:center;padding:6px 0;">'+'<a id="infoTitle" href="${pageContext.request.contextPath}/reservation?pensionNo='+pensionList[i].no+'&datepicker=${datePicker}&datepicker2=${datePicker2}">'+pensionList[i].title+'</a>'+'</div>' // 인포윈도우에 표시할 내용
-			});
-			
-			infowindow.open(map, marker);
-			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			map.setCenter(coords);
-			
-			(function location(){
-				navigator.geolocation.getCurrentPosition(
-				function(position) {
-				
-					
-				//현재위치 위도 경도	
-				var location = {
-						lat : position.coords.latitude,
-						lon : position.coords.longitude	
-				}
-				
-				console.log("위도:" + location.lat + "경도:" + location.lon );
-				
-				//펜션 위도경도
-				var locArray = [];
-				
-				
-				var pLat = result[0].y;
-				var pLon = result[0].x;
-				 
-				
-				function deg2rad(deg) {
-			        return deg * (Math.PI/180)
-			    }
-				
-			    var r = 6371; //지구의 반지름(km)
-			    var dLat = deg2rad(pLat-location.lat);
-			    var dLon = deg2rad(pLon-location.lon);
-			    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(location.lat)) * Math.cos(deg2rad(pLat)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-			    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-			    var d = r * c; // Distance in km
-			    
-			    //km단위 변환
-			    var km = Math.round(d * 100) / 100; 
-			    
-			    var dis = document.getElementsByClassName("dis");
-			    console.log(dis);
-			    var no = i;
-			    
-			    
-			    $(".dis")[i].innerHTML = km + "km";
-			    
-			    
-			    
-				disArray.push(km);
-				console.log("정렬전"+disArray);
-			    
-				disArray.sort(function(a, b){
-					
-					if(a > b) return 1;
-					  if(a === b) return 0;
-					  if(a < b) return -1;
-				});
-				}, 
-				);
-				            
-				})();
-		} 
-
-	});   
-}
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption);
 	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	var addressArray = [];
+	var addressName = [];
+	var addresslist = $('.lawNames');
+	var pNamelist = $('.pName');
+	var pensionList = [];
 	
-	for(var i=0; i<addressArray.length; i++){
-		
-		var arr = [];
-		arr[i] = addressArray[i].groupName;
-		console.log(arr.length);
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch(
-				addressArray[i].groupAddress,
-				
-				function(result, status, data) {
-			    	// 정상적으로 검색이 완료됐으면 
-			    	if (status === kakao.maps.services.Status.OK) {
-			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new kakao.maps.Marker({
-			            map: map,
-			            position: coords
-			        });
-			        marker.setMap(map);
-		        	var content = '<div style="width:205px;text-align:center;padding:6px 0;">'+ arr[0]  +'</div>'
-			        
-			        var customOverlay = new daum.maps.CustomOverlay({
-			        	position: coords,
-			        	content: content
-			        });
-			        
-			        
-			        // 인포윈도우로 장소에 대한 설명을 표시합니다
-			        var infowindow = new kakao.maps.InfoWindow({
-			            content
-			        });
-			        infowindow.open(map, marker);
-			       
-	    		} 
-		});    
+	for(var i=0; i<pNamelist.length; i++){
+		pensionList.push({
+		address : $("input[name='address']").eq(i).val(),
+		title : $("input[name='pNames']").eq(i).val()
+		});
 	}
+	
+	
+	var disArray = new Array();
+	
+	for(let i =0; i<pensionList.length; i++){
+		geocoder.addressSearch(pensionList[i].address,function(result, status) {
+			if (status === kakao.maps.services.Status.OK) {
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new kakao.maps.Marker({
+					map: map,
+					position: coords
+				});
+				// 마커에 표시할 인포윈도우를 생성합니다 
+				var infowindow = new kakao.maps.InfoWindow({
+					//content: positions[i].content // 인포윈도우에 표시할 내용
+					content: '<div style="width:150px;text-align:center;padding:6px 0;">'+pensionList[i].title+'</div>' // 인포윈도우에 표시할 내용
+				});
+				
+				infowindow.open(map, marker);
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			
+				
+				(function location(){
+					navigator.geolocation.getCurrentPosition(
+					function(position) {
+					
+						
+					//현재위치 위도 경도	
+					var location = {
+							lat : position.coords.latitude,
+							lon : position.coords.longitude	
+					}
+					
+					console.log("위도:" + location.lat + "경도:" + location.lon );
+					
+					//펜션 위도경도
+					var locArray = [];
+					
+					
+					var pLat = result[0].y;
+					var pLon = result[0].x;
+					 
+					
+					function deg2rad(deg) {
+				        return deg * (Math.PI/180)
+				    }
+					
+				    var r = 6371; //지구의 반지름(km)
+				    var dLat = deg2rad(pLat-location.lat);
+				    var dLon = deg2rad(pLon-location.lon);
+				    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(location.lat)) * Math.cos(deg2rad(pLat)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+				    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				    var d = r * c; // Distance in km
+				    
+				    //km단위 변환
+				    var km = Math.round(d * 100) / 100; 
+				    
+				    var dis = document.getElementsByClassName("dis");
+				    console.log(dis);
+				    var no = i;
+				    
+				    
+				    $(".dis")[i].innerHTML = km + "km";
+				    
+				    
+				    
+					disArray.push(km);
+					console.log("정렬전"+disArray);
+				    
+					disArray.sort(function(a, b){
+						
+						if(a > b) return 1;
+						  if(a === b) return 0;
+						  if(a < b) return -1;
+					});
+					}, 
+					);
+					            
+					})();
+			} 
+	
+		});   
+	}
+	
+	
+	
+	
+	
+		for(var i=0; i<addressArray.length; i++){
+			
+			var arr = [];
+			arr[i] = addressArray[i].groupName;
+			console.log(arr.length);
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch(
+					addressArray[i].groupAddress,
+					
+					function(result, status, data) {
+				    	// 정상적으로 검색이 완료됐으면 
+				    	if (status === kakao.maps.services.Status.OK) {
+				        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				        // 결과값으로 받은 위치를 마커로 표시합니다
+				        var marker = new kakao.maps.Marker({
+				            map: map,
+				            position: coords
+				        });
+				        marker.setMap(map);
+			        	var content = '<div style="width:150px;text-align:center;padding:6px 0;">'+ arr[0]  +'</div>'
+				        
+				        var customOverlay = new daum.maps.CustomOverlay({
+				        	position: coords,
+				        	content: content
+				        });
+				        
+				        
+				        // 인포윈도우로 장소에 대한 설명을 표시합니다
+				        var infowindow = new kakao.maps.InfoWindow({
+				            content
+				        });
+				        infowindow.open(map, marker);
+				       
+		    		} 
+			});    
+		}
+		
+		
+		 
+			
+		
+	    
+	    
+	    
+	    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 				
 $("#btn_map").on("click", function() {
 	$("#local").modal("show");
@@ -579,11 +600,13 @@ $(".btn-secondary").on("click", function() {
 });
 			
 //추천순 버튼들 클릭시
- $("#hit").on("click",function(){
+$(".on").on("click",function(){
 	
 	var button = $(this).val();
 	
-}); 
+	console.log(button);
+	
+});
 				
 //적용버튼 클릭시
 $("#btn_child2").on("click",function(){
@@ -600,136 +623,138 @@ $("#btn_child2").on("click",function(){
 				
 				
 			
-///////////////////////// 일정선택 ///////////////////////////
-$(function() {
-	//모든 datepicker에 대한 공통 옵션 설정
-	$.datepicker.setDefaults({
-	    dateFormat: 'yy-mm-dd' //Input Display Format 변경
-	    ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-	    ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-	    ,changeYear: true //콤보박스에서 년 선택 가능
-	    ,changeMonth: true //콤보박스에서 월 선택 가능                
-	    ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-	    ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-	    ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-	    ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-	    ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-	    ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-	    ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-	    ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-	    ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-	    ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-	    ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+	///////////////////////// 일정선택 ///////////////////////////
+	$(function() {
+		//모든 datepicker에 대한 공통 옵션 설정
+		$.datepicker.setDefaults({
+		    dateFormat: 'yy-mm-dd' //Input Display Format 변경
+		    ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+		    ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+		    ,changeYear: true //콤보박스에서 년 선택 가능
+		    ,changeMonth: true //콤보박스에서 월 선택 가능                
+		    ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+		    ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+		    ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+		    ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+		    ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+		    ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+		    ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+		    ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+		    ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+		    ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+		    ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+		});
+			
+		//input을 datepicker로 선언
+		$("#datepicker").datepicker();                    
+		$("#datepicker2").datepicker();
+	
+			       		 
+		//From의 초기값을 오늘 날짜로 설정
+		$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+		//To의 초기값을 내일로 설정
+		$('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 	});
-		
-	//input을 datepicker로 선언
-	$("#datepicker").datepicker();                    
-	$("#datepicker2").datepicker();
-
-		       		 
-	//From의 초기값을 오늘 날짜로 설정
-	$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-	//To의 초기값을 내일로 설정
-	$('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-});
 					
 				
-//////////////////////////인원추가 버튼 ////////////////////////////
-function count(type){
-	
-	//결과를 표시할 element
-	const resultElement = document.getElementById('result')
-	
-	//현재 화면에 표시된 값
-	var number = resultElement.innerText;
-	$("#persons").val(number);
-	
-	//더하기
-	if(type === 'plus'){
+	//////////////////////////인원추가 버튼 ////////////////////////////
+	function count(type){
 		
-		number = parseInt(number) + 1;
+		//결과를 표시할 element
+		const resultElement = document.getElementById('result')
 		
-		if(number > 10){
-			alert("최대 인원입니다.")
-			return false;
-		}
-	}else if(type === 'minus')  {
-	    number = parseInt(number) - 1;
-	    
-	    if(number < 2){
-	    	alert("최소 인원입니다.")
-	    	return false;
-	    }
-	  }
-	
-		//결과 
-		resultElement.innerText = number;
+		//현재 화면에 표시된 값
+		var number = resultElement.innerText;
 		$("#persons").val(number);
-	}
-
-	//체크박스 선택 초기화
-	function initCheckBtn(){
-
-	//초기화할 체크박스 선택
-	var checkboxes = document.getElementsByName("pensionItem"); 
-
-	/* 체크박스를 순회하며 값을 초기화 */
-	checkboxes.forEach((checkbox) => {
-	checkbox.checked = false;
-	 })
-}
-			
-
-
-
-
-//시/도 셀렉트박스 초기화 그리기
-function initSiDoGuGun(){
-	
-	var selectedSidoNo;
-	
-	
-	$("#sido1").html("");
-	
-	$("#sido1").append("<option value=''>시/도선택</option>");
-	for(var i=0; i<sidoArea.length; i++){
 		
-		if(sidoArea[i] == "${param.sido1}"){
-			$("#sido1").append("<option value='"+sidoArea[i]+"' selected='selected'>"+sidoArea[i]+"</option>")
-			selectedSidoNo = i;
+		//더하기
+		if(type === 'plus'){
 			
-		}else {
-			$("#sido1").append("<option value='"+sidoArea[i]+"'>"+sidoArea[i]+"</option>");
+			number = parseInt(number) + 1;
+			
+			if(number > 10){
+				alert("최대 인원입니다.")
+				return false;
+			}
+		}else if(type === 'minus')  {
+		    number = parseInt(number) - 1;
+		    
+		    if(number < 2){
+		    	alert("최소 인원입니다.")
+		    	return false;
+		    }
+		  }
+		
+			//결과 
+			resultElement.innerText = number;
+			$("#persons").val(number);
+		}
+	
+		//체크박스 선택 초기화
+		function initCheckBtn(){
+	
+		//초기화할 체크박스 선택
+		var checkboxes = document.getElementsByName("pensionItem"); 
+	
+		/* 체크박스를 순회하며 값을 초기화 */
+		checkboxes.forEach((checkbox) => {
+		checkbox.checked = false;
+		 })
+	}
+			
+
+
+
+
+	//시/도 셀렉트박스 초기화 그리기
+	function initSiDoGuGun(){
+		
+		var selectedSidoNo;
+		
+		
+		$("#sido1").html("");
+		
+		$("#sido1").append("<option value=''>시/도선택</option>");
+		for(var i=0; i<sidoArea.length; i++){
+			
+			if(sidoArea[i] == "${param.sido1}"){
+				$("#sido1").append("<option value='"+sidoArea[i]+"' selected='selected'>"+sidoArea[i]+"</option>")
+				selectedSidoNo = i;
+				
+			}else {
+				$("#sido1").append("<option value='"+sidoArea[i]+"'>"+sidoArea[i]+"</option>");
+			}
+			
 		}
 		
+		if(selectedSidoNo == null){
+			$("#gugun1").html("");
+			$("#gugun1").append("<option value=''>구/군선택</option>");
+		}else {
+			guGunList(selectedSidoNo);
+		}
 	}
 	
-	if(selectedSidoNo == null){
+	
+	
+	//선택한 
+	function guGunList(sidoNo){
+		
 		$("#gugun1").html("");
-		$("#gugun1").append("<option value=''>구/군선택</option>");
-	}else {
-		guGunList(selectedSidoNo);
-	}
-	
-
-}
-
-
-//선택한 
-function guGunList(sidoNo){
-	
-	$("#gugun1").html("");
-	
-	for(var i=0; i<gugunArea[sidoNo].length; i++){
-		if(gugunArea[sidoNo][i] == "${param.gugun1}"){
-			$("#gugun1").append("<option value='"+gugunArea[sidoNo][i]+"' selected='selected'>"+gugunArea[sidoNo][i]+"</option>");
-		}else {
-			$("#gugun1").append("<option value='"+gugunArea[sidoNo][i]+"'>"+gugunArea[sidoNo][i]+"</option>");
+		
+		for(var i=0; i<gugunArea[sidoNo].length; i++){
+			if(gugunArea[sidoNo][i] == "${param.gugun1}"){
+				$("#gugun1").append("<option value='"+gugunArea[sidoNo][i]+"' selected='selected'>"+gugunArea[sidoNo][i]+"</option>");
+			}else {
+				$("#gugun1").append("<option value='"+gugunArea[sidoNo][i]+"'>"+gugunArea[sidoNo][i]+"</option>");
+			}
 		}
-	}
+		
+	}	
 	
 	
-}	
- 
+	
+	
+			
 </script>				
 </html>
