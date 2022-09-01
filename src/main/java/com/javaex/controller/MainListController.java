@@ -54,6 +54,11 @@ public class MainListController {
 		List<MainSearchVo> pList = mainService.selectLowprice(searchVo);
 		model.addAttribute("searchVo",searchVo);
 		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
 		System.out.println("hitController>lowList");
 		
@@ -67,6 +72,11 @@ public class MainListController {
 		
 		List<MainSearchVo> pList = mainService.selectHighprice(searchVo);
 		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
 		System.out.println("Controller>highList");
 		
@@ -81,6 +91,11 @@ public class MainListController {
 		
 		List<MainSearchVo> pList = mainService.selectHit(searchVo);
 		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
 		
 		return "/mainList/mainLists";
