@@ -26,7 +26,10 @@ public class MainListController {
 	//기본 리스트
 	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo, @ModelAttribute MainListVo mainVo) {
+	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo, @ModelAttribute MainListVo mainVo,
+			@RequestParam(value= "datepicker", required = false)String datepicker,
+			  @RequestParam(value= "datepicker2", required = false)String datepicker2) 
+	{
 		System.out.println("jiwoongController>mainList");
 		System.out.println(searchVo);
 		
