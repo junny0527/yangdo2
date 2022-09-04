@@ -281,38 +281,36 @@ public class MyController {
 		return "redirect: /reservation";
 	}
 
-	@RequestMapping(value = "review/modify", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewModify(@RequestParam("resNo") int resNo, HttpSession session, Model model) {
-		System.out.println("MyController>updatePw()");
-
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
-
-		if (authUser == null) {
-			return "redirect:/loginForm";
-		}
-
-		List<UserReviewVo> revList = myService.getReview(resNo);
-		model.addAttribute("revList", revList);
-
-		return "mypage/myreviewModify";
-	}
-
-	@RequestMapping(value = "review/rewrite", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewModify(@ModelAttribute UserReviewVo uRvo, HttpSession session) {
-		System.out.println("MyController>updatePw()");
-
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
-
-		if (authUser == null) {
-			return "redirect:/loginForm";
-		}
-
-		uRvo.setno(authUser.getNo());
-
-		myService.updateReview(uRvo);
-
-		return "redirect: /reservation";
-	}
+	/*
+	 * @RequestMapping(value = "review/modify", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String reviewModify(@RequestParam("resNo") int
+	 * resNo, HttpSession session, Model model) {
+	 * System.out.println("MyController>review/modify()");
+	 * 
+	 * UserVo authUser = (UserVo) session.getAttribute("authUser");
+	 * 
+	 * if (authUser == null) { return "redirect:/loginForm"; }
+	 * 
+	 * List<UserReviewVo> revList = myService.getReview(resNo);
+	 * model.addAttribute("revList", revList);
+	 * 
+	 * return "mypage/myreviewModify"; }
+	 */
+	/*
+	 * @RequestMapping(value = "review/rewrite", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String reviewModify(@RequestParam("resNo") int
+	 * resNo, HttpSession session) {
+	 * System.out.println("MyController>review/rewrite()");
+	 * 
+	 * UserVo authUser = (UserVo) session.getAttribute("authUser");
+	 * 
+	 * if (authUser == null) { return "redirect:/loginForm"; }
+	 * 
+	 * myService.updateReview(resNo);
+	 * 
+	 * return "redirect: /reservation";
+	 */
+	
 
 	/********* action (all) **********/
 	@ResponseBody

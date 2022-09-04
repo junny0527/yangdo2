@@ -138,13 +138,10 @@
 		</div>
 	</section>
 	<c:choose>
-		<c:when test="${dMap.check==1 }">
+		<c:when test="${dMap.check==1}">
 			<section>
 				<div style="padding-top: 0; padding-bottom: 0">
 					<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
-						<a href="${pageContext.request.contextPath}/my/review/modify?resNo=${dMap.myVo.resNo}">
-							<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">리뷰 수정하기</button>
-						</a>
 					</div>
 				</div>
 			</section>

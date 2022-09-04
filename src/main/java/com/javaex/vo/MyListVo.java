@@ -5,43 +5,44 @@ import java.util.Date;
 public class MyListVo {
 
 	// field
-	public int no; // 유저번호
-	public int resNo; // 예약번호
-	public int pNo; // 펜션번호
-	public String point; // 포인트
-	public String status; // 예약상태
-	public String pName; // 펜션이름
-	public String inDate; // 체크인 일자
-	public String outDate; // 체크아웃 일자
-	public String checkIn; // 체크인 일자
-	public String checkOut; // 체크아웃 일자
-	public String inTime; // 체크인 시간
-	public String outTime; // 체크아웃 시간
-	public String saveName; // 이미지경로
-	public Date regDate; // 등록일
+	private int no; // 유저번호
+	private int resNo; // 예약번호
+	private int pNo; // 펜션번호
+	private String point; // 포인트
+	private String status; // 예약상태
+	private String pName; // 펜션이름
+	private String inDate; // 체크인 일자
+	private String outDate; // 체크아웃 일자
+	private String checkIn; // 체크인 일자
+	private String checkOut; // 체크아웃 일자
+	private String inTime; // 체크인 시간
+	private String outTime; // 체크아웃 시간
+	private String saveName; // 이미지경로
+	private Date regDate; // 등록일
 	////////////////////////////////
-	public String rName; // 방이름
-	public int sPple; // 기본인원
-	public int mPple; // 최대인원
-	public String name; // 예약자이름
-	public String nickName; // 유저닉네임
-	public String hp; // 예약자핸드폰
-	public int totalP; // 총금액 (int)
-	public int transP; // 양도가격 (int)
-	public String tPrice; // 총금액
-	public String trPrice; // 양도가격
-	public int adultP; // 어른추가금액(int)
-	public int kidP; // 아이추가금액(int)
-	public int babyP; // 아동추가금액 (int)
-	public String addPrice; // 추가금액
-	public String orgPrice; // 기존금액 (예약내역)
-	public String initPrice; // 기존금액 (취소내역)
-	public int initialP; // 기존금액 (int)
-	public int addP; // 추가금액 (int)
-	public int refNo; // 환불번호
-	public String comHp; // 회사번호
-	public int pRno; // 부모예약번호
-	public int revNo; // 부모예약번호
+	private String rName; // 방이름
+	private int sPple; // 기본인원
+	private int mPple; // 최대인원
+	private String name; // 예약자이름
+	private String nickName; // 유저닉네임
+	private String hp; // 예약자핸드폰
+	private int totalP; // 총금액 (int)
+	private int transP; // 양도가격 (int)
+	private String tPrice; // 총금액
+	private String trPrice; // 양도가격
+	private int adultP; // 어른추가금액(int)
+	private int kidP; // 아이추가금액(int)
+	private int babyP; // 아동추가금액 (int)
+	private String addPrice; // 추가금액
+	private String orgPrice; // 기존금액 (예약내역)
+	private String initPrice; // 기존금액 (취소내역)
+	private int initialP; // 기존금액 (int)
+	private int addP; // 추가금액 (int)
+	private int refNo; // 환불번호
+	private String comHp; // 회사번호
+	private int pRno; // 부모예약번호
+	private int revNo; // 부모예약번호
+	private int check; // 부모예약번호
 	//////////////////////////////
 
 	public MyListVo() {
@@ -51,7 +52,8 @@ public class MyListVo {
 			String outDate, String checkIn, String checkOut, String inTime, String outTime, String saveName,
 			Date regDate, String rName, int sPple, int mPple, String name, String nickName, String hp, int totalP,
 			int transP, String tPrice, String trPrice, int adultP, int kidP, int babyP, String addPrice,
-			String orgPrice, String initPrice, int initialP, int addP, int refNo, String comHp, int pRno, int revNo) {
+			String orgPrice, String initPrice, int initialP, int addP, int refNo, String comHp, int pRno, int revNo,
+			int check) {
 		super();
 		this.no = no;
 		this.resNo = resNo;
@@ -89,6 +91,7 @@ public class MyListVo {
 		this.comHp = comHp;
 		this.pRno = pRno;
 		this.revNo = revNo;
+		this.check = check;
 	}
 
 	public int getNo() {
@@ -379,6 +382,14 @@ public class MyListVo {
 		this.revNo = revNo;
 	}
 
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+
 	@Override
 	public String toString() {
 		return "MyListVo [no=" + no + ", resNo=" + resNo + ", pNo=" + pNo + ", point=" + point + ", status=" + status
@@ -389,7 +400,7 @@ public class MyListVo {
 				+ ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", adultP=" + adultP + ", kidP=" + kidP + ", babyP="
 				+ babyP + ", addPrice=" + addPrice + ", orgPrice=" + orgPrice + ", initPrice=" + initPrice
 				+ ", initialP=" + initialP + ", addP=" + addP + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno="
-				+ pRno + ", revNo=" + revNo + "]";
+				+ pRno + ", revNo=" + revNo + ", check=" + check + "]";
 	}
 
 }
