@@ -5,7 +5,7 @@
 	<!-- aside top -->
 	<div class="menu_top">
 		<ul>
-			<li class="item" style="padding: 10px 0px;"><a href="${pageContext.request.contextPath}/my/info">마흔두살해커 님</a></li>
+			<li class="item" style="padding: 10px 0px;"><a href="${pageContext.request.contextPath}/my/info">${authUser.nickName} 님</a></li>
 			<%-- <li class="item_sub"><a
 				href="${pageContext.request.contextPath}/my/point">포인트 : 0 P</a></li>
 			<li class="item_sub"><a
