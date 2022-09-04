@@ -277,8 +277,10 @@ public class MyController {
 		uRvo.setno(authUser.getNo());
 
 		myService.writeReview(uRvo);
+		
+		int pensionNo = uRvo.getpNo();
 
-		return "redirect: /reservation";
+		return "redirect: ../reservation";
 	}
 
 	/*

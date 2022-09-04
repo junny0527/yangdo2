@@ -91,7 +91,7 @@
 										</span></a>
 										<!-- 예약상세 -->
 										<p class="btn_re">
-											<a href="${pageContext.request.contextPath}/my/detail?resNo=${ulist.resNo}"> 리뷰 남기기 </a>
+											<a href="${pageContext.request.contextPath}/my/detail?resNo=${uList.resNo}"> 리뷰 남기기 </a>
 										</p>
 									</div></li>
 							</ul>

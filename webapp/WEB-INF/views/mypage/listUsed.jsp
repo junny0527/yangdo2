@@ -56,11 +56,12 @@
 												<p class="pic">
 													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="${list.pName}" class="align">
 												</p>
-												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title" style="border-bottom: none;"><i class="bg_w">이용완료</i> <strong>${list.pName }</strong>
-													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}
+												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title" style="border-bottom: none;"><i
+													class="bg_w">이용완료</i> <strong>${list.pName }</strong> <span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut}
+														ㆍ ${list.outTime}
 												</span></a>
 												<p class="btn_re">
-													<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}"> 리뷰 남기기 </a>
+													<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}&pensionNo=${list.pNo}"> 리뷰 남기기 </a>
 												</p>
 											</div></li>
 									</ul>
