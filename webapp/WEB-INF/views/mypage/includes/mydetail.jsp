@@ -65,14 +65,12 @@
 		<div style="padding-top: 0; padding-bottom: 0">
 			<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
 				<div class="booking-detail-section-title__wrap">
-					<div>
-						<!---->
+					<!-- <div>
 						<div class="sub-title">
 							<div class="color-green">2022년 08월 28일 23:59까지 양도 가능합니다.</div>
 							<div class="color-red">2022년 08월 24일 23:59까지 무료 취소 가능합니다.</div>
-							<!---->
 						</div>
-					</div>
+					</div> -->
 					<!---->
 				</div>
 				<a href="${pageContext.request.contextPath}/sale?no=${dMap.myVo.resNo}">
