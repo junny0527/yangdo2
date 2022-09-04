@@ -126,16 +126,11 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 							</div>
 						</section>
 					</form>
-					<!-- <button class="btn_submit disabled btn_one" type="submit">저장</button>-->
 				</div>
 
-				<div class="bot_btn">
+				<div class="bot_btn" style="border-top: none; margin-top: 0px;">
 					<p>양도어때를 이용하고 싶지 않으신가요?</p>
-					<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-					<!-- <button type="button">
-						<a href="">회원탈퇴</a>
-						withdraw 폼으로 redirect
-					</button> -->
+					<a href="${pageContext.request.contextPath}/logout" style="color: black;">로그아웃</a>
 				</div>
 			</div>
 		</div>
