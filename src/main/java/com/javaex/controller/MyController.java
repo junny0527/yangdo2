@@ -277,7 +277,7 @@ public class MyController {
 		uRvo.setno(authUser.getNo());
 
 		myService.writeReview(uRvo);
-		
+
 		int pensionNo = uRvo.getpNo();
 
 		return "redirect: ../reservation";
@@ -312,7 +312,6 @@ public class MyController {
 	 * 
 	 * return "redirect: /reservation";
 	 */
-	
 
 	/********* action (all) **********/
 	@ResponseBody
@@ -342,8 +341,8 @@ public class MyController {
 		}
 
 		uVo.setNo(authUser.getNo());
-
 		myService.updateNickName(uVo);
+		authUser.setNickName(uVo.getNickName());
 
 		return "redirect: ../info";
 	}
