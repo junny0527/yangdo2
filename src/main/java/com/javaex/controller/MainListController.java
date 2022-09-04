@@ -16,7 +16,7 @@ import com.javaex.vo.MainListVo;
 import com.javaex.vo.MainSearchVo;
 
 @Controller
-public class JiwoongController {
+public class MainListController {
 	
 	@Autowired
 	private MainListService mainService;
@@ -26,7 +26,10 @@ public class JiwoongController {
 	//기본 리스트
 	
 	@RequestMapping(value="/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo, @ModelAttribute MainListVo mainVo) {
+	public String mainList(Model model, @ModelAttribute MainSearchVo searchVo, @ModelAttribute MainListVo mainVo,
+			@RequestParam(value= "datepicker", required = false)String datepicker,
+			  @RequestParam(value= "datepicker2", required = false)String datepicker2) 
+	{
 		System.out.println("jiwoongController>mainList");
 		System.out.println(searchVo);
 		
@@ -54,6 +57,11 @@ public class JiwoongController {
 		List<MainSearchVo> pList = mainService.selectLowprice(searchVo);
 		model.addAttribute("searchVo",searchVo);
 		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
 		System.out.println("hitController>lowList");
 		
@@ -67,6 +75,11 @@ public class JiwoongController {
 		
 		List<MainSearchVo> pList = mainService.selectHighprice(searchVo);
 		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
 		System.out.println("Controller>highList");
 		
@@ -81,6 +94,11 @@ public class JiwoongController {
 		
 		List<MainSearchVo> pList = mainService.selectHit(searchVo);
 		
+		String datePicker = searchVo.getDatepicker();
+		String datePicker2 = searchVo.getDatepicker2();
+		
+		model.addAttribute("datePicker",datePicker);
+		model.addAttribute("datePicker2",datePicker2);
 		model.addAttribute("pList",pList);
 		
 		return "/mainList/mainLists";

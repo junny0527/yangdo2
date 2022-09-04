@@ -64,7 +64,7 @@
 <!-- event modal -->
 <!-- 예약완료, 예약자 변경 modal -->
 <div id = "roomreserved" class = "modal fade in" aria-hidden="false" >
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">객실 현황</h4>
@@ -78,7 +78,7 @@
 					<p class = "reservenum">예약 번호 : </p>
 					<p class = "reservename">예약자 이름 : </p>
 					<p class = "reservehp">예약자 번호 : </p>
-					<br><br>
+					<br>
 					<p>예약 인원 </p>
 					<p class = "reserveadult">성인 : 명 </p>
 					<p class = "reservekid">아동 : 명 </p>
@@ -99,7 +99,7 @@
 
 <!-- 이용중 modal  -->
 <div id = "roominuse" class = "modal fade in" aria-hidden="false" >
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">객실 현황</h4>
@@ -113,7 +113,7 @@
 					<p class = "reservenum">예약 번호 : </p>
 					<p class = "reservename">예약자 이름 : </p>
 					<p class = "reservehp">예약자 번호 : </p>
-					<br><br>
+					<br>
 					<p>예약 인원 </p>
 					<p class = "reserveadult">성인 : 명 </p>
 					<p class = "reservekid">아동 : 명 </p>
@@ -133,7 +133,7 @@
 
 <!-- 이용완료, 일반취소 modal  -->
 <div id = "roomchecking" class = "modal fade in" aria-hidden="false" >
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">객실 현황</h4>
@@ -147,7 +147,7 @@
 					<p class = "reservenum">예약 번호 : </p>
 					<p class = "reservename">예약자 이름 : </p>
 					<p class = "reservehp">예약자 번호 : </p>
-					<br><br>
+					<br>
 					<p>예약 인원 </p>
 					<p class = "reserveadult">성인 : 명 </p>
 					<p class = "reservekid">아동 : 명 </p>
@@ -166,7 +166,7 @@
 
 <!-- 양도대기 modal  -->
 <div id = "roomstandby" class = "modal fade in" aria-hidden="false" >
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">객실 현황</h4>
@@ -180,7 +180,7 @@
 					<p class = "reservenum">예약 번호 : </p>
 					<p class = "reservename">예약자 이름 : </p>
 					<p class = "reservehp">예약자 번호 : </p>
-					<br><br>
+					<br>
 					<p>예약 인원 </p>
 					<p class = "reserveadult">성인 : 명 </p>
 					<p class = "reservekid">아동 : 명 </p>

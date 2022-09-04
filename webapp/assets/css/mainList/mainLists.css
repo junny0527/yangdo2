@@ -315,13 +315,13 @@ input[type=checkbox]{
 	float: left;
 	width: 546px;
 	height: 40px;
-	border: 1px solid rgba(0, 0, 0, 0.08);
+	border: 2px solid #545454;
 	border-radius: 4px;
 	box-sizing: border-box;
 }
 
 .top_sort .width_4 button {
-	width: 25%;
+	width: 180px;
 
 }
 
@@ -330,8 +330,12 @@ input[type=checkbox]{
 	
 }
 
-.top_sort .btn_wrap button {
-	border-right: 1px solid rgba(0, 0, 0, 0.08);
+#hit{
+	border-right: 2px solid #545454;
+}
+
+#lowprice{
+	border-right: 2px solid #545454;
 }
 
 .top_sort button {
@@ -351,7 +355,7 @@ input[type=checkbox]{
 	width: 80px;
 	margin-left: 8px;
 	padding: 0 12px 0 0;
-	border: 1px solid rgba(0, 0, 0, 0.08);
+	border: 2px solid #545454;
 	border-radius: 4px;
 	background: url(//image.goodchoice.kr/images/web_v3/ico_map.png) 8px 50%
 		no-repeat;
@@ -387,6 +391,7 @@ input[type=checkbox]{
 	z-index: -10;
 	width: 100%;
 	min-height: 280px;
+	
 }
 
 .list_2 .stage, .list_3 .stage {
@@ -486,6 +491,7 @@ input[type=checkbox]{
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
+	
 }
 
 .list_2 .stage .evt_info span, .list_3 .stage .evt_info span {
@@ -499,3 +505,20 @@ input[type=checkbox]{
 #infoTitle{
 	color: black;
 }
+
+
+ .dis {
+	font-weight:bold;
+	font-size:20px;
+	position:relative;
+	top:5%;
+	left:-1%;
+	color:#ffffff;
+}
+
+.pImage{
+	filter: brightness(80%); 
+}
+
+
+

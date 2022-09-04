@@ -39,7 +39,6 @@ public class UserController {
 			if(authUser.getIdentify().equals("host")) {
 				int hostNo = authUser.getNo();
 				HostRoomsVo hVo = userService.hostLogin(hostNo);
-				//나누는거 조금있다가 해야됨
 				if(hVo == null) {
 					return "redirect:/host/newhost";
 				}else {
@@ -50,7 +49,7 @@ public class UserController {
 			}
 		}else {
 			System.out.println("로그인 실패");
-		return "redirect:/user/loginForm?result=fail";
+			return "/users/loginfailForm";
 		}
 		
 	}

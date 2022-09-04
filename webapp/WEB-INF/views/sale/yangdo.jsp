@@ -272,7 +272,7 @@
 					<input type="hidden" name="no" value="${sMap.NO}">
 					<input type="hidden" name="Status" value="6">
 					<input type="hidden" id="hidPrice" name="transPrice" value="">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 					<button id="yang" type="submit" class="btn btn-danger">양도합니다</button>
 				</div>
 			</form>

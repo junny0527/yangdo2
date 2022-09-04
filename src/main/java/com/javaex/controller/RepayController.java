@@ -67,6 +67,9 @@ public class RepayController {
 
 		// 4.유저 번호 가져오기
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		if(userVo == null) {
+			return "redirect:/loginForm";
+		}
 		int userNo = userVo.getNo();
 
 		// 5.총합포인트 가져오기
@@ -121,8 +124,11 @@ public class RepayController {
 
 		// 4.유저 번호 가져오기
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		if(userVo == null) {
+			return "redirect:/loginForm";
+		}
 		int userNo = userVo.getNo();
-
+		
 		// 5.총합포인트 가져오기
 		Map<String, Object> gajidaPoints = pointsService.getpoints(userNo);
 		model.addAttribute("gajidaPoints", gajidaPoints);
