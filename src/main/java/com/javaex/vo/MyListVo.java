@@ -41,8 +41,8 @@ public class MyListVo {
 	public int refNo; // 환불번호
 	public String comHp; // 회사번호
 	public int pRno; // 부모예약번호
+	public int revNo; // 부모예약번호
 	//////////////////////////////
-	
 
 	public MyListVo() {
 	}
@@ -51,7 +51,7 @@ public class MyListVo {
 			String outDate, String checkIn, String checkOut, String inTime, String outTime, String saveName,
 			Date regDate, String rName, int sPple, int mPple, String name, String nickName, String hp, int totalP,
 			int transP, String tPrice, String trPrice, int adultP, int kidP, int babyP, String addPrice,
-			String orgPrice, String initPrice, int initialP, int addP, int refNo, String comHp, int pRno) {
+			String orgPrice, String initPrice, int initialP, int addP, int refNo, String comHp, int pRno, int revNo) {
 		super();
 		this.no = no;
 		this.resNo = resNo;
@@ -88,6 +88,7 @@ public class MyListVo {
 		this.refNo = refNo;
 		this.comHp = comHp;
 		this.pRno = pRno;
+		this.revNo = revNo;
 	}
 
 	public int getNo() {
@@ -370,6 +371,14 @@ public class MyListVo {
 		this.pRno = pRno;
 	}
 
+	public int getRevNo() {
+		return revNo;
+	}
+
+	public void setRevNo(int revNo) {
+		this.revNo = revNo;
+	}
+
 	@Override
 	public String toString() {
 		return "MyListVo [no=" + no + ", resNo=" + resNo + ", pNo=" + pNo + ", point=" + point + ", status=" + status
@@ -380,6 +389,7 @@ public class MyListVo {
 				+ ", tPrice=" + tPrice + ", trPrice=" + trPrice + ", adultP=" + adultP + ", kidP=" + kidP + ", babyP="
 				+ babyP + ", addPrice=" + addPrice + ", orgPrice=" + orgPrice + ", initPrice=" + initPrice
 				+ ", initialP=" + initialP + ", addP=" + addP + ", refNo=" + refNo + ", comHp=" + comHp + ", pRno="
-				+ pRno + "]";
+				+ pRno + ", revNo=" + revNo + "]";
 	}
+
 }

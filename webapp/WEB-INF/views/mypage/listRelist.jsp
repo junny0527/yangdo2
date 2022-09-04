@@ -51,7 +51,7 @@
 									<ul class="list_wrap">
 										<li class="reservation-detail"><div>
 												<p class="pic">
-													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="삼산 도브" class="align">
+													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="${list.pName }" class="align">
 												</p>
 												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title"><i class="">양도대기</i> <strong>${list.pName }</strong>
 													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}

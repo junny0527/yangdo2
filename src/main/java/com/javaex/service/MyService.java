@@ -90,11 +90,14 @@ public class MyService {
 	}
 
 	// 예약번호로 예약상세 정보 불러오기
-	public List<MyListVo> getDetail(int resNo) {
+	public Map<String, Object> getDetail(int resNo) {
 		System.out.println("MyService>getDetail()");
 
-		return myDao.getDetail(resNo);
+		Map<String, Object> dMap = new HashMap<String, Object>();
+		dMap.put("myVo", myDao.getDetail(resNo));
+		dMap.put("check", myDao.checkReview(resNo));
 
+		return dMap;
 	}
 
 	// 예약취소시 -> 예약상태 업데이트
@@ -192,5 +195,62 @@ public class MyService {
 		return myDao.writeReview(uRvo);
 	}
 
-	
+	public List<UserReviewVo> getReview(int resNo) {
+		System.out.println("MyService>writeReview()");
+
+		return myDao.getReview(resNo);
+
+	}
+
+	public int updateReview(UserReviewVo uRvo) {
+		System.out.println("MyService>updateReview()");
+
+		String saveDir = "C:\\javaStudy\\upload";
+		MultipartFile img1 = uRvo.getImg1();
+		MultipartFile img2 = uRvo.getImg2();
+
+		if (img1.isEmpty()) {
+			uRvo.setImage1(null);
+		} else if (!img1.isEmpty()) {
+
+			String exName = img1.getOriginalFilename().substring(img1.getOriginalFilename().lastIndexOf("."));
+			System.out.println(exName);
+			String image1 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			String filePath1 = saveDir + "\\" + image1;
+
+			try {
+				byte[] fileData = img1.getBytes();
+				OutputStream out = new FileOutputStream(filePath1);
+				BufferedOutputStream bOut = new BufferedOutputStream(out);
+				bOut.write(fileData);
+				bOut.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			uRvo.setImage1(image1);
+		}
+
+		if (img2.isEmpty()) {
+			uRvo.setImage2(null);
+		} else if (!img2.isEmpty()) {
+
+			String exName = img2.getOriginalFilename().substring(img2.getOriginalFilename().lastIndexOf("."));
+			String image2 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			String filePath2 = saveDir + "\\" + image2;
+
+			try {
+				byte[] fileData = img2.getBytes();
+				OutputStream out = new FileOutputStream(filePath2);
+				BufferedOutputStream bOut = new BufferedOutputStream(out);
+
+				bOut.write(fileData);
+				bOut.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+
+			}
+			uRvo.setImage2(image2);
+		}
+		return myDao.updateReview(uRvo);
+	}
 }

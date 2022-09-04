@@ -53,8 +53,8 @@
 										<p class="pic">
 											<img src="${pageContext.request.contextPath}/upload/${yList.saveName}" alt="${yList.pName}" class="align">
 										</p>
-										<a href="${pageContext.request.contextPath}/my/list/relisted" class="product-title"><i class="">양도대기</i> <strong>${yList.pName}</strong>
-											<span> 체크인: ${yList.checkIn} ㆍ ${yList.inTime}<br> 체크아웃: ${yList.checkOut} ㆍ ${yList.outTime}
+										<a href="${pageContext.request.contextPath}/my/detail?resNo=${yList.resNo}" class="product-title"><i class="">양도대기</i> <strong>${yList.pName}</strong> <span>
+												체크인: ${yList.checkIn} ㆍ ${yList.inTime}<br> 체크아웃: ${yList.checkOut} ㆍ ${yList.outTime}
 										</span> <b>예약 상세 &gt;</b></a>
 									</div></li>
 							</ul>
@@ -73,8 +73,8 @@
 										<p class="pic">
 											<img src="${pageContext.request.contextPath}/upload/${tList.saveName}" alt="${tList.pName}" class="align">
 										</p>
-										<a href="${pageContext.request.contextPath}/my/detail/transferred" class="product-title"><i class="bg_w">양도완료</i> <strong>${tList.pName}</strong>
-											<span> 체크인: ${tList.checkIn} ㆍ ${tList.inTime}<br> 체크아웃: ${tList.checkOut} ㆍ ${tList.outTime}
+										<a href="${pageContext.request.contextPath}/my/detail?resNo=${tList.resNo}" class="product-title"><i class="bg_w">양도완료</i> <strong>${tList.pName}</strong> <span>
+												체크인: ${tList.checkIn} ㆍ ${tList.inTime}<br> 체크아웃: ${tList.checkOut} ㆍ ${tList.outTime}
 										</span></a>
 									</div></li>
 							</ul>

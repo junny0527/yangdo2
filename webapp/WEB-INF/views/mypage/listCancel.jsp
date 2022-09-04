@@ -50,9 +50,9 @@
 								<c:forEach var="list" items="${list}">
 									<ul class="list_wrap">
 										<li class="reservation-detail"><div>
-												<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${cList.resNo}">삭제</button>
+												<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${list.resNo}">삭제</button>
 												<p class="pic">
-													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="삼산 도브" class="align">
+													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="${list.pName}" class="align">
 												</p>
 												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
 													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}

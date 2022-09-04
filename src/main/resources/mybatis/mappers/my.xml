@@ -390,5 +390,45 @@
 			values(#{no}, #{resNo}, #{title},#{stars},#{image1, jdbcType=VARCHAR}, #{image2, jdbcType=VARCHAR}, #{content}, sysdate)
 		]]>
 	</insert>
+	<!-- 리뷰 수정하기 -->
+	<update id="reviewModify"
+		parameterType="com.javaex.vo.UserReviewVo">
+		<![CDATA[
+			update reviews
+			set title = #{title},
+				stars = #{stars},
+				image1 = #{image1, jdbcType=VARCHAR},
+				image2 = #{image2, jdbcType=VARCHAR},
+				content = #{content},
+				reg_date = sysdate
+			where no = #{resNo}
+		]]>
+	</update>
+
+	<select id="getReview" resultType="com.javaex.vo.UserReviewVo"
+		parameterType="int">
+		<![CDATA[
+			select review_no revNo,
+                    no resNo,
+                    title title,
+                    content content, 
+                    stars stars,
+                    image1 image1,
+                    image2 image2,
+                    reg_date regDate
+                from reviews
+            where no = #{resNo}
+		]]>
+	</select>
+
+	<select id="checkReview" resultType="int" parameterType="int">
+		<![CDATA[
+			select  count(*)
+			from reviews
+			where no = #{resNo}
+		]]>
+	</select>
+
+
 
 </mapper>
