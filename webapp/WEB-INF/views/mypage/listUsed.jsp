@@ -51,12 +51,12 @@
 									<ul class="list_wrap">
 										<li class="reservation-detail"><div>
 												<!-- 삭제버튼 -->
-												<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${uList.resNo}">삭제</button>
+												<button type="button" class="btn_del btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" data-no="${list.resNo}">삭제</button>
 												<!-- 삭제버튼 -->
 												<p class="pic">
-													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="삼산 도브" class="align">
+													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="${list.pName}" class="align">
 												</p>
-												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title"><i class="bg_w">이용완료</i> <strong>${list.pName }</strong>
+												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title" style="border-bottom: none;"><i class="bg_w">이용완료</i> <strong>${list.pName }</strong>
 													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}
 												</span></a>
 												<p class="btn_re">
@@ -81,8 +81,8 @@
 	</div>
 
 	<!-- Modal -->
-	<div id="btn-del-modal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
+	<div id="btn-del-modal" class="modal fade bd-example-modal-sm " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm pop_twobtn">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="btn-del-label">삭제하기</h5>

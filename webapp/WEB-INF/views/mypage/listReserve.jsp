@@ -61,9 +61,9 @@
 							</c:when>
 							<c:otherwise>
 								<div class="list_none">예약완료 내역이 없습니다.</div>
-								<p>
+								<%-- <p>
 									<a href="${pageContext.request.contextPath}/main?areaNo=123456" class="btn_red">다양한 숙소 보러가기</a>
-								</p>
+								</p> --%>
 							</c:otherwise>
 						</c:choose>
 						<!---->

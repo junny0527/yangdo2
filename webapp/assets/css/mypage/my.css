@@ -827,11 +827,311 @@ reserve_detail .info {
 	width: 764px;
 	height: auto;
 	padding: 0px;
-	opacity: 0.8;
+	opacity: 1;
 	background:
-		url(https://image.goodchoice.kr/affiliate/2021/12/06/61ad9b97dd2d2.jpg)
+		url(https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80)
 		local center no-repeat;
 }
+
+.reserve_detail
+ 
+section { /* padding: 0 16px; */
+	padding: 0px;
+	/* background: rgba(255, 255, 255); */
+}
+
+.reserve_detail
+ 
+div { /* padding: 23px 0 23px 0; */
+	padding: 15px 0px;
+	background: rgba(255, 255, 255, 0.9);
+	border-bottom: rgba(255, 255, 255, 0.9);
+}
+
+.reserve_detail
+ 
+div
+ 
+p {
+	position: relative;
+	margin-bottom: 13px;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.8);
+	text-align: left;
+}
+
+.reserve_detail
+ 
+div
+ 
+p
+:last-child {
+	margin-bottom: 0;
+}
+
+.reserve_detail
+ 
+div
+ 
+p
+ 
+strong { /* position: absolute; */
+	display: inline-block;
+	position: relative;
+	margin: auto 15px auto 15px;
+	top: 0;
+	left: 0;
+	width: 150px;
+	font-weight: normal;
+	line-height: normal;
+	color: rgba(0, 0, 0, 0.8);
+	top: 0;
+}
+
+.safety_txt_2 {
+	padding: 0px;
+	margin: 5px 15px 0px 15px;
+	background: transparent;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.reserve_detail
+ 
+.sub_total
+ 
+.sub_info {
+	margin-left: 70px;
+}
+
+.reserve_detail
+ 
+.sub_total
+ 
+.sub_info, .reserve_detail
+ 
+.sub_total
+ 
+p
+ 
+b {
+	font-size: 15px;
+}
+
+.reserve_detail
+ 
+.total { /* border-bottom: none; */
+	padding: 20px 0;
+}
+/*.reserve_detail .total p:first-child{display:none;}*/
+.reserve_detail
+ 
+.total
+ 
+b {
+	margin-left: 53px;
+	font-weight: bold;
+	color: rgb(230, 28, 81);
+}
+
+.reserve_detail
+ 
+.total
+ 
+button {
+	display: inline-block;
+	position: relative;
+	top: -3px;
+	width: 24px;
+	height: 24px;
+	margin-left: 4px;
+	border: none;
+	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0
+		no-repeat;
+	background-size: 24px auto;
+	text-indent: -9999px;
+	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0
+		no-repeat;
+}
+
+.btn_call {
+	display: block;
+	position: relative;
+	margin-top: 0px;
+	padding: 20px 14px;
+	background: rgba(150, 150, 150, 0.03);
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.btn_call
+:after {
+	display: inline-block;
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	width: 24px;
+	height: 24px;
+	margin-top: -12px;
+	background: transparent
+		url('//image.goodchoice.kr/images/web_v3/ico_call.png') 0 0 no-repeat;
+	background-size: 24px auto;
+}
+
+.booking_detail_section_layout_wrap {
+	padding-top: 20px;
+}
+
+.booking-detail-section-title__wrap {
+	padding: 0 !important;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.booking-detail-section-title__wrap>div {
+	padding: 0 !important;
+}
+
+.booking-detail-section-title__wrap>div
+ 
+.color-red {
+	color: #f45858;
+	padding: 0 !important;
+}
+
+.booking-detail-section-title__wrap>div
+ 
+.color-green {
+	color: rgb(33, 154, 163);
+	padding: 0 !important;
+}
+
+.color-grey {
+	color: rgba(0, 0, 0, .8);
+	padding: 0 !important;
+}
+
+.booking-detail-section-title__wrap>div
+ 
+.sub-title {
+	margin-top: 2px;
+	color: rgba(0, 0, 0, .48);
+	line-height: 1.54;
+	padding: 0 !important;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.btn_flat {
+	height: 56px;
+	border: none;
+	width: 100%;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 700;
+	margin: 10px 0;
+}
+
+.btn_flat
+.btn-green {
+	background-color: #219aa3;
+	color: #fff;
+}
+
+.booking_detail_flat_button
+.color-green {
+	display: inline-block;
+	width: 50%;
+	color: rgb(33, 154, 163) !important;
+	background-color: rgba(33, 154, 163, .1) !important;
+}
+
+.booking_detail_flat_button
+.color-green-long {
+	color: rgb(33, 154, 163) !important;
+	background-color: rgba(33, 154, 163, .1) !important;
+}
+
+.booking_detail_flat_button
+.color-red {
+	display: block;
+	float: right;
+	width: 50%;
+	color: #f45858 !important;
+	background-color: rgba(244, 88, 88, .1) !important;
+}
+
+.booking_detail_flat_button
+.color-red-long {
+	color: #f45858 !important;
+	background-color: rgba(244, 88, 88, .1) !important;
+}
+/* ***************RESERVATION DETAILS  //*************** */
+
+/* ***************REVIEW  //*************** */
+.review_form {
+	margin-top: 20px;
+	width: 100%;
+	font-size: 16px;
+	text-align: left;
+}
+
+.review_form
+   
+strong {
+	display: block;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	font-size: 22px;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.87);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	font-size: 22px;
+}
+
+.review_form
+ 
+div {
+	float: left;
+	padding-left: 13px;
+	padding-left: 13px;
+}
+
+.review_form
+ 
+.inp_wrap {
+	display: inline-block;
+	width: 550px;
+	margin: 5px 0px 0px 0px;
+}
+
+.review_form
+ 
+div
+ 
+span {
+	display: inline-block;
+	font-size: 14px;
+	padding-left: 8px;
+}
+
+.review_form
+ 
+textarea {
+	display: inline-block;
+	margin: 5px;
+	padding: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+	resize: none;
+}
+
+/********************** Star rating *******************/
+@import
+	url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 .reserve_detail section {
 	/* padding: 0 16px; */
@@ -910,8 +1210,6 @@ reserve_detail .info {
 		no-repeat;
 	background-size: 24px auto;
 	text-indent: -9999px;
-	background: url('//image.goodchoice.kr/images/web_v3/ico_info.png') 0 0
-		no-repeat;
 }
 
 .btn_call {
@@ -962,6 +1260,7 @@ reserve_detail .info {
 	color: rgb(33, 154, 163);
 	padding: 0 !important;
 }
+
 .color-grey {
 	color: rgba(0, 0, 0, .8);
 	padding: 0 !important;
@@ -1325,6 +1624,8 @@ reserve_detail .info {
 	font-weight: 400;
 }
 
+/***** 삭제 팝업 모달창  *****/
+
 /***** 알림 팝업 모달창  *****/
 .alert_msg {
 	z-index: 500;
@@ -1358,7 +1659,7 @@ reserve_detail .info {
 }
 
 .popup_cont .alert-contents {
-	margin-bottom: 31px;
+	margin-bottom: 25px;
 	line-height: 1.39em;
 	font-size: 18px;
 	font-weight: 400;

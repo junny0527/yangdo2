@@ -237,10 +237,11 @@ public class MyController {
 			return "redirect:/loginForm";
 		}
 
-		List<MyListVo> myVo = myService.getDetail(resNo);
+		Map<String, Object> dMap = myService.getDetail(resNo);
+		System.out.println(dMap);
 		Map<String, Object> sMap = saleService.getReservation(resNo);
 
-		model.addAttribute("myVo", myVo);
+		model.addAttribute("dMap", dMap);
 		model.addAttribute("sMap", sMap);
 
 		return "mypage/detail";
@@ -275,11 +276,41 @@ public class MyController {
 
 		uRvo.setno(authUser.getNo());
 
-		int count = myService.writeReview(uRvo);
-		System.out.println(count);
+		myService.writeReview(uRvo);
 
-		return "redirect:/my/reservation";
+		return "redirect: /reservation";
 	}
+
+	/*
+	 * @RequestMapping(value = "review/modify", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String reviewModify(@RequestParam("resNo") int
+	 * resNo, HttpSession session, Model model) {
+	 * System.out.println("MyController>review/modify()");
+	 * 
+	 * UserVo authUser = (UserVo) session.getAttribute("authUser");
+	 * 
+	 * if (authUser == null) { return "redirect:/loginForm"; }
+	 * 
+	 * List<UserReviewVo> revList = myService.getReview(resNo);
+	 * model.addAttribute("revList", revList);
+	 * 
+	 * return "mypage/myreviewModify"; }
+	 */
+	/*
+	 * @RequestMapping(value = "review/rewrite", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String reviewModify(@RequestParam("resNo") int
+	 * resNo, HttpSession session) {
+	 * System.out.println("MyController>review/rewrite()");
+	 * 
+	 * UserVo authUser = (UserVo) session.getAttribute("authUser");
+	 * 
+	 * if (authUser == null) { return "redirect:/loginForm"; }
+	 * 
+	 * myService.updateReview(resNo);
+	 * 
+	 * return "redirect: /reservation";
+	 */
+	
 
 	/********* action (all) **********/
 	@ResponseBody

@@ -58,10 +58,10 @@ public class MyDao {
 	}
 
 	// 예약번호로 예약상세 정보 불러오기
-	public List<MyListVo> getDetail(int resNo) {
+	public MyListVo getDetail(int resNo) {
 		System.out.println("MyDao>getDetail()");
 
-		return sqlSession.selectList("my.getDetail", resNo);
+		return sqlSession.selectOne("my.getDetail", resNo);
 	}
 
 	// 예약취소하기 -> 예약상태 업데이트하기
@@ -105,19 +105,39 @@ public class MyDao {
 
 		return sqlSession.update("my.updatePw", uVo);
 	}
-	
+
 	// 유저 정보 -> 비밀번호 업데이트
 	public int updateId(UserVo uVo) {
 		System.out.println("MyDao>updateId()");
-		
+
 		return sqlSession.update("my.updateId", uVo);
 	}
 
+	// 리뷰 등록하기
 	public int writeReview(UserReviewVo uRvo) {
-		System.out.println("MyDao>updatePw()");
+		System.out.println("MyDao>writeReview()");
 
 		return sqlSession.insert("my.insertReview", uRvo);
 	}
 
+	// 리뷰 업데이트 하기
+	public int updateReview(UserReviewVo uRvo) {
+		System.out.println("MyDao>updateReview()");
 
+		return sqlSession.update("my.reviewModify", uRvo);
+	}
+
+	// 리뷰 리스트 가져오기
+	public List<UserReviewVo> getReview(int resNo) {
+		System.out.println("MyDao>getReview()");
+
+		return sqlSession.selectList("my.getReview", resNo);
+	}
+
+	// 리뷰 달았는지 안 달았는지
+	public int checkReview(int resNo) {
+		System.out.println("MyDao>checkReview()");
+
+		return sqlSession.selectOne("my.checkReview", resNo);
+	}
 }

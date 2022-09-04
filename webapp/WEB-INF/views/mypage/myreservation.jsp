@@ -168,7 +168,7 @@
 			var no = $(this).data('no');
 			$('#delNo').val(no);
 
-			$('#btn-del-modal').show('fast');
+			$('#btn-del-modal').show();
 
 		});
 
@@ -186,10 +186,10 @@
 				success : function(count) {
 					if (count == 1) {
 						$("#li-" + no).remove();
-						$("#btn-del-modal").hide('fast');
-						location.reload('fast');
+						$("#btn-del-modal").hide();
+						location.reload();
 					} else {
-						$("#btn-del-modal").hide('fast');
+						$("#btn-del-modal").hide();
 					}
 				},
 				error : function(XHR, status, error) {

@@ -131,7 +131,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 
 				<div class="bot_btn">
 					<p>양도어때를 이용하고 싶지 않으신가요?</p>
-					<button type="button" onclick="pop_twobtn('ell','로그아웃 하시겠습니까?','취소','로그아웃','close_layer()','logoutPro()');">로그아웃</button>
+					<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 					<!-- <button type="button">
 						<a href="">회원탈퇴</a>
 						withdraw 폼으로 redirect
