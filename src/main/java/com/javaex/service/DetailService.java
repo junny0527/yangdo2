@@ -29,6 +29,19 @@ public class DetailService {
 		//지역명 가져오기
 		String area = areaArray[0] + areaArray[1];
 		
+		
+		System.out.println(datepicker);
+		String[] dateArray1 = datepicker.split("-");
+		String[] dateArray2 = datepicker2.split("-");
+		String date1 = dateArray1[2];
+		String date2 = dateArray2[2];
+		System.out.println("date1:"+date1);
+		System.out.println("date2:"+date2);
+		int num1 = Integer.parseInt(date1);
+		int num2 = Integer.parseInt(date2);
+		int num = num2 - num1;
+		
+		
 		//펜션 리뷰 및 별점(업주+)
 		Map<String, Object> totalReview = detailDao.totalReview(pensionNo);
 		//펜션 편의시설 
@@ -90,9 +103,13 @@ public class DetailService {
 		pMap.put("crtPage", crtPage);
 		pMap.put("area", area);
 		pMap.put("imgSize", imgList.size());
+		pMap.put("num", num);
 		return pMap;
+		
+		
 	}
 	
+
 	//객실 리스트 정보 가져오기 (ajax)
 	public List<Map<String, Object>> roomInfoList(int pensionNo, int roomNo) {
 		System.out.println("DetailService > roomInfo");

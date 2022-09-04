@@ -27,14 +27,14 @@
 			        ,r.baby 
 			        ,r.total_price 
 			        ,r.status
-			        ,pensione.image_path
+			        ,pensione.save_name
 			        ,r.reg_date
 			        ,r.trans_price
 			from reservations r , rooms ro , pension p ,(select rownum
-			                                                    ,rn.image_path
+			                                                    ,rn.save_name
 			                                                    ,rn.pension_no
 			                                            from(select 
-			                                                    image_path
+			                                                    save_name
 			                                                    ,pension_no
 			                                            from pension_image
 			                                            order by no asc) rn) pensionE

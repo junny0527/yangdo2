@@ -29,7 +29,7 @@
 
 			<div id="pension" class="clearfix">
 				<!-- 펜션이미지 -->
-				<img id="pension_image" src="${pageContext.request.contextPath}/upload/${sMap.IMAGE_PATH}">
+				<img id="pension_image" src="${pageContext.request.contextPath}/upload/${sMap.SAVE_NAME}">
 
 				<!-- 펜션이름 -->
 				<div id="pension_pName" class="font-bold">${sMap.PNAME}</div>

@@ -86,6 +86,9 @@ public class DetailDao {
 		roomMap.put("datepicker", datepicker);
 		roomMap.put("datepicker2", datepicker2);
 		
+		
+		
+		
 		List<Map<String, Object>> roomList = sqlSession.selectList("detail.roomList", roomMap);
 		return roomList;
 	}
