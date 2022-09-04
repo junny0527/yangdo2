@@ -621,7 +621,7 @@
 										</div>
 										<div class="price">
 											<span class="assignmentPrice" style="visibility:hidden;">${roomVo.TRANS_PRICE}원</span>
-											<span class="roomPrice${roomVo.NO}" style="text-decoration:none;">${roomVo.PRICE}원</span> 
+											<span id="roRePrice" class="roomPrice${roomVo.NO}" style="text-decoration:none;">${roomVo.PRICE}원</span> 
 										</div>
 									</div>
 									<!-- //defaultForm -->
@@ -735,7 +735,7 @@
 	var mapContainer = "";
 	
 	const geocoder = new kakao.maps.services.Geocoder()
-	geocoder.addressSearch("${pMap.pInfo.LAW_NAME}", (res, stat) => { 
+	geocoder.addressSearch("${pMap.pInfo.ADDRESS}", (res, stat) => { 
 	   if (stat === kakao.maps.services.Status.OK) {
 	      const coords = new kakao.maps.LatLng(res[0].y, res[0].x);
 	      const marker = new kakao.maps.Marker({
@@ -1892,7 +1892,7 @@
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '</div>';
-			}else if(rMap.totalReview.AVGSTARS == 4.10 && rMap.totalReview.AVGSTARS == 4.99) {
+			}else if(rMap.totalReview.AVGSTARS >= 4.10 && rMap.totalReview.AVGSTARS <= 4.99) {
 				str += '<div id="star">';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
@@ -1908,7 +1908,7 @@
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
 				str += '</div>';
-			}else if(rMap.totalReview.AVGSTARS == 3.10 && rMap.totalReview.AVGSTARS == 3.99) {
+			}else if(rMap.totalReview.AVGSTARS >= 3.10 && rMap.totalReview.AVGSTARS <= 3.99) {
 				str += '<div id="star">';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
@@ -1924,7 +1924,7 @@
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
 				str += '</div>';
-			}else if(rMap.totalReview.AVGSTARS == 2.10 && rMap.totalReview.AVGSTARS == 2.99) {
+			}else if(rMap.totalReview.AVGSTARS >= 2.10 && rMap.totalReview.AVGSTARS <= 2.99) {
 				str += '<div id="star">';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
@@ -1940,7 +1940,7 @@
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsEmpty.png"></span>';
 				str += '</div>';
-			}else if(rMap.totalReview.AVGSTARS == 1.10 && rMap.totalReview.AVGSTARS == 1.99) {
+			}else if(rMap.totalReview.AVGSTARS >= 1.10 && rMap.totalReview.AVGSTARS <= 1.99) {
 				str += '<div id="star">';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/stars.png"></span>';
 				str += '	<span class="starCount"><img src="${pageContext.request.contextPath}/assets/image/detail/starsHarf.png"></span>';
@@ -2074,12 +2074,20 @@
 				str += '				<span> | ' + rMap.allReview[i].NAME + '</span>';
 				str += '			</div>';
 				str += '			<span id="reviewContent">' + rMap.allReview[i].CONTENT + '</span>';
-				str += '			<div id="roomImg">';
-				str += '				<ul>';
-				str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE1 + '"></li>';
-				str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE2 + '"></li>';
-				str += '				</ul>';
-				str += '			</div>';
+				if(rMap.allReview[i].IMAGE1 != null && rMap.allReview[i].IMAGE2 != null ) {
+					str += '			<div id="roomImg">';
+					str += '				<ul>';
+					str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE1 + '"></li>';
+					str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE2 + '"></li>';
+					str += '				</ul>';
+					str += '			</div>';
+				}else if(rMap.allReview[i].IMAGE1 != null && rMap.allReview[i].IMAGE2 == null) {
+					str += '			<div id="roomImg">';
+					str += '				<ul>';
+					str += '					<li><img src="${pageContext.request.contextPath}/upload/' + rMap.allReview[i].IMAGE1 + '"></li>';
+					str += '				</ul>';
+					str += '			</div>';
+				}
 				str += '			<span id="guestRegDate">' + rMap.allReview[i].REG_DATE + '</span>';
 				if(rMap.allReview[i].RCONTENT != 'empty' && rMap.allReview[i].RREG_DATE != 'empty') {
 					str += '			<div id="ceoContainer">';
