@@ -193,7 +193,7 @@
 			                          from reservations
 			                          where check_in >= #{datepicker}
 			                          and check_in < #{datepicker2}
-			                          or check_out > #{datepicker}
+			                          or check_in > #{datepicker}
 			                          and check_out <= #{datepicker2}
 			                          or check_in <= #{datepicker} 
 			                          and check_out >= #{datepicker2}) r ,prices p , pension pe, week w, (select   a.img_no,
@@ -218,6 +218,7 @@
 			                        and peck_end >#{datepicker}
 			                        and pension_no = #{pensionNo})
 			and     w.name = TO_CHAR(TO_DATE(#{datepicker},'YYYY-MM-DD'), 'DY')
+			and     r.status(+) != 3
 
 		]]>
 	</select>
