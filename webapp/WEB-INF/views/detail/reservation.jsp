@@ -406,6 +406,7 @@
 				</form>
 			</div>
 			<!-- //calendar -->
+			
 			<c:forEach items="${pMap.roomList}" var="roomVo" varStatus="status">
 				<c:choose>
 					<c:when test="${roomVo.STATUS == 6}">
@@ -541,7 +542,7 @@
 										</div>
 										<div class="price">
 											<span class="assignmentPrice" style="visibility:hidden;">${roomVo.TRANS_PRICE}원</span>
-											<span class="roomPrice" style="text-decoration:none;">${roomVo.TOTAL_PRICE}원</span> 
+											<span class="roomPrice" style="text-decoration:none; visibility:hidden;">${roomVo.TOTAL_PRICE}원</span> 
 										</div>
 									</div>
 									<!-- //defaultForm -->
@@ -621,7 +622,7 @@
 										</div>
 										<div class="price">
 											<span class="assignmentPrice" style="visibility:hidden;">${roomVo.TRANS_PRICE}원</span>
-											<span id="roRePrice" class="roomPrice${roomVo.NO}" style="text-decoration:none;">${roomVo.PRICE}원</span> 
+											<span class="roomPrice${roomVo.NO}" style="text-decoration:none;">${roomVo.PRICE}원</span> 
 										</div>
 									</div>
 									<!-- //defaultForm -->
@@ -725,6 +726,7 @@
 <!-- /.modal -->
 
 <script type="text/javascript">
+
 
 	///////////////////////// 숙소위치보기 (지도) ///////////////////////////
 	var container = ""; 

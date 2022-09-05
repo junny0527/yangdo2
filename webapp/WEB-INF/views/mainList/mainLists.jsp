@@ -569,27 +569,6 @@ $("#sido1").change(function() {
 		}
 		
 		
-		 
-			
-		
-	    
-	    
-	    
-	    
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-				
 $("#btn_map").on("click", function() {
 	$("#local").modal("show");
 	
@@ -626,7 +605,10 @@ $("#btn_child2").on("click",function(){
 	
 });
 				
-				
+//양도 버튼 클릭시
+$("#yangdo").on("click",function(){
+	console.log("양도안녕")
+});
 			
 	///////////////////////// 일정선택 ///////////////////////////
 	$(function() {
@@ -697,18 +679,29 @@ $("#btn_child2").on("click",function(){
 	
 		//체크박스 선택 초기화
 		function initCheckBtn(){
-	
+		
+		console.log("야임마")	
+			
 		//초기화할 체크박스 선택
-		var checkboxes = document.getElementsByName("pensionItem"); 
+		var checkPuopt = document.getElementsByName("puOpt"); 
+		var checkAnopt = document.getElementsByName("anOpt"); 
+		var checkYcount = document.getElementsByName("yCount"); 
 	
 		/* 체크박스를 순회하며 값을 초기화 */
-		checkboxes.forEach((checkbox) => {
+		checkPuopt.forEach((checkbox) => {
+		checkbox.checked = false;
+		 })
+		 
+		checkAnopt.forEach((checkbox) => {
+		checkbox.checked = false;
+		 })
+		
+		checkYcount.forEach((checkbox) => {
 		checkbox.checked = false;
 		 })
 	}
 			
-
-
+		
 
 
 	//시/도 셀렉트박스 초기화 그리기
