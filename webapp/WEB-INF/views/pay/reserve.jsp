@@ -248,6 +248,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 				alert("보유 포인트 이상 사용할 수 없습니다.");
 				return false;
 			}
+			
+			$("#pointBtn").text(pBtnFormat("포인트 사용 " + point + "P"));
+			$('#savePoint').text(pointFormat(minPoint - point+"P"));
+			$("#usedPoint").text(upointFormat("-" + point + " P"))
+			$('.total').text(moneyFormat(totalPrice - point +"원"));
+			$('#product-amount').text(stFormat("구매총액"+totalPrice - point +"원"));
 			//------어른,아이,유아계산---
 			let adult = Number('${rpMap.adult}');
 			let kid = Number('${rpMap.kid}');
@@ -256,11 +262,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			let kidpri = Number('${rpMap.pricekid}');
 			
 			
-			$("#pointBtn").text(pBtnFormat("포인트 사용 " + point + "P"));
-			$('#savePoint').text(pointFormat(minPoint - point+"P"));
-			$("#usedPoint").text(upointFormat("-" + point + " P"))
-			$('.total').text(moneyFormat(totalPrice - point +"원"));
-			$('#product-amount').text(stFormat("구매총액"+totalPrice - point +"원"));
 			$('#kidss').text(stFormat(kid * kidpri +"원"));
 			$('#adultss').text(stFormat((adult-standard) * adultpri +"원"));
 			
