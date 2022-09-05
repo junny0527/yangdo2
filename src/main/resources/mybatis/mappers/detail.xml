@@ -159,7 +159,7 @@
 			              ,to_char(r.total_price, 'FM999,999') TOTAL_PRICE
 			              ,nvl(r.status,'0') STATUS
 			              ,to_char(r.trans_price, 'FM999,999') TRANS_PRICE
-			              ,to_char(p.price, 'FM999,999') PRICE
+			              ,to_char(p.price*TRUNC(TO_DATE(#{datepicker2}, 'YYYY-MM-DD')- TO_DATE(#{datepicker}, 'YYYY-MM-DD')), 'FM999,999,999') PRICE
 			              ,w.name WEEK_NAME
 			              ,ri.SAVE_NAME
 			              ,to_char(pe.add_adult_price, 'FM99,999') ADULT_PRICE
@@ -359,7 +359,7 @@
                                                                 and         re.review_no = rep.review_no(+)
                                                                 and         p.no = #{pensionNo}) re2
 			where   u.no = c.user_no
-			and     c.no = p.no
+			and     c.no = p.company_no
 			and     re.review_no = re2.review_no
 			and     p.no = #{pensionNo}
 			order by review_no asc
