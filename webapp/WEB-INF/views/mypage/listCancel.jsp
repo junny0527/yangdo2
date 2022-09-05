@@ -54,7 +54,7 @@
 												<p class="pic">
 													<img src="${pageContext.request.contextPath}/upload/${list.saveName}" alt="${list.pName}" class="align">
 												</p>
-												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
+												<a href="${pageContext.request.contextPath}/my/detail?resNo=${list.resNo}" class="product-title" style="border-bottom: none;"><i class="bg_w">예약취소</i> <strong>${list.pName}</strong>
 													<span>체크인: ${list.checkIn} ㆍ ${list.inTime}<br> 체크아웃: ${list.checkOut} ㆍ ${list.outTime}
 												</span></a>
 												<p class="btn_re">

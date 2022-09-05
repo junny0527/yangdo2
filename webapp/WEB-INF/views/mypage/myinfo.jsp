@@ -54,7 +54,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 						<input type="hidden" name="no" value="${uVo.no}">
 						<!-- // 폼전송시 전달되는 data target element -->
 						<section class="top_area">
-							<strong>내 정보 수정</strong>
+							<strong>내 정보 관리</strong>
 							<div class="pw_input">
 								<div class="pw_input__title">
 									<b>닉네임</b> <span class="title__uinfo">${uVo.nickName}</span>
@@ -129,7 +129,7 @@ To ensure proper rendering and touch zooming for all devices, add the responsive
 				</div>
 
 				<div class="bot_btn" style="border-top: none; margin-top: 0px;">
-					<p>양도어때를 이용하고 싶지 않으신가요?</p>
+					<p>양도어때 로그아웃 하시겠습니까?</p>
 					<a href="${pageContext.request.contextPath}/logout" style="color: black;">로그아웃</a>
 				</div>
 			</div>

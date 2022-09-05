@@ -140,6 +140,9 @@
 			<section>
 				<div style="padding-top: 0; padding-bottom: 0">
 					<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
+						<a href="${pageContext.request.contextPath}/reservation?pensionNo=${dMap.myVo.pNo}&datepicker=${dMap.myVo.inDate}&datepicker2=">
+							<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">리뷰 보기</button>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -284,7 +287,9 @@
 				<div class="booking-detail-section-title__wrap">
 					<!---->
 				</div>
-				<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">양도내역 확인하기</button>
+				<a href="${pageContext.request.contextPath}/reservation?pensionNo=${dMap.myVo.pNo}&datepicker=${dMap.myVo.inDate}&datepicker2=">
+					<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">양도내역 확인하기</button>
+				</a>
 				<!---->
 				<!---->
 			</div>
@@ -348,7 +353,9 @@
 				<div class="booking-detail-section-title__wrap">
 					<!---->
 				</div>
-				<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">메인으로 이동하기</button>
+				<a href="${pageContext.request.contextPath}/main">
+					<button type="button" class="btn_flat btn-green booking_detail_flat_button color-green-long">메인으로 이동하기</button>
+				</a>
 				<!---->
 				<!---->
 			</div>
