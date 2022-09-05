@@ -74,12 +74,14 @@
 			                        <span> | ${rList.guestName}</span>
 			                    </div>
 			                    <span id="reviewContent">${rList.guestContent}</span>                
-			                    <div id="roomImg">
-			                        <ul>
-			                            <li><img src="${rList.image1}"></li>
-			                            <li><img src="${rList.image2}"></li>
-			                        </ul>
-			                    </div>
+			                    <c:if test = "${rList.image1 && rList.image2 != null}">
+				                    <div id="roomImg">
+				                        <ul>
+				                            <li><img src="${rList.image1}"></li>
+				                            <li><img src="${rList.image2}"></li>
+				                        </ul>
+				                    </div>
+			                    </c:if>           
 			                    <span id="guestRegDate">${rList.guestRegdate}</span>
 			                    <c:choose>
 		                    		<c:when test = "${rList.replyNo != null && rList.hostContent != null && rList.hostRegdate != null}">
