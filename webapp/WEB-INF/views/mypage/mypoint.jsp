@@ -42,23 +42,30 @@
 			<!-- Nav -->
 			<c:import url="/WEB-INF/views/mypage/includes/mynav.jsp"></c:import>
 			<!-- Nav -->
-			<fmt:formatNumber pattern="#,###" value="${psMap.POINTS}" />
 
 			<div class="align_rt">
 				<input type="hidden" name="page" value="1">
 				<div>
 					<div class="point_show gra_red">
-						<span>사용 가능 포인트</span> <strong id="point-page-show">${psMap.POINTS}P</strong>
+						<span>사용 가능 포인트</span> <strong id="point-page-show"> <fmt:formatNumber pattern="#,###" value="${psMap.POINTS}" />P
+						</strong>
 					</div>
 
 					<c:forEach items="${pList}" var="pList">
 						<ul class="point_list">
-							<li>${pList.pName}·(${pList.point}P)<span>${pList.regDate }</span> <c:if test="${pList.point < 0}">
-									<p class="col_mint">${pList.point}P</p>
+							<li>${pList.pName} · (<fmt:formatNumber pattern="#,###" value="${pList.point}" />P)<span>${pList.regDate }</span> <c:if
+									test="${pList.point < 0}">
+									<p class="col_mint">
+										<fmt:formatNumber pattern="#,###" value="${pList.point}" />
+										P
+									</p>
 								</c:if> <c:if test="${pList.point > 0}">
-									<p class="col_red">+ ${pList.point}P</p>
-								</c:if>
-							<li>"${pList.pName}(${pList.point}P)"<span>${pList.regDate }</span> <c:if test="${pList.point == 0}">
+									<p class="col_red">
+										+
+										<fmt:formatNumber pattern="#,###" value="${pList.point}" />
+										P
+									</p>
+								</c:if> <c:if test="${pList.point == 0}">
 									<p class="col_mint" style="display: none;"></p>
 								</c:if>
 							</li>
