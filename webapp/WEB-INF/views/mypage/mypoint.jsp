@@ -54,20 +54,18 @@
 					<c:forEach items="${pList}" var="pList">
 						<ul class="point_list">
 							<li>${pList.pName}·(${pList.point}P)<span>${pList.regDate }</span> <c:if test="${pList.point < 0}">
-									<p class="col_mint">- ${pList.point}P</p>
+									<p class="col_mint">${pList.point}P</p>
 								</c:if> <c:if test="${pList.point > 0}">
 									<p class="col_red">+ ${pList.point}P</p>
 								</c:if>
-							<li>"${pList.pName}(${pList.point}P)"<span>${pList.regDate }</span> <c:if test="${pList.point < 0}">
-									<p class="col_mint">${pList.point}P</p>
-								</c:if> <c:if test="${pList.point > 0}">
-									<p class="col_red">+${pList.point}P</p>
+							<li>"${pList.pName}(${pList.point}P)"<span>${pList.regDate }</span> <c:if test="${pList.point == 0}">
+									<p class="col_mint" style="display: none;"></p>
 								</c:if>
 							</li>
 						</ul>
 					</c:forEach>
 				</div>
-				<c:if test="${psMap.POINTS eq null || psMap.POINTS == ''}">
+				<c:if test="${psMap.POINTS eq null || psMap.POINTS == 0}">
 					<!-- 리스트 없을시 -->
 					<div class="list_none">
 						적립한 포인트가 없습니다.<br />
