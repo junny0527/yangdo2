@@ -130,8 +130,10 @@ public class RePayService {
 		Map<String, Object> result = new HashMap<>();
 
 		System.out.println("양도 업데이트 >>>> " + bean.toString());
-
-		int yangdoUpdateCnt = rePayDao.yangdoUpdate(bean);
+		
+		int no = bean.getNo();
+		
+		int yangdoUpdateCnt = rePayDao.yangdoUpdate(no);
 		// 1.부모 번호에 넣어주기
 		bean.setPrNo(bean.getNo());
 		// 양도 새롭게 insert

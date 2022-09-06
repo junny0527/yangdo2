@@ -94,7 +94,7 @@
 						KID,
 						BABY,
 						TOTAL_PRICE,
-						TRANS_PRICE,
+						
 						REG_DATE,
 						STATUS,
 						PAY_WAY,
@@ -113,7 +113,7 @@
 						#{kid},
 						#{baby},
 						#{totalPrice},
-						#{transPrice},
+						
 						SYSDATE,
 						#{status},
 						#{payWay},
@@ -122,10 +122,10 @@
 						)
 	</insert>
 	<!-- 양도결제 업데이트 -->
-	<update id="yangdoPayUpdate" parameterType="com.javaex.vo.RePayVo"> 
+	<update id="yangdoPayUpdate" parameterType="int"> 
 		UPDATE RESERVATIONS
 			SET 
-			  STATUS = #{status}
+			  STATUS = 5
 			WHERE 
 			  NO = #{no}
 	</update>

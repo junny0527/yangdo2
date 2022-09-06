@@ -128,7 +128,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">아동:
 													${params.yKid}명</span><b data-v-3ce5aaac="" class="kidss"><fmt:formatNumber
-														value="${rpMap.yKid * params.pricekid}" pattern="#,###" />원</b>
+														value="${params.yKid * params.pricekid}" pattern="#,###" />원</b>
 											</div>
 											<div class="product-amount" data-v-3ce5aaac="">
 												<span class="addprice" data-v-2c1e3bcc="">영유아:
@@ -310,13 +310,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	      }, function (rsp) { // callback
 	    	  if ( rsp.success ) { 
 	    		  console.log("결제")
-	    		  
 		    	      var repayVo ={
 	    			  			no: "${rpMap.NO}",
 			    	        	name: $('#userName').val(),
 			    	        	hp: $('#hp').val(),
 			    	        	point:$('#point').val(),
-			    	        	userNo:"${rpMap.USERNO}",
+			    	        	userNo:"${authUser.no}",
 			    	        	roomNo:"${rpMap.ROOMNO}",
 			    	        	pointNo:"${rpMap.POINTNO}",
 			    	        	checkInDt:"${rpMap.CHECKIN }",
@@ -329,17 +328,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	payWay: '1',
 			    	        	payStatus: '2',
 			    	        	//null 값인거 일단 넣어보기
-			    	        	adult: '${rpMap.ADULT}',
-			    	        	kid: '${rpMap.KID}',
-			    	        	baby: '${rpMap.BABY}',
+			    	        	adult: '${params.yAdult}',
+			    	        	kid: '${params.yKid}',
+			    	        	baby: '${params.yBaby}',
 			    	        	id: '${authUser.id}',
 			    	        	pw: '${authUser.pw}',
 			    	        	regDate:'${rpMap.REG_DATE}',
 			    	        	prNo:'${rpMap.NO}',
-			    	        	totalPrice: '${rpMap.TOTAL_PRICE}',
+			    	        	totalPrice: '${params.transPrice}',
 			    	        	//////////////////////////////
-			    	        	
-			    	        	transPrice: '${params.transPrice}'
 		    	        }
 	    	        
 	    	        console.log("repayVo ::: >> ", repayVo);
