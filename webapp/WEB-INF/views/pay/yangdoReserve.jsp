@@ -325,7 +325,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			    	        	checkOutHr:"${rpMap.CHECKOUTTIME }",
 			    	        	pName : "${rpMap.PNAME}",
 			    	        	rName : "${rpMap.RNAME}",
-			    	        	status: '5',
+			    	        	status: '1',
 			    	        	payWay: '1',
 			    	        	payStatus: '2',
 			    	        	//null 값인거 일단 넣어보기

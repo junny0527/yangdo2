@@ -58,9 +58,11 @@
 										<!-- 이미지 -->
 
 										<!-- 예약상세 -->
-										<a href="${pageContext.request.contextPath}/my/detail?resNo=${rList.resNo}" class="product-title"><i class="">예약완료</i> <strong>${rList.pName}</strong>
-											<span>체크인: ${rList.checkIn} ㆍ ${rList.inTime}<br> 체크아웃: ${rList.checkOut} ㆍ ${rList.outTime}
-										</span></a>
+										<a href="${pageContext.request.contextPath}/my/detail?resNo=${rList.resNo}" class="product-title">
+											<i class="">예약완료</i> 
+											<strong>${rList.pName}</strong>
+											<span>체크인: ${rList.checkIn} ㆍ ${rList.inTime}<br> 체크아웃: ${rList.checkOut} ㆍ ${rList.outTime}</span>
+										</a>
 										<!-- 예약상세 -->
 									</div>
 								</li>

@@ -61,30 +61,57 @@
 
 	<a href="tel:${dMap.myVo.comHp}" class="btn_call">전화로 문의하기</a>
 
-	<section>
-		<div style="padding-top: 0; padding-bottom: 0">
-			<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
-				<div class="booking-detail-section-title__wrap">
-					<!-- <div>
+	<c:choose>
+		<c:when test="${dMap.myVo.pRno == null || dMap.myVo.pRno == 0}">
+			<section>
+				<div style="padding-top: 0; padding-bottom: 0">
+					<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
+						<div class="booking-detail-section-title__wrap">
+							<!-- <div>
 						<div class="sub-title">
 							<div class="color-green">2022년 08월 28일 23:59까지 양도 가능합니다.</div>
 							<div class="color-red">2022년 08월 24일 23:59까지 무료 취소 가능합니다.</div>
 						</div>
 					</div> -->
+							<!---->
+						</div>
+
+						<a href="${pageContext.request.contextPath}/sale?no=${dMap.myVo.resNo}">
+							<button type="button" id="btn_relist_confirm" class="btn_flat booking_detail_flat_button color-green">양도하기</button>
+						</a>
+						<button type="button" id="btn_cancel_confirm" class="btn_flat booking_detail_flat_button color-red btn-danger btn btn-primary"
+							data-toggle="modal" data-target="#btn-cancel-modal" data-no="${dMap.myVo.resNo}">예약취소</button>
+						<!---->
+					</div>
 					<!---->
 				</div>
-				<a href="${pageContext.request.contextPath}/sale?no=${dMap.myVo.resNo}">
-					<button type="button" id="btn_relist_confirm" class="btn_flat booking_detail_flat_button color-green">양도하기</button>
-				</a>
-				<button type="button" id="btn_cancel_confirm" class="btn_flat booking_detail_flat_button color-red btn-danger btn btn-primary" data-toggle="modal"
-					data-target="#btn-cancel-modal" data-no="${dMap.myVo.resNo}">예약취소</button>
 				<!---->
-			</div>
-			<!---->
-		</div>
-		<!---->
-	</section>
-	<!-- detail -->
+			</section>
+			<!-- detail -->
+		</c:when>
+		<c:otherwise>
+			<section>
+				<div style="padding-top: 0; padding-bottom: 0">
+					<div class="booking_detail_section_layout_wrap booking-cancel__section" style="border-bottom: none;">
+						<div class="booking-detail-section-title__wrap">
+							<!-- <div>
+						<div class="sub-title">
+							<div class="color-green">2022년 08월 28일 23:59까지 양도 가능합니다.</div>
+							<div class="color-red">2022년 08월 24일 23:59까지 무료 취소 가능합니다.</div>
+						</div>
+					</div> -->
+							<!---->
+						</div>
+						<button type="button" id="btn_cancel_confirm" class="btn_flat booking_detail_flat_button color-red-long btn-danger btn btn-primary"
+							data-toggle="modal" data-target="#btn-cancel-modal" data-no="${dMap.myVo.resNo}">예약취소</button>
+						<!---->
+					</div>
+					<!---->
+				</div>
+				<!---->
+			</section>
+		</c:otherwise>
+	</c:choose>
 </c:if>
 <c:if test="${dMap.myVo.status==3}">
 	<div class="info" style="">
