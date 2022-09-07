@@ -1653,14 +1653,14 @@
 			str += '</div>';
 			str += '<div id="notice">';
 			str += '	<div class="info">공지사항</div>';	
-			str += '	<span>방역실시 / 손소독제 구비 / 전 직원 마스크 착용</span>'; //X
+			str += '	<span>방역실시 / 손소독제 구비 / 전 직원 마스크 착용</span>'; 
 			str += '	</div>';
 			str += '<div id="basic">';
 			str += '	<div class="info">기본정보</div>';	
-			str += '	<span>입실 : 15:00 | 퇴실 : 11:00</span>'; //X
+			str += '	<span>입실 : 15:00 | 퇴실 : 11:00</span>';
 			str += '</div>';
 			str += '<div id="guestroom">';
-			str += '	<div class="info">객실정보</div>';	//X
+			str += '	<div class="info">객실정보</div>';
 			str += '	<span>앞마당 : 프라이빗한 모닥데크, 캠핑의자, 비바코로마 5인텐트, 실외 슬리퍼 (현관 입구 선반에 비치), 손소독제 (현관입구)</span>';
 			str += '</div>';
 			str += '<div id="addPeople">';
@@ -1671,15 +1671,15 @@
 			str += '</div>';
 			str += '<div id="dog">';
 			str += '	<div class="info">애견 입실안내</div>';	
-			str += '	<span>애견동반을 원할 시 사전문의 및 상담필수</span>'; //X
+			str += '	<span>애견동반을 원할 시 사전문의 및 상담필수</span>';
 			str += '</div>';
 			str += '<div id="service">';
 			str += '	<div class="info">펜션 서비스</div>';
-			str += '	<span>시설 이용문의 및 비용 별도 펜션문의</span>';	//X
+			str += '	<span>시설 이용문의 및 비용 별도 펜션문의</span>';	
 			str += '</div>';
 			str += '<div id="bbq">';
 			str += '	<div class="info">바비큐</div>';	
-			str += '	<span>숯 + 그릴 대여 : 2인 기준 20,000원</span>';	//X
+			str += '	<span>숯 + 그릴 대여 : 2인 기준 20,000원</span>';	
 			str += '</div>';
 			str += '<div id="cancle">';
 			str += '	<div class="info">취소 및 환불규정</div>';

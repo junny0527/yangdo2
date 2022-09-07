@@ -38,9 +38,9 @@ public class RePayDao {
 //===========================================================================================================
 	
 	// 양도 업데이트
-	public int yangdoUpdate(RePayVo bean) {
+	public int yangdoUpdate(int no) {
 		System.out.println("\t\t RePayService::yangdoUpdate() invoked...");
-		return sqlSession.update(SQLMAP+ "yangdoPayUpdate", bean);
+		return sqlSession.update(SQLMAP+ "yangdoPayUpdate", no);
 	}
 	//양도 업데이트
 	public int yangdoInsert(RePayVo bean) {
