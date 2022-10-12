@@ -22,7 +22,7 @@ public class RePayService {
 	private PointsDao pointsDao;
 //===========================================================================================================
 	
-	// 예약 정보 가져오기
+	// 예약 정보 
 	public Map<String, Object> getRePay(@RequestParam Map<String, Object> params) {
 		System.out.println("\t\t RePayService::getRePay() invoked...");
 
